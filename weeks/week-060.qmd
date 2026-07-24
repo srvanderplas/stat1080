@@ -1,0 +1,38 @@
+# Week 6: Dates, Times, and Distributions
+
+
+
+October 05-11, 2026
+
+## 📖 Reading
+
+- [ ] (for Mon) [IDS I Ch 13 - Dates and Times](https://rafalab.dfci.harvard.edu/dsbook-part-1/wrangling/dates-and-times.html)
+- [ ] (for Wed) [IDS I Ch 7 - Visualizing Data Distributions](https://rafalab.dfci.harvard.edu/dsbook-part-1/dataviz/distributions.html)
+
+
+## 📐 Prepare for class
+
+- [ ] (for Mon) Reading Check 6.1  
+- [ ] (for Wed) Reading Check 6.2
+
+
+## 🥱 Monday 🌛
+
+- [Dates and Times](../slides/16-dates-times.qmd)
+
+
+## 🐪️ Wednesday 🐦‍⬛ 
+
+- [Visualizing Data Distributions](../slides/17-vis-dist.qmd)
+
+
+## 🎉 Friday 🥳
+
+- Fall Break
+
+
+## Extra Resources/Reading
+
+- [SC Ch 27 - Dates and Times](https://srvanderplas.github.io/stat-computing-r-python/part-wrangling/07-datetime.html)
+- [IDS I Ch 14 - Locales](https://rafalab.dfci.harvard.edu/dsbook-part-1/wrangling/locales.html)
+

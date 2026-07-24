@@ -1,0 +1,7 @@
+---
+title: "Stat 349: Technical Skills for Statisticians"
+---
+
+Creation of research reports, business reports, and executive summaries. Presentation strategies, consequences of statistical modeling for real-world decision making, and countering common misconceptions and errors in statistical reasoning. Focus on real-world applications in research, business, and public service.
+
+![](images/course-backdrop.png){fig-alt="A background image of a laptop keyboard with a notebook and pen laid on top. Handwritten and typed formulas for the normal distribution pdf, calculation of sample mean and standard deviation, and interquartile range are superimposed on top, along with two charts." width="700"}

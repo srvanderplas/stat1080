@@ -1,0 +1,24 @@
+---
+title: Stat 1080 - Data and the Stories They Tell
+format: html
+---
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+source("schedule.R")
+library(DT)
+scheduletbl |>
+  group_by(Week, weeksort, `Week Start`, Topic) |>
+  # mutate(`Important Dates` = paste(`Important Dates`, collapse = "<br>")) |>
+  unique() |>
+  summarize(`Important Dates` = if_else(is.na(`Important Dates`), NA_character_, unique(`Important Dates`))) |>
+  ungroup() |>
+  arrange(weeksort) |>
+  mutate(Topic = if_else(Week <= 16, sprintf("<a href='https://srvanderplas.github.io/stat1080/weeks/week-%03d.html'> %s </a>", Week*10, Topic), Topic)) |>
+  select(Week, Start = `Week Start`, Topic, `Important Dates`) |>
+  datatable(escape = F, selection = 'none', filter='none', 
+            options = list(paging = F, info = F, searching = F, ordering = F), 
+                           rownames = F, style = "bootstrap") 
+```

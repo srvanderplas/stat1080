@@ -1,0 +1,12 @@
+format:
+  revealjs:
+    navigation-mode: vertical
+    logo: deps/usu-sq.png
+    css: deps/styles.scss
+    includes:
+      in_header: css/header.html
+    lib_dir: libs
+    embed-resources: true
+
+date-format: long
+from: markdown+emoji

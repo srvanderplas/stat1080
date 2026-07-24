@@ -1,0 +1,38 @@
+# Week 2: Programming and RStudio
+
+
+
+September 07-13, 2026
+
+## 📖 Reading
+
+- [ ] (for Wed) Read [IDS I Ch 3 - Programming Basics](https://rafalab.dfci.harvard.edu/dsbook-part-1/R/programming-basics.html)
+- [ ] (for Fri) Read [SC Ch 3 - RStudio](https://srvanderplas.github.io/stat-computing-r-python/part-tools/03-Rstudio-interface.html)
+
+
+## 📐 Prepare for class
+
+- [ ] (for Wed) Reading Check 2.1 
+- [ ] (for Fri) Reading Check 2.2
+
+
+## 🥱 Monday 🌛
+
+- Labor Day
+
+
+## 🐪️ Wednesday 🐦‍⬛ 
+
+- [Intro to Programming](../slides/05-prog-intro.qmd)
+
+
+## 🎉 Friday 🥳
+
+- [Intro to RStudio](../slides/06-rstudio.qmd)
+
+
+## Extra Resources/Reading
+
+- [How to Name Files](https://www.youtube.com/watch?v=ES1LTlnpLMk&pp=ygUYamVubnkgYnJ5YW4gc3ByZWFkc2hlZXRz) (YouTube, Jenny Bryan, NormConf) - How to name things so that they are machine readable, human readable, and sorted usefully.
+- [Teach Me How to Google: Debugging in R](https://www.youtube.com/watch?v=BoquVknEfoM) (YouTube, Jasmine Lai, R-Ladies Vancouver)
+

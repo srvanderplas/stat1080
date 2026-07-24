@@ -1,0 +1,34 @@
+# Week 14: Regression
+
+
+
+November 30-06, 2026
+
+## 📖 Reading
+
+- [ ] (for Mon) [IDS 2 Ch 16 - The Linear Model Framework](https://rafalab.dfci.harvard.edu/dsbook-part-2/linear-models/linear-model-framework.html)
+- [ ] (for Wed) [IDS 2 Ch 20 - Multivariable Regression](https://rafalab.dfci.harvard.edu/dsbook-part-2/linear-models/multivariable-regression.html)
+
+
+## 📐 Prepare for class
+
+- [ ] (for Mon) Reading Check 14.1
+- [ ] (for Wed) Reading Check 14.2
+
+
+## 🥱 Monday 🌛
+
+- [Linear Models](../slides/40-linear-models.qmd)
+
+
+## 🐪️ Wednesday 🐦‍⬛ 
+
+- [Multivariate Regression](../slides/41-multivariate.qmd)
+
+
+## 🎉 Friday 🥳
+
+- [Lab: Regression](../lab/42-regression.qmd)
+
+
+

@@ -1,0 +1,15 @@
+---
+title: "Tentative Class Schedule"
+editor: visual
+---
+
+```{r}
+suppressPackageStartupMessages(library(tidyverse))
+library(knitr)
+options(knitr.kable.NA = '')
+
+read.csv("schedule-outline.csv") |>
+  mutate(Code = as.numeric(Code)) |>
+  knitr::kable()
+```
+

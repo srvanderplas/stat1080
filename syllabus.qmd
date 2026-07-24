@@ -1,0 +1,347 @@
+---
+pdf-engine: lualatex
+from: markdown+emoji
+fontsize: 11pt
+geometry: margin=1in
+number-sections: true
+number-depth: 3
+format:
+  html:
+    keep-tex: false
+    theme:
+      light: [flatly, theme.scss, _variables-flatly.scss]
+      dark: [darkly, theme.scss, _variables-darkly.scss]
+    mainfont: "Atkinson Hyperlegible"
+    template-partials:
+    - partials/title-block.html
+  pdf:
+    keep-tex: false
+    template-partials:
+    - partials/title.tex
+    - partials/before-body.tex
+    - partials/graphics.tex
+    dev: cairo_pdf
+title: Stat 1080 Syllabus
+instructor: Susan Vanderplas
+semester: Fall 2026
+email: susan.vanderplas@usu.edu
+web: srvanderplas.github.io
+officehours: | 
+  By appointment. Schedule at    
+  [https://calendly.com/vanderplas-stats/30min](https://calendly.com/vanderplas-stats/30min)
+office: Ray West
+classroom: ELSC 053
+classhours: MWF 12:30-1:20
+final: Dec 16, 12:30-2:20
+site: srvanderplas.github.io/stat1080
+---
+
+# Critical Information {-}
+
+```{r setup}
+#| include: false
+#| cache: false
+# knitr::opts_chunk$set(cache=FALSE, dev='pdf')
+knitr::opts_chunk$set(cache=F,
+                      fig.path = 'images/',
+                      cache.path='cache/',
+                      warning=F,
+                      message=F)
+
+knitr::opts_chunk$set(
+                  fig.process = function(x) {
+                      x2 = sub('-\\d+([.][a-z]+)$', '\\1', x)
+                      if (file.rename(x, x2)) x2 else x
+                      }
+                  )
+source("schedule.R")
+
+options(knitr.kable.NA = '')
+```
+
+Textbooks are free/open/online
+
+-   [Introduction to Data Science 1, by Rafael A. Irizarry](https://rafalab.dfci.harvard.edu/dsbook-part-1/) (IDS 1)
+-   [Introduction to Data Science 2, by Rafael A. Irizarry](https://rafalab.dfci.harvard.edu/dsbook-part-2/) (IDS 2)
+-   [Statistical Computing in R and Python](https://srvanderplas.github.io/stat-computing-r-python) (SC). 
+
+
+Policy Summary (@sec-policies): 
+
+-   Communicate early and often (@sec-expectations), especially if you're having trouble with something.
+    Include the right details (@sec-tech-issues) when asking for help.
+-   Your grade: 20% Preparation & Participation, 20% Attendance, 40% Homework and Labs, 20% Project (@sec-grading).
+-   Come to class, unless you're sick (@sec-illness). You get two excuse-free absences.
+-   Weekly reading (and reading quiz) must be done before class. (@sec-reading-quiz)
+-   Keep up with the work as assigned (@sec-homework).
+-   Do not plan to travel during Finals Week -- you must be present for project presentations (@sec-projects).
+-   **AI** use must be disclosed, cited, with the full transcript and a diff between AI output and your submission. Be prepared to explain your thought process via oral exam (@sec-ai). 
+
+```{r calendar}
+#| echo: false
+#| eval: true
+#| warning: false
+#| fig-width: 10
+#| fig-height: 4
+#| out-width: "90%"
+#| fig-align: center
+#| fig-cap: "Course Calendar"
+#| fig-pos: ht
+
+class_cal
+```
+
+# Tentative Schedule
+
+This schedule is **tentative** and **subject to change** as the semester progresses.
+Students are expected to read the corresponding textbook chapter(s) (linked on the course website) **before coming to class**.
+
+```{r}
+#| label: schedule
+#| cache: false
+#| echo: false
+library(kableExtra)
+
+tmp <- scheduletbl[,1:3] |> kable()
+```
+
+::: {.content-visible when-format="html"}
+
+```{r}
+#| label: output-schedule-html
+#| echo: false
+ 
+tmp |>
+  kable_styling(bootstrap_options = c("striped", "hover"))
+```
+
+:::
+
+::: {.content-visible when-format="pdf"}
+
+```{r}
+#| label: output-schedule-pdf
+#| echo: false
+
+ 
+tmp
+```
+
+
+\normalsize
+
+\FloatBarrier
+\clearpage
+
+:::
+
+
+# Course Description
+
+
+# Course Objectives
+
+
+# Course Policies {#sec-policies}
+
+## Assessment/Grading {#sec-grading}
+
+| Assignments                     | Weight |
+|---------------------------------|--------|
+| Preparation & Participation     | 20%    |
+| Attendance                      | 20%    |
+| Personal Data Project           | 20%    |
+| Homework & Labs                 | 40%    |
+
+Lower bounds for grade cutoffs are shown in the following table.
+I will not "round up" grades at the end of the semester.
+I may, however, adjust this scale upwards, but this adjustment will be for the entire class. 
+
+| Letter grade | X +    | X    | X -  |
+|--------------|--------|------|------|
+| A            |        | 93.0 | 90.0 |
+| B            | 87.0   | 83.0 | 80.0 |
+| C            | 77.0   | 73.0 | 70.0 |
+| D            | 67.0   | 63.0 | 60.0 |
+| F            | \<60.0 |      |      |
+
+Interpretation of this table: 
+A grade of 92.4 will receive an A-. 
+A grade of 86.3 will receive a B.
+A grade of 77.6 will receive a C+.
+A grade of 73.9 will receive a C.
+Anything below a 60 will receive an F.
+
+
+## Expectations {#sec-expectations}
+
+You can expect me to:
+
+-   reply to emails within 48 hours during the week (72 hours on weekends)
+-   be available in class to assist with assignments
+-   be available by appointment (office hours) for additional help or discussion
+
+I expect you to:
+
+-   Be respectful and considerate of everyone in the class
+-   Engage in class discussions with civility and in good faith
+-   Complete the assigned reading, reading quiz, and any other activities before class
+-   Engage with the material and your classmates during class
+-   Seek help when you do not understand the material
+-   Communicate promptly if you anticipate that you will have trouble meeting deadlines or participating in a portion of the course.
+-   Do your own troubleshooting before contacting me for help (and mention things you've already tried when you do ask for help!)
+
+
+Discussion and disagreement are important parts of the learning process, but it is important that mutual respect prevail.
+Individuals who detract from an atmosphere of civility and respect will be removed from the conversation and/or the classroom as applicable.
+
+
+### Technical Issues {#sec-tech-issues}
+
+If you have technical problems with R, quarto/rmarkdown, or RStudio send me an email with:
+
+-   any files necessary to replicate the issue
+-   a description of what you have tried, and
+-   a description of what you think should happen
+-   as much detail as possible: 
+    - Text copied (CTRL-C) from error messages
+    - screenshots (not cell phone pics)
+
+If you have problems with your computer, operating system, etc. that are not specific to this class, please consult IT/HelpDesk first.
+
+
+## Preparation & Participation
+
+All students are expected to prepare for, attend and fully participate in class.
+Participation grades will be determined based on a combination of before-class reading checks and in-class participation, including professionalism and engagement.
+
+## Attendance
+
+During each class, I will give you a five-digit code which can be entered into a Canvas quiz to show that you were in class. 
+The quiz will be open only during the class period, so you will need to have a device capable of interfacing with Canvas during class.
+Sharing this code with anyone, or receiving a code for a class you were not present for, will be considered a violation of academic integrity. 
+
+Three absences (1 week of class) will be allowed without any reduction in your attendance score - no excuse is necessary! 
+Please do not email me when you use your excuse-free absences. 
+
+### Illness {#sec-illness}
+
+If you are feeling ill, please **do not come to class**.
+Instead, review the material and work on the homework assignment, and then schedule an appointment with me to meet virtually.
+In the appointment reason field on [Calendly](https://calendly.com/vanderplas-stats/30min), indicate that this appointment is to substitute for your in-class participation on the date you missed.
+
+If you need to miss more than 3 classes for illness, I will ask you to work with the Disability Resource Center or a medical provider in order to continue using this substitute for attendance.
+
+### Inclement Weather
+
+If in-person classes are canceled, you will be notified of the instructional continuity plan for this class by Canvas Announcement.
+In most circumstances where there is power in the Cache Valley, we will hold class via Zoom if the university cancels class.
+You will be held to the same participation standards on Zoom as you are in person, and participation and attendance will be graded accordingly, with some allowance for disruption at the individual level where circumstances warrant.
+
+## Reading Checks {#sec-reading-quiz}
+
+You will have weekly reading assignments which introduce the weekly focus area and provide different perspectives on the material.
+Some of these perspectives will be covered in class lectures and activities, but some will not be covered explicitly and are provided to expose you to different approaches and opinions.
+
+Readings are linked on the course webpage for each week. 
+
+A reading check will be due on Canvas before class when there is reading assigned.
+This serves as a low-stakes, grade-based reminder to prepare for class. 
+The lowest three reading checks will be dropped.
+
+## Homework {#sec-homework}
+
+Several formative assignments (assignments meant to help you practice skills) will be given throughout the semester. 
+
+-   Assignments must be submitted in the file format specified, and should run or compile as submitted. Code should be formatted using the style guidelines provided in class and demonstrated in videos posted to Canvas.
+
+-   I will attempt to grade formative assignments within a week of the specified due date.
+
+## Labs 
+<!-- stopped here, XXX edit -->
+
+### Late Work Policy {#sec-late}
+
+Late assignments will be accepted only under extenuating circumstances, and only if you have contacted me **prior** to the assignment due date and received permission to hand the assignment in late.
+I reserve the right not to grade (or to assign a 0 to) any assignments received after the assignment due date.
+
+Logistics: Assignments are due at 12:59 pm on Fridays. There is a grace period of uncertain length between the assignment submission deadline and when I start grading the assignment - if it is submitted by the time I start grading, I don't need to know it was late.
+
+- Turned in at 1:30 am on Saturday, I start grading at 2 pm on Sunday $\rightarrow$ fine. If you email me and alert me that your assignment was late by 5 minutes (or 12 hours), I may fill the 0 in for efficiency's sake. 
+- Turned in at 9:30 am on Sunday, I graded everything Saturday afternoon $\rightarrow$ 0 for the assignment (unless you have permission, etc.). 
+
+## Project {#sec-project}
+
+You will complete a personal data collection project in this course. 
+The project will be scaffolded - you will need to submit a proposal, as well as several intermediate assignments throughout the course of the semester, applying information we are covering in class to your own data. 
+These intermediate submissions will contribute to your overall project grade. 
+
+### Project Presentation Attendance
+
+**DO NOT** make travel plans that assume you will not have to attend the final exam period. 
+Personal data collection project speed presentations will take place during the final exam period. 
+
+## Evaluation and Academic Integrity {#sec-ai}
+
+Students are expected to adhere to guidelines concerning academic dishonesty outlined in [Article VI University Regulations Regarding Academic Integrity](https://www.usu.edu/student-conduct/student-code/article6). In this course, academic dishonesty includes failure to disclose use of AI (depending on sources of aid beyond those permitted), as well as more traditional examples of academic dishonesty. 
+
+The policies detailed below stand in addition to university policies. 
+
+**Summary**: I may, at my discretion, give students an oral exam on their submitted assignment to replace the graded assignment itself.
+That is, if you submitted it, you should be able to defend, discuss, and justify your work.ss
+
+
+### Evaluation Criteria
+
+In every assignment, discussion, and written component of this class, you are expected to **demonstrate that you are intellectually engaging with the material**.
+I will evaluate you based on this engagement, which means that technically correct but low effort answers which do not demonstrate engagement or understanding will receive no credit.
+
+When you answer questions in this class, your goal is to show that you either understand the material or are actively engaging with it.
+If you did not achieve this goal, then your answer is incomplete, regardless of whether or not it is technically correct.
+This is not to encourage you to add unnecessary complexity to your answer - simple, elegant solutions are always preferable to unwieldy, complex solutions that accomplish the same task.
+
+Grammar and spelling are important, as is your ability to communicate technical information clearly in a written format; both of these criteria will be used **in addition to assignment-specific rubrics** to evaluate your work.
+
+
+### Code
+
+You must be able to explain how the logic works for any code you turn in.
+This means that code you obtained from e.g. StackOverflow is fine to use if you can explain it and modify it for the purposes of this class, but if you cannot explain your code you will not get credit for the assignment.
+This is in line with what is generally considered acceptable behavior in programming - reuse is fine (subject to the code's license) but you must be able to fully explain and modify any code you did not write yourself.
+You should also provide a link to the source of your code (or even the logic behind your code) - this is useful both for my information and for future you, in addition to being a good way to give attribution to the original author.
+
+### Oral Exam Policy
+
+With the proliferation of AI large language models, I reserve the right to replace homework grades with grades based on an oral discussion of your submissions.
+If you cannot explain the logic behind your submission, how you came to the approach you used, and identify the tradeoffs behind decisions you made, then you will not receive credit.
+LLMs can be a useful tool, but this course's objectives are to develop your understanding of data science, not your ability to use LLMs.
+Fundamentally, you need to understand concepts and apply methodology in order to use data effectively; generative AI solutions may hamper both of these goals if you rely on them too much.
+
+### Generative AI
+
+It may be useful to leverage AI tools to ensure that your work conforms to grammar and style guidelines, but I very highly discourage the use of generative AI to actually write content or to execute a data analysis.
+I highly prefer *your* writing and thought process, even with some mistakes, to the bland content generated by most LLMs.
+
+**Any use of generative AI must be disclosed** in an appendix to your submission - this includes brainstorming, editing, using AI as spell-check/grammar-check, and so on.
+You must document the following:
+
+-   the version of the generative AI used (e.g. Claude Sonnet 4.5, GPT 5.2, Copilot GPT-5 chat)
+-   the full sequence of prompts and responses
+-   any additional inputs you provided to the AI system (documents, images, etc.)
+-   a "diff" between the AI responses and your submission, showing exactly what was generated by the AI system and what you changed. If you are using quarto, you can use the `diff` command line tool to get this (you may have to fix headers) after you've pasted the AI text into its own document.
+
+
+# University Syllabus Policies
+
+See https://www.usu.edu/teach/help-topics/teaching-tips/syllabus-resources for campus policies including the following:
+
+- Academic Support
+- Classroom Behavior
+- Academic Integrity and Dishonesty
+- Discrimination and Misconduct
+- Withdrawal and "I" grade policy
+- Disability services and pregnancy accommodations
+- Grievance Processes
+- Emergency Procedures
+- Mental Health and Food Security resources
+

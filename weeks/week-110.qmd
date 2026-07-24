@@ -1,0 +1,34 @@
+# Week 11: Parameters and Estimates
+
+
+
+November 09-15, 2026
+
+## 📖 Reading
+
+- [ ] (for Mon) [IDS 2 Ch 9.1-9.3 - Estimates](https://rafalab.dfci.harvard.edu/dsbook-part-2/inference/estimates-confidence-intervals.html)
+- [ ] (for Wed) [IDS 2 Ch 8 - Sampling Models and the Central Limit Theorem](https://rafalab.dfci.harvard.edu/dsbook-part-2/prob/sampling-models-and-clt.html)
+
+
+## 📐 Prepare for class
+
+- [ ] (for Mon) Reading Check 11.1
+- [ ] (for Wed) Reading Check 11.2
+
+
+## 🥱 Monday 🌛
+
+- [Parameters and Estimates](../slides/31-param-est.qmd)
+
+
+## 🐪️ Wednesday 🐦‍⬛ 
+
+- [Central Limit Theorem](../slides/32-clt.qmd)
+
+
+## 🎉 Friday 🥳
+
+- [Lab: CLT](../lab/33-clt.qmd)
+
+
+

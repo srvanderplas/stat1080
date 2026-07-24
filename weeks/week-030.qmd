@@ -1,0 +1,40 @@
+# Week 3: Correlation is not Causation
+
+
+
+September 14-20, 2026
+
+## 📖 Reading
+
+- [ ] (for Mon) [IDS I Ch 19 - Association is Not Causation](https://rafalab.dfci.harvard.edu/dsbook-part-2/linear-models/association-not-causation.html)
+- [ ] (for Wed) Bias and Ethics (on Canvas)
+- [ ] (for Fri) Watch [How Ice Cream Kills](https://www.youtube.com/watch?v=VMUQSMFGBDo&t=4s) and [Calling BS 3.3: Spurious Correlations](https://youtu.be/WNsLcg2GQMY) (UW Information School course on calling BS)
+
+
+## 📐 Prepare for class
+
+- [ ] (for Mon) Reading Check 3.1
+- [ ] (for Wed) Reading Check 3.2
+
+
+## 🥱 Monday 🌛
+
+- [Correlation and Causation](../slides/07-correlation.qmd)
+
+
+## 🐪️ Wednesday 🐦‍⬛ 
+
+- [Bias and Ethics](../slides/08-bias-ethics.qmd)
+
+
+## 🎉 Friday 🥳
+
+- [Lab: Spurious Correlation](../lab/09-spurious-correlation.qmd)
+
+
+## Extra Resources/Reading
+
+- [Causal Inference](https://www.youtube.com/watch?v=gRkUhg9Wb-I) (YouTube, Dr. David Sontag, MIT OpenCourseWare) - The alternative to correlation -- how to show causality
+- [Crash Course Statistics: Henrietta Lacks, the Tuskegee Experiment, and Ethical Data Collection: Crash Course Statistics #12](https://www.youtube.com/watch?v=CzNANZnoiRs) (YouTube, CrashCourse)
+- [Exploring Data Ethics](https://www.youtube.com/watch?v=MOOfj78alvs) (YouTube, Dr. Wendy Martinez, Washington Statistical Society Seminar)
+

@@ -1,0 +1,26 @@
+---
+title: "Submission Checklist"
+---
+# Submission Checklist
+
+- [ ] Check your filename -- is it of the form `lastname_firstname_homework01.qmd`?
+
+- [ ] Check the author (specified around line 3 of this file) -- is your name there?
+
+- [ ] Render your file using the blue arrow at the top of the RStudio text editor window.
+    - [ ] If your file does not render, address any errors in the code leading to failure.
+    
+- [ ] Preview your rendered file in a browser. Do all of your answers show up the way you expected them to?    
+If the answers do not show up the way you want them, check your markdown formatting against the cheat sheet in RStudio (Help -> Cheat Sheets -> Rmarkdown cheat sheets)
+
+- [ ] Run the `lintr` style checks (Canvas -> Course homepage -> Style Guides link under USU picture)
+    - [ ] Switch to source mode in RStudio
+    - [ ] Addins -> Style active file
+    - [ ] Addins -> Lint current file
+    - [ ] Address any issues that the lint command raises
+
+- [ ] Render your file again, to check that the `styler` and `lintr` addons didn't mess up any formatting. 
+
+- [ ] Upload your **qmd** file (NOT the html file) to Canvas
+
+- [ ] Double-check your submission - is the file you uploaded the one you want to be graded?

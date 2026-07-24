@@ -1,0 +1,38 @@
+<header id="title-block-header">
+$if(title)$<h1 class="title">$title$</h1>$endif$
+$if(subtitle)$
+<p class="subtitle">$subtitle$</p>
+$endif$
+$for(author)$
+<p class="author">$author$</p>
+$endfor$
+
+$if(date)$
+<p class="date">$date$</p>
+$endif$
+$if(abstract)$
+<div class="abstract">
+<div class="abstract-title">$abstract-title$</div>
+$abstract$
+</div>
+$endif$
+
+<dl>
+$if(instructor)$
+<dt>Instructor</dt><dd>$for(instructor)$$instructor$$sep$, $endfor$</dd>
+$endif$ 
+$if(email)$<dt>E-mail</dt><dd><a href="mailto:$email$">$email$</a></dd>$endif$ 
+<dt>Office</dt><dd>$if(office)$$office$$else$TBD$endif$</dd>
+$if(officehours)$
+<dt>Office Hours</dt><dd>$officehours$</dd>
+$endif$
+</dl>
+<dl>
+<dt>Time</dt><dd>$if(classhours)$$classhours$$else$TBD$endif$</dd>
+<dt>Location</dt><dd>$if(classroom)$$classroom$$else$TBD$endif$</dd>
+$if(site)$<dt>Course Website</dt><dd>$site$</dd>$endif$
+$if(final)$
+<dt>Final Exam</dt><dd>$final$</dd>
+$endif$
+</dl>
+</header>

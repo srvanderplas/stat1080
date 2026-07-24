@@ -1,0 +1,43 @@
+---
+title: "Homework Submission Workflow"
+author: "Student Aggie"
+format: html
+---
+
+## Test section
+
+Here is some test code.
+
+```{r}
+x <- 1 + 1
+```
+
+This code prints out a result, but doesn't show the code itself. 
+You can add options to executable code like this:
+
+```{r}
+#| echo: false
+x
+```
+
+Here is some more complicated code that prints the numbers 1 through 10. 
+
+```{r}
+for (i in 1:10) {
+  print(i)
+}
+```
+
+Here's a chunk that has well-styled code that doesn't work:
+
+```{r}
+x <- x + 3
+x
+```
+
+
+```{r}
+#| error: true
+x <- y + 3
+x
+```

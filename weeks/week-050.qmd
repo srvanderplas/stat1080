@@ -1,0 +1,42 @@
+# Week 5: The Tidyverse
+
+
+
+September 28-04, 2026
+
+## 📖 Reading
+
+- [ ] (for Mon) [IDS I Ch 4 - The Tidyverse](https://rafalab.dfci.harvard.edu/dsbook-part-1/R/tidyverse.html)
+- [ ] (for Wed) [SC Ch 22 - Data Cleaning](https://srvanderplas.github.io/stat-computing-r-python/part-wrangling/03-data-cleaning.html) - Read to get a sense of the different types of operations which are useful
+- [ ] (for Fri) [SC Ch 24 - Reshaping Data](https://srvanderplas.github.io/stat-computing-r-python/part-wrangling/05-data-reshape.html) - Be able to ID wide and long data images
+
+
+## 📐 Prepare for class
+
+- [ ] (for Mon) Reading Check 5.1
+- [ ] (for Wed) Reading Check 5.2
+- [ ] (for Fri) Reading Check 5.3
+
+
+## 🥱 Monday 🌛
+
+- [Tidyverse Programming Basics: Tibbles and `dplyr`](../slides/13-tidyverse-dplyr.qmd)
+
+
+## 🐪️ Wednesday 🐦‍⬛ 
+
+- [Tidyverse Programming Basics: Reshaping Data](../slides/14-tidyverse-tidyr.qmd)
+
+
+## 🎉 Friday 🥳
+
+- [Lab: Tidyverse Programming](../lab/15-tidyverse.qmd)
+
+
+## Extra Resources/Reading
+
+- [SC Ch 16 - Programming with Data](https://srvanderplas.github.io/stat-computing-r-python/part-gen-prog/07-prog-data.html) - data explorations worked out with R/tidyverse code. You don't know how to do graphics yet, but hopefully the data operations make sense.
+- [Tidy Tuesday Screencasts](https://www.youtube.com/watch?v=5ub92c-5xFQ&list=PL19ev-r1GBwkuyiwnxoHTRC8TTqP8OEi8) (YouTube, David Robinson). These show example data analyses in real time, with commentary, using a new dataset each week. These were primarily recorded during the pandemic, but are still an incredibly valuable resource for learing how to work with data.
+- [Allison Horst's Tidyverse Illustrations](https://allisonhorst.com/r-packages-functions) - mostly illustrates tidyverse functions. 
+- [Functional Programming Illustrations](https://allisonhorst.com/wickham-tidy-bakers)
+

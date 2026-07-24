@@ -1,0 +1,45 @@
+# Week 1: Introduction
+
+
+
+August 31-06, 2026
+
+## 📖 Reading
+
+- [ ] [Syllabus](../syllabus.pdf)
+- [ ] [Course support](../course-support.qmd) page
+- [ ] (for Wed) [IDS I Ch 6 - Importing Data](https://rafalab.dfci.harvard.edu/dsbook-part-1/R/importing-data.html)
+- [ ] (for Fri) [IDS I Ch 2 - R Basics](https://rafalab.dfci.harvard.edu/dsbook-part-1/R/R-basics.html)
+
+
+## 📐 Prepare for class
+
+- Print out and bring [cheat sheets](../files/cheat-sheets-combined.pdf) for R
+- Log in to the server
+- [ ] (for Wed) Reading Check 1.1
+- [ ] (for Fri) Reading Check 1.2
+
+
+## 🥱 Monday 🌛
+
+- [Discussion: Syllabus](../slides/01-syllabus.qmd)
+- [Course Introduction and Motivation](../slides/01-intro.qmd)
+
+
+## 🐪️ Wednesday 🐦‍⬛ 
+
+- [Organizing Data](../slides/02-data.qmd)
+
+
+## 🎉 Friday 🥳
+
+- [Intro to Programming](../slides/03-prog-intro.qmd)
+
+
+## Extra Resources/Reading
+
+- [Hadley Wickham: Spreadsheets, bikes, and the accidental empire of R packages](https://www.youtube.com/watch?v=KxRnZTl2HVY) (YouTube, The Test Set) - Hadley Wickham developed many of the R packages we'll use in this course. Hear the back-story as to how he got started!
+- [The Jevons Paradox](https://www.youtube.com/watch?v=a6sYYrLTOjQ) (YouTube, Hank Green) - Why AI (and statistics) do not generate new information.
+- [Data Rectangling](https://www.youtube.com/watch?v=4MfUCX_KpdE) (YouTube, Jenny Bryan, Plotcon 2016) - The importance of getting data into the right format.
+- [Tidy Data, Illustrated](https://allisonhorst.com/other-r-fun) - Handy illustrations explaining the idea of tidy data
+

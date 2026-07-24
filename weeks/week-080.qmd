@@ -1,0 +1,37 @@
+# Week 8: Statistics and Probability
+
+
+
+October 19-25, 2026
+
+## 📖 Reading
+
+- [ ] (for Mon) [IDS 2, Ch 2 - Numerical Summaries](https://rafalab.dfci.harvard.edu/dsbook-part-2/summaries/numerical-summaries.html)
+- [ ] (for Mon) [IDS 2, Ch 3.3 - Comparing Groups with Stratification](https://rafalab.dfci.harvard.edu/dsbook-part-2/summaries/comparing-groups.html#sec-stratification)
+- [ ] (for Wed) [IDS 2, Ch 5 - Discrete Probability](https://rafalab.dfci.harvard.edu/dsbook-part-2/prob/discrete-probability.html)
+- [ ] (for Fri) [IDS 2, Ch 6 - Continuous Probability](https://rafalab.dfci.harvard.edu/dsbook-part-2/prob/continuous-probability.html)
+
+
+## 📐 Prepare for class
+
+- [ ] (for Mon) Reading Check 8.1
+- [ ] (for Wed) Reading Check 8.2
+- [ ] (for Fri) Reading Check 8.3
+
+
+## 🥱 Monday 🌛
+
+- [Summary Statistics](../slides/22-summary-stats.qmd)
+
+
+## 🐪️ Wednesday 🐦‍⬛ 
+
+- [Discrete Probability](../slides/23-discrete-prob.qmd)
+
+
+## 🎉 Friday 🥳
+
+- [Continuous Probability](../slides/24-cts-prob.qmd)
+
+
+

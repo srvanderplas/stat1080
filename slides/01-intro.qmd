@@ -1,0 +1,117 @@
+---
+title: "1.1 Course Introduction"
+editor: source
+format: revealjs
+---
+
+# Introduction
+
+## What is "Data Science"?
+
+> "Data science combines math and statistics, specialized programming, advanced analytics, artificial intelligence (AI), and machine learning with specific subject matter expertise to uncover actionable insights hidden in an organization’s data. These insights can be used to guide decision making and strategic planning." - [IBM Cloud Eduation](https://www.ibm.com/cloud/learn/data-science-introduction)
+
+## What is "Data Science"?
+
+> "The ability to take data — to be able to understand it, to process it, to extract value from it, to visualize it, to communicate it — that’s going to be a hugely important skill in the next decades." – [Hal Varian](https://ischoolonline.berkeley.edu/data-science/what-is-data-science-2/), chief economist at Google and UC Berkeley Professor of Information Sciences, Business, and Economics
+
+## What is "Data Science"?
+
+
+> "Data Science draws upon multiple disciplines to develop or apply computational and analytic methods to responsibly explore data and discover actionable insights and accelerate translation into implementation with real-world evidence." - [University of Pittsburgh Data Science Task Force](https://www.datascience.pitt.edu/what-data-science)
+
+## What is "Data Science"?
+
+> "Data Science is about drawing useful conclusions from large and diverse data sets through exploration, prediction, and inference. 
+>
+> Exploration involves identifying patterns in information. 
+> 
+> Prediction involves using information we know to make informed guesses about values we wish we knew. 
+> 
+> Inference involves quantifying our degree of certainty: will the patterns that we found in our data also appear in new observations? How accurate are our predictions? 
+> 
+> Our primary tools for exploration are visualizations and descriptive statistics, for prediction are machine learning and optimization, and for inference are statistical tests and models." - [Computational and Inferential Thinking](https://inferentialthinking.com/chapters/01/what-is-data-science.html)
+
+## Class Definition
+
+**Data science is the study of the collection, storage, analysis, and visualization/communication of recorded information.**
+
+-   **Collection:** how observed events and/or characteristics are recorded in ways that can be explored sometime in the future.
+-   **Storage:** How information is efficiently stored for later recall.
+-   **Analysis:** How information is processed and organized in order to predict outcomes, or make official statements, about recorded information.
+-   **Visualization/Communication:** How information is presented in order to communicate a message motivated by recorded information.
+
+## Why Data Science?
+
+[Primary Motivation:]{.emph .green-dk}
+Improving our ability to collect, store, analyze, and visualize information $\Rightarrow$ Improve our ability to **make better decisions.**
+
+The ["art"]{.emph .blue-dk} of data [science]{.emph .blue-dk}
+
+-   How do we decide what to measure and how to measure it?
+-   How do we define what is "best"? Is our "best" ethical?
+-   How do we handle missing observations?
+
+# Data Examples
+
+Data comes in all types of formats, not all of which are straightforward to handle...
+
+## Computer Vision
+
+Computers "see an image" as a **matrix** of pixels, where the numbers in the pixel squares represent the intensity of the color. Color images are usually represented as a set of three matrices, where each layer represents the intensity of the red, green, and blue hues respectively.
+
+![A small, pixelated image of Abraham Lincoln, credit to [openframeworks.cc](https://openframeworks.cc/ofBook/chapters/image_processing_computer_vision.html)](figures/lincoln_picture.jpg)
+
+## Sound
+
+Check out [wavevisual.com](https://wavevisual.com/). Note that the x-axis represents time while y axis represents intensity or amplitude. The sound is visualized as a series of high frequency sine curves.
+
+## Sports
+
+Check out 2:44:40 of [this YouTube video](https://www.youtube.com/watch?v=YWWTnZT99cg) for the Match point of the 2021 NCAA Women's Volleyball Championship Game.
+
+The sample measurements for this exciting sequence might look something like this:
+
+```{r, eval = FALSE}
+"Serve2;D7;S17;A16;D8..."
+```
+
+This sample string can be summarized into a [play by play](https://www.ncaa.com/game/5909463/play-by-play).
+
+![Play by Play from the 2021 NCAA Women's Volleyball Championship Game.](figures/vball_play_by_play.jpg){width="100%"}
+
+Which can be further summarized into a [box score](https://www.ncaa.com/game/5909463).
+
+![Box score from the 2021 NCAA Women's Volleyball Championship Game.](figures/vball_box_score.jpg){width="100%"}
+
+Which can be further summarized to simply remember [who won the game](https://www.ncaa.com/history/volleyball-women/d1).
+
+# Challenges
+
+Two great challenges in Data Science include
+
+-   Figure out what level of data detail you need to make decisions.
+-   Figure out how to better handle more detailed data to improve decisions.
+
+## Literature
+
+Use "strings" of text to derive insight from literature.
+
+![Plot of the cumulative time each name is mentioned in the literary classic, Little Women. Taken from [inferentialthinking.com](https://inferentialthinking.com/chapters/01/3/1/Literary_Characters.html)](figures/little_women.jpg)
+
+## Course Focus
+
+This course is going to focus on **tabular** data, which is data in which the rows represent samples, or observations, and the columns represent variables. For example.
+
+```{r}
+library(stat1080r)
+
+data("cereal")
+
+head(cereal)
+```
+
+For this, we will learn how to use R programming to keep track of the changes we make to a raw dataset. This will serve as a journal that helps us to track our data throughout the **Data Science Life Cycle.**
+
+![UC Berkeley's Data Science Life Cycle, taken from [data.berkeley.edu](https://data.berkeley.edu/academics/resources/data-science-education-resources/data-science-ethos-lifecycle)](figures/data_science_life_cycle.jpg)
+
+![UC Berkeley's Data Science Life Cycle, taken from [YouTube](https://data.berkeley.edu/academics/resources/data-science-education-resources/data-science-ethos-lifecycle)](figures/data_science_life_cycle2.jpg)

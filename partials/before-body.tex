@@ -1,0 +1,25 @@
+\noindent\hfil\textbf{\huge $title$}\hfil\\
+$if(subtitle)$
+\hfil$subtitle$\hfil\\
+$endif$
+
+
+%%% --- table with course info %%%
+\noindent
+\rule{\linewidth}{.5pt}\\
+\begin{minipage}[t]{.5\linewidth}
+\begin{description}
+$if(instructor)$\item[Instructor] $for(instructor)$$instructor$$sep$ \and $endfor$$endif$ 
+$if(office)$\item[Office] $office$ $endif$
+$if(email)$\item[E-mail] \href{mailto://$email$}{\texttt{$email$}}$endif$
+$if(officehours)$\item[Office Hours] $officehours$$endif$
+\end{description}
+\end{minipage}\hfill\begin{minipage}[t]{.47\linewidth}
+\begin{description}
+\item[Location] $if(classroom)$$classroom$$else$TBD$endif$
+\item[Time]$if(classhours)$$classhours$$else$TBD$endif$
+$if(site)$\item[Web] \href{http://$site$}{$site$}$endif$
+$if(final)$\item[Final] $final$$endif$
+\end{description}\end{minipage}
+\\
+\rule{\linewidth}{.5pt}\\

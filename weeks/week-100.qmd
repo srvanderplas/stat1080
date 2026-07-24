@@ -1,0 +1,34 @@
+# Week 10: Random Variables
+
+
+
+November 02-08, 2026
+
+## 📖 Reading
+
+- [ ] (for Mon) [IDS 2 Ch 7 - Random Variables](https://rafalab.dfci.harvard.edu/dsbook-part-2/prob/random-variables.html)
+- [ ] (for Fri) [IDS 2 Intro to Statistical Inference](https://rafalab.dfci.harvard.edu/dsbook-part-2/inference/intro-inference.html)
+
+
+## 📐 Prepare for class
+
+- [ ] (for Mon) Reading Check 10.1
+- [ ] (for Fri) Reading Check 10.3
+
+
+## 🥱 Monday 🌛
+
+- [Random Variables](../slides/28-rv.qmd)
+
+
+## 🐪️ Wednesday 🐦‍⬛ 
+
+- [Random Variables](../slides/29-rv.qmd)
+
+
+## 🎉 Friday 🥳
+
+- [Lab: Random Variables](../lab/30-rv.qmd)
+
+
+

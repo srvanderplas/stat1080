@@ -1,0 +1,261 @@
+
+/*-- scss:defaults --*/
+
+$aggie-blue: #0F2439;
+$white: #FFFFFF;
+$black: #000000;
+$pink-lt: #f692a1; /* 7.16 contrast with aggie blue */
+$pink: #f16278;
+$pink-dk: #B21028; /* 7 contrast with white */
+$orange-lt: #F9DCBE; /* 12.02 contrast with aggie blue */
+$orange: #f58220;
+$orange-dk: #8e4506; /* 6.99 contrast with white */
+$yellow-lt: #f9df90; /* 12.0 contrast with aggie blue */
+$yellow: #f6bd17;
+$yellow-dk: #6f5506; /* 7.05 contrast with white */
+$green-lt: #30c58e; /* 7.13 contrast with aggie blue */
+$green: #124734;
+$green-dk: #0f3e2c; /* 12.02 contrast with white */
+$sage-lt: #90b6a8; /* 7.09 contrast with aggie blue */
+$sage: #6b9e85;
+$sage-dk: #3e604c; /* 7.04 contrast with white */
+$cerulean-lt: #9febfe; /* 12.0 contrast with aggie blue */
+$cerulean: #01add8;
+$cerulean-dk: #016179; /* 7.02 contrast with white */
+$blue-lt: #6bb7e1; /* 7.12 contrast with aggie blue */
+$blue: #288dc2;
+$blue-dk: #1a5c7f; /* 7.28 contrast with white */
+$grey-lt: #a9afb2; /* 7.1 contrast with aggie blue */
+$grey: #a9afb2;
+$grey-dk: #4f5959; /* 7.22 contrast with white */
+$gray-lt: #a9afb2; /* 7.1 contrast with aggie blue */
+$gray: #a9afb2;
+$gray-dk: #4f5959; /* 7.22 contrast with white */
+$sand-lt: #e0e0d6; /* 11.86 contrast with aggie blue */
+$sand: #d1cbbd;
+$sand-dk: #5d5741; /* 7.22 contrast with white */
+
+
+$primary: $aggie-blue;
+$secondary: $gray;
+$navbar-dark-color: rgba($primary, .75) !important;
+$navbar-dark-hover-color: $primary !important;
+$theme-colors: (
+  "primary": $aggie-blue,
+  "secondary": $green,
+  "success": $sage,
+  "info": $cerulean,
+  "warning": $yellow,
+  "danger": $orange,
+  "dark": $black,
+  "link": $aggie-blue
+);
+
+
+/* css styles */
+.vcenter{
+  margin: 0!important;
+  height: 1em;
+}
+
+.reveal section {
+  background-position: left 10px bottom 10px;
+  background-size: 10%;
+	font-size: 20px;
+	text-shadow: 0 0 0 #a2aaad;
+}
+
+.reveal section h1, h2, h3, h4 {
+    font-weight: 500;
+    margin-bottom: 0;
+    margin-top: 10px;
+}
+
+.reveal section h1 {
+  color: $aggie-blue;
+  font-size: 3.5em;
+  font-family: 'Roboto', sans-serif;
+  /*background: rgba(.9961, .9922, .9804, .3);*/
+  padding:20px;
+}
+.reveal section h2 {
+  color: $green;
+  font-size: 2.5em;
+  font-family: 'Roboto', sans-serif;
+}
+.reveal section h3 {
+  color: $cerulean-dk;
+  font-size: 1.5em;
+  font-family: 'Montserrat', sans-serif;
+}
+.reveal section h4 {
+  font-size: 1.25em;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.reveal section body{
+  left: 12%;
+  font-size: 1em;
+  font-weight:400;
+}
+
+
+.reveal section#title-slide {
+	data-background-color: #fefdfa;
+  data-background-image:  url(libs/usu.png), hurl(libs/usu-u.png);
+	data-background-position: 10px 10px, right 10px 10px;
+	data-background-size: 25%, 10%;
+}
+
+.reveal section#title-slide h1 {
+	color: $aggie-blue !important;
+	margin-top: -130px;
+}
+
+.reveal section#title-slide .subtitle {
+	color: $green !important;
+  font-size: 150%;
+}
+
+.reveal section#title-slide .author{
+  font-family: 'Handlee', cursive;
+	color: $cerulean-dk !important;
+  font-size: 130%;
+}
+
+.reveal section.inverse {
+  background-color: $aggie-blue;
+  border-bottom: 0;
+  color: $white;
+}
+
+.reveal section.inverse h2 {
+  background-color: $aggie-blue;
+	color: $sage-lt;
+}
+
+.reveal section.inverse h3 {
+  background-color: $aggie-blue;
+	color: $yellow-lt;
+}
+
+/* Other font formatting stuff */
+.reveal section .emph { font-family: 'Handlee', cursive; }
+.reveal section .read { font-family: 'Atkinson Hyperlegible'; }
+
+.reveal section .pink-lt { color: $pink-lt !important;} /* watermelon, lightened to 7.16 contrast with aggie blue */
+.reveal section .orange-lt { color: $orange-lt !important;} /* tangerine, lightened to 7.02 contrast with aggie blue */
+.reveal section .yellow-lt { color: $yellow-lt !important;} /* sunflower, lightened to 12.0 contrast with aggie blue */
+.reveal section .green-lt { color: $green-lt !important;} /* hunter green, lightened to 7.13 contrast with aggie blue */
+.reveal section .sage-lt { color: $sage-lt !important;} /* sage green, lightened to 7.09 contrast with aggie blue */
+.reveal section .cerulean-lt { color: $cerulean-lt !important; }  /* electric, lightened to 12.0 contrast with aggie blue */
+.reveal section .blue-lt { color: $blue-lt$ !important;} /* sky, lightened to 7.12 contrast with aggie blue */
+.reveal section .gray-lt { color: $grey-lt !important;} /* grey, lightened to 7.1 contrast with aggie blue */
+.reveal section .sand-lt { color: $sand-lt !important;} /* sand, lightened to 11.86 contrast with aggie blue */
+
+
+.reveal section .pink { color: $pink !important;} /* watermelon */
+.reveal section .orange { color: $orange !important;} /* tangerine */
+.reveal section .yellow { color: $yellow !important;} /* sunflower */
+.reveal section .green { color: $green !important;} /* hunter green */
+.reveal section .sage { color: $sage !important;} /* sage green */
+.reveal section .cerulean { color: $cerulean !important; }  /* electric */
+.reveal section .blue { color: $blue !important; } /* sky */
+.reveal section .gray { color: $grey !important;} /* grey */
+.reveal section .sand { color: $sand !important;} /* sand */
+
+
+.reveal section .pink-dk { color: $pink-dk !important;} /* watermelon, darkened to 7 contrast with white */
+.reveal section .orange-dk { color: $orange-dk !important;} /* tangerine, darkened to 6.99 contrast with white */
+.reveal section .yellow-dk { color: $yellow-dk !important;} /* sunflower, darkened to 7.05 contrast with white */
+.reveal section .green-dk { color: $green-dk !important;} /* hunter green, darkened to 12.02 contrast with white */
+.reveal section .sage-dk { color: $sage-dk !important;} /* sage green, darkened to 7.04 contrast with white */
+.reveal section .cerulean-dk { color: $cerulean-dk !important; } /* electric, darkened to 7.02 contrast with white */
+.reveal section .blue-dk { color: $blue-dk !important; }  /* sky, darkened to 7.28 contrast with white */
+.reveal section .gray-dk { color: $grey-dk !important;} /* grey, darkened to 7.22 contrast with white */
+.reveal section .sand-dk { color: $sand-dk !important;} /* sand, darkened to 7.22 contrast with white */
+
+
+.reveal section .center p, .reveal section .center span {text-align: center !important}
+
+/* other handy classes */
+.pull-left{
+  float: left;
+  width: 47%;
+}
+.pull-right{
+  float: right;
+  width: 47%;
+}
+
+.huge {font-size: 150%;}
+.large {font-size: 130%;}
+.largish{font-size:110%;}
+.reg{font-size:100%;}
+.slightly-small {font-size: 80%;}
+.smaller {font-size: 75%;}
+.small {font-size: 70%;}
+.tiny {font-size: 50%;}
+.microscopic {font-size: 28% !important;}
+
+
+.underline {
+  border-bottom:1px solid;display:inline-block;
+}
+
+.hidden{
+  visibility:hidden;
+}
+
+.move-up { margin-top:-50px !important;}
+.nudge-up { margin-top:-20px !important;}
+
+.move-left { margin-left:-50px !important;}
+.nudge-left { margin-left:-20px !important;}
+
+.move-right { margin-left:50px !important;}
+.nudge-right { margin-left:20px !important;}
+
+.move-down {margin-top:50px !important;}
+.nudge-down { margin-top:20px !important;}
+
+
+.toprightfig{
+  position:absolute;
+  top:-10px;
+  right: 10px;
+  max-height: 150px;
+  max-width: 150px;
+  height:auto;
+  width: auto;
+}
+
+.topleftfig{
+  position:absolute;
+  top:0;
+  left: 0;
+  max-height: 100%;
+  max-width: 50%;
+  height:auto;
+  width: auto;
+}
+
+.bottom {
+  left: 12%;
+  position: absolute;
+  bottom: 5px;
+  font-size: 50%;
+  /*width: 100%;*/
+}
+
+.cover{
+  width:100%;
+  height:100%;
+}
+
+.qrcode {
+  width: 100%;
+  text-align:center!important;
+  margin-bottom: 1rem;
+}
+

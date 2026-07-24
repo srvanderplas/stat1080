@@ -1,0 +1,30 @@
+This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2026.1.6)  6 JAN 2026 09:39
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**/home/susan/Projects/Class/stat349-communication/partials/before-body.tex
+(/home/susan/Projects/Class/stat349-communication/partials/before-body.tex
+LaTeX2e <2025-11-01>
+L3 programming layer <2025-12-29>
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.1 \noindent
+             \hfil\textbf{\huge $title$}\hfil\\
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+ 
+Here is how much of TeX's memory you used:
+ 15 strings out of 470152
+ 579 string characters out of 5477659
+ 426382 words of memory out of 5000000
+ 28703 multiletter control sequences out of 15000+600000
+ 627721 words of font info for 40 fonts, out of 8000000 for 9000
+ 36 hyphenation exceptions out of 8191
+ 14i,0n,18p,152b,14s stack positions out of 10000i,1000n,20000p,200000b,200000s
+No pages of output.

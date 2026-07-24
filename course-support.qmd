@@ -1,0 +1,46 @@
+---
+title: "Course support"
+---
+
+## Lectures and labs
+
+If you have a question during lecture or lab, feel free to ask it! There are likely other students with the same question, so by asking you will create a learning opportunity for everyone.
+
+## Office hours
+
+Office hours are available by appointment at [this link](https://calendly.com/vanderplas-stats/30min). In general, office hours will be via Zoom - this allows me to offer more availability, and doesn't require you to come to East campus to visit my office.
+
+If you'd prefer to meet in person, try to schedule your appointment on Monday or Wednesday, and mention in the request that you want an in-person meeting. I will let you know if that's feasible given my schedule for the day. 
+
+## Email
+
+Please only use email for questions about personal matters that may not be appropriate for the public course forum (e.g., illness, grades, accommodations, etc.). 
+In these cases, please add "STAT349" to the subject line, so that I can prioritize your email.
+
+Assignment and content related questions should be asked in the relevant discussion board on Canvas.
+
+## Academic support
+
+There are times you may need help with the class that is beyond what can be provided by the teaching team. In those instances, I encourage you to visit the **Center for Academic Success and Transition (CAST)**. [CAST](https://success.unl.edu/resources/) offers free services to all students.
+
+Students have access to [peer tutoring](https://success.unl.edu/academic-support/study-stop/), [academic coaching](https://success.unl.edu/academic-support/), and [academic success workshops](https://success.unl.edu/academic-support/success-workshops/).
+
+## Mental health and wellness
+
+Your mental health and wellness extremely important, and the university offers resources to support students in managing daily stress and self-care. UNL offers several resources for students to manage stress, seek help with well-being, and access crisis and long-term care.
+
+-   [Counseling and Psychological Services (CAPS)](https://caps.unl.edu/), 402-472-7450
+
+-   [Center for Advocacy, Response, & Education (CARE)](https://care.unl.edu/), 402-472-3553 -- resources for victims/survivors of interpersonal violence.
+
+-   [Services for Students with Disabilities (SSD)](https://ssd.unl.edu/), ssd\@unl.edu or 402-472-3787 -- resources for students experiencing short or long-term disabilities that affect the campus or educational experience.
+
+## Technology
+
+Students who do not have a working computer can check out a loaner laptop from [HuskerTech](https://libraries.unl.edu/laptop-checkout/) on city campus (Love South, Adele Hall) and east campus (Dinsdale).
+
+If you are unable to get a loaner laptop set up with the software required for parts of this course, please try to let me know ahead of time - it is possible that I will be able to assist you with browser-based solutions.
+
+## Course materials
+
+There are no costs associated with this course beyond the requirement that you have access to a laptop computer. All readings will come from freely available, open resources (open-source textbooks, journal articles, etc.) or library course reserves.

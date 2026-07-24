@@ -1,0 +1,33 @@
+# Week 13: Regression
+
+
+
+November 23-29, 2026
+
+## 📖 Reading
+
+- [ ] (for Mon) [IDS 2 Ch 15 - Regression](https://rafalab.dfci.harvard.edu/dsbook-part-2/linear-models/regression.html)  
+
+
+## 📐 Prepare for class
+
+- [ ] 
+
+
+## 🥱 Monday 🌛
+
+- [Introduction to Regression](../slides/37-regression-intro.qmd)
+- [Activity: Regression By Hand](../lab/37-regression-by-hand.qmd)
+
+
+## 🐪️ Wednesday 🐦‍⬛ 
+
+- 🦃 Thanksgiving Break
+
+
+## 🎉 Friday 🥳
+
+- 🦃 Thanksgiving Break
+
+
+

@@ -1,0 +1,32 @@
+# Week 9: Data and Probability
+
+
+
+October 26-01, 2026
+
+## 📖 Reading
+
+- [ ] (for Mon) [IDS 2 Ch 4 - Connecting Data and Probability](https://rafalab.dfci.harvard.edu/dsbook-part-2/prob/connecting-data-and-probability.html)
+
+
+## 📐 Prepare for class
+
+- [ ] (for Mon) Reading Check 9.1
+
+
+## 🥱 Monday 🌛
+
+- [Data and Probability](../slides/25-data-prob.qmd)
+
+
+## 🐪️ Wednesday 🐦‍⬛ 
+
+- TBD probability
+
+
+## 🎉 Friday 🥳
+
+- [Lab: Probability](../lab/27-probability.qmd)
+
+
+

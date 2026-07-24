@@ -1,0 +1,108 @@
+project:
+  type: website
+  output-dir: docs
+  pre-render:
+    - code/gen-week-files-from-course-schedule.R
+  render:
+    - index.qmd
+    - syllabus.qmd
+    - course-links.qmd
+    - course-overview.qmd
+    - course-support.qmd
+    - weeks/*.qmd
+    - labs/*.qmd
+    - homework/*.qmd
+    - slides/*.qmd
+ 
+engine: knitr
+website:
+  page-navigation: true
+  title: "STAT 1080 - Fall 2026"
+  description: "Homepage for STAT 1080 - Data and the Stories They Tell."
+  site-url: "https://srvanderplas.github.io/stat1080"
+
+  repo-url: https://srvanderplas.github.io/stat1080
+  repo-actions: [issue]
+
+  open-graph: true
+
+  page-footer:
+    left: "&copy; Copyright 2026, Susan Vanderplas"
+    background: "$secondary"
+
+  sidebar:
+    background: "$secondary"
+    aria-label: "Sidebar nagivation"
+    pinned: true
+    align: center
+
+    style: "docked"
+    search: false
+    collapse-level: 2
+    contents:
+      - section: "Course information"
+        aria-label: "Course information"
+        contents:
+          - href: course-overview.qmd
+            text: Overview
+          - href: syllabus.qmd
+            text: Syllabus
+          - href: course-support.qmd
+            text: Support
+          - href: index.qmd
+            text: Schedule
+          - href: course-links.qmd
+            text: Useful links
+      - section: "Weekly materials"
+        aria-label: "Weekly materials"
+        contents:
+          - href: weeks/week-010.qmd
+            text: "W1. Introduction"
+          - href: weeks/week-020.qmd
+            text: "W2. RStudio"
+          - href: weeks/week-030.qmd
+            text: "W3. Correlation"
+          - href: weeks/week-040.qmd
+            text: "W4. Programming"
+          - href: weeks/week-050.qmd
+            text: "W5. Tidyverse"
+          - href: weeks/week-060.qmd
+            text: "W6. Dates/Times and Distributions"
+          - href: weeks/week-070.qmd
+            text: "W7. Visualization"
+          - href: weeks/week-080.qmd
+            text: "W8. Probability"
+          - href: weeks/week-090.qmd
+            text: "W9. Results"
+          - href: weeks/week-100.qmd
+            text: "W10. Intro & Conclusions"
+          - href: weeks/week-110.qmd
+            text: "W11. Summaries"
+          - href: weeks/week-120.qmd
+            text: "W12. Fallacies"
+          - href: weeks/week-130.qmd
+            text: "W13. Reports"
+          - href: weeks/week-140.qmd
+            text: "W14. Editing"
+          - href: weeks/week-150.qmd
+            text: "W15. Presentations"
+            
+fontsize: "18pt"
+lineheight: "1.5ex"
+
+format:
+  html:
+    page-layout: full
+    grid:
+      sidebar-width: 400px
+      body-width: 800px
+      margin-width: 0px
+    theme:
+      light: [flatly, theme.scss, _variables-flatly.scss]
+      dark: [darkly, theme.scss, _variables-darkly.scss]
+    mainfont: "Atkinson Hyperlegible"
+    toc: true
+
+execute:
+  freeze: auto  # re-render only when source changes
+
