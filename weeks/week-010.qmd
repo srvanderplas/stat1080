@@ -15,25 +15,29 @@ August 31-06, 2026
 ## 📐 Prepare for class
 
 - Print out and bring [cheat sheets](../files/cheat-sheets-combined.pdf) for R
-- Log in to the server
+- [ ] (for Mon) Syllabus Video and Quiz
 - [ ] (for Wed) Reading Check 1.1
 - [ ] (for Fri) Reading Check 1.2
 
 
 ## 🥱 Monday 🌛
 
+- Attendence Quiz 8/31 (Canvas)
+- 
 - [Discussion: Syllabus](../slides/01-syllabus.qmd)
 - [Course Introduction and Motivation](../slides/01-intro.qmd)
 
 
 ## 🐪️ Wednesday 🐦‍⬛ 
 
+- Attendence Quiz 9/2 (Canvas)
 - [Organizing Data](../slides/02-data.qmd)
 
 
 ## 🎉 Friday 🥳
 
 - [Intro to Programming](../slides/03-prog-intro.qmd)
+- Programming a Sandwich. [qmd template](../lab/_03-programming-sandwich.qmd) [html](../lab/03-programming-sandwich.qmd)
 
 
 ## Extra Resources/Reading

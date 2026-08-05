@@ -1,0 +1,48 @@
+---
+title: "Activity: Bread Programming"
+editor: source
+format: 
+  html:
+    self-contained: true
+---
+
+# Introduction
+
+This assignment introduces some of the principles of object oriented programming using the metaphor of a peanut (or almond) butter and jelly sandwich. 
+The goal of this assignment is to create a set of ordered commands that properly use the necessary objects to make a sandwich. 
+Each object has a series of actions. 
+Some actions are **active** (i.e. the object does the action) and 
+some are **passive** (i.e. the object receives the action). 
+Below is a list of the objects and the actions associated with sandwich creation.
+
+| **Object**    | **Active Actions** | **Passive Actions**           |
+|---------------|--------------------|-------------------------------|
+| Bag           | None               | Open; Close                   |
+| Bread_Slice   | Combine            | Take; Place Left; Place Right |
+| Jar           | None               | Open; Close                   |
+| Knife         | Load; Spread       | Take; Set Down                |
+| Peanut_Butter | None               | None                          |
+| Jam           | None               | None                          |
+
+Note that we sometimes have the same object with two different names. 
+For example, the "Peanut Butter Jar" and the "Jam Jar" are both "Jar" objects, but are referred to as separate things in the the list of commands. 
+You may alternatively label them as "Jar 1" and "Jar 2". 
+The same goes for knives - you may not use the same knife for the PB and the J, because you're not a monster. 
+
+# Task
+
+You must write a set of commands that walks someone through the process of making a PB & J sandwich. 
+Your instructions must be exact as the builder of the sandwich cannot guess what you meant if any command is imprecise. 
+You should each command should be exactly one action and there should be only one command on each line. 
+You will work in groups of 3-4 to type a set of commands that will be used in real time. 
+We will experiment with a few different group scripts during the class period. 
+Once you have completed your sandwich script (meaning you have created what you believe is a comprehensive set of instructions for assembling the sandwich), you will take the Canvas quiz associated with this assignment.
+
+The list of possible commands are below.
+Each jar must be named according to the number given on the knife or jar.
+
+-   `load knife with jam/butter` (must specify knife number)
+-   `combine bread_slice` (must name two bread slices)
+-   `Open/close bag/jar` (must specify jar number and bag type)
+-   `take/set knife/bread_slice` (can set left or right, or on/in another object)
+-   `spread jam/butter with knife on bread_slice` (must specify knife and bread slice number)

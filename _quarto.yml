@@ -10,7 +10,8 @@ project:
     - course-overview.qmd
     - course-support.qmd
     - weeks/*.qmd
-    - labs/*.qmd
+    - lab/*.qmd
+    - "!lab/_*.qmd"
     - homework/*.qmd
     - slides/*.qmd
  

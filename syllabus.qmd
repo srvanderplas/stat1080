@@ -28,7 +28,7 @@ email: susan.vanderplas@usu.edu
 web: srvanderplas.github.io
 officehours: | 
   By appointment. Schedule at    
-  [https://calendly.com/vanderplas-stats/30min](https://calendly.com/vanderplas-stats/30min)
+  [https://calendly.com/vanderplas-stat/office-hours](https://calendly.com/vanderplas-stat/office-hours)
 office: Ray West
 classroom: ELSC 053
 classhours: MWF 12:30-1:20
@@ -65,6 +65,11 @@ Textbooks are free/open/online
 -   [Introduction to Data Science 2, by Rafael A. Irizarry](https://rafalab.dfci.harvard.edu/dsbook-part-2/) (IDS 2)
 -   [Statistical Computing in R and Python](https://srvanderplas.github.io/stat-computing-r-python) (SC). 
 
+Software (@sec-software):
+
+- Required: a laptop that can run R and RStudio, or a chromebook (or similar) with and access to the web RStudio platform. 
+- R statistical software (https://r-project.org) version 4.5.0 or greater
+- Software packages up to date as of the beginning of the semester
 
 Policy Summary (@sec-policies): 
 
@@ -74,7 +79,7 @@ Policy Summary (@sec-policies):
 -   Come to class, unless you're sick (@sec-illness). You get two excuse-free absences.
 -   Weekly reading (and reading quiz) must be done before class. (@sec-reading-quiz)
 -   Keep up with the work as assigned (@sec-homework).
--   Do not plan to travel during Finals Week -- you must be present for project presentations (@sec-projects).
+-   Do not plan to travel during Finals Week -- you must be present for project presentations (@sec-project).
 -   **AI** use must be disclosed, cited, with the full transcript and a diff between AI output and your submission. Be prepared to explain your thought process via oral exam (@sec-ai). 
 
 ```{r calendar}
@@ -90,6 +95,42 @@ Policy Summary (@sec-policies):
 
 class_cal
 ```
+
+# Course Description
+
+We live in a world with unprecedented access to information. Every day, our phones, computers, and even “smart” devices collect mountains of data that are analyzed to inform and influence our choices, improve our health, and automate daily services. It is imperative, now more than ever, that we understand how information is collected, visualized, and analyzed to shape our world. By learning about the life cycle of data, we can ensure that data is analyzed in productive and ethical ways.
+
+This course provides your first introduction to data science. As evidenced by the waived prerequisites, it assumes no prior experience. An introduction to data science requires learning key tools and principles from mathematics, statistics, and computer science. This course touches on all three.
+
+## Objectives
+
+After taking this class, students should be able to:
+
+\begin{enumerate}
+\item Use computer programming to manipulate and visualize data.
+\item Articulate insights from data in ways that answer existing questions and spark new ones.
+\item Understand the concepts of randomness and statistical significance, and demonstrate both via computer simulation.
+\item Use computer programming to develop data models that can predict quantities of interest.
+\end{enumerate}
+
+Whether you see yourself as a future statistician, programmer, or simply want to make sense of the data-driven world around you, this course will give you tools to ask better questions, make informed decisions, and see the world in a new way.
+
+## Software {#sec-software}
+This course will involve programming in the R statistical programming language. 
+R is an open-source language, meaning that a large community of people contribute freely to R without making people pay for the software. 
+The language is particularly good at data wrangling and data visualization. 
+It also has an amazing community of open-source developers who have developed an extensive suite ancillary packages to do cutting edge things in statistics. 
+Some of these packages also allow you to run other programming languages, such as Python, within R. 
+This makes R a good, but not the only, platform to begin to learn programming essentials in a software actively used by professionals in the workforce. 
+All students will be required to have a working laptop capable of installing R that they can bring to each class period. 
+It is expected that you will be using a current version of R (R 4.5.x or later) and will be using updated versions (as of 8/31/26) of all software packages.
+
+For students with a Chromebook or surface that is not capable of installing R, there is a browser based version of the software that you will be expected to access.
+Access to this browser-based version of the software is free for the first 25 compute hours.
+However, if your compute hours exceed the free allotment, you may need to upgrade to a student account for $5/month.
+I recommend waiting to upgrade your account until you absolutely have to. 
+**It will not be feasible to complete the programming assignments in this class on your phones.**
+
 
 # Tentative Schedule
 
@@ -134,12 +175,6 @@ tmp
 \clearpage
 
 :::
-
-
-# Course Description
-
-
-# Course Objectives
 
 
 # Course Policies {#sec-policies}
@@ -213,7 +248,7 @@ If you have problems with your computer, operating system, etc. that are not spe
 ## Preparation & Participation
 
 All students are expected to prepare for, attend and fully participate in class.
-Participation grades will be determined based on a combination of before-class reading checks and in-class participation, including professionalism and engagement.
+Preparation & participation grades will be determined based on a combination of before-class reading checks (preparation) and in-class activities (participation). Some in-class activities may be finished at home before they are submitted. 
 
 ## Attendance
 
@@ -222,7 +257,8 @@ The quiz will be open only during the class period, so you will need to have a d
 Sharing this code with anyone, or receiving a code for a class you were not present for, will be considered a violation of academic integrity. 
 
 Three absences (1 week of class) will be allowed without any reduction in your attendance score - no excuse is necessary! 
-Please do not email me when you use your excuse-free absences. 
+
+Please *do not email me* when you use your excuse-free absences - Canvas will automatically drop the quizzes associated with the first three missed classes.
 
 ### Illness {#sec-illness}
 
@@ -236,7 +272,7 @@ If you need to miss more than 3 classes for illness, I will ask you to work with
 
 If in-person classes are canceled, you will be notified of the instructional continuity plan for this class by Canvas Announcement.
 In most circumstances where there is power in the Cache Valley, we will hold class via Zoom if the university cancels class.
-You will be held to the same participation standards on Zoom as you are in person, and participation and attendance will be graded accordingly, with some allowance for disruption at the individual level where circumstances warrant.
+You will be held to the same participation standards on Zoom as you are in person, and participation and attendance will be graded accordingly, with some allowance for disruption at the individual level where circumstances warrant (e.g. children at home who interrupt, having to pay the pet tax and show your pet to the camera, parents barging in to ask questions).
 
 ## Reading Checks {#sec-reading-quiz}
 
@@ -255,7 +291,7 @@ Several formative assignments (assignments meant to help you practice skills) wi
 
 -   Assignments must be submitted in the file format specified, and should run or compile as submitted. Code should be formatted using the style guidelines provided in class and demonstrated in videos posted to Canvas.
 
--   I will attempt to grade formative assignments within a week of the specified due date.
+-   I will attempt to grade assignments within a week of the specified due date.
 
 ## Labs 
 <!-- stopped here, XXX edit -->

@@ -21,16 +21,20 @@ schedule:
         
     prepare: |
         - Print out and bring [cheat sheets](../files/cheat-sheets-combined.pdf) for R
-        - Log in to the server
+        - [ ] (for Mon) Syllabus Video and Quiz
         - [ ] (for Wed) Reading Check 1.1
         - [ ] (for Fri) Reading Check 1.2
     class1: |
+        - [ ] Attendence Quiz 8/31 (Canvas)
         - [Discussion: Syllabus](../slides/01-syllabus.qmd)
         - [Course Introduction and Motivation](../slides/01-intro.qmd)
     class2: |
+        - [ ] Attendence Quiz 9/2 (Canvas)
         - [Organizing Data](../slides/02-data.qmd)
     class3: |
+        - [ ] Attendence Quiz 9/4 (Canvas)
         - [Intro to Programming](../slides/03-prog-intro.qmd)
+        - Programming a Sandwich. [html](../lab/03-programming-sandwich.qmd),  [qmd template](../lab/_03-programming-sandwich.qmd) 
     extra: |
         - [Hadley Wickham: Spreadsheets, bikes, and the accidental empire of R packages](https://www.youtube.com/watch?v=KxRnZTl2HVY) (YouTube, The Test Set) - Hadley Wickham developed many of the R packages we'll use in this course. Hear the back-story as to how he got started!
         - [The Jevons Paradox](https://www.youtube.com/watch?v=a6sYYrLTOjQ) (YouTube, Hank Green) - Why AI (and statistics) do not generate new information.
@@ -51,6 +55,7 @@ schedule:
         - Labor Day
     class2: |
         - [Intro to Programming](../slides/05-prog-intro.qmd)
+        - Swirl Tutorial (Canvas)
     class3: |
         - [Intro to RStudio](../slides/06-rstudio.qmd)
     extra: |
@@ -72,6 +77,7 @@ schedule:
         - [Correlation and Causation](../slides/07-correlation.qmd)
     class2: |
         - [Bias and Ethics](../slides/08-bias-ethics.qmd)
+        - Bias and Ethics Activity [html](../lab/08-bias-and-ethics.qmd) [qmd template](../lab/_08-bias-and-ethics.qmd)
     class3: |
         - [Lab: Spurious Correlation](../lab/09-spurious-correlation.qmd)
     extra: |
