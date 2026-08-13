@@ -252,12 +252,13 @@ Preparation & participation grades will be determined based on a combination of 
 
 ## Attendance
 
-During each class, I will give you a five-digit code which can be entered into a Canvas quiz to show that you were in class. 
+During each class, I will give you a numerical code which can be entered into a Canvas quiz to show that you were in class. 
 The quiz will be open only during the class period, so you will need to have a device capable of interfacing with Canvas during class.
+
 Sharing this code with anyone, or receiving a code for a class you were not present for, will be considered a violation of academic integrity. 
 
-Three absences (1 week of class) will be allowed without any reduction in your attendance score - no excuse is necessary! 
 
+Three absences (1 week of class) will be allowed without any reduction in your attendance score - no excuse is necessary! 
 Please *do not email me* when you use your excuse-free absences - Canvas will automatically drop the quizzes associated with the first three missed classes.
 
 ### Illness {#sec-illness}
@@ -266,7 +267,29 @@ If you are feeling ill, please **do not come to class**.
 Instead, review the material and work on the homework assignment, and then schedule an appointment with me to meet virtually.
 In the appointment reason field on [Calendly](https://calendly.com/vanderplas-stats/30min), indicate that this appointment is to substitute for your in-class participation on the date you missed.
 
-If you need to miss more than 3 classes for illness, I will ask you to work with the Disability Resource Center or a medical provider in order to continue using this substitute for attendance.
+If you need to miss more than 3 classes for illness, I will ask you to work with the Disability Resource Center in order to continue using this substitute for attendance.
+
+### Extenuating Circumstances
+
+I am willing to offer some flexibility in extenuating circumstances if you let me know what is going on and how I can help. 
+This flexibility takes effect *after* using your free absences, but can also extend beyond attendance if appropriate.
+
+In some situations, you may get accommodations only after working with the Disability Resource Center to document the problem.
+
+Examples: 
+
+- Your dog had a seizure 20 minutes before an exam, and you were late because you had to get the dog to the vet. 
+    - Action: When getting the test, ask to talk for a minute. Explain the situation. Offer to provide vet records, if available. 
+    - Flexibility: Take a make-up exam, or start the exam immediately but get a few extra minutes to finish it.
+
+- You have chronic migraines and have missed 8 classes this semester.
+    - Action: Go to the DRC and get an accommodation for flexible attendance requirements. 
+    - Flexibility: Additional appointments to substitute for attendance beyond the 3 provided to all students. 
+
+- A train derailed, blocking your access to campus. You missed your scheduled presentation time.
+    - Action: Email as soon as you know there is going to be a delay to explain the situation. If you are able, take pictures to document and attach to the email. (Note: only for situations, not illness or injury, please!) Attempt to find an alternate route to campus.
+    - Flexibility: Present during a different time, or record a presentation. 
+    - Note: Flexibility here may be conditional on my ability to verify the situation.
 
 ### Inclement Weather
 
@@ -381,3 +404,6 @@ See https://www.usu.edu/teach/help-topics/teaching-tips/syllabus-resources for c
 - Emergency Procedures
 - Mental Health and Food Security resources
 
+## Disability Resource Center (DRC)
+
+USU welcomes students with disabilities. If you have, or suspect you may have, a physical, mental health, or learning disability that may require accommodations in this course, please contact the Disability Resource Center (DRC) as early in the semester as possible (University Inn #101, 435‐797‐2444, [drc@usu.edu](mailto://drc@usu.edu)). All disability related accommodations must be approved by the DRC. Once approved, the DRC will coordinate with faculty to provide accommodations.
