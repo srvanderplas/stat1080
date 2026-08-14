@@ -123,7 +123,7 @@
     "href": "slides/01-intro.html#data-science-life-cycle-1",
     "title": "1.1 Course Introduction",
     "section": "Data Science Life Cycle",
-    "text": "Data Science Life Cycle\nFrom R for Data Science by Hadley Wickham\n\n\n\n\nFigure 3"
+    "text": "Data Science Life Cycle\nFrom R for Data Science by Hadley Wickham\n\n\nFigure 3"
   },
   {
     "objectID": "homework/homework01.html",
@@ -1587,5 +1587,47 @@
     "title": "Submission Checklist",
     "section": "",
     "text": "Submission Checklist\n\nCheck your filename – is it of the form lastname_firstname_homework01.qmd?\nCheck the author (specified around line 3 of this file) – is your name there?\nRender your file using the blue arrow at the top of the RStudio text editor window.\n\nIf your file does not render, address any errors in the code leading to failure.\n\nPreview your rendered file in a browser. Do all of your answers show up the way you expected them to?\nIf the answers do not show up the way you want them, check your markdown formatting against the cheat sheet in RStudio (Help -&gt; Cheat Sheets -&gt; Rmarkdown cheat sheets)\nRun the lintr style checks (Canvas -&gt; Course homepage -&gt; Style Guides link under USU picture)\n\nSwitch to source mode in RStudio\nAddins -&gt; Style active file\nAddins -&gt; Lint current file\nAddress any issues that the lint command raises\n\nRender your file again, to check that the styler and lintr addons didn’t mess up any formatting.\nUpload your qmd file (NOT the html file) to Canvas\nDouble-check your submission - is the file you uploaded the one you want to be graded?"
+  },
+  {
+    "objectID": "slides/02-data.html#what-is-r",
+    "href": "slides/02-data.html#what-is-r",
+    "title": "1.2 Data",
+    "section": "What is R?",
+    "text": "What is R?\n\n\n\n\nAn open-source clone of S, which was a programming language developed at the Bell Telephone Laboratories in 1976.\n\n\n\n\nA language built for working with data\n\n\n\n\nWith all the features of a general purpose language\nplus functional programming\nand at least 5 object-oriented systems"
+  },
+  {
+    "objectID": "slides/02-data.html#pros-and-cons",
+    "href": "slides/02-data.html#pros-and-cons",
+    "title": "1.2 Data",
+    "section": "Pros and Cons",
+    "text": "Pros and Cons\n\n\nPros:\n\nExcellent packages for data graphics\nInteractive and responsive\nTons of tutorials and materials\n\nBig book of R - TONS of free online textbooks\nTidy Tuesday videos - how to clean, analyze, and visualize data in R\n\nSupportive community - R ladies+, ,  #rstats,  #statistics\n\n\nCons\n\nOptimizes programmer time - computing time can be slower\n\nIndustry uses R for prototyping, Python/C for production\n\nEasy to write bad/hard-to-maintain code\nThis is true in almost every language\nDifferent conventions than C/Python/Java\nCounting from 1, 2, 3, … rather than 0, 1, 2, …"
+  },
+  {
+    "objectID": "slides/02-data.html#additional-spreadsheet-hate",
+    "href": "slides/02-data.html#additional-spreadsheet-hate",
+    "title": "1.2 Data",
+    "section": "Additional Spreadsheet Hate",
+    "text": "Additional Spreadsheet Hate\nOne in five genetics papers contains errors thanks to Microsoft Excel\nEight Famous Excel Errors That Cost Millions (And One That Renamed Human Genes)\nSpreadsheet error masked $6 billion dollar JP Morgan Loss (2012)\nSpreadsheet errors can have disastrous consequences – yet we keep making the same mistakes"
+  },
+  {
+    "objectID": "slides/02-data.html#additional-spreadsheet-tales",
+    "href": "slides/02-data.html#additional-spreadsheet-tales",
+    "title": "1.2 Data",
+    "section": "Additional Spreadsheet Tales",
+    "text": "Additional Spreadsheet Tales\nOne in five genetics papers contains errors thanks to Microsoft Excel\nEight Famous Excel Errors That Cost Millions (And One That Renamed Human Genes)\nSpreadsheet error masked $6 billion dollar JP Morgan Loss (2012)\nSpreadsheet errors can have disastrous consequences – yet we keep making the same mistakes\nSpreadsheetBench tasks for AI agents - scores of 34.89% (as of 08-2026) on v2 task"
+  },
+  {
+    "objectID": "slides/02-data.html#getting-started",
+    "href": "slides/02-data.html#getting-started",
+    "title": "1.2 Data",
+    "section": "Getting Started",
+    "text": "Getting Started\n\nOpen RStudio\nOpen an Editor window (by default, a text file in the top left corner)"
+  },
+  {
+    "objectID": "slides/02-data.html#setting-up",
+    "href": "slides/02-data.html#setting-up",
+    "title": "1.2 Data",
+    "section": "Setting Up",
+    "text": "Setting Up\n\n1library(readr)\n2library(dslabs)\n\n3path &lt;- system.file(\"extdata\", package=\"dslabs\")\n\n4files &lt;- list.files(path)\nfiles\n\n5files &lt;- list.files(path, full.names = T)\nfiles\n\n\n1\n\nRead in files efficiently\n\n2\n\nPackage to go with the IDS books\n\n3\n\nFind the folder with external data files (extdata) in the dslabs package\n\n4\n\nWhat files are in the extdata folder?\n\n5\n\nList the files AND the path where the files are located\n\n\n\n\n [1] \"2010_bigfive_regents.xls\"                               \n [2] \"calificaciones.csv\"                                     \n [3] \"carbon_emissions.csv\"                                   \n [4] \"fertility-two-countries-example.csv\"                    \n [5] \"HRlist2.txt\"                                            \n [6] \"life-expectancy-and-fertility-two-countries-example.csv\"\n [7] \"murders.csv\"                                            \n [8] \"olive.csv\"                                              \n [9] \"RD-Mortality-Report_2015-18-180531.pdf\"                 \n[10] \"ssa-death-probability.csv\"                              \n [1] \"/home/susan/R/x86_64-pc-linux-gnu-library/4.5/dslabs/extdata/2010_bigfive_regents.xls\"                               \n [2] \"/home/susan/R/x86_64-pc-linux-gnu-library/4.5/dslabs/extdata/calificaciones.csv\"                                     \n [3] \"/home/susan/R/x86_64-pc-linux-gnu-library/4.5/dslabs/extdata/carbon_emissions.csv\"                                   \n [4] \"/home/susan/R/x86_64-pc-linux-gnu-library/4.5/dslabs/extdata/fertility-two-countries-example.csv\"                    \n [5] \"/home/susan/R/x86_64-pc-linux-gnu-library/4.5/dslabs/extdata/HRlist2.txt\"                                            \n [6] \"/home/susan/R/x86_64-pc-linux-gnu-library/4.5/dslabs/extdata/life-expectancy-and-fertility-two-countries-example.csv\"\n [7] \"/home/susan/R/x86_64-pc-linux-gnu-library/4.5/dslabs/extdata/murders.csv\"                                            \n [8] \"/home/susan/R/x86_64-pc-linux-gnu-library/4.5/dslabs/extdata/olive.csv\"                                              \n [9] \"/home/susan/R/x86_64-pc-linux-gnu-library/4.5/dslabs/extdata/RD-Mortality-Report_2015-18-180531.pdf\"                 \n[10] \"/home/susan/R/x86_64-pc-linux-gnu-library/4.5/dslabs/extdata/ssa-death-probability.csv\""
   }
 ]

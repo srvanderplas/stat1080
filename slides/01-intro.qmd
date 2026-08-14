@@ -203,4 +203,10 @@ From [R for Data Science](https://r4ds.hadley.nz/whole-game.html) by Hadley Wick
 
 ![](images/data-life-cycle.png){#fig-datascience-life-cycle fig-alt="A diagram displaying the data science cycle: Import -> Tidy -> Understand  (which has the phases Transform -> Visualize -> Model in a cycle) -> Communicate. Surrounding all of these is Program  Import, Tidy, Transform, and Visualize is highlighted."}
 
+# Next Time
+
+- [Why R?](02-data.qmd)
+
+- Introduction to Data Science activity
+
 

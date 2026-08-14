@@ -1,0 +1,23 @@
+/*-- scss:defaults --*/
+
+@import 'https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible&display=swap';
+
+$font-family: "Atkinson Hyperlegible", sans-serif;
+
+
+/*-- scss:rules --*/
+
+a {
+  line-height: calc(24px + 0.5vw);
+  font-weight:600;
+  color: #0f3e2c;
+}
+
+.sidebar-logo{
+  max-width:150px;
+}
+
+#quarto-sidebar .sidebar-title a {
+  color: "#ffffff"!important;
+  font-size: 2ex!important;
+}

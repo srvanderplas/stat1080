@@ -111,7 +111,21 @@ format:
       dark: [darkly, theme-dark.scss]
     mainfont: "Atkinson Hyperlegible"
     toc: true
-
+    
+filters:
+  - linkrot
+extensions:
+  linkrot:
+    fail-on-error: false      # Set to true to fail the build if broken links are found
+    timeout: 10               # Timeout in seconds for each URL check
+    user-agent: "Quarto-Linkrot/1.0"  # User agent string for requests
+    cache-results: true       # Cache results to avoid checking the same URL multiple times
+    debug: false              # Enable debug logging
+    output-file: linkrot-report.txt         # Write results to a file (e.g., "linkrot-report.txt")
+    skip-patterns:            # List of regex patterns to skip
+      - "example\\.com"
+      - "localhost"
+      
 execute:
   freeze: auto  # re-render only when source changes
 

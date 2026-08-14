@@ -142,37 +142,37 @@ $theme-colors: (
 .reveal section .emph { font-family: 'Handlee', cursive!important; }
 .reveal section .read { font-family: 'Atkinson Hyperlegible'!important; }
 
-.reveal section .pink-lt { color: $pink-lt !important;} /* watermelon, lightened to 7.16 contrast with aggie blue */
-.reveal section .orange-lt { color: $orange-lt !important;} /* tangerine, lightened to 7.02 contrast with aggie blue */
-.reveal section .yellow-lt { color: $yellow-lt !important;} /* sunflower, lightened to 12.0 contrast with aggie blue */
-.reveal section .green-lt { color: $green-lt !important;} /* hunter green, lightened to 7.13 contrast with aggie blue */
-.reveal section .sage-lt { color: $sage-lt !important;} /* sage green, lightened to 7.09 contrast with aggie blue */
-.reveal section .cerulean-lt { color: $cerulean-lt !important; }  /* electric, lightened to 12.0 contrast with aggie blue */
-.reveal section .blue-lt { color: $blue-lt$ !important;} /* sky, lightened to 7.12 contrast with aggie blue */
-.reveal section .gray-lt { color: $grey-lt !important;} /* grey, lightened to 7.1 contrast with aggie blue */
-.reveal section .sand-lt { color: $sand-lt !important;} /* sand, lightened to 11.86 contrast with aggie blue */
+.reveal section .pink-lt { color: #f692a1 !important;} /* watermelon, lightened to 7.16 contrast with aggie blue */
+.reveal section .orange-lt { color: #F9DCBE !important;} /* tangerine, lightened to 7.02 contrast with aggie blue */
+.reveal section .yellow-lt { color: #f9df90 !important;} /* sunflower, lightened to 12.0 contrast with aggie blue */
+.reveal section .green-lt { color: #30c58e !important;} /* hunter green, lightened to 7.13 contrast with aggie blue */
+.reveal section .sage-lt { color: #90b6a8 !important;} /* sage green, lightened to 7.09 contrast with aggie blue */
+.reveal section .cerulean-lt { color: #9febfe !important; }  /* electric, lightened to 12.0 contrast with aggie blue */
+.reveal section .blue-lt { color: #6bb7e1 !important;} /* sky, lightened to 7.12 contrast with aggie blue */
+.reveal section .gray-lt { color: #a9afb2 !important;} /* grey, lightened to 7.1 contrast with aggie blue */
+.reveal section .sand-lt { color: #e0e0d6 !important;} /* sand, lightened to 11.86 contrast with aggie blue */
 
 
-.reveal section .pink { color: $pink !important;} /* watermelon */
-.reveal section .orange { color: $orange !important;} /* tangerine */
-.reveal section .yellow { color: $yellow !important;} /* sunflower */
-.reveal section .green { color: $green !important;} /* hunter green */
-.reveal section .sage { color: $sage !important;} /* sage green */
-.reveal section .cerulean { color: $cerulean !important; }  /* electric */
-.reveal section .blue { color: $blue !important; } /* sky */
-.reveal section .gray { color: $grey !important;} /* grey */
-.reveal section .sand { color: $sand !important;} /* sand */
+.reveal section .pink { color: #f16278 !important;} /* watermelon */
+.reveal section .orange { color: #f58220 !important;} /* tangerine */
+.reveal section .yellow { color: #f6bd17 !important;} /* sunflower */
+.reveal section .green { color: #124734 !important;} /* hunter green */
+.reveal section .sage { color: #6b9e85 !important;} /* sage green */
+.reveal section .cerulean { color: #01add8 !important; }  /* electric */
+.reveal section .blue { color: #288dc2 !important; } /* sky */
+.reveal section .gray { color: #a9afb2 !important;} /* grey */
+.reveal section .sand { color: #d1cbbd !important;} /* sand */
 
 
-.reveal section .pink-dk { color: $pink-dk !important;} /* watermelon, darkened to 7 contrast with white */
-.reveal section .orange-dk { color: $orange-dk !important;} /* tangerine, darkened to 6.99 contrast with white */
-.reveal section .yellow-dk { color: $yellow-dk !important;} /* sunflower, darkened to 7.05 contrast with white */
-.reveal section .green-dk { color: $green-dk !important;} /* hunter green, darkened to 12.02 contrast with white */
-.reveal section .sage-dk { color: $sage-dk !important;} /* sage green, darkened to 7.04 contrast with white */
-.reveal section .cerulean-dk { color: $cerulean-dk !important; } /* electric, darkened to 7.02 contrast with white */
-.reveal section .blue-dk { color: $blue-dk !important; }  /* sky, darkened to 7.28 contrast with white */
-.reveal section .gray-dk { color: $grey-dk !important;} /* grey, darkened to 7.22 contrast with white */
-.reveal section .sand-dk { color: $sand-dk !important;} /* sand, darkened to 7.22 contrast with white */
+.reveal section .pink-dk { color: #B21028 !important;} /* watermelon, darkened to 7 contrast with white */
+.reveal section .orange-dk { color: #8e4506 !important;} /* tangerine, darkened to 6.99 contrast with white */
+.reveal section .yellow-dk { color: #6f5506 !important;} /* sunflower, darkened to 7.05 contrast with white */
+.reveal section .green-dk { color: #0f3e2c !important;} /* hunter green, darkened to 12.02 contrast with white */
+.reveal section .sage-dk { color: #3e604c !important;} /* sage green, darkened to 7.04 contrast with white */
+.reveal section .cerulean-dk { color: #016179 !important; } /* electric, darkened to 7.02 contrast with white */
+.reveal section .blue-dk { color: #1a5c7f !important; }  /* sky, darkened to 7.28 contrast with white */
+.reveal section .gray-dk { color: #4f5959 !important;} /* grey, darkened to 7.22 contrast with white */
+.reveal section .sand-dk { color: #5d5741 !important;} /* sand, darkened to 7.22 contrast with white */
 
 
 .reveal section .center p, .reveal section .center span {text-align: center !important}
@@ -258,3 +258,9 @@ $theme-colors: (
   margin-bottom: 1rem;
 }
 
+.reveal .slide-logo {
+  height: 75px !important;
+  width: 75px !important;
+  max-width: unset !important;
+  max-height: unset !important;
+}

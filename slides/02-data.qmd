@@ -1,0 +1,144 @@
+---
+title: "1.2 Data"
+subtitle: "(and programming)"
+format: revealjs
+---
+
+
+# Perception of Data Science & Statistics
+
+[As you come in]{.large .emph .pink-dk}    
+Answer Questions 1-3 on Survey 1.2.p Introduction to Data Science
+
+::: {.fragment}
+
+5 minutes: Form a group of 3-4 people and answer questions 4-5
+
+:::
+
+
+# Why R?
+
+::: {.r-fit-text}
+
+> There are only two kinds of languages: the ones people complain about and the ones 
+nobody uses.
+> 
+> -- Bjarne Stroustrup \(creator of the C++ programming language\)
+
+:::
+
+
+## What is R? 
+
+::: columns
+::: column
+
+
+
+::: {.fragment fragment-index=1}
+
+- An open-source clone of **S**, which was a programming language developed at the Bell Telephone Laboratories in 1976. 
+
+:::
+::: {.fragment fragment-index=3}
+
+- A language built for working with data
+:::
+::: {.fragment fragment-index=4}
+
+  - With all the features of a general purpose language
+  - plus functional programming
+  - and at least [5 object-oriented systems](https://www.reddit.com/r/rstats/comments/1sk313c/why_r_has_four_oop_systems_s3_s4_r5_r6/)
+
+:::
+:::
+::: column
+
+![](images/meme-pirate-favorite-letter.jpg){fig-alt="A skeleton army with text 'Rule 6 of the pirate code: What's a pirate's favorite letter?'" width="80%" fragment-index=2 .fragment}
+:::
+:::
+
+## Pros and Cons
+
+::: columns
+::: column
+Pros:
+
+- Excellent packages for data graphics
+- Interactive and responsive
+- Tons of tutorials and materials
+  - [Big book of R](https://www.bigbookofr.com) - TONS of free online textbooks
+  - [Tidy Tuesday videos](https://www.youtube.com/playlist?list=PL19ev-r1GBwkuyiwnxoHTRC8TTqP8OEi8) - how to clean, analyze, and visualize data in R
+- Supportive community - [R ladies+](https://rladies.org/programs/), [{{< fa brands reddit title="Reddit logo">}}](https://reddit.com/r/rstats), [{{< fa brands bluesky title="Bluesky logo" >}} #rstats](https://bsky.app/hashtag/Rstats), [{{< fa brands bluesky title="Bluesky logo" >}} #statistics](https://bsky.app/hashtag/statistics)
+
+:::
+::: column
+Cons
+
+- Optimizes programmer time - computing time can be slower
+  - Industry uses R for prototyping, Python/C for production
+- Easy to write bad/hard-to-maintain code    
+[This is true in almost every language]{.fragment .cerulean-dk .emph}
+- Different conventions than C/Python/Java    
+[Counting from 1, 2, 3, ... rather than 0, 1, 2, ...]{.fragment .cerulean-dk .emph}
+
+:::
+:::
+
+# Why Not Spreadsheets?
+
+1. Reproducibility. Code is like a recipe, Spreadsheets are one-off analyses. Things get changed accidentally.
+2. Spreadsheet references are less readable than variable names
+3. It's best to separate data, code, and output. Spreadsheets mix them.
+4. Spreadsheet functionality is limited compared to add-on libraries
+5. [Excel charts are terrible (personal opinion)]{.cerulean .emph .fragment}
+
+## Additional Spreadsheet Tales
+
+[One in five genetics papers contains errors thanks to Microsoft Excel](https://web.archive.org/web/20260814235653/https://www.science.org/content/article/one-five-genetics-papers-contains-errors-thanks-microsoft-excel?__cf_chl_rt_tk=M5.q2K3PEdkmHyiav5sva0AcEcfDO67GPyM5csj0MoM-1786751813-1.0.1.1-q578VGeEPy5o4ndbBg28ERXFwZfvQSknv127fbxiDz0)
+
+[Eight Famous Excel Errors That Cost Millions (And One That Renamed Human Genes)](https://web.archive.org/web/20260814232144/https://xlinesoft.com/blog/2026/08/12/8-famous-excel-errors-that-cost-millions-and-one-that-renamed-human-genes/)
+
+[Spreadsheet error masked $6 billion dollar JP Morgan Loss (2012)](https://web.archive.org/web/20230329101258/https://www.reuters.com/article/jpmorgan-var-idUSL1E8GBKS920120511)
+
+[Spreadsheet errors can have disastrous consequences -- yet we keep making the same mistakes](https://theconversation.com/spreadsheet-errors-can-have-disastrous-consequences-yet-we-keep-making-the-same-mistakes-219356)
+
+[SpreadsheetBench tasks for AI agents](https://spreadsheetbench.github.io) - scores of 34.89% (as of 08-2026) on v2 task
+
+# Attendance Code
+
+Go to Canvas and fill in the attendance code for today
+
+![Artwork by [Allison Horst](https://allisonhorst.com/everything-else), CC-BY 4.0](images/horst-R-welcome.png){fig-alt="Two pink fuzzy monsters approach a doorway. One monster hass glasses, the other has heart eyes and a rainbow 'mind blown' cloud bursting from its head. Glitter and butterflies are coming from the door, and a blue Twitter bird with an R on it is sitting above the door. There is a welcome mat in front. Inside the door, hashtags like #rstats, #RLadies, and #datavis are shown, as well as @OneRTipADay, @rOpenSci, @R-Bloggers, @WeAreRLadies, @hadley are featured in a landscape with rainbows, butterflies, flowers, and sunshine." width="80%"}
+
+# Importing Data into R
+
+## Getting Started
+
+1. Open RStudio
+2. Open an Editor window (by default, a text file in the top left corner)
+
+## Setting Up
+
+```{r}
+#| echo: true
+#| code-annotations: "hover"
+library(readr) # <1> 
+library(dslabs) # <2>
+
+path <- system.file("extdata", package="dslabs") # <3>
+
+files <- list.files(path) # <4>
+files
+
+files <- list.files(path, full.names = T) # <5>
+files
+```
+
+1. Read in files efficiently
+2. Package to go with the IDS books
+3. Find the folder with external data files (`extdata`) in the `dslabs` package
+4. What files are in the `extdata` folder?
+5. List the files AND the path where the files are located
+
