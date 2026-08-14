@@ -25,6 +25,7 @@ September 14-20, 2026
 ## 🐪️ Wednesday 🐦‍⬛ 
 
 - [Bias and Ethics](../slides/08-bias-ethics.qmd)
+- Bias and Ethics Activity [html](../lab/08-bias-and-ethics.qmd) [qmd template](../lab/_08-bias-and-ethics.qmd)
 
 
 ## 🎉 Friday 🥳

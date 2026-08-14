@@ -1,1 +1,1 @@
-{{< include _08_bias_and_ethics.qmd >}}
+{{< include _08-bias-and-ethics.qmd >}}

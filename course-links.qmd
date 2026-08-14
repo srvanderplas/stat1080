@@ -4,8 +4,7 @@ title: "Useful links"
 
 |  |  |
 |------------------------------------|------------------------------------|
-| ![](images/Canvas_logo_single_mark.png){fig-alt="Canvas logo" height="40px"}[Canvas](https://canvas.unl.edu/courses/192983) | Assignment Submissions, Reading Quizzes, Gradebook |
-| [![](images/github-classroom.svg){fig-alt="Github classroom logo" height="30px"}](https://classroom.github.com/classrooms/99839553-stat-349-2026a) | Project Submissions |
-| [Scientific Writing for Health Research](https://ehsanx.github.io/Scientific-Writing-for-Health-Research/) | Textbook | 
-| [Entering the Conversation](https://wisc.pb.unizin.org/opencomp/front-matter/intro/) | Textbook | 
-| [Open Technical Communication](https://alg.manifoldapp.org/read/open-technical-communication/section/0debb16b-f623-4033-a47b-973d65ab0961) | Textbook | 
+| ![](images/Canvas_logo_single_mark.png){fig-alt="Canvas logo" height="40px"}[Canvas](https://usu.instructure.com/courses/819584) | Assignment Submissions, Reading Quizzes, Gradebook |
+| [Introduction to Data Science 1, by Rafael A. Irizarry](https://rafalab.dfci.harvard.edu/dsbook-part-1/) | Textbook (IDS 1) | 
+| [Introduction to Data Science 2, by Rafael A. Irizarry](https://rafalab.dfci.harvard.edu/dsbook-part-2/) | Textbook (IDS 2) | 
+| [Statistical Computing in R and Python](https://srvanderplas.github.io/stat-computing-r-python) | SC | 

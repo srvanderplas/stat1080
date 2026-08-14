@@ -60,8 +60,8 @@ $theme-colors: (
 
 .reveal section {
   background-position: left 10px bottom 10px;
-  background-size: 10%;
-	font-size: 20px;
+  background-size: 100%;
+	font-size: 18pt;
 	text-shadow: 0 0 0 #a2aaad;
 }
 
@@ -72,76 +72,75 @@ $theme-colors: (
 }
 
 .reveal section h1 {
-  color: $aggie-blue;
-  font-size: 3.5em;
+  color: #0F2439;
+  font-size: 200%!important;
   font-family: 'Roboto', sans-serif;
   /*background: rgba(.9961, .9922, .9804, .3);*/
   padding:20px;
 }
 .reveal section h2 {
-  color: $green;
-  font-size: 2.5em;
+  color: #124734;
+  font-size: 175%em;
   font-family: 'Roboto', sans-serif;
 }
 .reveal section h3 {
-  color: $cerulean-dk;
-  font-size: 1.5em;
+  color: #016179;
+  font-size: 150%!important;
   font-family: 'Montserrat', sans-serif;
 }
 .reveal section h4 {
-  font-size: 1.25em;
+  font-size: 125%!important;
   font-family: 'Montserrat', sans-serif;
 }
 
 .reveal section body{
-  left: 12%;
-  font-size: 1em;
+  font-size: 14pt!important;
   font-weight:400;
 }
 
 
 .reveal section#title-slide {
 	data-background-color: #fefdfa;
-  data-background-image:  url(libs/usu.png), hurl(libs/usu-u.png);
+  data-background-image:  url(libs/usu.png), url(libs/usu-u.png);
 	data-background-position: 10px 10px, right 10px 10px;
-	data-background-size: 25%, 10%;
+	data-background-size: 25%, 30%;
 }
 
 .reveal section#title-slide h1 {
-	color: $aggie-blue !important;
-	margin-top: -130px;
+	color: #0F2439 !important;
+	margin-top: -130px!important;
 }
 
 .reveal section#title-slide .subtitle {
 	color: $green !important;
-  font-size: 150%;
+  font-size: 150%!important;
 }
 
 .reveal section#title-slide .author{
   font-family: 'Handlee', cursive;
 	color: $cerulean-dk !important;
-  font-size: 130%;
+  font-size: 130%!important;
 }
 
 .reveal section.inverse {
-  background-color: $aggie-blue;
-  border-bottom: 0;
-  color: $white;
+  background-color: #0F2439 !important;
+  border-bottom: 0!important;
+  color: $white!important;
 }
 
 .reveal section.inverse h2 {
-  background-color: $aggie-blue;
-	color: $sage-lt;
+  background-color:  #0F2439 !important;
+	color: $sage-lt!important;
 }
 
 .reveal section.inverse h3 {
-  background-color: $aggie-blue;
-	color: $yellow-lt;
+  background-color:  #0F2439 !important;
+	color: $yellow-lt!important;
 }
 
 /* Other font formatting stuff */
-.reveal section .emph { font-family: 'Handlee', cursive; }
-.reveal section .read { font-family: 'Atkinson Hyperlegible'; }
+.reveal section .emph { font-family: 'Handlee', cursive!important; }
+.reveal section .read { font-family: 'Atkinson Hyperlegible'!important; }
 
 .reveal section .pink-lt { color: $pink-lt !important;} /* watermelon, lightened to 7.16 contrast with aggie blue */
 .reveal section .orange-lt { color: $orange-lt !important;} /* tangerine, lightened to 7.02 contrast with aggie blue */
@@ -188,14 +187,14 @@ $theme-colors: (
   width: 47%;
 }
 
-.huge {font-size: 150%;}
-.large {font-size: 130%;}
-.largish{font-size:110%;}
-.reg{font-size:100%;}
-.slightly-small {font-size: 80%;}
-.smaller {font-size: 75%;}
-.small {font-size: 70%;}
-.tiny {font-size: 50%;}
+.huge {font-size: 150%!important;}
+.large {font-size: 130%!important;}
+.largish{font-size: 110%!important;}
+.reg{font-size: 100%!important;}
+.slightly-small {font-size: 80%!important;}
+.smaller {font-size: 75%!important;}
+.small {font-size: 70%!important;}
+.tiny {font-size: 50%!important;}
 .microscopic {font-size: 28% !important;}
 
 

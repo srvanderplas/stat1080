@@ -3,6 +3,8 @@ project:
   output-dir: docs
   pre-render:
     - code/gen-week-files-from-course-schedule.R
+  post-render:
+    - code/touch-jekyll
   render:
     - index.qmd
     - syllabus.qmd
@@ -14,6 +16,12 @@ project:
     - "!lab/_*.qmd"
     - homework/*.qmd
     - slides/*.qmd
+  preview:
+    watch-inputs: true
+    navigate: true
+    timeout: 300
+    port: 4200
+    browser: true
  
 engine: knitr
 website:
@@ -99,8 +107,8 @@ format:
       body-width: 800px
       margin-width: 0px
     theme:
-      light: [flatly, theme.scss, _variables-flatly.scss]
-      dark: [darkly, theme.scss, _variables-darkly.scss]
+      light: [flatly, theme.scss]
+      dark: [darkly, theme-dark.scss]
     mainfont: "Atkinson Hyperlegible"
     toc: true
 

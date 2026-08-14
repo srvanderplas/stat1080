@@ -93,6 +93,24 @@ Cal <- Cal %>%
   mutate(sem_week = if_else(sem_week<1, NA, sem_week)) |>
   mutate(sem_week = if_else(sem_week>16, NA, sem_week)) 
 
+trimmable_weeks <- tibble(mon = c("August", "December", "January", "May"), week = c(1, 6, 1, 6))
+
+trim_weeks <- Cal |>
+  select(mon, week, year_wk) |>
+  group_by(mon, week) |>
+  mutate(days = n()) |>
+  group_by(mon) |>
+  mutate(m_max = max(week)) |>
+  ungroup() |>
+  mutate(m_mean = mean(m_max)) |>
+  filter(m_max > m_mean) |> # Don't filter out the first/last week if all months have same weeks
+  filter(m_max == max(m_max), days <=2) |>
+  inner_join(trimmable_weeks)
+
+if (nrow(trim_weeks)<=2) {
+  Cal <- anti_join(Cal, trim_weeks)
+}
+
 class_cal <- ggplot(Cal, aes(wkdy, week)) +
   theme_bw() +
   theme(

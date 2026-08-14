@@ -1,0 +1,146 @@
+---
+title: "Bias and Ethics"
+format: html
+---
+
+```{r}
+#| include: false
+#| cache: false
+library(tidyverse)
+library(MASS)
+```
+
+## Introduction
+
+The following code shows you how to obtain a relationship between two variables in a dataset internal to R. 
+You will learn how to write this code yourself eventually, but today the code is just provided you you. 
+All you need to do is click the little green arrow in the upper right corner of each grey box to run the code.
+
+```{r}
+# Convert table to dataframe
+ucb_df <- as.data.frame(UCBAdmissions)
+
+# Aggregate across departments
+agg_df <- ucb_df |>
+  group_by(Gender, Admit) |>
+  summarise(Freq = sum(Freq), .groups = "drop") |>
+  mutate(Prop = Freq / sum(Freq))
+
+# Plot: proportion admitted by gender
+ggplot(agg_df, aes(x = Gender, y = Prop, fill = Admit)) +
+  geom_col(position = "fill") +
+  scale_y_continuous(labels = scales::percent) +
+  labs(
+    title = "UC Berkeley Graduate Admissions (1973)",
+    y = "Proportion within Gender",
+    x = "Gender",
+    fill = "Admission Status"
+  )
+```
+
+The above plot shows you that women are more likely to be rejected from University of California - Berkely (UCB) than men.
+Please take some time to ensure that you understand how the plot backs up that claim.
+
+### Question 1
+
+Suppose an uninformed viewer of this plot makes the claim "we should discourage women from applying to UCB since there applications are less competitive than male applicants." 
+
+--------------------------------------------------------------------
+
+STOP here
+Go to Canvas
+Answer Quiz question 1: why this claim is problematic
+
+Resume after quiz question 1 is answered.
+
+--------------------------------------------------------------------
+
+Now, consider the plot created by the code below
+
+```{r}
+dept_df <- ucb_df |>
+  group_by(Dept, Gender, Admit) |>
+  summarise(Freq = sum(Freq), .groups = "drop") |>
+  group_by(Dept, Gender) |>
+  mutate(Total = sum(Freq),
+         Rate = Freq / Total) |>
+  filter(Admit == "Admitted")
+
+# Plot admission rates by department and gender
+ggplot(dept_df, aes(x = Dept, y = Rate, fill = Gender)) +
+  geom_col(position = "dodge") +
+  scale_y_continuous(labels = scales::percent) +
+  labs(
+    title = "UC Berkeley Graduate Admissions (1973)",
+    subtitle = "Admission rate by Department and Gender",
+    x = "Department",
+    y = "Admission Rate",
+    fill = "Gender"
+  )
+```
+
+What we see now is that the overall effect we observed has been reversed: women appear to be admitted at the same or higher rate in each individual department.
+
+### Question 2
+
+Before how this happened, another uninformed reader says "we should force the male and female application rates to be exactly the same in order to ensure fairness." 
+
+--------------------------------------------------------------------
+
+STOP here
+Go to Canvas
+Answer Quiz question 2: why this claim is problematic
+
+Resume after quiz question 2 is answered.
+
+--------------------------------------------------------------------
+
+
+## Putting it all together
+
+The final code helps to demystify the issue:
+
+```{r}
+
+# Total applications by department and gender
+apps_df <- ucb_df |>
+  group_by(Dept, Gender) |>
+  summarise(Applications = sum(Freq), .groups = "drop") |>
+  group_by(Gender) |>
+  mutate(Share = Applications / sum(Applications))
+
+# Plot 1: raw counts of applications
+ggplot(apps_df, aes(x = Dept, y = Applications, fill = Gender)) +
+  geom_col(position = "dodge") +
+  labs(
+    title = "Applications by Department and Gender",
+    x = "Department",
+    y = "Number of Applications",
+    fill = "Gender"
+  )
+
+# Plot 2: proportion of each gender's applications going to each department
+ggplot(apps_df, aes(x = Dept, y = Share, fill = Gender)) +
+  geom_col(position = "dodge") +
+  scale_y_continuous(labels = scales::percent) +
+  labs(
+    title = "Application Share by Department",
+    x = "Department",
+    y = "Proportion of Applications",
+    fill = "Gender"
+  ) 
+
+
+# Plot 3: raw numbers of each gender's applications going to each department
+ggplot(ucb_df, aes(x = Gender, weight = Freq, fill = Dept)) + geom_bar(position = "stack") +
+  labs(
+    title = "Applications by Gender and Department",
+    x = "Gender",
+    y = "Number of Applications",
+    fill = "Department"
+  ) 
+
+
+```
+
+Thus, the answer to "Simpson's Paradox" is this: the reason that women appear to be admitted at a lower rate than men is because women were disproportionately more likely to apply to more selective departments. More importantly, this assignment reminded you that not all decisions can be effectively or ethically made with data alone.

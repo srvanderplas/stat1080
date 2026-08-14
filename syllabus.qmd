@@ -36,6 +36,10 @@ final: Dec 16, 12:30-2:20
 site: srvanderplas.github.io/stat1080
 ---
 
+> ...the time may not be very remote when it will be understood that for complete initiation as an efficient citizen ... it is as necessary to be able to compute, to think in averages and maxima and minima, as it is now to be able to read and write.
+> 
+> -- H.G. Wells, Mankind in the Making
+
 # Critical Information {-}
 
 ```{r setup}
@@ -65,22 +69,21 @@ Textbooks are free/open/online
 -   [Introduction to Data Science 2, by Rafael A. Irizarry](https://rafalab.dfci.harvard.edu/dsbook-part-2/) (IDS 2)
 -   [Statistical Computing in R and Python](https://srvanderplas.github.io/stat-computing-r-python) (SC). 
 
-Software (@sec-software):
+Required Equipment & Software (@sec-software):
 
-- Required: a laptop that can run R and RStudio, or a chromebook (or similar) with and access to the web RStudio platform. 
-- R statistical software (https://r-project.org) version 4.5.0 or greater
+- A laptop that can run R (https://r-project.org, version >= 4.5.0) and RStudio, OR a chromebook that can access the web RStudio platform. 
 - Software packages up to date as of the beginning of the semester
 
 Policy Summary (@sec-policies): 
 
--   Communicate early and often (@sec-expectations), especially if you're having trouble with something.
-    Include the right details (@sec-tech-issues) when asking for help.
--   Your grade: 20% Preparation & Participation, 20% Attendance, 40% Homework and Labs, 20% Project (@sec-grading).
--   Come to class, unless you're sick (@sec-illness). You get two excuse-free absences.
--   Weekly reading (and reading quiz) must be done before class. (@sec-reading-quiz)
+-   **Grade**: 20% Preparation & Participation, 20% Attendance, 40% Homework and Labs, 20% Project (@sec-grading).
+-   **Attendance** matters. You get three excuse-free absences  (@sec-illness). 
+-   **Prepare**: Reading (and reading quiz) must be done before class. (@sec-reading-quiz)
 -   Keep up with the work as assigned (@sec-homework).
+-   **Communicate** early and often (@sec-expectations), especially if you're having trouble with something.
+    Include the right details (@sec-tech-issues) when asking for help.
 -   Do not plan to travel during Finals Week -- you must be present for project presentations (@sec-project).
--   **AI** use must be disclosed, cited, with the full transcript and a diff between AI output and your submission. Be prepared to explain your thought process via oral exam (@sec-ai). 
+-   **AI use must be disclosed**, cited, with the full transcript and a diff between AI output and your submission. Be prepared to explain your thought process via oral exam (@sec-ai). 
 
 ```{r calendar}
 #| echo: false
@@ -98,9 +101,12 @@ class_cal
 
 # Course Description
 
-We live in a world with unprecedented access to information. Every day, our phones, computers, and even “smart” devices collect mountains of data that are analyzed to inform and influence our choices, improve our health, and automate daily services. It is imperative, now more than ever, that we understand how information is collected, visualized, and analyzed to shape our world. By learning about the life cycle of data, we can ensure that data is analyzed in productive and ethical ways.
+We live in a world with unprecedented access to information. Every day, our phones, computers, and "smart" devices collect mountains of data that are analyzed to inform and influence our choices, improve our health, and automate daily services. It is imperative that we understand how information is collected, visualized, and analyzed to shape our world. By learning about the life cycle of data, we can ensure that data is analyzed in productive and ethical ways.
 
-This course provides your first introduction to data science. As evidenced by the waived prerequisites, it assumes no prior experience. An introduction to data science requires learning key tools and principles from mathematics, statistics, and computer science. This course touches on all three.
+This course provides your first introduction to data science. 
+It assumes no prior experience. 
+An introduction to data science requires learning key tools and principles from mathematics, statistics, and computer science. 
+This course touches on all three.
 
 ## Objectives
 
@@ -117,20 +123,29 @@ Whether you see yourself as a future statistician, programmer, or simply want to
 
 ## Software {#sec-software}
 This course will involve programming in the R statistical programming language. 
-R is an open-source language, meaning that a large community of people contribute freely to R without making people pay for the software. 
-The language is particularly good at data wrangling and data visualization. 
-It also has an amazing community of open-source developers who have developed an extensive suite ancillary packages to do cutting edge things in statistics. 
+R is a free and open-source language: a large community of people contribute to R without pay, and a larger community of people use R without having to pay for it. 
+The language is particularly good at data wrangling and data visualization.
+In addition, the community has developed a large number of extra packages to augment the language, making it easy to read in, visualize, and model new and different types of data. 
+
 Some of these packages also allow you to run other programming languages, such as Python, within R. 
 This makes R a good, but not the only, platform to begin to learn programming essentials in a software actively used by professionals in the workforce. 
-All students will be required to have a working laptop capable of installing R that they can bring to each class period. 
-It is expected that you will be using a current version of R (R 4.5.x or later) and will be using updated versions (as of 8/31/26) of all software packages.
 
-For students with a Chromebook or surface that is not capable of installing R, there is a browser based version of the software that you will be expected to access.
-Access to this browser-based version of the software is free for the first 25 compute hours.
+You must have either a working laptop or a chromebook during each class period. **It will not be feasible to complete the programming assignments in this class on your phones.**
+
+
+**Laptop setup**: You will need
+
+- a [current version of R](https://cloud.r-project.org) (4.5.0 or later) installed
+- [RStudio](https://docs.posit.co/ide/user/2026.08.0/#open-source) (2026.1.0 or later) installed
+- [Quarto](https://quarto.org/docs/get-started/) (1.10.0 or later) installed
+- Updated versions of all software packages (as of the first week of class)
+
+**Chromebook setup**: There is a browser based version of R and RStudio that you will be expected to access.
+Access is free for the first 25 compute hours.
 However, if your compute hours exceed the free allotment, you may need to upgrade to a student account for $5/month.
 I recommend waiting to upgrade your account until you absolutely have to. 
-**It will not be feasible to complete the programming assignments in this class on your phones.**
 
+If your laptop breaks unexpectedly during the semester, contact the [IT service desk](https://it.usu.edu/service-desk) for help. [Loaner laptops](https://asklibrary.usu.edu/faq/382124) may be available for short or long term use; you can then use the chromebook instructions to access RStudio in a browser until your laptop is fixed. 
 
 # Tentative Schedule
 
@@ -248,7 +263,13 @@ If you have problems with your computer, operating system, etc. that are not spe
 ## Preparation & Participation
 
 All students are expected to prepare for, attend and fully participate in class.
-Preparation & participation grades will be determined based on a combination of before-class reading checks (preparation) and in-class activities (participation). Some in-class activities may be finished at home before they are submitted. 
+Preparation & participation grades will be determined based on a combination of before-class reading checks (preparation) and in-class activities (participation). 
+
+Some in-class activities may be finished at home before they are submitted.  
+These assignments will typically be due at the end of the day and will close 24 hours after that. 
+Assignments submitted during the 24-hour grace period will be graded.
+
+
 
 ## Attendance
 
@@ -291,12 +312,6 @@ Examples:
     - Flexibility: Present during a different time, or record a presentation. 
     - Note: Flexibility here may be conditional on my ability to verify the situation.
 
-### Inclement Weather
-
-If in-person classes are canceled, you will be notified of the instructional continuity plan for this class by Canvas Announcement.
-In most circumstances where there is power in the Cache Valley, we will hold class via Zoom if the university cancels class.
-You will be held to the same participation standards on Zoom as you are in person, and participation and attendance will be graded accordingly, with some allowance for disruption at the individual level where circumstances warrant (e.g. children at home who interrupt, having to pay the pet tax and show your pet to the camera, parents barging in to ask questions).
-
 ## Reading Checks {#sec-reading-quiz}
 
 You will have weekly reading assignments which introduce the weekly focus area and provide different perspectives on the material.
@@ -312,22 +327,19 @@ The lowest three reading checks will be dropped.
 
 Several formative assignments (assignments meant to help you practice skills) will be given throughout the semester. 
 
--   Assignments must be submitted in the file format specified, and should run or compile as submitted. Code should be formatted using the style guidelines provided in class and demonstrated in videos posted to Canvas.
+-   Assignments must be submitted in the file format specified, and should run or compile as submitted. Code should be formatted using the style guidelines provided in class and demonstrated in videos posted to Canvas. See the homework [submission checklist](homework/submission-checklist.qmd) for more details. 
 
--   I will attempt to grade assignments within a week of the specified due date.
+-   I will aim to grade assignments within a week of the specified due date.
 
 ## Labs 
+
+Labs are class sessions that are dedicated to working interactively on an assignment. 
+A lab assignment may need to be finished at home before it is submitted.
+Lab assignments should be checked using the [submission checklist](homework/submission-checklist.qmd) before they are submitted, as the same formatting standards will apply. 
+
+
+
 <!-- stopped here, XXX edit -->
-
-### Late Work Policy {#sec-late}
-
-Late assignments will be accepted only under extenuating circumstances, and only if you have contacted me **prior** to the assignment due date and received permission to hand the assignment in late.
-I reserve the right not to grade (or to assign a 0 to) any assignments received after the assignment due date.
-
-Logistics: Assignments are due at 12:59 pm on Fridays. There is a grace period of uncertain length between the assignment submission deadline and when I start grading the assignment - if it is submitted by the time I start grading, I don't need to know it was late.
-
-- Turned in at 1:30 am on Saturday, I start grading at 2 pm on Sunday $\rightarrow$ fine. If you email me and alert me that your assignment was late by 5 minutes (or 12 hours), I may fill the 0 in for efficiency's sake. 
-- Turned in at 9:30 am on Sunday, I graded everything Saturday afternoon $\rightarrow$ 0 for the assignment (unless you have permission, etc.). 
 
 ## Project {#sec-project}
 
@@ -339,6 +351,21 @@ These intermediate submissions will contribute to your overall project grade.
 
 **DO NOT** make travel plans that assume you will not have to attend the final exam period. 
 Personal data collection project speed presentations will take place during the final exam period. 
+
+
+## Work Submission Policies {#sec-late}
+
+These policies apply to labs, homework assignments, and project components.
+
+- Assignments submitted by email or through a means other than Canvas will receive a 0.
+
+- Late assignments will be accepted only under extenuating circumstances, and only if you have contacted me **prior** to the assignment due date and received permission to hand the assignment in late.    
+**DO NOT** email me after the assignment close date or due date asking for permission to submit assignments late. Permission to turn an assignment in late must be obtained **before** the due date. 
+
+
+- **Logistics**: Assignments are due at 12:59 pm on Fridays. There is a grace period in Canvas between the due date and the assignment close date. After the close date, you will not be able to submit your assignment in Canvas. 
+
+- I reserve the right not to grade (or to assign a 0 to) any assignments received after the assignment due date. However, in practice, assignments received before the assignment close date will typically be graded. 
 
 ## Evaluation and Academic Integrity {#sec-ai}
 
