@@ -2,13 +2,14 @@
 title: "1.2 Data"
 subtitle: "(and programming)"
 format: revealjs
+code-annotations: hover
 ---
 
 
 # Perception of Data Science & Statistics
 
 [As you come in]{.large .emph .pink-dk}    
-Answer Questions 1-3 on Survey 1.2.p Introduction to Data Science
+Answer Questions 1-3 in Survey 1.2.p Introduction to Data Science on Canvas
 
 ::: {.fragment}
 
@@ -96,7 +97,7 @@ Cons
 
 ## Additional Spreadsheet Tales
 
-[One in five genetics papers contains errors thanks to Microsoft Excel](https://web.archive.org/web/20260814235653/https://www.science.org/content/article/one-five-genetics-papers-contains-errors-thanks-microsoft-excel?__cf_chl_rt_tk=M5.q2K3PEdkmHyiav5sva0AcEcfDO67GPyM5csj0MoM-1786751813-1.0.1.1-q578VGeEPy5o4ndbBg28ERXFwZfvQSknv127fbxiDz0)
+[One in five genetics papers contains errors thanks to Microsoft Excel](https://web.archive.org/web/20241008010530/https://www.science.org/content/article/one-five-genetics-papers-contains-errors-thanks-microsoft-excel)
 
 [Eight Famous Excel Errors That Cost Millions (And One That Renamed Human Genes)](https://web.archive.org/web/20260814232144/https://xlinesoft.com/blog/2026/08/12/8-famous-excel-errors-that-cost-millions-and-one-that-renamed-human-genes/)
 
@@ -119,11 +120,11 @@ Go to Canvas and fill in the attendance code for today
 1. Open RStudio
 2. Open an Editor window (by default, a text file in the top left corner)
 
-## Setting Up
+## Setting Up  
 
 ```{r}
 #| echo: true
-#| code-annotations: "hover"
+#| collapse: false
 library(readr) # <1> 
 library(dslabs) # <2>
 
@@ -131,14 +132,141 @@ path <- system.file("extdata", package="dslabs") # <3>
 
 files <- list.files(path) # <4>
 files
-
-files <- list.files(path, full.names = T) # <5>
-files
 ```
-
 1. Read in files efficiently
 2. Package to go with the IDS books
 3. Find the folder with external data files (`extdata`) in the `dslabs` package
 4. What files are in the `extdata` folder?
-5. List the files AND the path where the files are located
+
+
+## Setting Up
+
+```{r}
+#| echo: true
+#| collapse: false
+files <- list.files(path, full.names = T) # <1>
+files
+```
+
+1. List the files AND the path where the files are located
+ 
+
+
+## Reading in a CSV file
+
+::: callout-note
+### CSV
+Comma Separated Value. Different columns are separated by comma characters (`,`). Any field that contains a comma must be quoted.
+:::
+
+::: columns
+::: {.column width="60%"}
+
+```{r} 
+#| echo: true
+
+carbon_df <- read_csv(files[3])         # <1> 
+names(carbon_df) <- c("Year", "TotalC") # <2>
+head(carbon_df)                         # <3>
+
+```
+1. Read in the third file in the list, which ends in `carbon_emissions.csv`
+2. Rename columns to have shorter names
+3. Look at the head (the first 6 rows, by default) of the object
+
+
+:::
+::: {.column width="40%"}
+::: callout
+### File contents
+```{r}
+#| echo: false
+
+readLines(files[3])[1:10]
+```
+:::
+:::
+:::
+
+## More Complicated CSVs
+
+```{r}
+#| echo: true
+#| warning: true
+olive_df <- read_csv(files[8]) # <1>
+```
+1. Try reading in the olive data from CSV
+
+
+> Warning: One or more parsing issues, call `problems()` on your data frame for
+> details, e.g.:
+> 
+> `  dat <- vroom(...)`
+> 
+> `  problems(dat)`
+
+## More Complicated CSVs
+
+```{r}
+#| echo: true
+
+problems(olive_df) # <1>
+```
+1. When a CSV is not properly formatted, problems can pile up. Use `problems()` to see what R is complaining about. 
+
+
+## More Complicated CSVs
+
+```{r}
+#| echo: true
+
+readLines(files[8])[1:10] # <1>
+```
+1. When in doubt, look at the first few lines of the file. Count how many columns in several rows manually. Then come up with a hypothesis and a plan.
+
+## CSV Trick: Separate the Names from the Data
+
+```{r}
+#| echo: true
+olive_df <- read_csv(files[8],  # <1> 
+                     col_names = FALSE, # <2>
+                     skip = 1) # <3>
+olive_names <- read_csv(files[8], col_names = FALSE, n_max = 1) # <4>
+olive_names <- as.character(olive_names) # <5>
+olive_names <- c("row", "RegionName", olive_names[-1]) # <6>
+names(olive_df) <- olive_names # <7>
+head(olive_df)
+```
+1. Read in the same file, but with additional arguments
+2. Tell `read_csv` you're not providing column names
+3. Skip the first line of the file
+4. Read in only the first line of the file
+5. Convert the table to a vector (a list)
+6. Add names for the first two columns (row, RegionName) and remove the empty entry (`olive_names[-1]`). Put everything into the same vector using `c(...)`
+7. Set the names of the table
+
+## RStudio Projects
+
+- Help you keep track of the files for a data science project
+- File -> New Project -> New Directory 
+  - Name your new project something descriptive
+  - Put the project in sensible folder
+
+- Move data into the project folder (into a `data/` subdirectory if multiple files)
+- .R files in the project folder will find your data automatically without needing a file path. 
+
+## Test Your Skills {.inverse}  
+
+1. Navigate to [https://www.ncdc.noaa.gov/cdo-web/search?datasetid=GHCND](https://www.ncdc.noaa.gov/cdo-web/search?datasetid=GHCND)
+2. Select daily summaries
+3. Search for Zip codes
+4. Enter your Zip code (or 84321, Logan)
+5. Search
+6. Add a weather station to the cart 
+7. Select Custom GHCN-Daily CSV as the output format
+8. Use the default range
+9. Custom options: Select all data types
+10. Submit the request and wait for the email. Download the resulting CSV file.
+11. Write code to read in the data.
+
 

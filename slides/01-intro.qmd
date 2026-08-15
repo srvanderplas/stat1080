@@ -1,6 +1,7 @@
 ---
 title: "1.1 Course Introduction"
 format: revealjs
+echo: false
 ---
 
 # Introduction
