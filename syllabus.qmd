@@ -71,8 +71,11 @@ Textbooks are free/open/online
 
 Required Equipment & Software (@sec-software):
 
-- A laptop that can run R (https://r-project.org, version >= 4.5.0) and RStudio, OR a chromebook that can access the web RStudio platform. 
-- Software packages up to date as of the beginning of the semester
+1. A mobile computing device with a separated, not-on-screen keyboard that:
+    a. Can run R (https://r-project.org, version >= 4.5.0) and RStudio
+    b. (OR) Can access the web RStudio platform. 
+  
+2. Software packages which are up to date as of the beginning of the semester.
 
 Policy Summary (@sec-policies): 
 
@@ -83,7 +86,7 @@ Policy Summary (@sec-policies):
 -   **Communicate** early and often (@sec-expectations), especially if you're having trouble with something.
     Include the right details (@sec-tech-issues) when asking for help.
 -   Do not plan to travel during Finals Week -- you must be present for project presentations (@sec-project).
--   **AI use must be disclosed**, cited, with the full transcript and a diff between AI output and your submission. Be prepared to explain your thought process via oral exam (@sec-ai). 
+-   **AI use must be disclosed** and the full transcript (prompts and responses) provided with your submission. Be prepared to explain your thought process via oral exam (@sec-ai). 
 
 ```{r calendar}
 #| echo: false
@@ -120,6 +123,15 @@ After taking this class, students should be able to:
 \end{enumerate}
 
 Whether you see yourself as a future statistician, programmer, or simply want to make sense of the data-driven world around you, this course will give you tools to ask better questions, make informed decisions, and see the world in a new way.
+
+## IDEA Objectives 
+The university uses IDEA learning objectives to measure course effectiveness. The most relevant for this course are:
+
+\begin{itemize}
+\item (1) Gaining a basic understanding of the subject (factual knowledge, methods, principles, generalizations, theories)
+\item (3) Learning to apply course material (to improve thinking, problem solving, and decisions)
+\item (13) Learning appropriate methods for collecting, analyzing, and interpreting numerical information
+\end{itemize}
 
 ## Software {#sec-software}
 This course will involve programming in the R statistical programming language. 
@@ -227,9 +239,10 @@ Anything below a 60 will receive an F.
 
 You can expect me to:
 
--   reply to emails within 48 hours during the week (72 hours on weekends)
--   be available in class to assist with assignments
--   be available by appointment (office hours) for additional help or discussion
+-   Reply to emails within two business days
+-   Be available in class to assist with assignments
+-   Be available by appointment (office hours) for additional help or discussion
+-   Correct any mistakes I make promptly once they have been brought to my attention
 
 I expect you to:
 
@@ -243,8 +256,21 @@ I expect you to:
 
 
 Discussion and disagreement are important parts of the learning process, but it is important that mutual respect prevail.
-Individuals who detract from an atmosphere of civility and respect will be removed from the conversation and/or the classroom as applicable.
+Individuals who detract from an atmosphere of civility and respect or make it difficult for fellow students to learn will be removed from the conversation and/or the classroom, as outlined in [Student Code V-3 (C) Disruptive Classroom Behavior](https://www.usu.edu/student-conduct/student-code/article5).
 
+
+
+### Recommendations for Course Success
+Learning data science takes practice. Complex ideas rarely click the first time. Success comes from:
+
+\begin{enumerate}
+\item Running examples on your own machine.
+\item Asking and answering questions in class.
+\item Reviewing material between sessions.
+\item Starting assignments soon after they are posted.
+\end{enumerate}
+
+\textbf{Don’t be afraid to make mistakes -- that’s how real learning happens.}
 
 ### Technical Issues {#sec-tech-issues}
 
@@ -255,7 +281,7 @@ If you have technical problems with R, quarto/rmarkdown, or RStudio send me an e
 -   a description of what you think should happen
 -   as much detail as possible: 
     - Text copied (CTRL-C) from error messages
-    - screenshots (not cell phone pics)
+    - screenshots (**not** cell phone pics)
 
 If you have problems with your computer, operating system, etc. that are not specific to this class, please consult IT/HelpDesk first.
 
@@ -267,7 +293,7 @@ Preparation & participation grades will be determined based on a combination of 
 
 Some in-class activities may be finished at home before they are submitted.  
 These assignments will typically be due at the end of the day and will close 24 hours after that. 
-Assignments submitted during the 24-hour grace period will be graded.
+Assignments submitted during the 24-hour grace period will be graded normally.
 
 
 
@@ -367,6 +393,10 @@ These policies apply to labs, homework assignments, and project components.
 
 - I reserve the right not to grade (or to assign a 0 to) any assignments received after the assignment due date. However, in practice, assignments received before the assignment close date will typically be graded. 
 
+## Syllabus Changes
+
+This course is being revised in real-time. The instructor reserves the right to make minor changes to the syllabus, provided students are informed of any changes before they become effective. 
+
 ## Evaluation and Academic Integrity {#sec-ai}
 
 Students are expected to adhere to guidelines concerning academic dishonesty outlined in [Article VI University Regulations Regarding Academic Integrity](https://www.usu.edu/student-conduct/student-code/article6). In this course, academic dishonesty includes failure to disclose use of AI (depending on sources of aid beyond those permitted), as well as more traditional examples of academic dishonesty. 
@@ -392,8 +422,8 @@ Grammar and spelling are important, as is your ability to communicate technical 
 ### Code
 
 You must be able to explain how the logic works for any code you turn in.
-This means that code you obtained from e.g. StackOverflow is fine to use if you can explain it and modify it for the purposes of this class, but if you cannot explain your code you will not get credit for the assignment.
-This is in line with what is generally considered acceptable behavior in programming - reuse is fine (subject to the code's license) but you must be able to fully explain and modify any code you did not write yourself.
+This means that code you obtained from e.g. StackOverflow or AI (see below) is fine to use if you can explain it and modify it for the purposes of this class, but if you cannot explain your code you will not get credit for the assignment.
+This is in line with what is generally considered acceptable behavior in programming - reuse is fine (subject to the code's license and appropriate citation), but you must be able to fully explain and modify any code you did not write yourself.
 You should also provide a link to the source of your code (or even the logic behind your code) - this is useful both for my information and for future you, in addition to being a good way to give attribution to the original author.
 
 ### Oral Exam Policy
@@ -412,25 +442,35 @@ I highly prefer *your* writing and thought process, even with some mistakes, to 
 You must document the following:
 
 -   the version of the generative AI used (e.g. Claude Sonnet 4.5, GPT 5.2, Copilot GPT-5 chat)
--   the full sequence of prompts and responses
+-   the full sequence of prompts and responses (a transcript)
 -   any additional inputs you provided to the AI system (documents, images, etc.)
--   a "diff" between the AI responses and your submission, showing exactly what was generated by the AI system and what you changed. If you are using quarto, you can use the `diff` command line tool to get this (you may have to fix headers) after you've pasted the AI text into its own document.
+-   a description of the differences between the AI responses and your submission, explaining what was generated by AI and what you changed.  
+<!-- "diff" between the AI responses and your submission, showing exactly what was generated by the AI system and what you changed. If you are using quarto, you can use the `diff` command line tool to get this (you may have to fix headers) after you've pasted the AI text into its own document. -->
 
 
 # University Syllabus Policies
 
 See https://www.usu.edu/teach/help-topics/teaching-tips/syllabus-resources for campus policies including the following:
 
-- Academic Support
-- Classroom Behavior
-- Academic Integrity and Dishonesty
-- Discrimination and Misconduct
-- Withdrawal and "I" grade policy
-- Disability services and pregnancy accommodations
-- Grievance Processes
-- Emergency Procedures
-- Mental Health and Food Security resources
+- [Academic Support](https://www.usu.edu/academic-support/)
+- [Classroom Behavior](https://www.usu.edu/teach/help-topics/teaching-tips/syllabus-resources#behavior)
+- [Academic Integrity](https://www.usu.edu/teach/help-topics/teaching-tips/syllabus-resources#integrity) and [Dishonesty](https://www.usu.edu/teach/help-topics/teaching-tips/syllabus-resources#dishonesty)
+- [Discrimination and Misconduct](https://www.usu.edu/teach/help-topics/teaching-tips/syllabus-resources#misconduct)
+- [Withdrawal and "I" grade policy](https://www.usu.edu/teach/help-topics/teaching-tips/syllabus-resources#policy)
+- [Grievance Processes](https://catalog.usu.edu/pages/nIKEuyAF30pWohvriWRp)
+<!-- Please note that issues should be brought to me promptly -- within 5 business days of return of a graded assignment. Your initial complaint should be submitted to me in writing (by email) to start the process.  -->
+- [Emergency Procedures](https://www.usu.edu/teach/help-topics/teaching-tips/syllabus-resources#emergency)
+- [Mental Health](https://www.usu.edu/aggiewellness/caps/) and [Food Security](https://caas.usu.edu/ndfs/snac/) resources
 
 ## Disability Resource Center (DRC)
 
 USU welcomes students with disabilities. If you have, or suspect you may have, a physical, mental health, or learning disability that may require accommodations in this course, please contact the Disability Resource Center (DRC) as early in the semester as possible (University Inn #101, 435‐797‐2444, [drc@usu.edu](mailto://drc@usu.edu)). All disability related accommodations must be approved by the DRC. Once approved, the DRC will coordinate with faculty to provide accommodations.
+
+## Accommodations for Pregnancy and Pregnancy-Related Conditions
+The University prohibits discrimination based on sex, as mandated by Title IX of the Education Amendments of 1972. Consistent with University policy and applicable law, the University will not exclude a student from participating in any part of an educational program based on the student’s pregnancy or pregnancy related conditions. In meeting these obligations, the University will provide reasonable accommodations to USU students, faculty, and staff for pregnancy and pregnancy related conditions. Please see [https://www.usu.edu/equity/pregnancy-accommodations](https://www.usu.edu/equity/pregnancy-accommodations) for more information.
+
+## Students Who are Pregnant or Have a Pregnancy-Related Condition
+
+If you need academic accommodations related to pregnancy, childbirth, false pregnancy, termination of pregnancy, recovery, or other pregnancy related conditions, please contact the Civil Rights & Title IX Office as early as possible. All accommodations related to pregnancy must be approved by the Civil Rights & Title IX Office. The Civil Rights & Title IX Office will then coordinate with instructors to provide accommodations. The University will not exclude a student from participating in any part of an educational program based on the student’s pregnancy or pregnancy related conditions. 
+
+Civil Rights & Title IX Office: Distance Education, Room 400, Logan Campus, 435-797-1266, [Civil Rights & Title IX Office: Pregnancy and Pregnancy Related Conditions.](https://www.usu.edu/civilrights-titleix/pregnancy-accommodations)
