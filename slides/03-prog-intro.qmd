@@ -38,6 +38,12 @@ Alternately...
 
 :::
 
+## Installation/Setup
+
+- Install R and [RStudio](https://docs.posit.co/ide/user/#rstudio-ide-oss-downloads)
+- Install Quarto
+
+
 # Lab: Bread Programming
 
 - [Quarto assignment file](../lab/_03-programming-sandwich.qmd)

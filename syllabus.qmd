@@ -263,16 +263,19 @@ Individuals who detract from an atmosphere of civility and respect or make it di
 ### Recommendations for Course Success
 Learning data science takes practice. Complex ideas rarely click the first time. Succeed by:
 
-1. Running examples on your own machine.
-2. Asking and answering questions in class.
-3. Reviewing material between sessions.
+1. Running examples on your own machine.    
+E.g. changing things, breaking things, figuring out why they broke and how to fix them!
+2. Asking and answering questions in class.    
+Be brave, be bold, be wrong! 
+3. Reviewing material between sessions.    
+Even if you're just preparing a list of "stump the prof" questions!
 4. Starting assignments soon after they are posted.
 
 \textbf{Don’t be afraid to make mistakes -- that’s how real learning happens.}
 
 ### Technical Issues {#sec-tech-issues}
 
-If you have technical problems with R, quarto/rmarkdown, or RStudio send me an email with:
+If you have technical challenges with R, quarto/rmarkdown, or RStudio send me an email with:
 
 -   any files necessary to replicate the issue
 -   a description of what you have tried, and
@@ -281,7 +284,7 @@ If you have technical problems with R, quarto/rmarkdown, or RStudio send me an e
     - Text copied (CTRL-C) from error messages
     - screenshots (**not** cell phone pics)
 
-If you have problems with your computer, operating system, etc. that are not specific to this class, please consult IT/HelpDesk first.
+If your computer is misbehaving in ways that are not specific to this class, please consult IT/HelpDesk - your tuition already pays for this service, so please use it!
 
 
 ## Preparation & Participation
@@ -293,15 +296,12 @@ Some in-class activities may be finished at home before they are submitted.
 These assignments will typically be due at the end of the day and will close 24 hours after that. 
 Assignments submitted during the 24-hour grace period will be graded normally.
 
-
-
 ## Attendance
 
 During each class, I will give you a numerical code which can be entered into a Canvas quiz to show that you were in class. 
 The quiz will be open only during the class period, so you will need to have a device capable of interfacing with Canvas during class.
 
 Sharing this code with anyone, or receiving a code for a class you were not present for, will be considered a violation of academic integrity. 
-
 
 Three absences (1 week of class) will be allowed without any reduction in your attendance score - no excuse is necessary! 
 Please *do not email me* when you use your excuse-free absences - Canvas will automatically drop the quizzes associated with the first three missed classes.
@@ -312,7 +312,7 @@ If you are feeling ill, please **do not come to class**.
 Instead, review the material and work on the homework assignment, and then schedule an appointment with me to meet virtually.
 In the appointment reason field on [Calendly](https://calendly.com/vanderplas-stats/30min), indicate that this appointment is to substitute for your in-class participation on the date you missed.
 
-If you need to miss more than 3 classes for illness, I will ask you to work with the Disability Resource Center in order to continue using this substitute for attendance.
+If you need to miss more than 3 classes for illness (6 total, including the 3 excuse-free absences), I will ask you to work with the Disability Resource Center in order to continue using this substitute for attendance.
 
 ### Extenuating Circumstances
 
@@ -379,8 +379,6 @@ You will complete a personal data collection project in this course.
 The project will be scaffolded - you will need to submit a proposal, as well as several intermediate assignments throughout the course of the semester, applying information we are covering in class to your own data. 
 These intermediate submissions will contribute to your overall project grade. 
 
-### Project Presentation Attendance
-
 **DO NOT** make travel plans that assume you will not have to attend the final exam period. 
 Personal data collection project speed presentations will take place during the final exam period. 
 
@@ -436,6 +434,8 @@ You should also provide a link to the source of your code (or even the logic beh
 
 With the proliferation of AI large language models, I reserve the right to replace homework grades with grades based on an oral discussion of your submissions.
 If you cannot explain the logic behind your submission, how you came to the approach you used, and identify the tradeoffs behind decisions you made, then you will not receive credit.
+Similarly, if you can explain these things, but you still came to the wrong solution because some wires got crossed, you can *benefit* from this oral exam policy and get a better grade.
+
 LLMs can be a useful tool, but this course's objectives are to develop your understanding of data science, not your ability to use LLMs.
 Fundamentally, you need to understand concepts and apply methodology in order to use data effectively; generative AI solutions may hamper both of these goals if you rely on them too much.
 
@@ -461,7 +461,7 @@ You must document the following:
 :::
 
 
-See [https://www.usu.edu/teach/help-topics/teaching-tips/syllabus-resources](https://www.usu.edu/teach/help-topics/teaching-tips/syllabus-resources) for campus policies including 
+See [https://www.usu.edu/teach/help-topics/teaching-tips/syllabus-resources](https://www.usu.edu/teach/help-topics/teaching-tips/syllabus-resources) for campus policies, including 
 [Academic Support](https://www.usu.edu/academic-support/), [Classroom Behavior](https://www.usu.edu/teach/help-topics/teaching-tips/syllabus-resources#behavior), [Academic Integrity](https://www.usu.edu/teach/help-topics/teaching-tips/syllabus-resources#integrity) and [Dishonesty](https://www.usu.edu/teach/help-topics/teaching-tips/syllabus-resources#dishonesty), [Discrimination and Misconduct](https://www.usu.edu/teach/help-topics/teaching-tips/syllabus-resources#misconduct), [Withdrawal and "I" grade policy](https://www.usu.edu/teach/help-topics/teaching-tips/syllabus-resources#policy), [Grievance Processes](https://catalog.usu.edu/pages/nIKEuyAF30pWohvriWRp), 
 <!-- Please note that issues should be brought to me promptly -- within 5 business days of return of a graded assignment. Your initial complaint should be submitted to me in writing (by email) to start the process.  -->
 [Emergency Procedures](https://www.usu.edu/teach/help-topics/teaching-tips/syllabus-resources#emergency), 
