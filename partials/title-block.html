@@ -17,22 +17,37 @@ $abstract$
 </div>
 $endif$
 
-<dl>
 $if(instructor)$
-<dt>Instructor</dt><dd>$for(instructor)$$instructor$$sep$, $endfor$</dd>
-$endif$ 
-$if(email)$<dt>E-mail</dt><dd><a href="mailto:$email$">$email$</a></dd>$endif$ 
-<dt>Office</dt><dd>$if(office)$$office$$else$TBD$endif$</dd>
-$if(officehours)$
-<dt>Office Hours</dt><dd>$officehours$</dd>
-$endif$
-</dl>
 <dl>
-<dt>Time</dt><dd>$if(classhours)$$classhours$$else$TBD$endif$</dd>
-<dt>Location</dt><dd>$if(classroom)$$classroom$$else$TBD$endif$</dd>
-$if(site)$<dt>Course Website</dt><dd>$site$</dd>$endif$
-$if(final)$
-<dt>Final Exam</dt><dd>$final$</dd>
+$for(instructor)$
+$if(instructor.name)$
+<dt>Instructor</dt><dd>$instructor.name$</dd>
+$endif$
+$if(instructor.email)$
+<dt>E-mail</dt><dd><a href="mailto:$instructor.email$">$instructor.email$</a></dd>
+$endif$ 
+$if(instructor.office)$
+<dt>Office</dt><dd>$instructor.office$$else$TBD</dd>
+$endif$
+$if(instructor.site)$<dt>Website</dt><dd>$instructor.site$</dd>$endif$
+$sep$, $endfor$
+</dl>
+$endif$ 
+
+$if(officehours)$
+<dt>Office Hours (Get help)</dt><dd>$officehours$</dd>
 $endif$
 </dl>
+$if(class)$
+  <dl>
+  <dt>Time</dt>           <dd>$if(class.time)$    $class.time$ $else$ TBD $endif$</dd>
+  <dt>Location</dt>       <dd>$if(class.room)$    $class.room$ $else$ TBD $endif$</dd>
+  $if(class.final)$
+  <dt>Final Exam</dt>     <dd>$class.final$</dd>
+  $endif$
+  $if(class.site)$
+  <dt>Course Website</dt> <dd>$class.site$</dd>
+  $endif$
+  </dl>
+$endif$
 </header>

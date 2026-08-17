@@ -7,19 +7,25 @@ $endif$
 %%% --- table with course info %%%
 \noindent
 \rule{\linewidth}{.5pt}\\
-\begin{minipage}[t]{.5\linewidth}
+\begin{minipage}[t]{.57\linewidth}
+$if(instructor)$
 \begin{description}
-$if(instructor)$\item[Instructor] $for(instructor)$$instructor$$sep$ \and $endfor$$endif$ 
-$if(office)$\item[Office] $office$ $endif$
-$if(email)$\item[E-mail] \href{mailto://$email$}{\texttt{$email$}}$endif$
-$if(officehours)$\item[Office Hours] $officehours$$endif$
+$for(instructor)$
+  $if(instructor.name)$   \item[Instructor] $instructor.name$                                               $endif$
+  $if(instructor.office)$ \item[Office]     $instructor.office$                                             $endif$
+  $if(instructor.email)$  \item[E-mail]     \href{mailto://$instructor.email$}{\texttt{$instructor.email$}} $endif$
+  $if(instructor.site)$   \item[Web Page]   \href{http://$instructor.site$}{$instructor.site$}              $endif$
+$endfor$
+$endif$ 
 \end{description}
-\end{minipage}\hfill\begin{minipage}[t]{.47\linewidth}
-\begin{description}
-\item[Location] $if(classroom)$$classroom$$else$TBD$endif$
-\item[Time]$if(classhours)$$classhours$$else$TBD$endif$
-$if(site)$\item[Web] \href{http://$site$}{$site$}$endif$
-$if(final)$\item[Final] $final$$endif$
-\end{description}\end{minipage}
-\\
-\rule{\linewidth}{.5pt}\\
+\end{minipage}\hfill\begin{minipage}[t]{.42\linewidth}
+$if(class)$
+  \begin{description}
+  \item[Location]   $if(class.room)$ $class.room$ $else$ TBD $endif$
+  \item[Time]       $if(class.time)$ $class.time$ $else$ TBD $endif$
+  $if(class.final)  $\item[Final] $class.final$ $endif$
+  \end{description}
+$endif$
+\end{minipage}
+$if(officehours)$ \vspace{-.5em} \begin{description} \item[Office Hours (get help)] $officehours$ \end{description} $endif$
+\vspace{-1em}\rule{\linewidth}{.5pt}

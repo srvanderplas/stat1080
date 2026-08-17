@@ -7,7 +7,6 @@ number-sections: true
 number-depth: 3
 format:
   html:
-    keep-tex: false
     theme:
       light: [flatly, theme.scss, _variables-flatly.scss]
       dark: [darkly, theme.scss, _variables-darkly.scss]
@@ -15,25 +14,24 @@ format:
     template-partials:
     - partials/title-block.html
   pdf:
-    keep-tex: false
+    keep-tex: true
     template-partials:
     - partials/title.tex
     - partials/before-body.tex
     - partials/graphics.tex
     dev: cairo_pdf
 title: Stat 1080 Syllabus
-instructor: Susan Vanderplas
+instructor: 
+  - name: Dr. Susan Vanderplas
+  - office: Ray B. West 412
+  - email: susan.vanderplas@usu.edu
 semester: Fall 2026
-email: susan.vanderplas@usu.edu
-web: srvanderplas.github.io
 officehours: | 
-  By appointment. Schedule at    
-  [https://calendly.com/vanderplas-stat/office-hours](https://calendly.com/vanderplas-stat/office-hours)
-office: Ray West
-classroom: ELSC 053
-classhours: MWF 12:30-1:20
-final: Dec 16, 12:30-2:20
-site: srvanderplas.github.io/stat1080
+  [calendly.com/vanderplas-stat/office-hours](https://calendly.com/vanderplas-stat/office-hours)
+class:
+  room: ELSC 053
+  time: MWF 12:30-1:20
+  final: Dec 16, 12:30-2:20
 ---
 
 > ...the time may not be very remote when it will be understood that for complete initiation as an efficient citizen ... it is as necessary to be able to compute, to think in averages and maxima and minima, as it is now to be able to read and write.
@@ -71,21 +69,21 @@ Textbooks are free/open/online
 
 Required Equipment & Software (@sec-software):
 
-1. A mobile computing device with a separated, not-on-screen keyboard that:
+1. A device with a keyboard and a screen resolution of > 1000x1000 pixels that:
     a. Can run R (https://r-project.org, version >= 4.5.0) and RStudio
-    b. (OR) Can access the web RStudio platform. 
+    b. (OR) Can access the web RStudio platform in a browser. 
   
 2. Software packages which are up to date as of the beginning of the semester.
 
 Policy Summary (@sec-policies): 
 
--   **Grade**: 20% Preparation & Participation, 20% Attendance, 40% Homework and Labs, 20% Project (@sec-grading).
+-   **Grade**: 20% Attendance, 20% Preparation & Participation, 20% Personal Data Collection Project, 40% Homework and Labs (@sec-grading).
 -   **Attendance** matters. You get three excuse-free absences  (@sec-illness). 
 -   **Prepare**: Reading (and reading quiz) must be done before class. (@sec-reading-quiz)
 -   Keep up with the work as assigned (@sec-homework).
--   **Communicate** early and often (@sec-expectations), especially if you're having trouble with something.
-    Include the right details (@sec-tech-issues) when asking for help.
--   Do not plan to travel during Finals Week -- you must be present for project presentations (@sec-project).
+-   **Communicate** early and often (@sec-expectations), especially if you're having trouble.
+-   Include the right details (@sec-tech-issues) when asking for help.
+-   **Do not plan to travel during Finals Week** - you have project presentations (@sec-project).
 -   **AI use must be disclosed** and the full transcript (prompts and responses) provided with your submission. Be prepared to explain your thought process via oral exam (@sec-ai). 
 
 ```{r calendar}
@@ -133,31 +131,32 @@ The university uses IDEA learning objectives to measure course effectiveness. Th
 \item (13) Learning appropriate methods for collecting, analyzing, and interpreting numerical information
 \end{itemize}
 
-## Software {#sec-software}
-This course will involve programming in the R statistical programming language. 
+## Required Software & Equipment {#sec-software}
+This course will teach you how to program using the R statistical programming language. 
 R is a free and open-source language: a large community of people contribute to R without pay, and a larger community of people use R without having to pay for it. 
 The language is particularly good at data wrangling and data visualization.
 In addition, the community has developed a large number of extra packages to augment the language, making it easy to read in, visualize, and model new and different types of data. 
 
 Some of these packages also allow you to run other programming languages, such as Python, within R. 
-This makes R a good, but not the only, platform to begin to learn programming essentials in a software actively used by professionals in the workforce. 
+This makes R a good platform to begin to learn programming essentials in a software actively used by professionals in the workforce. 
+Of course, R is not the only option -- others, like Python, Tableau, SAS, and Julia also exist. 
 
-You must have either a working laptop or a chromebook during each class period. **It will not be feasible to complete the programming assignments in this class on your phones.**
+You must have a computing device with a large (> 1000x1000 pixel) screen and a separate keyboard (e.g. not an on-screen keyboard). Your device should either be 
 
-
-**Laptop setup**: You will need
-
-- a [current version of R](https://cloud.r-project.org) (4.5.0 or later) installed
-- [RStudio](https://docs.posit.co/ide/user/2026.08.0/#open-source) (2026.1.0 or later) installed
-- [Quarto](https://quarto.org/docs/get-started/) (1.10.0 or later) installed
-- Updated versions of all software packages (as of the first week of class)
-
-**Chromebook setup**: There is a browser based version of R and RStudio that you will be expected to access.
+a. A laptop with:
+    - a [current version of R](https://cloud.r-project.org) (4.5.0 or later) installed
+    - [RStudio](https://docs.posit.co/ide/user/2026.08.0/#open-source) (2026.1.0 or later) installed
+    - [Quarto](https://quarto.org/docs/get-started/) (1.10.0 or later) installed
+    - Updated versions of all software packages (as of the first week of class)
+    
+b. A chromebook or large tablet with a keyboard that can access the browser-based version of RStudio provided by USU. 
 Access is free for the first 25 compute hours.
 However, if your compute hours exceed the free allotment, you may need to upgrade to a student account for $5/month.
 I recommend waiting to upgrade your account until you absolutely have to. 
 
-If your laptop breaks unexpectedly during the semester, contact the [IT service desk](https://it.usu.edu/service-desk) for help. [Loaner laptops](https://asklibrary.usu.edu/faq/382124) may be available for short or long term use; you can then use the chromebook instructions to access RStudio in a browser until your laptop is fixed. 
+**It will not be feasible to complete the programming assignments in this class on your phone.**
+
+If your equipment breaks unexpectedly during the semester, contact the [IT service desk](https://it.usu.edu/service-desk) for help. [Loaner laptops](https://asklibrary.usu.edu/faq/382124) may be available for short or long term use; you can then use the chromebook/tablet instructions to access RStudio in a browser until your device is fixed. 
 
 # Tentative Schedule
 
@@ -196,10 +195,10 @@ tmp
 ```
 
 
-\normalsize
+<!-- \normalsize -->
 
-\FloatBarrier
-\clearpage
+<!-- \FloatBarrier -->
+<!-- \clearpage -->
 
 :::
 
@@ -210,14 +209,15 @@ tmp
 
 | Assignments                     | Weight |
 |---------------------------------|--------|
-| Preparation & Participation     | 20%    |
 | Attendance                      | 20%    |
+| Preparation & Participation     | 20%    |
 | Personal Data Project           | 20%    |
 | Homework & Labs                 | 40%    |
 
 Lower bounds for grade cutoffs are shown in the following table.
 I will not "round up" grades at the end of the semester.
-I may, however, adjust this scale upwards, but this adjustment will be for the entire class. 
+I may, however, adjust this scale upwards for the entire class, but this decision will be made at the end of the semester. 
+Do NOT email me asking about this adjustment: it will happen automatically if I deem it necessary. 
 
 | Letter grade | X +    | X    | X -  |
 |--------------|--------|------|------|
@@ -261,14 +261,12 @@ Individuals who detract from an atmosphere of civility and respect or make it di
 
 
 ### Recommendations for Course Success
-Learning data science takes practice. Complex ideas rarely click the first time. Success comes from:
+Learning data science takes practice. Complex ideas rarely click the first time. Succeed by:
 
-\begin{enumerate}
-\item Running examples on your own machine.
-\item Asking and answering questions in class.
-\item Reviewing material between sessions.
-\item Starting assignments soon after they are posted.
-\end{enumerate}
+1. Running examples on your own machine.
+2. Asking and answering questions in class.
+3. Reviewing material between sessions.
+4. Starting assignments soon after they are posted.
 
 \textbf{Don’t be afraid to make mistakes -- that’s how real learning happens.}
 
@@ -450,17 +448,12 @@ You must document the following:
 
 # University Syllabus Policies
 
-See https://www.usu.edu/teach/help-topics/teaching-tips/syllabus-resources for campus policies including the following:
-
-- [Academic Support](https://www.usu.edu/academic-support/)
-- [Classroom Behavior](https://www.usu.edu/teach/help-topics/teaching-tips/syllabus-resources#behavior)
-- [Academic Integrity](https://www.usu.edu/teach/help-topics/teaching-tips/syllabus-resources#integrity) and [Dishonesty](https://www.usu.edu/teach/help-topics/teaching-tips/syllabus-resources#dishonesty)
-- [Discrimination and Misconduct](https://www.usu.edu/teach/help-topics/teaching-tips/syllabus-resources#misconduct)
-- [Withdrawal and "I" grade policy](https://www.usu.edu/teach/help-topics/teaching-tips/syllabus-resources#policy)
-- [Grievance Processes](https://catalog.usu.edu/pages/nIKEuyAF30pWohvriWRp)
+See [https://www.usu.edu/teach/help-topics/teaching-tips/syllabus-resources](https://www.usu.edu/teach/help-topics/teaching-tips/syllabus-resources) for campus policies including 
+[Academic Support](https://www.usu.edu/academic-support/), [Classroom Behavior](https://www.usu.edu/teach/help-topics/teaching-tips/syllabus-resources#behavior), [Academic Integrity](https://www.usu.edu/teach/help-topics/teaching-tips/syllabus-resources#integrity) and [Dishonesty](https://www.usu.edu/teach/help-topics/teaching-tips/syllabus-resources#dishonesty), [Discrimination and Misconduct](https://www.usu.edu/teach/help-topics/teaching-tips/syllabus-resources#misconduct), [Withdrawal and "I" grade policy](https://www.usu.edu/teach/help-topics/teaching-tips/syllabus-resources#policy), [Grievance Processes](https://catalog.usu.edu/pages/nIKEuyAF30pWohvriWRp), 
 <!-- Please note that issues should be brought to me promptly -- within 5 business days of return of a graded assignment. Your initial complaint should be submitted to me in writing (by email) to start the process.  -->
-- [Emergency Procedures](https://www.usu.edu/teach/help-topics/teaching-tips/syllabus-resources#emergency)
-- [Mental Health](https://www.usu.edu/aggiewellness/caps/) and [Food Security](https://caas.usu.edu/ndfs/snac/) resources
+[Emergency Procedures](https://www.usu.edu/teach/help-topics/teaching-tips/syllabus-resources#emergency), 
+[Mental Health](https://www.usu.edu/aggiewellness/caps/) assistance,
+and [Food Security](https://caas.usu.edu/ndfs/snac/) resources.
 
 ## Disability Resource Center (DRC)
 

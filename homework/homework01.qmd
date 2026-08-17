@@ -73,6 +73,7 @@ Under this definition we can calculate the sample mean of $X$ (called $\bar{x}$)
 
 $$\bar{x} = \frac{\sum_{i=1}^n x_i}{n}.$$
 ::: {.callout-note collapse=true}
+
 ### Math Notation for the mean
 
 Let's break the math down a bit. 
@@ -86,12 +87,14 @@ Let's break the math down a bit.
 Restated in plain English, I am taking the **sum** of all the elements of the vector, and then dividing by the **length** of the vector (or, if I am ignoring NAs, the sum of instances for which `!is.na()` evaluates to `TRUE`).
 
 ::: {.callout-note collapse=true}
+
 ### Missing Observations
 
-Sometimes, we can have missing observations, which are denoted by NA. 
+Sometimes, we can have missing observations, which are denoted by `NA`. 
 If there are missing observations, we should exclude the missing observations from the sum (in the numerator/on the top of the fraction), and then exclude the missing observations from the number of total observations. 
 
 In R, we can exclude NAs from most functions by using `fn(..., na.rm = T)`, where `fn` is the function name and `...` are the other arguments.
+
 :::
 
 Using this definition, re-calculate the mean added sugar content of the cereals without using the `mean()` function in R. 

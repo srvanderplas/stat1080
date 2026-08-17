@@ -333,6 +333,50 @@ schedule:
 
 
 important-course-dates:
+  - name: Homework 1 due
+    id: hwk1
+    date: "2026-10-11"
+    time: "11:59 pm"
+  - name: Homework 2 due
+    id: hwk2
+    date: "2026-11-01"
+    time: "11:59 pm"
+  - name: Homework 3 due
+    id: hwk3
+    date: "2026-11-22"
+    time: "11:59 pm"
+  - name: Homework 4 due
+    id: hwk4
+    date: "2026-12-13"
+    time: "11:59 pm"
+    
+  - name: Project Proposal
+    id: project-proposal
+    date: "2026-09-12"
+    time: "11:59 pm"
+  - name: Project Check-In 1
+    id: project-checkin1
+    date: "2026-10-03"
+    time: "11:59 pm"
+  - name: Project Check-In 2
+    id: project-checkin2
+    date: "2026-11-07"
+    time: "11:59 pm"
+  - name: Project Spreadsheet
+    id: project-spreadsheet
+    date: "2026-11-21"
+    time: "11:59 pm"
+  - name: Project Submission 1
+    id: project-submit1
+    date: "2026-12-05"
+    time: "11:59 pm"
+  - name: Project Submission 2
+    id: project-submit2
+    date: "2026-12-11"
+    time: "11:59 pm"
+  - name: Project Code Review
+    id: project-code-review
+    date: "2026-12-07"
   - name: Project Presentations
     id: project-present
     date: "2026-12-16"

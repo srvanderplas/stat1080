@@ -61,6 +61,9 @@ wom <- function(date) {
   return((mday(date) + (first - 2)) %/% 7 + 1)
 }
 
+hwk_dates <- filter(due_dates, str_detect(id, "hwk"))
+proj_dates <- filter(due_dates, str_detect(id, "project"))
+
 # Create a data frame of dates, assign to Cal
 Cal <- tibble(date = seq(floor_date(min(semester_dates), "month"), ceiling_date(max(semester_dates), "month") - days(1), by = 1)) %>%
   mutate(
@@ -68,7 +71,8 @@ Cal <- tibble(date = seq(floor_date(min(semester_dates), "month"), ceiling_date(
     wkdy = weekdays(date, abbreviate = T), # get weekday label
     wkdy = fct_relevel(wkdy, "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"), # make sure Sunday comes first
     semester = date %in% semester_dates, # is date part of the semester?
-    due = date %in% due_dates$date, # is it a due date?
+    due = date %in% hwk_dates$date, # is it a due date?
+    project = date %in% proj_dates$date,
     not_here = date %in% not_here_dates, # is it a day off?
     exam_wk = date %in% exam_week,
     day = lubridate::mday(date), # get day of month to add later as a label
@@ -81,7 +85,8 @@ Cal <- tibble(date = seq(floor_date(min(semester_dates), "month"), ceiling_date(
 
 Cal <- Cal %>%
   mutate(category = case_when(
-    due ~ "Due date",
+    due ~ "Hwk Due Date",
+    project ~ "Project Due Date",
     not_here ~ "Holiday",
     exam_wk ~ "Finals",
     semester & wkdy %in% class_wdays ~ "Class",
@@ -133,14 +138,15 @@ class_cal <- ggplot(Cal, aes(wkdy, week)) +
   scale_fill_manual(
     values = c(
       "Class" = "#9febfe",
-      "Due date" = "#f6bd17",
+      "Hwk Due Date" = "#f6bd17",
+      "Project Due Date" = "#90b6a8",
       "Semester" = "white",
-      "Finals" = "#A2AAAD",
+      "Finals" = "#CCCCCC",
       "Holiday" = "#0F2439",
       "NA" = "white" # I like these whited out...
     ),
     # ... but also suppress a label for a non-class semester day
-    breaks = c("Semester", "Holiday", "Due date", "Class", "Finals")
+    breaks = c("Holiday", "Hwk Due Date", "Project Due Date", "Class", "Finals")
   )
 # class_cal
 
