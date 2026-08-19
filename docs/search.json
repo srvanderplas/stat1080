@@ -2107,5 +2107,68 @@
     "title": "1.3 Introduction to Programming",
     "section": "Teaching Rocks to do Math",
     "text": "Teaching Rocks to do Math\n\nRemember you’re talking to a rock (“dumb as a box of rocks…”)\nYou have to know a concept really well before you start programming\nBe extremely specific\nConsider what assumptions you are making.\n\nTry not to make them unless necessary.\nIf necessary, test to ensure they’re met."
+  },
+  {
+    "objectID": "slides/03-prog-intro.html#installationsetup",
+    "href": "slides/03-prog-intro.html#installationsetup",
+    "title": "1.3 Introduction to Programming",
+    "section": "Installation/Setup",
+    "text": "Installation/Setup\n\nInstall R and RStudio\nInstall Quarto"
+  },
+  {
+    "objectID": "slides/03-prog-intro.html#basic-definitions",
+    "href": "slides/03-prog-intro.html#basic-definitions",
+    "title": "1.3 Introduction to Programming",
+    "section": "Basic Definitions",
+    "text": "Basic Definitions\n\n\n\n\n\n\nvariable\n\n\nA named object corresponding to a space in computer memory that can be assigned a value\n\n\n\nIn R, variables are assigned using &lt;-, e.g. \n\nx &lt;- 5\ny &lt;- \"A character variable\"\n\nx and y are the variable names, 5 and \"a character variable\" are the assigned values.\n\nx &lt;- 6\n\nVariable values can be re-assigned."
+  },
+  {
+    "objectID": "slides/03-prog-intro.html#basic-definitions-1",
+    "href": "slides/03-prog-intro.html#basic-definitions-1",
+    "title": "1.3 Introduction to Programming",
+    "section": "Basic Definitions",
+    "text": "Basic Definitions\n\n\n\n\n\n\nvariable type\n\n\nThe mode and size of the variable’s stored value(s)\n\n\n\nTypes can be:\n\nintegers (1, 2, 3, 40932),\nfloats (3.1415, 2.71828),\ncharacters (“Frank”, “Evelyn”, “This is a string”), or\nlogicals (TRUE, FALSE)\n\n\nmode(x)\n\n[1] \"numeric\"\n\nmode(y)\n\n[1] \"character\""
+  },
+  {
+    "objectID": "slides/03-prog-intro.html#basic-definitions-2",
+    "href": "slides/03-prog-intro.html#basic-definitions-2",
+    "title": "1.3 Introduction to Programming",
+    "section": "Basic Definitions",
+    "text": "Basic Definitions\n\n\n\n\n\n\nvariable structure\n\n\nA way to arrange and store multiple data values for efficient access"
+  },
+  {
+    "objectID": "slides/03-prog-intro.html#basic-definitions-3",
+    "href": "slides/03-prog-intro.html#basic-definitions-3",
+    "title": "1.3 Introduction to Programming",
+    "section": "Basic Definitions",
+    "text": "Basic Definitions\n\n\n\nA Lego vector with same-type studs\n\n\n\n\n\nA Lego list with different-type studs"
+  },
+  {
+    "objectID": "slides/03-prog-intro.html#basic-definitions-4",
+    "href": "slides/03-prog-intro.html#basic-definitions-4",
+    "title": "1.3 Introduction to Programming",
+    "section": "Basic Definitions",
+    "text": "Basic Definitions\n\nA Lego data frame - a list of vectors of the same length, with each vector having a different type."
+  },
+  {
+    "objectID": "slides/03-prog-intro.html#vector",
+    "href": "slides/03-prog-intro.html#vector",
+    "title": "1.3 Introduction to Programming",
+    "section": "Vector",
+    "text": "Vector\n\n\n\n\n\n\n\nvector\n\n\na sequence of multiple values of the same type (think about a column in a spreadsheet)\n\n\n\n\n\nA Lego vector with same-type studs"
+  },
+  {
+    "objectID": "slides/03-prog-intro.html#data-frame",
+    "href": "slides/03-prog-intro.html#data-frame",
+    "title": "1.3 Introduction to Programming",
+    "section": "Data Frame",
+    "text": "Data Frame\n\n\n\n\n\n\n\ndata frame\n\n\na list of vectors which all have the same length.\n(Essentially, this is a spreadsheet with strict column/row requirements)\n\n\n\n\n\nA Lego data frame - a list of vectors of the same length, with each vector having a different type."
+  },
+  {
+    "objectID": "slides/03-prog-intro.html#list",
+    "href": "slides/03-prog-intro.html#list",
+    "title": "1.3 Introduction to Programming",
+    "section": "List",
+    "text": "List\n\n\n\n\n\n\n\nlist\n\n\na sequence of multiple values; these values can be of the same or different data type.\n\n\n\n\n\nA Lego list with different-type studs"
   }
 ]
