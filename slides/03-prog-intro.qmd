@@ -139,6 +139,72 @@ a list of vectors which all have the same length.
 
 ![A Lego data frame - a list of vectors of the same length, with each vector having a different type.](images/lego-data-frame.png){fig-alt="A list of four vectors that all have length 12; the first has 1x1 green bricks, the second has 1x3 purple/pink bricks, the third has 1x2 yellow bricks, and the final has 1x4 blue-ish bricks."}
 
+## Creating Data Structures
+
+```{r}
+#| echo: true
+
+vec <- c(1:10)
+df <- data.frame(x = 1:3, y = letters[1:3], z = c(T, F, F))
+mylst <- list(x = 1:3, y = letters[1:4], z = c(T, F, F, F, T))
+```
+
+## What do they look like?
+
+```{r}
+#| echo: true
+
+vec
+df
+mylst
+```
+
+## Find the Structure
+
+[Use the `str()` command to investigate the structure of an object]{.large}
+
+```{r}
+#| echo: true
+str(vec)
+str(df)
+str(mylst)
+```
+
+## Access Pieces of Objects
+
+::: columns
+::: {.column width="30%"}
+### Vectors
+```{r}
+#| echo: true
+vec[2:4]
+vec[c(2, 8)]
+```
+::: 
+
+::: {.column width="30%"}
+
+### Data Frames
+`name[rows, cols]`
+```{r}
+#| echo: true
+df[1:2, 2:3]
+```
+:::
+
+::: {.column width="39%"}
+
+### Lists
+`name[[idx]]` - access sub-object     
+(idx is an integer)
+
+```{r}
+#| echo: true
+mylst[[3]]
+mylst[[2]][c(1, 3)]
+```
+:::
+:::
 
 # Lab: Bread Programming
 
