@@ -10,7 +10,7 @@ echo: false
 
 - New to USU - Previously an Associate Professor at University of Nebraska Lincoln
 
-- Prosopagnosia – Face blindness
+- Prosopagnosia – Face blindness 🫥
 
 - I've been teaching R and Statistics since 2013 or so – graduate school.
 
@@ -22,7 +22,7 @@ echo: false
 
 ## Course Fee
 
-\$30, covers Aggie Math Learning Center staff.
+\$30, covers Aggie Math Learning Center. 
 
 Room 411, LIB – a short walk from here.
 
@@ -36,7 +36,7 @@ Room 411, LIB – a short walk from here.
 :::
 
 ::: column
-- A brain, some heart, and some courage
+- A brain🧠, some 🫀heart❤️, and some courage🦁
 
 - A device with a keyboard and a screen of at least 1000x1000 px
 
@@ -61,9 +61,9 @@ Room 411, LIB – a short walk from here.
 
 - 3 excuse-free absences
 
-- If you're sick, schedule an office hours appointment to make up absences over 3
+- If you're sick🤒, schedule an office hours appointment to make up any absences past 3
 
-- If something happens, contact me early
+- If something happens💥, contact me early
 
 Checking Attendance:
 
@@ -102,7 +102,7 @@ Checking Attendance:
 
 :::
 
-[(even though learning statistics and programming can be scary)]{.fragment}
+[(even though learning statistics and programming can be scary 👻)]{.fragment}
 
 
 :::
