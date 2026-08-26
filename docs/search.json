@@ -1769,5 +1769,75 @@
     "title": "Read the Syllabus",
     "section": "Finals",
     "text": "Finals\n\nDo NOT plan to travel during Finals Week!"
+  },
+  {
+    "objectID": "slides/05-prog-intro.html#basic-definitions",
+    "href": "slides/05-prog-intro.html#basic-definitions",
+    "title": "1.5 Introduction to Programming",
+    "section": "Basic Definitions",
+    "text": "Basic Definitions\n\n\n\n\n\n\nvariable\n\n\nA named object corresponding to a space in computer memory that can be assigned a value\n\n\n\nIn R, variables are assigned using &lt;-, e.g. \n\nx &lt;- 5\ny &lt;- \"A character variable\"\n\nx and y are the variable names, 5 and \"a character variable\" are the assigned values.\n\nx &lt;- 6\n\nVariable values can be re-assigned."
+  },
+  {
+    "objectID": "slides/05-prog-intro.html#basic-definitions-1",
+    "href": "slides/05-prog-intro.html#basic-definitions-1",
+    "title": "1.5 Introduction to Programming",
+    "section": "Basic Definitions",
+    "text": "Basic Definitions\n\n\n\n\n\n\nvariable type\n\n\nThe mode and size of the variable’s stored value(s)\n\n\n\nTypes can be:\n\nintegers (1, 2, 3, 40932),\nfloats (3.1415, 2.71828),\ncharacters (“Frank”, “Evelyn”, “This is a string”), or\nlogicals (TRUE, FALSE)\n\n\nmode(x)\n\n[1] \"numeric\"\n\nmode(y)\n\n[1] \"character\""
+  },
+  {
+    "objectID": "slides/05-prog-intro.html#basic-definitions-2",
+    "href": "slides/05-prog-intro.html#basic-definitions-2",
+    "title": "1.5 Introduction to Programming",
+    "section": "Basic Definitions",
+    "text": "Basic Definitions\n\n\n\n\n\n\nvariable structure\n\n\nA way to arrange and store multiple data values for efficient access"
+  },
+  {
+    "objectID": "slides/05-prog-intro.html#vector",
+    "href": "slides/05-prog-intro.html#vector",
+    "title": "1.5 Introduction to Programming",
+    "section": "Vector",
+    "text": "Vector\n\n\n\n\n\n\n\nvector\n\n\na sequence of multiple values of the same type (think about a column in a spreadsheet)\n\n\n\n\n\nA Lego vector with same-type studs"
+  },
+  {
+    "objectID": "slides/05-prog-intro.html#list",
+    "href": "slides/05-prog-intro.html#list",
+    "title": "1.5 Introduction to Programming",
+    "section": "List",
+    "text": "List\n\n\n\n\n\n\n\nlist\n\n\na sequence of multiple values; these values can be of the same or different data type.\n\n\n\n\n\nA Lego list with different-type studs"
+  },
+  {
+    "objectID": "slides/05-prog-intro.html#data-frame",
+    "href": "slides/05-prog-intro.html#data-frame",
+    "title": "1.5 Introduction to Programming",
+    "section": "Data Frame",
+    "text": "Data Frame\n\n\n\n\n\n\n\ndata frame\n\n\na list of vectors which all have the same length.\n(Essentially, this is a spreadsheet with strict column/row requirements)\n\n\n\n\n\nA Lego data frame - a list of vectors of the same length, with each vector having a different type."
+  },
+  {
+    "objectID": "slides/05-prog-intro.html#creating-data-structures",
+    "href": "slides/05-prog-intro.html#creating-data-structures",
+    "title": "1.5 Introduction to Programming",
+    "section": "Creating Data Structures",
+    "text": "Creating Data Structures\n\nvec &lt;- c(1:10)\ndf &lt;- data.frame(x = 1:3, y = letters[1:3], z = c(T, F, F))\nmylst &lt;- list(x = 1:3, y = letters[1:4], z = c(T, F, F, F, T))"
+  },
+  {
+    "objectID": "slides/05-prog-intro.html#what-do-they-look-like",
+    "href": "slides/05-prog-intro.html#what-do-they-look-like",
+    "title": "1.5 Introduction to Programming",
+    "section": "What do they look like?",
+    "text": "What do they look like?\n\nvec\n\n [1]  1  2  3  4  5  6  7  8  9 10\n\ndf\n\n  x y     z\n1 1 a  TRUE\n2 2 b FALSE\n3 3 c FALSE\n\nmylst\n\n$x\n[1] 1 2 3\n\n$y\n[1] \"a\" \"b\" \"c\" \"d\"\n\n$z\n[1]  TRUE FALSE FALSE FALSE  TRUE"
+  },
+  {
+    "objectID": "slides/05-prog-intro.html#find-the-structure",
+    "href": "slides/05-prog-intro.html#find-the-structure",
+    "title": "1.5 Introduction to Programming",
+    "section": "Find the Structure",
+    "text": "Find the Structure\nUse the str() command to investigate the structure of an object\n\nstr(vec)\n\n int [1:10] 1 2 3 4 5 6 7 8 9 10\n\nstr(df)\n\n'data.frame':   3 obs. of  3 variables:\n $ x: int  1 2 3\n $ y: chr  \"a\" \"b\" \"c\"\n $ z: logi  TRUE FALSE FALSE\n\nstr(mylst)\n\nList of 3\n $ x: int [1:3] 1 2 3\n $ y: chr [1:4] \"a\" \"b\" \"c\" \"d\"\n $ z: logi [1:5] TRUE FALSE FALSE FALSE TRUE"
+  },
+  {
+    "objectID": "slides/05-prog-intro.html#access-pieces-of-objects",
+    "href": "slides/05-prog-intro.html#access-pieces-of-objects",
+    "title": "1.5 Introduction to Programming",
+    "section": "Access Pieces of Objects",
+    "text": "Access Pieces of Objects\n\n\nVectors\n\nvec[2:4]\n\n[1] 2 3 4\n\nvec[c(2, 8)]\n\n[1] 2 8\n\n\n\nData Frames\nname[rows, cols]\n\ndf[1:2, 2:3]\n\n  y     z\n1 a  TRUE\n2 b FALSE\n\n\n\nLists\nname[[idx]] - access sub-object\n(idx is an integer)\n\nmylst[[3]]\n\n[1]  TRUE FALSE FALSE FALSE  TRUE\n\nmylst[[2]][c(1, 3)]\n\n[1] \"a\" \"c\""
   }
 ]

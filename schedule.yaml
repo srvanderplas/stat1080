@@ -55,7 +55,7 @@ schedule:
         - Labor Day
     class2: |
         - [Intro to Programming](../slides/05-prog-intro.qmd)
-        - Swirl Tutorial (Canvas)
+        - [Swirl Tutorial](https://usu.instructure.com/courses/819584/quizzes/1462913) (Canvas)
     class3: |
         - [Intro to RStudio](../slides/06-rstudio.qmd)
     extra: |
