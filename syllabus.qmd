@@ -67,6 +67,8 @@ Textbooks are free/open/online
 -   [Introduction to Data Science 2, by Rafael A. Irizarry](https://rafalab.dfci.harvard.edu/dsbook-part-2/) (IDS 2)
 -   [Statistical Computing in R and Python](https://srvanderplas.github.io/stat-computing-r-python) (SC). 
 
+Course Fee (@sec-course-fee): $30, supports Aggie Math Learning Center. Make use of it!
+
 Required Equipment & Software (@sec-software):
 
 1. A device with a keyboard and a screen resolution of > 1000x1000 pixels that:
@@ -286,6 +288,9 @@ If you have technical challenges with R, quarto/rmarkdown, or RStudio send me an
 
 If your computer is misbehaving in ways that are not specific to this class, please consult IT/HelpDesk - your tuition already pays for this service, so please use it!
 
+## Course Fee {#sec-course-fee}
+
+A $30 course fee is assessed to each student to help pay the costs of teaching assistants, recitation leaders and staffing of the Aggie Math Learning Center (AMLC) in LIB 411. The teaching assistants and recitation leaders attend class, teach recitation sessions and coordinate material under the supervision of the course instructor, and assist with the administration and grading of exams, quizzes, and homework. The AMLC provides a shared area and resource for students to get help from all teaching assistants and recitation leaders assigned to STAT 1080, regardless the recitation or section for which students are registered. The course fee also supports the development and coordination of common materials and other resources, to improve consistency and to reduce overall instructional costs. All of these supports are provided to help ensure your success in Foundations of Data Science.
 
 ## Preparation & Participation
 

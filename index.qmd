@@ -13,8 +13,9 @@ scheduletbl |>
   group_by(Week, weeksort, `Week Start`, Topic) |>
   # mutate(`Important Dates` = paste(`Important Dates`, collapse = "<br>")) |>
   unique() |>
-  summarize(`Important Dates` = if_else(is.na(`Important Dates`), NA_character_, unique(`Important Dates`))) |>
+  reframe(`Important Dates` = if_else(is.na(`Important Dates`), NA_character_, paste(unique(`Important Dates`), collapse = "<br/>"))) |>
   ungroup() |>
+  unique() |>
   arrange(weeksort) |>
   mutate(Topic = if_else(Week <= 16, sprintf("<a href='https://srvanderplas.github.io/stat1080/weeks/week-%03d.html'> %s </a>", Week*10, Topic), Topic)) |>
   select(Week, Start = `Week Start`, Topic, `Important Dates`) |>

@@ -194,10 +194,10 @@ scheduletbl <- topics |>
   rename("Week" = sem_week, "Topic" = name, "Important Dates" = text) |>
   mutate(weeksort = Week) |>
   mutate(weeksort = if_else(Topic == "Spring Break", 9.5, weeksort)) |>
-  mutate(
-    Week = if_else(weeksort > 9.5, Week - 1, Week),
-    weeksort = if_else(weeksort > 9.5, weeksort - 1, weeksort)
-  ) |>
+  # mutate(
+  #   Week = if_else(weeksort > 9.5, Week - 1, Week),
+  #   weeksort = if_else(weeksort > 9.5, weeksort - 1, weeksort)
+  # ) |>
   arrange(weeksort) |>
   mutate(Week = if_else(Topic == "Spring Break", NA, Week))
 

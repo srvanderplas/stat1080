@@ -27,13 +27,12 @@ ul.task-list li input[type="checkbox"] {
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
 <script src="site_libs/clipboard/clipboard.min.js"></script>
 <script src="site_libs/quarto-search/autocomplete.umd.js"></script>
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./course-links.html" rel="next">
-<link href="./course-support.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -45,15 +44,15 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-5db93a38f58864150c4e2ef408bd2e17.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-cfa38201e8d9e50b1731e1202f282c70.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="site_libs/bootstrap/bootstrap-5db93a38f58864150c4e2ef408bd2e17.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-591c39e2c05cc7a0bcbe5a5b3e803b04.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-5f246d067d21d4a8cc03abe19c31f535.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-591c39e2c05cc7a0bcbe5a5b3e803b04.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
-  "location": "sidebar",
+  "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
-  "panel-placement": "start",
-  "type": "textbox",
+  "panel-placement": "end",
+  "type": "overlay",
   "limit": 50,
   "keyboard-shortcut": [
     "f",
@@ -92,7 +91,7 @@ ul.task-list li input[type="checkbox"] {
 <meta property="og:site_name" content="STAT 1080 - Fall 2026">
 </head>
 
-<body class="nav-sidebar docked quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+<body class="nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
     const toggleBodyColorMode = (bsSheetEl) => {
       const mode = bsSheetEl.getAttribute("data-mode");
       const bodyEl = window.document.querySelector("body");
@@ -258,193 +257,139 @@ ul.task-list li input[type="checkbox"] {
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav">
-    <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-        <i class="bi bi-layout-text-sidebar-reverse"></i>
-      </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./course-overview.html">Course information</a></li><li class="breadcrumb-item"><a href="./index.html">Schedule</a></li></ol></nav>
-        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-        </a>
-    </div>
-  </nav>
-</header>
-<!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full">
-<!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
-    <div class="pt-lg-2 mt-2 text-center sidebar-header">
-    <div class="sidebar-title mb-0 py-0">
-      <a href="./">STAT 1080 - Fall 2026</a> 
-        <div class="sidebar-tools-main">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">STAT 1080 - Fall 2026</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-course-info" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Course Info</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-course-info">    
+        <li>
+    <a class="dropdown-item" href="./course-overview.html">
+ <span class="dropdown-text">Overview</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./syllabus.html">
+ <span class="dropdown-text">Syllabus</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./course-support.html">
+ <span class="dropdown-text">Support</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./index.html">
+ <span class="dropdown-text">Schedule</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./course-links.html">
+ <span class="dropdown-text">Useful links</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-weekly-materials" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Weekly Materials</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-weekly-materials">    
+        <li>
+    <a class="dropdown-item" href="./weeks/week-010.html">
+ <span class="dropdown-text">W1. Introduction</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./weeks/week-020.html">
+ <span class="dropdown-text">W2. RStudio</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./weeks/week-030.html">
+ <span class="dropdown-text">W3. Correlation</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./weeks/week-040.html">
+ <span class="dropdown-text">W4. Programming</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./weeks/week-050.html">
+ <span class="dropdown-text">W5. Tidyverse</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./weeks/week-060.html">
+ <span class="dropdown-text">W6. Dates/Times and Distributions</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./weeks/week-070.html">
+ <span class="dropdown-text">W7. Visualization</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./weeks/week-080.html">
+ <span class="dropdown-text">W8. Probability</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./weeks/week-090.html">
+ <span class="dropdown-text">W9. Results</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./weeks/week-100.html">
+ <span class="dropdown-text">W10. Intro &amp; Conclusions</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./weeks/week-110.html">
+ <span class="dropdown-text">W11. Summaries</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./weeks/week-120.html">
+ <span class="dropdown-text">W12. Fallacies</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./weeks/week-130.html">
+ <span class="dropdown-text">W13. Reports</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./weeks/week-140.html">
+ <span class="dropdown-text">W14. Editing</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./weeks/week-150.html">
+ <span class="dropdown-text">W15. Presentations</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
-    </div>
-      </div>
-    <div class="sidebar-menu-container"> 
-    <ul class="list-unstyled mt-1">
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
- <span class="menu-text">Course information</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./course-overview.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Overview</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./syllabus.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Syllabus</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./course-support.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Support</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Schedule</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./course-links.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Useful links</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
- <span class="menu-text">Weekly materials</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./weeks/week-010.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">W1. Introduction</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./weeks/week-020.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">W2. RStudio</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./weeks/week-030.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">W3. Correlation</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./weeks/week-040.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">W4. Programming</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./weeks/week-050.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">W5. Tidyverse</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./weeks/week-060.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">W6. Dates/Times and Distributions</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./weeks/week-070.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">W7. Visualization</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./weeks/week-080.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">W8. Probability</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./weeks/week-090.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">W9. Results</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./weeks/week-100.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">W10. Intro &amp; Conclusions</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./weeks/week-110.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">W11. Summaries</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./weeks/week-120.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">W12. Fallacies</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./weeks/week-130.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">W13. Reports</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./weeks/week-140.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">W14. Editing</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./weeks/week-150.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">W15. Presentations</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-    </ul>
-    </div>
-</nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
         
     </div>
 <!-- main -->
-<main class="content column-page-right" id="quarto-document-content">
+<main class="content column-page" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./course-overview.html">Course information</a></li><li class="breadcrumb-item"><a href="./index.html">Schedule</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
 <h1 class="title">Stat 1080 - Data and the Stories They Tell</h1>
 </div>
 
 
 
-<div class="quarto-title-meta column-page-right">
+<div class="quarto-title-meta column-page">
 
     
   
@@ -458,8 +403,8 @@ ul.task-list li input[type="checkbox"] {
 
 <div class="cell">
 <div class="cell-output-display">
-<div class="datatables html-widget html-fill-item" id="htmlwidget-c3e5e654aa17037b4f07" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-c3e5e654aa17037b4f07">{"x":{"style":"bootstrap","filter":"none","vertical":false,"data":[[1,2,3,4,5,6,7,8,9,9,10,11,12,13,14,15],["08-31","09-07","09-14","09-21","09-28","10-05","10-12","10-19","10-26","11-02","11-09","11-16","11-23","11-30","12-07","12-14"],["<a href='https://srvanderplas.github.io/stat1080/weeks/week-010.html'> Introduction <\/a>","<a href='https://srvanderplas.github.io/stat1080/weeks/week-020.html'> Programming and RStudio <\/a>","<a href='https://srvanderplas.github.io/stat1080/weeks/week-030.html'> Correlation is not Causation <\/a>","<a href='https://srvanderplas.github.io/stat1080/weeks/week-040.html'> Programming in R <\/a>","<a href='https://srvanderplas.github.io/stat1080/weeks/week-050.html'> The Tidyverse <\/a>","<a href='https://srvanderplas.github.io/stat1080/weeks/week-060.html'> Dates, Times, and Distributions <\/a>","<a href='https://srvanderplas.github.io/stat1080/weeks/week-070.html'> Data Visualization <\/a>","<a href='https://srvanderplas.github.io/stat1080/weeks/week-080.html'> Statistics and Probability <\/a>","<a href='https://srvanderplas.github.io/stat1080/weeks/week-090.html'> Data and Probability <\/a>","<a href='https://srvanderplas.github.io/stat1080/weeks/week-090.html'> Random Variables <\/a>","<a href='https://srvanderplas.github.io/stat1080/weeks/week-100.html'> Parameters and Estimates <\/a>","<a href='https://srvanderplas.github.io/stat1080/weeks/week-110.html'> Statistical Inference <\/a>","<a href='https://srvanderplas.github.io/stat1080/weeks/week-120.html'> Regression <\/a>","<a href='https://srvanderplas.github.io/stat1080/weeks/week-130.html'> Regression <\/a>","<a href='https://srvanderplas.github.io/stat1080/weeks/week-140.html'> Project Meetings <\/a>","<a href='https://srvanderplas.github.io/stat1080/weeks/week-150.html'> Finals Week <\/a>"],[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Project Presentations (12-16)"]],"container":"<table class=\"table table-striped table-hover row-border order-column display\">\n  <thead>\n    <tr>\n      <th>Week<\/th>\n      <th>Start<\/th>\n      <th>Topic<\/th>\n      <th>Important Dates<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"paging":false,"info":false,"searching":false,"ordering":false,"columnDefs":[{"className":"dt-right","targets":0},{"name":"Week","targets":0},{"name":"Start","targets":1},{"name":"Topic","targets":2},{"name":"Important Dates","targets":3}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<div class="datatables html-widget html-fill-item" id="htmlwidget-16a6e9f5f70c0b65ace3" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-16a6e9f5f70c0b65ace3">{"x":{"style":"bootstrap","filter":"none","vertical":false,"data":[[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16],["08-31","09-07","09-14","09-21","09-28","10-05","10-12","10-19","10-26","11-02","11-09","11-16","11-23","11-30","12-07","12-14"],["<a href='https://srvanderplas.github.io/stat1080/weeks/week-010.html'> Introduction <\/a>","<a href='https://srvanderplas.github.io/stat1080/weeks/week-020.html'> Programming and RStudio <\/a>","<a href='https://srvanderplas.github.io/stat1080/weeks/week-030.html'> Correlation is not Causation <\/a>","<a href='https://srvanderplas.github.io/stat1080/weeks/week-040.html'> Programming in R <\/a>","<a href='https://srvanderplas.github.io/stat1080/weeks/week-050.html'> The Tidyverse <\/a>","<a href='https://srvanderplas.github.io/stat1080/weeks/week-060.html'> Dates, Times, and Distributions <\/a>","<a href='https://srvanderplas.github.io/stat1080/weeks/week-070.html'> Data Visualization <\/a>","<a href='https://srvanderplas.github.io/stat1080/weeks/week-080.html'> Statistics and Probability <\/a>","<a href='https://srvanderplas.github.io/stat1080/weeks/week-090.html'> Data and Probability <\/a>","<a href='https://srvanderplas.github.io/stat1080/weeks/week-100.html'> Random Variables <\/a>","<a href='https://srvanderplas.github.io/stat1080/weeks/week-110.html'> Parameters and Estimates <\/a>","<a href='https://srvanderplas.github.io/stat1080/weeks/week-120.html'> Statistical Inference <\/a>","<a href='https://srvanderplas.github.io/stat1080/weeks/week-130.html'> Regression <\/a>","<a href='https://srvanderplas.github.io/stat1080/weeks/week-140.html'> Regression <\/a>","<a href='https://srvanderplas.github.io/stat1080/weeks/week-150.html'> Project Meetings <\/a>","<a href='https://srvanderplas.github.io/stat1080/weeks/week-160.html'> Finals Week <\/a>"],[null,"Project Proposal (09-12)",null,null,"Project Check-In 1 (10-03)",null,"Homework 1 due (10-11)",null,null,"Homework 2 due (11-01)<br/>Project Check-In 2 (11-07)",null,"Project Spreadsheet (11-21)","Homework 3 due (11-22)","Project Submission 1 (12-05)","Project Submission 2 (12-11)<br/>Project Code Review (12-07)","Homework 4 due (12-13)<br/>Project Presentations (12-16)"]],"container":"<table class=\"table table-striped table-hover row-border order-column display\">\n  <thead>\n    <tr>\n      <th>Week<\/th>\n      <th>Start<\/th>\n      <th>Topic<\/th>\n      <th>Important Dates<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"paging":false,"info":false,"searching":false,"ordering":false,"columnDefs":[{"className":"dt-right","targets":0},{"name":"Week","targets":0},{"name":"Start","targets":1},{"name":"Topic","targets":2},{"name":"Important Dates","targets":3}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 
@@ -879,18 +824,6 @@ ul.task-list li input[type="checkbox"] {
     }
   });
   </script>
-<nav class="page-navigation column-page-right">
-  <div class="nav-page nav-page-previous">
-      <a href="./course-support.html" class="pagination-link" aria-label="Support">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Support</span>
-      </a>          
-  </div>
-  <div class="nav-page nav-page-next">
-      <a href="./course-links.html" class="pagination-link" aria-label="Useful links">
-        <span class="nav-page-text">Useful links</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
-  </div>
-</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
