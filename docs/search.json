@@ -879,7 +879,7 @@
     "href": "syllabus.html#sec-expectations",
     "title": "Stat 1080 Syllabus",
     "section": "3.2 Expectations",
-    "text": "3.2 Expectations\nYou can expect me to:\n\nReply to emails within two business days\nBe available in class to assist with assignments\nBe available by appointment (office hours) for additional help or discussion\nCorrect any mistakes I make promptly once they have been brought to my attention\n\nI expect you to:\n\nBe respectful and considerate of everyone in the class\nEngage in class discussions with civility and in good faith\nComplete the assigned reading, reading quiz, and any other activities before class\nEngage with the material and your classmates during class\nSeek help when you do not understand the material\nCommunicate promptly if you anticipate that you will have trouble meeting deadlines or participating in a portion of the course.\nDo your own troubleshooting before contacting me for help (and mention things you’ve already tried when you do ask for help!)\n\nDiscussion and disagreement are important parts of the learning process, but it is important that mutual respect prevail. Individuals who detract from an atmosphere of civility and respect or make it difficult for fellow students to learn will be removed from the conversation and/or the classroom, as outlined in Student Code V-3 (C) Disruptive Classroom Behavior.\n\n3.2.1 Recommendations for Course Success\nLearning data science takes practice. Complex ideas rarely click the first time. Succeed by:\n\nRunning examples on your own machine.\nE.g. changing things, breaking things, figuring out why they broke and how to fix them!\nAsking and answering questions in class.\nBe brave, be bold, be wrong!\nReviewing material between sessions.\nEven if you’re just preparing a list of “stump the prof” questions!\nStarting assignments soon after they are posted.\n\n\n\n\n3.2.2 Technical Issues\nIf you have technical challenges with R, quarto/rmarkdown, or RStudio send me an email with:\n\nany files necessary to replicate the issue\na description of what you have tried, and\na description of what you think should happen\nas much detail as possible:\n\nText copied (CTRL-C) from error messages\nscreenshots (not cell phone pics)\n\n\nIf your computer is misbehaving in ways that are not specific to this class, please consult IT/HelpDesk - your tuition already pays for this service, so please use it!"
+    "text": "3.2 Expectations\nYou can expect me to:\n\nReply to emails within two business days\nBe available in class to assist with assignments\nBe available by appointment (office hours) for additional help or discussion\nCorrect any mistakes I make promptly once they have been brought to my attention\n\nI expect you to:\n\nBe respectful and considerate of everyone in the class\nEngage in class discussions with civility and in good faith\nComplete the assigned reading, reading quiz, and any other activities before class\nEngage with the material and your classmates during class\nSeek help when you do not understand the material\nCommunicate promptly if you anticipate that you will have trouble meeting deadlines or participating in a portion of the course.\nDo your own troubleshooting before contacting me for help (and mention things you’ve already tried when you do ask for help!)\n\nDiscussion and disagreement are important parts of the learning process, but it is important that mutual respect prevail. Individuals who detract from an atmosphere of civility and respect or make it difficult for fellow students to learn will be removed from the conversation and/or the classroom, as outlined in Student Code V-3 (C) Disruptive Classroom Behavior.\n\n3.2.1 Recommendations for Course Success\nLearning data science takes practice. Complex ideas rarely click the first time. Succeed by:\n\nRunning examples on your own machine.\nE.g. changing things, breaking things, figuring out why they broke and how to fix them!\nAsking and answering questions in class.\nBe brave, be bold, be wrong!\nReviewing material between sessions.\nEven if you’re just preparing a list of “stump the prof” questions!\nStarting assignments soon after they are posted.\n\nDon’t be afraid to make mistakes – that’s how real learning happens.\n\n\n3.2.2 Technical Issues\nIf you have technical challenges with R, quarto/rmarkdown, or RStudio send me an email with:\n\nany files necessary to replicate the issue\na description of what you have tried, and\na description of what you think should happen\nas much detail as possible:\n\nText copied (CTRL-C) from error messages\nscreenshots (not cell phone pics)\n\n\nIf your computer is misbehaving in ways that are not specific to this class, please consult IT/HelpDesk - your tuition already pays for this service, so please use it!"
   },
   {
     "objectID": "syllabus.html#sec-course-fee",
@@ -892,64 +892,64 @@
     "objectID": "syllabus.html#preparation-participation",
     "href": "syllabus.html#preparation-participation",
     "title": "Stat 1080 Syllabus",
-    "section": "3.4 Preparation & Participation",
-    "text": "3.4 Preparation & Participation\nAll students are expected to prepare for, attend and fully participate in class. Preparation & participation grades will be determined based on a combination of before-class reading checks (preparation) and in-class activities (participation).\nSome in-class activities may be finished at home before they are submitted.\nThese assignments will typically be due at the end of the day and will close 24 hours after that. Assignments submitted during the 24-hour grace period will be graded normally."
+    "section": "3.5 Preparation & Participation",
+    "text": "3.5 Preparation & Participation\nAll students are expected to prepare for, attend and fully participate in class. Preparation & participation grades will be determined based on a combination of before-class reading checks (preparation) and in-class activities (participation).\nSome in-class activities may be finished at home before they are submitted.\nThese assignments will typically be due at the end of the day and will close 24 hours after that. Assignments submitted during the 24-hour grace period will be graded normally."
   },
   {
     "objectID": "syllabus.html#attendance",
     "href": "syllabus.html#attendance",
     "title": "Stat 1080 Syllabus",
-    "section": "3.5 Attendance",
-    "text": "3.5 Attendance\nDuring each class, I will give you a numerical code which can be entered into a Canvas quiz to show that you were in class. The quiz will be open only during the class period, so you will need to have a device capable of interfacing with Canvas during class.\nSharing this code with anyone, or receiving a code for a class you were not present for, will be considered a violation of academic integrity.\nThree absences (1 week of class) will be allowed without any reduction in your attendance score - no excuse is necessary! Please do not email me when you use your excuse-free absences - Canvas will automatically drop the quizzes associated with the first three missed classes.\n\n3.5.1 Illness\nIf you are feeling ill, please do not come to class. Instead, review the material and work on the homework assignment, and then schedule an appointment with me to meet virtually. In the appointment reason field on Calendly, indicate that this appointment is to substitute for your in-class participation on the date you missed.\nIf you need to miss more than 3 classes for illness (6 total, including the 3 excuse-free absences), I will ask you to work with the Disability Resource Center in order to continue using this substitute for attendance.\n\n\n3.5.2 Extenuating Circumstances\nI am willing to offer some flexibility in extenuating circumstances if you let me know what is going on and how I can help. This flexibility takes effect after using your free absences, but can also extend beyond attendance if appropriate.\nIn some situations, you may get accommodations only after working with the Disability Resource Center to document the problem.\nExamples:\n\nYour dog had a seizure 20 minutes before an exam, and you were late because you had to get the dog to the vet.\n\nAction: When getting the test, ask to talk for a minute. Explain the situation. Offer to provide vet records, if available.\nFlexibility: Take a make-up exam, or start the exam immediately but get a few extra minutes to finish it.\n\nYou have chronic migraines and have missed 8 classes this semester.\n\nAction: Go to the DRC and get an accommodation for flexible attendance requirements.\nFlexibility: Additional appointments to substitute for attendance beyond the 3 provided to all students.\n\nA train derailed, blocking your access to campus. You missed your scheduled presentation time.\n\nAction: Email as soon as you know there is going to be a delay to explain the situation. If you are able, take pictures to document and attach to the email. (Note: only for situations, not illness or injury, please!) Attempt to find an alternate route to campus.\nFlexibility: Present during a different time, or record a presentation.\nNote: Flexibility here may be conditional on my ability to verify the situation."
+    "section": "3.6 Attendance",
+    "text": "3.6 Attendance\nDuring each class, I will give you a numerical code which can be entered into a Canvas quiz to show that you were in class. The quiz will be open only during the class period, so you will need to have a device capable of interfacing with Canvas during class.\nSharing this code with anyone, or receiving a code for a class you were not present for, will be considered a violation of academic integrity.\nThree absences (1 week of class) will be allowed without any reduction in your attendance score - no excuse is necessary! Please do not email me when you use your excuse-free absences - Canvas will automatically drop the quizzes associated with the first three missed classes.\n\n3.6.1 Illness\nIf you are feeling ill, please do not come to class. Instead, review the material and work on the homework assignment, and then schedule an appointment with me to meet virtually. In the appointment reason field on Calendly, indicate that this appointment is to substitute for your in-class participation on the date you missed.\nIf you need to miss more than 3 classes for illness (6 total, including the 3 excuse-free absences), I will ask you to work with the Disability Resource Center in order to continue using this substitute for attendance.\n\n\n3.6.2 Extenuating Circumstances\nI am willing to offer some flexibility in extenuating circumstances if you let me know what is going on and how I can help. This flexibility takes effect after using your free absences, but can also extend beyond attendance if appropriate.\nIn some situations, you may get accommodations only after working with the Disability Resource Center to document the problem.\nExamples:\n\nYour dog had a seizure 20 minutes before an exam, and you were late because you had to get the dog to the vet.\n\nAction: When getting the test, ask to talk for a minute. Explain the situation. Offer to provide vet records, if available.\nFlexibility: Take a make-up exam, or start the exam immediately but get a few extra minutes to finish it.\n\nYou have chronic migraines and have missed 8 classes this semester.\n\nAction: Go to the DRC and get an accommodation for flexible attendance requirements.\nFlexibility: Additional appointments to substitute for attendance beyond the 3 provided to all students.\n\nA train derailed, blocking your access to campus. You missed your scheduled presentation time.\n\nAction: Email as soon as you know there is going to be a delay to explain the situation. If you are able, take pictures to document and attach to the email. (Note: only for situations, not illness or injury, please!) Attempt to find an alternate route to campus.\nFlexibility: Present during a different time, or record a presentation.\nNote: Flexibility here may be conditional on my ability to verify the situation."
   },
   {
     "objectID": "syllabus.html#sec-reading-quiz",
     "href": "syllabus.html#sec-reading-quiz",
     "title": "Stat 1080 Syllabus",
-    "section": "3.6 Reading Checks",
-    "text": "3.6 Reading Checks\nYou will have weekly reading assignments which introduce the weekly focus area and provide different perspectives on the material. Some of these perspectives will be covered in class lectures and activities, but some will not be covered explicitly and are provided to expose you to different approaches and opinions.\nReadings are linked on the course webpage for each week.\nA reading check will be due on Canvas before class when there is reading assigned. This serves as a low-stakes, grade-based reminder to prepare for class. The lowest three reading checks will be dropped."
+    "section": "3.7 Reading Checks",
+    "text": "3.7 Reading Checks\nYou will have weekly reading assignments which introduce the weekly focus area and provide different perspectives on the material. Some of these perspectives will be covered in class lectures and activities, but some will not be covered explicitly and are provided to expose you to different approaches and opinions.\nReadings are linked on the course webpage for each week.\nA reading check will be due on Canvas before class when there is reading assigned. This serves as a low-stakes, grade-based reminder to prepare for class. The lowest three reading checks will be dropped."
   },
   {
     "objectID": "syllabus.html#sec-homework",
     "href": "syllabus.html#sec-homework",
     "title": "Stat 1080 Syllabus",
-    "section": "3.7 Homework",
-    "text": "3.7 Homework\nSeveral formative assignments (assignments meant to help you practice skills) will be given throughout the semester.\n\nAssignments must be submitted in the file format specified, and should run or compile as submitted. Code should be formatted using the style guidelines provided in class and demonstrated in videos posted to Canvas. See the homework submission checklist for more details.\nI will aim to grade assignments within a week of the specified due date."
+    "section": "3.8 Homework",
+    "text": "3.8 Homework\nSeveral formative assignments (assignments meant to help you practice skills) will be given throughout the semester.\n\nAssignments must be submitted in the file format specified, and should run or compile as submitted. Code should be formatted using the style guidelines provided in class and demonstrated in videos posted to Canvas. See the homework submission checklist for more details.\nI will aim to grade assignments within a week of the specified due date."
   },
   {
     "objectID": "syllabus.html#labs",
     "href": "syllabus.html#labs",
     "title": "Stat 1080 Syllabus",
-    "section": "3.8 Labs",
-    "text": "3.8 Labs\nLabs are class sessions that are dedicated to working interactively on an assignment. A lab assignment may need to be finished at home before it is submitted. Lab assignments should be checked using the submission checklist before they are submitted, as the same formatting standards will apply."
+    "section": "3.9 Labs",
+    "text": "3.9 Labs\nLabs are class sessions that are dedicated to working interactively on an assignment. A lab assignment may need to be finished at home before it is submitted. Lab assignments should be checked using the submission checklist before they are submitted, as the same formatting standards will apply."
   },
   {
     "objectID": "syllabus.html#sec-project",
     "href": "syllabus.html#sec-project",
     "title": "Stat 1080 Syllabus",
-    "section": "3.9 Project",
-    "text": "3.9 Project\nYou will complete a personal data collection project in this course. The project will be scaffolded - you will need to submit a proposal, as well as several intermediate assignments throughout the course of the semester, applying information we are covering in class to your own data. These intermediate submissions will contribute to your overall project grade.\nDO NOT make travel plans that assume you will not have to attend the final exam period. Personal data collection project speed presentations will take place during the final exam period."
+    "section": "3.10 Project",
+    "text": "3.10 Project\nYou will complete a personal data collection project in this course. The project will be scaffolded - you will need to submit a proposal, as well as several intermediate assignments throughout the course of the semester, applying information we are covering in class to your own data. These intermediate submissions will contribute to your overall project grade.\nDO NOT make travel plans that assume you will not have to attend the final exam period. Personal data collection project speed presentations will take place during the final exam period."
   },
   {
     "objectID": "syllabus.html#sec-late",
     "href": "syllabus.html#sec-late",
     "title": "Stat 1080 Syllabus",
-    "section": "3.10 Work Submission Policies",
-    "text": "3.10 Work Submission Policies\nThese policies apply to labs, homework assignments, and project components.\n\nAssignments submitted by email or through a means other than Canvas will receive a 0.\nLate assignments will be accepted only under extenuating circumstances, and only if you have contacted me prior to the assignment due date and received permission to hand the assignment in late.\nDO NOT email me after the assignment close date or due date asking for permission to submit assignments late. Permission to turn an assignment in late must be obtained before the due date.\nLogistics: Assignments are due at 12:59 pm on Fridays. There is a grace period in Canvas between the due date and the assignment close date. After the close date, you will not be able to submit your assignment in Canvas.\nI reserve the right not to grade (or to assign a 0 to) any assignments received after the assignment due date. However, in practice, assignments received before the assignment close date will typically be graded."
+    "section": "3.11 Work Submission Policies",
+    "text": "3.11 Work Submission Policies\nThese policies apply to labs, homework assignments, and project components.\n\nAssignments submitted by email or through a means other than Canvas will receive a 0.\nLate assignments will be accepted only under extenuating circumstances, and only if you have contacted me prior to the assignment due date and received permission to hand the assignment in late.\nDO NOT email me after the assignment close date or due date asking for permission to submit assignments late. Permission to turn an assignment in late must be obtained before the due date.\nLogistics: Assignments are due at 12:59 pm on Fridays. There is a grace period in Canvas between the due date and the assignment close date. After the close date, you will not be able to submit your assignment in Canvas.\nI reserve the right not to grade (or to assign a 0 to) any assignments received after the assignment due date. However, in practice, assignments received before the assignment close date will typically be graded."
   },
   {
     "objectID": "syllabus.html#syllabus-changes",
     "href": "syllabus.html#syllabus-changes",
     "title": "Stat 1080 Syllabus",
-    "section": "3.11 Syllabus Changes",
-    "text": "3.11 Syllabus Changes\nThis course is being revised in real-time. The instructor reserves the right to make minor changes to the syllabus, provided students are informed of any changes before they become effective."
+    "section": "3.12 Syllabus Changes",
+    "text": "3.12 Syllabus Changes\nThis course is being revised in real-time. The instructor reserves the right to make minor changes to the syllabus, provided students are informed of any changes before they become effective."
   },
   {
     "objectID": "syllabus.html#sec-ai",
     "href": "syllabus.html#sec-ai",
     "title": "Stat 1080 Syllabus",
-    "section": "3.12 Evaluation and Academic Integrity",
-    "text": "3.12 Evaluation and Academic Integrity\nStudents are expected to adhere to guidelines concerning academic dishonesty outlined in Article VI University Regulations Regarding Academic Integrity. In this course, academic dishonesty includes failure to disclose use of AI (depending on sources of aid beyond those permitted), as well as more traditional examples of academic dishonesty.\nThe policies detailed below stand in addition to university policies.\nSummary: I may, at my discretion, give students an oral exam on their submitted assignment to replace the graded assignment itself. That is, if you submitted it, you should be able to defend, discuss, and justify your work.\n\n3.12.1 Evaluation Criteria\nIn every assignment, discussion, and written component of this class, you are expected to demonstrate that you are intellectually engaging with the material. I will evaluate you based on this engagement, which means that technically correct but low effort answers which do not demonstrate engagement or understanding will receive no credit.\nWhen you answer questions in this class, your goal is to show that you either understand the material or are actively engaging with it. If you did not achieve this goal, then your answer is incomplete, regardless of whether or not it is technically correct. This is not to encourage you to add unnecessary complexity to your answer - simple, elegant solutions are always preferable to unwieldy, complex solutions that accomplish the same task.\nGrammar and spelling are important, as is your ability to communicate technical information clearly in a written format; both of these criteria will be used in addition to assignment-specific rubrics to evaluate your work.\n\n\n3.12.2 Code\nYou must be able to explain how the logic works for any code you turn in. This means that code you obtained from e.g. StackOverflow or AI (see below) is fine to use if you can explain it and modify it for the purposes of this class, but if you cannot explain your code you will not get credit for the assignment. This is in line with what is generally considered acceptable behavior in programming - reuse is fine (subject to the code’s license and appropriate citation), but you must be able to fully explain and modify any code you did not write yourself. You should also provide a link to the source of your code (or even the logic behind your code) - this is useful both for my information and for future you, in addition to being a good way to give attribution to the original author.\n\n\n3.12.3 Oral Exam Policy\nWith the proliferation of AI large language models, I reserve the right to replace homework grades with grades based on an oral discussion of your submissions. If you cannot explain the logic behind your submission, how you came to the approach you used, and identify the tradeoffs behind decisions you made, then you will not receive credit. Similarly, if you can explain these things, but you still came to the wrong solution because some wires got crossed, you can benefit from this oral exam policy and get a better grade.\nLLMs can be a useful tool, but this course’s objectives are to develop your understanding of data science, not your ability to use LLMs. Fundamentally, you need to understand concepts and apply methodology in order to use data effectively; generative AI solutions may hamper both of these goals if you rely on them too much.\n\n\n3.12.4 Generative AI\nIt may be useful to leverage AI tools to ensure that your work conforms to grammar and style guidelines, but I very highly discourage the use of generative AI to actually write content or to execute a data analysis. I highly prefer your writing and thought process, even with some mistakes, to the bland content generated by most LLMs.\nAny use of generative AI must be disclosed in an appendix to your submission - this includes brainstorming, editing, using AI as spell-check/grammar-check, and so on. You must document the following:\n\nthe version of the generative AI used (e.g. Claude Sonnet 4.5, GPT 5.2)\nthe full sequence of prompts and responses (a transcript)\nany additional inputs you provided to the AI system (documents, images, etc.)\na description of the differences between the AI responses and your submission, explaining what was generated by AI and what you changed."
+    "section": "3.13 Evaluation and Academic Integrity",
+    "text": "3.13 Evaluation and Academic Integrity\nStudents are expected to adhere to guidelines concerning academic dishonesty outlined in Article VI University Regulations Regarding Academic Integrity. In this course, academic dishonesty includes failure to disclose use of AI (depending on sources of aid beyond those permitted), as well as more traditional examples of academic dishonesty.\nThe policies detailed below stand in addition to university policies.\nSummary: I may, at my discretion, give students an oral exam on their submitted assignment to replace the graded assignment itself. That is, if you submitted it, you should be able to defend, discuss, and justify your work.\n\n3.13.1 Evaluation Criteria\nIn every assignment, discussion, and written component of this class, you are expected to demonstrate that you are intellectually engaging with the material. I will evaluate you based on this engagement, which means that technically correct but low effort answers which do not demonstrate engagement or understanding will receive no credit.\nWhen you answer questions in this class, your goal is to show that you either understand the material or are actively engaging with it. If you did not achieve this goal, then your answer is incomplete, regardless of whether or not it is technically correct. This is not to encourage you to add unnecessary complexity to your answer - simple, elegant solutions are always preferable to unwieldy, complex solutions that accomplish the same task.\nGrammar and spelling are important, as is your ability to communicate technical information clearly in a written format; both of these criteria will be used in addition to assignment-specific rubrics to evaluate your work.\n\n\n3.13.2 Code\nYou must be able to explain how the logic works for any code you turn in. This means that code you obtained from e.g. StackOverflow or AI (see below) is fine to use if you can explain it and modify it for the purposes of this class, but if you cannot explain your code you will not get credit for the assignment. This is in line with what is generally considered acceptable behavior in programming - reuse is fine (subject to the code’s license and appropriate citation), but you must be able to fully explain and modify any code you did not write yourself. You should also provide a link to the source of your code (or even the logic behind your code) - this is useful both for my information and for future you, in addition to being a good way to give attribution to the original author.\n\n\n3.13.3 Oral Exam Policy\nWith the proliferation of AI large language models, I reserve the right to replace homework grades with grades based on an oral discussion of your submissions. If you cannot explain the logic behind your submission, how you came to the approach you used, and identify the tradeoffs behind decisions you made, then you will not receive credit. Similarly, if you can explain these things, but you still came to the wrong solution because some wires got crossed, you can benefit from this oral exam policy and get a better grade.\nLLMs can be a useful tool, but this course’s objectives are to develop your understanding of data science, not your ability to use LLMs. Fundamentally, you need to understand concepts and apply methodology in order to use data effectively; generative AI solutions may hamper both of these goals if you rely on them too much.\n\n\n3.13.4 Generative AI\nIt may be useful to leverage AI tools to ensure that your work conforms to grammar and style guidelines, but I very highly discourage the use of generative AI to actually write content or to execute a data analysis. I highly prefer your writing and thought process, even with some mistakes, to the bland content generated by most LLMs.\nAny use of generative AI must be disclosed in an appendix to your submission - this includes brainstorming, editing, using AI as spell-check/grammar-check, and so on. You must document the following:\n\nthe version of the generative AI used (e.g. Claude Sonnet 4.5, GPT 5.2)\nthe full sequence of prompts and responses (a transcript)\nany additional inputs you provided to the AI system (documents, images, etc.)\na description of the differences between the AI responses and your submission, explaining what was generated by AI and what you changed."
   },
   {
     "objectID": "syllabus.html#disability-resource-center-drc",
@@ -1774,43 +1774,43 @@
     "objectID": "slides/05-prog-intro.html#basic-definitions",
     "href": "slides/05-prog-intro.html#basic-definitions",
     "title": "1.5 Introduction to Programming",
-    "section": "Basic Definitions",
-    "text": "Basic Definitions\n\n\n\n\n\n\nvariable\n\n\nA named object corresponding to a space in computer memory that can be assigned a value\n\n\n\nIn R, variables are assigned using &lt;-, e.g. \n\nx &lt;- 5\ny &lt;- \"A character variable\"\n\nx and y are the variable names, 5 and \"a character variable\" are the assigned values.\n\nx &lt;- 6\n\nVariable values can be re-assigned."
+    "section": "",
+    "text": "Notevariable\n\n\n\nA named object corresponding to a space in computer memory that can be assigned a value\n\n\nIn R, variables are assigned using &lt;-, e.g. \n\nx &lt;- 5\ny &lt;- \"A character variable\"\n\nx and y are the variable names, 5 and \"a character variable\" are the assigned values.\n\nx &lt;- 6\n\nVariable values can be re-assigned."
   },
   {
     "objectID": "slides/05-prog-intro.html#basic-definitions-1",
     "href": "slides/05-prog-intro.html#basic-definitions-1",
     "title": "1.5 Introduction to Programming",
     "section": "Basic Definitions",
-    "text": "Basic Definitions\n\n\n\n\n\n\nvariable type\n\n\nThe mode and size of the variable’s stored value(s)\n\n\n\nTypes can be:\n\nintegers (1, 2, 3, 40932),\nfloats (3.1415, 2.71828),\ncharacters (“Frank”, “Evelyn”, “This is a string”), or\nlogicals (TRUE, FALSE)\n\n\nmode(x)\n\n[1] \"numeric\"\n\nmode(y)\n\n[1] \"character\""
+    "text": "Basic Definitions\n\n\n\n\n\n\nNotevariable type\n\n\n\nThe mode and size of the variable’s stored value(s)\n\n\nTypes can be:\n\nintegers (1, 2, 3, 40932),\nfloats (3.1415, 2.71828),\ncharacters (“Frank”, “Evelyn”, “This is a string”), or\nlogicals (TRUE, FALSE)\n\n\nmode(x)\n\n[1] \"numeric\"\n\nmode(y)\n\n[1] \"character\""
   },
   {
     "objectID": "slides/05-prog-intro.html#basic-definitions-2",
     "href": "slides/05-prog-intro.html#basic-definitions-2",
     "title": "1.5 Introduction to Programming",
     "section": "Basic Definitions",
-    "text": "Basic Definitions\n\n\n\n\n\n\nvariable structure\n\n\nA way to arrange and store multiple data values for efficient access"
+    "text": "Basic Definitions\n\n\n\n\n\n\nNotevariable structure\n\n\n\nA way to arrange and store multiple data values for efficient access"
   },
   {
     "objectID": "slides/05-prog-intro.html#vector",
     "href": "slides/05-prog-intro.html#vector",
     "title": "1.5 Introduction to Programming",
     "section": "Vector",
-    "text": "Vector\n\n\n\n\n\n\n\nvector\n\n\na sequence of multiple values of the same type (think about a column in a spreadsheet)\n\n\n\n\n\nA Lego vector with same-type studs"
+    "text": "Vector\n\n\n\n\n\n\nNotevector\n\n\n\na sequence of multiple values of the same type (think about a column in a spreadsheet)\n\n\n\n\n\nA Lego vector with same-type studs"
   },
   {
     "objectID": "slides/05-prog-intro.html#list",
     "href": "slides/05-prog-intro.html#list",
     "title": "1.5 Introduction to Programming",
     "section": "List",
-    "text": "List\n\n\n\n\n\n\n\nlist\n\n\na sequence of multiple values; these values can be of the same or different data type.\n\n\n\n\n\nA Lego list with different-type studs"
+    "text": "List\n\n\n\n\n\n\nNotelist\n\n\n\na sequence of multiple values; these values can be of the same or different data type.\n\n\n\n\n\nA Lego list with different-type studs"
   },
   {
     "objectID": "slides/05-prog-intro.html#data-frame",
     "href": "slides/05-prog-intro.html#data-frame",
     "title": "1.5 Introduction to Programming",
     "section": "Data Frame",
-    "text": "Data Frame\n\n\n\n\n\n\n\ndata frame\n\n\na list of vectors which all have the same length.\n(Essentially, this is a spreadsheet with strict column/row requirements)\n\n\n\n\n\nA Lego data frame - a list of vectors of the same length, with each vector having a different type."
+    "text": "Data Frame\n\n\n\n\n\n\nNotedata frame\n\n\n\na list of vectors which all have the same length.\n(Essentially, this is a spreadsheet with strict column/row requirements)\n\n\n\n\n\nA Lego data frame - a list of vectors of the same length, with each vector having a different type."
   },
   {
     "objectID": "slides/05-prog-intro.html#creating-data-structures",
@@ -1838,6 +1838,97 @@
     "href": "slides/05-prog-intro.html#access-pieces-of-objects",
     "title": "1.5 Introduction to Programming",
     "section": "Access Pieces of Objects",
-    "text": "Access Pieces of Objects\n\n\nVectors\n\nvec[2:4]\n\n[1] 2 3 4\n\nvec[c(2, 8)]\n\n[1] 2 8\n\n\n\nData Frames\nname[rows, cols]\n\ndf[1:2, 2:3]\n\n  y     z\n1 a  TRUE\n2 b FALSE\n\n\n\nLists\nname[[idx]] - access sub-object\n(idx is an integer)\n\nmylst[[3]]\n\n[1]  TRUE FALSE FALSE FALSE  TRUE\n\nmylst[[2]][c(1, 3)]\n\n[1] \"a\" \"c\""
+    "text": "Access Pieces of Objects\n\n\n\nVectors\n\nvec[2:4]\n\n[1] 2 3 4\n\nvec[c(2, 8)]\n\n[1] 2 8\n\n\n\n\n\nData Frames\nname[rows, cols]\n\ndf[1:2, 2:3]\n\n  y     z\n1 a  TRUE\n2 b FALSE\n\n\n\n\n\nLists\nname[[idx]] - access sub-object\n(idx is an integer)\n\nmylst[[3]]\n\n[1]  TRUE FALSE FALSE FALSE  TRUE\n\nmylst[[2]][c(1, 3)]\n\n[1] \"a\" \"c\""
+  },
+  {
+    "objectID": "slides/06-rstudio.html#important-buttons",
+    "href": "slides/06-rstudio.html#important-buttons",
+    "title": "1.6 Introduction to RStudio",
+    "section": "Important Buttons",
+    "text": "Important Buttons"
+  },
+  {
+    "objectID": "slides/06-rstudio.html#the-file-editor-top-left",
+    "href": "slides/06-rstudio.html#the-file-editor-top-left",
+    "title": "1.6 Introduction to RStudio",
+    "section": "The File Editor (Top Left)",
+    "text": "The File Editor (Top Left)\n\n\nThe logo on the script file indicates the file type.\nWhen an R file is open, there are Run and Source buttons on the top which allow you to run selected lines of code (Run) or source (run) the entire file.\nCode line numbers are provided on the left (this is a handy way to see where in the code the errors occur), and you can see line:character numbers at the bottom left.\nAt the bottom right, there is another indicator of what type of file Rstudio thinks this is."
+  },
+  {
+    "objectID": "slides/06-rstudio.html#the-file-editor-top-left-1",
+    "href": "slides/06-rstudio.html#the-file-editor-top-left-1",
+    "title": "1.6 Introduction to RStudio",
+    "section": "The File Editor (Top Left)",
+    "text": "The File Editor (Top Left)\n\n\nThe logo on the script file indicates the file type.\nWhen a quarto markdown file is open, there is a render button at the top which allows you to compile the file to see its “pretty”, non-markup form.\nIn the same toolbar, there are buttons to add a code chunk as well as to run a selcted line of code or chunk of code.\nYou can toggle between source (shown) and visual mode to see a more word-like rendering of the quarto markdown file.\nCode line numbers are provided on the left (this is a handy way to see where in the code the errors occur), and you can see line:character numbers at the bottom left.\nAt the bottom right, there is another indicator of what type of file Rstudio thinks this is."
+  },
+  {
+    "objectID": "slides/06-rstudio.html#the-file-editor-top-left-2",
+    "href": "slides/06-rstudio.html#the-file-editor-top-left-2",
+    "title": "1.6 Introduction to RStudio",
+    "section": "The File Editor (Top Left)",
+    "text": "The File Editor (Top Left)\n\n\nThe logo on the text file indicates the file type.\nWhen a text file (or other unknown file extension) is open, there are very few buttons in the editor window.\nCode line numbers are provided on the left (this is a handy way to see where in the code the errors occur), and you can see line:character numbers at the bottom left.\nAt the bottom right, there is another indicator of what type of file Rstudio thinks this is."
+  },
+  {
+    "objectID": "slides/06-rstudio.html#the-console-pane-bottom-left",
+    "href": "slides/06-rstudio.html#the-console-pane-bottom-left",
+    "title": "1.6 Introduction to RStudio",
+    "section": "The Console Pane (Bottom Left)",
+    "text": "The Console Pane (Bottom Left)\n\n\nWhen running R code from a script file, the console will show you that you are running in R by the logo at the top of the console pane.\nYou will initially see lines indicating that you’re running R (they’re missing here because this isn’t the first command I ran in this session).\nThe command you ran will appear after &gt;, and the results will appear immediately below, with boxed numbers in front of each sequential line.\nA &gt; waits for a new command.\nIn the environment pane, you may see a new value pop up named .Last.value - this is part of user settings and you can stop it from appearing if you want to."
+  },
+  {
+    "objectID": "slides/06-rstudio.html#environment-tab-top-right",
+    "href": "slides/06-rstudio.html#environment-tab-top-right",
+    "title": "1.6 Introduction to RStudio",
+    "section": "Environment Tab (Top Right)",
+    "text": "Environment Tab (Top Right)\n\n\nThe environment tab shows you all of the objects in memory that the language you’re working in knows about."
+  },
+  {
+    "objectID": "slides/06-rstudio.html#history-tab-top-right",
+    "href": "slides/06-rstudio.html#history-tab-top-right",
+    "title": "1.6 Introduction to RStudio",
+    "section": "History Tab (Top Right)",
+    "text": "History Tab (Top Right)\n\n\nThe history tab shows you a list of all commands you’ve run and allows you to send them to the console or to source (the text editor)."
+  },
+  {
+    "objectID": "slides/06-rstudio.html#files-tab-bottom-right",
+    "href": "slides/06-rstudio.html#files-tab-bottom-right",
+    "title": "1.6 Introduction to RStudio",
+    "section": "Files Tab (Bottom Right)",
+    "text": "Files Tab (Bottom Right)\n\n\nThe files tab shows you the files in your current working directory (by default), though you can navigate through it and find other files as necessary.\nIf you want to return to your working directory, there’s a button for that in the “More” menu.\nOne of the most important pieces of information in this pane is your path - you can construct the file path by using ~/ for home, and then for each folder, adding a slash between. The path to the folder we’re looking at here is thus ~/Projects/Class/stat-computing-r-python/."
+  },
+  {
+    "objectID": "slides/06-rstudio.html#packages-tab-bottom-right",
+    "href": "slides/06-rstudio.html#packages-tab-bottom-right",
+    "title": "1.6 Introduction to RStudio",
+    "section": "Packages Tab (Bottom Right)",
+    "text": "Packages Tab (Bottom Right)\n\n\nYou can get important information from the packages tab, like what packages are loaded, easy access to documentation for each package, and what version of the package is installed."
+  },
+  {
+    "objectID": "slides/06-rstudio.html#help-tab-bottom-right",
+    "href": "slides/06-rstudio.html#help-tab-bottom-right",
+    "title": "1.6 Introduction to RStudio",
+    "section": "Help tab (Bottom Right)",
+    "text": "Help tab (Bottom Right)\n\n\nThe help tab makes it easy to get access to function documentation within Rstudio, so you don’t have to switch windows."
+  },
+  {
+    "objectID": "slides/06-rstudio.html#the-viewer-tab-bottom-right",
+    "href": "slides/06-rstudio.html#the-viewer-tab-bottom-right",
+    "title": "1.6 Introduction to RStudio",
+    "section": "The Viewer Tab (Bottom Right)",
+    "text": "The Viewer Tab (Bottom Right)\n\n\nThe Viewer tab is where you will preview quarto documents – which is how you will submit some labs and homework assignments in this class.\nYou should always preview your documents before submitting them to make sure they look correct.\nYou can also set a specific quarto document to open in a browser or in the system PDF viewer."
+  },
+  {
+    "objectID": "syllabus.html#free-tutoring",
+    "href": "syllabus.html#free-tutoring",
+    "title": "Stat 1080 Syllabus",
+    "section": "3.4 Free Tutoring",
+    "text": "3.4 Free Tutoring\n\n\n\nThe Aggie Math Learning Center offers tutoring for Mathematics (0950-2280) and Statistics (1040-3000). Drop-in tutoring services are available online and face-to-face in LIB 411. The Aggie Math Learning Center will open Wednesday September 2 for the fall semester. For hours, visit: usu.edu/math/amlc/tutoring"
+  },
+  {
+    "objectID": "slides/05-prog-intro.html",
+    "href": "slides/05-prog-intro.html",
+    "title": "1.5 Introduction to Programming",
+    "section": "",
+    "text": "Notevariable\n\n\n\nA named object corresponding to a space in computer memory that can be assigned a value\n\n\nIn R, variables are assigned using &lt;-, e.g. \n\nx &lt;- 5\ny &lt;- \"A character variable\"\n\nx and y are the variable names, 5 and \"a character variable\" are the assigned values.\n\nx &lt;- 6\n\nVariable values can be re-assigned."
   }
 ]

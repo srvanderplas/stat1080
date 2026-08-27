@@ -9,7 +9,7 @@
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.9.37">
 
-  <title>STAT 1080 - Fall 2026 – rstudio</title>
+  <title>STAT 1080 - Fall 2026 – 1.6 Introduction to RStudio</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -132,16 +132,212 @@
       margin-right: 0;
     }
   </style>
-<meta property="og:title" content="STAT 1080 - Fall 2026">
+<meta property="og:title" content="1.6 Introduction to RStudio – STAT 1080 - Fall 2026">
 <meta property="og:site_name" content="STAT 1080 - Fall 2026">
 </head>
 <body class="quarto-light">
   <div class="reveal">
     <div class="slides">
 
+<section id="title-slide" class="quarto-title-block center">
+  <h1 class="title">1.6 Introduction to RStudio</h1>
 
-<section class="slide level2">
+<div class="quarto-title-authors">
+</div>
 
+</section>
+<section id="important-buttons" class="slide level2">
+<h2>Important Buttons</h2>
+
+<img data-src="images/Rstudio-important-buttons.png" alt="A screenshot of an RStudio window highlighting buttons for creating new files (top left), opening an RStudio project (top right). The main portion of the window shows the four panes in a default RStudio interface. The editor pane (top left), contains text files that may contain R or python code. The terminal/console pane (bottom left), contains the R console, system terminal, and a tab for background jobs. The top right pane contains the environment, history, connections, and tutorial tabs by default, and may also contain tabs labeled build and git, depending on your project setup. The environment tab shows you what objects are currently in your programming environment - that is, what things are defined. The bottom right pane contains the files, plots, packages, help, viewer, and presentation tabs. By default, the files tab will show you your current working directory; if you are not working in a project, then it will show your home directory, which is the default working directory." class="r-stretch"></section>
+<section id="the-file-editor-top-left" class="slide level2">
+<h2>The File Editor (Top Left)</h2>
+
+<img data-src="images/Rstudio-editor-pane-buttons.png" alt="Screenshot of the RStudio editor window in R script mode. Lines are numbered along the left side. Editor style can be toggled between source and visual mode. There is a run button at the top to run the current or selected line(s), and an additional shortcut to source the script. An indicator in the bottom right tells you what kind of file you are looking at. In the bottom left, you can see the line:character that is being edited." class="r-stretch"><aside class="notes">
+<p>The logo on the script file indicates the file type.</p>
+<p>When an R file is open, there are Run and Source buttons on the top which allow you to run selected lines of code (Run) or source (run) the entire file.</p>
+<p>Code line numbers are provided on the left (this is a handy way to see where in the code the errors occur), and you can see line:character numbers at the bottom left.</p>
+<p>At the bottom right, there is another indicator of what type of file Rstudio thinks this is.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="the-file-editor-top-left-1" class="slide level2">
+<h2>The File Editor (Top Left)</h2>
+
+<img data-src="images/Rstudio-editor-pane-buttons-quarto.png" alt="Screenshot of the RStudio editor window in quarto markdown mode. Lines are numbered along the left side. Editor style can be toggled between source and visual mode. There is a render button at the top to run the whole document, and additional shortcuts to add code chunks and run the selected code chunk. An indicator in the bottom right tells you what kind of file you are looking at. In the bottom left, you can see the line:character that is being edited." class="r-stretch"><aside class="notes">
+<p>The logo on the script file indicates the file type.</p>
+<p>When a quarto markdown file is open, there is a render button at the top which allows you to compile the file to see its “pretty”, non-markup form.</p>
+<p>In the same toolbar, there are buttons to add a code chunk as well as to run a selcted line of code or chunk of code.</p>
+<p>You can toggle between source (shown) and visual mode to see a more word-like rendering of the quarto markdown file.</p>
+<p>Code line numbers are provided on the left (this is a handy way to see where in the code the errors occur), and you can see line:character numbers at the bottom left.</p>
+<p>At the bottom right, there is another indicator of what type of file Rstudio thinks this is.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="the-file-editor-top-left-2" class="slide level2">
+<h2>The File Editor (Top Left)</h2>
+
+<img data-src="images/Rstudio-editor-pane-buttons-text.png" alt="Screenshot of the RStudio editor window in text mode. Lines are numbered along the left side. Editor style can be toggled between source and visual mode. An indicator in the bottom right tells you what kind of file you are looking at. In the bottom left, you can see the line:character that is being edited." class="r-stretch"><aside class="notes">
+<p>The logo on the text file indicates the file type.</p>
+<p>When a text file (or other unknown file extension) is open, there are very few buttons in the editor window.</p>
+<p>Code line numbers are provided on the left (this is a handy way to see where in the code the errors occur), and you can see line:character numbers at the bottom left.</p>
+<p>At the bottom right, there is another indicator of what type of file Rstudio thinks this is.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="the-console-pane-bottom-left" class="slide level2">
+<h2>The Console Pane (Bottom Left)</h2>
+
+<img data-src="images/Rstudio-terminal-R.png" alt="Screenshot of the RStudio console. Notice that there is an icon indicating what language the console is currently running." class="r-stretch"><aside class="notes">
+<p>When running R code from a script file, the console will show you that you are running in R by the logo at the top of the console pane.</p>
+<p>You will initially see lines indicating that you’re running R (they’re missing here because this isn’t the first command I ran in this session).</p>
+<p>The command you ran will appear after <code>&gt;</code>, and the results will appear immediately below, with boxed numbers in front of each sequential line.</p>
+<p>A <code>&gt;</code> waits for a new command.</p>
+<p>In the environment pane, you may see a new value pop up named <code>.Last.value</code> - this is part of user settings and you can stop it from appearing if you want to.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="environment-tab-top-right" class="slide level2">
+<h2>Environment Tab (Top Right)</h2>
+
+<img data-src="images/Rstudio-env-pane.png" alt="Screenshot of the environment pane. There is an indicator of which language's environment is shown, a way to clear the environment, and pairs of variable names and values." class="r-stretch"><aside class="notes">
+<p>The environment tab shows you all of the objects in memory that the language you’re working in knows about.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="history-tab-top-right" class="slide level2">
+<h2>History Tab (Top Right)</h2>
+
+<img data-src="images/Rstudio-history-pane.png" alt="RStudio history pane. This pane preserves all commands that have been run from the console or from evaluating code cells or scripts." class="r-stretch"><aside class="notes">
+<p>The history tab shows you a list of all commands you’ve run and allows you to send them to the console or to source (the text editor).</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="files-tab-bottom-right" class="slide level2">
+<h2>Files Tab (Bottom Right)</h2>
+
+<img data-src="images/Rstudio-file-tab.png" alt="Screenshot of RStudio file tab, showing files, size, and last modified date. The folder path is shown just below the icon row and can be useful if you don't know where your files are located." class="r-stretch"><aside class="notes">
+<p>The files tab shows you the files in your current working directory (by default), though you can navigate through it and find other files as necessary.</p>
+<p>If you want to return to your working directory, there’s a button for that in the “More” menu.</p>
+<p>One of the most important pieces of information in this pane is your path - you can construct the file path by using ~/ for home, and then for each folder, adding a slash between. The path to the folder we’re looking at here is thus <code>~/Projects/Class/stat-computing-r-python/</code>.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="packages-tab-bottom-right" class="slide level2">
+<h2>Packages Tab (Bottom Right)</h2>
+
+<img data-src="images/Rstudio-packages-tab.png" alt="Packages tab of RStudio. Checkboxes in the far left column show whether packages are loaded. Links to the package name can be clicked to access package documentation. The 3rd column is the package version, which should be verified and updated if you're having issues with the package's functions." class="r-stretch"><aside class="notes">
+<p>You can get important information from the packages tab, like what packages are loaded, easy access to documentation for each package, and what version of the package is installed.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="help-tab-bottom-right" class="slide level2">
+<h2>Help tab (Bottom Right)</h2>
+
+<img data-src="images/Rstudio-help-tab.png" alt="Screenshot of RStudio help tab. Search bar is highlighted and annotated with 'search for function name here', and then the main window is annotated with 'Documentation appears here'." class="r-stretch"><aside class="notes">
+<p>The help tab makes it easy to get access to function documentation within Rstudio, so you don’t have to switch windows.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="the-viewer-tab-bottom-right" class="slide level2">
+<h2>The Viewer Tab (Bottom Right)</h2>
+
+<img data-src="images/Rstudio-viewer-tab.png" alt="A screenshot of RStudio showing the Viewer tab, which displays HTML and PDF documents compiled from quarto or Rmarkdown." class="r-stretch"><aside class="notes">
+<p>The Viewer tab is where you will preview quarto documents – which is how you will submit some labs and homework assignments in this class.</p>
+<p>You should <em>always</em> preview your documents before submitting them to make sure they look correct.</p>
+<p>You can also set a specific quarto document to open in a browser or in the system PDF viewer.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 
 
 </section>
