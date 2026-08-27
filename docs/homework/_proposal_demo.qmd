@@ -1,0 +1,33 @@
+---
+title: "Data Collection Project Proposal"
+author: "Susan Vanderplas"
+editor: source
+format: 
+  html:
+    self-contained: true
+---
+
+# Introduction
+
+| Variable | Type | Units | Recording Method |
+|----|----|----|----|
+| Sleep Length | Quantitative | Hours | Manual via Sleep as Android |
+| Maximum Heart Rate | Quantitative | Beats per Minute | Smart Watch Logs |
+| Steps | Quantitative | number of steps taken | Smart Watch Logs |
+| Caffeine | Quantitative | mg | Manually Recorded (estimated from drink types) |
+
+# Motivation
+
+I want to explore the links between caffeine intake, heart rate, and length of sleep over the course of the semester. Caffeine does not make me more alert (it makes me sleepy, it's an ADHD thing) but physiologically there is no reason to expect that it would not increase my heart rate.
+
+I expect that on days that I am more active (as measured by maximum heart rate and steps), I need more sleep to recover. I am interested in discovering whether my caffeine intake changes on those days, and whether there appears to be any relationship between caffeine and maximum heart rate or caffeine and sleep length.
+
+# Methodology
+
+Sleep will be tracked using Sleep as Droid, which requires manually starting a sleep session. The data is saved on a separate Google calendar as well as shared with Google Fit. Sleep session data is stored as a JSON file, but the duration is a top-level value and can be exported relatively easily. Alternately, the app logs can be used to manually type duration information into a spreadsheet, which can be exported to CSV. 
+
+Any data not exported from Google Fit automatically will be filled in using the calendar sync.
+
+Caffeine data will be tracked manually in a spreadsheet between September 9 and November 11 (a total of 9 weeks). Caffeine on packaged drinks will be logged according to the nutritional information; black tea will be logged as 70 mg per 8 oz (the high end of the typical estimate) as it is difficult to measure caffeine content exactly in loose-leaf tea. The spreadsheet data will be exported to a CSV at the end of data collection.
+
+Data from the different sources will be merged together by date using `tidyr`'s join functions.
