@@ -117,7 +117,7 @@ extensions:
     user-agent: "Quarto-Linkrot/1.0"  # User agent string for requests
     cache-results: true       # Cache results to avoid checking the same URL multiple times
     debug: false              # Enable debug logging
-    output-file: linkrot-report.txt         # Write results to a file (e.g., "linkrot-report.txt")
+    output-file: linkrot-report.txt   # Write results to a file (e.g., "linkrot-report.txt")
     skip-patterns:            # List of regex patterns to skip
       - "example\\.com"
       - "localhost"
