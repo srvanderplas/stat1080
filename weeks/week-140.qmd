@@ -18,16 +18,19 @@ November 30-06, 2026
 
 ## 🥱 Monday 🌛
 
+- [Attendance Quiz 11/30](https://usu.instructure.com/courses/819584/assignments/5293135/edit?quiz_lti=true)
 - [Linear Models](../slides/40-linear-models.qmd)
 
 
 ## 🐪️ Wednesday 🐦‍⬛ 
 
+- [Attendance Quiz 12/02](https://usu.instructure.com/courses/819584/assignments/5293134/edit?quiz_lti=true)
 - [Multivariate Regression](../slides/41-multivariate.qmd)
 
 
 ## 🎉 Friday 🥳
 
+- [Attendance Quiz 12/04](https://usu.instructure.com/courses/819584/assignments/5293136/edit?quiz_lti=true)
 - [Lab: Regression](../lab/42-regression.qmd)
 
 

@@ -16,16 +16,19 @@ October 26-01, 2026
 
 ## 🥱 Monday 🌛
 
+- [Attendance Quiz 10/26](https://usu.instructure.com/courses/819584/assignments/5293067)
 - [Data and Probability](../slides/25-data-prob.qmd)
 
 
 ## 🐪️ Wednesday 🐦‍⬛ 
 
+- [Attendance Quiz 10/28](https://usu.instructure.com/courses/819584/assignments/5293068)
 - TBD probability
 
 
 ## 🎉 Friday 🥳
 
+- [Attendance Quiz 10/30](https://usu.instructure.com/courses/819584/assignments/5293102)
 - [Lab: Probability](../lab/27-probability.qmd)
 
 

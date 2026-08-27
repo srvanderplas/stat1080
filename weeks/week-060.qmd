@@ -18,11 +18,13 @@ October 05-11, 2026
 
 ## 🥱 Monday 🌛
 
+- [Attendance Quiz 10/05](https://usu.instructure.com/courses/819584/assignments/5292944)
 - [Dates and Times](../slides/16-dates-times.qmd)
 
 
 ## 🐪️ Wednesday 🐦‍⬛ 
 
+- [Attendance Quiz 10/07](https://usu.instructure.com/courses/819584/assignments/5292945)
 - [Visualizing Data Distributions](../slides/17-vis-dist.qmd)
 
 

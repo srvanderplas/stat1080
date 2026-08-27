@@ -109,6 +109,7 @@ format:
     
 filters:
   - linkrot
+  
 extensions:
   linkrot:
     fail-on-error: false      # Set to true to fail the build if broken links are found
@@ -120,6 +121,7 @@ extensions:
     skip-patterns:            # List of regex patterns to skip
       - "example\\.com"
       - "localhost"
+      - "usu\\.instructure\\.com"
       
 execute:
   freeze: auto  # re-render only when source changes

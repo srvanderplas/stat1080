@@ -18,16 +18,19 @@ November 09-15, 2026
 
 ## 🥱 Monday 🌛
 
+- [Attendance Quiz 11/09](https://usu.instructure.com/courses/819584/assignments/5293126/edit?quiz_lti=true)
 - [Parameters and Estimates](../slides/31-param-est.qmd)
 
 
 ## 🐪️ Wednesday 🐦‍⬛ 
 
+- [Attendance Quiz 11/11](https://usu.instructure.com/courses/819584/assignments/5293127/edit?quiz_lti=true)
 - [Central Limit Theorem](../slides/32-clt.qmd)
 
 
 ## 🎉 Friday 🥳
 
+- [Attendance Quiz 11/13](https://usu.instructure.com/courses/819584/assignments/5293128/edit?quiz_lti=true)
 - [Lab: CLT](../lab/33-clt.qmd)
 
 

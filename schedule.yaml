@@ -21,20 +21,24 @@ schedule:
         
     prepare: |
         - Print out and bring [cheat sheets](../files/cheat-sheets-combined.pdf) for R
-        - [ ] (for Mon) Syllabus Video and Quiz
-        - [ ] (for Wed) Reading Check 1.1
+        - [ ] (for Mon) [1.1.p Syllabus Overview](https://usu.instructure.com/courses/819584/assignments/5290598)
+        - [ ] (for Wed) [1.2.p Reading Check: Importing Data](https://usu.instructure.com/courses/819584/assignments/5290579)
         - [ ] (for Fri) Reading Check 1.2
+        - [ ] (for Fri) [1.3.p Install R](https://usu.instructure.com/courses/819584/assignments/5290555)
     class1: |
-        - [ ] Attendence Quiz 8/31 (Canvas)
+        - [ ] [Attendence Quiz 08/31](https://usu.instructure.com/courses/819584/quizzes/1463212)
         - [Discussion: Syllabus](../slides/01-syllabus.qmd)
         - [Course Introduction and Motivation](../slides/01-intro.qmd)
+        - [ ] [Syllabus Quiz](https://usu.instructure.com/courses/819584/assignments/5290551)
     class2: |
-        - [ ] Attendence Quiz 9/2 (Canvas)
+        - [ ] [Attendence Quiz 09/2](https://usu.instructure.com/courses/819584/quizzes/1463708)
         - [Organizing Data](../slides/02-data.qmd)
+        - [ ] [1.2.p Introduction to Data Science](https://usu.instructure.com/courses/819584/assignments/5290558) (Individual + In Class)
     class3: |
-        - [ ] Attendence Quiz 9/4 (Canvas)
+        - [ ] [Attendence Quiz 09/4](https://usu.instructure.com/courses/819584/quizzes/1463709)
         - [Intro to Programming](../slides/03-prog-intro.qmd)
         - Programming a Sandwich. [html](../lab/03-programming-sandwich.qmd),  [qmd template](../lab/_03-programming-sandwich.qmd) 
+        - [ ] [Getting to Know You Assignment](https://usu.instructure.com/courses/819584/quizzes/1462883)
     extra: |
         - [Hadley Wickham: Spreadsheets, bikes, and the accidental empire of R packages](https://www.youtube.com/watch?v=KxRnZTl2HVY) (YouTube, The Test Set) - Hadley Wickham developed many of the R packages we'll use in this course. Hear the back-story as to how he got started!
         - [The Jevons Paradox](https://www.youtube.com/watch?v=a6sYYrLTOjQ) (YouTube, Hank Green) - Why AI (and statistics) do not generate new information.
@@ -54,13 +58,18 @@ schedule:
     class1: |
         - Labor Day
     class2: |
+        - [Attendance Quiz 09/09](https://usu.instructure.com/courses/819584/quizzes/1463710)
         - [Intro to Programming](../slides/05-prog-intro.qmd)
-        - [Swirl Tutorial](https://usu.instructure.com/courses/819584/quizzes/1462913) (Canvas)
+        - [Swirl Tutorial](https://usu.instructure.com/courses/819584/quizzes/1462913)
     class3: |
+        - [Attendance Quiz 09/11](https://usu.instructure.com/courses/819584/quizzes/1463721)
         - [Intro to RStudio](../slides/06-rstudio.qmd)
+        - [Project Proposal]()
     extra: |
       - [How to Name Files](https://www.youtube.com/watch?v=ES1LTlnpLMk&pp=ygUYamVubnkgYnJ5YW4gc3ByZWFkc2hlZXRz) (YouTube, Jenny Bryan, NormConf) - How to name things so that they are machine readable, human readable, and sorted usefully.
       - [Teach Me How to Google: Debugging in R](https://www.youtube.com/watch?v=BoquVknEfoM) (YouTube, Jasmine Lai, R-Ladies Vancouver)
+      - [RStudio Themes List](https://github.com/max-alletsee/rstudio-themes) - Make RStudio look the way you want it!
+      - [Fira Code](https://github.com/tonsky/FiraCode) is a free font with ligatures. Ligatures combine adjacent characters into symbols, so -> becomes ➡️ (but without the background). Some people find this annoying, others find it much easier to read. Once you install the font, you should be able to start RStudio and then select Fira Code as the font in Tools -> Global Options -> Appearance. 
   
   - week: 3
     name: Correlation is not Causation
@@ -74,11 +83,13 @@ schedule:
         - [ ] (for Mon) Reading Check 3.1
         - [ ] (for Wed) Reading Check 3.2
     class1: |
+        - [Attendance Quiz 09/14](https://usu.instructure.com/courses/819584/assignments/5292838)
         - [Correlation and Causation](../slides/07-correlation.qmd)
     class2: |
-        - [Bias and Ethics](../slides/08-bias-ethics.qmd)
+        - [Attendance Quiz 09/16](https://usu.instructure.com/courses/819584/assignments/5292841)        - [Bias and Ethics](../slides/08-bias-ethics.qmd)
         - Bias and Ethics Activity [html](../lab/08-bias-and-ethics.qmd) [qmd template](../lab/_08-bias-and-ethics.qmd)
     class3: |
+        - [Attendance Quiz 09/18](https://usu.instructure.com/courses/819584/assignments/5292843)
         - [Lab: Spurious Correlation](../lab/09-spurious-correlation.qmd)
     extra: |
         - [Causal Inference](https://www.youtube.com/watch?v=gRkUhg9Wb-I) (YouTube, Dr. David Sontag, MIT OpenCourseWare) - The alternative to correlation -- how to show causality
@@ -98,10 +109,13 @@ schedule:
         - [ ] (for Wed) Reading Check 4.2
         - [ ] (for Fri) Reading Check 4.3
     class1: |
+        - [Attendance Quiz 09/21](https://usu.instructure.com/courses/819584/assignments/5292851)
         - [R programming basics](../slides/10-r-prog.qmd)
     class2: |
+        - [Attendance Quiz 09/23](https://usu.instructure.com/courses/819584/assignments/5292935)
         - [Lab: R Programming Puzzles](../lab/11-r-prog.qmd)
     class3: | 
+        - [Attendance Quiz 09/25](https://usu.instructure.com/courses/819584/assignments/5292940)
         - [Lab: R Programming Puzzles](../lab/11-r-prog.qmd)
     extra: |
         - [Tidyverse vs. Base R](https://www.youtube.com/watch?v=cYu-JKP6fhA) (YouTube, Susan B.)
@@ -119,10 +133,13 @@ schedule:
         - [ ] (for Wed) Reading Check 5.2
         - [ ] (for Fri) Reading Check 5.3
     class1: |
+        - [Attendance Quiz 09/28](https://usu.instructure.com/courses/819584/assignments/5292941)
         - [Tidyverse Programming Basics: Tibbles and `dplyr`](../slides/13-tidyverse-dplyr.qmd)
     class2: |
+        - [Attendance Quiz 09/30](https://usu.instructure.com/courses/819584/assignments/5292942)
         - [Tidyverse Programming Basics: Reshaping Data](../slides/14-tidyverse-tidyr.qmd)
     class3: |
+        - [Attendance Quiz 10/02](https://usu.instructure.com/courses/819584/assignments/5292943)
         - [Lab: Tidyverse Programming](../lab/15-tidyverse.qmd)
     extra: |
         - [SC Ch 16 - Programming with Data](https://srvanderplas.github.io/stat-computing-r-python/part-gen-prog/07-prog-data.html) - data explorations worked out with R/tidyverse code. You don't know how to do graphics yet, but hopefully the data operations make sense.
@@ -141,8 +158,10 @@ schedule:
         - [ ] (for Mon) Reading Check 6.1  
         - [ ] (for Wed) Reading Check 6.2
     class1: |
+        - [Attendance Quiz 10/05](https://usu.instructure.com/courses/819584/assignments/5292944)
         - [Dates and Times](../slides/16-dates-times.qmd)
     class2: |
+        - [Attendance Quiz 10/07](https://usu.instructure.com/courses/819584/assignments/5292945)
         - [Visualizing Data Distributions](../slides/17-vis-dist.qmd)
     class3: |
         - Fall Break
@@ -163,10 +182,13 @@ schedule:
         - [ ] (for Wed) Reading Check 7.2
         - [ ] (for Fri) Reading Check 7.3
     class1: |
+        - [Attendance Quiz 10/12](https://usu.instructure.com/courses/819584/assignments/5292946)
         - [Data Visualization with `ggplot2`](../slides/19-ggplot2.qmd)
     class2: |
+        - [Attendance Quiz 10/14](https://usu.instructure.com/courses/819584/assignments/5292947)
         - [Data Visualization in Practice/Advanced `ggplot2`](../slides/20-adv-ggplot2.qmd)
     class3: |
+        - [Attendance Quiz 10/16](https://usu.instructure.com/courses/819584/assignments/5292962)
         - [Data Visualization Principles](../slides/21-data-vis-principles.qmd)
         - [Lab: Effective Data Visualization](../lab/21-effective-data-vis.qmd)
     extra: |
@@ -192,10 +214,13 @@ schedule:
         - [ ] (for Wed) Reading Check 8.2
         - [ ] (for Fri) Reading Check 8.3
     class1: |
+        - [Attendance Quiz 10/19](https://usu.instructure.com/courses/819584/assignments/5292963)
         - [Summary Statistics](../slides/22-summary-stats.qmd)
     class2: |
+        - [Attendance Quiz 10/21](https://usu.instructure.com/courses/819584/assignments/5293065)
         - [Discrete Probability](../slides/23-discrete-prob.qmd)
     class3: |
+        - [Attendance Quiz 10/23](https://usu.instructure.com/courses/819584/assignments/5293066)
         - [Continuous Probability](../slides/24-cts-prob.qmd)
     # extra: |
     #     - 
@@ -209,10 +234,13 @@ schedule:
     prepare: |
         - [ ] (for Mon) Reading Check 9.1
     class1: |
+        - [Attendance Quiz 10/26](https://usu.instructure.com/courses/819584/assignments/5293067)
         - [Data and Probability](../slides/25-data-prob.qmd)
     class2: |
+        - [Attendance Quiz 10/28](https://usu.instructure.com/courses/819584/assignments/5293068)
         - TBD probability
     class3: |
+        - [Attendance Quiz 10/30](https://usu.instructure.com/courses/819584/assignments/5293102)
         - [Lab: Probability](../lab/27-probability.qmd)
     # extra: |
     #     - 
@@ -228,10 +256,13 @@ schedule:
         - [ ] (for Mon) Reading Check 10.1
         - [ ] (for Fri) Reading Check 10.3
     class1: |
+        - [Attendance Quiz 11/02](https://usu.instructure.com/courses/819584/assignments/5293103)
         - [Random Variables](../slides/28-rv.qmd)
     class2: |
+        - [Attendance Quiz 11/04](https://usu.instructure.com/courses/819584/assignments/5293124/edit?quiz_lti=true)
         - [Random Variables](../slides/29-rv.qmd)
     class3: |
+        - [Attendance Quiz 11/06](https://usu.instructure.com/courses/819584/assignments/5293125/edit?quiz_lti=true)
         - [Lab: Random Variables](../lab/30-rv.qmd)
     # extra: |
     #     - 
@@ -247,10 +278,13 @@ schedule:
         - [ ] (for Mon) Reading Check 11.1
         - [ ] (for Wed) Reading Check 11.2
     class1: |
+        - [Attendance Quiz 11/09](https://usu.instructure.com/courses/819584/assignments/5293126/edit?quiz_lti=true)
         - [Parameters and Estimates](../slides/31-param-est.qmd)
     class2: |
+        - [Attendance Quiz 11/11](https://usu.instructure.com/courses/819584/assignments/5293127/edit?quiz_lti=true)
         - [Central Limit Theorem](../slides/32-clt.qmd)
     class3: |
+        - [Attendance Quiz 11/13](https://usu.instructure.com/courses/819584/assignments/5293128/edit?quiz_lti=true)
         - [Lab: CLT](../lab/33-clt.qmd)
     # extra: |
     #     - 
@@ -266,10 +300,13 @@ schedule:
         - [ ] (for Mon) Reading Check 12.1
         - [ ] (for Wed) Reading Check 12.2
     class1: |
+        - [Attendance Quiz 11/16](https://usu.instructure.com/courses/819584/assignments/5293129/edit?quiz_lti=true)
         - [Hypothesis Testing](../slides/34-hypothesis.qmd)
     class2: |
+        - [Attendance Quiz 11/18](https://usu.instructure.com/courses/819584/assignments/5293132/edit?quiz_lti=true)
         - [Confidence Intervals](../slides/35-ci.qmd)
     class3: |
+        - [Attendance Quiz 11/20](https://usu.instructure.com/courses/819584/assignments/5293131/edit?quiz_lti=true)
         - [Lab: Inference](../lab/36-inference.qmd)
     # extra: |
     #     - 
@@ -283,6 +320,7 @@ schedule:
     prepare: |
         - [ ] 
     class1: |
+        - [Attendance Quiz 11/23](https://usu.instructure.com/courses/819584/assignments/5293133/edit?quiz_lti=true)
         - [Introduction to Regression](../slides/37-regression-intro.qmd)
         - [Activity: Regression By Hand](../lab/37-regression-by-hand.qmd)
     class2: |
@@ -303,10 +341,13 @@ schedule:
         - [ ] (for Mon) Reading Check 14.1
         - [ ] (for Wed) Reading Check 14.2
     class1: |
+        - [Attendance Quiz 11/30](https://usu.instructure.com/courses/819584/assignments/5293135/edit?quiz_lti=true)
         - [Linear Models](../slides/40-linear-models.qmd)
     class2: |
+        - [Attendance Quiz 12/02](https://usu.instructure.com/courses/819584/assignments/5293134/edit?quiz_lti=true)
         - [Multivariate Regression](../slides/41-multivariate.qmd)
     class3: |
+        - [Attendance Quiz 12/04](https://usu.instructure.com/courses/819584/assignments/5293136/edit?quiz_lti=true)
         - [Lab: Regression](../lab/42-regression.qmd)
     # extra: |
     #     - 
@@ -316,10 +357,13 @@ schedule:
     start: 2026-12-07
     end: 2026-12-13
     class1: |
+        - [Attendance Quiz 12/07](https://usu.instructure.com/courses/819584/assignments/5293137/edit?quiz_lti=true)
         - Project Meetings 
     class2: |
+        - [Attendance Quiz 12/09](https://usu.instructure.com/courses/819584/assignments/5293138/edit?quiz_lti=true)
         - Project Meetings
     class3: |
+        - [Attendance Quiz 12/11](https://usu.instructure.com/courses/819584/assignments/5293139/edit?quiz_lti=true)
         - Project Meetings and Honors presentations
     # extra: |
     #     - 

@@ -20,16 +20,19 @@ September 28-04, 2026
 
 ## 🥱 Monday 🌛
 
+- [Attendance Quiz 09/28](https://usu.instructure.com/courses/819584/assignments/5292941)
 - [Tidyverse Programming Basics: Tibbles and `dplyr`](../slides/13-tidyverse-dplyr.qmd)
 
 
 ## 🐪️ Wednesday 🐦‍⬛ 
 
+- [Attendance Quiz 09/30](https://usu.instructure.com/courses/819584/assignments/5292942)
 - [Tidyverse Programming Basics: Reshaping Data](../slides/14-tidyverse-tidyr.qmd)
 
 
 ## 🎉 Friday 🥳
 
+- [Attendance Quiz 10/02](https://usu.instructure.com/courses/819584/assignments/5292943)
 - [Lab: Tidyverse Programming](../lab/15-tidyverse.qmd)
 
 

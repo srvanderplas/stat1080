@@ -19,17 +19,19 @@ September 14-20, 2026
 
 ## 🥱 Monday 🌛
 
+- [Attendance Quiz 09/14](https://usu.instructure.com/courses/819584/assignments/5292838)
 - [Correlation and Causation](../slides/07-correlation.qmd)
 
 
 ## 🐪️ Wednesday 🐦‍⬛ 
 
-- [Bias and Ethics](../slides/08-bias-ethics.qmd)
+- [Attendance Quiz 09/16](https://usu.instructure.com/courses/819584/assignments/5292841)        - [Bias and Ethics](../slides/08-bias-ethics.qmd)
 - Bias and Ethics Activity [html](../lab/08-bias-and-ethics.qmd) [qmd template](../lab/_08-bias-and-ethics.qmd)
 
 
 ## 🎉 Friday 🥳
 
+- [Attendance Quiz 09/18](https://usu.instructure.com/courses/819584/assignments/5292843)
 - [Lab: Spurious Correlation](../lab/09-spurious-correlation.qmd)
 
 

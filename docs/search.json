@@ -1,5 +1,75 @@
 [
   {
+    "objectID": "slides/05-prog-intro.html#basic-definitions",
+    "href": "slides/05-prog-intro.html#basic-definitions",
+    "title": "1.5 Introduction to Programming",
+    "section": "Basic Definitions",
+    "text": "Basic Definitions\n\n\n\n\n\n\nvariable\n\n\nA named object corresponding to a space in computer memory that can be assigned a value\n\n\n\nIn R, variables are assigned using &lt;-, e.g. \n\nx &lt;- 5\ny &lt;- \"A character variable\"\n\nx and y are the variable names, 5 and \"a character variable\" are the assigned values.\n\nx &lt;- 6\n\nVariable values can be re-assigned."
+  },
+  {
+    "objectID": "slides/05-prog-intro.html#basic-definitions-1",
+    "href": "slides/05-prog-intro.html#basic-definitions-1",
+    "title": "1.5 Introduction to Programming",
+    "section": "Basic Definitions",
+    "text": "Basic Definitions\n\n\n\n\n\n\nvariable type\n\n\nThe mode and size of the variable’s stored value(s)\n\n\n\nTypes can be:\n\nintegers (1, 2, 3, 40932),\nfloats (3.1415, 2.71828),\ncharacters (“Frank”, “Evelyn”, “This is a string”), or\nlogicals (TRUE, FALSE)\n\n\nmode(x)\n\n[1] \"numeric\"\n\nmode(y)\n\n[1] \"character\""
+  },
+  {
+    "objectID": "slides/05-prog-intro.html#basic-definitions-2",
+    "href": "slides/05-prog-intro.html#basic-definitions-2",
+    "title": "1.5 Introduction to Programming",
+    "section": "Basic Definitions",
+    "text": "Basic Definitions\n\n\n\n\n\n\nvariable structure\n\n\nA way to arrange and store multiple data values for efficient access"
+  },
+  {
+    "objectID": "slides/05-prog-intro.html#vector",
+    "href": "slides/05-prog-intro.html#vector",
+    "title": "1.5 Introduction to Programming",
+    "section": "Vector",
+    "text": "Vector\n\n\n\n\n\n\n\nvector\n\n\na sequence of multiple values of the same type (think about a column in a spreadsheet)\n\n\n\n\n\nA Lego vector with same-type studs"
+  },
+  {
+    "objectID": "slides/05-prog-intro.html#list",
+    "href": "slides/05-prog-intro.html#list",
+    "title": "1.5 Introduction to Programming",
+    "section": "List",
+    "text": "List\n\n\n\n\n\n\n\nlist\n\n\na sequence of multiple values; these values can be of the same or different data type.\n\n\n\n\n\nA Lego list with different-type studs"
+  },
+  {
+    "objectID": "slides/05-prog-intro.html#data-frame",
+    "href": "slides/05-prog-intro.html#data-frame",
+    "title": "1.5 Introduction to Programming",
+    "section": "Data Frame",
+    "text": "Data Frame\n\n\n\n\n\n\n\ndata frame\n\n\na list of vectors which all have the same length.\n(Essentially, this is a spreadsheet with strict column/row requirements)\n\n\n\n\n\nA Lego data frame - a list of vectors of the same length, with each vector having a different type."
+  },
+  {
+    "objectID": "slides/05-prog-intro.html#creating-data-structures",
+    "href": "slides/05-prog-intro.html#creating-data-structures",
+    "title": "1.5 Introduction to Programming",
+    "section": "Creating Data Structures",
+    "text": "Creating Data Structures\n\nvec &lt;- c(1:10)\ndf &lt;- data.frame(x = 1:3, y = letters[1:3], z = c(T, F, F))\nmylst &lt;- list(x = 1:3, y = letters[1:4], z = c(T, F, F, F, T))"
+  },
+  {
+    "objectID": "slides/05-prog-intro.html#what-do-they-look-like",
+    "href": "slides/05-prog-intro.html#what-do-they-look-like",
+    "title": "1.5 Introduction to Programming",
+    "section": "What do they look like?",
+    "text": "What do they look like?\n\nvec\n\n [1]  1  2  3  4  5  6  7  8  9 10\n\ndf\n\n  x y     z\n1 1 a  TRUE\n2 2 b FALSE\n3 3 c FALSE\n\nmylst\n\n$x\n[1] 1 2 3\n\n$y\n[1] \"a\" \"b\" \"c\" \"d\"\n\n$z\n[1]  TRUE FALSE FALSE FALSE  TRUE"
+  },
+  {
+    "objectID": "slides/05-prog-intro.html#find-the-structure",
+    "href": "slides/05-prog-intro.html#find-the-structure",
+    "title": "1.5 Introduction to Programming",
+    "section": "Find the Structure",
+    "text": "Find the Structure\nUse the str() command to investigate the structure of an object\n\nstr(vec)\n\n int [1:10] 1 2 3 4 5 6 7 8 9 10\n\nstr(df)\n\n'data.frame':   3 obs. of  3 variables:\n $ x: int  1 2 3\n $ y: chr  \"a\" \"b\" \"c\"\n $ z: logi  TRUE FALSE FALSE\n\nstr(mylst)\n\nList of 3\n $ x: int [1:3] 1 2 3\n $ y: chr [1:4] \"a\" \"b\" \"c\" \"d\"\n $ z: logi [1:5] TRUE FALSE FALSE FALSE TRUE"
+  },
+  {
+    "objectID": "slides/05-prog-intro.html#access-pieces-of-objects",
+    "href": "slides/05-prog-intro.html#access-pieces-of-objects",
+    "title": "1.5 Introduction to Programming",
+    "section": "Access Pieces of Objects",
+    "text": "Access Pieces of Objects\n\n\nVectors\n\nvec[2:4]\n\n[1] 2 3 4\n\nvec[c(2, 8)]\n\n[1] 2 8\n\n\n\nData Frames\nname[rows, cols]\n\ndf[1:2, 2:3]\n\n  y     z\n1 a  TRUE\n2 b FALSE\n\n\n\nLists\nname[[idx]] - access sub-object\n(idx is an integer)\n\nmylst[[3]]\n\n[1]  TRUE FALSE FALSE FALSE  TRUE\n\nmylst[[2]][c(1, 3)]\n\n[1] \"a\" \"c\""
+  },
+  {
     "objectID": "slides/02-data.html#what-is-r",
     "href": "slides/02-data.html#what-is-r",
     "title": "1.2 Data",
@@ -473,7 +543,7 @@
     "href": "weeks/week-140.html",
     "title": "Week 14: Regression",
     "section": "",
-    "text": "November 30-06, 2026\n\n\n\n(for Mon) IDS 2 Ch 16 - The Linear Model Framework\n(for Wed) IDS 2 Ch 20 - Multivariable Regression\n\n\n\n\n\n(for Mon) Reading Check 14.1\n(for Wed) Reading Check 14.2\n\n\n\n\n\nLinear Models\n\n\n\n\n\nMultivariate Regression\n\n\n\n\n\nLab: Regression"
+    "text": "November 30-06, 2026\n\n\n\n(for Mon) IDS 2 Ch 16 - The Linear Model Framework\n(for Wed) IDS 2 Ch 20 - Multivariable Regression\n\n\n\n\n\n(for Mon) Reading Check 14.1\n(for Wed) Reading Check 14.2\n\n\n\n\n\nAttendance Quiz 11/30\nLinear Models\n\n\n\n\n\nAttendance Quiz 12/02\nMultivariate Regression\n\n\n\n\n\nAttendance Quiz 12/04\nLab: Regression"
   },
   {
     "objectID": "weeks/week-140.html#reading",
@@ -494,28 +564,28 @@
     "href": "weeks/week-140.html#monday",
     "title": "Week 14: Regression",
     "section": "",
-    "text": "Linear Models"
+    "text": "Attendance Quiz 11/30\nLinear Models"
   },
   {
     "objectID": "weeks/week-140.html#wednesday",
     "href": "weeks/week-140.html#wednesday",
     "title": "Week 14: Regression",
     "section": "",
-    "text": "Multivariate Regression"
+    "text": "Attendance Quiz 12/02\nMultivariate Regression"
   },
   {
     "objectID": "weeks/week-140.html#friday",
     "href": "weeks/week-140.html#friday",
     "title": "Week 14: Regression",
     "section": "",
-    "text": "Lab: Regression"
+    "text": "Attendance Quiz 12/04\nLab: Regression"
   },
   {
     "objectID": "weeks/week-120.html",
     "href": "weeks/week-120.html",
     "title": "Week 12: Statistical Inference",
     "section": "",
-    "text": "November 16-22, 2026\n\n\n\n(for Mon) IDS 2 Ch 13 - Hypothesis Testing\n(for Wed) IDS 2 Ch 9.4 - Confidence Intervals\n\n\n\n\n\n(for Mon) Reading Check 12.1\n(for Wed) Reading Check 12.2\n\n\n\n\n\nHypothesis Testing\n\n\n\n\n\nConfidence Intervals\n\n\n\n\n\nLab: Inference"
+    "text": "November 16-22, 2026\n\n\n\n(for Mon) IDS 2 Ch 13 - Hypothesis Testing\n(for Wed) IDS 2 Ch 9.4 - Confidence Intervals\n\n\n\n\n\n(for Mon) Reading Check 12.1\n(for Wed) Reading Check 12.2\n\n\n\n\n\nAttendance Quiz 11/16\nHypothesis Testing\n\n\n\n\n\nAttendance Quiz 11/18\nConfidence Intervals\n\n\n\n\n\nAttendance Quiz 11/20\nLab: Inference"
   },
   {
     "objectID": "weeks/week-120.html#reading",
@@ -536,28 +606,28 @@
     "href": "weeks/week-120.html#monday",
     "title": "Week 12: Statistical Inference",
     "section": "",
-    "text": "Hypothesis Testing"
+    "text": "Attendance Quiz 11/16\nHypothesis Testing"
   },
   {
     "objectID": "weeks/week-120.html#wednesday",
     "href": "weeks/week-120.html#wednesday",
     "title": "Week 12: Statistical Inference",
     "section": "",
-    "text": "Confidence Intervals"
+    "text": "Attendance Quiz 11/18\nConfidence Intervals"
   },
   {
     "objectID": "weeks/week-120.html#friday",
     "href": "weeks/week-120.html#friday",
     "title": "Week 12: Statistical Inference",
     "section": "",
-    "text": "Lab: Inference"
+    "text": "Attendance Quiz 11/20\nLab: Inference"
   },
   {
     "objectID": "weeks/week-100.html",
     "href": "weeks/week-100.html",
     "title": "Week 10: Random Variables",
     "section": "",
-    "text": "November 02-08, 2026\n\n\n\n(for Mon) IDS 2 Ch 7 - Random Variables\n(for Fri) IDS 2 Intro to Statistical Inference\n\n\n\n\n\n(for Mon) Reading Check 10.1\n(for Fri) Reading Check 10.3\n\n\n\n\n\nRandom Variables\n\n\n\n\n\nRandom Variables\n\n\n\n\n\nLab: Random Variables"
+    "text": "November 02-08, 2026\n\n\n\n(for Mon) IDS 2 Ch 7 - Random Variables\n(for Fri) IDS 2 Intro to Statistical Inference\n\n\n\n\n\n(for Mon) Reading Check 10.1\n(for Fri) Reading Check 10.3\n\n\n\n\n\nAttendance Quiz 11/02\nRandom Variables\n\n\n\n\n\nAttendance Quiz 11/04\nRandom Variables\n\n\n\n\n\nAttendance Quiz 11/06\nLab: Random Variables"
   },
   {
     "objectID": "weeks/week-100.html#reading",
@@ -578,28 +648,28 @@
     "href": "weeks/week-100.html#monday",
     "title": "Week 10: Random Variables",
     "section": "",
-    "text": "Random Variables"
+    "text": "Attendance Quiz 11/02\nRandom Variables"
   },
   {
     "objectID": "weeks/week-100.html#wednesday",
     "href": "weeks/week-100.html#wednesday",
     "title": "Week 10: Random Variables",
     "section": "",
-    "text": "Random Variables"
+    "text": "Attendance Quiz 11/04\nRandom Variables"
   },
   {
     "objectID": "weeks/week-100.html#friday",
     "href": "weeks/week-100.html#friday",
     "title": "Week 10: Random Variables",
     "section": "",
-    "text": "Lab: Random Variables"
+    "text": "Attendance Quiz 11/06\nLab: Random Variables"
   },
   {
     "objectID": "weeks/week-090.html",
     "href": "weeks/week-090.html",
     "title": "Week 9: Data and Probability",
     "section": "",
-    "text": "October 26-01, 2026\n\n\n\n(for Mon) IDS 2 Ch 4 - Connecting Data and Probability\n\n\n\n\n\n(for Mon) Reading Check 9.1\n\n\n\n\n\nData and Probability\n\n\n\n\n\nTBD probability\n\n\n\n\n\nLab: Probability"
+    "text": "October 26-01, 2026\n\n\n\n(for Mon) IDS 2 Ch 4 - Connecting Data and Probability\n\n\n\n\n\n(for Mon) Reading Check 9.1\n\n\n\n\n\nAttendance Quiz 10/26\nData and Probability\n\n\n\n\n\nAttendance Quiz 10/28\nTBD probability\n\n\n\n\n\nAttendance Quiz 10/30\nLab: Probability"
   },
   {
     "objectID": "weeks/week-090.html#reading",
@@ -620,28 +690,28 @@
     "href": "weeks/week-090.html#monday",
     "title": "Week 9: Data and Probability",
     "section": "",
-    "text": "Data and Probability"
+    "text": "Attendance Quiz 10/26\nData and Probability"
   },
   {
     "objectID": "weeks/week-090.html#wednesday",
     "href": "weeks/week-090.html#wednesday",
     "title": "Week 9: Data and Probability",
     "section": "",
-    "text": "TBD probability"
+    "text": "Attendance Quiz 10/28\nTBD probability"
   },
   {
     "objectID": "weeks/week-090.html#friday",
     "href": "weeks/week-090.html#friday",
     "title": "Week 9: Data and Probability",
     "section": "",
-    "text": "Lab: Probability"
+    "text": "Attendance Quiz 10/30\nLab: Probability"
   },
   {
     "objectID": "weeks/week-070.html",
     "href": "weeks/week-070.html",
     "title": "Week 7: Data Visualization",
     "section": "",
-    "text": "October 12-18, 2026\n\n\n\n(for Mon) IDS I Ch 8 - ggplot2\n(for Wed) IDS I Ch 10 - Data Visualization in Practice\n(for Fri) IDS I Ch 9 - Data Visualization Principles\n\n\n\n\n\n(for Mon) Reading Check 7.1\n(for Wed) Reading Check 7.2\n(for Fri) Reading Check 7.3\n\n\n\n\n\nData Visualization with ggplot2\n\n\n\n\n\nData Visualization in Practice/Advanced ggplot2\n\n\n\n\n\nData Visualization Principles\nLab: Effective Data Visualization\n\n\n\n\nThis is my research area, so here’s an info-dump from my textbook. I’m also happy to discuss data visualization at any point in office hours!\n\nSC Ch 18 - Data Visualization Basicsa\nSC Ch 19 - Exploratory Data Analysis\nSC Ch 20 - A Grammar of Graphics\nSC Ch 21 - Creating Good Charts"
+    "text": "October 12-18, 2026\n\n\n\n(for Mon) IDS I Ch 8 - ggplot2\n(for Wed) IDS I Ch 10 - Data Visualization in Practice\n(for Fri) IDS I Ch 9 - Data Visualization Principles\n\n\n\n\n\n(for Mon) Reading Check 7.1\n(for Wed) Reading Check 7.2\n(for Fri) Reading Check 7.3\n\n\n\n\n\nAttendance Quiz 10/12\nData Visualization with ggplot2\n\n\n\n\n\nAttendance Quiz 10/14\nData Visualization in Practice/Advanced ggplot2\n\n\n\n\n\nAttendance Quiz 10/16\nData Visualization Principles\nLab: Effective Data Visualization\n\n\n\n\nThis is my research area, so here’s an info-dump from my textbook. I’m also happy to discuss data visualization at any point in office hours!\n\nSC Ch 18 - Data Visualization Basicsa\nSC Ch 19 - Exploratory Data Analysis\nSC Ch 20 - A Grammar of Graphics\nSC Ch 21 - Creating Good Charts"
   },
   {
     "objectID": "weeks/week-070.html#reading",
@@ -662,21 +732,21 @@
     "href": "weeks/week-070.html#monday",
     "title": "Week 7: Data Visualization",
     "section": "",
-    "text": "Data Visualization with ggplot2"
+    "text": "Attendance Quiz 10/12\nData Visualization with ggplot2"
   },
   {
     "objectID": "weeks/week-070.html#wednesday",
     "href": "weeks/week-070.html#wednesday",
     "title": "Week 7: Data Visualization",
     "section": "",
-    "text": "Data Visualization in Practice/Advanced ggplot2"
+    "text": "Attendance Quiz 10/14\nData Visualization in Practice/Advanced ggplot2"
   },
   {
     "objectID": "weeks/week-070.html#friday",
     "href": "weeks/week-070.html#friday",
     "title": "Week 7: Data Visualization",
     "section": "",
-    "text": "Data Visualization Principles\nLab: Effective Data Visualization"
+    "text": "Attendance Quiz 10/16\nData Visualization Principles\nLab: Effective Data Visualization"
   },
   {
     "objectID": "weeks/week-070.html#extra-resourcesreading",
@@ -690,7 +760,7 @@
     "href": "weeks/week-050.html",
     "title": "Week 5: The Tidyverse",
     "section": "",
-    "text": "September 28-04, 2026\n\n\n\n(for Mon) IDS I Ch 4 - The Tidyverse\n(for Wed) SC Ch 22 - Data Cleaning - Read to get a sense of the different types of operations which are useful\n(for Fri) SC Ch 24 - Reshaping Data - Be able to ID wide and long data images\n\n\n\n\n\n(for Mon) Reading Check 5.1\n(for Wed) Reading Check 5.2\n(for Fri) Reading Check 5.3\n\n\n\n\n\nTidyverse Programming Basics: Tibbles and dplyr\n\n\n\n\n\nTidyverse Programming Basics: Reshaping Data\n\n\n\n\n\nLab: Tidyverse Programming\n\n\n\n\n\nSC Ch 16 - Programming with Data - data explorations worked out with R/tidyverse code. You don’t know how to do graphics yet, but hopefully the data operations make sense.\nTidy Tuesday Screencasts (YouTube, David Robinson). These show example data analyses in real time, with commentary, using a new dataset each week. These were primarily recorded during the pandemic, but are still an incredibly valuable resource for learing how to work with data.\nAllison Horst’s Tidyverse Illustrations - mostly illustrates tidyverse functions.\nFunctional Programming Illustrations"
+    "text": "September 28-04, 2026\n\n\n\n(for Mon) IDS I Ch 4 - The Tidyverse\n(for Wed) SC Ch 22 - Data Cleaning - Read to get a sense of the different types of operations which are useful\n(for Fri) SC Ch 24 - Reshaping Data - Be able to ID wide and long data images\n\n\n\n\n\n(for Mon) Reading Check 5.1\n(for Wed) Reading Check 5.2\n(for Fri) Reading Check 5.3\n\n\n\n\n\nAttendance Quiz 09/28\nTidyverse Programming Basics: Tibbles and dplyr\n\n\n\n\n\nAttendance Quiz 09/30\nTidyverse Programming Basics: Reshaping Data\n\n\n\n\n\nAttendance Quiz 10/02\nLab: Tidyverse Programming\n\n\n\n\n\nSC Ch 16 - Programming with Data - data explorations worked out with R/tidyverse code. You don’t know how to do graphics yet, but hopefully the data operations make sense.\nTidy Tuesday Screencasts (YouTube, David Robinson). These show example data analyses in real time, with commentary, using a new dataset each week. These were primarily recorded during the pandemic, but are still an incredibly valuable resource for learing how to work with data.\nAllison Horst’s Tidyverse Illustrations - mostly illustrates tidyverse functions.\nFunctional Programming Illustrations"
   },
   {
     "objectID": "weeks/week-050.html#reading",
@@ -711,21 +781,21 @@
     "href": "weeks/week-050.html#monday",
     "title": "Week 5: The Tidyverse",
     "section": "",
-    "text": "Tidyverse Programming Basics: Tibbles and dplyr"
+    "text": "Attendance Quiz 09/28\nTidyverse Programming Basics: Tibbles and dplyr"
   },
   {
     "objectID": "weeks/week-050.html#wednesday",
     "href": "weeks/week-050.html#wednesday",
     "title": "Week 5: The Tidyverse",
     "section": "",
-    "text": "Tidyverse Programming Basics: Reshaping Data"
+    "text": "Attendance Quiz 09/30\nTidyverse Programming Basics: Reshaping Data"
   },
   {
     "objectID": "weeks/week-050.html#friday",
     "href": "weeks/week-050.html#friday",
     "title": "Week 5: The Tidyverse",
     "section": "",
-    "text": "Lab: Tidyverse Programming"
+    "text": "Attendance Quiz 10/02\nLab: Tidyverse Programming"
   },
   {
     "objectID": "weeks/week-050.html#extra-resourcesreading",
@@ -739,7 +809,7 @@
     "href": "weeks/week-030.html",
     "title": "Week 3: Correlation is not Causation",
     "section": "",
-    "text": "September 14-20, 2026\n\n\n\n(for Mon) IDS I Ch 19 - Association is Not Causation\n(for Wed) Bias and Ethics (on Canvas)\n(for Fri) Watch How Ice Cream Kills and Calling BS 3.3: Spurious Correlations (UW Information School course on calling BS)\n\n\n\n\n\n(for Mon) Reading Check 3.1\n(for Wed) Reading Check 3.2\n\n\n\n\n\nCorrelation and Causation\n\n\n\n\n\nBias and Ethics\nBias and Ethics Activity html qmd template\n\n\n\n\n\nLab: Spurious Correlation\n\n\n\n\n\nCausal Inference (YouTube, Dr. David Sontag, MIT OpenCourseWare) - The alternative to correlation – how to show causality\nCrash Course Statistics: Henrietta Lacks, the Tuskegee Experiment, and Ethical Data Collection: Crash Course Statistics #12 (YouTube, CrashCourse)\nExploring Data Ethics (YouTube, Dr. Wendy Martinez, Washington Statistical Society Seminar)"
+    "text": "September 14-20, 2026\n\n\n\n(for Mon) IDS I Ch 19 - Association is Not Causation\n(for Wed) Bias and Ethics (on Canvas)\n(for Fri) Watch How Ice Cream Kills and Calling BS 3.3: Spurious Correlations (UW Information School course on calling BS)\n\n\n\n\n\n(for Mon) Reading Check 3.1\n(for Wed) Reading Check 3.2\n\n\n\n\n\nAttendance Quiz 09/14\nCorrelation and Causation\n\n\n\n\n\nAttendance Quiz 09/16 - Bias and Ethics\nBias and Ethics Activity html qmd template\n\n\n\n\n\nAttendance Quiz 09/18\nLab: Spurious Correlation\n\n\n\n\n\nCausal Inference (YouTube, Dr. David Sontag, MIT OpenCourseWare) - The alternative to correlation – how to show causality\nCrash Course Statistics: Henrietta Lacks, the Tuskegee Experiment, and Ethical Data Collection: Crash Course Statistics #12 (YouTube, CrashCourse)\nExploring Data Ethics (YouTube, Dr. Wendy Martinez, Washington Statistical Society Seminar)"
   },
   {
     "objectID": "weeks/week-030.html#reading",
@@ -760,21 +830,21 @@
     "href": "weeks/week-030.html#monday",
     "title": "Week 3: Correlation is not Causation",
     "section": "",
-    "text": "Correlation and Causation"
+    "text": "Attendance Quiz 09/14\nCorrelation and Causation"
   },
   {
     "objectID": "weeks/week-030.html#wednesday",
     "href": "weeks/week-030.html#wednesday",
     "title": "Week 3: Correlation is not Causation",
     "section": "",
-    "text": "Bias and Ethics\nBias and Ethics Activity html qmd template"
+    "text": "Attendance Quiz 09/16 - Bias and Ethics\nBias and Ethics Activity html qmd template"
   },
   {
     "objectID": "weeks/week-030.html#friday",
     "href": "weeks/week-030.html#friday",
     "title": "Week 3: Correlation is not Causation",
     "section": "",
-    "text": "Lab: Spurious Correlation"
+    "text": "Attendance Quiz 09/18\nLab: Spurious Correlation"
   },
   {
     "objectID": "weeks/week-030.html#extra-resourcesreading",
@@ -788,7 +858,7 @@
     "href": "weeks/week-010.html",
     "title": "Week 1: Introduction",
     "section": "",
-    "text": "August 31-06, 2026\n\n\n\nSyllabus\nCourse support page\n(for Wed) IDS I Ch 6 - Importing Data\n(for Fri) IDS I Ch 2 - R Basics\n\n\n\n\n\nPrint out and bring cheat sheets for R\n(for Mon) Syllabus Video and Quiz\n(for Wed) Reading Check 1.1\n(for Fri) Reading Check 1.2\n\n\n\n\n\nAttendence Quiz 8/31 (Canvas)\nDiscussion: Syllabus\nCourse Introduction and Motivation\n\n\n\n\n\nAttendence Quiz 9/2 (Canvas)\nOrganizing Data\n\n\n\n\n\nAttendence Quiz 9/4 (Canvas)\nIntro to Programming\nProgramming a Sandwich. html, qmd template\n\n\n\n\n\nHadley Wickham: Spreadsheets, bikes, and the accidental empire of R packages (YouTube, The Test Set) - Hadley Wickham developed many of the R packages we’ll use in this course. Hear the back-story as to how he got started!\nThe Jevons Paradox (YouTube, Hank Green) - Why AI (and statistics) do not generate new information.\nData Rectangling (YouTube, Jenny Bryan, Plotcon 2016) - The importance of getting data into the right format.\nTidy Data, Illustrated - Handy illustrations explaining the idea of tidy data"
+    "text": "August 31-06, 2026\n\n\n\nSyllabus\nCourse support page\n(for Wed) IDS I Ch 6 - Importing Data\n(for Fri) IDS I Ch 2 - R Basics\n\n\n\n\n\nPrint out and bring cheat sheets for R\n(for Mon) 1.1.p Syllabus Overview\n(for Wed) 1.2.p Reading Check: Importing Data\n(for Fri) Reading Check 1.2\n(for Fri) 1.3.p Install R\n\n\n\n\n\nAttendence Quiz 08/31\nDiscussion: Syllabus\nCourse Introduction and Motivation\nSyllabus Quiz\n\n\n\n\n\nAttendence Quiz 09/2\nOrganizing Data\n1.2.p Introduction to Data Science (Individual + In Class)\n\n\n\n\n\nAttendence Quiz 09/4\nIntro to Programming\nProgramming a Sandwich. html, qmd template\nGetting to Know You Assignment\n\n\n\n\n\nHadley Wickham: Spreadsheets, bikes, and the accidental empire of R packages (YouTube, The Test Set) - Hadley Wickham developed many of the R packages we’ll use in this course. Hear the back-story as to how he got started!\nThe Jevons Paradox (YouTube, Hank Green) - Why AI (and statistics) do not generate new information.\nData Rectangling (YouTube, Jenny Bryan, Plotcon 2016) - The importance of getting data into the right format.\nTidy Data, Illustrated - Handy illustrations explaining the idea of tidy data"
   },
   {
     "objectID": "weeks/week-010.html#reading",
@@ -802,28 +872,28 @@
     "href": "weeks/week-010.html#prepare-for-class",
     "title": "Week 1: Introduction",
     "section": "",
-    "text": "Print out and bring cheat sheets for R\n(for Mon) Syllabus Video and Quiz\n(for Wed) Reading Check 1.1\n(for Fri) Reading Check 1.2"
+    "text": "Print out and bring cheat sheets for R\n(for Mon) 1.1.p Syllabus Overview\n(for Wed) 1.2.p Reading Check: Importing Data\n(for Fri) Reading Check 1.2\n(for Fri) 1.3.p Install R"
   },
   {
     "objectID": "weeks/week-010.html#monday",
     "href": "weeks/week-010.html#monday",
     "title": "Week 1: Introduction",
     "section": "",
-    "text": "Attendence Quiz 8/31 (Canvas)\nDiscussion: Syllabus\nCourse Introduction and Motivation"
+    "text": "Attendence Quiz 08/31\nDiscussion: Syllabus\nCourse Introduction and Motivation\nSyllabus Quiz"
   },
   {
     "objectID": "weeks/week-010.html#wednesday",
     "href": "weeks/week-010.html#wednesday",
     "title": "Week 1: Introduction",
     "section": "",
-    "text": "Attendence Quiz 9/2 (Canvas)\nOrganizing Data"
+    "text": "Attendence Quiz 09/2\nOrganizing Data\n1.2.p Introduction to Data Science (Individual + In Class)"
   },
   {
     "objectID": "weeks/week-010.html#friday",
     "href": "weeks/week-010.html#friday",
     "title": "Week 1: Introduction",
     "section": "",
-    "text": "Attendence Quiz 9/4 (Canvas)\nIntro to Programming\nProgramming a Sandwich. html, qmd template"
+    "text": "Attendence Quiz 09/4\nIntro to Programming\nProgramming a Sandwich. html, qmd template\nGetting to Know You Assignment"
   },
   {
     "objectID": "weeks/week-010.html#extra-resourcesreading",
@@ -887,6 +957,13 @@
     "title": "Stat 1080 Syllabus",
     "section": "3.3 Course Fee",
     "text": "3.3 Course Fee\nA $30 course fee is assessed to each student to help pay the costs of teaching assistants, recitation leaders and staffing of the Aggie Math Learning Center (AMLC) in LIB 411. The teaching assistants and recitation leaders attend class, teach recitation sessions and coordinate material under the supervision of the course instructor, and assist with the administration and grading of exams, quizzes, and homework. The AMLC provides a shared area and resource for students to get help from all teaching assistants and recitation leaders assigned to STAT 1080, regardless the recitation or section for which students are registered. The course fee also supports the development and coordination of common materials and other resources, to improve consistency and to reduce overall instructional costs. All of these supports are provided to help ensure your success in Foundations of Data Science."
+  },
+  {
+    "objectID": "syllabus.html#free-tutoring",
+    "href": "syllabus.html#free-tutoring",
+    "title": "Stat 1080 Syllabus",
+    "section": "3.4 Free Tutoring",
+    "text": "3.4 Free Tutoring\nThe Aggie Math Learning Center offers tutoring for Mathematics (0950-2280) and Statistics (1040-3000). Drop-in tutoring services are available online and face-to-face in LIB 411. The Aggie Math Learning Center will open Wednesday September 2 for the fall semester. For hours, visit: usu.edu/math/amlc/tutoring"
   },
   {
     "objectID": "syllabus.html#preparation-participation",
@@ -1040,7 +1117,7 @@
     "href": "weeks/week-020.html",
     "title": "Week 2: Programming and RStudio",
     "section": "",
-    "text": "September 07-13, 2026\n\n\n\n(for Wed) Read IDS I Ch 3 - Programming Basics\n(for Fri) Read SC Ch 3 - RStudio\n\n\n\n\n\n(for Wed) Reading Check 2.1\n(for Fri) Reading Check 2.2\n\n\n\n\n\nLabor Day\n\n\n\n\n\nIntro to Programming\nSwirl Tutorial (Canvas)\n\n\n\n\n\nIntro to RStudio\n\n\n\n\n\nHow to Name Files (YouTube, Jenny Bryan, NormConf) - How to name things so that they are machine readable, human readable, and sorted usefully.\nTeach Me How to Google: Debugging in R (YouTube, Jasmine Lai, R-Ladies Vancouver)"
+    "text": "September 07-13, 2026\n\n\n\n(for Wed) Read IDS I Ch 3 - Programming Basics\n(for Fri) Read SC Ch 3 - RStudio\n\n\n\n\n\n(for Wed) Reading Check 2.1\n(for Fri) Reading Check 2.2\n\n\n\n\n\nLabor Day\n\n\n\n\n\nAttendance Quiz 09/09\nIntro to Programming\nSwirl Tutorial\n\n\n\n\n\nAttendance Quiz 09/11\nIntro to RStudio\nProject Proposal\n\n\n\n\n\nHow to Name Files (YouTube, Jenny Bryan, NormConf) - How to name things so that they are machine readable, human readable, and sorted usefully.\nTeach Me How to Google: Debugging in R (YouTube, Jasmine Lai, R-Ladies Vancouver)\nRStudio Themes List - Make RStudio look the way you want it!\nFira Code is a free font with ligatures. Ligatures combine adjacent characters into symbols, so -&gt; becomes ➡️ (but without the background). Some people find this annoying, others find it much easier to read. Once you install the font, you should be able to start RStudio and then select Fira Code as the font in Tools -&gt; Global Options -&gt; Appearance."
   },
   {
     "objectID": "weeks/week-020.html#reading",
@@ -1068,28 +1145,28 @@
     "href": "weeks/week-020.html#wednesday",
     "title": "Week 2: Programming and RStudio",
     "section": "",
-    "text": "Intro to Programming\nSwirl Tutorial (Canvas)"
+    "text": "Attendance Quiz 09/09\nIntro to Programming\nSwirl Tutorial"
   },
   {
     "objectID": "weeks/week-020.html#friday",
     "href": "weeks/week-020.html#friday",
     "title": "Week 2: Programming and RStudio",
     "section": "",
-    "text": "Intro to RStudio"
+    "text": "Attendance Quiz 09/11\nIntro to RStudio\nProject Proposal"
   },
   {
     "objectID": "weeks/week-020.html#extra-resourcesreading",
     "href": "weeks/week-020.html#extra-resourcesreading",
     "title": "Week 2: Programming and RStudio",
     "section": "",
-    "text": "How to Name Files (YouTube, Jenny Bryan, NormConf) - How to name things so that they are machine readable, human readable, and sorted usefully.\nTeach Me How to Google: Debugging in R (YouTube, Jasmine Lai, R-Ladies Vancouver)"
+    "text": "How to Name Files (YouTube, Jenny Bryan, NormConf) - How to name things so that they are machine readable, human readable, and sorted usefully.\nTeach Me How to Google: Debugging in R (YouTube, Jasmine Lai, R-Ladies Vancouver)\nRStudio Themes List - Make RStudio look the way you want it!\nFira Code is a free font with ligatures. Ligatures combine adjacent characters into symbols, so -&gt; becomes ➡️ (but without the background). Some people find this annoying, others find it much easier to read. Once you install the font, you should be able to start RStudio and then select Fira Code as the font in Tools -&gt; Global Options -&gt; Appearance."
   },
   {
     "objectID": "weeks/week-040.html",
     "href": "weeks/week-040.html",
     "title": "Week 4: Programming in R",
     "section": "",
-    "text": "September 21-27, 2026\n\n\n\n(for Mon) SC Ch 8 - Variables and Data Types\n(for Wed) SC Ch 9 - Mathematical and Logical Operators\n(for Fri) SC Ch 11 - Data Structures - Sections 11.1, 11.2, 11.6 - Ignore the python parts, focus on understanding how you access pieces of data in a vector and a data frame, and how to differentiate between the two.\n\n\n\n\n\n(for Mon) Reading Check 4.1\n(for Wed) Reading Check 4.2\n(for Fri) Reading Check 4.3\n\n\n\n\n\nR programming basics\n\n\n\n\n\nLab: R Programming Puzzles\n\n\n\n\n\nLab: R Programming Puzzles\n\n\n\n\n\nTidyverse vs. Base R (YouTube, Susan B.)"
+    "text": "September 21-27, 2026\n\n\n\n(for Mon) SC Ch 8 - Variables and Data Types\n(for Wed) SC Ch 9 - Mathematical and Logical Operators\n(for Fri) SC Ch 11 - Data Structures - Sections 11.1, 11.2, 11.6 - Ignore the python parts, focus on understanding how you access pieces of data in a vector and a data frame, and how to differentiate between the two.\n\n\n\n\n\n(for Mon) Reading Check 4.1\n(for Wed) Reading Check 4.2\n(for Fri) Reading Check 4.3\n\n\n\n\n\nAttendance Quiz 09/21\nR programming basics\n\n\n\n\n\nAttendance Quiz 09/23\nLab: R Programming Puzzles\n\n\n\n\n\nAttendance Quiz 09/25\nLab: R Programming Puzzles\n\n\n\n\n\nTidyverse vs. Base R (YouTube, Susan B.)"
   },
   {
     "objectID": "weeks/week-040.html#reading",
@@ -1110,21 +1187,21 @@
     "href": "weeks/week-040.html#monday",
     "title": "Week 4: Programming in R",
     "section": "",
-    "text": "R programming basics"
+    "text": "Attendance Quiz 09/21\nR programming basics"
   },
   {
     "objectID": "weeks/week-040.html#wednesday",
     "href": "weeks/week-040.html#wednesday",
     "title": "Week 4: Programming in R",
     "section": "",
-    "text": "Lab: R Programming Puzzles"
+    "text": "Attendance Quiz 09/23\nLab: R Programming Puzzles"
   },
   {
     "objectID": "weeks/week-040.html#friday",
     "href": "weeks/week-040.html#friday",
     "title": "Week 4: Programming in R",
     "section": "",
-    "text": "Lab: R Programming Puzzles"
+    "text": "Attendance Quiz 09/25\nLab: R Programming Puzzles"
   },
   {
     "objectID": "weeks/week-040.html#extra-resourcesreading",
@@ -1138,7 +1215,7 @@
     "href": "weeks/week-060.html",
     "title": "Week 6: Dates, Times, and Distributions",
     "section": "",
-    "text": "October 05-11, 2026\n\n\n\n(for Mon) IDS I Ch 13 - Dates and Times\n(for Wed) IDS I Ch 7 - Visualizing Data Distributions\n\n\n\n\n\n(for Mon) Reading Check 6.1\n\n(for Wed) Reading Check 6.2\n\n\n\n\n\nDates and Times\n\n\n\n\n\nVisualizing Data Distributions\n\n\n\n\n\nFall Break\n\n\n\n\n\nSC Ch 27 - Dates and Times\nIDS I Ch 14 - Locales"
+    "text": "October 05-11, 2026\n\n\n\n(for Mon) IDS I Ch 13 - Dates and Times\n(for Wed) IDS I Ch 7 - Visualizing Data Distributions\n\n\n\n\n\n(for Mon) Reading Check 6.1\n\n(for Wed) Reading Check 6.2\n\n\n\n\n\nAttendance Quiz 10/05\nDates and Times\n\n\n\n\n\nAttendance Quiz 10/07\nVisualizing Data Distributions\n\n\n\n\n\nFall Break\n\n\n\n\n\nSC Ch 27 - Dates and Times\nIDS I Ch 14 - Locales"
   },
   {
     "objectID": "weeks/week-060.html#reading",
@@ -1159,14 +1236,14 @@
     "href": "weeks/week-060.html#monday",
     "title": "Week 6: Dates, Times, and Distributions",
     "section": "",
-    "text": "Dates and Times"
+    "text": "Attendance Quiz 10/05\nDates and Times"
   },
   {
     "objectID": "weeks/week-060.html#wednesday",
     "href": "weeks/week-060.html#wednesday",
     "title": "Week 6: Dates, Times, and Distributions",
     "section": "",
-    "text": "Visualizing Data Distributions"
+    "text": "Attendance Quiz 10/07\nVisualizing Data Distributions"
   },
   {
     "objectID": "weeks/week-060.html#friday",
@@ -1187,7 +1264,7 @@
     "href": "weeks/week-080.html",
     "title": "Week 8: Statistics and Probability",
     "section": "",
-    "text": "October 19-25, 2026\n\n\n\n(for Mon) IDS 2, Ch 2 - Numerical Summaries\n(for Mon) IDS 2, Ch 3.3 - Comparing Groups with Stratification\n(for Wed) IDS 2, Ch 5 - Discrete Probability\n(for Fri) IDS 2, Ch 6 - Continuous Probability\n\n\n\n\n\n(for Mon) Reading Check 8.1\n(for Wed) Reading Check 8.2\n(for Fri) Reading Check 8.3\n\n\n\n\n\nSummary Statistics\n\n\n\n\n\nDiscrete Probability\n\n\n\n\n\nContinuous Probability"
+    "text": "October 19-25, 2026\n\n\n\n(for Mon) IDS 2, Ch 2 - Numerical Summaries\n(for Mon) IDS 2, Ch 3.3 - Comparing Groups with Stratification\n(for Wed) IDS 2, Ch 5 - Discrete Probability\n(for Fri) IDS 2, Ch 6 - Continuous Probability\n\n\n\n\n\n(for Mon) Reading Check 8.1\n(for Wed) Reading Check 8.2\n(for Fri) Reading Check 8.3\n\n\n\n\n\nAttendance Quiz 10/19\nSummary Statistics\n\n\n\n\n\nAttendance Quiz 10/21\nDiscrete Probability\n\n\n\n\n\nAttendance Quiz 10/23\nContinuous Probability"
   },
   {
     "objectID": "weeks/week-080.html#reading",
@@ -1208,21 +1285,21 @@
     "href": "weeks/week-080.html#monday",
     "title": "Week 8: Statistics and Probability",
     "section": "",
-    "text": "Summary Statistics"
+    "text": "Attendance Quiz 10/19\nSummary Statistics"
   },
   {
     "objectID": "weeks/week-080.html#wednesday",
     "href": "weeks/week-080.html#wednesday",
     "title": "Week 8: Statistics and Probability",
     "section": "",
-    "text": "Discrete Probability"
+    "text": "Attendance Quiz 10/21\nDiscrete Probability"
   },
   {
     "objectID": "weeks/week-080.html#friday",
     "href": "weeks/week-080.html#friday",
     "title": "Week 8: Statistics and Probability",
     "section": "",
-    "text": "Continuous Probability"
+    "text": "Attendance Quiz 10/23\nContinuous Probability"
   },
   {
     "objectID": "weeks/week-095.html",
@@ -1236,7 +1313,7 @@
     "href": "weeks/week-110.html",
     "title": "Week 11: Parameters and Estimates",
     "section": "",
-    "text": "November 09-15, 2026\n\n\n\n(for Mon) IDS 2 Ch 9.1-9.3 - Estimates\n(for Wed) IDS 2 Ch 8 - Sampling Models and the Central Limit Theorem\n\n\n\n\n\n(for Mon) Reading Check 11.1\n(for Wed) Reading Check 11.2\n\n\n\n\n\nParameters and Estimates\n\n\n\n\n\nCentral Limit Theorem\n\n\n\n\n\nLab: CLT"
+    "text": "November 09-15, 2026\n\n\n\n(for Mon) IDS 2 Ch 9.1-9.3 - Estimates\n(for Wed) IDS 2 Ch 8 - Sampling Models and the Central Limit Theorem\n\n\n\n\n\n(for Mon) Reading Check 11.1\n(for Wed) Reading Check 11.2\n\n\n\n\n\nAttendance Quiz 11/09\nParameters and Estimates\n\n\n\n\n\nAttendance Quiz 11/11\nCentral Limit Theorem\n\n\n\n\n\nAttendance Quiz 11/13\nLab: CLT"
   },
   {
     "objectID": "weeks/week-110.html#reading",
@@ -1257,28 +1334,28 @@
     "href": "weeks/week-110.html#monday",
     "title": "Week 11: Parameters and Estimates",
     "section": "",
-    "text": "Parameters and Estimates"
+    "text": "Attendance Quiz 11/09\nParameters and Estimates"
   },
   {
     "objectID": "weeks/week-110.html#wednesday",
     "href": "weeks/week-110.html#wednesday",
     "title": "Week 11: Parameters and Estimates",
     "section": "",
-    "text": "Central Limit Theorem"
+    "text": "Attendance Quiz 11/11\nCentral Limit Theorem"
   },
   {
     "objectID": "weeks/week-110.html#friday",
     "href": "weeks/week-110.html#friday",
     "title": "Week 11: Parameters and Estimates",
     "section": "",
-    "text": "Lab: CLT"
+    "text": "Attendance Quiz 11/13\nLab: CLT"
   },
   {
     "objectID": "weeks/week-130.html",
     "href": "weeks/week-130.html",
     "title": "Week 13: Regression",
     "section": "",
-    "text": "November 23-29, 2026\n\n\n\n(for Mon) IDS 2 Ch 15 - Regression\n\n\n\n\n\n[ ]\n\n\n\n\n\nIntroduction to Regression\nActivity: Regression By Hand\n\n\n\n\n\n🦃 Thanksgiving Break\n\n\n\n\n\n🦃 Thanksgiving Break"
+    "text": "November 23-29, 2026\n\n\n\n(for Mon) IDS 2 Ch 15 - Regression\n\n\n\n\n\n[ ]\n\n\n\n\n\nAttendance Quiz 11/23\nIntroduction to Regression\nActivity: Regression By Hand\n\n\n\n\n\n🦃 Thanksgiving Break\n\n\n\n\n\n🦃 Thanksgiving Break"
   },
   {
     "objectID": "weeks/week-130.html#reading",
@@ -1299,7 +1376,7 @@
     "href": "weeks/week-130.html#monday",
     "title": "Week 13: Regression",
     "section": "",
-    "text": "Introduction to Regression\nActivity: Regression By Hand"
+    "text": "Attendance Quiz 11/23\nIntroduction to Regression\nActivity: Regression By Hand"
   },
   {
     "objectID": "weeks/week-130.html#wednesday",
@@ -1320,28 +1397,28 @@
     "href": "weeks/week-150.html",
     "title": "Week 15: Project Meetings",
     "section": "",
-    "text": "December 07-13, 2026\n\n\n\nProject Meetings\n\n\n\n\n\nProject Meetings\n\n\n\n\n\nProject Meetings and Honors presentations"
+    "text": "December 07-13, 2026\n\n\n\nAttendance Quiz 12/07\nProject Meetings\n\n\n\n\n\nAttendance Quiz 12/09\nProject Meetings\n\n\n\n\n\nAttendance Quiz 12/11\nProject Meetings and Honors presentations"
   },
   {
     "objectID": "weeks/week-150.html#monday",
     "href": "weeks/week-150.html#monday",
     "title": "Week 15: Project Meetings",
     "section": "",
-    "text": "Project Meetings"
+    "text": "Attendance Quiz 12/07\nProject Meetings"
   },
   {
     "objectID": "weeks/week-150.html#wednesday",
     "href": "weeks/week-150.html#wednesday",
     "title": "Week 15: Project Meetings",
     "section": "",
-    "text": "Project Meetings"
+    "text": "Attendance Quiz 12/09\nProject Meetings"
   },
   {
     "objectID": "weeks/week-150.html#friday",
     "href": "weeks/week-150.html#friday",
     "title": "Week 15: Project Meetings",
     "section": "",
-    "text": "Project Meetings and Honors presentations"
+    "text": "Attendance Quiz 12/11\nProject Meetings and Honors presentations"
   },
   {
     "objectID": "lab/03-programming-sandwich.html",
@@ -1603,104 +1680,6 @@
     "text": "Submission Checklist\n\nCheck your filename – is it of the form lastname_firstname_homework01.qmd?\nCheck the author (specified around line 3 of this file) – is your name there?\nRender your file using the blue arrow at the top of the RStudio text editor window.\n\nIf your file does not render, address any errors in the code leading to failure.\n\nPreview your rendered file in a browser. Do all of your answers show up the way you expected them to?\nIf the answers do not show up the way you want them, check your markdown formatting against the cheat sheet in RStudio (Help -&gt; Cheat Sheets -&gt; Rmarkdown cheat sheets)\nRun the lintr style checks (Canvas -&gt; Course homepage -&gt; Style Guides link under USU picture)\n\nSwitch to source mode in RStudio\nAddins -&gt; Style active file\nAddins -&gt; Lint current file\nAddress any issues that the lint command raises\n\nRender your file again, to check that the styler and lintr addons didn’t mess up any formatting.\nUpload your qmd file (NOT the html file) to Canvas\nDouble-check your submission - is the file you uploaded the one you want to be graded?"
   },
   {
-    "objectID": "slides/03-prog-intro.html#computers",
-    "href": "slides/03-prog-intro.html#computers",
-    "title": "1.3 Introduction to Programming",
-    "section": "Computers…",
-    "text": "Computers…"
-  },
-  {
-    "objectID": "slides/03-prog-intro.html#engineers",
-    "href": "slides/03-prog-intro.html#engineers",
-    "title": "1.3 Introduction to Programming",
-    "section": "Engineers…",
-    "text": "Engineers…\n\n\na word of caution: if the rock thinks too hard it will become hot enough to boil water\n-(Jake Chanenson, 6/17/20)\n\nSource\nAlternately…\n\nComputers are warm rocks we tricked into doing math and it’s a miracle they do anything."
-  },
-  {
-    "objectID": "slides/03-prog-intro.html#teaching-rocks-to-do-math",
-    "href": "slides/03-prog-intro.html#teaching-rocks-to-do-math",
-    "title": "1.3 Introduction to Programming",
-    "section": "Teaching Rocks to do Math",
-    "text": "Teaching Rocks to do Math\n\nRemember you’re talking to a rock (“dumb as a box of rocks…”)\nYou have to know a concept really well before you start programming\nBe extremely specific\nConsider what assumptions you are making.\n\nTry not to make them unless necessary.\nIf necessary, test to ensure they’re met."
-  },
-  {
-    "objectID": "slides/03-prog-intro.html#installationsetup",
-    "href": "slides/03-prog-intro.html#installationsetup",
-    "title": "1.3 Introduction to Programming",
-    "section": "Installation/Setup",
-    "text": "Installation/Setup\n\nInstall R and RStudio\nInstall Quarto"
-  },
-  {
-    "objectID": "slides/03-prog-intro.html#basic-definitions",
-    "href": "slides/03-prog-intro.html#basic-definitions",
-    "title": "1.3 Introduction to Programming",
-    "section": "Basic Definitions",
-    "text": "Basic Definitions\n\n\n\n\n\n\nvariable\n\n\nA named object corresponding to a space in computer memory that can be assigned a value\n\n\n\nIn R, variables are assigned using &lt;-, e.g. \n\nx &lt;- 5\ny &lt;- \"A character variable\"\n\nx and y are the variable names, 5 and \"a character variable\" are the assigned values.\n\nx &lt;- 6\n\nVariable values can be re-assigned."
-  },
-  {
-    "objectID": "slides/03-prog-intro.html#basic-definitions-1",
-    "href": "slides/03-prog-intro.html#basic-definitions-1",
-    "title": "1.3 Introduction to Programming",
-    "section": "Basic Definitions",
-    "text": "Basic Definitions\n\n\n\n\n\n\nvariable type\n\n\nThe mode and size of the variable’s stored value(s)\n\n\n\nTypes can be:\n\nintegers (1, 2, 3, 40932),\nfloats (3.1415, 2.71828),\ncharacters (“Frank”, “Evelyn”, “This is a string”), or\nlogicals (TRUE, FALSE)\n\n\nmode(x)\n\n[1] \"numeric\"\n\nmode(y)\n\n[1] \"character\""
-  },
-  {
-    "objectID": "slides/03-prog-intro.html#basic-definitions-2",
-    "href": "slides/03-prog-intro.html#basic-definitions-2",
-    "title": "1.3 Introduction to Programming",
-    "section": "Basic Definitions",
-    "text": "Basic Definitions\n\n\n\n\n\n\nvariable structure\n\n\nA way to arrange and store multiple data values for efficient access"
-  },
-  {
-    "objectID": "slides/03-prog-intro.html#vector",
-    "href": "slides/03-prog-intro.html#vector",
-    "title": "1.3 Introduction to Programming",
-    "section": "Vector",
-    "text": "Vector\n\n\n\n\n\n\n\nvector\n\n\na sequence of multiple values of the same type (think about a column in a spreadsheet)\n\n\n\n\n\nA Lego vector with same-type studs"
-  },
-  {
-    "objectID": "slides/03-prog-intro.html#list",
-    "href": "slides/03-prog-intro.html#list",
-    "title": "1.3 Introduction to Programming",
-    "section": "List",
-    "text": "List\n\n\n\n\n\n\n\nlist\n\n\na sequence of multiple values; these values can be of the same or different data type.\n\n\n\n\n\nA Lego list with different-type studs"
-  },
-  {
-    "objectID": "slides/03-prog-intro.html#data-frame",
-    "href": "slides/03-prog-intro.html#data-frame",
-    "title": "1.3 Introduction to Programming",
-    "section": "Data Frame",
-    "text": "Data Frame\n\n\n\n\n\n\n\ndata frame\n\n\na list of vectors which all have the same length.\n(Essentially, this is a spreadsheet with strict column/row requirements)\n\n\n\n\n\nA Lego data frame - a list of vectors of the same length, with each vector having a different type."
-  },
-  {
-    "objectID": "slides/03-prog-intro.html#creating-data-structures",
-    "href": "slides/03-prog-intro.html#creating-data-structures",
-    "title": "1.3 Introduction to Programming",
-    "section": "Creating Data Structures",
-    "text": "Creating Data Structures\n\nvec &lt;- c(1:10)\ndf &lt;- data.frame(x = 1:3, y = letters[1:3], z = c(T, F, F))\nmylst &lt;- list(x = 1:3, y = letters[1:4], z = c(T, F, F, F, T))"
-  },
-  {
-    "objectID": "slides/03-prog-intro.html#what-do-they-look-like",
-    "href": "slides/03-prog-intro.html#what-do-they-look-like",
-    "title": "1.3 Introduction to Programming",
-    "section": "What do they look like?",
-    "text": "What do they look like?\n\nvec\n\n [1]  1  2  3  4  5  6  7  8  9 10\n\ndf\n\n  x y     z\n1 1 a  TRUE\n2 2 b FALSE\n3 3 c FALSE\n\nmylst\n\n$x\n[1] 1 2 3\n\n$y\n[1] \"a\" \"b\" \"c\" \"d\"\n\n$z\n[1]  TRUE FALSE FALSE FALSE  TRUE"
-  },
-  {
-    "objectID": "slides/03-prog-intro.html#find-the-structure",
-    "href": "slides/03-prog-intro.html#find-the-structure",
-    "title": "1.3 Introduction to Programming",
-    "section": "Find the Structure",
-    "text": "Find the Structure\nUse the str() command to investigate the structure of an object\n\nstr(vec)\n\n int [1:10] 1 2 3 4 5 6 7 8 9 10\n\nstr(df)\n\n'data.frame':   3 obs. of  3 variables:\n $ x: int  1 2 3\n $ y: chr  \"a\" \"b\" \"c\"\n $ z: logi  TRUE FALSE FALSE\n\nstr(mylst)\n\nList of 3\n $ x: int [1:3] 1 2 3\n $ y: chr [1:4] \"a\" \"b\" \"c\" \"d\"\n $ z: logi [1:5] TRUE FALSE FALSE FALSE TRUE"
-  },
-  {
-    "objectID": "slides/03-prog-intro.html#access-pieces-of-objects",
-    "href": "slides/03-prog-intro.html#access-pieces-of-objects",
-    "title": "1.3 Introduction to Programming",
-    "section": "Access Pieces of Objects",
-    "text": "Access Pieces of Objects\n\n\nVectors\n\nvec[2:4]\n\n[1] 2 3 4\n\nvec[c(2, 8)]\n\n[1] 2 8\n\n\n\nData Frames\nname[rows, cols]\n\ndf[1:2, 2:3]\n\n  y     z\n1 a  TRUE\n2 b FALSE\n\n\n\nLists\nname[[idx]] - access sub-object\n(idx is an integer)\n\nmylst[[3]]\n\n[1]  TRUE FALSE FALSE FALSE  TRUE\n\nmylst[[2]][c(1, 3)]\n\n[1] \"a\" \"c\""
-  },
-  {
     "objectID": "slides/01-syllabus.html#introductions",
     "href": "slides/01-syllabus.html#introductions",
     "title": "Read the Syllabus",
@@ -1771,74 +1750,32 @@
     "text": "Finals\n\nDo NOT plan to travel during Finals Week!"
   },
   {
-    "objectID": "slides/05-prog-intro.html#basic-definitions",
-    "href": "slides/05-prog-intro.html#basic-definitions",
-    "title": "1.5 Introduction to Programming",
-    "section": "",
-    "text": "Notevariable\n\n\n\nA named object corresponding to a space in computer memory that can be assigned a value\n\n\nIn R, variables are assigned using &lt;-, e.g. \n\nx &lt;- 5\ny &lt;- \"A character variable\"\n\nx and y are the variable names, 5 and \"a character variable\" are the assigned values.\n\nx &lt;- 6\n\nVariable values can be re-assigned."
+    "objectID": "slides/03-prog-intro.html#computers",
+    "href": "slides/03-prog-intro.html#computers",
+    "title": "1.3 Introduction to Programming",
+    "section": "Computers…",
+    "text": "Computers…"
   },
   {
-    "objectID": "slides/05-prog-intro.html#basic-definitions-1",
-    "href": "slides/05-prog-intro.html#basic-definitions-1",
-    "title": "1.5 Introduction to Programming",
-    "section": "Basic Definitions",
-    "text": "Basic Definitions\n\n\n\n\n\n\nNotevariable type\n\n\n\nThe mode and size of the variable’s stored value(s)\n\n\nTypes can be:\n\nintegers (1, 2, 3, 40932),\nfloats (3.1415, 2.71828),\ncharacters (“Frank”, “Evelyn”, “This is a string”), or\nlogicals (TRUE, FALSE)\n\n\nmode(x)\n\n[1] \"numeric\"\n\nmode(y)\n\n[1] \"character\""
+    "objectID": "slides/03-prog-intro.html#engineers",
+    "href": "slides/03-prog-intro.html#engineers",
+    "title": "1.3 Introduction to Programming",
+    "section": "Engineers…",
+    "text": "Engineers…\n\n\na word of caution: if the rock thinks too hard it will become hot enough to boil water\n-(Jake Chanenson, 6/17/20)\n\nSource\nAlternately…\n\nComputers are warm rocks we tricked into doing math and it’s a miracle they do anything."
   },
   {
-    "objectID": "slides/05-prog-intro.html#basic-definitions-2",
-    "href": "slides/05-prog-intro.html#basic-definitions-2",
-    "title": "1.5 Introduction to Programming",
-    "section": "Basic Definitions",
-    "text": "Basic Definitions\n\n\n\n\n\n\nNotevariable structure\n\n\n\nA way to arrange and store multiple data values for efficient access"
+    "objectID": "slides/03-prog-intro.html#teaching-rocks-to-do-math",
+    "href": "slides/03-prog-intro.html#teaching-rocks-to-do-math",
+    "title": "1.3 Introduction to Programming",
+    "section": "Teaching Rocks to do Math",
+    "text": "Teaching Rocks to do Math\n\nRemember you’re talking to a rock (“dumb as a box of rocks…”)\nYou have to know a concept really well before you start programming\nBe extremely specific\nConsider what assumptions you are making.\n\nTry not to make them unless necessary.\nIf necessary, test to ensure they’re met."
   },
   {
-    "objectID": "slides/05-prog-intro.html#vector",
-    "href": "slides/05-prog-intro.html#vector",
-    "title": "1.5 Introduction to Programming",
-    "section": "Vector",
-    "text": "Vector\n\n\n\n\n\n\nNotevector\n\n\n\na sequence of multiple values of the same type (think about a column in a spreadsheet)\n\n\n\n\n\nA Lego vector with same-type studs"
-  },
-  {
-    "objectID": "slides/05-prog-intro.html#list",
-    "href": "slides/05-prog-intro.html#list",
-    "title": "1.5 Introduction to Programming",
-    "section": "List",
-    "text": "List\n\n\n\n\n\n\nNotelist\n\n\n\na sequence of multiple values; these values can be of the same or different data type.\n\n\n\n\n\nA Lego list with different-type studs"
-  },
-  {
-    "objectID": "slides/05-prog-intro.html#data-frame",
-    "href": "slides/05-prog-intro.html#data-frame",
-    "title": "1.5 Introduction to Programming",
-    "section": "Data Frame",
-    "text": "Data Frame\n\n\n\n\n\n\nNotedata frame\n\n\n\na list of vectors which all have the same length.\n(Essentially, this is a spreadsheet with strict column/row requirements)\n\n\n\n\n\nA Lego data frame - a list of vectors of the same length, with each vector having a different type."
-  },
-  {
-    "objectID": "slides/05-prog-intro.html#creating-data-structures",
-    "href": "slides/05-prog-intro.html#creating-data-structures",
-    "title": "1.5 Introduction to Programming",
-    "section": "Creating Data Structures",
-    "text": "Creating Data Structures\n\nvec &lt;- c(1:10)\ndf &lt;- data.frame(x = 1:3, y = letters[1:3], z = c(T, F, F))\nmylst &lt;- list(x = 1:3, y = letters[1:4], z = c(T, F, F, F, T))"
-  },
-  {
-    "objectID": "slides/05-prog-intro.html#what-do-they-look-like",
-    "href": "slides/05-prog-intro.html#what-do-they-look-like",
-    "title": "1.5 Introduction to Programming",
-    "section": "What do they look like?",
-    "text": "What do they look like?\n\nvec\n\n [1]  1  2  3  4  5  6  7  8  9 10\n\ndf\n\n  x y     z\n1 1 a  TRUE\n2 2 b FALSE\n3 3 c FALSE\n\nmylst\n\n$x\n[1] 1 2 3\n\n$y\n[1] \"a\" \"b\" \"c\" \"d\"\n\n$z\n[1]  TRUE FALSE FALSE FALSE  TRUE"
-  },
-  {
-    "objectID": "slides/05-prog-intro.html#find-the-structure",
-    "href": "slides/05-prog-intro.html#find-the-structure",
-    "title": "1.5 Introduction to Programming",
-    "section": "Find the Structure",
-    "text": "Find the Structure\nUse the str() command to investigate the structure of an object\n\nstr(vec)\n\n int [1:10] 1 2 3 4 5 6 7 8 9 10\n\nstr(df)\n\n'data.frame':   3 obs. of  3 variables:\n $ x: int  1 2 3\n $ y: chr  \"a\" \"b\" \"c\"\n $ z: logi  TRUE FALSE FALSE\n\nstr(mylst)\n\nList of 3\n $ x: int [1:3] 1 2 3\n $ y: chr [1:4] \"a\" \"b\" \"c\" \"d\"\n $ z: logi [1:5] TRUE FALSE FALSE FALSE TRUE"
-  },
-  {
-    "objectID": "slides/05-prog-intro.html#access-pieces-of-objects",
-    "href": "slides/05-prog-intro.html#access-pieces-of-objects",
-    "title": "1.5 Introduction to Programming",
-    "section": "Access Pieces of Objects",
-    "text": "Access Pieces of Objects\n\n\n\nVectors\n\nvec[2:4]\n\n[1] 2 3 4\n\nvec[c(2, 8)]\n\n[1] 2 8\n\n\n\n\n\nData Frames\nname[rows, cols]\n\ndf[1:2, 2:3]\n\n  y     z\n1 a  TRUE\n2 b FALSE\n\n\n\n\n\nLists\nname[[idx]] - access sub-object\n(idx is an integer)\n\nmylst[[3]]\n\n[1]  TRUE FALSE FALSE FALSE  TRUE\n\nmylst[[2]][c(1, 3)]\n\n[1] \"a\" \"c\""
+    "objectID": "slides/03-prog-intro.html#installationsetup",
+    "href": "slides/03-prog-intro.html#installationsetup",
+    "title": "1.3 Introduction to Programming",
+    "section": "Installation/Setup",
+    "text": "Installation/Setup\n\nInstall R and RStudio\nInstall Quarto"
   },
   {
     "objectID": "slides/06-rstudio.html#important-buttons",
@@ -1916,19 +1853,5 @@
     "title": "1.6 Introduction to RStudio",
     "section": "The Viewer Tab (Bottom Right)",
     "text": "The Viewer Tab (Bottom Right)\n\n\nThe Viewer tab is where you will preview quarto documents – which is how you will submit some labs and homework assignments in this class.\nYou should always preview your documents before submitting them to make sure they look correct.\nYou can also set a specific quarto document to open in a browser or in the system PDF viewer."
-  },
-  {
-    "objectID": "syllabus.html#free-tutoring",
-    "href": "syllabus.html#free-tutoring",
-    "title": "Stat 1080 Syllabus",
-    "section": "3.4 Free Tutoring",
-    "text": "3.4 Free Tutoring\n\n\n\nThe Aggie Math Learning Center offers tutoring for Mathematics (0950-2280) and Statistics (1040-3000). Drop-in tutoring services are available online and face-to-face in LIB 411. The Aggie Math Learning Center will open Wednesday September 2 for the fall semester. For hours, visit: usu.edu/math/amlc/tutoring"
-  },
-  {
-    "objectID": "slides/05-prog-intro.html",
-    "href": "slides/05-prog-intro.html",
-    "title": "1.5 Introduction to Programming",
-    "section": "",
-    "text": "Notevariable\n\n\n\nA named object corresponding to a space in computer memory that can be assigned a value\n\n\nIn R, variables are assigned using &lt;-, e.g. \n\nx &lt;- 5\ny &lt;- \"A character variable\"\n\nx and y are the variable names, 5 and \"a character variable\" are the assigned values.\n\nx &lt;- 6\n\nVariable values can be re-assigned."
   }
 ]

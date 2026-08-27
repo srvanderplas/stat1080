@@ -20,16 +20,19 @@ October 12-18, 2026
 
 ## 🥱 Monday 🌛
 
+- [Attendance Quiz 10/12](https://usu.instructure.com/courses/819584/assignments/5292946)
 - [Data Visualization with `ggplot2`](../slides/19-ggplot2.qmd)
 
 
 ## 🐪️ Wednesday 🐦‍⬛ 
 
+- [Attendance Quiz 10/14](https://usu.instructure.com/courses/819584/assignments/5292947)
 - [Data Visualization in Practice/Advanced `ggplot2`](../slides/20-adv-ggplot2.qmd)
 
 
 ## 🎉 Friday 🥳
 
+- [Attendance Quiz 10/16](https://usu.instructure.com/courses/819584/assignments/5292962)
 - [Data Visualization Principles](../slides/21-data-vis-principles.qmd)
 - [Lab: Effective Data Visualization](../lab/21-effective-data-vis.qmd)
 

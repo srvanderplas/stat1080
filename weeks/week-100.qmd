@@ -18,16 +18,19 @@ November 02-08, 2026
 
 ## 🥱 Monday 🌛
 
+- [Attendance Quiz 11/02](https://usu.instructure.com/courses/819584/assignments/5293103)
 - [Random Variables](../slides/28-rv.qmd)
 
 
 ## 🐪️ Wednesday 🐦‍⬛ 
 
+- [Attendance Quiz 11/04](https://usu.instructure.com/courses/819584/assignments/5293124/edit?quiz_lti=true)
 - [Random Variables](../slides/29-rv.qmd)
 
 
 ## 🎉 Friday 🥳
 
+- [Attendance Quiz 11/06](https://usu.instructure.com/courses/819584/assignments/5293125/edit?quiz_lti=true)
 - [Lab: Random Variables](../lab/30-rv.qmd)
 
 

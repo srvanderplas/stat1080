@@ -18,16 +18,19 @@ November 16-22, 2026
 
 ## 🥱 Monday 🌛
 
+- [Attendance Quiz 11/16](https://usu.instructure.com/courses/819584/assignments/5293129/edit?quiz_lti=true)
 - [Hypothesis Testing](../slides/34-hypothesis.qmd)
 
 
 ## 🐪️ Wednesday 🐦‍⬛ 
 
+- [Attendance Quiz 11/18](https://usu.instructure.com/courses/819584/assignments/5293132/edit?quiz_lti=true)
 - [Confidence Intervals](../slides/35-ci.qmd)
 
 
 ## 🎉 Friday 🥳
 
+- [Attendance Quiz 11/20](https://usu.instructure.com/courses/819584/assignments/5293131/edit?quiz_lti=true)
 - [Lab: Inference](../lab/36-inference.qmd)
 
 

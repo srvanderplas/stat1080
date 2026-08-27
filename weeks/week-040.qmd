@@ -20,16 +20,19 @@ September 21-27, 2026
 
 ## 🥱 Monday 🌛
 
+- [Attendance Quiz 09/21](https://usu.instructure.com/courses/819584/assignments/5292851)
 - [R programming basics](../slides/10-r-prog.qmd)
 
 
 ## 🐪️ Wednesday 🐦‍⬛ 
 
+- [Attendance Quiz 09/23](https://usu.instructure.com/courses/819584/assignments/5292935)
 - [Lab: R Programming Puzzles](../lab/11-r-prog.qmd)
 
 
 ## 🎉 Friday 🥳
 
+- [Attendance Quiz 09/25](https://usu.instructure.com/courses/819584/assignments/5292940)
 - [Lab: R Programming Puzzles](../lab/11-r-prog.qmd)
 
 

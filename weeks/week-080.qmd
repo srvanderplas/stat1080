@@ -21,16 +21,19 @@ October 19-25, 2026
 
 ## 🥱 Monday 🌛
 
+- [Attendance Quiz 10/19](https://usu.instructure.com/courses/819584/assignments/5292963)
 - [Summary Statistics](../slides/22-summary-stats.qmd)
 
 
 ## 🐪️ Wednesday 🐦‍⬛ 
 
+- [Attendance Quiz 10/21](https://usu.instructure.com/courses/819584/assignments/5293065)
 - [Discrete Probability](../slides/23-discrete-prob.qmd)
 
 
 ## 🎉 Friday 🥳
 
+- [Attendance Quiz 10/23](https://usu.instructure.com/courses/819584/assignments/5293066)
 - [Continuous Probability](../slides/24-cts-prob.qmd)
 
 

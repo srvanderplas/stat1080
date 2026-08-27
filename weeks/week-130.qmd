@@ -16,6 +16,7 @@ November 23-29, 2026
 
 ## 🥱 Monday 🌛
 
+- [Attendance Quiz 11/23](https://usu.instructure.com/courses/819584/assignments/5293133/edit?quiz_lti=true)
 - [Introduction to Regression](../slides/37-regression-intro.qmd)
 - [Activity: Regression By Hand](../lab/37-regression-by-hand.qmd)
 

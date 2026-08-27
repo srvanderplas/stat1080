@@ -23,17 +23,22 @@ September 07-13, 2026
 
 ## 🐪️ Wednesday 🐦‍⬛ 
 
+- [Attendance Quiz 09/09](https://usu.instructure.com/courses/819584/quizzes/1463710)
 - [Intro to Programming](../slides/05-prog-intro.qmd)
-- [Swirl Tutorial](https://usu.instructure.com/courses/819584/quizzes/1462913) (Canvas)
+- [Swirl Tutorial](https://usu.instructure.com/courses/819584/quizzes/1462913)
 
 
 ## 🎉 Friday 🥳
 
+- [Attendance Quiz 09/11](https://usu.instructure.com/courses/819584/quizzes/1463721)
 - [Intro to RStudio](../slides/06-rstudio.qmd)
+- [Project Proposal]()
 
 
 ## Extra Resources/Reading
 
 - [How to Name Files](https://www.youtube.com/watch?v=ES1LTlnpLMk&pp=ygUYamVubnkgYnJ5YW4gc3ByZWFkc2hlZXRz) (YouTube, Jenny Bryan, NormConf) - How to name things so that they are machine readable, human readable, and sorted usefully.
 - [Teach Me How to Google: Debugging in R](https://www.youtube.com/watch?v=BoquVknEfoM) (YouTube, Jasmine Lai, R-Ladies Vancouver)
+- [RStudio Themes List](https://github.com/max-alletsee/rstudio-themes) - Make RStudio look the way you want it!
+- [Fira Code](https://github.com/tonsky/FiraCode) is a free font with ligatures. Ligatures combine adjacent characters into symbols, so -> becomes ➡️ (but without the background). Some people find this annoying, others find it much easier to read. Once you install the font, you should be able to start RStudio and then select Fira Code as the font in Tools -> Global Options -> Appearance. 
 
