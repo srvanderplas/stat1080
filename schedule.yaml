@@ -14,16 +14,14 @@ schedule:
     start: 2026-08-31
     end: 2026-09-06
     reading: |
-        - [ ] [Syllabus](../syllabus.pdf)
-        - [ ] [Course support](../course-support.qmd) page
+        - [ ] (for Mon) [Syllabus](../syllabus.pdf)
         - [ ] (for Wed) [IDS I Ch 6 - Importing Data](https://rafalab.dfci.harvard.edu/dsbook-part-1/R/importing-data.html)
         - [ ] (for Fri) [IDS I Ch 2 - R Basics](https://rafalab.dfci.harvard.edu/dsbook-part-1/R/R-basics.html)
-        
     prepare: |
         - Print out and bring [cheat sheets](../files/cheat-sheets-combined.pdf) for R
         - [ ] (for Mon) [1.1.p Syllabus Overview](https://usu.instructure.com/courses/819584/assignments/5290598)
-        - [ ] (for Wed) [1.2.p Reading Check: Importing Data](https://usu.instructure.com/courses/819584/assignments/5290579)
-        - [ ] (for Fri) Reading Check 1.2
+        - [ ] (for Wed) [1.2.p Reading Check: Importing Data (IDS Ch 6)](https://usu.instructure.com/courses/819584/assignments/5290579)
+        - [ ] (for Fri) [1.3.p Reading Check: R Basics (IDS Ch 2)](https://usu.instructure.com/courses/819584/quizzes/1489305)
         - [ ] (for Fri) [1.3.p Install R](https://usu.instructure.com/courses/819584/assignments/5290555)
     class1: |
         - [ ] [Attendence Quiz 08/31](https://usu.instructure.com/courses/819584/quizzes/1463212)
@@ -50,11 +48,14 @@ schedule:
     start: 2026-09-07
     end: 2026-09-13
     reading: |
-        - [ ] (for Wed) Read [IDS I Ch 3 - Programming Basics](https://rafalab.dfci.harvard.edu/dsbook-part-1/R/programming-basics.html)
+        - [ ] (for Wed) Read [Proposal: Data Collection](https://usu.instructure.com/courses/819584/assignments/5290622)
         - [ ] (for Fri) Read [SC Ch 3 - RStudio](https://srvanderplas.github.io/stat-computing-r-python/part-tools/03-Rstudio-interface.html)
+        - [ ] (for Fri) Skim [IDS I Ch 3 - Programming Basics](https://rafalab.dfci.harvard.edu/dsbook-part-1/R/programming-basics.html) so that you know where to look up different programming concepts
+        - [ ] (for Fri) [Project Proposal Template](homework/_proposal_template.qmd)
+        - [ ] (for Fri) Project Proposal Demo [(qmd)](homework/_proposal_demo.qmd) [html](homework/proposal_demo.qmd)
     prepare: |
-        - [ ] (for Wed) Reading Check 2.1 
-        - [ ] (for Fri) Reading Check 2.2
+        - [ ] (for Wed) [2.2.p Reading Check: Proposal: Data Collection](https://usu.instructure.com/courses/819584/quizzes/1489310)
+        - [ ] (for Fri) [2.3.p Reading Check: Introduction to R and RStudio](https://usu.instructure.com/courses/819584/quizzes/1462871)
     class1: |
         - Labor Day
     class2: |
@@ -64,7 +65,7 @@ schedule:
     class3: |
         - [Attendance Quiz 09/11](https://usu.instructure.com/courses/819584/quizzes/1463721)
         - [Intro to RStudio](../slides/06-rstudio.qmd)
-        - [Project Proposal]()
+        - [ ] Submit [Project Proposal](https://usu.instructure.com/courses/819584/assignments/5290622)
     extra: |
       - [How to Name Files](https://www.youtube.com/watch?v=ES1LTlnpLMk&pp=ygUYamVubnkgYnJ5YW4gc3ByZWFkc2hlZXRz) (YouTube, Jenny Bryan, NormConf) - How to name things so that they are machine readable, human readable, and sorted usefully.
       - [Teach Me How to Google: Debugging in R](https://www.youtube.com/watch?v=BoquVknEfoM) (YouTube, Jasmine Lai, R-Ladies Vancouver)
