@@ -288,9 +288,8 @@ If you have technical challenges with R, quarto/rmarkdown, or RStudio send me an
 
 If your computer is misbehaving in ways that are not specific to this class, please consult IT/HelpDesk - your tuition already pays for this service, so please use it!
 
-## Course Fee {#sec-course-fee}
-
-A $30 course fee is assessed to each student to help pay the costs of teaching assistants, recitation leaders and staffing of the Aggie Math Learning Center (AMLC) in LIB 411. The teaching assistants and recitation leaders attend class, teach recitation sessions and coordinate material under the supervision of the course instructor, and assist with the administration and grading of exams, quizzes, and homework. The AMLC provides a shared area and resource for students to get help from all teaching assistants and recitation leaders assigned to STAT 1080, regardless the recitation or section for which students are registered. The course fee also supports the development and coordination of common materials and other resources, to improve consistency and to reduce overall instructional costs. All of these supports are provided to help ensure your success in Foundations of Data Science.
+## Course Fee {#sec-course-fee}sSs
+A $30 course fee is assessed to each student to help pay the costs of teaching assistants and staffing of the Aggie Math Learning Center (AMLC) in LIB 411. The teaching assistants attend class and assist with the administration and grading of projects , quizzes, and homework. The AMLC provides a shared area and resource for students to get help from all teaching assistants assigned to STAT 1080, regardless the section for which students are registered. All of these supports are provided to help ensure your success in Foundations of Data Science.
 
 ## Free Tutoring
 

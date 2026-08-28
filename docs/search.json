@@ -959,11 +959,11 @@
     "text": "3.2 Expectations\nYou can expect me to:\n\nReply to emails within two business days\nBe available in class to assist with assignments\nBe available by appointment (office hours) for additional help or discussion\nCorrect any mistakes I make promptly once they have been brought to my attention\n\nI expect you to:\n\nBe respectful and considerate of everyone in the class\nEngage in class discussions with civility and in good faith\nComplete the assigned reading, reading quiz, and any other activities before class\nEngage with the material and your classmates during class\nSeek help when you do not understand the material\nCommunicate promptly if you anticipate that you will have trouble meeting deadlines or participating in a portion of the course.\nDo your own troubleshooting before contacting me for help (and mention things you’ve already tried when you do ask for help!)\n\nDiscussion and disagreement are important parts of the learning process, but it is important that mutual respect prevail. Individuals who detract from an atmosphere of civility and respect or make it difficult for fellow students to learn will be removed from the conversation and/or the classroom, as outlined in Student Code V-3 (C) Disruptive Classroom Behavior.\n\n3.2.1 Recommendations for Course Success\nLearning data science takes practice. Complex ideas rarely click the first time. Succeed by:\n\nRunning examples on your own machine.\nE.g. changing things, breaking things, figuring out why they broke and how to fix them!\nAsking and answering questions in class.\nBe brave, be bold, be wrong!\nReviewing material between sessions.\nEven if you’re just preparing a list of “stump the prof” questions!\nStarting assignments soon after they are posted.\n\nDon’t be afraid to make mistakes – that’s how real learning happens.\n\n\n3.2.2 Technical Issues\nIf you have technical challenges with R, quarto/rmarkdown, or RStudio send me an email with:\n\nany files necessary to replicate the issue\na description of what you have tried, and\na description of what you think should happen\nas much detail as possible:\n\nText copied (CTRL-C) from error messages\nscreenshots (not cell phone pics)\n\n\nIf your computer is misbehaving in ways that are not specific to this class, please consult IT/HelpDesk - your tuition already pays for this service, so please use it!"
   },
   {
-    "objectID": "syllabus.html#sec-course-fee",
-    "href": "syllabus.html#sec-course-fee",
+    "objectID": "syllabus.html#course-fee-sec-course-feesss",
+    "href": "syllabus.html#course-fee-sec-course-feesss",
     "title": "Stat 1080 Syllabus",
-    "section": "3.3 Course Fee",
-    "text": "3.3 Course Fee\nA $30 course fee is assessed to each student to help pay the costs of teaching assistants, recitation leaders and staffing of the Aggie Math Learning Center (AMLC) in LIB 411. The teaching assistants and recitation leaders attend class, teach recitation sessions and coordinate material under the supervision of the course instructor, and assist with the administration and grading of exams, quizzes, and homework. The AMLC provides a shared area and resource for students to get help from all teaching assistants and recitation leaders assigned to STAT 1080, regardless the recitation or section for which students are registered. The course fee also supports the development and coordination of common materials and other resources, to improve consistency and to reduce overall instructional costs. All of these supports are provided to help ensure your success in Foundations of Data Science."
+    "section": "3.3 Course Fee {#sec-course-fee}sSs",
+    "text": "3.3 Course Fee {#sec-course-fee}sSs\nA $30 course fee is assessed to each student to help pay the costs of teaching assistants and staffing of the Aggie Math Learning Center (AMLC) in LIB 411. The teaching assistants attend class and assist with the administration and grading of projects , quizzes, and homework. The AMLC provides a shared area and resource for students to get help from all teaching assistants assigned to STAT 1080, regardless the section for which students are registered. All of these supports are provided to help ensure your success in Foundations of Data Science."
   },
   {
     "objectID": "syllabus.html#free-tutoring",
@@ -1117,21 +1117,21 @@
     "href": "weeks/week-030.html",
     "title": "Week 3: Correlation is not Causation",
     "section": "",
-    "text": "September 14-20, 2026\n\n\n\n(for Mon) IDS I Ch 19 - Association is Not Causation\n(for Wed) Bias and Ethics (on Canvas)\n(for Fri) Watch How Ice Cream Kills and Calling BS 3.3: Spurious Correlations (UW Information School course on calling BS)\n\n\n\n\n\n(for Mon) Reading Check 3.1\n(for Wed) Reading Check 3.2\n\n\n\n\n\nAttendance Quiz 09/14\nCorrelation and Causation\n\n\n\n\n\nAttendance Quiz 09/16 - Bias and Ethics\nBias and Ethics Activity html qmd template\n\n\n\n\n\nAttendance Quiz 09/18\nLab: Spurious Correlation\n\n\n\n\n\nCausal Inference (YouTube, Dr. David Sontag, MIT OpenCourseWare) - The alternative to correlation – how to show causality\nCrash Course Statistics: Henrietta Lacks, the Tuskegee Experiment, and Ethical Data Collection: Crash Course Statistics #12 (YouTube, CrashCourse)\nExploring Data Ethics (YouTube, Dr. Wendy Martinez, Washington Statistical Society Seminar)"
+    "text": "September 14-20, 2026\n\n\n\n(for Mon) IDS I Ch 19 - Association is Not Causation\n(for Wed) Bias and Ethics Readings\n(for Fri) Watch How Ice Cream Kills and Calling BS 3.3: Spurious Correlations (UW Information School course on calling BS)\n\n\n\n\n\n(for Mon) 3.1.p Reading Check: Association is Not Causation (IDS Ch 19)\n(for Wed) 3.2.p Bias and Ethics\n\n\n\n\n\nAttendance Quiz 09/14\nCorrelation and Causation\n\n\n\n\n\nAttendance Quiz 09/16\n\nBias and Ethics\n\n\n\n\n\nAttendance Quiz 09/18\nLab: Spurious Correlation\n\n\n\n\n\nCausal Inference (YouTube, Dr. David Sontag, MIT OpenCourseWare) - The alternative to correlation – how to show causality\nCrash Course Statistics: Henrietta Lacks, the Tuskegee Experiment, and Ethical Data Collection: Crash Course Statistics #12 (YouTube, CrashCourse)\nExploring Data Ethics (YouTube, Dr. Wendy Martinez, Washington Statistical Society Seminar)"
   },
   {
     "objectID": "weeks/week-030.html#reading",
     "href": "weeks/week-030.html#reading",
     "title": "Week 3: Correlation is not Causation",
     "section": "",
-    "text": "(for Mon) IDS I Ch 19 - Association is Not Causation\n(for Wed) Bias and Ethics (on Canvas)\n(for Fri) Watch How Ice Cream Kills and Calling BS 3.3: Spurious Correlations (UW Information School course on calling BS)"
+    "text": "(for Mon) IDS I Ch 19 - Association is Not Causation\n(for Wed) Bias and Ethics Readings\n(for Fri) Watch How Ice Cream Kills and Calling BS 3.3: Spurious Correlations (UW Information School course on calling BS)"
   },
   {
     "objectID": "weeks/week-030.html#prepare-for-class",
     "href": "weeks/week-030.html#prepare-for-class",
     "title": "Week 3: Correlation is not Causation",
     "section": "",
-    "text": "(for Mon) Reading Check 3.1\n(for Wed) Reading Check 3.2"
+    "text": "(for Mon) 3.1.p Reading Check: Association is Not Causation (IDS Ch 19)\n(for Wed) 3.2.p Bias and Ethics"
   },
   {
     "objectID": "weeks/week-030.html#monday",
@@ -1145,7 +1145,7 @@
     "href": "weeks/week-030.html#wednesday",
     "title": "Week 3: Correlation is not Causation",
     "section": "",
-    "text": "Attendance Quiz 09/16 - Bias and Ethics\nBias and Ethics Activity html qmd template"
+    "text": "Attendance Quiz 09/16\n\nBias and Ethics"
   },
   {
     "objectID": "weeks/week-030.html#friday",
