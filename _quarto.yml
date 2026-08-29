@@ -122,6 +122,7 @@ extensions:
       - "example\\.com"
       - "localhost"
       - "usu\\.instructure\\.com"
+      - "archive\\.org"
       
 execute:
   freeze: auto  # re-render only when source changes
