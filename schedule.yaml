@@ -15,8 +15,8 @@ schedule:
     end: 2026-09-06
     reading: |
         - [ ] (for Mon) [Syllabus](../syllabus.pdf)
-        - [ ] (for Wed) [IDS I Ch 6 - Importing Data](https://rafalab.dfci.harvard.edu/dsbook-part-1/R/importing-data.html)
-        - [ ] (for Fri) [IDS I Ch 2 - R Basics](https://rafalab.dfci.harvard.edu/dsbook-part-1/R/R-basics.html)
+        - [ ] (for Wed) [IDS 1 Ch 6 - Importing Data](https://rafalab.dfci.harvard.edu/dsbook-part-1/R/importing-data.html)
+        - [ ] (for Fri) [IDS 1 Ch 2 - R Basics](https://rafalab.dfci.harvard.edu/dsbook-part-1/R/R-basics.html)
     prepare: |
         - Print out and bring [cheat sheets](../files/cheat-sheets-combined.pdf) for R
         - [ ] (for Mon) [1.1.p Syllabus Overview](https://usu.instructure.com/courses/819584/assignments/5290598)
@@ -40,8 +40,6 @@ schedule:
     extra: |
         - [Hadley Wickham: Spreadsheets, bikes, and the accidental empire of R packages](https://www.youtube.com/watch?v=KxRnZTl2HVY) (YouTube, The Test Set) - Hadley Wickham developed many of the R packages we'll use in this course. Hear the back-story as to how he got started!
         - [The Jevons Paradox](https://www.youtube.com/watch?v=a6sYYrLTOjQ) (YouTube, Hank Green) - Why AI (and statistics) do not generate new information.
-        - [Data Rectangling](https://www.youtube.com/watch?v=4MfUCX_KpdE) (YouTube, Jenny Bryan, Plotcon 2016) - The importance of getting data into the right format.
-        - [Tidy Data, Illustrated](https://allisonhorst.com/other-r-fun) - Handy illustrations explaining the idea of tidy data
 
   - week: 2
     name: Programming and RStudio
@@ -49,7 +47,7 @@ schedule:
     end: 2026-09-13
     reading: |
         - [ ] (for Wed) Read [Proposal: Data Collection](https://usu.instructure.com/courses/819584/assignments/5290622)
-        - [ ] (for Wed) Skim [IDS I Ch 3 - Programming Basics](https://rafalab.dfci.harvard.edu/dsbook-part-1/R/programming-basics.html) so that you know where to look up different programming concepts
+        - [ ] (for Wed) Skim [IDS 1 Ch 3 - Programming Basics](https://rafalab.dfci.harvard.edu/dsbook-part-1/R/programming-basics.html) so that you know where to look up different programming concepts
         - [ ] (for Fri) Read [SC Ch 3 - RStudio](https://srvanderplas.github.io/stat-computing-r-python/part-tools/03-Rstudio-interface.html)
         - [ ] (for Fri) [Project Proposal Template](https://raw.githubusercontent.com/srvanderplas/stat1080/refs/heads/main/homework/_proposal_template.qmd)
         - [ ] (for Fri) Project Proposal Demo [(qmd)](https://raw.githubusercontent.com/srvanderplas/stat1080/refs/heads/main/homework/_proposal_demo.qmd) [html](../homework/proposal_demo.qmd)
@@ -77,9 +75,9 @@ schedule:
     start: 2026-09-14
     end: 2026-09-20
     reading: |
-        - [ ] (for Mon) [IDS I Ch 19 - Association is Not Causation](https://rafalab.dfci.harvard.edu/dsbook-part-2/linear-models/association-not-causation.html)
+        - [ ] (for Mon) [IDS 2 Ch 19 - Association is Not Causation](https://rafalab.dfci.harvard.edu/dsbook-part-2/linear-models/association-not-causation.html)
         - [ ] (for Wed) [Bias and Ethics Readings](https://usu.instructure.com/courses/819584/assignments/5290530)
-        - [ ] (for Fri) Watch [How Ice Cream Kills](https://www.youtube.com/watch?v=VMUQSMFGBDo&t=4s) and [Calling BS 3.3: Spurious Correlations](https://youtu.be/WNsLcg2GQMY) (UW Information School course on calling BS)
+        - [ ] (for Fri) Watch [How Ice Cream Kills](https://www.youtube.com/watch?v=VMUQSMFGBDo&t=4s) (<6 mins) and [Calling BS 3.3: Spurious Correlations](https://youtu.be/WNsLcg2GQMY) (<8 mins, UW Information School course on calling BS)
     prepare: |
         - [ ] (for Mon) [3.1.p Reading Check: Association is Not Causation (IDS Ch 19)](https://usu.instructure.com/courses/819584/quizzes/1462848)
         - [ ] (for Wed) [3.2.p Bias and Ethics](https://usu.instructure.com/courses/819584/assignments/5290530)
@@ -89,6 +87,7 @@ schedule:
     class2: |
         - [Attendance Quiz 09/16](https://usu.instructure.com/courses/819584/assignments/5292841)        
         - [Bias and Ethics](../slides/08-bias-ethics.qmd)
+        - [3.2.p - Bias and Ethics Activity](https://usu.instructure.com/courses/819584/quizzes/1462857) (submit in Canvas). [qmd file](lab/_08-bias-and-ethics.qmd) and [html file](lab/08-bias-and-ethics.qmd)
     class3: |
         - [Attendance Quiz 09/18](https://usu.instructure.com/courses/819584/assignments/5292843)
         - [Lab: Spurious Correlation](../lab/09-spurious-correlation.qmd)
@@ -120,6 +119,8 @@ schedule:
         - [Lab: R Programming Puzzles](../lab/11-r-prog.qmd)
     extra: |
         - [Tidyverse vs. Base R](https://www.youtube.com/watch?v=cYu-JKP6fhA) (YouTube, Susan B.)
+        - [Data Rectangling](https://www.youtube.com/watch?v=4MfUCX_KpdE) (YouTube, Jenny Bryan, Plotcon 2016) - The importance of getting data into the right format.
+        - [Tidy Data, Illustrated](https://allisonhorst.com/other-r-fun) - Handy illustrations explaining the idea of tidy data
 
   - week: 5
     name: The Tidyverse
