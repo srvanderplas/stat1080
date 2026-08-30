@@ -1,0 +1,280 @@
+
+/*-- scss:defaults --*/
+
+$aggie-blue: #0F2439;
+$white: #FFFFFF;
+$black: #000000;
+$pink-lt: #f692a1; /* 7.16 contrast with aggie blue */
+$pink: #f16278;
+$pink-dk: #B21028; /* 7 contrast with white */
+$orange-lt: #F9DCBE; /* 12.02 contrast with aggie blue */
+$orange: #f58220;
+$orange-dk: #8e4506; /* 6.99 contrast with white */
+$yellow-lt: #f9df90; /* 12.0 contrast with aggie blue */
+$yellow: #f6bd17;
+$yellow-dk: #6f5506; /* 7.05 contrast with white */
+$green-lt: #30c58e; /* 7.13 contrast with aggie blue */
+$green: #124734;
+$green-dk: #0f3e2c; /* 12.02 contrast with white */
+$sage-lt: #90b6a8; /* 7.09 contrast with aggie blue */
+$sage: #6b9e85;
+$sage-dk: #3e604c; /* 7.04 contrast with white */
+$cerulean-lt: #9febfe; /* 12.0 contrast with aggie blue */
+$cerulean: #01add8;
+$cerulean-dk: #016179; /* 7.02 contrast with white */
+$blue-lt: #6bb7e1; /* 7.12 contrast with aggie blue */
+$blue: #288dc2;
+$blue-dk: #1a5c7f; /* 7.28 contrast with white */
+$grey-lt: #a9afb2; /* 7.1 contrast with aggie blue */
+$grey: #a9afb2;
+$grey-dk: #4f5959; /* 7.22 contrast with white */
+$gray-lt: #a9afb2; /* 7.1 contrast with aggie blue */
+$gray: #a9afb2;
+$gray-dk: #4f5959; /* 7.22 contrast with white */
+$sand-lt: #e0e0d6; /* 11.86 contrast with aggie blue */
+$sand: #d1cbbd;
+$sand-dk: #5d5741; /* 7.22 contrast with white */
+
+
+$primary: $aggie-blue;
+$secondary: $gray;
+$navbar-dark-color: rgba($primary, .75) !important;
+$navbar-dark-hover-color: $primary !important;
+$theme-colors: (
+  "primary": $aggie-blue,
+  "secondary": $green,
+  "success": $sage,
+  "info": $cerulean,
+  "warning": $yellow,
+  "danger": $orange,
+  "dark": $black,
+  "link": $aggie-blue
+);
+
+
+/* css styles */
+.vcenter{
+  margin: 0!important;
+  height: 1em;
+}
+
+.reveal section {
+  background-position: left 10px bottom 10px;
+  background-size: 100%;
+	font-size: 18pt;
+	text-shadow: 0 0 0 #a2aaad;
+}
+
+.reveal section .sourceCode {
+  font-size: 18pt;
+}
+
+.reveal section h1, h2, h3, h4 {
+    font-weight: 500;
+    margin-bottom: 0;
+    margin-top: 10px;
+}
+
+.reveal section h1 {
+  color: #0F2439;
+  font-size: 200%!important;
+  font-family: 'Roboto', sans-serif;
+  /*background: rgba(.9961, .9922, .9804, .3);*/
+  padding:20px;
+}
+.reveal section h2 {
+  color: #124734;
+  font-size: 175%em;
+  font-family: 'Roboto', sans-serif;
+}
+.reveal section h3 {
+  color: #016179;
+  font-size: 150%!important;
+  font-family: 'Montserrat', sans-serif;
+}
+.reveal section h4 {
+  font-size: 125%!important;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.reveal section body{
+  font-size: 14pt!important;
+  font-weight:400;
+}
+
+.reveal section a{
+  color: #016179!important;
+}
+
+
+.reveal section#title-slide {
+	data-background-color: #fefdfa;
+  data-background-image:  url(libs/usu.png), url(libs/usu-u.png);
+	data-background-position: 10px 10px, right 10px 10px;
+	data-background-size: 25%, 30%;
+}
+
+.reveal section#title-slide h1 {
+	color: #0F2439 !important;
+	margin-top: -130px!important;
+}
+
+.reveal section#title-slide .subtitle {
+	color: #124734 !important;
+  font-size: 150%!important;
+}
+
+.reveal section#title-slide .author{
+  font-family: 'Handlee', cursive;
+	color:  #016179 !important;
+  font-size: 130%!important;
+}
+
+.reveal .slide.inverse {
+  data-background-color: #0F2439 !important;
+  background-color: #0F2439 !important;
+  border-bottom: 0!important;
+  color: #FFFFFF!important;
+}
+
+.reveal .slide.inverse h2 {
+  background-color:  #0F2439 !important;
+	color: #90b6a8!important;
+}
+
+.reveal .slide.inverse h3 {
+  background-color:  #0F2439 !important;
+	color: #f9df90!important;
+}
+
+.reveal .slide.inverse a {
+  background-color:  #0F2439 !important;
+	color: #9febfe!important;
+}
+
+/* Other font formatting stuff */
+.reveal section .emph { font-family: 'Handlee', cursive!important; }
+.reveal section .read { font-family: 'Atkinson Hyperlegible'!important; }
+
+.reveal section .pink-lt { color: #f692a1 !important;} /* watermelon, lightened to 7.16 contrast with aggie blue */
+.reveal section .orange-lt { color: #F9DCBE !important;} /* tangerine, lightened to 7.02 contrast with aggie blue */
+.reveal section .yellow-lt { color: #f9df90 !important;} /* sunflower, lightened to 12.0 contrast with aggie blue */
+.reveal section .green-lt { color: #30c58e !important;} /* hunter green, lightened to 7.13 contrast with aggie blue */
+.reveal section .sage-lt { color: #90b6a8 !important;} /* sage green, lightened to 7.09 contrast with aggie blue */
+.reveal section .cerulean-lt { color: #9febfe !important; }  /* electric, lightened to 12.0 contrast with aggie blue */
+.reveal section .blue-lt { color: #6bb7e1 !important;} /* sky, lightened to 7.12 contrast with aggie blue */
+.reveal section .gray-lt { color: #a9afb2 !important;} /* grey, lightened to 7.1 contrast with aggie blue */
+.reveal section .sand-lt { color: #e0e0d6 !important;} /* sand, lightened to 11.86 contrast with aggie blue */
+
+
+.reveal section .pink { color: #f16278 !important;} /* watermelon */
+.reveal section .orange { color: #f58220 !important;} /* tangerine */
+.reveal section .yellow { color: #f6bd17 !important;} /* sunflower */
+.reveal section .green { color: #124734 !important;} /* hunter green */
+.reveal section .sage { color: #6b9e85 !important;} /* sage green */
+.reveal section .cerulean { color: #01add8 !important; }  /* electric */
+.reveal section .blue { color: #288dc2 !important; } /* sky */
+.reveal section .gray { color: #a9afb2 !important;} /* grey */
+.reveal section .sand { color: #d1cbbd !important;} /* sand */
+
+
+.reveal section .pink-dk { color: #B21028 !important;} /* watermelon, darkened to 7 contrast with white */
+.reveal section .orange-dk { color: #8e4506 !important;} /* tangerine, darkened to 6.99 contrast with white */
+.reveal section .yellow-dk { color: #6f5506 !important;} /* sunflower, darkened to 7.05 contrast with white */
+.reveal section .green-dk { color: #0f3e2c !important;} /* hunter green, darkened to 12.02 contrast with white */
+.reveal section .sage-dk { color: #3e604c !important;} /* sage green, darkened to 7.04 contrast with white */
+.reveal section .cerulean-dk { color: #016179 !important; } /* electric, darkened to 7.02 contrast with white */
+.reveal section .blue-dk { color: #1a5c7f !important; }  /* sky, darkened to 7.28 contrast with white */
+.reveal section .gray-dk { color: #4f5959 !important;} /* grey, darkened to 7.22 contrast with white */
+.reveal section .sand-dk { color: #5d5741 !important;} /* sand, darkened to 7.22 contrast with white */
+
+
+.reveal section .center p, .reveal section .center span {text-align: center !important}
+
+/* other handy classes */
+.pull-left{
+  float: left;
+  width: 47%;
+}
+.pull-right{
+  float: right;
+  width: 47%;
+}
+
+.huge {font-size: 150%!important;}
+.large {font-size: 130%!important;}
+.largish{font-size: 110%!important;}
+.reg{font-size: 100%!important;}
+.slightly-small {font-size: 80%!important;}
+.smaller {font-size: 75%!important;}
+.small {font-size: 70%!important;}
+.tiny {font-size: 50%!important;}
+.microscopic {font-size: 28% !important;}
+
+
+.underline {
+  border-bottom:1px solid;display:inline-block;
+}
+
+.hidden{
+  visibility:hidden;
+}
+
+.move-up { margin-top:-50px !important;}
+.nudge-up { margin-top:-20px !important;}
+
+.move-left { margin-left:-50px !important;}
+.nudge-left { margin-left:-20px !important;}
+
+.move-right { margin-left:50px !important;}
+.nudge-right { margin-left:20px !important;}
+
+.move-down {margin-top:50px !important;}
+.nudge-down { margin-top:20px !important;}
+
+
+.toprightfig{
+  position:absolute;
+  top:-10px;
+  right: 10px;
+  max-height: 150px;
+  max-width: 150px;
+  height:auto;
+  width: auto;
+}
+
+.topleftfig{
+  position:absolute;
+  top:0;
+  left: 0;
+  max-height: 100%;
+  max-width: 50%;
+  height:auto;
+  width: auto;
+}
+
+.bottom {
+  left: 12%;
+  position: absolute;
+  bottom: 5px;
+  font-size: 50%;
+  /*width: 100%;*/
+}
+
+.cover{
+  width:100%;
+  height:100%;
+}
+
+.qrcode {
+  width: 100%;
+  text-align:center!important;
+  margin-bottom: 1rem;
+}
+
+.reveal .slide-logo {
+  height: 50px !important;
+  width: 50px !important;
+  max-width: unset !important;
+  max-height: unset !important;
+}
