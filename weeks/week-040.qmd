@@ -39,4 +39,6 @@ September 21-27, 2026
 ## Extra Resources/Reading
 
 - [Tidyverse vs. Base R](https://www.youtube.com/watch?v=cYu-JKP6fhA) (YouTube, Susan B.)
+- [Data Rectangling](https://www.youtube.com/watch?v=4MfUCX_KpdE) (YouTube, Jenny Bryan, Plotcon 2016) - The importance of getting data into the right format.
+- [Tidy Data, Illustrated](https://allisonhorst.com/other-r-fun) - Handy illustrations explaining the idea of tidy data
 

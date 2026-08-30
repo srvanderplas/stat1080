@@ -139,8 +139,16 @@ ggplot(ucb_df, aes(x = Gender, weight = Freq, fill = Dept)) + geom_bar(position 
     y = "Number of Applications",
     fill = "Department"
   ) 
-
+ggplot(ucb_df, aes(x = Dept, weight = Freq, fill = Gender)) + geom_bar(position = "stack") +
+  labs(
+    title = "Applications by Gender and Department",
+    x = "Department",
+    y = "Number of Applications",
+    fill = "Gender"
+  ) 
 
 ```
 
-Thus, the answer to "Simpson's Paradox" is this: the reason that women appear to be admitted at a lower rate than men is because women were disproportionately more likely to apply to more selective departments. More importantly, this assignment reminded you that not all decisions can be effectively or ethically made with data alone.
+Thus, the answer to "Simpson's Paradox" is this: the reason that women appear to be admitted at a lower rate than men is because women were disproportionately more likely to apply to more selective departments. 
+More importantly, this assignment reminded you that not all decisions can be effectively or ethically made with data alone.
+It is *always* important to think about the data and the context in which the data is situated when you make decisions based on data.

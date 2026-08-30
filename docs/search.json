@@ -1,45 +1,150 @@
 [
   {
+    "objectID": "homework/homework01.html",
+    "href": "homework/homework01.html",
+    "title": "Homework 1 - STAT 1080",
+    "section": "",
+    "text": "This assignment will give you hands-on practice working with numerical summaries of data in R, using the tidyverse. You won’t need to bring in your own datasets — everything you need comes from R packages.\nHomework datasets and solutions are included in the stat1080r course package, so make sure you have the latest version installed before you begin. You can install the package using the command install.packages(\"stat1080r\", repos = \"https://beanb2.r-universe.dev\"). You should only have to install this package once during the semester.\nYou’ll complete this file by finishing the code and filling in the answer prompts. Replace each #...# with the code needed to answer the question. Sometimes I’ll give you a longer sequence of code (a code “shell”, marked with ##) that you’ll need to uncomment and complete.\nWhen you’re done, go through the checklist at the end of this file, and then submit your .qmd file in Canvas.\nThere are 2 problems in this assignment (each with several parts), worth a total of 80 points. Don’t forget to check the style guidelines at the end before submitting. Note that you must use the “modern” pipe command |&gt; in your code. Please avoid the use of the old %&gt;% in your code which will result in a loss of points."
+  },
+  {
+    "objectID": "homework/homework01.html#introduction",
+    "href": "homework/homework01.html#introduction",
+    "title": "Homework 1 - STAT 1080",
+    "section": "",
+    "text": "This assignment will give you hands-on practice working with numerical summaries of data in R, using the tidyverse. You won’t need to bring in your own datasets — everything you need comes from R packages.\nHomework datasets and solutions are included in the stat1080r course package, so make sure you have the latest version installed before you begin. You can install the package using the command install.packages(\"stat1080r\", repos = \"https://beanb2.r-universe.dev\"). You should only have to install this package once during the semester.\nYou’ll complete this file by finishing the code and filling in the answer prompts. Replace each #...# with the code needed to answer the question. Sometimes I’ll give you a longer sequence of code (a code “shell”, marked with ##) that you’ll need to uncomment and complete.\nWhen you’re done, go through the checklist at the end of this file, and then submit your .qmd file in Canvas.\nThere are 2 problems in this assignment (each with several parts), worth a total of 80 points. Don’t forget to check the style guidelines at the end before submitting. Note that you must use the “modern” pipe command |&gt; in your code. Please avoid the use of the old %&gt;% in your code which will result in a loss of points."
+  },
+  {
+    "objectID": "homework/homework01.html#part-a-5-points",
+    "href": "homework/homework01.html#part-a-5-points",
+    "title": "Homework 1 - STAT 1080",
+    "section": "Part a (5 points)",
+    "text": "Part a (5 points)\nUsing tidyverse syntax, determine the mean, or average, added sugar content in a single serving of cereal, using all cereals with non-missing sugars information. Your solution should make use of the mean function in R. Check out the mean() function using ?mean to determine what options you have to remove missing values in your calculation.\nAssign this value to the variable named sugar_mean_1. You will know that you have succeeded if the code chunk below prints the message TRUE when you render the document.\n\n\n## sugar_mean_1 &lt;- cereal |&gt;\n##   summarize(tmean = #...#) |&gt;\n##   pull(tmean)\n\n## all.equal(sugar_mean_1, hw1_sol$sugar_mean_1)"
+  },
+  {
+    "objectID": "homework/homework01.html#part-b-5-points",
+    "href": "homework/homework01.html#part-b-5-points",
+    "title": "Homework 1 - STAT 1080",
+    "section": "Part b (5 points)",
+    "text": "Part b (5 points)\nNow, write an equivalent expression that calculates the mean, without using the mean() function. For this, we will rely on the general definition of a mean. Let \\(X\\) represent a vector of values, with the individual elements of the vector denoted as \\(x_1, x_2, \\ldots, x_n\\) respectively. Under this definition we can calculate the sample mean of \\(X\\) (called \\(\\bar{x}\\)) as\n\\[\\bar{x} = \\frac{\\sum_{i=1}^n x_i}{n}.\\]\n\n\n\n\n\n\nNoteMath Notation for the mean\n\n\n\n\n\nLet’s break the math down a bit.\n\n\\(\\bar{x}\\) is the sample mean of the vector \\(X\\), which has values – \\(x_1, x_2, ..., x_n\\). We use capital letters for vectors and lower-case values for observations.\n\\(\\sum_{i=1}^n\\) says we’re going to take the sum of \\(n\\) things, which are indexed (\\(i\\) is the index of \\(x_i\\)) from 1 to \\(n\\).\nWe then divide the sum of the \\(x_i\\) (that is, the sum over \\(X\\)) by the length of \\(X\\), which is \\(n\\).\n\n\n\n\nRestated in plain English, I am taking the sum of all the elements of the vector, and then dividing by the length of the vector (or, if I am ignoring NAs, the sum of instances for which !is.na() evaluates to TRUE).\n\n\n\n\n\n\nNoteMissing Observations\n\n\n\n\n\nSometimes, we can have missing observations, which are denoted by NA. If there are missing observations, we should exclude the missing observations from the sum (in the numerator/on the top of the fraction), and then exclude the missing observations from the number of total observations.\nIn R, we can exclude NAs from most functions by using fn(..., na.rm = T), where fn is the function name and ... are the other arguments.\n\n\n\nUsing this definition, re-calculate the mean added sugar content of the cereals without using the mean() function in R. You may consider using functions in R that match one, or both, of the bolded words in the equation description. Remember that, should you have to remove any missing values as part of your calculation, you need to account for that in your estimation of the vector length. Assign this to the variable name sugar_mean_2 and use the last line of code to make sure that this calculation of the mean exactly matches the previous calculation.\n\n\n## sugar_mean_2 &lt;- cereal |&gt;\n##   summarize(tmean = #...#) |&gt;\n##   pull(tmean)\n\n## all.equal(sugar_mean_2, hw1_sol$sugar_mean_1)"
+  },
+  {
+    "objectID": "homework/homework01.html#part-c-5-points",
+    "href": "homework/homework01.html#part-c-5-points",
+    "title": "Homework 1 - STAT 1080",
+    "section": "Part c (5 points)",
+    "text": "Part c (5 points)\nNote that a “serving” of cereal is a relative measure: there is no standard weight OR volume to describe a serving of cereal. One way to know this is to take a look at the unique values of weight and cups in the cereal dataset. You can see these values by using the unique() function. A solution for weight_u is provided. Your task is to adapt the weight_u code to work for the cups_u calculation. Please ensure that the provided code prints a TRUE statement when the document is rendered.\n\n\nweight_u &lt;- cereal |&gt; \n  pull(Weight) |&gt;\n  unique()\n\n## cups_u &lt;- #...#\n\n## all.equal(cups_u, hw1_sol$cups_u)"
+  },
+  {
+    "objectID": "homework/homework01.html#part-d-5-points",
+    "href": "homework/homework01.html#part-d-5-points",
+    "title": "Homework 1 - STAT 1080",
+    "section": "Part d (5 points)",
+    "text": "Part d (5 points)\nBased on what we learned in Part c, create a new variable in our data frame that represents “normalized” or “standardized” estimates of the added sugars in a “serving” of cereal. This variable should be named sugars_weight and should represent the total number of sugars per unit of Weight. Note that Weight is a standardized measure that represents the relative weight of a typical serving of cereal. It does not represent ounces, or grams, or other typical measurements of weight. Normally, we would say “total number of sugars per ounce” or “sugars per gram”. But, because of the way our measurements were taken, all we can say about this new variable is “sugars per unit of weight.”\nNote that you must use the mutate() function from the tidyverse to add this variable to your dataframe. Then, using the same tidyverse pipe, calculate the average number of sugars per unit of weight using the variable you have created and assign that value to the variable sugars_weight_mean. Ensure that the provided code prints TRUE when you are finished.\n\n\n## sugars_weight_mean &lt;- cereal |&gt;\n##   mutate(sugars_weight = #...#) |&gt;\n##   summarize(mean_sugar_weight = #...#) |&gt;\n##   pull(mean_sugar_weight)\n\n## all.equal(sugars_weight_mean, hw1_sol$sugars_weight_mean)"
+  },
+  {
+    "objectID": "homework/homework01.html#part-e-5-points",
+    "href": "homework/homework01.html#part-e-5-points",
+    "title": "Homework 1 - STAT 1080",
+    "section": "Part e (5 points)",
+    "text": "Part e (5 points)\nNow repeat Part (d) but this time normalize by volume (i.e. “Sugars per cup”) rather than by weight. Call the name of the new column you create sugars_cup and store the calculated mean of column in the variable name sugars_cup_mean. As before, make sure that TRUE prints to the screen when you are finished.\n\n\n## sugars_cup_mean &lt;- cereal |&gt;\n##   mutate(sugars_cup = #...#) |&gt;\n##   summarize(mean_sugar_cup = #...#) |&gt;\n##   pull(mean_sugar_cup)\n\n## all.equal(sugars_cup_mean, hw1_sol$sugars_cup_mean)"
+  },
+  {
+    "objectID": "homework/homework01.html#part-f-10-points",
+    "href": "homework/homework01.html#part-f-10-points",
+    "title": "Homework 1 - STAT 1080",
+    "section": "Part f (10 points)",
+    "text": "Part f (10 points)\nDiscuss: We now have three different estimates of the average added sugar content in box cereals: one by serving, one by weight, and one by volume (i.e. cup). Please identify at least one good thing (PRO) and one limitation (CON) for using each form of measurement.\nAdd your answer to each PRO: and CON: statement below. Note that you can create a “sub-bullet” by putting exactly two spaces before the - symbol, as shown below.\n\n\nRegular Measurements\n\nPro:\nCon:\n\nStandardized by weight\n\nPro:\nCon:\n\nStandardized by Volume\n\nPro:\nCon:"
+  },
+  {
+    "objectID": "homework/homework01.html#part-g-5-points",
+    "href": "homework/homework01.html#part-g-5-points",
+    "title": "Homework 1 - STAT 1080",
+    "section": "Part g (5 points)",
+    "text": "Part g (5 points)\nSuppose that your friend eats exactly one bowl of cereal, filled to the brim, for breakfast. They are wanting to better understand how much sugar would be contained in each bowl of cereal if they were to switch brands. Based on this, which of the three variables (Sugars, sugars_weight, sugars_cup) would be the most appropriate variable to consider and why?\n\n(Replace this text with your answer)"
+  },
+  {
+    "objectID": "homework/homework01.html#part-a-5-points-1",
+    "href": "homework/homework01.html#part-a-5-points-1",
+    "title": "Homework 1 - STAT 1080",
+    "section": "Part a (5 points)",
+    "text": "Part a (5 points)\nFor the first problem, we want to look at the mean added sugar content for the original servings for the different cereal manufacturers. Create a data frame named cereals_man that shows the group average/max/min sugar content per serving for all manufacturers that have at least five non-missing cereal types in the dataset. Arrange cereals_man using the average sugar content in descending order.\n\n\n## cereals_man &lt;- cereal |&gt; \n##   filter(#...#) |&gt; # remove rows with missing Sugar information\n##   group_by(#...#) |&gt; # group by Manufacturer\n##   summarize(sugars_mean = #...#,\n##            sugars_max = #...#,\n##            sugars_min = #...#,\n##            count = n()) |&gt; # n() gives the size of each group\n##  filter(#...#) |&gt; # retain only manufacturers with at least 5 obs\n##  arrange(desc(#...#)) # arrange by mean sugar content in descending order\n\n## all.equal(cereals_man, hw1_sol[[\"cereals_man\"]])"
+  },
+  {
+    "objectID": "homework/homework01.html#part-b-5-points-1",
+    "href": "homework/homework01.html#part-b-5-points-1",
+    "title": "Homework 1 - STAT 1080",
+    "section": "Part b (5 points)",
+    "text": "Part b (5 points)\nNow repeat Part (a) but instead looking at the average sugar content per shelf, see Shelf variable, instead of Manufacturer. You will use the same variable names that you used in Part (a). See the hw1_sol[[\"cereals_shelf\"]] dataframe to see how you should name the variables and arrange the rows. Your final answer should match the hw1_sol[[\"cereals_shelf\"]] exactly.\n\n\n# Adapt the code from the previous problem. This time using a \n# different grouping variable. \n## cereals_shelf &lt;- #...#\n\n## all.equal(cereals_shelf, hw1_sol[[\"cereals_shelf\"]])"
+  },
+  {
+    "objectID": "homework/homework01.html#part-c-5-points-1",
+    "href": "homework/homework01.html#part-c-5-points-1",
+    "title": "Homework 1 - STAT 1080",
+    "section": "Part c (5 points)",
+    "text": "Part c (5 points)\nDiscuss What interesting observations can you make about the grouped sugar content averages/max/min? Identify at least three different things of interest to you. For at least one thing that you identify, provide a possible reason for the observation (there is no way to “know” with the information that we have).\n\n\nObservation 1:\nObservation 2:\nObservation 3:"
+  },
+  {
+    "objectID": "homework/homework01.html#part-d-5-points-1",
+    "href": "homework/homework01.html#part-d-5-points-1",
+    "title": "Homework 1 - STAT 1080",
+    "section": "Part d (5 points)",
+    "text": "Part d (5 points)\nSuppose you are participating in a competition where you will be required to eat one pound of cereal blindfolded. You do not get to pick the cereal, but you DO get to pick which shelf in the grocery store that the cereal box is selected from. Suppose that you are trying to limit your sodium content so that your ONLY goal with shelf selection is to minimize the worst-case (i.e., highest possible) scenario for sodium intake. Please identify (1) which variable form (sodium per serving, sodium per cup, sodium per unit weight) and (2) which variable summary (min, mean, or max) would be most appropriate in helping you make your shelf selection. No need for an explanation.\n\nAnswer: (Replace this text with your answer)"
+  },
+  {
+    "objectID": "homework/homework01.html#part-e-10-points",
+    "href": "homework/homework01.html#part-e-10-points",
+    "title": "Homework 1 - STAT 1080",
+    "section": "Part e (10 points)",
+    "text": "Part e (10 points)\nLooking at the original cereal data, propose a grouped summary of a variable other than Sugars. You are welcome to group by Shelf, Manufacturer, or both Shelf and Manufacturer. In order to ensure reasonable estimates of the min/max/mean, you need to make sure that you only retain groups that have at least 5 non-missing observations of interest. To complete this problem, you must:\n\n(2.5 points) Write a sentence explaining what grouped summary you plan to take and why you chose to summarize that variable. You should select one variable so summarize, and at least one variable to group by.\n(5 points) Create a dataframe that contains the grouped summaries (min/max/mean) of that variable. Print this dataframe as part of your report (which can be done simply by putting the name of the dataframe on the last line of your code chunk).\n(2.5 points) Describe at least one interesting feature of your grouped summary. Also provide a possible explanation for what might be causing the difference (or lack of difference) between the groups?\n\n\n\n#...#\n\nAnswer:\n(Replace this text with your explanation)"
+  },
+  {
+    "objectID": "slides/05-prog-intro.html",
+    "href": "slides/05-prog-intro.html",
+    "title": "1.5 Introduction to Programming",
+    "section": "",
+    "text": "Notevariable\n\n\n\nA named object corresponding to a space in computer memory that can be assigned a value\n\n\nIn R, variables are assigned using &lt;-, e.g. \n\nx &lt;- 5\ny &lt;- \"A character variable\"\n\nx and y are the variable names, 5 and \"a character variable\" are the assigned values.\n\nx &lt;- 6\n\nVariable values can be re-assigned."
+  },
+  {
     "objectID": "slides/05-prog-intro.html#basic-definitions",
     "href": "slides/05-prog-intro.html#basic-definitions",
     "title": "1.5 Introduction to Programming",
-    "section": "Basic Definitions",
-    "text": "Basic Definitions\n\n\n\n\n\n\nvariable\n\n\nA named object corresponding to a space in computer memory that can be assigned a value\n\n\n\nIn R, variables are assigned using &lt;-, e.g. \n\nx &lt;- 5\ny &lt;- \"A character variable\"\n\nx and y are the variable names, 5 and \"a character variable\" are the assigned values.\n\nx &lt;- 6\n\nVariable values can be re-assigned."
+    "section": "",
+    "text": "Notevariable\n\n\n\nA named object corresponding to a space in computer memory that can be assigned a value\n\n\nIn R, variables are assigned using &lt;-, e.g. \n\nx &lt;- 5\ny &lt;- \"A character variable\"\n\nx and y are the variable names, 5 and \"a character variable\" are the assigned values.\n\nx &lt;- 6\n\nVariable values can be re-assigned."
   },
   {
     "objectID": "slides/05-prog-intro.html#basic-definitions-1",
     "href": "slides/05-prog-intro.html#basic-definitions-1",
     "title": "1.5 Introduction to Programming",
     "section": "Basic Definitions",
-    "text": "Basic Definitions\n\n\n\n\n\n\nvariable type\n\n\nThe mode and size of the variable’s stored value(s)\n\n\n\nTypes can be:\n\nintegers (1, 2, 3, 40932),\nfloats (3.1415, 2.71828),\ncharacters (“Frank”, “Evelyn”, “This is a string”), or\nlogicals (TRUE, FALSE)\n\n\nmode(x)\n\n[1] \"numeric\"\n\nmode(y)\n\n[1] \"character\""
+    "text": "Basic Definitions\n\n\n\n\n\n\nNotevariable type\n\n\n\nThe mode and size of the variable’s stored value(s)\n\n\nTypes can be:\n\nintegers (1, 2, 3, 40932),\nfloats (3.1415, 2.71828),\ncharacters (“Frank”, “Evelyn”, “This is a string”), or\nlogicals (TRUE, FALSE)\n\n\nmode(x)\n\n[1] \"numeric\"\n\nmode(y)\n\n[1] \"character\""
   },
   {
     "objectID": "slides/05-prog-intro.html#basic-definitions-2",
     "href": "slides/05-prog-intro.html#basic-definitions-2",
     "title": "1.5 Introduction to Programming",
     "section": "Basic Definitions",
-    "text": "Basic Definitions\n\n\n\n\n\n\nvariable structure\n\n\nA way to arrange and store multiple data values for efficient access"
+    "text": "Basic Definitions\n\n\n\n\n\n\nNotevariable structure\n\n\n\nA way to arrange and store multiple data values for efficient access"
   },
   {
     "objectID": "slides/05-prog-intro.html#vector",
     "href": "slides/05-prog-intro.html#vector",
     "title": "1.5 Introduction to Programming",
     "section": "Vector",
-    "text": "Vector\n\n\n\n\n\n\n\nvector\n\n\na sequence of multiple values of the same type (think about a column in a spreadsheet)\n\n\n\n\n\nA Lego vector with same-type studs"
+    "text": "Vector\n\n\n\n\n\n\nNotevector\n\n\n\na sequence of multiple values of the same type (think about a column in a spreadsheet)\n\n\n\n\n\nA Lego vector with same-type studs"
   },
   {
     "objectID": "slides/05-prog-intro.html#list",
     "href": "slides/05-prog-intro.html#list",
     "title": "1.5 Introduction to Programming",
     "section": "List",
-    "text": "List\n\n\n\n\n\n\n\nlist\n\n\na sequence of multiple values; these values can be of the same or different data type.\n\n\n\n\n\nA Lego list with different-type studs"
+    "text": "List\n\n\n\n\n\n\nNotelist\n\n\n\na sequence of multiple values; these values can be of the same or different data type.\n\n\n\n\n\nA Lego list with different-type studs"
   },
   {
     "objectID": "slides/05-prog-intro.html#data-frame",
     "href": "slides/05-prog-intro.html#data-frame",
     "title": "1.5 Introduction to Programming",
     "section": "Data Frame",
-    "text": "Data Frame\n\n\n\n\n\n\n\ndata frame\n\n\na list of vectors which all have the same length.\n(Essentially, this is a spreadsheet with strict column/row requirements)\n\n\n\n\n\nA Lego data frame - a list of vectors of the same length, with each vector having a different type."
+    "text": "Data Frame\n\n\n\n\n\n\nNotedata frame\n\n\n\na list of vectors which all have the same length.\n(Essentially, this is a spreadsheet with strict column/row requirements)\n\n\n\n\n\nA Lego data frame - a list of vectors of the same length, with each vector having a different type."
   },
   {
     "objectID": "slides/05-prog-intro.html#creating-data-structures",
@@ -67,7 +172,14 @@
     "href": "slides/05-prog-intro.html#access-pieces-of-objects",
     "title": "1.5 Introduction to Programming",
     "section": "Access Pieces of Objects",
-    "text": "Access Pieces of Objects\n\n\nVectors\n\nvec[2:4]\n\n[1] 2 3 4\n\nvec[c(2, 8)]\n\n[1] 2 8\n\n\n\nData Frames\nname[rows, cols]\n\ndf[1:2, 2:3]\n\n  y     z\n1 a  TRUE\n2 b FALSE\n\n\n\nLists\nname[[idx]] - access sub-object\n(idx is an integer)\n\nmylst[[3]]\n\n[1]  TRUE FALSE FALSE FALSE  TRUE\n\nmylst[[2]][c(1, 3)]\n\n[1] \"a\" \"c\""
+    "text": "Access Pieces of Objects\n\n\n\nVectors\n\nvec[2:4]\n\n[1] 2 3 4\n\nvec[c(2, 8)]\n\n[1] 2 8\n\n\n\n\n\nData Frames\nname[rows, cols]\n\ndf[1:2, 2:3]\n\n  y     z\n1 a  TRUE\n2 b FALSE\n\n\n\n\n\nLists\nname[[idx]] - access sub-object\n(idx is an integer)\n\nmylst[[3]]\n\n[1]  TRUE FALSE FALSE FALSE  TRUE\n\nmylst[[2]][c(1, 3)]\n\n[1] \"a\" \"c\""
+  },
+  {
+    "objectID": "slides/02-data.html",
+    "href": "slides/02-data.html",
+    "title": "1.2 Data",
+    "section": "",
+    "text": "As you come in\nAnswer Questions 1-3 in Survey 1.2.p Introduction to Data Science on Canvas\n\n5 minutes: Form a group of 3-4 people and answer questions 4-5"
   },
   {
     "objectID": "slides/02-data.html#what-is-r",
@@ -116,7 +228,7 @@
     "href": "slides/02-data.html#reading-in-a-csv-file",
     "title": "1.2 Data",
     "section": "Reading in a CSV file",
-    "text": "Reading in a CSV file\n\n\n\n\n\n\nCSV\n\n\nComma Separated Value. Different columns are separated by comma characters (,). Any field that contains a comma must be quoted.\n\n\n\n\n\n\n1carbon_df &lt;- read_csv(files[3])\n2names(carbon_df) &lt;- c(\"Year\", \"TotalC\")\n3head(carbon_df)\n\n\n1\n\nRead in the third file in the list, which ends in carbon_emissions.csv\n\n2\n\nRename columns to have shorter names\n\n3\n\nLook at the head (the first 6 rows, by default) of the object\n\n\n\n\n# A tibble: 6 × 2\n   Year TotalC\n  &lt;dbl&gt;  &lt;dbl&gt;\n1  1751      3\n2  1752      3\n3  1753      3\n4  1754      3\n5  1755      3\n6  1756      3\n\n\n\n\n\n\nFile contents\n\n\n\n\n [1] \"Year,Total carbon emissions from fossil fuel consumption and cement production (million metric tons of C)\"\n [2] \"1751,3\"                                                                                                   \n [3] \"1752,3\"                                                                                                   \n [4] \"1753,3\"                                                                                                   \n [5] \"1754,3\"                                                                                                   \n [6] \"1755,3\"                                                                                                   \n [7] \"1756,3\"                                                                                                   \n [8] \"1757,3\"                                                                                                   \n [9] \"1758,3\"                                                                                                   \n[10] \"1759,3\""
+    "text": "Reading in a CSV file\n\n\n\n\n\n\nNoteCSV\n\n\n\nComma Separated Value. Different columns are separated by comma characters (,). Any field that contains a comma must be quoted.\n\n\n\n\n\n1carbon_df &lt;- read_csv(files[3])\n2names(carbon_df) &lt;- c(\"Year\", \"TotalC\")\n3head(carbon_df)\n\n\n1\n\nRead in the third file in the list, which ends in carbon_emissions.csv\n\n2\n\nRename columns to have shorter names\n\n3\n\nLook at the head (the first 6 rows, by default) of the object\n\n\n\n\n# A tibble: 6 × 2\n   Year TotalC\n  &lt;dbl&gt;  &lt;dbl&gt;\n1  1751      3\n2  1752      3\n3  1753      3\n4  1754      3\n5  1755      3\n6  1756      3\n\n\n\n\n\n\n\n\n\nNoneFile contents\n\n\n\n\n\n [1] \"Year,Total carbon emissions from fossil fuel consumption and cement production (million metric tons of C)\"\n [2] \"1751,3\"                                                                                                   \n [3] \"1752,3\"                                                                                                   \n [4] \"1753,3\"                                                                                                   \n [5] \"1754,3\"                                                                                                   \n [6] \"1755,3\"                                                                                                   \n [7] \"1756,3\"                                                                                                   \n [8] \"1757,3\"                                                                                                   \n [9] \"1758,3\"                                                                                                   \n[10] \"1759,3\""
   },
   {
     "objectID": "slides/02-data.html#more-complicated-csvs",
@@ -161,60 +273,67 @@
     "text": "Test Your Skills\n\nNavigate to https://www.ncdc.noaa.gov/cdo-web/search?datasetid=GHCND\nSelect daily summaries\nSearch for Zip codes\nEnter your Zip code (or 84321, Logan)\nSearch\nAdd a weather station to the cart\nSelect Custom GHCN-Daily CSV as the output format\nUse the default range\nCustom options: Select all data types\nSubmit the request and wait for the email. Download the resulting CSV file.\nWrite code to read in the data."
   },
   {
+    "objectID": "slides/01-intro.html",
+    "href": "slides/01-intro.html",
+    "title": "1.1 Course Introduction",
+    "section": "",
+    "text": "“Data science combines math and statistics, specialized programming, advanced analytics, artificial intelligence (AI), and machine learning with specific subject matter expertise to uncover actionable insights hidden in an organization’s data. These insights can be used to guide decision making and strategic planning.”\n– IBM Cloud Education\n\n\n\n\n\n\n\n“The ability to take data — to be able to understand it, to process it, to extract value from it, to visualize it, to communicate it — that’s going to be a hugely important skill in the next decades.”\n– Hal Varian, chief economist at Google and UC Berkeley Professor of Information Sciences, Business, and Economics\n\n\n\n\n\n\n\n“Data Science draws upon multiple disciplines to develop or apply computational and analytic methods to responsibly explore data and discover actionable insights and accelerate translation into implementation with real-world evidence.”\n– University of Pittsburgh Data Science Task Force\n\n\n\n\n\n\n\n“Data Science is about drawing useful conclusions from large and diverse data sets through exploration, prediction, and inference.\nExploration involves identifying patterns in information.\nPrediction involves using information we know to make informed guesses about values we wish we knew.\nInference involves quantifying our degree of certainty: will the patterns that we found in our data also appear in new observations? How accurate are our predictions?\nOur primary tools for exploration are visualizations and descriptive statistics, for prediction are machine learning and optimization, and for inference are statistical tests and models.”\n– Computational and Inferential Thinking\n\n\n\n\n\n\nData science is the study of the collection, storage, analysis, and visualization/communication of recorded information.\n\nCollection: how observed events and/or characteristics are recorded in ways that can be explored sometime in the future.\nStorage: How information is efficiently stored for later recall.\nAnalysis: How information is processed and organized in order to predict outcomes, or make official statements, about recorded information.\nVisualization/Communication: How information is presented in order to communicate a message motivated by recorded information.\n\n\n\n\n\nFrom R for Data Science by Hadley Wickham\n\n\n\n\n\n\nFigure 1\n\n\n\n\n\n\nPrimary Motivation: Improving our ability to collect, store, analyze, and visualize information \\(\\Rightarrow\\)$\\Rightarrow$ Improve our ability to make better decisions.\nThe “art” of data science\n\nHow do we decide what to measure and how to measure it?\nHow do we define what is “best”? Is our “best” ethical?\nHow do we handle missing observations?"
+  },
+  {
     "objectID": "slides/01-intro.html#what-is-data-science",
     "href": "slides/01-intro.html#what-is-data-science",
     "title": "1.1 Course Introduction",
-    "section": "What is “Data Science”?",
-    "text": "What is “Data Science”?\n\n\n“Data science combines math and statistics, specialized programming, advanced analytics, artificial intelligence (AI), and machine learning with specific subject matter expertise to uncover actionable insights hidden in an organization’s data. These insights can be used to guide decision making and strategic planning.”\n– IBM Cloud Education"
+    "section": "",
+    "text": "“Data science combines math and statistics, specialized programming, advanced analytics, artificial intelligence (AI), and machine learning with specific subject matter expertise to uncover actionable insights hidden in an organization’s data. These insights can be used to guide decision making and strategic planning.”\n– IBM Cloud Education"
   },
   {
     "objectID": "slides/01-intro.html#what-is-data-science-1",
     "href": "slides/01-intro.html#what-is-data-science-1",
     "title": "1.1 Course Introduction",
-    "section": "What is “Data Science”?",
-    "text": "What is “Data Science”?\n\n\n“The ability to take data — to be able to understand it, to process it, to extract value from it, to visualize it, to communicate it — that’s going to be a hugely important skill in the next decades.”\n– Hal Varian, chief economist at Google and UC Berkeley Professor of Information Sciences, Business, and Economics"
+    "section": "",
+    "text": "“The ability to take data — to be able to understand it, to process it, to extract value from it, to visualize it, to communicate it — that’s going to be a hugely important skill in the next decades.”\n– Hal Varian, chief economist at Google and UC Berkeley Professor of Information Sciences, Business, and Economics"
   },
   {
     "objectID": "slides/01-intro.html#what-is-data-science-2",
     "href": "slides/01-intro.html#what-is-data-science-2",
     "title": "1.1 Course Introduction",
-    "section": "What is “Data Science”?",
-    "text": "What is “Data Science”?\n\n\n“Data Science draws upon multiple disciplines to develop or apply computational and analytic methods to responsibly explore data and discover actionable insights and accelerate translation into implementation with real-world evidence.”\n– University of Pittsburgh Data Science Task Force"
+    "section": "",
+    "text": "“Data Science draws upon multiple disciplines to develop or apply computational and analytic methods to responsibly explore data and discover actionable insights and accelerate translation into implementation with real-world evidence.”\n– University of Pittsburgh Data Science Task Force"
   },
   {
     "objectID": "slides/01-intro.html#what-is-data-science-3",
     "href": "slides/01-intro.html#what-is-data-science-3",
     "title": "1.1 Course Introduction",
-    "section": "What is “Data Science”?",
-    "text": "What is “Data Science”?\n\n\n“Data Science is about drawing useful conclusions from large and diverse data sets through exploration, prediction, and inference.\nExploration involves identifying patterns in information.\nPrediction involves using information we know to make informed guesses about values we wish we knew.\nInference involves quantifying our degree of certainty: will the patterns that we found in our data also appear in new observations? How accurate are our predictions?\nOur primary tools for exploration are visualizations and descriptive statistics, for prediction are machine learning and optimization, and for inference are statistical tests and models.”\n– Computational and Inferential Thinking"
+    "section": "",
+    "text": "“Data Science is about drawing useful conclusions from large and diverse data sets through exploration, prediction, and inference.\nExploration involves identifying patterns in information.\nPrediction involves using information we know to make informed guesses about values we wish we knew.\nInference involves quantifying our degree of certainty: will the patterns that we found in our data also appear in new observations? How accurate are our predictions?\nOur primary tools for exploration are visualizations and descriptive statistics, for prediction are machine learning and optimization, and for inference are statistical tests and models.”\n– Computational and Inferential Thinking"
   },
   {
     "objectID": "slides/01-intro.html#class-definition",
     "href": "slides/01-intro.html#class-definition",
     "title": "1.1 Course Introduction",
-    "section": "Class Definition",
-    "text": "Class Definition\n\nData science is the study of the collection, storage, analysis, and visualization/communication of recorded information.\n\nCollection: how observed events and/or characteristics are recorded in ways that can be explored sometime in the future.\nStorage: How information is efficiently stored for later recall.\nAnalysis: How information is processed and organized in order to predict outcomes, or make official statements, about recorded information.\nVisualization/Communication: How information is presented in order to communicate a message motivated by recorded information."
+    "section": "",
+    "text": "Data science is the study of the collection, storage, analysis, and visualization/communication of recorded information.\n\nCollection: how observed events and/or characteristics are recorded in ways that can be explored sometime in the future.\nStorage: How information is efficiently stored for later recall.\nAnalysis: How information is processed and organized in order to predict outcomes, or make official statements, about recorded information.\nVisualization/Communication: How information is presented in order to communicate a message motivated by recorded information."
   },
   {
     "objectID": "slides/01-intro.html#data-science-life-cycle",
     "href": "slides/01-intro.html#data-science-life-cycle",
     "title": "1.1 Course Introduction",
-    "section": "Data Science Life Cycle",
-    "text": "Data Science Life Cycle\nFrom R for Data Science by Hadley Wickham\n\n\nFigure 1"
+    "section": "",
+    "text": "From R for Data Science by Hadley Wickham\n\n\n\n\n\n\nFigure 1"
   },
   {
     "objectID": "slides/01-intro.html#why-data-science",
     "href": "slides/01-intro.html#why-data-science",
     "title": "1.1 Course Introduction",
-    "section": "Why Data Science?",
-    "text": "Why Data Science?\nPrimary Motivation: Improving our ability to collect, store, analyze, and visualize information \\(\\Rightarrow\\)$\\Rightarrow$ Improve our ability to make better decisions.\nThe “art” of data science\n\nHow do we decide what to measure and how to measure it?\nHow do we define what is “best”? Is our “best” ethical?\nHow do we handle missing observations?"
+    "section": "",
+    "text": "Primary Motivation: Improving our ability to collect, store, analyze, and visualize information \\(\\Rightarrow\\)$\\Rightarrow$ Improve our ability to make better decisions.\nThe “art” of data science\n\nHow do we decide what to measure and how to measure it?\nHow do we define what is “best”? Is our “best” ethical?\nHow do we handle missing observations?"
   },
   {
     "objectID": "slides/01-intro.html#computer-vision",
     "href": "slides/01-intro.html#computer-vision",
     "title": "1.1 Course Introduction",
     "section": "Computer Vision",
-    "text": "Computer Vision\nComputers “see an image” as a matrix of pixels, where the numbers in the pixel squares represent the intensity of the color. Color images are usually represented as a set of three matrices, where each layer represents the intensity of the red, green, and blue hues respectively.\n\n\nFigure 2: credit to openframeworks.cc"
+    "text": "Computer Vision\nComputers “see an image” as a matrix of pixels, where the numbers in the pixel squares represent the intensity of the color. Color images are usually represented as a set of three matrices, where each layer represents the intensity of the red, green, and blue hues respectively.\n\n\n\n\n\n\nFigure 2: credit to openframeworks.cc"
   },
   {
     "objectID": "slides/01-intro.html#sound",
@@ -235,14 +354,14 @@
     "href": "slides/01-intro.html#sports-1",
     "title": "1.1 Course Introduction",
     "section": "Sports",
-    "text": "Sports\nThis sample string can be summarized into a play by play.\n\nPlay by Play from the 2021 NCAA Women’s Volleyball Championship Game."
+    "text": "Sports\nThis sample string can be summarized into a play by play.\n\n\n\nPlay by Play from the 2021 NCAA Women’s Volleyball Championship Game."
   },
   {
     "objectID": "slides/01-intro.html#sports-2",
     "href": "slides/01-intro.html#sports-2",
     "title": "1.1 Course Introduction",
     "section": "Sports",
-    "text": "Sports\nWhich can be further summarized into a box score.\n\nBox score from the 2021 NCAA Women’s Volleyball Championship Game."
+    "text": "Sports\nWhich can be further summarized into a box score.\n\n\n\nBox score from the 2021 NCAA Women’s Volleyball Championship Game."
   },
   {
     "objectID": "slides/01-intro.html#sports-3",
@@ -277,14 +396,14 @@
     "href": "slides/01-intro.html#course-focus-1",
     "title": "1.1 Course Introduction",
     "section": "Course Focus",
-    "text": "Course Focus\n\n\n\n\n\n\nTabular data\n\n\ndata in which the rows represent samples, or observations, and the columns represent variables.\n\n\n\n\n\n   Shelf                      Name Manufacturer Type Calories Protein Fat\n1    Top                 100%_Bran            N    C       70       4   1\n2    Top         100%_Natural_Bran            Q    C      120       3   5\n3    Top                  All-Bran            K    C       70       4   1\n4    Top All-Bran_with_Extra_Fiber            K    C       50       4   0\n5    Top            Almond_Delight            R    C      110       2   2\n6 Bottom   Apple_Cinnamon_Cheerios            G    C      110       2   2\n  Sodium Fiber Carbohydrates Sugars Potassium Vitamins Weight Cups\n1    130  10.0           5.0      6       280       25      1 0.33\n2     15   2.0           8.0      8       135        0      1 1.00\n3    260   9.0           7.0      5       320       25      1 0.33\n4    140  14.0           8.0      0       330       25      1 0.50\n5    200   1.0          14.0      8        NA       25      1 0.75\n6    180   1.5          10.5     10        70       25      1 0.75\n\n\nFor this, we will learn how to use R programming to keep track of the changes we make to a raw dataset. This will serve as a journal that helps us to track our data throughout the Data Science Life Cycle."
+    "text": "Course Focus\n\n\n\n\n\n\nNoteTabular data\n\n\n\ndata in which the rows represent samples, or observations, and the columns represent variables.\n\n\n\n\n   Shelf                      Name Manufacturer Type Calories Protein Fat\n1    Top                 100%_Bran            N    C       70       4   1\n2    Top         100%_Natural_Bran            Q    C      120       3   5\n3    Top                  All-Bran            K    C       70       4   1\n4    Top All-Bran_with_Extra_Fiber            K    C       50       4   0\n5    Top            Almond_Delight            R    C      110       2   2\n6 Bottom   Apple_Cinnamon_Cheerios            G    C      110       2   2\n  Sodium Fiber Carbohydrates Sugars Potassium Vitamins Weight Cups\n1    130  10.0           5.0      6       280       25      1 0.33\n2     15   2.0           8.0      8       135        0      1 1.00\n3    260   9.0           7.0      5       320       25      1 0.33\n4    140  14.0           8.0      0       330       25      1 0.50\n5    200   1.0          14.0      8        NA       25      1 0.75\n6    180   1.5          10.5     10        70       25      1 0.75\n\n\nFor this, we will learn how to use R programming to keep track of the changes we make to a raw dataset. This will serve as a journal that helps us to track our data throughout the Data Science Life Cycle."
   },
   {
     "objectID": "slides/01-intro.html#data-science-life-cycle-1",
     "href": "slides/01-intro.html#data-science-life-cycle-1",
     "title": "1.1 Course Introduction",
     "section": "Data Science Life Cycle",
-    "text": "Data Science Life Cycle\nFrom R for Data Science by Hadley Wickham\n\n\nFigure 3"
+    "text": "Data Science Life Cycle\nFrom R for Data Science by Hadley Wickham\n\n\n\n\n\n\nFigure 3"
   },
   {
     "objectID": "homework/proposal_demo.html",
@@ -441,480 +560,410 @@
     "text": "Part h (5 points)\nNow suppose that 2,365 out of a sample of 5,500 patients (i.e. 43%) who take the drug require supplemental oxygen. Redo Part (g) with this new sample size and sample proportion. What is the p-value? What does this say about the null hypothesis (i.e. \\(p = 0.45\\))? Show the p-value with code and then comment below.\n\n## n &lt;- #...#\n## samp_prop &lt;- #...#\n## se_x &lt;- #...#\n## z &lt;- #...#\n\n## p_val_2 &lt;- #...#\n\n## p_val_2\n## all.equal(p_val_2, hw3_sol[[\"p_val_2\"]])\n\nAnswer:\n(Replace this text with your answer.)"
   },
   {
-    "objectID": "homework/homework01.html",
-    "href": "homework/homework01.html",
-    "title": "Homework 1 - STAT 1080",
+    "objectID": "lab/08-bias-and-ethics.html",
+    "href": "lab/08-bias-and-ethics.html",
+    "title": "Bias and Ethics",
     "section": "",
-    "text": "This assignment will give you hands-on practice working with numerical summaries of data in R, using the tidyverse. You won’t need to bring in your own datasets — everything you need comes from R packages.\nHomework datasets and solutions are included in the stat1080r course package, so make sure you have the latest version installed before you begin. You can install the package using the command install.packages(\"stat1080r\", repos = \"https://beanb2.r-universe.dev\"). You should only have to install this package once during the semester.\nYou’ll complete this file by finishing the code and filling in the answer prompts. Replace each #...# with the code needed to answer the question. Sometimes I’ll give you a longer sequence of code (a code “shell”, marked with ##) that you’ll need to uncomment and complete.\nWhen you’re done, go through the checklist at the end of this file, and then submit your .qmd file in Canvas.\nThere are 2 problems in this assignment (each with several parts), worth a total of 80 points. Don’t forget to check the style guidelines at the end before submitting. Note that you must use the “modern” pipe command |&gt; in your code. Please avoid the use of the old %&gt;% in your code which will result in a loss of points."
+    "text": "The following code shows you how to obtain a relationship between two variables in a dataset internal to R. You will learn how to write this code yourself eventually, but today the code is just provided you you. All you need to do is click the little green arrow in the upper right corner of each grey box to run the code.\n\n# Convert table to dataframe\nucb_df &lt;- as.data.frame(UCBAdmissions)\n\n# Aggregate across departments\nagg_df &lt;- ucb_df |&gt;\n  group_by(Gender, Admit) |&gt;\n  summarise(Freq = sum(Freq), .groups = \"drop\") |&gt;\n  mutate(Prop = Freq / sum(Freq))\n\n# Plot: proportion admitted by gender\nggplot(agg_df, aes(x = Gender, y = Prop, fill = Admit)) +\n  geom_col(position = \"fill\") +\n  scale_y_continuous(labels = scales::percent) +\n  labs(\n    title = \"UC Berkeley Graduate Admissions (1973)\",\n    y = \"Proportion within Gender\",\n    x = \"Gender\",\n    fill = \"Admission Status\"\n  )\n\n\n\n\n\n\n\n\nThe above plot shows you that women are more likely to be rejected from University of California - Berkely (UCB) than men. Please take some time to ensure that you understand how the plot backs up that claim.\n\n\nSuppose an uninformed viewer of this plot makes the claim “we should discourage women from applying to UCB since there applications are less competitive than male applicants.”\n\nSTOP here Go to Canvas Answer Quiz question 1: why this claim is problematic\nResume after quiz question 1 is answered.\n\nNow, consider the plot created by the code below\n\ndept_df &lt;- ucb_df |&gt;\n  group_by(Dept, Gender, Admit) |&gt;\n  summarise(Freq = sum(Freq), .groups = \"drop\") |&gt;\n  group_by(Dept, Gender) |&gt;\n  mutate(Total = sum(Freq),\n         Rate = Freq / Total) |&gt;\n  filter(Admit == \"Admitted\")\n\n# Plot admission rates by department and gender\nggplot(dept_df, aes(x = Dept, y = Rate, fill = Gender)) +\n  geom_col(position = \"dodge\") +\n  scale_y_continuous(labels = scales::percent) +\n  labs(\n    title = \"UC Berkeley Graduate Admissions (1973)\",\n    subtitle = \"Admission rate by Department and Gender\",\n    x = \"Department\",\n    y = \"Admission Rate\",\n    fill = \"Gender\"\n  )\n\n\n\n\n\n\n\n\nWhat we see now is that the overall effect we observed has been reversed: women appear to be admitted at the same or higher rate in each individual department.\n\n\n\nBefore how this happened, another uninformed reader says “we should force the male and female application rates to be exactly the same in order to ensure fairness.”\n\nSTOP here Go to Canvas Answer Quiz question 2: why this claim is problematic\nResume after quiz question 2 is answered."
   },
   {
-    "objectID": "homework/homework01.html#introduction",
-    "href": "homework/homework01.html#introduction",
-    "title": "Homework 1 - STAT 1080",
+    "objectID": "lab/08-bias-and-ethics.html#introduction",
+    "href": "lab/08-bias-and-ethics.html#introduction",
+    "title": "Bias and Ethics",
     "section": "",
-    "text": "This assignment will give you hands-on practice working with numerical summaries of data in R, using the tidyverse. You won’t need to bring in your own datasets — everything you need comes from R packages.\nHomework datasets and solutions are included in the stat1080r course package, so make sure you have the latest version installed before you begin. You can install the package using the command install.packages(\"stat1080r\", repos = \"https://beanb2.r-universe.dev\"). You should only have to install this package once during the semester.\nYou’ll complete this file by finishing the code and filling in the answer prompts. Replace each #...# with the code needed to answer the question. Sometimes I’ll give you a longer sequence of code (a code “shell”, marked with ##) that you’ll need to uncomment and complete.\nWhen you’re done, go through the checklist at the end of this file, and then submit your .qmd file in Canvas.\nThere are 2 problems in this assignment (each with several parts), worth a total of 80 points. Don’t forget to check the style guidelines at the end before submitting. Note that you must use the “modern” pipe command |&gt; in your code. Please avoid the use of the old %&gt;% in your code which will result in a loss of points."
+    "text": "The following code shows you how to obtain a relationship between two variables in a dataset internal to R. You will learn how to write this code yourself eventually, but today the code is just provided you you. All you need to do is click the little green arrow in the upper right corner of each grey box to run the code.\n\n# Convert table to dataframe\nucb_df &lt;- as.data.frame(UCBAdmissions)\n\n# Aggregate across departments\nagg_df &lt;- ucb_df |&gt;\n  group_by(Gender, Admit) |&gt;\n  summarise(Freq = sum(Freq), .groups = \"drop\") |&gt;\n  mutate(Prop = Freq / sum(Freq))\n\n# Plot: proportion admitted by gender\nggplot(agg_df, aes(x = Gender, y = Prop, fill = Admit)) +\n  geom_col(position = \"fill\") +\n  scale_y_continuous(labels = scales::percent) +\n  labs(\n    title = \"UC Berkeley Graduate Admissions (1973)\",\n    y = \"Proportion within Gender\",\n    x = \"Gender\",\n    fill = \"Admission Status\"\n  )\n\n\n\n\n\n\n\n\nThe above plot shows you that women are more likely to be rejected from University of California - Berkely (UCB) than men. Please take some time to ensure that you understand how the plot backs up that claim.\n\n\nSuppose an uninformed viewer of this plot makes the claim “we should discourage women from applying to UCB since there applications are less competitive than male applicants.”\n\nSTOP here Go to Canvas Answer Quiz question 1: why this claim is problematic\nResume after quiz question 1 is answered.\n\nNow, consider the plot created by the code below\n\ndept_df &lt;- ucb_df |&gt;\n  group_by(Dept, Gender, Admit) |&gt;\n  summarise(Freq = sum(Freq), .groups = \"drop\") |&gt;\n  group_by(Dept, Gender) |&gt;\n  mutate(Total = sum(Freq),\n         Rate = Freq / Total) |&gt;\n  filter(Admit == \"Admitted\")\n\n# Plot admission rates by department and gender\nggplot(dept_df, aes(x = Dept, y = Rate, fill = Gender)) +\n  geom_col(position = \"dodge\") +\n  scale_y_continuous(labels = scales::percent) +\n  labs(\n    title = \"UC Berkeley Graduate Admissions (1973)\",\n    subtitle = \"Admission rate by Department and Gender\",\n    x = \"Department\",\n    y = \"Admission Rate\",\n    fill = \"Gender\"\n  )\n\n\n\n\n\n\n\n\nWhat we see now is that the overall effect we observed has been reversed: women appear to be admitted at the same or higher rate in each individual department.\n\n\n\nBefore how this happened, another uninformed reader says “we should force the male and female application rates to be exactly the same in order to ensure fairness.”\n\nSTOP here Go to Canvas Answer Quiz question 2: why this claim is problematic\nResume after quiz question 2 is answered."
   },
   {
-    "objectID": "homework/homework01.html#part-a-5-points",
-    "href": "homework/homework01.html#part-a-5-points",
-    "title": "Homework 1 - STAT 1080",
-    "section": "Part a (5 points)",
-    "text": "Part a (5 points)\nUsing tidyverse syntax, determine the mean, or average, added sugar content in a single serving of cereal, using all cereals with non-missing sugars information. Your solution should make use of the mean function in R. Check out the mean() function using ?mean to determine what options you have to remove missing values in your calculation.\nAssign this value to the variable named sugar_mean_1. You will know that you have succeeded if the code chunk below prints the message TRUE when you render the document.\n\n\n## sugar_mean_1 &lt;- cereal |&gt;\n##   summarize(tmean = #...#) |&gt;\n##   pull(tmean)\n\n## all.equal(sugar_mean_1, hw1_sol$sugar_mean_1)"
+    "objectID": "lab/08-bias-and-ethics.html#putting-it-all-together",
+    "href": "lab/08-bias-and-ethics.html#putting-it-all-together",
+    "title": "Bias and Ethics",
+    "section": "Putting it all together",
+    "text": "Putting it all together\nThe final code helps to demystify the issue:\n\n# Total applications by department and gender\napps_df &lt;- ucb_df |&gt;\n  group_by(Dept, Gender) |&gt;\n  summarise(Applications = sum(Freq), .groups = \"drop\") |&gt;\n  group_by(Gender) |&gt;\n  mutate(Share = Applications / sum(Applications))\n\n# Plot 1: raw counts of applications\nggplot(apps_df, aes(x = Dept, y = Applications, fill = Gender)) +\n  geom_col(position = \"dodge\") +\n  labs(\n    title = \"Applications by Department and Gender\",\n    x = \"Department\",\n    y = \"Number of Applications\",\n    fill = \"Gender\"\n  )\n\n\n\n\n\n\n\n# Plot 2: proportion of each gender's applications going to each department\nggplot(apps_df, aes(x = Dept, y = Share, fill = Gender)) +\n  geom_col(position = \"dodge\") +\n  scale_y_continuous(labels = scales::percent) +\n  labs(\n    title = \"Application Share by Department\",\n    x = \"Department\",\n    y = \"Proportion of Applications\",\n    fill = \"Gender\"\n  ) \n\n\n\n\n\n\n\n# Plot 3: raw numbers of each gender's applications going to each department\nggplot(ucb_df, aes(x = Gender, weight = Freq, fill = Dept)) + geom_bar(position = \"stack\") +\n  labs(\n    title = \"Applications by Gender and Department\",\n    x = \"Gender\",\n    y = \"Number of Applications\",\n    fill = \"Department\"\n  ) \n\n\n\n\n\n\n\n\nThus, the answer to “Simpson’s Paradox” is this: the reason that women appear to be admitted at a lower rate than men is because women were disproportionately more likely to apply to more selective departments. More importantly, this assignment reminded you that not all decisions can be effectively or ethically made with data alone."
   },
   {
-    "objectID": "homework/homework01.html#part-b-5-points",
-    "href": "homework/homework01.html#part-b-5-points",
-    "title": "Homework 1 - STAT 1080",
-    "section": "Part b (5 points)",
-    "text": "Part b (5 points)\nNow, write an equivalent expression that calculates the mean, without using the mean() function. For this, we will rely on the general definition of a mean. Let \\(X\\) represent a vector of values, with the individual elements of the vector denoted as \\(x_1, x_2, \\ldots, x_n\\) respectively. Under this definition we can calculate the sample mean of \\(X\\) (called \\(\\bar{x}\\)) as\n\\[\\bar{x} = \\frac{\\sum_{i=1}^n x_i}{n}.\\] ::: {.callout-note collapse=true}\n\nMath Notation for the mean\nLet’s break the math down a bit.\n\n\\(\\bar{x}\\) is the sample mean of the vector \\(X\\), which has values – \\(x_1, x_2, ..., x_n\\). We use capital letters for vectors and lower-case values for observations.\n\\(\\sum_{i=1}^n\\) says we’re going to take the sum of \\(n\\) things, which are indexed (\\(i\\) is the index of \\(x_i\\)) from 1 to \\(n\\).\nWe then divide the sum of the \\(x_i\\) (that is, the sum over \\(X\\)) by the length of \\(X\\), which is \\(n\\).\n\n:::\nRestated in plain English, I am taking the sum of all the elements of the vector, and then dividing by the length of the vector (or, if I am ignoring NAs, the sum of instances for which !is.na() evaluates to TRUE).\n\n\n\n\n\n\nNoteMissing Observations\n\n\n\n\n\nSometimes, we can have missing observations, which are denoted by NA. If there are missing observations, we should exclude the missing observations from the sum (in the numerator/on the top of the fraction), and then exclude the missing observations from the number of total observations.\nIn R, we can exclude NAs from most functions by using fn(..., na.rm = T), where fn is the function name and ... are the other arguments.\n\n\n\nUsing this definition, re-calculate the mean added sugar content of the cereals without using the mean() function in R. You may consider using functions in R that match one, or both, of the bolded words in the equation description. Remember that, should you have to remove any missing values as part of your calculation, you need to account for that in your estimation of the vector length. Assign this to the variable name sugar_mean_2 and use the last line of code to make sure that this calculation of the mean exactly matches the previous calculation.\n\n\n## sugar_mean_2 &lt;- cereal |&gt;\n##   summarize(tmean = #...#) |&gt;\n##   pull(tmean)\n\n## all.equal(sugar_mean_2, hw1_sol$sugar_mean_1)"
-  },
-  {
-    "objectID": "homework/homework01.html#part-c-5-points",
-    "href": "homework/homework01.html#part-c-5-points",
-    "title": "Homework 1 - STAT 1080",
-    "section": "Part c (5 points)",
-    "text": "Part c (5 points)\nNote that a “serving” of cereal is a relative measure: there is no standard weight OR volume to describe a serving of cereal. One way to know this is to take a look at the unique values of weight and cups in the cereal dataset. You can see these values by using the unique() function. A solution for weight_u is provided. Your task is to adapt the weight_u code to work for the cups_u calculation. Please ensure that the provided code prints a TRUE statement when the document is rendered.\n\n\nweight_u &lt;- cereal |&gt; \n  pull(Weight) |&gt;\n  unique()\n\n## cups_u &lt;- #...#\n\n## all.equal(cups_u, hw1_sol$cups_u)"
-  },
-  {
-    "objectID": "homework/homework01.html#part-d-5-points",
-    "href": "homework/homework01.html#part-d-5-points",
-    "title": "Homework 1 - STAT 1080",
-    "section": "Part d (5 points)",
-    "text": "Part d (5 points)\nBased on what we learned in Part c, create a new variable in our data frame that represents “normalized” or “standardized” estimates of the added sugars in a “serving” of cereal. This variable should be named sugars_weight and should represent the total number of sugars per unit of Weight. Note that Weight is a standardized measure that represents the relative weight of a typical serving of cereal. It does not represent ounces, or grams, or other typical measurements of weight. Normally, we would say “total number of sugars per ounce” or “sugars per gram”. But, because of the way our measurements were taken, all we can say about this new variable is “sugars per unit of weight.”\nNote that you must use the mutate() function from the tidyverse to add this variable to your dataframe. Then, using the same tidyverse pipe, calculate the average number of sugars per unit of weight using the variable you have created and assign that value to the variable sugars_weight_mean. Ensure that the provided code prints TRUE when you are finished.\n\n\n## sugars_weight_mean &lt;- cereal |&gt;\n##   mutate(sugars_weight = #...#) |&gt;\n##   summarize(mean_sugar_weight = #...#) |&gt;\n##   pull(mean_sugar_weight)\n\n## all.equal(sugars_weight_mean, hw1_sol$sugars_weight_mean)"
-  },
-  {
-    "objectID": "homework/homework01.html#part-e-5-points",
-    "href": "homework/homework01.html#part-e-5-points",
-    "title": "Homework 1 - STAT 1080",
-    "section": "Part e (5 points)",
-    "text": "Part e (5 points)\nNow repeat Part (d) but this time normalize by volume (i.e. “Sugars per cup”) rather than by weight. Call the name of the new column you create sugars_cup and store the calculated mean of column in the variable name sugars_cup_mean. As before, make sure that TRUE prints to the screen when you are finished.\n\n\n## sugars_cup_mean &lt;- cereal |&gt;\n##   mutate(sugars_cup = #...#) |&gt;\n##   summarize(mean_sugar_cup = #...#) |&gt;\n##   pull(mean_sugar_cup)\n\n## all.equal(sugars_cup_mean, hw1_sol$sugars_cup_mean)"
-  },
-  {
-    "objectID": "homework/homework01.html#part-f-10-points",
-    "href": "homework/homework01.html#part-f-10-points",
-    "title": "Homework 1 - STAT 1080",
-    "section": "Part f (10 points)",
-    "text": "Part f (10 points)\nDiscuss: We now have three different estimates of the average added sugar content in box cereals: one by serving, one by weight, and one by volume (i.e. cup). Please identify at least one good thing (PRO) and one limitation (CON) for using each form of measurement.\nAdd your answer to each PRO: and CON: statement below. Note that you can create a “sub-bullet” by putting exactly two spaces before the - symbol, as shown below.\n\n\nRegular Measurements\n\nPro:\nCon:\n\nStandardized by weight\n\nPro:\nCon:\n\nStandardized by Volume\n\nPro:\nCon:"
-  },
-  {
-    "objectID": "homework/homework01.html#part-g-5-points",
-    "href": "homework/homework01.html#part-g-5-points",
-    "title": "Homework 1 - STAT 1080",
-    "section": "Part g (5 points)",
-    "text": "Part g (5 points)\nSuppose that your friend eats exactly one bowl of cereal, filled to the brim, for breakfast. They are wanting to better understand how much sugar would be contained in each bowl of cereal if they were to switch brands. Based on this, which of the three variables (Sugars, sugars_weight, sugars_cup) would be the most appropriate variable to consider and why?\n\n(Replace this text with your answer)"
-  },
-  {
-    "objectID": "homework/homework01.html#part-a-5-points-1",
-    "href": "homework/homework01.html#part-a-5-points-1",
-    "title": "Homework 1 - STAT 1080",
-    "section": "Part a (5 points)",
-    "text": "Part a (5 points)\nFor the first problem, we want to look at the mean added sugar content for the original servings for the different cereal manufacturers. Create a data frame named cereals_man that shows the group average/max/min sugar content per serving for all manufacturers that have at least five non-missing cereal types in the dataset. Arrange cereals_man using the average sugar content in descending order.\n\n\n## cereals_man &lt;- cereal |&gt; \n##   filter(#...#) |&gt; # remove rows with missing Sugar information\n##   group_by(#...#) |&gt; # group by Manufacturer\n##   summarize(sugars_mean = #...#,\n##            sugars_max = #...#,\n##            sugars_min = #...#,\n##            count = n()) |&gt; # n() gives the size of each group\n##  filter(#...#) |&gt; # retain only manufacturers with at least 5 obs\n##  arrange(desc(#...#)) # arrange by mean sugar content in descending order\n\n## all.equal(cereals_man, hw1_sol[[\"cereals_man\"]])"
-  },
-  {
-    "objectID": "homework/homework01.html#part-b-5-points-1",
-    "href": "homework/homework01.html#part-b-5-points-1",
-    "title": "Homework 1 - STAT 1080",
-    "section": "Part b (5 points)",
-    "text": "Part b (5 points)\nNow repeat Part (a) but instead looking at the average sugar content per shelf, see Shelf variable, instead of Manufacturer. You will use the same variable names that you used in Part (a). See the hw1_sol[[\"cereals_shelf\"]] dataframe to see how you should name the variables and arrange the rows. Your final answer should match the hw1_sol[[\"cereals_shelf\"]] exactly.\n\n\n# Adapt the code from the previous problem. This time using a \n# different grouping variable. \n## cereals_shelf &lt;- #...#\n\n## all.equal(cereals_shelf, hw1_sol[[\"cereals_shelf\"]])"
-  },
-  {
-    "objectID": "homework/homework01.html#part-c-5-points-1",
-    "href": "homework/homework01.html#part-c-5-points-1",
-    "title": "Homework 1 - STAT 1080",
-    "section": "Part c (5 points)",
-    "text": "Part c (5 points)\nDiscuss What interesting observations can you make about the grouped sugar content averages/max/min? Identify at least three different things of interest to you. For at least one thing that you identify, provide a possible reason for the observation (there is no way to “know” with the information that we have).\n\n\nObservation 1:\nObservation 2:\nObservation 3:"
-  },
-  {
-    "objectID": "homework/homework01.html#part-d-5-points-1",
-    "href": "homework/homework01.html#part-d-5-points-1",
-    "title": "Homework 1 - STAT 1080",
-    "section": "Part d (5 points)",
-    "text": "Part d (5 points)\nSuppose you are participating in a competition where you will be required to eat one pound of cereal blindfolded. You do not get to pick the cereal, but you DO get to pick which shelf in the grocery store that the cereal box is selected from. Suppose that you are trying to limit your sodium content so that your ONLY goal with shelf selection is to minimize the worst-case (i.e., highest possible) scenario for sodium intake. Please identify (1) which variable form (sodium per serving, sodium per cup, sodium per unit weight) and (2) which variable summary (min, mean, or max) would be most appropriate in helping you make your shelf selection. No need for an explanation.\n\nAnswer: (Replace this text with your answer)"
-  },
-  {
-    "objectID": "homework/homework01.html#part-e-10-points",
-    "href": "homework/homework01.html#part-e-10-points",
-    "title": "Homework 1 - STAT 1080",
-    "section": "Part e (10 points)",
-    "text": "Part e (10 points)\nLooking at the original cereal data, propose a grouped summary of a variable other than Sugars. You are welcome to group by Shelf, Manufacturer, or both Shelf and Manufacturer. In order to ensure reasonable estimates of the min/max/mean, you need to make sure that you only retain groups that have at least 5 non-missing observations of interest. To complete this problem, you must:\n\n(2.5 points) Write a sentence explaining what grouped summary you plan to take and why you chose to summarize that variable. You should select one variable so summarize, and at least one variable to group by.\n(5 points) Create a dataframe that contains the grouped summaries (min/max/mean) of that variable. Print this dataframe as part of your report (which can be done simply by putting the name of the dataframe on the last line of your code chunk).\n(2.5 points) Describe at least one interesting feature of your grouped summary. Also provide a possible explanation for what might be causing the difference (or lack of difference) between the groups?\n\n\n\n#...#\n\nAnswer:\n(Replace this text with your explanation)"
-  },
-  {
-    "objectID": "lab/03-programming-sandwich.html",
-    "href": "lab/03-programming-sandwich.html",
-    "title": "Activity: Bread Programming",
+    "objectID": "weeks/week-160.html",
+    "href": "weeks/week-160.html",
+    "title": "Week 16: Finals Week",
     "section": "",
-    "text": "Introduction\nThis assignment introduces some of the principles of object oriented programming using the metaphor of a peanut (or almond) butter and jelly sandwich. The goal of this assignment is to create a set of ordered commands that properly use the necessary objects to make a sandwich. Each object has a series of actions. Some actions are active (i.e. the object does the action) and some are passive (i.e. the object receives the action). Below is a list of the objects and the actions associated with sandwich creation.\n\n\n\nObject\nActive Actions\nPassive Actions\n\n\n\n\nBag\nNone\nOpen; Close\n\n\nBread_Slice\nCombine\nTake; Place Left; Place Right\n\n\nJar\nNone\nOpen; Close\n\n\nKnife\nLoad; Spread\nTake; Set Down\n\n\nPeanut_Butter\nNone\nNone\n\n\nJam\nNone\nNone\n\n\n\nNote that we sometimes have the same object with two different names. For example, the “Peanut Butter Jar” and the “Jam Jar” are both “Jar” objects, but are referred to as separate things in the the list of commands. You may alternatively label them as “Jar 1” and “Jar 2”. The same goes for knives - you may not use the same knife for the PB and the J, because you’re not a monster.\n\n\nTask\nYou must write a set of commands that walks someone through the process of making a PB & J sandwich. Your instructions must be exact as the builder of the sandwich cannot guess what you meant if any command is imprecise. You should each command should be exactly one action and there should be only one command on each line. You will work in groups of 3-4 to type a set of commands that will be used in real time. We will experiment with a few different group scripts during the class period. Once you have completed your sandwich script (meaning you have created what you believe is a comprehensive set of instructions for assembling the sandwich), you will take the Canvas quiz associated with this assignment.\nThe list of possible commands are below. Each jar must be named according to the number given on the knife or jar.\n\nload knife with jam/butter (must specify knife number)\ncombine bread_slice (must name two bread slices)\nOpen/close bag/jar (must specify jar number and bag type)\ntake/set knife/bread_slice (can set left or right, or on/in another object)\nspread jam/butter with knife on bread_slice (must specify knife and bread slice number)"
+    "text": "December 14-18, 2026\n\n\n\nFinal Project Presentations during Exam Period (Dec 16, 12:30-2:20 pm)"
   },
   {
-    "objectID": "weeks/week-150.html",
-    "href": "weeks/week-150.html",
-    "title": "Week 15: Project Meetings",
+    "objectID": "weeks/week-160.html#monday",
+    "href": "weeks/week-160.html#monday",
+    "title": "Week 16: Finals Week",
     "section": "",
-    "text": "December 07-13, 2026\n\n\n\nAttendance Quiz 12/07\nProject Meetings\n\n\n\n\n\nAttendance Quiz 12/09\nProject Meetings\n\n\n\n\n\nAttendance Quiz 12/11\nProject Meetings and Honors presentations"
+    "text": "Final Project Presentations during Exam Period (Dec 16, 12:30-2:20 pm)"
   },
   {
-    "objectID": "weeks/week-150.html#monday",
-    "href": "weeks/week-150.html#monday",
-    "title": "Week 15: Project Meetings",
+    "objectID": "weeks/week-140.html",
+    "href": "weeks/week-140.html",
+    "title": "Week 14: Regression",
     "section": "",
-    "text": "Attendance Quiz 12/07\nProject Meetings"
+    "text": "November 30-06, 2026\n\n\n\n(for Mon) IDS 2 Ch 16 - The Linear Model Framework\n(for Wed) IDS 2 Ch 20 - Multivariable Regression\n\n\n\n\n\n(for Mon) Reading Check 14.1\n(for Wed) Reading Check 14.2\n\n\n\n\n\nAttendance Quiz 11/30\nLinear Models\n\n\n\n\n\nAttendance Quiz 12/02\nMultivariate Regression\n\n\n\n\n\nAttendance Quiz 12/04\nLab: Regression"
   },
   {
-    "objectID": "weeks/week-150.html#wednesday",
-    "href": "weeks/week-150.html#wednesday",
-    "title": "Week 15: Project Meetings",
+    "objectID": "weeks/week-140.html#reading",
+    "href": "weeks/week-140.html#reading",
+    "title": "Week 14: Regression",
     "section": "",
-    "text": "Attendance Quiz 12/09\nProject Meetings"
+    "text": "(for Mon) IDS 2 Ch 16 - The Linear Model Framework\n(for Wed) IDS 2 Ch 20 - Multivariable Regression"
   },
   {
-    "objectID": "weeks/week-150.html#friday",
-    "href": "weeks/week-150.html#friday",
-    "title": "Week 15: Project Meetings",
+    "objectID": "weeks/week-140.html#prepare-for-class",
+    "href": "weeks/week-140.html#prepare-for-class",
+    "title": "Week 14: Regression",
     "section": "",
-    "text": "Attendance Quiz 12/11\nProject Meetings and Honors presentations"
+    "text": "(for Mon) Reading Check 14.1\n(for Wed) Reading Check 14.2"
   },
   {
-    "objectID": "weeks/week-130.html",
-    "href": "weeks/week-130.html",
-    "title": "Week 13: Regression",
+    "objectID": "weeks/week-140.html#monday",
+    "href": "weeks/week-140.html#monday",
+    "title": "Week 14: Regression",
     "section": "",
-    "text": "November 23-29, 2026\n\n\n\n(for Mon) IDS 2 Ch 15 - Regression\n\n\n\n\n\n[ ]\n\n\n\n\n\nAttendance Quiz 11/23\nIntroduction to Regression\nActivity: Regression By Hand\n\n\n\n\n\n🦃 Thanksgiving Break\n\n\n\n\n\n🦃 Thanksgiving Break"
+    "text": "Attendance Quiz 11/30\nLinear Models"
   },
   {
-    "objectID": "weeks/week-130.html#reading",
-    "href": "weeks/week-130.html#reading",
-    "title": "Week 13: Regression",
+    "objectID": "weeks/week-140.html#wednesday",
+    "href": "weeks/week-140.html#wednesday",
+    "title": "Week 14: Regression",
     "section": "",
-    "text": "(for Mon) IDS 2 Ch 15 - Regression"
+    "text": "Attendance Quiz 12/02\nMultivariate Regression"
   },
   {
-    "objectID": "weeks/week-130.html#prepare-for-class",
-    "href": "weeks/week-130.html#prepare-for-class",
-    "title": "Week 13: Regression",
+    "objectID": "weeks/week-140.html#friday",
+    "href": "weeks/week-140.html#friday",
+    "title": "Week 14: Regression",
     "section": "",
-    "text": "[ ]"
+    "text": "Attendance Quiz 12/04\nLab: Regression"
   },
   {
-    "objectID": "weeks/week-130.html#monday",
-    "href": "weeks/week-130.html#monday",
-    "title": "Week 13: Regression",
+    "objectID": "weeks/week-120.html",
+    "href": "weeks/week-120.html",
+    "title": "Week 12: Statistical Inference",
     "section": "",
-    "text": "Attendance Quiz 11/23\nIntroduction to Regression\nActivity: Regression By Hand"
+    "text": "November 16-22, 2026\n\n\n\n(for Mon) IDS 2 Ch 13 - Hypothesis Testing\n(for Wed) IDS 2 Ch 9.4 - Confidence Intervals\n\n\n\n\n\n(for Mon) Reading Check 12.1\n(for Wed) Reading Check 12.2\n\n\n\n\n\nAttendance Quiz 11/16\nHypothesis Testing\n\n\n\n\n\nAttendance Quiz 11/18\nConfidence Intervals\n\n\n\n\n\nAttendance Quiz 11/20\nLab: Inference"
   },
   {
-    "objectID": "weeks/week-130.html#wednesday",
-    "href": "weeks/week-130.html#wednesday",
-    "title": "Week 13: Regression",
+    "objectID": "weeks/week-120.html#reading",
+    "href": "weeks/week-120.html#reading",
+    "title": "Week 12: Statistical Inference",
     "section": "",
-    "text": "🦃 Thanksgiving Break"
+    "text": "(for Mon) IDS 2 Ch 13 - Hypothesis Testing\n(for Wed) IDS 2 Ch 9.4 - Confidence Intervals"
   },
   {
-    "objectID": "weeks/week-130.html#friday",
-    "href": "weeks/week-130.html#friday",
-    "title": "Week 13: Regression",
+    "objectID": "weeks/week-120.html#prepare-for-class",
+    "href": "weeks/week-120.html#prepare-for-class",
+    "title": "Week 12: Statistical Inference",
     "section": "",
-    "text": "🦃 Thanksgiving Break"
+    "text": "(for Mon) Reading Check 12.1\n(for Wed) Reading Check 12.2"
   },
   {
-    "objectID": "weeks/week-110.html",
-    "href": "weeks/week-110.html",
-    "title": "Week 11: Parameters and Estimates",
+    "objectID": "weeks/week-120.html#monday",
+    "href": "weeks/week-120.html#monday",
+    "title": "Week 12: Statistical Inference",
     "section": "",
-    "text": "November 09-15, 2026\n\n\n\n(for Mon) IDS 2 Ch 9.1-9.3 - Estimates\n(for Wed) IDS 2 Ch 8 - Sampling Models and the Central Limit Theorem\n\n\n\n\n\n(for Mon) Reading Check 11.1\n(for Wed) Reading Check 11.2\n\n\n\n\n\nAttendance Quiz 11/09\nParameters and Estimates\n\n\n\n\n\nAttendance Quiz 11/11\nCentral Limit Theorem\n\n\n\n\n\nAttendance Quiz 11/13\nLab: CLT"
+    "text": "Attendance Quiz 11/16\nHypothesis Testing"
   },
   {
-    "objectID": "weeks/week-110.html#reading",
-    "href": "weeks/week-110.html#reading",
-    "title": "Week 11: Parameters and Estimates",
+    "objectID": "weeks/week-120.html#wednesday",
+    "href": "weeks/week-120.html#wednesday",
+    "title": "Week 12: Statistical Inference",
     "section": "",
-    "text": "(for Mon) IDS 2 Ch 9.1-9.3 - Estimates\n(for Wed) IDS 2 Ch 8 - Sampling Models and the Central Limit Theorem"
+    "text": "Attendance Quiz 11/18\nConfidence Intervals"
   },
   {
-    "objectID": "weeks/week-110.html#prepare-for-class",
-    "href": "weeks/week-110.html#prepare-for-class",
-    "title": "Week 11: Parameters and Estimates",
+    "objectID": "weeks/week-120.html#friday",
+    "href": "weeks/week-120.html#friday",
+    "title": "Week 12: Statistical Inference",
     "section": "",
-    "text": "(for Mon) Reading Check 11.1\n(for Wed) Reading Check 11.2"
+    "text": "Attendance Quiz 11/20\nLab: Inference"
   },
   {
-    "objectID": "weeks/week-110.html#monday",
-    "href": "weeks/week-110.html#monday",
-    "title": "Week 11: Parameters and Estimates",
+    "objectID": "weeks/week-100.html",
+    "href": "weeks/week-100.html",
+    "title": "Week 10: Random Variables",
     "section": "",
-    "text": "Attendance Quiz 11/09\nParameters and Estimates"
+    "text": "November 02-08, 2026\n\n\n\n(for Mon) IDS 2 Ch 7 - Random Variables\n(for Fri) IDS 2 Intro to Statistical Inference\n\n\n\n\n\n(for Mon) Reading Check 10.1\n(for Fri) Reading Check 10.3\n\n\n\n\n\nAttendance Quiz 11/02\nRandom Variables\n\n\n\n\n\nAttendance Quiz 11/04\nRandom Variables\n\n\n\n\n\nAttendance Quiz 11/06\nLab: Random Variables"
   },
   {
-    "objectID": "weeks/week-110.html#wednesday",
-    "href": "weeks/week-110.html#wednesday",
-    "title": "Week 11: Parameters and Estimates",
+    "objectID": "weeks/week-100.html#reading",
+    "href": "weeks/week-100.html#reading",
+    "title": "Week 10: Random Variables",
     "section": "",
-    "text": "Attendance Quiz 11/11\nCentral Limit Theorem"
+    "text": "(for Mon) IDS 2 Ch 7 - Random Variables\n(for Fri) IDS 2 Intro to Statistical Inference"
   },
   {
-    "objectID": "weeks/week-110.html#friday",
-    "href": "weeks/week-110.html#friday",
-    "title": "Week 11: Parameters and Estimates",
+    "objectID": "weeks/week-100.html#prepare-for-class",
+    "href": "weeks/week-100.html#prepare-for-class",
+    "title": "Week 10: Random Variables",
     "section": "",
-    "text": "Attendance Quiz 11/13\nLab: CLT"
+    "text": "(for Mon) Reading Check 10.1\n(for Fri) Reading Check 10.3"
   },
   {
-    "objectID": "weeks/week-095.html",
-    "href": "weeks/week-095.html",
-    "title": "Week 9.5: Spring Break",
+    "objectID": "weeks/week-100.html#monday",
+    "href": "weeks/week-100.html#monday",
+    "title": "Week 10: Random Variables",
     "section": "",
-    "text": "Week 9.5: Spring Break\nMarch 16-22, 2026"
+    "text": "Attendance Quiz 11/02\nRandom Variables"
   },
   {
-    "objectID": "weeks/week-080.html",
-    "href": "weeks/week-080.html",
-    "title": "Week 8: Statistics and Probability",
+    "objectID": "weeks/week-100.html#wednesday",
+    "href": "weeks/week-100.html#wednesday",
+    "title": "Week 10: Random Variables",
     "section": "",
-    "text": "October 19-25, 2026\n\n\n\n(for Mon) IDS 2, Ch 2 - Numerical Summaries\n(for Mon) IDS 2, Ch 3.3 - Comparing Groups with Stratification\n(for Wed) IDS 2, Ch 5 - Discrete Probability\n(for Fri) IDS 2, Ch 6 - Continuous Probability\n\n\n\n\n\n(for Mon) Reading Check 8.1\n(for Wed) Reading Check 8.2\n(for Fri) Reading Check 8.3\n\n\n\n\n\nAttendance Quiz 10/19\nSummary Statistics\n\n\n\n\n\nAttendance Quiz 10/21\nDiscrete Probability\n\n\n\n\n\nAttendance Quiz 10/23\nContinuous Probability"
+    "text": "Attendance Quiz 11/04\nRandom Variables"
   },
   {
-    "objectID": "weeks/week-080.html#reading",
-    "href": "weeks/week-080.html#reading",
-    "title": "Week 8: Statistics and Probability",
+    "objectID": "weeks/week-100.html#friday",
+    "href": "weeks/week-100.html#friday",
+    "title": "Week 10: Random Variables",
     "section": "",
-    "text": "(for Mon) IDS 2, Ch 2 - Numerical Summaries\n(for Mon) IDS 2, Ch 3.3 - Comparing Groups with Stratification\n(for Wed) IDS 2, Ch 5 - Discrete Probability\n(for Fri) IDS 2, Ch 6 - Continuous Probability"
+    "text": "Attendance Quiz 11/06\nLab: Random Variables"
   },
   {
-    "objectID": "weeks/week-080.html#prepare-for-class",
-    "href": "weeks/week-080.html#prepare-for-class",
-    "title": "Week 8: Statistics and Probability",
+    "objectID": "weeks/week-090.html",
+    "href": "weeks/week-090.html",
+    "title": "Week 9: Data and Probability",
     "section": "",
-    "text": "(for Mon) Reading Check 8.1\n(for Wed) Reading Check 8.2\n(for Fri) Reading Check 8.3"
+    "text": "October 26-01, 2026\n\n\n\n(for Mon) IDS 2 Ch 4 - Connecting Data and Probability\n\n\n\n\n\n(for Mon) Reading Check 9.1\n\n\n\n\n\nAttendance Quiz 10/26\nData and Probability\n\n\n\n\n\nAttendance Quiz 10/28\nTBD probability\n\n\n\n\n\nAttendance Quiz 10/30\nLab: Probability"
   },
   {
-    "objectID": "weeks/week-080.html#monday",
-    "href": "weeks/week-080.html#monday",
-    "title": "Week 8: Statistics and Probability",
+    "objectID": "weeks/week-090.html#reading",
+    "href": "weeks/week-090.html#reading",
+    "title": "Week 9: Data and Probability",
     "section": "",
-    "text": "Attendance Quiz 10/19\nSummary Statistics"
+    "text": "(for Mon) IDS 2 Ch 4 - Connecting Data and Probability"
   },
   {
-    "objectID": "weeks/week-080.html#wednesday",
-    "href": "weeks/week-080.html#wednesday",
-    "title": "Week 8: Statistics and Probability",
+    "objectID": "weeks/week-090.html#prepare-for-class",
+    "href": "weeks/week-090.html#prepare-for-class",
+    "title": "Week 9: Data and Probability",
     "section": "",
-    "text": "Attendance Quiz 10/21\nDiscrete Probability"
+    "text": "(for Mon) Reading Check 9.1"
   },
   {
-    "objectID": "weeks/week-080.html#friday",
-    "href": "weeks/week-080.html#friday",
-    "title": "Week 8: Statistics and Probability",
+    "objectID": "weeks/week-090.html#monday",
+    "href": "weeks/week-090.html#monday",
+    "title": "Week 9: Data and Probability",
     "section": "",
-    "text": "Attendance Quiz 10/23\nContinuous Probability"
+    "text": "Attendance Quiz 10/26\nData and Probability"
   },
   {
-    "objectID": "weeks/week-060.html",
-    "href": "weeks/week-060.html",
-    "title": "Week 6: Dates, Times, and Distributions",
+    "objectID": "weeks/week-090.html#wednesday",
+    "href": "weeks/week-090.html#wednesday",
+    "title": "Week 9: Data and Probability",
     "section": "",
-    "text": "October 05-11, 2026\n\n\n\n(for Mon) IDS I Ch 13 - Dates and Times\n(for Wed) IDS I Ch 7 - Visualizing Data Distributions\n\n\n\n\n\n(for Mon) Reading Check 6.1\n\n(for Wed) Reading Check 6.2\n\n\n\n\n\nAttendance Quiz 10/05\nDates and Times\n\n\n\n\n\nAttendance Quiz 10/07\nVisualizing Data Distributions\n\n\n\n\n\nFall Break\n\n\n\n\n\nSC Ch 27 - Dates and Times\nIDS I Ch 14 - Locales"
+    "text": "Attendance Quiz 10/28\nTBD probability"
   },
   {
-    "objectID": "weeks/week-060.html#reading",
-    "href": "weeks/week-060.html#reading",
-    "title": "Week 6: Dates, Times, and Distributions",
+    "objectID": "weeks/week-090.html#friday",
+    "href": "weeks/week-090.html#friday",
+    "title": "Week 9: Data and Probability",
     "section": "",
-    "text": "(for Mon) IDS I Ch 13 - Dates and Times\n(for Wed) IDS I Ch 7 - Visualizing Data Distributions"
+    "text": "Attendance Quiz 10/30\nLab: Probability"
   },
   {
-    "objectID": "weeks/week-060.html#prepare-for-class",
-    "href": "weeks/week-060.html#prepare-for-class",
-    "title": "Week 6: Dates, Times, and Distributions",
+    "objectID": "weeks/week-070.html",
+    "href": "weeks/week-070.html",
+    "title": "Week 7: Data Visualization",
     "section": "",
-    "text": "(for Mon) Reading Check 6.1\n\n(for Wed) Reading Check 6.2"
+    "text": "October 12-18, 2026\n\n\n\n(for Mon) IDS I Ch 8 - ggplot2\n(for Wed) IDS I Ch 10 - Data Visualization in Practice\n(for Fri) IDS I Ch 9 - Data Visualization Principles\n\n\n\n\n\n(for Mon) Reading Check 7.1\n(for Wed) Reading Check 7.2\n(for Fri) Reading Check 7.3\n\n\n\n\n\nAttendance Quiz 10/12\nData Visualization with ggplot2\n\n\n\n\n\nAttendance Quiz 10/14\nData Visualization in Practice/Advanced ggplot2\n\n\n\n\n\nAttendance Quiz 10/16\nData Visualization Principles\nLab: Effective Data Visualization\n\n\n\n\nThis is my research area, so here’s an info-dump from my textbook. I’m also happy to discuss data visualization at any point in office hours!\n\nSC Ch 18 - Data Visualization Basicsa\nSC Ch 19 - Exploratory Data Analysis\nSC Ch 20 - A Grammar of Graphics\nSC Ch 21 - Creating Good Charts"
   },
   {
-    "objectID": "weeks/week-060.html#monday",
-    "href": "weeks/week-060.html#monday",
-    "title": "Week 6: Dates, Times, and Distributions",
+    "objectID": "weeks/week-070.html#reading",
+    "href": "weeks/week-070.html#reading",
+    "title": "Week 7: Data Visualization",
     "section": "",
-    "text": "Attendance Quiz 10/05\nDates and Times"
+    "text": "(for Mon) IDS I Ch 8 - ggplot2\n(for Wed) IDS I Ch 10 - Data Visualization in Practice\n(for Fri) IDS I Ch 9 - Data Visualization Principles"
   },
   {
-    "objectID": "weeks/week-060.html#wednesday",
-    "href": "weeks/week-060.html#wednesday",
-    "title": "Week 6: Dates, Times, and Distributions",
+    "objectID": "weeks/week-070.html#prepare-for-class",
+    "href": "weeks/week-070.html#prepare-for-class",
+    "title": "Week 7: Data Visualization",
     "section": "",
-    "text": "Attendance Quiz 10/07\nVisualizing Data Distributions"
+    "text": "(for Mon) Reading Check 7.1\n(for Wed) Reading Check 7.2\n(for Fri) Reading Check 7.3"
   },
   {
-    "objectID": "weeks/week-060.html#friday",
-    "href": "weeks/week-060.html#friday",
-    "title": "Week 6: Dates, Times, and Distributions",
+    "objectID": "weeks/week-070.html#monday",
+    "href": "weeks/week-070.html#monday",
+    "title": "Week 7: Data Visualization",
     "section": "",
-    "text": "Fall Break"
+    "text": "Attendance Quiz 10/12\nData Visualization with ggplot2"
   },
   {
-    "objectID": "weeks/week-060.html#extra-resourcesreading",
-    "href": "weeks/week-060.html#extra-resourcesreading",
-    "title": "Week 6: Dates, Times, and Distributions",
+    "objectID": "weeks/week-070.html#wednesday",
+    "href": "weeks/week-070.html#wednesday",
+    "title": "Week 7: Data Visualization",
     "section": "",
-    "text": "SC Ch 27 - Dates and Times\nIDS I Ch 14 - Locales"
+    "text": "Attendance Quiz 10/14\nData Visualization in Practice/Advanced ggplot2"
   },
   {
-    "objectID": "weeks/week-040.html",
-    "href": "weeks/week-040.html",
-    "title": "Week 4: Programming in R",
+    "objectID": "weeks/week-070.html#friday",
+    "href": "weeks/week-070.html#friday",
+    "title": "Week 7: Data Visualization",
     "section": "",
-    "text": "September 21-27, 2026\n\n\n\n(for Mon) SC Ch 8 - Variables and Data Types\n(for Wed) SC Ch 9 - Mathematical and Logical Operators\n(for Fri) SC Ch 11 - Data Structures - Sections 11.1, 11.2, 11.6 - Ignore the python parts, focus on understanding how you access pieces of data in a vector and a data frame, and how to differentiate between the two.\n\n\n\n\n\n(for Mon) Reading Check 4.1\n(for Wed) Reading Check 4.2\n(for Fri) Reading Check 4.3\n\n\n\n\n\nAttendance Quiz 09/21\nR programming basics\n\n\n\n\n\nAttendance Quiz 09/23\nLab: R Programming Puzzles\n\n\n\n\n\nAttendance Quiz 09/25\nLab: R Programming Puzzles\n\n\n\n\n\nTidyverse vs. Base R (YouTube, Susan B.)"
+    "text": "Attendance Quiz 10/16\nData Visualization Principles\nLab: Effective Data Visualization"
   },
   {
-    "objectID": "weeks/week-040.html#reading",
-    "href": "weeks/week-040.html#reading",
-    "title": "Week 4: Programming in R",
+    "objectID": "weeks/week-070.html#extra-resourcesreading",
+    "href": "weeks/week-070.html#extra-resourcesreading",
+    "title": "Week 7: Data Visualization",
     "section": "",
-    "text": "(for Mon) SC Ch 8 - Variables and Data Types\n(for Wed) SC Ch 9 - Mathematical and Logical Operators\n(for Fri) SC Ch 11 - Data Structures - Sections 11.1, 11.2, 11.6 - Ignore the python parts, focus on understanding how you access pieces of data in a vector and a data frame, and how to differentiate between the two."
+    "text": "This is my research area, so here’s an info-dump from my textbook. I’m also happy to discuss data visualization at any point in office hours!\n\nSC Ch 18 - Data Visualization Basicsa\nSC Ch 19 - Exploratory Data Analysis\nSC Ch 20 - A Grammar of Graphics\nSC Ch 21 - Creating Good Charts"
   },
   {
-    "objectID": "weeks/week-040.html#prepare-for-class",
-    "href": "weeks/week-040.html#prepare-for-class",
-    "title": "Week 4: Programming in R",
+    "objectID": "weeks/week-050.html",
+    "href": "weeks/week-050.html",
+    "title": "Week 5: The Tidyverse",
     "section": "",
-    "text": "(for Mon) Reading Check 4.1\n(for Wed) Reading Check 4.2\n(for Fri) Reading Check 4.3"
+    "text": "September 28-04, 2026\n\n\n\n(for Mon) IDS I Ch 4 - The Tidyverse\n(for Wed) SC Ch 22 - Data Cleaning - Read to get a sense of the different types of operations which are useful\n(for Fri) SC Ch 24 - Reshaping Data - Be able to ID wide and long data images\n\n\n\n\n\n(for Mon) Reading Check 5.1\n(for Wed) Reading Check 5.2\n(for Fri) Reading Check 5.3\n\n\n\n\n\nAttendance Quiz 09/28\nTidyverse Programming Basics: Tibbles and dplyr\n\n\n\n\n\nAttendance Quiz 09/30\nTidyverse Programming Basics: Reshaping Data\n\n\n\n\n\nAttendance Quiz 10/02\nLab: Tidyverse Programming\n\n\n\n\n\nSC Ch 16 - Programming with Data - data explorations worked out with R/tidyverse code. You don’t know how to do graphics yet, but hopefully the data operations make sense.\nTidy Tuesday Screencasts (YouTube, David Robinson). These show example data analyses in real time, with commentary, using a new dataset each week. These were primarily recorded during the pandemic, but are still an incredibly valuable resource for learing how to work with data.\nAllison Horst’s Tidyverse Illustrations - mostly illustrates tidyverse functions.\nFunctional Programming Illustrations"
   },
   {
-    "objectID": "weeks/week-040.html#monday",
-    "href": "weeks/week-040.html#monday",
-    "title": "Week 4: Programming in R",
+    "objectID": "weeks/week-050.html#reading",
+    "href": "weeks/week-050.html#reading",
+    "title": "Week 5: The Tidyverse",
     "section": "",
-    "text": "Attendance Quiz 09/21\nR programming basics"
+    "text": "(for Mon) IDS I Ch 4 - The Tidyverse\n(for Wed) SC Ch 22 - Data Cleaning - Read to get a sense of the different types of operations which are useful\n(for Fri) SC Ch 24 - Reshaping Data - Be able to ID wide and long data images"
   },
   {
-    "objectID": "weeks/week-040.html#wednesday",
-    "href": "weeks/week-040.html#wednesday",
-    "title": "Week 4: Programming in R",
+    "objectID": "weeks/week-050.html#prepare-for-class",
+    "href": "weeks/week-050.html#prepare-for-class",
+    "title": "Week 5: The Tidyverse",
     "section": "",
-    "text": "Attendance Quiz 09/23\nLab: R Programming Puzzles"
+    "text": "(for Mon) Reading Check 5.1\n(for Wed) Reading Check 5.2\n(for Fri) Reading Check 5.3"
   },
   {
-    "objectID": "weeks/week-040.html#friday",
-    "href": "weeks/week-040.html#friday",
-    "title": "Week 4: Programming in R",
+    "objectID": "weeks/week-050.html#monday",
+    "href": "weeks/week-050.html#monday",
+    "title": "Week 5: The Tidyverse",
     "section": "",
-    "text": "Attendance Quiz 09/25\nLab: R Programming Puzzles"
+    "text": "Attendance Quiz 09/28\nTidyverse Programming Basics: Tibbles and dplyr"
   },
   {
-    "objectID": "weeks/week-040.html#extra-resourcesreading",
-    "href": "weeks/week-040.html#extra-resourcesreading",
-    "title": "Week 4: Programming in R",
+    "objectID": "weeks/week-050.html#wednesday",
+    "href": "weeks/week-050.html#wednesday",
+    "title": "Week 5: The Tidyverse",
     "section": "",
-    "text": "Tidyverse vs. Base R (YouTube, Susan B.)"
+    "text": "Attendance Quiz 09/30\nTidyverse Programming Basics: Reshaping Data"
   },
   {
-    "objectID": "weeks/week-020.html",
-    "href": "weeks/week-020.html",
-    "title": "Week 2: Programming and RStudio",
+    "objectID": "weeks/week-050.html#friday",
+    "href": "weeks/week-050.html#friday",
+    "title": "Week 5: The Tidyverse",
     "section": "",
-    "text": "September 07-13, 2026\n\n\n\n(for Wed) Read Proposal: Data Collection\n(for Wed) Skim IDS I Ch 3 - Programming Basics so that you know where to look up different programming concepts\n(for Fri) Read SC Ch 3 - RStudio\n(for Fri) Project Proposal Template\n(for Fri) Project Proposal Demo (qmd) html\n\n\n\n\n\n(for Wed) 2.2.p Reading Check: Proposal: Data Collection\n(for Fri) 2.3.p Reading Check: Introduction to R and RStudio\n\n\n\n\n\nLabor Day\n\n\n\n\n\nAttendance Quiz 09/09\nIntro to Programming\nSwirl Tutorial\n\n\n\n\n\nAttendance Quiz 09/11\nIntro to RStudio\nSubmit Project Proposal\n\n\n\n\n\nHow to Name Files (YouTube, Jenny Bryan, NormConf) - How to name things so that they are machine readable, human readable, and sorted usefully.\nTeach Me How to Google: Debugging in R (YouTube, Jasmine Lai, R-Ladies Vancouver)\nRStudio Themes List - Make RStudio look the way you want it!\nFira Code is a free font with ligatures. Ligatures combine adjacent characters into symbols, so -&gt; becomes ➡️ (but without the background). Some people find this annoying, others find it much easier to read. Once you install the font, you should be able to start RStudio and then select Fira Code as the font in Tools -&gt; Global Options -&gt; Appearance."
+    "text": "Attendance Quiz 10/02\nLab: Tidyverse Programming"
   },
   {
-    "objectID": "weeks/week-020.html#reading",
-    "href": "weeks/week-020.html#reading",
-    "title": "Week 2: Programming and RStudio",
+    "objectID": "weeks/week-050.html#extra-resourcesreading",
+    "href": "weeks/week-050.html#extra-resourcesreading",
+    "title": "Week 5: The Tidyverse",
     "section": "",
-    "text": "(for Wed) Read Proposal: Data Collection\n(for Wed) Skim IDS I Ch 3 - Programming Basics so that you know where to look up different programming concepts\n(for Fri) Read SC Ch 3 - RStudio\n(for Fri) Project Proposal Template\n(for Fri) Project Proposal Demo (qmd) html"
+    "text": "SC Ch 16 - Programming with Data - data explorations worked out with R/tidyverse code. You don’t know how to do graphics yet, but hopefully the data operations make sense.\nTidy Tuesday Screencasts (YouTube, David Robinson). These show example data analyses in real time, with commentary, using a new dataset each week. These were primarily recorded during the pandemic, but are still an incredibly valuable resource for learing how to work with data.\nAllison Horst’s Tidyverse Illustrations - mostly illustrates tidyverse functions.\nFunctional Programming Illustrations"
   },
   {
-    "objectID": "weeks/week-020.html#prepare-for-class",
-    "href": "weeks/week-020.html#prepare-for-class",
-    "title": "Week 2: Programming and RStudio",
+    "objectID": "weeks/week-030.html",
+    "href": "weeks/week-030.html",
+    "title": "Week 3: Correlation is not Causation",
     "section": "",
-    "text": "(for Wed) 2.2.p Reading Check: Proposal: Data Collection\n(for Fri) 2.3.p Reading Check: Introduction to R and RStudio"
+    "text": "September 14-20, 2026\n\n\n\n(for Mon) IDS 2 Ch 19 - Association is Not Causation\n(for Wed) Bias and Ethics Readings\n(for Fri) Watch How Ice Cream Kills (&lt;6 mins) and Calling BS 3.3: Spurious Correlations (&lt;8 mins, UW Information School course on calling BS)\n\n\n\n\n\n(for Mon) 3.1.p Reading Check: Association is Not Causation (IDS Ch 19)\n(for Wed) 3.2.p Bias and Ethics\n\n\n\n\n\nAttendance Quiz 09/14\nCorrelation and Causation\n\n\n\n\n\nAttendance Quiz 09/16\n\nBias and Ethics\n3.2.p - Bias and Ethics Activity (submit in Canvas). qmd file and html file\n\n\n\n\n\nAttendance Quiz 09/18\nLab: Spurious Correlation\n\n\n\n\n\nCausal Inference (YouTube, Dr. David Sontag, MIT OpenCourseWare) - The alternative to correlation – how to show causality\nCrash Course Statistics: Henrietta Lacks, the Tuskegee Experiment, and Ethical Data Collection: Crash Course Statistics #12 (YouTube, CrashCourse)\nExploring Data Ethics (YouTube, Dr. Wendy Martinez, Washington Statistical Society Seminar)"
   },
   {
-    "objectID": "weeks/week-020.html#monday",
-    "href": "weeks/week-020.html#monday",
-    "title": "Week 2: Programming and RStudio",
+    "objectID": "weeks/week-030.html#reading",
+    "href": "weeks/week-030.html#reading",
+    "title": "Week 3: Correlation is not Causation",
     "section": "",
-    "text": "Labor Day"
+    "text": "(for Mon) IDS 2 Ch 19 - Association is Not Causation\n(for Wed) Bias and Ethics Readings\n(for Fri) Watch How Ice Cream Kills (&lt;6 mins) and Calling BS 3.3: Spurious Correlations (&lt;8 mins, UW Information School course on calling BS)"
   },
   {
-    "objectID": "weeks/week-020.html#wednesday",
-    "href": "weeks/week-020.html#wednesday",
-    "title": "Week 2: Programming and RStudio",
+    "objectID": "weeks/week-030.html#prepare-for-class",
+    "href": "weeks/week-030.html#prepare-for-class",
+    "title": "Week 3: Correlation is not Causation",
     "section": "",
-    "text": "Attendance Quiz 09/09\nIntro to Programming\nSwirl Tutorial"
+    "text": "(for Mon) 3.1.p Reading Check: Association is Not Causation (IDS Ch 19)\n(for Wed) 3.2.p Bias and Ethics"
   },
   {
-    "objectID": "weeks/week-020.html#friday",
-    "href": "weeks/week-020.html#friday",
-    "title": "Week 2: Programming and RStudio",
+    "objectID": "weeks/week-030.html#monday",
+    "href": "weeks/week-030.html#monday",
+    "title": "Week 3: Correlation is not Causation",
     "section": "",
-    "text": "Attendance Quiz 09/11\nIntro to RStudio\nSubmit Project Proposal"
+    "text": "Attendance Quiz 09/14\nCorrelation and Causation"
   },
   {
-    "objectID": "weeks/week-020.html#extra-resourcesreading",
-    "href": "weeks/week-020.html#extra-resourcesreading",
-    "title": "Week 2: Programming and RStudio",
+    "objectID": "weeks/week-030.html#wednesday",
+    "href": "weeks/week-030.html#wednesday",
+    "title": "Week 3: Correlation is not Causation",
     "section": "",
-    "text": "How to Name Files (YouTube, Jenny Bryan, NormConf) - How to name things so that they are machine readable, human readable, and sorted usefully.\nTeach Me How to Google: Debugging in R (YouTube, Jasmine Lai, R-Ladies Vancouver)\nRStudio Themes List - Make RStudio look the way you want it!\nFira Code is a free font with ligatures. Ligatures combine adjacent characters into symbols, so -&gt; becomes ➡️ (but without the background). Some people find this annoying, others find it much easier to read. Once you install the font, you should be able to start RStudio and then select Fira Code as the font in Tools -&gt; Global Options -&gt; Appearance."
+    "text": "Attendance Quiz 09/16\n\nBias and Ethics\n3.2.p - Bias and Ethics Activity (submit in Canvas). qmd file and html file"
   },
   {
-    "objectID": "course-support.html",
-    "href": "course-support.html",
-    "title": "Course support",
+    "objectID": "weeks/week-030.html#friday",
+    "href": "weeks/week-030.html#friday",
+    "title": "Week 3: Correlation is not Causation",
     "section": "",
-    "text": "If you have a question during lecture or lab, feel free to ask it! There are likely other students with the same question, so by asking you will create a learning opportunity for everyone."
+    "text": "Attendance Quiz 09/18\nLab: Spurious Correlation"
   },
   {
-    "objectID": "course-support.html#lectures-and-labs",
-    "href": "course-support.html#lectures-and-labs",
-    "title": "Course support",
+    "objectID": "weeks/week-030.html#extra-resourcesreading",
+    "href": "weeks/week-030.html#extra-resourcesreading",
+    "title": "Week 3: Correlation is not Causation",
     "section": "",
-    "text": "If you have a question during lecture or lab, feel free to ask it! There are likely other students with the same question, so by asking you will create a learning opportunity for everyone."
+    "text": "Causal Inference (YouTube, Dr. David Sontag, MIT OpenCourseWare) - The alternative to correlation – how to show causality\nCrash Course Statistics: Henrietta Lacks, the Tuskegee Experiment, and Ethical Data Collection: Crash Course Statistics #12 (YouTube, CrashCourse)\nExploring Data Ethics (YouTube, Dr. Wendy Martinez, Washington Statistical Society Seminar)"
   },
   {
-    "objectID": "course-support.html#office-hours",
-    "href": "course-support.html#office-hours",
-    "title": "Course support",
-    "section": "Office hours",
-    "text": "Office hours\nOffice hours are available by appointment at this link. In general, office hours will be via Zoom - this allows me to offer more availability, and doesn’t require you to come to East campus to visit my office.\nIf you’d prefer to meet in person, try to schedule your appointment on Monday or Wednesday, and mention in the request that you want an in-person meeting. I will let you know if that’s feasible given my schedule for the day."
-  },
-  {
-    "objectID": "course-support.html#email",
-    "href": "course-support.html#email",
-    "title": "Course support",
-    "section": "Email",
-    "text": "Email\nPlease only use email for questions about personal matters that may not be appropriate for the public course forum (e.g., illness, grades, accommodations, etc.). In these cases, please add “STAT349” to the subject line, so that I can prioritize your email.\nAssignment and content related questions should be asked in the relevant discussion board on Canvas."
-  },
-  {
-    "objectID": "course-support.html#academic-support",
-    "href": "course-support.html#academic-support",
-    "title": "Course support",
-    "section": "Academic support",
-    "text": "Academic support\nThere are times you may need help with the class that is beyond what can be provided by the teaching team. In those instances, I encourage you to visit the Center for Academic Success and Transition (CAST). CAST offers free services to all students.\nStudents have access to peer tutoring, academic coaching, and academic success workshops."
-  },
-  {
-    "objectID": "course-support.html#mental-health-and-wellness",
-    "href": "course-support.html#mental-health-and-wellness",
-    "title": "Course support",
-    "section": "Mental health and wellness",
-    "text": "Mental health and wellness\nYour mental health and wellness extremely important, and the university offers resources to support students in managing daily stress and self-care. UNL offers several resources for students to manage stress, seek help with well-being, and access crisis and long-term care.\n\nCounseling and Psychological Services (CAPS), 402-472-7450\nCenter for Advocacy, Response, & Education (CARE), 402-472-3553 – resources for victims/survivors of interpersonal violence.\nServices for Students with Disabilities (SSD), ssd@unl.edu or 402-472-3787 – resources for students experiencing short or long-term disabilities that affect the campus or educational experience."
-  },
-  {
-    "objectID": "course-support.html#technology",
-    "href": "course-support.html#technology",
-    "title": "Course support",
-    "section": "Technology",
-    "text": "Technology\nStudents who do not have a working computer can check out a loaner laptop from HuskerTech on city campus (Love South, Adele Hall) and east campus (Dinsdale).\nIf you are unable to get a loaner laptop set up with the software required for parts of this course, please try to let me know ahead of time - it is possible that I will be able to assist you with browser-based solutions."
-  },
-  {
-    "objectID": "course-support.html#course-materials",
-    "href": "course-support.html#course-materials",
-    "title": "Course support",
-    "section": "Course materials",
-    "text": "Course materials\nThere are no costs associated with this course beyond the requirement that you have access to a laptop computer. All readings will come from freely available, open resources (open-source textbooks, journal articles, etc.) or library course reserves."
-  },
-  {
-    "objectID": "course-links.html",
-    "href": "course-links.html",
-    "title": "Useful links",
+    "objectID": "weeks/week-010.html",
+    "href": "weeks/week-010.html",
+    "title": "Week 1: Introduction",
     "section": "",
-    "text": "Canvas\nAssignment Submissions, Reading Quizzes, Gradebook\n\n\nIntroduction to Data Science 1, by Rafael A. Irizarry\nTextbook (IDS 1)\n\n\nIntroduction to Data Science 2, by Rafael A. Irizarry\nTextbook (IDS 2)\n\n\nStatistical Computing in R and Python\nSC"
+    "text": "August 31-06, 2026\n\n\n\n(for Mon) Syllabus\n(for Wed) IDS 1 Ch 6 - Importing Data\n(for Fri) IDS 1 Ch 2 - R Basics\n\n\n\n\n\nPrint out and bring cheat sheets for R\n(for Mon) 1.1.p Syllabus Overview\n(for Wed) 1.2.p Reading Check: Importing Data (IDS Ch 6)\n(for Fri) 1.3.p Reading Check: R Basics (IDS Ch 2)\n(for Fri) 1.3.p Install R\n\n\n\n\n\nAttendence Quiz 08/31\nDiscussion: Syllabus\nCourse Introduction and Motivation\nSyllabus Quiz\n\n\n\n\n\nAttendence Quiz 09/2\nOrganizing Data\n1.2.p Introduction to Data Science (Individual + In Class)\n\n\n\n\n\nAttendence Quiz 09/4\nIntro to Programming\nProgramming a Sandwich. html, qmd template\nGetting to Know You Assignment\n\n\n\n\n\nHadley Wickham: Spreadsheets, bikes, and the accidental empire of R packages (YouTube, The Test Set) - Hadley Wickham developed many of the R packages we’ll use in this course. Hear the back-story as to how he got started!\nThe Jevons Paradox (YouTube, Hank Green) - Why AI (and statistics) do not generate new information."
+  },
+  {
+    "objectID": "weeks/week-010.html#reading",
+    "href": "weeks/week-010.html#reading",
+    "title": "Week 1: Introduction",
+    "section": "",
+    "text": "(for Mon) Syllabus\n(for Wed) IDS 1 Ch 6 - Importing Data\n(for Fri) IDS 1 Ch 2 - R Basics"
+  },
+  {
+    "objectID": "weeks/week-010.html#prepare-for-class",
+    "href": "weeks/week-010.html#prepare-for-class",
+    "title": "Week 1: Introduction",
+    "section": "",
+    "text": "Print out and bring cheat sheets for R\n(for Mon) 1.1.p Syllabus Overview\n(for Wed) 1.2.p Reading Check: Importing Data (IDS Ch 6)\n(for Fri) 1.3.p Reading Check: R Basics (IDS Ch 2)\n(for Fri) 1.3.p Install R"
+  },
+  {
+    "objectID": "weeks/week-010.html#monday",
+    "href": "weeks/week-010.html#monday",
+    "title": "Week 1: Introduction",
+    "section": "",
+    "text": "Attendence Quiz 08/31\nDiscussion: Syllabus\nCourse Introduction and Motivation\nSyllabus Quiz"
+  },
+  {
+    "objectID": "weeks/week-010.html#wednesday",
+    "href": "weeks/week-010.html#wednesday",
+    "title": "Week 1: Introduction",
+    "section": "",
+    "text": "Attendence Quiz 09/2\nOrganizing Data\n1.2.p Introduction to Data Science (Individual + In Class)"
+  },
+  {
+    "objectID": "weeks/week-010.html#friday",
+    "href": "weeks/week-010.html#friday",
+    "title": "Week 1: Introduction",
+    "section": "",
+    "text": "Attendence Quiz 09/4\nIntro to Programming\nProgramming a Sandwich. html, qmd template\nGetting to Know You Assignment"
+  },
+  {
+    "objectID": "weeks/week-010.html#extra-resourcesreading",
+    "href": "weeks/week-010.html#extra-resourcesreading",
+    "title": "Week 1: Introduction",
+    "section": "",
+    "text": "Hadley Wickham: Spreadsheets, bikes, and the accidental empire of R packages (YouTube, The Test Set) - Hadley Wickham developed many of the R packages we’ll use in this course. Hear the back-story as to how he got started!\nThe Jevons Paradox (YouTube, Hank Green) - Why AI (and statistics) do not generate new information."
+  },
+  {
+    "objectID": "course-overview.html",
+    "href": "course-overview.html",
+    "title": "Stat 349: Technical Skills for Statisticians",
+    "section": "",
+    "text": "Creation of research reports, business reports, and executive summaries. Presentation strategies, consequences of statistical modeling for real-world decision making, and countering common misconceptions and errors in statistical reasoning. Focus on real-world applications in research, business, and public service."
   },
   {
     "objectID": "syllabus.html",
@@ -1057,410 +1106,382 @@
     "text": "4.3 Students Who are Pregnant or Have a Pregnancy-Related Condition\nIf you need academic accommodations related to pregnancy, childbirth, false pregnancy, termination of pregnancy, recovery, or other pregnancy related conditions, please contact the Civil Rights & Title IX Office as early as possible. All accommodations related to pregnancy must be approved by the Civil Rights & Title IX Office. The Civil Rights & Title IX Office will then coordinate with instructors to provide accommodations. The University will not exclude a student from participating in any part of an educational program based on the student’s pregnancy or pregnancy related conditions.\nCivil Rights & Title IX Office: Distance Education, Room 400, Logan Campus, 435-797-1266, Civil Rights & Title IX Office: Pregnancy and Pregnancy Related Conditions."
   },
   {
-    "objectID": "course-overview.html",
-    "href": "course-overview.html",
-    "title": "Stat 349: Technical Skills for Statisticians",
+    "objectID": "course-links.html",
+    "href": "course-links.html",
+    "title": "Useful links",
     "section": "",
-    "text": "Creation of research reports, business reports, and executive summaries. Presentation strategies, consequences of statistical modeling for real-world decision making, and countering common misconceptions and errors in statistical reasoning. Focus on real-world applications in research, business, and public service."
+    "text": "Canvas\nAssignment Submissions, Reading Quizzes, Gradebook\n\n\nIntroduction to Data Science 1, by Rafael A. Irizarry\nTextbook (IDS 1)\n\n\nIntroduction to Data Science 2, by Rafael A. Irizarry\nTextbook (IDS 2)\n\n\nStatistical Computing in R and Python\nSC"
   },
   {
-    "objectID": "weeks/week-010.html",
-    "href": "weeks/week-010.html",
-    "title": "Week 1: Introduction",
+    "objectID": "course-support.html",
+    "href": "course-support.html",
+    "title": "Course support",
     "section": "",
-    "text": "August 31-06, 2026\n\n\n\n(for Mon) Syllabus\n(for Wed) IDS I Ch 6 - Importing Data\n(for Fri) IDS I Ch 2 - R Basics\n\n\n\n\n\nPrint out and bring cheat sheets for R\n(for Mon) 1.1.p Syllabus Overview\n(for Wed) 1.2.p Reading Check: Importing Data (IDS Ch 6)\n(for Fri) 1.3.p Reading Check: R Basics (IDS Ch 2)\n(for Fri) 1.3.p Install R\n\n\n\n\n\nAttendence Quiz 08/31\nDiscussion: Syllabus\nCourse Introduction and Motivation\nSyllabus Quiz\n\n\n\n\n\nAttendence Quiz 09/2\nOrganizing Data\n1.2.p Introduction to Data Science (Individual + In Class)\n\n\n\n\n\nAttendence Quiz 09/4\nIntro to Programming\nProgramming a Sandwich. html, qmd template\nGetting to Know You Assignment\n\n\n\n\n\nHadley Wickham: Spreadsheets, bikes, and the accidental empire of R packages (YouTube, The Test Set) - Hadley Wickham developed many of the R packages we’ll use in this course. Hear the back-story as to how he got started!\nThe Jevons Paradox (YouTube, Hank Green) - Why AI (and statistics) do not generate new information.\nData Rectangling (YouTube, Jenny Bryan, Plotcon 2016) - The importance of getting data into the right format.\nTidy Data, Illustrated - Handy illustrations explaining the idea of tidy data"
+    "text": "If you have a question during lecture or lab, feel free to ask it! There are likely other students with the same question, so by asking you will create a learning opportunity for everyone."
   },
   {
-    "objectID": "weeks/week-010.html#reading",
-    "href": "weeks/week-010.html#reading",
-    "title": "Week 1: Introduction",
+    "objectID": "course-support.html#lectures-and-labs",
+    "href": "course-support.html#lectures-and-labs",
+    "title": "Course support",
     "section": "",
-    "text": "(for Mon) Syllabus\n(for Wed) IDS I Ch 6 - Importing Data\n(for Fri) IDS I Ch 2 - R Basics"
+    "text": "If you have a question during lecture or lab, feel free to ask it! There are likely other students with the same question, so by asking you will create a learning opportunity for everyone."
   },
   {
-    "objectID": "weeks/week-010.html#prepare-for-class",
-    "href": "weeks/week-010.html#prepare-for-class",
-    "title": "Week 1: Introduction",
-    "section": "",
-    "text": "Print out and bring cheat sheets for R\n(for Mon) 1.1.p Syllabus Overview\n(for Wed) 1.2.p Reading Check: Importing Data (IDS Ch 6)\n(for Fri) 1.3.p Reading Check: R Basics (IDS Ch 2)\n(for Fri) 1.3.p Install R"
+    "objectID": "course-support.html#office-hours",
+    "href": "course-support.html#office-hours",
+    "title": "Course support",
+    "section": "Office hours",
+    "text": "Office hours\nOffice hours are available by appointment at this link. In general, office hours will be via Zoom - this allows me to offer more availability, and doesn’t require you to come to East campus to visit my office.\nIf you’d prefer to meet in person, try to schedule your appointment on Monday or Wednesday, and mention in the request that you want an in-person meeting. I will let you know if that’s feasible given my schedule for the day."
   },
   {
-    "objectID": "weeks/week-010.html#monday",
-    "href": "weeks/week-010.html#monday",
-    "title": "Week 1: Introduction",
-    "section": "",
-    "text": "Attendence Quiz 08/31\nDiscussion: Syllabus\nCourse Introduction and Motivation\nSyllabus Quiz"
+    "objectID": "course-support.html#email",
+    "href": "course-support.html#email",
+    "title": "Course support",
+    "section": "Email",
+    "text": "Email\nPlease only use email for questions about personal matters that may not be appropriate for the public course forum (e.g., illness, grades, accommodations, etc.). In these cases, please add “STAT349” to the subject line, so that I can prioritize your email.\nAssignment and content related questions should be asked in the relevant discussion board on Canvas."
   },
   {
-    "objectID": "weeks/week-010.html#wednesday",
-    "href": "weeks/week-010.html#wednesday",
-    "title": "Week 1: Introduction",
-    "section": "",
-    "text": "Attendence Quiz 09/2\nOrganizing Data\n1.2.p Introduction to Data Science (Individual + In Class)"
+    "objectID": "course-support.html#academic-support",
+    "href": "course-support.html#academic-support",
+    "title": "Course support",
+    "section": "Academic support",
+    "text": "Academic support\nThere are times you may need help with the class that is beyond what can be provided by the teaching team. In those instances, I encourage you to visit the Center for Academic Success and Transition (CAST). CAST offers free services to all students.\nStudents have access to peer tutoring, academic coaching, and academic success workshops."
   },
   {
-    "objectID": "weeks/week-010.html#friday",
-    "href": "weeks/week-010.html#friday",
-    "title": "Week 1: Introduction",
-    "section": "",
-    "text": "Attendence Quiz 09/4\nIntro to Programming\nProgramming a Sandwich. html, qmd template\nGetting to Know You Assignment"
+    "objectID": "course-support.html#mental-health-and-wellness",
+    "href": "course-support.html#mental-health-and-wellness",
+    "title": "Course support",
+    "section": "Mental health and wellness",
+    "text": "Mental health and wellness\nYour mental health and wellness extremely important, and the university offers resources to support students in managing daily stress and self-care. UNL offers several resources for students to manage stress, seek help with well-being, and access crisis and long-term care.\n\nCounseling and Psychological Services (CAPS), 402-472-7450\nCenter for Advocacy, Response, & Education (CARE), 402-472-3553 – resources for victims/survivors of interpersonal violence.\nServices for Students with Disabilities (SSD), ssd@unl.edu or 402-472-3787 – resources for students experiencing short or long-term disabilities that affect the campus or educational experience."
   },
   {
-    "objectID": "weeks/week-010.html#extra-resourcesreading",
-    "href": "weeks/week-010.html#extra-resourcesreading",
-    "title": "Week 1: Introduction",
-    "section": "",
-    "text": "Hadley Wickham: Spreadsheets, bikes, and the accidental empire of R packages (YouTube, The Test Set) - Hadley Wickham developed many of the R packages we’ll use in this course. Hear the back-story as to how he got started!\nThe Jevons Paradox (YouTube, Hank Green) - Why AI (and statistics) do not generate new information.\nData Rectangling (YouTube, Jenny Bryan, Plotcon 2016) - The importance of getting data into the right format.\nTidy Data, Illustrated - Handy illustrations explaining the idea of tidy data"
+    "objectID": "course-support.html#technology",
+    "href": "course-support.html#technology",
+    "title": "Course support",
+    "section": "Technology",
+    "text": "Technology\nStudents who do not have a working computer can check out a loaner laptop from HuskerTech on city campus (Love South, Adele Hall) and east campus (Dinsdale).\nIf you are unable to get a loaner laptop set up with the software required for parts of this course, please try to let me know ahead of time - it is possible that I will be able to assist you with browser-based solutions."
   },
   {
-    "objectID": "weeks/week-030.html",
-    "href": "weeks/week-030.html",
-    "title": "Week 3: Correlation is not Causation",
-    "section": "",
-    "text": "September 14-20, 2026\n\n\n\n(for Mon) IDS I Ch 19 - Association is Not Causation\n(for Wed) Bias and Ethics Readings\n(for Fri) Watch How Ice Cream Kills and Calling BS 3.3: Spurious Correlations (UW Information School course on calling BS)\n\n\n\n\n\n(for Mon) 3.1.p Reading Check: Association is Not Causation (IDS Ch 19)\n(for Wed) 3.2.p Bias and Ethics\n\n\n\n\n\nAttendance Quiz 09/14\nCorrelation and Causation\n\n\n\n\n\nAttendance Quiz 09/16\n\nBias and Ethics\n\n\n\n\n\nAttendance Quiz 09/18\nLab: Spurious Correlation\n\n\n\n\n\nCausal Inference (YouTube, Dr. David Sontag, MIT OpenCourseWare) - The alternative to correlation – how to show causality\nCrash Course Statistics: Henrietta Lacks, the Tuskegee Experiment, and Ethical Data Collection: Crash Course Statistics #12 (YouTube, CrashCourse)\nExploring Data Ethics (YouTube, Dr. Wendy Martinez, Washington Statistical Society Seminar)"
+    "objectID": "course-support.html#course-materials",
+    "href": "course-support.html#course-materials",
+    "title": "Course support",
+    "section": "Course materials",
+    "text": "Course materials\nThere are no costs associated with this course beyond the requirement that you have access to a laptop computer. All readings will come from freely available, open resources (open-source textbooks, journal articles, etc.) or library course reserves."
   },
   {
-    "objectID": "weeks/week-030.html#reading",
-    "href": "weeks/week-030.html#reading",
-    "title": "Week 3: Correlation is not Causation",
+    "objectID": "weeks/week-020.html",
+    "href": "weeks/week-020.html",
+    "title": "Week 2: Programming and RStudio",
     "section": "",
-    "text": "(for Mon) IDS I Ch 19 - Association is Not Causation\n(for Wed) Bias and Ethics Readings\n(for Fri) Watch How Ice Cream Kills and Calling BS 3.3: Spurious Correlations (UW Information School course on calling BS)"
+    "text": "September 07-13, 2026\n\n\n\n(for Wed) Read Proposal: Data Collection\n(for Wed) Skim IDS 1 Ch 3 - Programming Basics so that you know where to look up different programming concepts\n(for Fri) Read SC Ch 3 - RStudio\n(for Fri) Project Proposal Template\n(for Fri) Project Proposal Demo (qmd) html\n\n\n\n\n\n(for Wed) 2.2.p Reading Check: Proposal: Data Collection\n(for Fri) 2.3.p Reading Check: Introduction to R and RStudio\n\n\n\n\n\nLabor Day\n\n\n\n\n\nAttendance Quiz 09/09\nIntro to Programming\nSwirl Tutorial\n\n\n\n\n\nAttendance Quiz 09/11\nIntro to RStudio\nSubmit Project Proposal\n\n\n\n\n\nHow to Name Files (YouTube, Jenny Bryan, NormConf) - How to name things so that they are machine readable, human readable, and sorted usefully.\nTeach Me How to Google: Debugging in R (YouTube, Jasmine Lai, R-Ladies Vancouver)\nRStudio Themes List - Make RStudio look the way you want it!\nFira Code is a free font with ligatures. Ligatures combine adjacent characters into symbols, so -&gt; becomes ➡️ (but without the background). Some people find this annoying, others find it much easier to read. Once you install the font, you should be able to start RStudio and then select Fira Code as the font in Tools -&gt; Global Options -&gt; Appearance."
   },
   {
-    "objectID": "weeks/week-030.html#prepare-for-class",
-    "href": "weeks/week-030.html#prepare-for-class",
-    "title": "Week 3: Correlation is not Causation",
+    "objectID": "weeks/week-020.html#reading",
+    "href": "weeks/week-020.html#reading",
+    "title": "Week 2: Programming and RStudio",
     "section": "",
-    "text": "(for Mon) 3.1.p Reading Check: Association is Not Causation (IDS Ch 19)\n(for Wed) 3.2.p Bias and Ethics"
+    "text": "(for Wed) Read Proposal: Data Collection\n(for Wed) Skim IDS 1 Ch 3 - Programming Basics so that you know where to look up different programming concepts\n(for Fri) Read SC Ch 3 - RStudio\n(for Fri) Project Proposal Template\n(for Fri) Project Proposal Demo (qmd) html"
   },
   {
-    "objectID": "weeks/week-030.html#monday",
-    "href": "weeks/week-030.html#monday",
-    "title": "Week 3: Correlation is not Causation",
+    "objectID": "weeks/week-020.html#prepare-for-class",
+    "href": "weeks/week-020.html#prepare-for-class",
+    "title": "Week 2: Programming and RStudio",
     "section": "",
-    "text": "Attendance Quiz 09/14\nCorrelation and Causation"
+    "text": "(for Wed) 2.2.p Reading Check: Proposal: Data Collection\n(for Fri) 2.3.p Reading Check: Introduction to R and RStudio"
   },
   {
-    "objectID": "weeks/week-030.html#wednesday",
-    "href": "weeks/week-030.html#wednesday",
-    "title": "Week 3: Correlation is not Causation",
+    "objectID": "weeks/week-020.html#monday",
+    "href": "weeks/week-020.html#monday",
+    "title": "Week 2: Programming and RStudio",
     "section": "",
-    "text": "Attendance Quiz 09/16\n\nBias and Ethics"
+    "text": "Labor Day"
   },
   {
-    "objectID": "weeks/week-030.html#friday",
-    "href": "weeks/week-030.html#friday",
-    "title": "Week 3: Correlation is not Causation",
+    "objectID": "weeks/week-020.html#wednesday",
+    "href": "weeks/week-020.html#wednesday",
+    "title": "Week 2: Programming and RStudio",
     "section": "",
-    "text": "Attendance Quiz 09/18\nLab: Spurious Correlation"
+    "text": "Attendance Quiz 09/09\nIntro to Programming\nSwirl Tutorial"
   },
   {
-    "objectID": "weeks/week-030.html#extra-resourcesreading",
-    "href": "weeks/week-030.html#extra-resourcesreading",
-    "title": "Week 3: Correlation is not Causation",
+    "objectID": "weeks/week-020.html#friday",
+    "href": "weeks/week-020.html#friday",
+    "title": "Week 2: Programming and RStudio",
     "section": "",
-    "text": "Causal Inference (YouTube, Dr. David Sontag, MIT OpenCourseWare) - The alternative to correlation – how to show causality\nCrash Course Statistics: Henrietta Lacks, the Tuskegee Experiment, and Ethical Data Collection: Crash Course Statistics #12 (YouTube, CrashCourse)\nExploring Data Ethics (YouTube, Dr. Wendy Martinez, Washington Statistical Society Seminar)"
+    "text": "Attendance Quiz 09/11\nIntro to RStudio\nSubmit Project Proposal"
   },
   {
-    "objectID": "weeks/week-050.html",
-    "href": "weeks/week-050.html",
-    "title": "Week 5: The Tidyverse",
+    "objectID": "weeks/week-020.html#extra-resourcesreading",
+    "href": "weeks/week-020.html#extra-resourcesreading",
+    "title": "Week 2: Programming and RStudio",
     "section": "",
-    "text": "September 28-04, 2026\n\n\n\n(for Mon) IDS I Ch 4 - The Tidyverse\n(for Wed) SC Ch 22 - Data Cleaning - Read to get a sense of the different types of operations which are useful\n(for Fri) SC Ch 24 - Reshaping Data - Be able to ID wide and long data images\n\n\n\n\n\n(for Mon) Reading Check 5.1\n(for Wed) Reading Check 5.2\n(for Fri) Reading Check 5.3\n\n\n\n\n\nAttendance Quiz 09/28\nTidyverse Programming Basics: Tibbles and dplyr\n\n\n\n\n\nAttendance Quiz 09/30\nTidyverse Programming Basics: Reshaping Data\n\n\n\n\n\nAttendance Quiz 10/02\nLab: Tidyverse Programming\n\n\n\n\n\nSC Ch 16 - Programming with Data - data explorations worked out with R/tidyverse code. You don’t know how to do graphics yet, but hopefully the data operations make sense.\nTidy Tuesday Screencasts (YouTube, David Robinson). These show example data analyses in real time, with commentary, using a new dataset each week. These were primarily recorded during the pandemic, but are still an incredibly valuable resource for learing how to work with data.\nAllison Horst’s Tidyverse Illustrations - mostly illustrates tidyverse functions.\nFunctional Programming Illustrations"
+    "text": "How to Name Files (YouTube, Jenny Bryan, NormConf) - How to name things so that they are machine readable, human readable, and sorted usefully.\nTeach Me How to Google: Debugging in R (YouTube, Jasmine Lai, R-Ladies Vancouver)\nRStudio Themes List - Make RStudio look the way you want it!\nFira Code is a free font with ligatures. Ligatures combine adjacent characters into symbols, so -&gt; becomes ➡️ (but without the background). Some people find this annoying, others find it much easier to read. Once you install the font, you should be able to start RStudio and then select Fira Code as the font in Tools -&gt; Global Options -&gt; Appearance."
   },
   {
-    "objectID": "weeks/week-050.html#reading",
-    "href": "weeks/week-050.html#reading",
-    "title": "Week 5: The Tidyverse",
+    "objectID": "weeks/week-040.html",
+    "href": "weeks/week-040.html",
+    "title": "Week 4: Programming in R",
     "section": "",
-    "text": "(for Mon) IDS I Ch 4 - The Tidyverse\n(for Wed) SC Ch 22 - Data Cleaning - Read to get a sense of the different types of operations which are useful\n(for Fri) SC Ch 24 - Reshaping Data - Be able to ID wide and long data images"
+    "text": "September 21-27, 2026\n\n\n\n(for Mon) SC Ch 8 - Variables and Data Types\n(for Wed) SC Ch 9 - Mathematical and Logical Operators\n(for Fri) SC Ch 11 - Data Structures - Sections 11.1, 11.2, 11.6 - Ignore the python parts, focus on understanding how you access pieces of data in a vector and a data frame, and how to differentiate between the two.\n\n\n\n\n\n(for Mon) Reading Check 4.1\n(for Wed) Reading Check 4.2\n(for Fri) Reading Check 4.3\n\n\n\n\n\nAttendance Quiz 09/21\nR programming basics\n\n\n\n\n\nAttendance Quiz 09/23\nLab: R Programming Puzzles\n\n\n\n\n\nAttendance Quiz 09/25\nLab: R Programming Puzzles\n\n\n\n\n\nTidyverse vs. Base R (YouTube, Susan B.)\nData Rectangling (YouTube, Jenny Bryan, Plotcon 2016) - The importance of getting data into the right format.\nTidy Data, Illustrated - Handy illustrations explaining the idea of tidy data"
   },
   {
-    "objectID": "weeks/week-050.html#prepare-for-class",
-    "href": "weeks/week-050.html#prepare-for-class",
-    "title": "Week 5: The Tidyverse",
+    "objectID": "weeks/week-040.html#reading",
+    "href": "weeks/week-040.html#reading",
+    "title": "Week 4: Programming in R",
     "section": "",
-    "text": "(for Mon) Reading Check 5.1\n(for Wed) Reading Check 5.2\n(for Fri) Reading Check 5.3"
+    "text": "(for Mon) SC Ch 8 - Variables and Data Types\n(for Wed) SC Ch 9 - Mathematical and Logical Operators\n(for Fri) SC Ch 11 - Data Structures - Sections 11.1, 11.2, 11.6 - Ignore the python parts, focus on understanding how you access pieces of data in a vector and a data frame, and how to differentiate between the two."
   },
   {
-    "objectID": "weeks/week-050.html#monday",
-    "href": "weeks/week-050.html#monday",
-    "title": "Week 5: The Tidyverse",
+    "objectID": "weeks/week-040.html#prepare-for-class",
+    "href": "weeks/week-040.html#prepare-for-class",
+    "title": "Week 4: Programming in R",
     "section": "",
-    "text": "Attendance Quiz 09/28\nTidyverse Programming Basics: Tibbles and dplyr"
+    "text": "(for Mon) Reading Check 4.1\n(for Wed) Reading Check 4.2\n(for Fri) Reading Check 4.3"
   },
   {
-    "objectID": "weeks/week-050.html#wednesday",
-    "href": "weeks/week-050.html#wednesday",
-    "title": "Week 5: The Tidyverse",
+    "objectID": "weeks/week-040.html#monday",
+    "href": "weeks/week-040.html#monday",
+    "title": "Week 4: Programming in R",
     "section": "",
-    "text": "Attendance Quiz 09/30\nTidyverse Programming Basics: Reshaping Data"
+    "text": "Attendance Quiz 09/21\nR programming basics"
   },
   {
-    "objectID": "weeks/week-050.html#friday",
-    "href": "weeks/week-050.html#friday",
-    "title": "Week 5: The Tidyverse",
+    "objectID": "weeks/week-040.html#wednesday",
+    "href": "weeks/week-040.html#wednesday",
+    "title": "Week 4: Programming in R",
     "section": "",
-    "text": "Attendance Quiz 10/02\nLab: Tidyverse Programming"
+    "text": "Attendance Quiz 09/23\nLab: R Programming Puzzles"
   },
   {
-    "objectID": "weeks/week-050.html#extra-resourcesreading",
-    "href": "weeks/week-050.html#extra-resourcesreading",
-    "title": "Week 5: The Tidyverse",
+    "objectID": "weeks/week-040.html#friday",
+    "href": "weeks/week-040.html#friday",
+    "title": "Week 4: Programming in R",
     "section": "",
-    "text": "SC Ch 16 - Programming with Data - data explorations worked out with R/tidyverse code. You don’t know how to do graphics yet, but hopefully the data operations make sense.\nTidy Tuesday Screencasts (YouTube, David Robinson). These show example data analyses in real time, with commentary, using a new dataset each week. These were primarily recorded during the pandemic, but are still an incredibly valuable resource for learing how to work with data.\nAllison Horst’s Tidyverse Illustrations - mostly illustrates tidyverse functions.\nFunctional Programming Illustrations"
+    "text": "Attendance Quiz 09/25\nLab: R Programming Puzzles"
   },
   {
-    "objectID": "weeks/week-070.html",
-    "href": "weeks/week-070.html",
-    "title": "Week 7: Data Visualization",
+    "objectID": "weeks/week-040.html#extra-resourcesreading",
+    "href": "weeks/week-040.html#extra-resourcesreading",
+    "title": "Week 4: Programming in R",
     "section": "",
-    "text": "October 12-18, 2026\n\n\n\n(for Mon) IDS I Ch 8 - ggplot2\n(for Wed) IDS I Ch 10 - Data Visualization in Practice\n(for Fri) IDS I Ch 9 - Data Visualization Principles\n\n\n\n\n\n(for Mon) Reading Check 7.1\n(for Wed) Reading Check 7.2\n(for Fri) Reading Check 7.3\n\n\n\n\n\nAttendance Quiz 10/12\nData Visualization with ggplot2\n\n\n\n\n\nAttendance Quiz 10/14\nData Visualization in Practice/Advanced ggplot2\n\n\n\n\n\nAttendance Quiz 10/16\nData Visualization Principles\nLab: Effective Data Visualization\n\n\n\n\nThis is my research area, so here’s an info-dump from my textbook. I’m also happy to discuss data visualization at any point in office hours!\n\nSC Ch 18 - Data Visualization Basicsa\nSC Ch 19 - Exploratory Data Analysis\nSC Ch 20 - A Grammar of Graphics\nSC Ch 21 - Creating Good Charts"
+    "text": "Tidyverse vs. Base R (YouTube, Susan B.)\nData Rectangling (YouTube, Jenny Bryan, Plotcon 2016) - The importance of getting data into the right format.\nTidy Data, Illustrated - Handy illustrations explaining the idea of tidy data"
   },
   {
-    "objectID": "weeks/week-070.html#reading",
-    "href": "weeks/week-070.html#reading",
-    "title": "Week 7: Data Visualization",
+    "objectID": "weeks/week-060.html",
+    "href": "weeks/week-060.html",
+    "title": "Week 6: Dates, Times, and Distributions",
     "section": "",
-    "text": "(for Mon) IDS I Ch 8 - ggplot2\n(for Wed) IDS I Ch 10 - Data Visualization in Practice\n(for Fri) IDS I Ch 9 - Data Visualization Principles"
+    "text": "October 05-11, 2026\n\n\n\n(for Mon) IDS I Ch 13 - Dates and Times\n(for Wed) IDS I Ch 7 - Visualizing Data Distributions\n\n\n\n\n\n(for Mon) Reading Check 6.1\n\n(for Wed) Reading Check 6.2\n\n\n\n\n\nAttendance Quiz 10/05\nDates and Times\n\n\n\n\n\nAttendance Quiz 10/07\nVisualizing Data Distributions\n\n\n\n\n\nFall Break\n\n\n\n\n\nSC Ch 27 - Dates and Times\nIDS I Ch 14 - Locales"
   },
   {
-    "objectID": "weeks/week-070.html#prepare-for-class",
-    "href": "weeks/week-070.html#prepare-for-class",
-    "title": "Week 7: Data Visualization",
+    "objectID": "weeks/week-060.html#reading",
+    "href": "weeks/week-060.html#reading",
+    "title": "Week 6: Dates, Times, and Distributions",
     "section": "",
-    "text": "(for Mon) Reading Check 7.1\n(for Wed) Reading Check 7.2\n(for Fri) Reading Check 7.3"
+    "text": "(for Mon) IDS I Ch 13 - Dates and Times\n(for Wed) IDS I Ch 7 - Visualizing Data Distributions"
   },
   {
-    "objectID": "weeks/week-070.html#monday",
-    "href": "weeks/week-070.html#monday",
-    "title": "Week 7: Data Visualization",
+    "objectID": "weeks/week-060.html#prepare-for-class",
+    "href": "weeks/week-060.html#prepare-for-class",
+    "title": "Week 6: Dates, Times, and Distributions",
     "section": "",
-    "text": "Attendance Quiz 10/12\nData Visualization with ggplot2"
+    "text": "(for Mon) Reading Check 6.1\n\n(for Wed) Reading Check 6.2"
   },
   {
-    "objectID": "weeks/week-070.html#wednesday",
-    "href": "weeks/week-070.html#wednesday",
-    "title": "Week 7: Data Visualization",
+    "objectID": "weeks/week-060.html#monday",
+    "href": "weeks/week-060.html#monday",
+    "title": "Week 6: Dates, Times, and Distributions",
     "section": "",
-    "text": "Attendance Quiz 10/14\nData Visualization in Practice/Advanced ggplot2"
+    "text": "Attendance Quiz 10/05\nDates and Times"
   },
   {
-    "objectID": "weeks/week-070.html#friday",
-    "href": "weeks/week-070.html#friday",
-    "title": "Week 7: Data Visualization",
+    "objectID": "weeks/week-060.html#wednesday",
+    "href": "weeks/week-060.html#wednesday",
+    "title": "Week 6: Dates, Times, and Distributions",
     "section": "",
-    "text": "Attendance Quiz 10/16\nData Visualization Principles\nLab: Effective Data Visualization"
+    "text": "Attendance Quiz 10/07\nVisualizing Data Distributions"
   },
   {
-    "objectID": "weeks/week-070.html#extra-resourcesreading",
-    "href": "weeks/week-070.html#extra-resourcesreading",
-    "title": "Week 7: Data Visualization",
+    "objectID": "weeks/week-060.html#friday",
+    "href": "weeks/week-060.html#friday",
+    "title": "Week 6: Dates, Times, and Distributions",
     "section": "",
-    "text": "This is my research area, so here’s an info-dump from my textbook. I’m also happy to discuss data visualization at any point in office hours!\n\nSC Ch 18 - Data Visualization Basicsa\nSC Ch 19 - Exploratory Data Analysis\nSC Ch 20 - A Grammar of Graphics\nSC Ch 21 - Creating Good Charts"
+    "text": "Fall Break"
   },
   {
-    "objectID": "weeks/week-090.html",
-    "href": "weeks/week-090.html",
-    "title": "Week 9: Data and Probability",
+    "objectID": "weeks/week-060.html#extra-resourcesreading",
+    "href": "weeks/week-060.html#extra-resourcesreading",
+    "title": "Week 6: Dates, Times, and Distributions",
     "section": "",
-    "text": "October 26-01, 2026\n\n\n\n(for Mon) IDS 2 Ch 4 - Connecting Data and Probability\n\n\n\n\n\n(for Mon) Reading Check 9.1\n\n\n\n\n\nAttendance Quiz 10/26\nData and Probability\n\n\n\n\n\nAttendance Quiz 10/28\nTBD probability\n\n\n\n\n\nAttendance Quiz 10/30\nLab: Probability"
+    "text": "SC Ch 27 - Dates and Times\nIDS I Ch 14 - Locales"
   },
   {
-    "objectID": "weeks/week-090.html#reading",
-    "href": "weeks/week-090.html#reading",
-    "title": "Week 9: Data and Probability",
+    "objectID": "weeks/week-080.html",
+    "href": "weeks/week-080.html",
+    "title": "Week 8: Statistics and Probability",
     "section": "",
-    "text": "(for Mon) IDS 2 Ch 4 - Connecting Data and Probability"
+    "text": "October 19-25, 2026\n\n\n\n(for Mon) IDS 2, Ch 2 - Numerical Summaries\n(for Mon) IDS 2, Ch 3.3 - Comparing Groups with Stratification\n(for Wed) IDS 2, Ch 5 - Discrete Probability\n(for Fri) IDS 2, Ch 6 - Continuous Probability\n\n\n\n\n\n(for Mon) Reading Check 8.1\n(for Wed) Reading Check 8.2\n(for Fri) Reading Check 8.3\n\n\n\n\n\nAttendance Quiz 10/19\nSummary Statistics\n\n\n\n\n\nAttendance Quiz 10/21\nDiscrete Probability\n\n\n\n\n\nAttendance Quiz 10/23\nContinuous Probability"
   },
   {
-    "objectID": "weeks/week-090.html#prepare-for-class",
-    "href": "weeks/week-090.html#prepare-for-class",
-    "title": "Week 9: Data and Probability",
+    "objectID": "weeks/week-080.html#reading",
+    "href": "weeks/week-080.html#reading",
+    "title": "Week 8: Statistics and Probability",
     "section": "",
-    "text": "(for Mon) Reading Check 9.1"
+    "text": "(for Mon) IDS 2, Ch 2 - Numerical Summaries\n(for Mon) IDS 2, Ch 3.3 - Comparing Groups with Stratification\n(for Wed) IDS 2, Ch 5 - Discrete Probability\n(for Fri) IDS 2, Ch 6 - Continuous Probability"
   },
   {
-    "objectID": "weeks/week-090.html#monday",
-    "href": "weeks/week-090.html#monday",
-    "title": "Week 9: Data and Probability",
+    "objectID": "weeks/week-080.html#prepare-for-class",
+    "href": "weeks/week-080.html#prepare-for-class",
+    "title": "Week 8: Statistics and Probability",
     "section": "",
-    "text": "Attendance Quiz 10/26\nData and Probability"
+    "text": "(for Mon) Reading Check 8.1\n(for Wed) Reading Check 8.2\n(for Fri) Reading Check 8.3"
   },
   {
-    "objectID": "weeks/week-090.html#wednesday",
-    "href": "weeks/week-090.html#wednesday",
-    "title": "Week 9: Data and Probability",
+    "objectID": "weeks/week-080.html#monday",
+    "href": "weeks/week-080.html#monday",
+    "title": "Week 8: Statistics and Probability",
     "section": "",
-    "text": "Attendance Quiz 10/28\nTBD probability"
+    "text": "Attendance Quiz 10/19\nSummary Statistics"
   },
   {
-    "objectID": "weeks/week-090.html#friday",
-    "href": "weeks/week-090.html#friday",
-    "title": "Week 9: Data and Probability",
+    "objectID": "weeks/week-080.html#wednesday",
+    "href": "weeks/week-080.html#wednesday",
+    "title": "Week 8: Statistics and Probability",
     "section": "",
-    "text": "Attendance Quiz 10/30\nLab: Probability"
+    "text": "Attendance Quiz 10/21\nDiscrete Probability"
   },
   {
-    "objectID": "weeks/week-100.html",
-    "href": "weeks/week-100.html",
-    "title": "Week 10: Random Variables",
+    "objectID": "weeks/week-080.html#friday",
+    "href": "weeks/week-080.html#friday",
+    "title": "Week 8: Statistics and Probability",
     "section": "",
-    "text": "November 02-08, 2026\n\n\n\n(for Mon) IDS 2 Ch 7 - Random Variables\n(for Fri) IDS 2 Intro to Statistical Inference\n\n\n\n\n\n(for Mon) Reading Check 10.1\n(for Fri) Reading Check 10.3\n\n\n\n\n\nAttendance Quiz 11/02\nRandom Variables\n\n\n\n\n\nAttendance Quiz 11/04\nRandom Variables\n\n\n\n\n\nAttendance Quiz 11/06\nLab: Random Variables"
+    "text": "Attendance Quiz 10/23\nContinuous Probability"
   },
   {
-    "objectID": "weeks/week-100.html#reading",
-    "href": "weeks/week-100.html#reading",
-    "title": "Week 10: Random Variables",
+    "objectID": "weeks/week-095.html",
+    "href": "weeks/week-095.html",
+    "title": "Week 9.5: Spring Break",
     "section": "",
-    "text": "(for Mon) IDS 2 Ch 7 - Random Variables\n(for Fri) IDS 2 Intro to Statistical Inference"
+    "text": "Week 9.5: Spring Break\nMarch 16-22, 2026"
   },
   {
-    "objectID": "weeks/week-100.html#prepare-for-class",
-    "href": "weeks/week-100.html#prepare-for-class",
-    "title": "Week 10: Random Variables",
+    "objectID": "weeks/week-110.html",
+    "href": "weeks/week-110.html",
+    "title": "Week 11: Parameters and Estimates",
     "section": "",
-    "text": "(for Mon) Reading Check 10.1\n(for Fri) Reading Check 10.3"
+    "text": "November 09-15, 2026\n\n\n\n(for Mon) IDS 2 Ch 9.1-9.3 - Estimates\n(for Wed) IDS 2 Ch 8 - Sampling Models and the Central Limit Theorem\n\n\n\n\n\n(for Mon) Reading Check 11.1\n(for Wed) Reading Check 11.2\n\n\n\n\n\nAttendance Quiz 11/09\nParameters and Estimates\n\n\n\n\n\nAttendance Quiz 11/11\nCentral Limit Theorem\n\n\n\n\n\nAttendance Quiz 11/13\nLab: CLT"
   },
   {
-    "objectID": "weeks/week-100.html#monday",
-    "href": "weeks/week-100.html#monday",
-    "title": "Week 10: Random Variables",
+    "objectID": "weeks/week-110.html#reading",
+    "href": "weeks/week-110.html#reading",
+    "title": "Week 11: Parameters and Estimates",
     "section": "",
-    "text": "Attendance Quiz 11/02\nRandom Variables"
+    "text": "(for Mon) IDS 2 Ch 9.1-9.3 - Estimates\n(for Wed) IDS 2 Ch 8 - Sampling Models and the Central Limit Theorem"
   },
   {
-    "objectID": "weeks/week-100.html#wednesday",
-    "href": "weeks/week-100.html#wednesday",
-    "title": "Week 10: Random Variables",
+    "objectID": "weeks/week-110.html#prepare-for-class",
+    "href": "weeks/week-110.html#prepare-for-class",
+    "title": "Week 11: Parameters and Estimates",
     "section": "",
-    "text": "Attendance Quiz 11/04\nRandom Variables"
+    "text": "(for Mon) Reading Check 11.1\n(for Wed) Reading Check 11.2"
   },
   {
-    "objectID": "weeks/week-100.html#friday",
-    "href": "weeks/week-100.html#friday",
-    "title": "Week 10: Random Variables",
+    "objectID": "weeks/week-110.html#monday",
+    "href": "weeks/week-110.html#monday",
+    "title": "Week 11: Parameters and Estimates",
     "section": "",
-    "text": "Attendance Quiz 11/06\nLab: Random Variables"
+    "text": "Attendance Quiz 11/09\nParameters and Estimates"
   },
   {
-    "objectID": "weeks/week-120.html",
-    "href": "weeks/week-120.html",
-    "title": "Week 12: Statistical Inference",
+    "objectID": "weeks/week-110.html#wednesday",
+    "href": "weeks/week-110.html#wednesday",
+    "title": "Week 11: Parameters and Estimates",
     "section": "",
-    "text": "November 16-22, 2026\n\n\n\n(for Mon) IDS 2 Ch 13 - Hypothesis Testing\n(for Wed) IDS 2 Ch 9.4 - Confidence Intervals\n\n\n\n\n\n(for Mon) Reading Check 12.1\n(for Wed) Reading Check 12.2\n\n\n\n\n\nAttendance Quiz 11/16\nHypothesis Testing\n\n\n\n\n\nAttendance Quiz 11/18\nConfidence Intervals\n\n\n\n\n\nAttendance Quiz 11/20\nLab: Inference"
+    "text": "Attendance Quiz 11/11\nCentral Limit Theorem"
   },
   {
-    "objectID": "weeks/week-120.html#reading",
-    "href": "weeks/week-120.html#reading",
-    "title": "Week 12: Statistical Inference",
+    "objectID": "weeks/week-110.html#friday",
+    "href": "weeks/week-110.html#friday",
+    "title": "Week 11: Parameters and Estimates",
     "section": "",
-    "text": "(for Mon) IDS 2 Ch 13 - Hypothesis Testing\n(for Wed) IDS 2 Ch 9.4 - Confidence Intervals"
+    "text": "Attendance Quiz 11/13\nLab: CLT"
   },
   {
-    "objectID": "weeks/week-120.html#prepare-for-class",
-    "href": "weeks/week-120.html#prepare-for-class",
-    "title": "Week 12: Statistical Inference",
+    "objectID": "weeks/week-130.html",
+    "href": "weeks/week-130.html",
+    "title": "Week 13: Regression",
     "section": "",
-    "text": "(for Mon) Reading Check 12.1\n(for Wed) Reading Check 12.2"
+    "text": "November 23-29, 2026\n\n\n\n(for Mon) IDS 2 Ch 15 - Regression\n\n\n\n\n\n[ ]\n\n\n\n\n\nAttendance Quiz 11/23\nIntroduction to Regression\nActivity: Regression By Hand\n\n\n\n\n\n🦃 Thanksgiving Break\n\n\n\n\n\n🦃 Thanksgiving Break"
   },
   {
-    "objectID": "weeks/week-120.html#monday",
-    "href": "weeks/week-120.html#monday",
-    "title": "Week 12: Statistical Inference",
+    "objectID": "weeks/week-130.html#reading",
+    "href": "weeks/week-130.html#reading",
+    "title": "Week 13: Regression",
     "section": "",
-    "text": "Attendance Quiz 11/16\nHypothesis Testing"
+    "text": "(for Mon) IDS 2 Ch 15 - Regression"
   },
   {
-    "objectID": "weeks/week-120.html#wednesday",
-    "href": "weeks/week-120.html#wednesday",
-    "title": "Week 12: Statistical Inference",
+    "objectID": "weeks/week-130.html#prepare-for-class",
+    "href": "weeks/week-130.html#prepare-for-class",
+    "title": "Week 13: Regression",
     "section": "",
-    "text": "Attendance Quiz 11/18\nConfidence Intervals"
+    "text": "[ ]"
   },
   {
-    "objectID": "weeks/week-120.html#friday",
-    "href": "weeks/week-120.html#friday",
-    "title": "Week 12: Statistical Inference",
+    "objectID": "weeks/week-130.html#monday",
+    "href": "weeks/week-130.html#monday",
+    "title": "Week 13: Regression",
     "section": "",
-    "text": "Attendance Quiz 11/20\nLab: Inference"
+    "text": "Attendance Quiz 11/23\nIntroduction to Regression\nActivity: Regression By Hand"
   },
   {
-    "objectID": "weeks/week-140.html",
-    "href": "weeks/week-140.html",
-    "title": "Week 14: Regression",
+    "objectID": "weeks/week-130.html#wednesday",
+    "href": "weeks/week-130.html#wednesday",
+    "title": "Week 13: Regression",
     "section": "",
-    "text": "November 30-06, 2026\n\n\n\n(for Mon) IDS 2 Ch 16 - The Linear Model Framework\n(for Wed) IDS 2 Ch 20 - Multivariable Regression\n\n\n\n\n\n(for Mon) Reading Check 14.1\n(for Wed) Reading Check 14.2\n\n\n\n\n\nAttendance Quiz 11/30\nLinear Models\n\n\n\n\n\nAttendance Quiz 12/02\nMultivariate Regression\n\n\n\n\n\nAttendance Quiz 12/04\nLab: Regression"
+    "text": "🦃 Thanksgiving Break"
   },
   {
-    "objectID": "weeks/week-140.html#reading",
-    "href": "weeks/week-140.html#reading",
-    "title": "Week 14: Regression",
+    "objectID": "weeks/week-130.html#friday",
+    "href": "weeks/week-130.html#friday",
+    "title": "Week 13: Regression",
     "section": "",
-    "text": "(for Mon) IDS 2 Ch 16 - The Linear Model Framework\n(for Wed) IDS 2 Ch 20 - Multivariable Regression"
+    "text": "🦃 Thanksgiving Break"
   },
   {
-    "objectID": "weeks/week-140.html#prepare-for-class",
-    "href": "weeks/week-140.html#prepare-for-class",
-    "title": "Week 14: Regression",
+    "objectID": "weeks/week-150.html",
+    "href": "weeks/week-150.html",
+    "title": "Week 15: Project Meetings",
     "section": "",
-    "text": "(for Mon) Reading Check 14.1\n(for Wed) Reading Check 14.2"
+    "text": "December 07-13, 2026\n\n\n\nAttendance Quiz 12/07\nProject Meetings\n\n\n\n\n\nAttendance Quiz 12/09\nProject Meetings\n\n\n\n\n\nAttendance Quiz 12/11\nProject Meetings and Honors presentations"
   },
   {
-    "objectID": "weeks/week-140.html#monday",
-    "href": "weeks/week-140.html#monday",
-    "title": "Week 14: Regression",
+    "objectID": "weeks/week-150.html#monday",
+    "href": "weeks/week-150.html#monday",
+    "title": "Week 15: Project Meetings",
     "section": "",
-    "text": "Attendance Quiz 11/30\nLinear Models"
+    "text": "Attendance Quiz 12/07\nProject Meetings"
   },
   {
-    "objectID": "weeks/week-140.html#wednesday",
-    "href": "weeks/week-140.html#wednesday",
-    "title": "Week 14: Regression",
+    "objectID": "weeks/week-150.html#wednesday",
+    "href": "weeks/week-150.html#wednesday",
+    "title": "Week 15: Project Meetings",
     "section": "",
-    "text": "Attendance Quiz 12/02\nMultivariate Regression"
+    "text": "Attendance Quiz 12/09\nProject Meetings"
   },
   {
-    "objectID": "weeks/week-140.html#friday",
-    "href": "weeks/week-140.html#friday",
-    "title": "Week 14: Regression",
+    "objectID": "weeks/week-150.html#friday",
+    "href": "weeks/week-150.html#friday",
+    "title": "Week 15: Project Meetings",
     "section": "",
-    "text": "Attendance Quiz 12/04\nLab: Regression"
+    "text": "Attendance Quiz 12/11\nProject Meetings and Honors presentations"
   },
   {
-    "objectID": "weeks/week-160.html",
-    "href": "weeks/week-160.html",
-    "title": "Week 16: Finals Week",
+    "objectID": "lab/03-programming-sandwich.html",
+    "href": "lab/03-programming-sandwich.html",
+    "title": "Activity: Bread Programming",
     "section": "",
-    "text": "December 14-18, 2026\n\n\n\nFinal Project Presentations during Exam Period (Dec 16, 12:30-2:20 pm)"
-  },
-  {
-    "objectID": "weeks/week-160.html#monday",
-    "href": "weeks/week-160.html#monday",
-    "title": "Week 16: Finals Week",
-    "section": "",
-    "text": "Final Project Presentations during Exam Period (Dec 16, 12:30-2:20 pm)"
-  },
-  {
-    "objectID": "lab/08-bias-and-ethics.html",
-    "href": "lab/08-bias-and-ethics.html",
-    "title": "Bias and Ethics",
-    "section": "",
-    "text": "The following code shows you how to obtain a relationship between two variables in a dataset internal to R. You will learn how to write this code yourself eventually, but today the code is just provided you you. All you need to do is click the little green arrow in the upper right corner of each grey box to run the code.\n\n# Convert table to dataframe\nucb_df &lt;- as.data.frame(UCBAdmissions)\n\n# Aggregate across departments\nagg_df &lt;- ucb_df |&gt;\n  group_by(Gender, Admit) |&gt;\n  summarise(Freq = sum(Freq), .groups = \"drop\") |&gt;\n  mutate(Prop = Freq / sum(Freq))\n\n# Plot: proportion admitted by gender\nggplot(agg_df, aes(x = Gender, y = Prop, fill = Admit)) +\n  geom_col(position = \"fill\") +\n  scale_y_continuous(labels = scales::percent) +\n  labs(\n    title = \"UC Berkeley Graduate Admissions (1973)\",\n    y = \"Proportion within Gender\",\n    x = \"Gender\",\n    fill = \"Admission Status\"\n  )\n\n\n\n\n\n\n\n\nThe above plot shows you that women are more likely to be rejected from University of California - Berkely (UCB) than men. Please take some time to ensure that you understand how the plot backs up that claim.\n\n\nSuppose an uninformed viewer of this plot makes the claim “we should discourage women from applying to UCB since there applications are less competitive than male applicants.”\n\nSTOP here Go to Canvas Answer Quiz question 1: why this claim is problematic\nResume after quiz question 1 is answered.\n\nNow, consider the plot created by the code below\n\ndept_df &lt;- ucb_df |&gt;\n  group_by(Dept, Gender, Admit) |&gt;\n  summarise(Freq = sum(Freq), .groups = \"drop\") |&gt;\n  group_by(Dept, Gender) |&gt;\n  mutate(Total = sum(Freq),\n         Rate = Freq / Total) |&gt;\n  filter(Admit == \"Admitted\")\n\n# Plot admission rates by department and gender\nggplot(dept_df, aes(x = Dept, y = Rate, fill = Gender)) +\n  geom_col(position = \"dodge\") +\n  scale_y_continuous(labels = scales::percent) +\n  labs(\n    title = \"UC Berkeley Graduate Admissions (1973)\",\n    subtitle = \"Admission rate by Department and Gender\",\n    x = \"Department\",\n    y = \"Admission Rate\",\n    fill = \"Gender\"\n  )\n\n\n\n\n\n\n\n\nWhat we see now is that the overall effect we observed has been reversed: women appear to be admitted at the same or higher rate in each individual department.\n\n\n\nBefore how this happened, another uninformed reader says “we should force the male and female application rates to be exactly the same in order to ensure fairness.”\n\nSTOP here Go to Canvas Answer Quiz question 2: why this claim is problematic\nResume after quiz question 2 is answered."
-  },
-  {
-    "objectID": "lab/08-bias-and-ethics.html#introduction",
-    "href": "lab/08-bias-and-ethics.html#introduction",
-    "title": "Bias and Ethics",
-    "section": "",
-    "text": "The following code shows you how to obtain a relationship between two variables in a dataset internal to R. You will learn how to write this code yourself eventually, but today the code is just provided you you. All you need to do is click the little green arrow in the upper right corner of each grey box to run the code.\n\n# Convert table to dataframe\nucb_df &lt;- as.data.frame(UCBAdmissions)\n\n# Aggregate across departments\nagg_df &lt;- ucb_df |&gt;\n  group_by(Gender, Admit) |&gt;\n  summarise(Freq = sum(Freq), .groups = \"drop\") |&gt;\n  mutate(Prop = Freq / sum(Freq))\n\n# Plot: proportion admitted by gender\nggplot(agg_df, aes(x = Gender, y = Prop, fill = Admit)) +\n  geom_col(position = \"fill\") +\n  scale_y_continuous(labels = scales::percent) +\n  labs(\n    title = \"UC Berkeley Graduate Admissions (1973)\",\n    y = \"Proportion within Gender\",\n    x = \"Gender\",\n    fill = \"Admission Status\"\n  )\n\n\n\n\n\n\n\n\nThe above plot shows you that women are more likely to be rejected from University of California - Berkely (UCB) than men. Please take some time to ensure that you understand how the plot backs up that claim.\n\n\nSuppose an uninformed viewer of this plot makes the claim “we should discourage women from applying to UCB since there applications are less competitive than male applicants.”\n\nSTOP here Go to Canvas Answer Quiz question 1: why this claim is problematic\nResume after quiz question 1 is answered.\n\nNow, consider the plot created by the code below\n\ndept_df &lt;- ucb_df |&gt;\n  group_by(Dept, Gender, Admit) |&gt;\n  summarise(Freq = sum(Freq), .groups = \"drop\") |&gt;\n  group_by(Dept, Gender) |&gt;\n  mutate(Total = sum(Freq),\n         Rate = Freq / Total) |&gt;\n  filter(Admit == \"Admitted\")\n\n# Plot admission rates by department and gender\nggplot(dept_df, aes(x = Dept, y = Rate, fill = Gender)) +\n  geom_col(position = \"dodge\") +\n  scale_y_continuous(labels = scales::percent) +\n  labs(\n    title = \"UC Berkeley Graduate Admissions (1973)\",\n    subtitle = \"Admission rate by Department and Gender\",\n    x = \"Department\",\n    y = \"Admission Rate\",\n    fill = \"Gender\"\n  )\n\n\n\n\n\n\n\n\nWhat we see now is that the overall effect we observed has been reversed: women appear to be admitted at the same or higher rate in each individual department.\n\n\n\nBefore how this happened, another uninformed reader says “we should force the male and female application rates to be exactly the same in order to ensure fairness.”\n\nSTOP here Go to Canvas Answer Quiz question 2: why this claim is problematic\nResume after quiz question 2 is answered."
-  },
-  {
-    "objectID": "lab/08-bias-and-ethics.html#putting-it-all-together",
-    "href": "lab/08-bias-and-ethics.html#putting-it-all-together",
-    "title": "Bias and Ethics",
-    "section": "Putting it all together",
-    "text": "Putting it all together\nThe final code helps to demystify the issue:\n\n# Total applications by department and gender\napps_df &lt;- ucb_df |&gt;\n  group_by(Dept, Gender) |&gt;\n  summarise(Applications = sum(Freq), .groups = \"drop\") |&gt;\n  group_by(Gender) |&gt;\n  mutate(Share = Applications / sum(Applications))\n\n# Plot 1: raw counts of applications\nggplot(apps_df, aes(x = Dept, y = Applications, fill = Gender)) +\n  geom_col(position = \"dodge\") +\n  labs(\n    title = \"Applications by Department and Gender\",\n    x = \"Department\",\n    y = \"Number of Applications\",\n    fill = \"Gender\"\n  )\n\n\n\n\n\n\n\n# Plot 2: proportion of each gender's applications going to each department\nggplot(apps_df, aes(x = Dept, y = Share, fill = Gender)) +\n  geom_col(position = \"dodge\") +\n  scale_y_continuous(labels = scales::percent) +\n  labs(\n    title = \"Application Share by Department\",\n    x = \"Department\",\n    y = \"Proportion of Applications\",\n    fill = \"Gender\"\n  ) \n\n\n\n\n\n\n\n# Plot 3: raw numbers of each gender's applications going to each department\nggplot(ucb_df, aes(x = Gender, weight = Freq, fill = Dept)) + geom_bar(position = \"stack\") +\n  labs(\n    title = \"Applications by Gender and Department\",\n    x = \"Gender\",\n    y = \"Number of Applications\",\n    fill = \"Department\"\n  ) \n\n\n\n\n\n\n\n\nThus, the answer to “Simpson’s Paradox” is this: the reason that women appear to be admitted at a lower rate than men is because women were disproportionately more likely to apply to more selective departments. More importantly, this assignment reminded you that not all decisions can be effectively or ethically made with data alone."
+    "text": "Introduction\nThis assignment introduces some of the principles of object oriented programming using the metaphor of a peanut (or almond) butter and jelly sandwich. The goal of this assignment is to create a set of ordered commands that properly use the necessary objects to make a sandwich. Each object has a series of actions. Some actions are active (i.e. the object does the action) and some are passive (i.e. the object receives the action). Below is a list of the objects and the actions associated with sandwich creation.\n\n\n\nObject\nActive Actions\nPassive Actions\n\n\n\n\nBag\nNone\nOpen; Close\n\n\nBread_Slice\nCombine\nTake; Place Left; Place Right\n\n\nJar\nNone\nOpen; Close\n\n\nKnife\nLoad; Spread\nTake; Set Down\n\n\nPeanut_Butter\nNone\nNone\n\n\nJam\nNone\nNone\n\n\n\nNote that we sometimes have the same object with two different names. For example, the “Peanut Butter Jar” and the “Jam Jar” are both “Jar” objects, but are referred to as separate things in the the list of commands. You may alternatively label them as “Jar 1” and “Jar 2”. The same goes for knives - you may not use the same knife for the PB and the J, because you’re not a monster.\n\n\nTask\nYou must write a set of commands that walks someone through the process of making a PB & J sandwich. Your instructions must be exact as the builder of the sandwich cannot guess what you meant if any command is imprecise. You should each command should be exactly one action and there should be only one command on each line. You will work in groups of 3-4 to type a set of commands that will be used in real time. We will experiment with a few different group scripts during the class period. Once you have completed your sandwich script (meaning you have created what you believe is a comprehensive set of instructions for assembling the sandwich), you will take the Canvas quiz associated with this assignment.\nThe list of possible commands are below. Each jar must be named according to the number given on the knife or jar.\n\nload knife with jam/butter (must specify knife number)\ncombine bread_slice (must name two bread slices)\nOpen/close bag/jar (must specify jar number and bag type)\ntake/set knife/bread_slice (can set left or right, or on/in another object)\nspread jam/butter with knife on bread_slice (must specify knife and bread slice number)"
   },
   {
     "objectID": "homework/homework_2.html",
@@ -1687,11 +1708,18 @@
     "text": "Submission Checklist\n\nCheck your filename – is it of the form lastname_firstname_homework01.qmd?\nCheck the author (specified around line 3 of this file) – is your name there?\nRender your file using the blue arrow at the top of the RStudio text editor window.\n\nIf your file does not render, address any errors in the code leading to failure.\n\nPreview your rendered file in a browser. Do all of your answers show up the way you expected them to?\nIf the answers do not show up the way you want them, check your markdown formatting against the cheat sheet in RStudio (Help -&gt; Cheat Sheets -&gt; Rmarkdown cheat sheets)\nRun the lintr style checks (Canvas -&gt; Course homepage -&gt; Style Guides link under USU picture)\n\nSwitch to source mode in RStudio\nAddins -&gt; Style active file\nAddins -&gt; Lint current file\nAddress any issues that the lint command raises\n\nRender your file again, to check that the styler and lintr addons didn’t mess up any formatting.\nUpload your qmd file (NOT the html file) to Canvas\nDouble-check your submission - is the file you uploaded the one you want to be graded?"
   },
   {
+    "objectID": "slides/01-syllabus.html",
+    "href": "slides/01-syllabus.html",
+    "title": "Read the Syllabus",
+    "section": "",
+    "text": "New to USU - Previously an Associate Professor at University of Nebraska Lincoln\nProsopagnosia – Face blindness 🫥\nI’ve been teaching R and Statistics since 2013 or so – graduate school."
+  },
+  {
     "objectID": "slides/01-syllabus.html#introductions",
     "href": "slides/01-syllabus.html#introductions",
     "title": "Read the Syllabus",
-    "section": "Introductions",
-    "text": "Introductions\n\n\nNew to USU - Previously an Associate Professor at University of Nebraska Lincoln\nProsopagnosia – Face blindness 🫥\nI’ve been teaching R and Statistics since 2013 or so – graduate school."
+    "section": "",
+    "text": "New to USU - Previously an Associate Professor at University of Nebraska Lincoln\nProsopagnosia – Face blindness 🫥\nI’ve been teaching R and Statistics since 2013 or so – graduate school."
   },
   {
     "objectID": "slides/01-syllabus.html#textbooks",
@@ -1733,7 +1761,7 @@
     "href": "slides/01-syllabus.html#prepare-for-class",
     "title": "Read the Syllabus",
     "section": "Prepare for Class",
-    "text": "Prepare for Class\n\nReading should be done before class\nReading checks close at 11 AM\n\nExcept for during Week 1 to allow for Add/Drop\n\nDo the reading check with the reading open in another tab!\nBring your computer to every class!"
+    "text": "Prepare for Class\n\nReading should be done before class\nReading checks close at 11 AM\n\nExcept for during Week 1 to allow for Add/Drop\n\nDo the reading check with the reading open in another tab!\nBring your computer to every class!\n\n\n\n\n\n\n\n\nThis class has no exams, open book quizzes, four homework assignments, and a 1-3 minute presentation\n\nAlso a lot of low-stakes assignments to remind you to do things\n\nIf you come to class and participate, you will succeed\n\n\n(even though learning statistics and programming can be scary 👻)"
   },
   {
     "objectID": "slides/01-syllabus.html#ai",
@@ -1757,13 +1785,6 @@
     "text": "Finals\n\nDo NOT plan to travel during Finals Week!"
   },
   {
-    "objectID": "slides/03-prog-intro.html#computers",
-    "href": "slides/03-prog-intro.html#computers",
-    "title": "1.3 Introduction to Programming",
-    "section": "Computers…",
-    "text": "Computers…"
-  },
-  {
     "objectID": "slides/03-prog-intro.html#engineers",
     "href": "slides/03-prog-intro.html#engineers",
     "title": "1.3 Introduction to Programming",
@@ -1775,7 +1796,7 @@
     "href": "slides/03-prog-intro.html#teaching-rocks-to-do-math",
     "title": "1.3 Introduction to Programming",
     "section": "Teaching Rocks to do Math",
-    "text": "Teaching Rocks to do Math\n\nRemember you’re talking to a rock (“dumb as a box of rocks…”)\nYou have to know a concept really well before you start programming\nBe extremely specific\nConsider what assumptions you are making.\n\nTry not to make them unless necessary.\nIf necessary, test to ensure they’re met."
+    "text": "Teaching Rocks to do Math\n\n\nRemember you’re talking to a rock (“dumb as a box of rocks…”)\nYou have to know a concept really well before you start programming\nBe extremely specific\nConsider what assumptions you are making.\n\nTry not to make them unless necessary.\nIf necessary, test to ensure they’re met."
   },
   {
     "objectID": "slides/03-prog-intro.html#installationsetup",
@@ -1783,13 +1804,6 @@
     "title": "1.3 Introduction to Programming",
     "section": "Installation/Setup",
     "text": "Installation/Setup\n\nInstall R and RStudio\nInstall Quarto"
-  },
-  {
-    "objectID": "slides/06-rstudio.html#important-buttons",
-    "href": "slides/06-rstudio.html#important-buttons",
-    "title": "1.6 Introduction to RStudio",
-    "section": "Important Buttons",
-    "text": "Important Buttons"
   },
   {
     "objectID": "slides/06-rstudio.html#the-file-editor-top-left",

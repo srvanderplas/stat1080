@@ -6,9 +6,9 @@ September 14-20, 2026
 
 ## 📖 Reading
 
-- [ ] (for Mon) [IDS I Ch 19 - Association is Not Causation](https://rafalab.dfci.harvard.edu/dsbook-part-2/linear-models/association-not-causation.html)
+- [ ] (for Mon) [IDS 2 Ch 19 - Association is Not Causation](https://rafalab.dfci.harvard.edu/dsbook-part-2/linear-models/association-not-causation.html)
 - [ ] (for Wed) [Bias and Ethics Readings](https://usu.instructure.com/courses/819584/assignments/5290530)
-- [ ] (for Fri) Watch [How Ice Cream Kills](https://www.youtube.com/watch?v=VMUQSMFGBDo&t=4s) and [Calling BS 3.3: Spurious Correlations](https://youtu.be/WNsLcg2GQMY) (UW Information School course on calling BS)
+- [ ] (for Fri) Watch [How Ice Cream Kills](https://www.youtube.com/watch?v=VMUQSMFGBDo&t=4s) (<6 mins) and [Calling BS 3.3: Spurious Correlations](https://youtu.be/WNsLcg2GQMY) (<8 mins, UW Information School course on calling BS)
 
 
 ## 📐 Prepare for class
@@ -27,6 +27,7 @@ September 14-20, 2026
 
 - [Attendance Quiz 09/16](https://usu.instructure.com/courses/819584/assignments/5292841)        
 - [Bias and Ethics](../slides/08-bias-ethics.qmd)
+- [3.2.p - Bias and Ethics Activity](https://usu.instructure.com/courses/819584/quizzes/1462857) (submit in Canvas). [qmd file](lab/_08-bias-and-ethics.qmd) and [html file](lab/08-bias-and-ethics.qmd)
 
 
 ## 🎉 Friday 🥳

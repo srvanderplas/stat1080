@@ -7,7 +7,7 @@ September 07-13, 2026
 ## 📖 Reading
 
 - [ ] (for Wed) Read [Proposal: Data Collection](https://usu.instructure.com/courses/819584/assignments/5290622)
-- [ ] (for Wed) Skim [IDS I Ch 3 - Programming Basics](https://rafalab.dfci.harvard.edu/dsbook-part-1/R/programming-basics.html) so that you know where to look up different programming concepts
+- [ ] (for Wed) Skim [IDS 1 Ch 3 - Programming Basics](https://rafalab.dfci.harvard.edu/dsbook-part-1/R/programming-basics.html) so that you know where to look up different programming concepts
 - [ ] (for Fri) Read [SC Ch 3 - RStudio](https://srvanderplas.github.io/stat-computing-r-python/part-tools/03-Rstudio-interface.html)
 - [ ] (for Fri) [Project Proposal Template](https://raw.githubusercontent.com/srvanderplas/stat1080/refs/heads/main/homework/_proposal_template.qmd)
 - [ ] (for Fri) Project Proposal Demo [(qmd)](https://raw.githubusercontent.com/srvanderplas/stat1080/refs/heads/main/homework/_proposal_demo.qmd) [html](../homework/proposal_demo.qmd)

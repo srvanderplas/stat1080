@@ -4472,10 +4472,7 @@ window.Quarto = {
   <li><a href="#problem-1---cereal-data-40-points" id="toc-problem-1---cereal-data-40-points" class="nav-link" data-scroll-target="#problem-1---cereal-data-40-points">Problem 1 - Cereal Data (40 points)</a>
   <ul class="collapse">
   <li><a href="#part-a-5-points" id="toc-part-a-5-points" class="nav-link" data-scroll-target="#part-a-5-points">Part a (5 points)</a></li>
-  <li><a href="#part-b-5-points" id="toc-part-b-5-points" class="nav-link" data-scroll-target="#part-b-5-points">Part b (5 points)</a>
-  <ul class="collapse">
-  <li><a href="#math-notation-for-the-mean" id="toc-math-notation-for-the-mean" class="nav-link" data-scroll-target="#math-notation-for-the-mean">Math Notation for the mean</a></li>
-  </ul></li>
+  <li><a href="#part-b-5-points" id="toc-part-b-5-points" class="nav-link" data-scroll-target="#part-b-5-points">Part b (5 points)</a></li>
   <li><a href="#part-c-5-points" id="toc-part-c-5-points" class="nav-link" data-scroll-target="#part-c-5-points">Part c (5 points)</a></li>
   <li><a href="#part-d-5-points" id="toc-part-d-5-points" class="nav-link" data-scroll-target="#part-d-5-points">Part d (5 points)</a></li>
   <li><a href="#part-e-5-points" id="toc-part-e-5-points" class="nav-link" data-scroll-target="#part-e-5-points">Part e (5 points)</a></li>
@@ -4597,19 +4594,31 @@ $ Cups          &lt;dbl&gt; 0.33, 1.00, 0.33, 0.50, 0.75, 0.75, 1.00, 0.75, 0.67
 <section id="part-b-5-points" class="level2">
 <h2 class="anchored" data-anchor-id="part-b-5-points">Part b (5 points)</h2>
 <p>Now, write an equivalent expression that calculates the mean, without using the <code>mean()</code> function. For this, we will rely on the general definition of a mean. Let <span class="math inline">\(X\)</span> represent a vector of values, with the individual elements of the vector denoted as <span class="math inline">\(x_1, x_2, \ldots, x_n\)</span> respectively. Under this definition we can calculate the sample mean of <span class="math inline">\(X\)</span> (called <span class="math inline">\(\bar{x}\)</span>) as</p>
-<p><span class="math display">\[\bar{x} = \frac{\sum_{i=1}^n x_i}{n}.\]</span> ::: {.callout-note collapse=true}</p>
-<section id="math-notation-for-the-mean" class="level3">
-<h3 class="anchored" data-anchor-id="math-notation-for-the-mean">Math Notation for the mean</h3>
+<p><span class="math display">\[\bar{x} = \frac{\sum_{i=1}^n x_i}{n}.\]</span></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Math Notation for the mean
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <p>Let’s break the math down a bit.</p>
 <ul>
 <li><span class="math inline">\(\bar{x}\)</span> is the sample mean of the vector <span class="math inline">\(X\)</span>, which has values – <span class="math inline">\(x_1, x_2, ..., x_n\)</span>. We use capital letters for vectors and lower-case values for observations.</li>
 <li><span class="math inline">\(\sum_{i=1}^n\)</span> says we’re going to take the sum of <span class="math inline">\(n\)</span> things, which are indexed (<span class="math inline">\(i\)</span> is the <em>index</em> of <span class="math inline">\(x_i\)</span>) from 1 to <span class="math inline">\(n\)</span>.</li>
 <li>We then divide the sum of the <span class="math inline">\(x_i\)</span> (that is, the sum over <span class="math inline">\(X\)</span>) by the length of <span class="math inline">\(X\)</span>, which is <span class="math inline">\(n\)</span>.</li>
 </ul>
-<p>:::</p>
+</div>
+</div>
+</div>
 <p>Restated in plain English, I am taking the <strong>sum</strong> of all the elements of the vector, and then dividing by the <strong>length</strong> of the vector (or, if I am ignoring NAs, the sum of instances for which <code>!is.na()</code> evaluates to <code>TRUE</code>).</p>
 <div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -4618,7 +4627,7 @@ $ Cups          &lt;dbl&gt; 0.33, 1.00, 0.33, 0.50, 0.75, 0.75, 1.00, 0.75, 0.67
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Sometimes, we can have missing observations, which are denoted by <code>NA</code>. If there are missing observations, we should exclude the missing observations from the sum (in the numerator/on the top of the fraction), and then exclude the missing observations from the number of total observations.</p>
 <p>In R, we can exclude NAs from most functions by using <code>fn(..., na.rm = T)</code>, where <code>fn</code> is the function name and <code>...</code> are the other arguments.</p>
@@ -4635,7 +4644,6 @@ $ Cups          &lt;dbl&gt; 0.33, 1.00, 0.33, 0.50, 0.75, 0.75, 1.00, 0.75, 0.67
 <span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="do">## all.equal(sugar_mean_2, hw1_sol$sugar_mean_1)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <!-- End Part 1b Answer -->
-</section>
 </section>
 <section id="part-c-5-points" class="level2">
 <h2 class="anchored" data-anchor-id="part-c-5-points">Part c (5 points)</h2>

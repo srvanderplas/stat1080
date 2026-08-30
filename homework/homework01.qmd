@@ -46,6 +46,7 @@ glimpse(cereal)
 ```
 
 ## Part a (5 points)
+
 Using tidyverse syntax, determine the mean, or average, added sugar content in a single serving of cereal, using all cereals with non-missing sugars information. 
 Your solution should make use of the `mean` function in R. 
 Check out the `mean()` function using `?mean` to determine what options you have to remove missing values in your calculation.  
@@ -66,12 +67,14 @@ You will know that you have succeeded if the code chunk below prints the message
 <!-- End Part 1a Answer -->
 
 ## Part b (5 points)
+
 Now, write an equivalent expression that calculates the mean, without using the `mean()` function. 
 For this, we will rely on the general definition of a mean. 
 Let $X$ represent a vector of values, with the individual elements of the vector denoted as $x_1, x_2, \ldots, x_n$ respectively. 
 Under this definition we can calculate the sample mean of $X$ (called $\bar{x}$) as
 
 $$\bar{x} = \frac{\sum_{i=1}^n x_i}{n}.$$
+
 ::: {.callout-note collapse=true}
 
 ### Math Notation for the mean
@@ -116,6 +119,7 @@ Assign this to the variable name `sugar_mean_2` and use the last line of code to
 
 
 ## Part c (5 points)
+
 Note that a "serving" of cereal is a relative measure: there is no standard weight OR volume to describe a serving of cereal. 
 One way to know this is to take a look at the unique values of `weight` and `cups` in the cereal dataset. 
 You can see these values by using the `unique()` function. 
@@ -138,6 +142,7 @@ weight_u <- cereal |>
 <!-- End Part 1c Answer -->
 
 ## Part d (5 points)
+
 Based on what we learned in Part c, create a new variable in our data frame that represents "normalized" or "standardized" estimates of the added sugars in a "serving" of cereal. 
 This variable should be named `sugars_weight` and should represent the total number of sugars per unit of `Weight`. 
 Note that `Weight` is a standardized measure that represents the relative weight of a typical serving of cereal. 
@@ -163,6 +168,7 @@ Ensure that the provided code prints `TRUE` when you are finished.
 <!-- End Part 1d Answer -->
 
 ## Part e (5 points)
+
 Now repeat Part (d) but this time normalize by volume (i.e. "Sugars per cup") rather than by weight. 
 Call the name of the new column you create `sugars_cup` and store the calculated mean of column in the variable name `sugars_cup_mean`. 
 As before, make sure that `TRUE` prints to the screen when you are finished. 
@@ -263,6 +269,7 @@ Your final answer should match the `hw1_sol[["cereals_shelf"]]` exactly.
 <!-- End Part 2b Answer -->
 
 ## Part c (5 points)
+
 **Discuss** What interesting observations can you make about the grouped sugar content averages/max/min? 
 Identify at least three different things of interest to you. 
 For at least one thing that you identify, provide a possible reason for the observation (there is no way to "know" with the information that we have). 
@@ -276,6 +283,7 @@ For at least one thing that you identify, provide a possible reason for the obse
 <!-- End Part 2c Answer -->
 
 ## Part d (5 points)
+
 Suppose you are participating in a competition where you will be required to eat one pound of cereal blindfolded. 
 You do not get to pick the cereal, but you DO get to pick which shelf in the grocery store that the cereal box is selected from. 
 Suppose that you are trying to limit your sodium content so that your ONLY goal with shelf selection is to **minimize the worst-case (i.e., highest possible) scenario for sodium intake**. 
@@ -289,6 +297,7 @@ No need for an explanation.
 <!-- End Part 2d Answer -->
 
 ## Part e (10 points)
+
 Looking at the original `cereal` data, propose a grouped summary of a variable other than Sugars. 
 You are welcome to group by Shelf, Manufacturer, or both Shelf and Manufacturer. 
 In order to ensure reasonable estimates of the min/max/mean, you need to make sure that you only retain groups that have at least 5 non-missing observations of interest. 
@@ -314,6 +323,7 @@ To complete this problem, you must:
 <!-- End Part 2e Answer -->
 
 # Submission Style (10 points)
+
 Each submission should have the following elements: 
 
 - You should submit the `.qmd` file (not the `HTML` rendering) with a file name in the style of `<last_name>_<first_name>_homework1.qmd`.
