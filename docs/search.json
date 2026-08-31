@@ -1152,7 +1152,7 @@
     "href": "weeks/week-010.html",
     "title": "Week 1: Introduction",
     "section": "",
-    "text": "August 31-06, 2026\n\n\n\n(for Mon) Syllabus\n(for Wed) IDS 1 Ch 6 - Importing Data\n(for Fri) IDS 1 Ch 2 - R Basics\n\n\n\n\n\nPrint out and bring cheat sheets for R\n(for Mon) 1.1.p Syllabus Overview\n(for Wed) 1.2.p Reading Check: Importing Data (IDS Ch 6)\n(for Fri) 1.3.p Reading Check: R Basics (IDS Ch 2)\n(for Fri) 1.3.p Install R\n\n\n\n\n\nAttendence Quiz 08/31\nDiscussion: Syllabus\nCourse Introduction and Motivation\nSyllabus Quiz\n\n\n\n\n\nAttendence Quiz 09/2\nOrganizing Data\n1.2.p Introduction to Data Science (Individual + In Class)\n\n\n\n\n\nAttendence Quiz 09/4\nIntro to Programming\nProgramming a Sandwich. html, qmd template\nGetting to Know You Assignment\n\n\n\n\n\nHadley Wickham: Spreadsheets, bikes, and the accidental empire of R packages (YouTube, The Test Set) - Hadley Wickham developed many of the R packages we’ll use in this course. Hear the back-story as to how he got started!\nThe Jevons Paradox (YouTube, Hank Green) - Why AI (and statistics) do not generate new information."
+    "text": "August 31-06, 2026\n\n\n\n(for Mon) Syllabus\n(for Wed) IDS 1 Ch 6 - Importing Data\n(for Fri) IDS 1 Ch 2 - R Basics\n\n\n\n\n\nPrint out and bring cheat sheets for R\n(for Mon) 1.1.p Syllabus Overview\n(for Wed) 1.2.p Reading Check: Importing Data (IDS Ch 6)\n(for Wed) 1.2.p Install R\n(for Fri) 1.3.p Reading Check: R Basics (IDS Ch 2)\n\n\n\n\n\nAttendence Quiz 08/31\nDiscussion: Syllabus\nCourse Introduction and Motivation\nSyllabus Quiz\n\n\n\n\n\nAttendence Quiz 09/2\nOrganizing Data\n1.2.p Introduction to Data Science (Individual + In Class)\n\n\n\n\n\nAttendence Quiz 09/4\nIntro to Programming\nProgramming a Sandwich. html, qmd template\nGetting to Know You Assignment\n\n\n\n\n\nHadley Wickham: Spreadsheets, bikes, and the accidental empire of R packages (YouTube, The Test Set) - Hadley Wickham developed many of the R packages we’ll use in this course. Hear the back-story as to how he got started!\nThe Jevons Paradox (YouTube, Hank Green) - Why AI (and statistics) do not generate new information."
   },
   {
     "objectID": "weeks/week-010.html#reading",
@@ -1166,7 +1166,7 @@
     "href": "weeks/week-010.html#prepare-for-class",
     "title": "Week 1: Introduction",
     "section": "",
-    "text": "Print out and bring cheat sheets for R\n(for Mon) 1.1.p Syllabus Overview\n(for Wed) 1.2.p Reading Check: Importing Data (IDS Ch 6)\n(for Fri) 1.3.p Reading Check: R Basics (IDS Ch 2)\n(for Fri) 1.3.p Install R"
+    "text": "Print out and bring cheat sheets for R\n(for Mon) 1.1.p Syllabus Overview\n(for Wed) 1.2.p Reading Check: Importing Data (IDS Ch 6)\n(for Wed) 1.2.p Install R\n(for Fri) 1.3.p Reading Check: R Basics (IDS Ch 2)"
   },
   {
     "objectID": "weeks/week-010.html#monday",
