@@ -91,7 +91,6 @@ schedule:
         - [ ] [3.2.p - Bias and Ethics Activity](https://usu.instructure.com/courses/819584/quizzes/1462857) (submit in Canvas). [qmd file](https://raw.githubusercontent.com/srvanderplas/stat1080/refs/heads/main/lab/_08-bias-and-ethics.qmd) and [html file](lab/08-bias-and-ethics.qmd)
     class3: |
         - [Attendance Quiz 09/18](https://usu.instructure.com/courses/819584/assignments/5292843)
-        - 
     extra: |
         - [Causal Inference](https://www.youtube.com/watch?v=gRkUhg9Wb-I) (YouTube, Dr. David Sontag, MIT OpenCourseWare) - The alternative to correlation -- how to show causality
         - [Crash Course Statistics: Henrietta Lacks, the Tuskegee Experiment, and Ethical Data Collection: Crash Course Statistics #12](https://www.youtube.com/watch?v=CzNANZnoiRs) (YouTube, CrashCourse)

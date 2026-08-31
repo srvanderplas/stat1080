@@ -34,7 +34,6 @@ September 14-20, 2026
 ## 🎉 Friday 🥳
 
 - [Attendance Quiz 09/18](https://usu.instructure.com/courses/819584/assignments/5292843)
-- [ ] [Lab: Spurious Correlation](../lab/09-spurious-correlation.qmd)
 
 
 ## Extra Resources/Reading

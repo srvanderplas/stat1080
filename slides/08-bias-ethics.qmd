@@ -12,7 +12,7 @@ library(tibble)
 library(dplyr)
 library(tidyr)
 library(purrr)
-
+library(ggplot2)
 accident_data <- tribble(
   ~female_mileage, ~female_nAccidents, ~female_accidentRatio, ~male_mileage, ~male_nAccidents, ~male_accidentRatio, ~accident_ratio_gender,
   1390,238,51.80,1490,182,79.87,0.649,
@@ -60,9 +60,5 @@ ggplot(accident_comb, aes(x = mileage, y = nAccidents, color = gender)) + geom_p
 ggplot(accident_comb, aes(x = mileage, y = nAccidents)) + geom_point() + geom_smooth(method = "lm", se = F) + xlab("Milleage") + ylab("# Accidents")
 ```
 https://math.stackexchange.com/questions/83756/more-examples-of-simpsons-paradox-barring-the-ones-on-wikipedia-titanic-and
-```{r}
-tribble(
-  ~`Defendant race`CaucasianAfrican-AmericanDeath5315No death430176Percent death11.07.9
-)
-```
+
 
