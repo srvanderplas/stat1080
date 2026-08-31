@@ -1,5 +1,4 @@
 ---
-pdf-engine: lualatex
 from: markdown+emoji
 fontsize: 11pt
 geometry: margin=1in
@@ -14,12 +13,20 @@ format:
     template-partials:
     - partials/title-block.html
   pdf:
+    # pdf-standard: ['a-2a']
+    pdf-engine: lualatex
     keep-tex: true
+    include-in-header:
+      - text: |
+          \usepackage{hyperref}
     template-partials:
     - partials/title.tex
     - partials/before-body.tex
     - partials/graphics.tex
-    dev: cairo_pdf
+    # dev: cairo_pdf
+    lang: en
+    title-meta: "Stat 1080 Syllabus"
+    author-meta: "Susan Vanderplas"
 title: Stat 1080 Syllabus
 instructor: 
   - name: Dr. Susan Vanderplas
@@ -33,11 +40,32 @@ class:
   time: MWF 12:30-1:20
   final: Dec 16, 12:30-2:20
 ---
+```{r}
+#| label: metadata-block
+#| output: asis
+#| echo: false
+quarto::write_yaml_metadata_block(
+  app_version = "2.1.0",
+  generated_at = format(Sys.time(), "%Y-%m-%dT%H:%M:%S%z"),
+  `date-meta` = format(Sys.time(), "%Y-%m-%dT%H:%M:%S%z")
+)
+```
+
+::: {.content-visible when-format="pdf"}
+\small
+:::
 
 > ...the time may not be very remote when it will be understood that for complete initiation as an efficient citizen ... it is as necessary to be able to compute, to think in averages and maxima and minima, as it is now to be able to read and write.
 > 
 > -- H.G. Wells, Mankind in the Making
 
+::: {.content-visible when-format="pdf"}
+\vspace{-1.5em}
+:::
+
+::: {.content-visible when-format="pdf"}
+\normalsize
+:::
 # Critical Information {-}
 
 ```{r setup}
@@ -79,13 +107,13 @@ Required Equipment & Software (@sec-software):
 
 Policy Summary (@sec-policies): 
 
--   **Grade**: 20% Attendance, 20% Preparation & Participation, 20% Personal Data Collection Project, 40% Homework and Labs (@sec-grading).
--   **Attendance** matters. You get three excuse-free absences  (@sec-illness). 
--   **Prepare**: Reading (and reading quiz) must be done before class. (@sec-reading-quiz)
+-   **Grade**: 20% Attendance, 20% Preparation & Participation, 20% Personal Data Project, 40% Homework and Labs (@sec-grading).
+-   **Attendance** matters. Everyone gets three excuse-free absences  (@sec-illness). 
+-   **Prepare**: Reading (and reading quiz) must be done **before** class. (@sec-reading-quiz)
 -   Keep up with the work as assigned (@sec-homework).
 -   **Communicate** early and often (@sec-expectations), especially if you're having trouble.
 -   Include the right details (@sec-tech-issues) when asking for help.
--   **Do not plan to travel during Finals Week** - you have project presentations (@sec-project).
+<!-- -   **Do not plan to travel during Finals Week** - you have project presentations (@sec-project). -->
 -   **AI use must be disclosed** and the full transcript (prompts and responses) provided with your submission. Be prepared to explain your thought process via oral exam (@sec-ai). 
 
 ```{r calendar}
@@ -93,12 +121,13 @@ Policy Summary (@sec-policies):
 #| eval: true
 #| warning: false
 #| fig-width: 10
-#| fig-height: 4
-#| out-width: "90%"
+#| fig-height: 2.5
+#| out-width: "100%"
 #| fig-align: center
 #| fig-cap: "Course Calendar"
 #| fig-pos: ht
 #| cache: false
+#| fig-alt: A calendar showing dates where class meets, dates where assignments are due, days off, and exams. 
 
 class_cal 
 ```
@@ -288,7 +317,8 @@ If you have technical challenges with R, quarto/rmarkdown, or RStudio send me an
 
 If your computer is misbehaving in ways that are not specific to this class, please consult IT/HelpDesk - your tuition already pays for this service, so please use it!
 
-## Course Fee {#sec-course-fee}sSs
+## Course Fee {#sec-course-fee} 
+
 A $30 course fee is assessed to each student to help pay the costs of teaching assistants and staffing of the Aggie Math Learning Center (AMLC) in LIB 411. The teaching assistants attend class and assist with the administration and grading of projects , quizzes, and homework. The AMLC provides a shared area and resource for students to get help from all teaching assistants assigned to STAT 1080, regardless the section for which students are registered. All of these supports are provided to help ensure your success in Foundations of Data Science.
 
 ## Free Tutoring

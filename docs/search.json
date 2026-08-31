@@ -1860,5 +1860,110 @@
     "title": "1.6 Introduction to RStudio",
     "section": "The Viewer Tab (Bottom Right)",
     "text": "The Viewer Tab (Bottom Right)\n\n\nThe Viewer tab is where you will preview quarto documents – which is how you will submit some labs and homework assignments in this class.\nYou should always preview your documents before submitting them to make sure they look correct.\nYou can also set a specific quarto document to open in a browser or in the system PDF viewer."
+  },
+  {
+    "objectID": "slides/07-correlation.html#correlation",
+    "href": "slides/07-correlation.html#correlation",
+    "title": "1.7 Correlation",
+    "section": "Correlation",
+    "text": "Correlation\n\nA number between -1 and 1, denoted by \\(\\rho\\) or \\(r\\)\nThe larger \\(|r|\\), the stronger the relationship\nOnly measures linear relationships"
+  },
+  {
+    "objectID": "slides/07-correlation.html#correlation-1",
+    "href": "slides/07-correlation.html#correlation-1",
+    "title": "1.7 Correlation",
+    "section": "Correlation",
+    "text": "Correlation\n\nA number between -1 and 1, denoted by \\(\\rho\\) or \\(r\\)\nThe larger \\(|r|\\), the stronger the relationship\nOnly measures linear relationships"
+  },
+  {
+    "objectID": "slides/07-correlation.html#correlation-and-causation",
+    "href": "slides/07-correlation.html#correlation-and-causation",
+    "title": "1.7 Correlation",
+    "section": "Correlation and Causation",
+    "text": "Correlation and Causation\n\n\n\nCorrelation doesn’t imply causation, but it does waggle its eyebrows suggestively and gesture furtively while mouthing ‘look over there’."
+  },
+  {
+    "objectID": "slides/07-correlation.html#the-problem-is-people",
+    "href": "slides/07-correlation.html#the-problem-is-people",
+    "title": "1.7 Correlation",
+    "section": "The Problem is People",
+    "text": "The Problem is People\nSamuel J. Gershman and Tomer D. Ullman “Causal Implicatures from Correlational Statements,” PLOS ONE 18, no. 5 (May 18, 2023): e0286067, https://doi.org/10.1371/journal.pone.0286067.\n\nPeople infer causation from correlational statements, using the variable order as a directional indicator\n\nEven with “X is associated with an increased risk of Y” language\nEven when given the choice of non-causal interpretations, 47% of people still use causal interpretations\n\n\n\nIn summary, certain correlational statements are associated with an increased probability of causal implicature. To be clear, we are not implying that these correlational statements cause causal implicature, but rather that they are correlated with causal implicature. In other words, correlation does not imply causation, but it does sometimes “imply” causation."
+  },
+  {
+    "objectID": "slides/07-correlation.html#mental-strategies-to-counter-correlation-implies-causation",
+    "href": "slides/07-correlation.html#mental-strategies-to-counter-correlation-implies-causation",
+    "title": "1.7 Correlation",
+    "section": "Mental Strategies to Counter Correlation “Implies” Causation",
+    "text": "Mental Strategies to Counter Correlation “Implies” Causation\n\n\nCheck the experimental design:\n\nRandom assignment of treatments \\(\\rightarrow\\)\nCausal inferences are ok!\nRepresentative sample of the population \\(\\rightarrow\\)\nGeneralization is ok!\n\nIf it’s not an experiment with random assignment,\nconsider other possible explanatory factors\n\nCould causality run the other way?\nAre there “lurking” variables that might explain some of the association?\n\n\n\n\n\nLurking variables are even more scary than lurking cats!"
+  },
+  {
+    "objectID": "slides/07-correlation.html#references",
+    "href": "slides/07-correlation.html#references",
+    "title": "1.7 Correlation",
+    "section": "References",
+    "text": "References\n\n\n\n\nGershman, Samuel J., and Tomer D. Ullman. “Causal Implicatures from Correlational Statements.” PLOS ONE 18, no. 5 (May 18, 2023): e0286067. https://doi.org/10.1371/journal.pone.0286067."
+  },
+  {
+    "objectID": "slides/07-correlation.html#spurious-correlation-in-class-activity",
+    "href": "slides/07-correlation.html#spurious-correlation-in-class-activity",
+    "title": "1.7 Correlation",
+    "section": "Spurious Correlation In-Class Activity",
+    "text": "Spurious Correlation In-Class Activity\n\n\n\nFind a partner and grab a die.\nRoll a die 6 times each.\nEnter your results in the spreadsheet, along with your full name.\nThe correlation between your results and your partners will be automatically calculated.\nRoll the die 6 additional times each.\nThe correlation for all 12 data points your team generated will be automatically calculated.\nAre you surprised by the correlations?\nReturn the die to the front.\nAnswer the questions in the Canvas Survey.\n\n\nLink to spreadsheet\n\n\n\n\n\n\n\n\n\nOr see the Canvas activity 3.1.p Spurious Correlation"
+  },
+  {
+    "objectID": "slides/07-correlation.html#the-problem-is-almost-always-people",
+    "href": "slides/07-correlation.html#the-problem-is-almost-always-people",
+    "title": "1.7 Correlation",
+    "section": "The Problem is (almost always) People",
+    "text": "The Problem is (almost always) People\nSamuel J. Gershman and Tomer D. Ullman “Causal Implicatures from Correlational Statements,” PLOS ONE 18, no. 5 (May 18, 2023): e0286067, https://doi.org/10.1371/journal.pone.0286067.\n\nPeople infer causation from correlational statements, using the variable order as a directional indicator\n\nEven with “X is associated with an increased risk of Y” language\nEven when given the choice of non-causal interpretations, 47% of people still use causal interpretations\n\n\n\nIn summary, certain correlational statements are associated with an increased probability of causal implicature. To be clear, we are not implying that these correlational statements cause causal implicature, but rather that they are correlated with causal implicature. In other words, correlation does not imply causation, but it does sometimes “imply” causation."
+  },
+  {
+    "objectID": "slides/07-correlation.html#spurious-correlation-in-class-activity-explained",
+    "href": "slides/07-correlation.html#spurious-correlation-in-class-activity-explained",
+    "title": "1.7 Correlation",
+    "section": "Spurious Correlation In-Class Activity Explained",
+    "text": "Spurious Correlation In-Class Activity Explained\n\n\n\n\n\n\n\n\n\nOf 10,000 trials,\n6 pairs: About 1.64% of trials have \\(|r|\\geq .9\\)\n12 pairs: About 0.00% of trials have \\(|r|\\geq .9\\)"
+  },
+  {
+    "objectID": "slides/07-correlation.html#spurious-correlations",
+    "href": "slides/07-correlation.html#spurious-correlations",
+    "title": "1.7 Correlation",
+    "section": "Spurious Correlations",
+    "text": "Spurious Correlations\nBe suspicious if\n\nThere aren’t many data points and/or data points have been cherry-picked in some way\nThere are a large number of possible variables to compare\nData were gathered from different places (not a deal-breaker, just reason for caution)\n\n\nExample: 2008 Recession Economic Policy\nEconomists Reinhart and Rogoff published a paper, Growth in a Time of Debt (2010), arguing:\n\nmedian growth rates for countries with public debt over 90 percent of GDP are roughly one percent lower than otherwise; average (mean) growth rates are several percent lower.\n\nIssues:\n\nYears of high debt and average growth were selectively excluded from the data set\nCountries’ GDP growth rates were not properly weighted\nSummary table excludes high-debt and average-growth countries\n\n\nRead more (or listen to the podcast) and remember, friends don’t let friends use Excel for data analysis!"
+  },
+  {
+    "objectID": "slides/07-correlation.html#causality-directions",
+    "href": "slides/07-correlation.html#causality-directions",
+    "title": "1.7 Correlation",
+    "section": "Causality Directions",
+    "text": "Causality Directions\nRFK Jr cites paper in confirmation hearings (Jan 31, 2025) that claimed “[v]accinated children were significantly more likely than the unvaccinated to have been diagnosed” with autism and a variety of other neurodevelopmental disorders.\n\n\n“The title tells it all,” Cassidy said of the study, which was published in the journal Vaccine by researchers in Australia. “Vaccines are not associated with autism: An evidence-based meta-analysis of case-control and cohort studies.”\n\n\n“You show me those scientific studies, and you and I can meet about it,” Kennedy said. “There are other studies as well, and I’d love to show those to you. There’s a study that came out last week of 47,000 9-year-olds in the Medicaid system in Florida — I think a Louisiana scientist called Mawson — that shows the opposite.”"
+  },
+  {
+    "objectID": "slides/07-correlation.html#causality-directions-1",
+    "href": "slides/07-correlation.html#causality-directions-1",
+    "title": "1.7 Correlation",
+    "section": "Causality Directions",
+    "text": "Causality Directions\nWhat conspiracy theorists would like you to believe:"
+  },
+  {
+    "objectID": "slides/07-correlation.html#causality-directions-2",
+    "href": "slides/07-correlation.html#causality-directions-2",
+    "title": "1.7 Correlation",
+    "section": "Causality Directions",
+    "text": "Causality Directions\nA valid point on the internet 🤯\n\n\n\nSource\n\n\n\nWe can show causal relationships with vaccines, between randomized clinical trials and subsequent changes in life expectancy…"
+  },
+  {
+    "objectID": "slides/07-correlation.html#causality",
+    "href": "slides/07-correlation.html#causality",
+    "title": "1.7 Correlation",
+    "section": "Causality",
+    "text": "Causality\nWe can show causal relationships with vaccines, between randomized clinical trials and subsequent changes in life expectancy…"
+  },
+  {
+    "objectID": "slides/07-correlation.html#cant-we-fix-this-with-better-phrasing",
+    "href": "slides/07-correlation.html#cant-we-fix-this-with-better-phrasing",
+    "title": "1.7 Correlation",
+    "section": "Can’t We Fix This With Better Phrasing?",
+    "text": "Can’t We Fix This With Better Phrasing?\nSamuel J. Gershman and Tomer D. Ullman “Causal Implicatures from Correlational Statements,” PLOS ONE 18, no. 5 (May 18, 2023): e0286067, https://doi.org/10.1371/journal.pone.0286067.\n\nPeople infer causation from correlational statements, using the variable order as a directional indicator\n\nEven with “X is associated with an increased risk of Y” language\nEven when given the choice of non-causal interpretations, 47% of people still use causal interpretations\n\n\n\nIn summary, certain correlational statements are associated with an increased probability of causal implicature. To be clear, we are not implying that these correlational statements cause causal implicature, but rather that they are correlated with causal implicature. In other words, correlation does not imply causation, but it does sometimes “imply” causation."
   }
 ]

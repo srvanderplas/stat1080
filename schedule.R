@@ -120,15 +120,17 @@ class_cal <- ggplot(Cal, aes(wkdy, week)) +
   theme_bw() +
   theme(
     panel.grid.major.x = element_blank(),
-    legend.position = "inside",
-    legend.position.inside = c(1, 0),
-    legend.justification = c(1, 0),
+    # legend.position = "inside",
+    # legend.position.inside = c(1, 0),
+    # legend.justification = c(1, 0),
+    legend.position = "top",
+    legend.direction = "horizontal",
     legend.title = element_blank(),
     axis.title.y = element_blank(), axis.title.x = element_blank(), axis.ticks.y = element_blank(), axis.text.y = element_blank()
   ) +
   # geom_tile and facet_wrap will do all the heavy lifting
   geom_tile(alpha = 0.8, aes(fill = category), color = "black", linewidth = .45) +
-  facet_wrap(~mon, scales = "free", ncol = 3) +
+  facet_wrap(~mon, scales = "free", ncol = 5) +
   # fill in tiles to make it look more "calendary" (sic)
   geom_text(aes(label = day, color = semester & (!not_here))) +
   # put your y-axis down, flip it, and reverse it

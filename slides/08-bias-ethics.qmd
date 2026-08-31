@@ -1,0 +1,68 @@
+---
+title: "1.8 Bias and Ethics"
+format: revealjs
+code-annotations: hover
+lightbox:  true
+bibliography: refs.bib
+csl: chicago-syllabus.csl
+---
+
+```{r}
+library(tibble)
+library(dplyr)
+library(tidyr)
+library(purrr)
+
+accident_data <- tribble(
+  ~female_mileage, ~female_nAccidents, ~female_accidentRatio, ~male_mileage, ~male_nAccidents, ~male_accidentRatio, ~accident_ratio_gender,
+  1390,238,51.80,1490,182,79.87,0.649,
+  4100,173,19.51,4210,156,24.23,0.805,
+  7200,172,17.78,7420,215,17.39,1.023,
+  11190,122,12.87,11390,272,14.31,0.899,
+  18020,70,11.76,19130,250,9.72,1.210,
+  43000,14,5.12,42350,124,6.14,0.833) |>
+  mutate(id = 1:n()) |>
+  dplyr::select(-accident_ratio_gender) |>
+  pivot_longer(-id) |>
+  separate_wider_regex(name, patterns = c(gender = "female|male", "_", variable = ".*")) |>
+  pivot_wider(names_from = variable, values_from = value)  |>
+  mutate(study = 1)
+
+accident_data_2 <- tribble(
+  ~female_mileage, ~female_nAccidents, ~female_accidentRatio, ~male_mileage, ~male_nAccidents, ~male_accidentRatio, ~accident_ratio_gender,
+500,102,202.00,500,31,228.00,0.886,
+2000,169,72.50,2000,103,82.50,0.879,
+4000,98,40.50,4000,99,55.75,0.726,
+6000,83,32.50,6000,102,41.00,0.793,
+8000,65,24.63,8000,113,33.13,0.743,
+12500,70,22.32,12500,183,28.48,0.784,
+20000,27,13.00,20000,146,21.45,0.606
+)|>
+  mutate(id = 1:n()) |>
+  dplyr::select(-accident_ratio_gender) |>
+  pivot_longer(-id) |>
+  separate_wider_regex(name, patterns = c(gender = "female|male", "_", variable = ".*")) |>
+  pivot_wider(names_from = variable, values_from = value) |>
+  mutate(study = 2)
+
+accident_comb <- bind_rows(accident_data, accident_data_2) |>
+  group_by(study, gender) |>
+  mutate(
+    totalAccidents = sum(nAccidents),
+    weight = 1/(1/nAccidents + 1/(totalAccidents-nAccidents))
+  ) |>
+  group_by(study, gender) |>
+  mutate(avgRatio = weighted.mean(accidentRatio, w = weight),
+         avgRatio_unweight = mean(accidentRatio))
+
+ggplot(accident_comb, aes(x = mileage, y = nAccidents, color = gender)) + geom_point() + facet_grid(.~gender) + geom_smooth(method = "lm", se = F) + ylab("# Accidents")
+
+ggplot(accident_comb, aes(x = mileage, y = nAccidents)) + geom_point() + geom_smooth(method = "lm", se = F) + xlab("Milleage") + ylab("# Accidents")
+```
+https://math.stackexchange.com/questions/83756/more-examples-of-simpsons-paradox-barring-the-ones-on-wikipedia-titanic-and
+```{r}
+tribble(
+  ~`Defendant race`CaucasianAfrican-AmericanDeath5315No death430176Percent death11.07.9
+)
+```
+

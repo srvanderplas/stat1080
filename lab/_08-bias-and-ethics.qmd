@@ -43,7 +43,7 @@ Please take some time to ensure that you understand how the plot backs up that c
 
 ### Question 1
 
-Suppose an uninformed viewer of this plot makes the claim "we should discourage women from applying to UCB since there applications are less competitive than male applicants." 
+An uninformed viewer of this plot makes the claim "we should discourage women from applying to UCB since their applications are less competitive than male applicants." 
 
 --------------------------------------------------------------------
 
@@ -79,11 +79,11 @@ ggplot(dept_df, aes(x = Dept, y = Rate, fill = Gender)) +
   )
 ```
 
-What we see now is that the overall effect we observed has been reversed: women appear to be admitted at the same or higher rate in each individual department.
+What we see now is that the overall effect we observed has been reversed: women appear to be admitted at about the same rate or higher rates in each individual department.
 
 ### Question 2
 
-Before how this happened, another uninformed reader says "we should force the male and female application rates to be exactly the same in order to ensure fairness." 
+Before we get to how this happened, another uninformed reader says "we should force the male and female admission rates to be exactly the same in order to ensure fairness." 
 
 --------------------------------------------------------------------
 
@@ -126,7 +126,7 @@ ggplot(apps_df, aes(x = Dept, y = Share, fill = Gender)) +
   labs(
     title = "Application Share by Department",
     x = "Department",
-    y = "Proportion of Applications",
+    y = "Proportion of Applications (by Gender)",
     fill = "Gender"
   ) 
 
@@ -150,5 +150,6 @@ ggplot(ucb_df, aes(x = Dept, weight = Freq, fill = Gender)) + geom_bar(position 
 ```
 
 Thus, the answer to "Simpson's Paradox" is this: the reason that women appear to be admitted at a lower rate than men is because women were disproportionately more likely to apply to more selective departments. 
+
 More importantly, this assignment reminded you that not all decisions can be effectively or ethically made with data alone.
 It is *always* important to think about the data and the context in which the data is situated when you make decisions based on data.

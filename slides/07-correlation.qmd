@@ -1,0 +1,293 @@
+---
+title: "1.7 Correlation"
+format: revealjs
+code-annotations: hover
+lightbox:  true
+bibliography: refs.bib
+csl: chicago-syllabus.csl
+---
+
+
+## Correlation
+
+- A number between -1 and 1, denoted by $\rho$ or $r$
+- The larger $|r|$, the stronger the relationship
+- Only measures **linear** relationships
+
+```{r}
+#| echo: false
+#| fig-width: 5
+#| fig-height: 2.5
+#| out-width: 100%
+#| dpi: 300
+#| fig-alt: An array of 2x5 plots where the plots on the left have correlation 1.0 and -1.0, the plots in the second column have r=0.78 and r=-0.78, the plots in the third column have r=0.58 and r=-0.58, the plots in the fourth column have r=0.38 and r=-0.38, and the plots in the last column have r=0.12 and r=-0.12. In the first column, the points lie on straight lines of y = x and y = -x; as the correlation magnitude decreases, the points diffuse into a loose blob where there is only a slight positive/negative relationship between y and x with a lot more noise. 
+library(purrr)
+library(dplyr)
+library(ggplot2)
+# https://vyasenov.github.io/blog/gen-vars-predefined-corr.html
+set.seed(193828)
+
+# Generate X, independent standard normal variables
+n <- 200 
+p <- 4  
+x <- matrix(rnorm(n * p), nrow = n, ncol = p)
+# Define Sigma, the target correlation matrix
+sigma <- matrix(c(
+  1.0, 0.8, 0.6, 0.4,
+  0.8, 1.0, 0.2, 0.1,
+  0.6, 0.2, 1.0,   0,
+  0.4, 0.1,   0, 1.0
+), nrow = p, byrow = TRUE)
+
+# Cholesky decomposition
+L <- t(chol(sigma))
+diag <- diag(c(1,1,1, 1))
+y <- t(diag %*% L %*% t(x))
+
+# cor(y[,1], y[,2])
+# cor(y[,1], y[,3])
+# cor(y[,1], y[,4])
+# cor(y[,2], y[,3])
+# cor(y[,2], y[,4])
+# cor(y[,3], y[,4])
+
+tmp <- y |> as.data.frame() |>
+  set_names(c("Y1", "Y2", "Y3", "Y4")) |>
+  mutate(id = 1:n())
+
+display_df <- bind_rows(
+  tibble(x = tmp$Y1, y = tmp$Y1, label = "r=1.0"),
+  tibble(x = tmp$Y1, y = tmp$Y2, label = sprintf("r = %.2f", cor(tmp$Y1, tmp$Y2))),
+  tibble(x = tmp$Y1, y = tmp$Y3, label = sprintf("r = %.2f", cor(tmp$Y1, tmp$Y3))),
+  tibble(x = tmp$Y1, y = tmp$Y4, label = sprintf("r = %.2f", cor(tmp$Y1, tmp$Y4))),
+  tibble(x = tmp$Y2, y = tmp$Y3, label = sprintf("r = %.2f", cor(tmp$Y2, tmp$Y3))),
+  tibble(x = -tmp$Y2, y = tmp$Y2, label = "r=-1.0"),
+  tibble(x = -tmp$Y2, y = tmp$Y1, label = sprintf("r = %.2f", cor(-tmp$Y1, tmp$Y2))),
+  tibble(x = -tmp$Y3, y = tmp$Y1, label = sprintf("r = %.2f", cor(-tmp$Y1, tmp$Y3))),
+  tibble(x = -tmp$Y4, y = tmp$Y1, label = sprintf("r = %.2f", cor(-tmp$Y1, tmp$Y4))),
+  tibble(x = -tmp$Y3, y = tmp$Y2, label = sprintf("r = %.2f", cor(-tmp$Y2, tmp$Y3)))
+) |>
+  mutate(label = factor(label, levels = unique(label), ordered = T))
+theme_set(theme_bw())
+ggplot(display_df, aes(x = x, y = y)) + 
+  geom_point(alpha = 0.25) + 
+  facet_wrap(~label, ncol = 5) + 
+  # geom_smooth(method = "lm", se = F, alpha = .25) + 
+  theme(axis.title = element_blank())
+```
+
+
+
+
+## Correlation
+
+- A number between -1 and 1, denoted by $\rho$ or $r$
+- The larger $|r|$, the stronger the relationship
+- Only measures **linear** relationships
+
+```{r}
+#| echo: false
+#| fig-width: 8
+#| fig-height: 3
+#| out-width: 100%
+#| dpi: 300
+#| fig-alt: A collection of 13 plots of 142 points each. The first has a hole in the center; the second is a bullseye shape, the third is a circle-ish shape, the fourth is a dinosaur, the fifth is an array of about 9 blobs of data in a 3x3 grid, the sixth is a set of five horizontal lines, the seventh is a set of two thicker horizontal lines, the eighth is a set of five diagonal downward-slanting lines, the ninth is a set of five upward slanting lines, the tenth is a star shape, the eleventh is a set of five vertical lines, the twelfth is a set of two wider vertical lines, and the thirteenth is an x-shape. All of the plots have the same range of x and y, approximately the same means and standard deviations in x and y, and approximately the same correlation of -0.06. The plot is titled 'All of these datasets have about a -0.06 correlation'. 
+library(datasauRus)
+data("datasaurus_dozen")
+
+summary <- datasaurus_dozen |>
+  group_by(dataset) |>
+  summarize(cor = cor(x, y))
+
+ggplot(datasaurus_dozen, aes(x = x, y = y)) + 
+  geom_point(alpha = 0.5) + facet_wrap(~dataset, ncol = 7) + 
+  ggtitle("All of these datasets have about a -0.06 correlation") + 
+  theme(axis.title = element_blank())
+
+```
+
+## Correlation and Causation
+
+![[Correlation doesn't imply causation, but it does waggle its eyebrows suggestively and gesture furtively while mouthing 'look over there'.]{.normal}](https://imgs.xkcd.com/comics/correlation_2x.png){fig-alt="A 3-panel stick-figure comic. In panel 1, the man says to a woman 'I used to think correlation implied causation.' The second panel shows him saying 'then I took a statistics class. Now I don't.' The third panel has the woman saying 'Sounds like the class helped.', with the man replying 'Well, maybe'."}
+
+## Causality Directions
+
+[RFK Jr cites paper in confirmation hearings (Jan 31, 2025) that claimed "[v]accinated children were significantly more likely than the unvaccinated to have been diagnosed" with autism and a variety of other neurodevelopmental disorders.](https://www.factcheck.org/2025/01/rfk-jr-cites-flawed-paper-claiming-link-between-vaccines-and-autism-in-hhs-confirmation-hearing/)
+
+[![Dr. Cassidy's evidence](images/vaccines-autism-noassoc-excalidraw.png)]{.fragment fig-alt="A causal diagram with no link between childhood vaccinations and Autism"}
+
+> “The title tells it all,” Cassidy said of the study, which was published in the journal Vaccine by researchers in Australia. “Vaccines are not associated with autism: An evidence-based meta-analysis of case-control and cohort studies.”
+
+> “You show me those scientific studies, and you and I can meet about it,” Kennedy said. “There are other studies as well, and I’d love to show those to you. There’s a study that came out last week of 47,000 9-year-olds in the Medicaid system in Florida — I think a Louisiana scientist called Mawson — that shows the opposite.”
+
+
+[![RFK Jr.'s evidence](images/vaccines-autism-assoc-excalidraw.png)]{.fragment fig-alt="A causal diagram with a positive association between childhood vaccinations and Autism"}
+
+
+## Causality Directions
+
+What conspiracy theorists would like you to believe: 
+
+![](images/vaccines-autism-causal-assoc-excalidraw.png){fig-alt="A causal diagram showing a positive causal association between vaccines and autism"}
+
+## Causality Directions
+
+A valid point on the internet 🤯
+
+![[Source](https://www.threads.com/share/D08whp8sc/)](images/autism-causes-vaccines-threads.png){fig-alt="A threads post from @cspenn on 11/20/25 saying 'Just remember that given the abundance of neurodivergent people in science, it's far more likely that autism causes vaccines."}
+
+
+![](images/vaccines-autism-causal-science-excalidraw.png){fig-alt="A causal diagram showing a positive association between autism and science, and a causal association between science and childhood vaccines." .fragment}
+
+
+[We **can** show causal relationships with vaccines, between randomized clinical trials and subsequent changes in life expectancy...]{.fragment}
+
+
+![](images/vaccines-cause-adults.png){fig-alt="A causal diagram showing a positive association between childhood vaccines and adults." .fragment}
+
+
+## Can't We Fix This With Better Phrasing?
+
+
+@gershmanCausalImplicaturesCorrelational2023
+
+- People infer causation from correlational statements, using the variable order as a directional indicator
+
+  - Even with "X is associated with an increased risk of Y" language
+  - Even when given the choice of non-causal interpretations, 47% of people still use causal interpretations
+  
+> In summary, certain correlational statements are associated with an increased probability of causal implicature. To be clear, we are not implying that these correlational statements cause causal implicature, but rather that they are correlated with causal implicature. In other words, correlation does not imply causation, but it does sometimes "imply" causation.
+
+
+## Mental Strategies to Counter Correlation "Implies" Causation
+
+::: columns
+::: column
+
+
+Check the experimental design:
+
+  - Random assignment of treatments $\rightarrow$    
+  [Causal inferences are ok!]{.emph .cerulean-dk}
+  
+  - Representative sample of the population $\rightarrow$     
+  [Generalization is ok!]{.emph .sage-dk}
+  
+If it's not an experiment with random assignment,    
+consider other possible explanatory factors
+
+- Could causality run the other way?
+
+- Are there "lurking" variables that might explain some of the association?
+
+
+::: 
+
+::: column
+
+![Lurking variables are even more scary than lurking cats!](images/lurking.jpeg){fig-alt="A black cat lurking behind some grass. Only the tips of its ears are clearly visible."}
+
+:::
+:::
+
+## Spurious Correlation In-Class Activity
+
+::: columns
+::: {.column width="75%"}
+
+::: incremental
+
+1. Find a partner and grab a die.
+
+2. Roll a die 6 times each. 
+
+3. Enter your results in the spreadsheet, along with your full name.    
+[The correlation between your results and your partners will be automatically calculated.]{.emph .cerulean-dk .fragment}
+
+4. Roll the die 6 additional times each.    
+[The correlation for all 12 data points your team generated will be automatically calculated.]{.emph .cerulean-dk .fragment}
+
+5. Are you surprised by the correlations?
+
+6. Return the die to the front.
+
+7. Answer the questions in the Canvas Survey.
+
+:::
+
+:::
+
+::: {.column width="25%"}
+Link to spreadsheet
+
+```{r}
+#| echo: false
+
+library(qrcode)
+plot(qrcode::qr_code("https://usu-my.sharepoint.com/:x:/g/personal/a02516793_aggies_usu_edu/IQBuAOYEkCqWRaeqDa4qrXNZAcmX4q3qn2cH7o7BDctuQzw?e=CGIQ66"))
+```
+
+Or see the Canvas activity **3.1.p Spurious Correlation**
+
+:::
+:::
+
+
+
+## Spurious Correlation In-Class Activity Explained
+
+```{r}
+#| fig-width: 8
+#| fig-height: 4
+
+set.seed(149222827)
+dice_rolls <- bind_rows(
+  tibble(x = replicate(10000, cor(sample(1:6, 6, replace = T), sample(1:6, 6, replace = T))),
+         pairs = "6 sets of dice rolls"),
+  tibble(x = replicate(10000, cor(sample(1:6, 12, replace = T), sample(1:6, 12, replace = T))),
+         pairs = "12 sets of dice rolls")
+) 
+
+sum_tbl <- dice_rolls |> group_by(pairs) |> summarize(pct = mean(abs(x)>=.9, na.rm = T))
+
+dice_rolls |>
+  mutate(pairs = factor(pairs, levels = c("6 sets of dice rolls", "12 sets of dice rolls"), ordered = T)) |>
+ggplot(aes(x = x)) + geom_histogram(center = 0, bins = 31) + ylab("# Trials") + xlab("Correlation") + ggtitle("Distribution of Correlation") + facet_wrap(~pairs) 
+```
+Of 10,000 trials,
+
+6 pairs: About `r sprintf("%.02f%%", sum_tbl$pct[2]*100)` of trials have $|r|\geq .9$
+
+12 pairs: About `r sprintf("%.02f%%", sum_tbl$pct[1]*100)` of trials have $|r|\geq .9$
+
+## Spurious Correlations
+
+Be suspicious if 
+
+::: incremental
+
+1. There aren't many data points and/or data points have been cherry-picked in some way
+2. There are a large number of possible variables to compare
+3. Data were gathered from different places (not a deal-breaker, just reason for caution)
+
+:::
+
+::: fragment
+### Example: 2008 Recession Economic Policy
+
+Economists Reinhart and Rogoff published a paper, *Growth in a Time of Debt* (2010), arguing:
+
+> median growth rates for countries with public debt over 90 percent of GDP are roughly one percent lower than otherwise; average (mean) growth rates are several percent lower.
+
+Issues:
+
+- Years of high debt and average growth were selectively excluded from the data set
+- Countries’ GDP growth rates were not properly weighted
+- Summary table excludes high-debt and average-growth countries
+
+:::
+
+
+[[Read more (or listen to the podcast)](https://web.archive.org/web/20260419084238/https://www.thekeycuts.com/dear-analyst-a-spreadsheet-error-that-potentially-led-to-incorrect-economic-and-austerity-policies-after-2008-recession/)]{.fragment} [and remember, friends don't let friends use Excel for data analysis!]{.fragment}
+
+## References

@@ -6,10 +6,13 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.9.37">
 
-  <title>STAT 1080 - Fall 2026 – correlation</title>
+  <title>STAT 1080 - Fall 2026 – 1.7 Correlation</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -30,7 +33,27 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
-  </style>
+    /* CSS for citations */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+      margin-bottom: 0em;
+    }
+    .hanging-indent div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }  </style>
   <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-d2cfaf4017ec6d6e95d384acfb7920a7.css">
   <link rel="stylesheet" href="deps/styles.scss">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
@@ -132,18 +155,209 @@
       margin-right: 0;
     }
   </style>
-<meta property="og:title" content="STAT 1080 - Fall 2026">
+<meta property="og:title" content="1.7 Correlation – STAT 1080 - Fall 2026">
 <meta property="og:site_name" content="STAT 1080 - Fall 2026">
 </head>
 <body class="quarto-light">
   <div class="reveal">
     <div class="slides">
 
+<section id="title-slide" class="quarto-title-block center">
+  <h1 class="title">1.7 Correlation</h1>
 
-<section class="slide level2">
+<div class="quarto-title-authors">
+</div>
+
+</section>
+<section id="correlation" class="slide level2">
+<h2>Correlation</h2>
+<ul>
+<li>A number between -1 and 1, denoted by <span class="math inline">\(\rho\)</span> or <span class="math inline">\(r\)</span></li>
+<li>The larger <span class="math inline">\(|r|\)</span>, the stronger the relationship</li>
+<li>Only measures <strong>linear</strong> relationships</li>
+</ul>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><a href="07-correlation_files/figure-revealjs/unnamed-chunk-1-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img data-src="07-correlation_files/figure-revealjs/unnamed-chunk-1-1.png" style="width:100.0%" alt="An array of 2x5 plots where the plots on the left have correlation 1.0 and -1.0, the plots in the second column have r=0.78 and r=-0.78, the plots in the third column have r=0.58 and r=-0.58, the plots in the fourth column have r=0.38 and r=-0.38, and the plots in the last column have r=0.12 and r=-0.12. In the first column, the points lie on straight lines of y = x and y = -x; as the correlation magnitude decreases, the points diffuse into a loose blob where there is only a slight positive/negative relationship between y and x with a lot more noise."></a></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="correlation-1" class="slide level2">
+<h2>Correlation</h2>
+<ul>
+<li>A number between -1 and 1, denoted by <span class="math inline">\(\rho\)</span> or <span class="math inline">\(r\)</span></li>
+<li>The larger <span class="math inline">\(|r|\)</span>, the stronger the relationship</li>
+<li>Only measures <strong>linear</strong> relationships</li>
+</ul>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><a href="07-correlation_files/figure-revealjs/unnamed-chunk-2-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img data-src="07-correlation_files/figure-revealjs/unnamed-chunk-2-1.png" style="width:100.0%" alt="A collection of 13 plots of 142 points each. The first has a hole in the center; the second is a bullseye shape, the third is a circle-ish shape, the fourth is a dinosaur, the fifth is an array of about 9 blobs of data in a 3x3 grid, the sixth is a set of five horizontal lines, the seventh is a set of two thicker horizontal lines, the eighth is a set of five diagonal downward-slanting lines, the ninth is a set of five upward slanting lines, the tenth is a star shape, the eleventh is a set of five vertical lines, the twelfth is a set of two wider vertical lines, and the thirteenth is an x-shape. All of the plots have the same range of x and y, approximately the same means and standard deviations in x and y, and approximately the same correlation of -0.06. The plot is titled 'All of these datasets have about a -0.06 correlation'."></a></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="correlation-and-causation" class="slide level2">
+<h2>Correlation and Causation</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="https://imgs.xkcd.com/comics/correlation_2x.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="Correlation doesn’t imply causation, but it does waggle its eyebrows suggestively and gesture furtively while mouthing ‘look over there’."><img data-src="https://imgs.xkcd.com/comics/correlation_2x.png" alt="A 3-panel stick-figure comic. In panel 1, the man says to a woman 'I used to think correlation implied causation.' The second panel shows him saying 'then I took a statistics class. Now I don't.' The third panel has the woman saying 'Sounds like the class helped.', with the man replying 'Well, maybe'."></a></p>
+<figcaption><span class="normal">Correlation doesn’t imply causation, but it does waggle its eyebrows suggestively and gesture furtively while mouthing ‘look over there’.</span></figcaption>
+</figure>
+</div>
+</section>
+<section id="causality-directions" class="slide level2">
+<h2>Causality Directions</h2>
+<p><a href="https://www.factcheck.org/2025/01/rfk-jr-cites-flawed-paper-claiming-link-between-vaccines-and-autism-in-hhs-confirmation-hearing/">RFK Jr cites paper in confirmation hearings (Jan 31, 2025) that claimed “[v]accinated children were significantly more likely than the unvaccinated to have been diagnosed” with autism and a variety of other neurodevelopmental disorders.</a></p>
+<p><span class="fragment" data-fig-alt="A causal diagram with no link between childhood vaccinations and Autism"><img data-src="images/vaccines-autism-noassoc-excalidraw.png" alt="Dr.&nbsp;Cassidy’s evidence"></span></p>
+<blockquote>
+<p>“The title tells it all,” Cassidy said of the study, which was published in the journal Vaccine by researchers in Australia. “Vaccines are not associated with autism: An evidence-based meta-analysis of case-control and cohort studies.”</p>
+</blockquote>
+<blockquote>
+<p>“You show me those scientific studies, and you and I can meet about it,” Kennedy said. “There are other studies as well, and I’d love to show those to you. There’s a study that came out last week of 47,000 9-year-olds in the Medicaid system in Florida — I think a Louisiana scientist called Mawson — that shows the opposite.”</p>
+</blockquote>
+<p><span class="fragment" data-fig-alt="A causal diagram with a positive association between childhood vaccinations and Autism"><img data-src="images/vaccines-autism-assoc-excalidraw.png" alt="RFK Jr.’s evidence"></span></p>
+</section>
+<section id="causality-directions-1" class="slide level2">
+<h2>Causality Directions</h2>
+<p>What conspiracy theorists would like you to believe:</p>
+<p><a href="images/vaccines-autism-causal-assoc-excalidraw.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img data-src="images/vaccines-autism-causal-assoc-excalidraw.png" alt="A causal diagram showing a positive causal association between vaccines and autism"></a></p>
+</section>
+<section id="causality-directions-2" class="slide level2">
+<h2>Causality Directions</h2>
+<p>A valid point on the internet 🤯</p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="images/autism-causes-vaccines-threads.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5" title="Source"><img data-src="images/autism-causes-vaccines-threads.png" alt="A threads post from @cspenn on 11/20/25 saying 'Just remember that given the abundance of neurodivergent people in science, it's far more likely that autism causes vaccines."></a></p>
+<figcaption><a href="https://www.threads.com/share/D08whp8sc/">Source</a></figcaption>
+</figure>
+</div>
+<p><a href="images/vaccines-autism-causal-science-excalidraw.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6"><img data-src="images/vaccines-autism-causal-science-excalidraw.png" class="fragment" alt="A causal diagram showing a positive association between autism and science, and a causal association between science and childhood vaccines."></a></p>
+<p><span class="fragment">We <strong>can</strong> show causal relationships with vaccines, between randomized clinical trials and subsequent changes in life expectancy…</span></p>
+<p><a href="images/vaccines-cause-adults.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7"><img data-src="images/vaccines-cause-adults.png" class="fragment" alt="A causal diagram showing a positive association between childhood vaccines and adults."></a></p>
+</section>
+<section id="cant-we-fix-this-with-better-phrasing" class="slide level2">
+<h2>Can’t We Fix This With Better Phrasing?</h2>
+<p><span class="citation" data-cites="gershmanCausalImplicaturesCorrelational2023">Samuel J. Gershman and Tomer D. Ullman <a href="#/references" role="doc-biblioref" onclick=""><span>“Causal Implicatures from Correlational Statements,”</span> <em><span>PLOS</span> <span>ONE</span></em> 18, no. 5 (May 18, 2023): e0286067, <span>https://doi.org/10.1371/journal.pone.0286067</span></a>.</span></p>
+<ul>
+<li><p>People infer causation from correlational statements, using the variable order as a directional indicator</p>
+<ul>
+<li>Even with “X is associated with an increased risk of Y” language</li>
+<li>Even when given the choice of non-causal interpretations, 47% of people still use causal interpretations</li>
+</ul></li>
+</ul>
+<blockquote>
+<p>In summary, certain correlational statements are associated with an increased probability of causal implicature. To be clear, we are not implying that these correlational statements cause causal implicature, but rather that they are correlated with causal implicature. In other words, correlation does not imply causation, but it does sometimes “imply” causation.</p>
+</blockquote>
+</section>
+<section id="mental-strategies-to-counter-correlation-implies-causation" class="slide level2">
+<h2>Mental Strategies to Counter Correlation “Implies” Causation</h2>
+<div class="columns">
+<div class="column">
+<p>Check the experimental design:</p>
+<ul>
+<li><p>Random assignment of treatments <span class="math inline">\(\rightarrow\)</span><br>
+<span class="emph cerulean-dk">Causal inferences are ok!</span></p></li>
+<li><p>Representative sample of the population <span class="math inline">\(\rightarrow\)</span><br>
+<span class="emph sage-dk">Generalization is ok!</span></p></li>
+</ul>
+<p>If it’s not an experiment with random assignment,<br>
+consider other possible explanatory factors</p>
+<ul>
+<li><p>Could causality run the other way?</p></li>
+<li><p>Are there “lurking” variables that might explain some of the association?</p></li>
+</ul>
+</div><div class="column">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="images/lurking.jpeg" class="lightbox" data-gallery="quarto-lightbox-gallery-8" title="Lurking variables are even more scary than lurking cats!"><img data-src="images/lurking.jpeg" alt="A black cat lurking behind some grass. Only the tips of its ears are clearly visible."></a></p>
+<figcaption>Lurking variables are even more scary than lurking cats!</figcaption>
+</figure>
+</div>
+</div></div>
+</section>
+<section id="spurious-correlation-in-class-activity" class="slide level2">
+<h2>Spurious Correlation In-Class Activity</h2>
+<div class="columns">
+<div class="column" style="width:75%;">
+<ol type="1">
+<li class="fragment"><p>Find a partner and grab a die.</p></li>
+<li class="fragment"><p>Roll a die 6 times each.</p></li>
+<li class="fragment"><p>Enter your results in the spreadsheet, along with your full name.<br>
+<span class="emph cerulean-dk fragment">The correlation between your results and your partners will be automatically calculated.</span></p></li>
+<li class="fragment"><p>Roll the die 6 additional times each.<br>
+<span class="emph cerulean-dk fragment">The correlation for all 12 data points your team generated will be automatically calculated.</span></p></li>
+<li class="fragment"><p>Are you surprised by the correlations?</p></li>
+<li class="fragment"><p>Return the die to the front.</p></li>
+<li class="fragment"><p>Answer the questions in the Canvas Survey.</p></li>
+</ol>
+</div><div class="column" style="width:25%;">
+<p>Link to spreadsheet</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><a href="07-correlation_files/figure-revealjs/unnamed-chunk-3-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-9"><img data-src="07-correlation_files/figure-revealjs/unnamed-chunk-3-1.png" width="960"></a></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Or see the Canvas activity <strong>3.1.p Spurious Correlation</strong></p>
+</div></div>
+</section>
+<section id="spurious-correlation-in-class-activity-explained" class="slide level2">
+<h2>Spurious Correlation In-Class Activity Explained</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><a href="07-correlation_files/figure-revealjs/unnamed-chunk-4-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-10"><img data-src="07-correlation_files/figure-revealjs/unnamed-chunk-4-1.png" width="768"></a></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Of 10,000 trials,</p>
+<p>6 pairs: About 1.64% of trials have <span class="math inline">\(|r|\geq .9\)</span></p>
+<p>12 pairs: About 0.00% of trials have <span class="math inline">\(|r|\geq .9\)</span></p>
+</section>
+<section id="spurious-correlations" class="slide level2">
+<h2>Spurious Correlations</h2>
+<p>Be suspicious if</p>
+<ol type="1">
+<li class="fragment">There aren’t many data points and/or data points have been cherry-picked in some way</li>
+<li class="fragment">There are a large number of possible variables to compare</li>
+<li class="fragment">Data were gathered from different places (not a deal-breaker, just reason for caution)</li>
+</ol>
+<div class="fragment">
+<h3 id="example-2008-recession-economic-policy">Example: 2008 Recession Economic Policy</h3>
+<p>Economists Reinhart and Rogoff published a paper, <em>Growth in a Time of Debt</em> (2010), arguing:</p>
+<blockquote>
+<p>median growth rates for countries with public debt over 90 percent of GDP are roughly one percent lower than otherwise; average (mean) growth rates are several percent lower.</p>
+</blockquote>
+<p>Issues:</p>
+<ul>
+<li>Years of high debt and average growth were selectively excluded from the data set</li>
+<li>Countries’ GDP growth rates were not properly weighted</li>
+<li>Summary table excludes high-debt and average-growth countries</li>
+</ul>
+</div>
+<p><span class="fragment"><a href="https://web.archive.org/web/20260419084238/https://www.thekeycuts.com/dear-analyst-a-spreadsheet-error-that-potentially-led-to-incorrect-economic-and-austerity-policies-after-2008-recession/">Read more (or listen to the podcast)</a></span> <span class="fragment">and remember, friends don’t let friends use Excel for data analysis!</span></p>
+</section>
+<section id="references" class="slide level2 smaller scrollable">
+<h2>References</h2>
 
 
-
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-gershmanCausalImplicaturesCorrelational2023" class="csl-entry" role="listitem">
+Gershman, Samuel J., and Tomer D. Ullman. <span>“Causal Implicatures from Correlational Statements.”</span> <em><span>PLOS</span> <span>ONE</span></em> 18, no. 5 (May 18, 2023): e0286067. <a href="https://doi.org/10.1371/journal.pone.0286067">https://doi.org/10.1371/journal.pone.0286067</a>.
+</div>
+</div>
 </section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
@@ -363,6 +577,44 @@
         ]
       });
     </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
     <script id="quarto-html-after-body" type="application/javascript">
       window.document.addEventListener("DOMContentLoaded", function (event) {
         const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
@@ -683,6 +935,38 @@
         }
       });
       </script>
+    <script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+    (function() {
+      let previousOnload = window.onload;
+      window.onload = () => {
+        if (previousOnload) {
+          previousOnload();
+        }
+        lightboxQuarto.on('slide_before_load', (data) => {
+          const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+          const href = trigger.getAttribute('href');
+          if (href !== null) {
+            const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+            if (imgEl !== null) {
+              const srcAttr = imgEl.getAttribute("src");
+              if (srcAttr && srcAttr.startsWith("data:")) {
+                slideConfig.href = srcAttr;
+              }
+            }
+          } 
+        });
+      
+        lightboxQuarto.on('slide_after_load', (data) => {
+          const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(slideNode);
+          }
+        });
+      
+      };
+      
+    })();
+              </script>
     
 
 </body></html>
