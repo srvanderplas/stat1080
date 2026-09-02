@@ -38,6 +38,7 @@ schedule:
         - Programming a Sandwich. [html](../lab/03-programming-sandwich.qmd),  [qmd template](../lab/_03-programming-sandwich.qmd) 
         - [ ] [Getting to Know You Assignment](https://usu.instructure.com/courses/819584/quizzes/1462883)
     extra: |
+        - [R cheat sheets](../demos/r-cheat-sheets.pdf) - handout from class, but you can reprint them if you lose yours, or keep a digital copy on a tablet if you prefer.
         - [Hadley Wickham: Spreadsheets, bikes, and the accidental empire of R packages](https://www.youtube.com/watch?v=KxRnZTl2HVY) (YouTube, The Test Set) - Hadley Wickham developed many of the R packages we'll use in this course. Hear the back-story as to how he got started!
         - [The Jevons Paradox](https://www.youtube.com/watch?v=a6sYYrLTOjQ) (YouTube, Hank Green) - Why AI (and statistics) do not generate new information.
 
@@ -81,16 +82,17 @@ schedule:
     prepare: |
         - [ ] (for Mon) [3.1.p Reading Check: Association is Not Causation (IDS Ch 19)](https://usu.instructure.com/courses/819584/quizzes/1462848)
         - [ ] (for Wed) [3.2.p Bias and Ethics](https://usu.instructure.com/courses/819584/assignments/5290530)
+        - [ ] (for Fri) [3.3.p "Reading" Check: How Ice Cream Kills and Calling BS: Spurious Correlations](https://usu.instructure.com/courses/819584/quizzes/1498138)
     class1: |
-        - [Attendance Quiz 09/14](https://usu.instructure.com/courses/819584/assignments/5292838)
-        - [ ] [3.1.p Spurious Correlation Activity](https://usu.instructure.com/courses/819584/quizzes/1462920) (Canvas)
+        - [ ] [Attendance Quiz 09/14](https://usu.instructure.com/courses/819584/assignments/5292838)
         - [Correlation and Causation](../slides/07-correlation.qmd)
+        - [ ] [3.1.p Spurious Correlation Activity](https://usu.instructure.com/courses/819584/quizzes/1462920) (Canvas)
     class2: |
         - [Attendance Quiz 09/16](https://usu.instructure.com/courses/819584/assignments/5292841)        
         - [Bias and Ethics](../slides/08-bias-ethics.qmd)
-        - [ ] [3.2.p - Bias and Ethics Activity](https://usu.instructure.com/courses/819584/quizzes/1462857) (submit in Canvas). [qmd file](https://raw.githubusercontent.com/srvanderplas/stat1080/refs/heads/main/lab/_08-bias-and-ethics.qmd) and [html file](lab/08-bias-and-ethics.qmd)
     class3: |
         - [Attendance Quiz 09/18](https://usu.instructure.com/courses/819584/assignments/5292843)
+        - [ ] [3.3.p - Bias and Ethics Activity](https://usu.instructure.com/courses/819584/quizzes/1462857) (submit in Canvas). [qmd file](https://raw.githubusercontent.com/srvanderplas/stat1080/refs/heads/main/lab/_08-bias-and-ethics.qmd) and [html file](lab/08-bias-and-ethics.qmd)
     extra: |
         - [Causal Inference](https://www.youtube.com/watch?v=gRkUhg9Wb-I) (YouTube, Dr. David Sontag, MIT OpenCourseWare) - The alternative to correlation -- how to show causality
         - [Crash Course Statistics: Henrietta Lacks, the Tuskegee Experiment, and Ethical Data Collection: Crash Course Statistics #12](https://www.youtube.com/watch?v=CzNANZnoiRs) (YouTube, CrashCourse)

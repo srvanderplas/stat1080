@@ -1152,7 +1152,7 @@
     "href": "weeks/week-010.html",
     "title": "Week 1: Introduction",
     "section": "",
-    "text": "August 31-06, 2026\n\n\n\n(for Mon) Syllabus\n(for Wed) IDS 1 Ch 6 - Importing Data\n(for Fri) IDS 1 Ch 2 - R Basics\n\n\n\n\n\nPrint out and bring cheat sheets for R\n(for Mon) 1.1.p Syllabus Overview\n(for Wed) 1.2.p Reading Check: Importing Data (IDS Ch 6)\n(for Wed) 1.2.p Install R\n(for Fri) 1.3.p Reading Check: R Basics (IDS Ch 2)\n\n\n\n\n\nAttendence Quiz 08/31\nDiscussion: Syllabus\nCourse Introduction and Motivation\nSyllabus Quiz\n\n\n\n\n\nAttendence Quiz 09/2\nOrganizing Data\n1.2.p Introduction to Data Science (Individual + In Class)\n\n\n\n\n\nAttendence Quiz 09/4\nIntro to Programming\nProgramming a Sandwich. html, qmd template\nGetting to Know You Assignment\n\n\n\n\n\nHadley Wickham: Spreadsheets, bikes, and the accidental empire of R packages (YouTube, The Test Set) - Hadley Wickham developed many of the R packages we’ll use in this course. Hear the back-story as to how he got started!\nThe Jevons Paradox (YouTube, Hank Green) - Why AI (and statistics) do not generate new information."
+    "text": "August 31-06, 2026\n\n\n\n(for Mon) Syllabus\n(for Wed) IDS 1 Ch 6 - Importing Data\n(for Fri) IDS 1 Ch 2 - R Basics\n\n\n\n\n\nPrint out and bring cheat sheets for R\n(for Mon) 1.1.p Syllabus Overview\n(for Wed) 1.2.p Reading Check: Importing Data (IDS Ch 6)\n(for Wed) 1.2.p Install R\n(for Fri) 1.3.p Reading Check: R Basics (IDS Ch 2)\n\n\n\n\n\nAttendence Quiz 08/31\nDiscussion: Syllabus\nCourse Introduction and Motivation\nSyllabus Quiz\n\n\n\n\n\nAttendence Quiz 09/2\nOrganizing Data\n1.2.p Introduction to Data Science (Individual + In Class)\n\n\n\n\n\nAttendence Quiz 09/4\nIntro to Programming\nProgramming a Sandwich. html, qmd template\nGetting to Know You Assignment\n\n\n\n\n\nR cheat sheets - handout from class, but you can reprint them if you lose yours, or keep a digital copy on a tablet if you prefer.\nHadley Wickham: Spreadsheets, bikes, and the accidental empire of R packages (YouTube, The Test Set) - Hadley Wickham developed many of the R packages we’ll use in this course. Hear the back-story as to how he got started!\nThe Jevons Paradox (YouTube, Hank Green) - Why AI (and statistics) do not generate new information."
   },
   {
     "objectID": "weeks/week-010.html#reading",
@@ -1194,14 +1194,14 @@
     "href": "weeks/week-010.html#extra-resourcesreading",
     "title": "Week 1: Introduction",
     "section": "",
-    "text": "Hadley Wickham: Spreadsheets, bikes, and the accidental empire of R packages (YouTube, The Test Set) - Hadley Wickham developed many of the R packages we’ll use in this course. Hear the back-story as to how he got started!\nThe Jevons Paradox (YouTube, Hank Green) - Why AI (and statistics) do not generate new information."
+    "text": "R cheat sheets - handout from class, but you can reprint them if you lose yours, or keep a digital copy on a tablet if you prefer.\nHadley Wickham: Spreadsheets, bikes, and the accidental empire of R packages (YouTube, The Test Set) - Hadley Wickham developed many of the R packages we’ll use in this course. Hear the back-story as to how he got started!\nThe Jevons Paradox (YouTube, Hank Green) - Why AI (and statistics) do not generate new information."
   },
   {
     "objectID": "weeks/week-030.html",
     "href": "weeks/week-030.html",
     "title": "Week 3: Correlation is not Causation",
     "section": "",
-    "text": "September 14-20, 2026\n\n\n\n(for Mon) IDS 2 Ch 19 - Association is Not Causation\n(for Wed) Bias and Ethics Readings\n(for Fri) Watch How Ice Cream Kills (&lt;6 mins) and Calling BS 3.3: Spurious Correlations (&lt;8 mins, UW Information School course on calling BS)\n\n\n\n\n\n(for Mon) 3.1.p Reading Check: Association is Not Causation (IDS Ch 19)\n(for Wed) 3.2.p Bias and Ethics\n\n\n\n\n\nAttendance Quiz 09/14\n3.1.p Spurious Correlation Activity (Canvas)\nCorrelation and Causation\n\n\n\n\n\nAttendance Quiz 09/16\n\nBias and Ethics\n3.2.p - Bias and Ethics Activity (submit in Canvas). qmd file and html file\n\n\n\n\n\nAttendance Quiz 09/18\n\n\n\n\n\nCausal Inference (YouTube, Dr. David Sontag, MIT OpenCourseWare) - The alternative to correlation – how to show causality\nCrash Course Statistics: Henrietta Lacks, the Tuskegee Experiment, and Ethical Data Collection: Crash Course Statistics #12 (YouTube, CrashCourse)\nExploring Data Ethics (YouTube, Dr. Wendy Martinez, Washington Statistical Society Seminar)"
+    "text": "September 14-20, 2026\n\n\n\n(for Mon) IDS 2 Ch 19 - Association is Not Causation\n(for Wed) Bias and Ethics Readings\n(for Fri) Watch How Ice Cream Kills (&lt;6 mins) and Calling BS 3.3: Spurious Correlations (&lt;8 mins, UW Information School course on calling BS)\n\n\n\n\n\n(for Mon) 3.1.p Reading Check: Association is Not Causation (IDS Ch 19)\n(for Wed) 3.2.p Bias and Ethics\n(for Fri) 3.3.p “Reading” Check: How Ice Cream Kills and Calling BS: Spurious Correlations\n\n\n\n\n\nAttendance Quiz 09/14\nCorrelation and Causation\n3.1.p Spurious Correlation Activity (Canvas)\n\n\n\n\n\nAttendance Quiz 09/16\n\nBias and Ethics\n\n\n\n\n\nAttendance Quiz 09/18\n3.3.p - Bias and Ethics Activity (submit in Canvas). qmd file and html file\n\n\n\n\n\nCausal Inference (YouTube, Dr. David Sontag, MIT OpenCourseWare) - The alternative to correlation – how to show causality\nCrash Course Statistics: Henrietta Lacks, the Tuskegee Experiment, and Ethical Data Collection: Crash Course Statistics #12 (YouTube, CrashCourse)\nExploring Data Ethics (YouTube, Dr. Wendy Martinez, Washington Statistical Society Seminar)"
   },
   {
     "objectID": "weeks/week-030.html#reading",
@@ -1215,28 +1215,28 @@
     "href": "weeks/week-030.html#prepare-for-class",
     "title": "Week 3: Correlation is not Causation",
     "section": "",
-    "text": "(for Mon) 3.1.p Reading Check: Association is Not Causation (IDS Ch 19)\n(for Wed) 3.2.p Bias and Ethics"
+    "text": "(for Mon) 3.1.p Reading Check: Association is Not Causation (IDS Ch 19)\n(for Wed) 3.2.p Bias and Ethics\n(for Fri) 3.3.p “Reading” Check: How Ice Cream Kills and Calling BS: Spurious Correlations"
   },
   {
     "objectID": "weeks/week-030.html#monday",
     "href": "weeks/week-030.html#monday",
     "title": "Week 3: Correlation is not Causation",
     "section": "",
-    "text": "Attendance Quiz 09/14\n3.1.p Spurious Correlation Activity (Canvas)\nCorrelation and Causation"
+    "text": "Attendance Quiz 09/14\nCorrelation and Causation\n3.1.p Spurious Correlation Activity (Canvas)"
   },
   {
     "objectID": "weeks/week-030.html#wednesday",
     "href": "weeks/week-030.html#wednesday",
     "title": "Week 3: Correlation is not Causation",
     "section": "",
-    "text": "Attendance Quiz 09/16\n\nBias and Ethics\n3.2.p - Bias and Ethics Activity (submit in Canvas). qmd file and html file"
+    "text": "Attendance Quiz 09/16\n\nBias and Ethics"
   },
   {
     "objectID": "weeks/week-030.html#friday",
     "href": "weeks/week-030.html#friday",
     "title": "Week 3: Correlation is not Causation",
     "section": "",
-    "text": "Attendance Quiz 09/18"
+    "text": "Attendance Quiz 09/18\n3.3.p - Bias and Ethics Activity (submit in Canvas). qmd file and html file"
   },
   {
     "objectID": "weeks/week-030.html#extra-resourcesreading",

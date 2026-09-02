@@ -45,6 +45,7 @@ August 31-06, 2026
 
 ## Extra Resources/Reading
 
+- [R cheat sheets](../demos/r-cheat-sheets.pdf) - handout from class, but you can reprint them if you lose yours, or keep a digital copy on a tablet if you prefer.
 - [Hadley Wickham: Spreadsheets, bikes, and the accidental empire of R packages](https://www.youtube.com/watch?v=KxRnZTl2HVY) (YouTube, The Test Set) - Hadley Wickham developed many of the R packages we'll use in this course. Hear the back-story as to how he got started!
 - [The Jevons Paradox](https://www.youtube.com/watch?v=a6sYYrLTOjQ) (YouTube, Hank Green) - Why AI (and statistics) do not generate new information.
 
