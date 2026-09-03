@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>tidyverse – STAT 1080 - Fall 2026</title>
+<title>Tidyverse: dplyr puzzles – STAT 1080 - Fall 2026</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -22,6 +22,41 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -76,7 +111,8 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<meta property="og:title" content="STAT 1080 - Fall 2026">
+<meta property="og:title" content="Tidyverse: dplyr puzzles – STAT 1080 - Fall 2026">
+<meta property="og:description" content="Homepage for STAT 1080 - Data and the Stories They Tell.">
 <meta property="og:site_name" content="STAT 1080 - Fall 2026">
 </head>
 
@@ -364,18 +400,224 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#dealing-with-errors" id="toc-dealing-with-errors" class="nav-link active" data-scroll-target="#dealing-with-errors">Dealing with errors</a>
+  <ul class="collapse">
+  <li><a href="#advice-for-dealing-with-errors" id="toc-advice-for-dealing-with-errors" class="nav-link" data-scroll-target="#advice-for-dealing-with-errors">Advice for dealing with errors</a></li>
+  <li><a href="#part-one-data-import-and-cleaning" id="toc-part-one-data-import-and-cleaning" class="nav-link" data-scroll-target="#part-one-data-import-and-cleaning">Part One: Data import and cleaning</a></li>
+  </ul></li>
+  <li><a href="#part-two-identify-the-mystery-college" id="toc-part-two-identify-the-mystery-college" class="nav-link" data-scroll-target="#part-two-identify-the-mystery-college">Part Two: Identify the mystery college</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://srvanderplas.github.io/stat1080/issues/new" class="toc-action"><i class="bi bi-git"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content column-page" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+<main class="content column-page-left" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Tidyverse: dplyr puzzles</h1>
+</div>
 
 
 
+<div class="quarto-title-meta column-page-left">
+
+    
+  
+    
+  </div>
+  
 
 
+</header>
 
 
+<p>Today you will be creating and manipulating vectors, lists, and data frames to uncover a top secret message.</p>
+<section id="dealing-with-errors" class="level2">
+<h2 class="anchored" data-anchor-id="dealing-with-errors">Dealing with errors</h2>
+<p>As you work through this activity, you will encounter some code that does not work as you want it to. Don’t despair!<br>
+Errors (when R is unable to run your code) and bugs (when the code doesn’t do what you hoped) are a natural part of coding.<br>
+Even the best of the best deal with these problems regularly - learning to track down the issue is a skill that you can learn and practice.</p>
+<section id="advice-for-dealing-with-errors" class="level3">
+<h3 class="anchored" data-anchor-id="advice-for-dealing-with-errors">Advice for dealing with errors</h3>
+<p><strong>Errors can be sneaky - check results often</strong></p>
+<p>If a chunk of code runs smoothly without giving you any error or warnings this does not necessarily mean it accomplished the desired task.</p>
+<p>It is a good habit to check the results of your code every time you finish a task.</p>
+<ul>
+<li><p>In the text before the code chunk, make sure to briefly state what the point of the chunk is. This will remind later readers - which might be your future self! - what the desired output is.</p></li>
+<li><p>If you created a new object, take a look at it, either by clicking its name in your <em>Environment</em> tab or by typing its name into the console. Make sure it looks about how you expect.</p></li>
+<li><p>If you created or updated a data frame, make sure your edits did what you hoped. Use the <em>Environment</em> or the <code>head()</code> function to investigate your changes.</p></li>
+</ul>
+<p><strong>Two heads are better than one</strong></p>
+<p>It can be hard to spot bugs in code that you wrote.</p>
+<p>Work with those around you - if something goes wrong, ask a friend to take a peek at your code and see if any glaring errors (like <em>syntax error</em>) pop out.</p>
+<p><strong>Explain your code out loud</strong></p>
+<p>The best way to troubleshoot a sneaky but is to explain out loud each step of your code, and what you hoped to accomplish.</p>
+<p>If you are alone, try <a href="https://en.wikipedia.org/wiki/Rubber_duck_debugging">Rubber Duck Debugging</a>!</p>
+<p><strong>Google is your friend</strong></p>
+<p>The whole of the internet is at your disposal! Use it early, use it often.</p>
+<p>Some tricks:</p>
+<ul>
+<li><p>Copy-paste the exact error message into Google. Chances are, somebody else had a similar problem and got a similar message.</p></li>
+<li><p>Include package names in your search terms. For example, “bar plot in ggplot” is a better search than “bar plot in R”.</p></li>
+</ul>
+</section>
+<section id="part-one-data-import-and-cleaning" class="level3">
+<h3 class="anchored" data-anchor-id="part-one-data-import-and-cleaning">Part One: Data import and cleaning</h3>
+<p>This section will clean today’s dataset, so that you can use it more easily in Part Two.</p>
+<p>First, we declare our package dependencies and load the data.</p>
+<p>(Note that the data loading function <code>read_csv</code> will give you an outpouring of helpful information about the dataset. If you do not see the word “error”, there is nothing to be concerned about.)</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>colleges <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://www.dropbox.com/s/bt5hvctdevhbq6j/colleges.csv?dl=1"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Now we will clean the data.</p>
+<p>Alas, <strong>each of the R chunks in this section will cause an error and/or do the desired task incorrectly</strong>.<br>
+(Even the chunks that run without error are not correct!) You will need to find the mistake, and correct it, to complete the intended action.</p>
+<p>There are too many variables in this dataset. We don’t need all of them. Narrow your dataset down to only:</p>
+<p>Name of the institution City, State, and ZIP code of the institution The Admissions Rate The average SAT score The number of undergraduate students The in and out of state tuitions Whether the school is public or private The “REGION” variable.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>colleges_clean <span class="ot">&lt;-</span> colleges %<span class="sc">&gt;</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(INSTNM, CITY, STABBR, ZIP, CONTROL, ADM_RATE, SAT_AVG, TUITIONFEE_IN, TUITIONFEE_OUT, UGDS, REGION) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in parse(text = input): &lt;text&gt;:1:28: unexpected input
+1: colleges_clean &lt;- colleges %&gt;
+                               ^</code></pre>
+</div>
+</div>
+<p>Drop the schools that are private and for-profit (category 3).</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>colleges_clean <span class="ot">&lt;-</span> colleges_clean <span class="sc">%&gt;%</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(CONTROL <span class="sc">==</span> <span class="dv">1</span>, CONTROL <span class="sc">==</span> <span class="dv">2</span>) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error:
+! object 'colleges_clean' not found</code></pre>
+</div>
+</div>
+<p>Adjust the appropriate variables to be numeric.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>colleges_clean <span class="ot">&lt;-</span> colleges_clean <span class="sc">%&gt;%</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">TUITIONFEE_IN =</span> <span class="fu">numeric</span>(TUITIONFEE_IN),</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">TUITIONFEE_OUT =</span> <span class="fu">numeric</span>(TUITIONFEE_OUT),</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">SAT_AVG =</span> <span class="fu">numeric</span>(SAT_AVG),</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">ADM_RATE =</span> <span class="fu">numeric</span>(ADM_RATE)</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    ) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error:
+! object 'colleges_clean' not found</code></pre>
+</div>
+</div>
+<p>Adjust the appropriate variables to be factors.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>colleges_clean <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">CONTROL =</span> <span class="fu">as.factor</span>(CONTROL),</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">REGION =</span> <span class="fu">as.factor</span>(REGION)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error:
+! object 'colleges_clean' not found</code></pre>
+</div>
+</div>
+<p>Create a new variable called TUITION_DIFF which contains the difference between in and out of state costs.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>colleges_clean <span class="ot">&lt;-</span> colleges_clean <span class="sc">%&gt;%</span> </span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    TUITION_DIFF <span class="ot">=</span> TUITIONFEE_OUT <span class="sc">-</span> TUITIONFEE_IN</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Drop all the rows with missing data.<br>
+(This is not always a great idea! Usually, even if <em>some</em> of the information is missing, we don’t want to throw out the entire row. This time, however, we’ll be lazy.)</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>colleges_clean <span class="ot">&lt;-</span> colleges_clean <span class="sc">%&gt;%</span> <span class="fu">drop.na</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in `drop.na()`:
+! could not find function "drop.na"</code></pre>
+</div>
+</div>
+<p>Lastly, notice that each of these steps started with</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>colleges_clean <span class="ot">&lt;-</span> colleges_clean <span class="sc">%&gt;%</span> ...</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error:
+! '...' used in an incorrect context</code></pre>
+</div>
+</div>
+<p>That is pretty redundant! Instead, we could perform all these tasks as one long “pipeline”. Combine your (fixed) code chunks into a single chunk that cleans the data.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>colleges_clean <span class="ot">&lt;-</span> colleges <span class="sc">%&gt;%</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(INSTNM, CITY, STABBR, ZIP, CONTROL, ADM_RATE, SAT_AVG, TUITIONFEE_IN, TUITIONFEE_OUT, UGDS, REGION) <span class="sc">%&gt;%</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(CONTROL <span class="sc">!=</span> <span class="dv">3</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">TUITIONFEE_IN =</span> <span class="fu">as.numeric</span>(TUITIONFEE_IN),</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">TUITIONFEE_OUT =</span> <span class="fu">as.numeric</span>(TUITIONFEE_OUT),</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">SAT_AVG =</span> <span class="fu">as.numeric</span>(SAT_AVG),</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">ADM_RATE =</span> <span class="fu">as.numeric</span>(ADM_RATE),</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">CONTROL =</span> <span class="fu">as.factor</span>(CONTROL),</span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">TUITION_DIFF =</span> TUITIONFEE_OUT <span class="sc">-</span> TUITIONFEE_IN,</span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">REGION =</span> <span class="fu">as.factor</span>(REGION)</span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">%&gt;%</span></span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">drop_na</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: There were 4 warnings in `mutate()`.
+The first warning was:
+ℹ In argument: `TUITIONFEE_IN = as.numeric(TUITIONFEE_IN)`.
+Caused by warning:
+! NAs introduced by coercion
+ℹ Run `dplyr::last_dplyr_warnings()` to see the 3 remaining warnings.</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="part-two-identify-the-mystery-college" class="level2">
+<h2 class="anchored" data-anchor-id="part-two-identify-the-mystery-college">Part Two: Identify the mystery college</h2>
+<p>Wow! Your best friend Ephelia has been accepted to the college of her dreams!<br>
+Unfortunately, Ephelia is a very mysterious person, and she won’t tell you directly which college this is.<br>
+You’ll have to use her clues to figure out which school is her dream school.</p>
+<p>Clues:</p>
+<ol type="1">
+<li><p>This college is located in Region 1.</p></li>
+<li><p>This college’s admission rate is in the first quartile for the region.</p></li>
+<li><p>This college charges the same for in- and out-of-state tuition.</p></li>
+<li><p>The average SAT score of this college is an odd number.</p></li>
+<li><p>This college is NOT in New Hampshire or in the city of Boston.</p></li>
+<li><p>More than 3,000 people apply to this college every year. (Assume the size of the freshman class is 1/4 of the undergraduate population. Hint: You may need to consider the admission rate…)</p></li>
+<li><p>Of the three options remaining at this step, Ephelia will attend the cheapest one.</p></li>
+</ol>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>colleges_clean <span class="sc">%&gt;%</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(REGION <span class="sc">==</span> <span class="dv">1</span>,</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>         ADM_RATE <span class="sc">&lt;</span> <span class="fl">0.4789</span>,</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>         TUITION_DIFF <span class="sc">==</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">SAT_even =</span> SAT_AVG <span class="sc">%%</span> <span class="dv">2</span> <span class="sc">!=</span> <span class="dv">0</span></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(SAT_even,</span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>         CITY <span class="sc">!=</span> <span class="st">"Boston"</span>,</span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>         STABBR <span class="sc">!=</span> <span class="st">"NH"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">app =</span> <span class="fu">as.numeric</span>(UGDS)<span class="sc">/</span><span class="dv">4</span><span class="sc">/</span>ADM_RATE</span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(app <span class="sc">&gt;</span> <span class="dv">3000</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 14
+  INSTNM             CITY    STABBR ZIP   CONTROL ADM_RATE SAT_AVG TUITIONFEE_IN
+  &lt;chr&gt;              &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt; &lt;fct&gt;      &lt;dbl&gt;   &lt;dbl&gt;         &lt;dbl&gt;
+1 Amherst College    Amherst MA     0100… 2         0.129     1497         54310
+2 Harvard University Cambri… MA     2138  2         0.0516    1523         48949
+3 Williams College   Willia… MA     1267  2         0.146     1493         53550
+# ℹ 6 more variables: TUITIONFEE_OUT &lt;dbl&gt;, UGDS &lt;chr&gt;, REGION &lt;fct&gt;,
+#   TUITION_DIFF &lt;dbl&gt;, SAT_even &lt;lgl&gt;, app &lt;dbl&gt;</code></pre>
+</div>
+</div>
+<p>What college will Epheila attend? Submit your answer in the Canvas quiz and upload this qmd file (save first!).</p>
+
+
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -799,7 +1041,7 @@ ul.task-list li input[type="checkbox"] {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions"><ul><li><a href="https://srvanderplas.github.io/stat1080/issues/new" class="toc-action"><i class="bi bi-git"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://srvanderplas.github.io/stat1080/issues/new" class="toc-action"><i class="bi bi-git"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
       &nbsp;
     </div>
