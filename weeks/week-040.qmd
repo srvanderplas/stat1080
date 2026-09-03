@@ -6,16 +6,14 @@ September 21-27, 2026
 
 ## 📖 Reading
 
-- [ ] (for Mon) [SC Ch 8 - Variables and Data Types](https://srvanderplas.github.io/stat-computing-r-python/part-gen-prog/01-basic-var-types.html)
-- [ ] (for Wed) [SC Ch 9 - Mathematical and Logical Operators](https://srvanderplas.github.io/stat-computing-r-python/part-gen-prog/01a-math-logical-operators.html)
-- [ ] (for Fri) [SC Ch 11 - Data Structures - Sections 11.1, 11.2, 11.6](https://srvanderplas.github.io/stat-computing-r-python/part-gen-prog/03-data-struct.html) - Ignore the python parts, focus on understanding how you access pieces of data in a vector and a data frame, and how to differentiate between the two. 
+- [ ] (for Mon) [IDS1 Ch 4 - The tidyverse](https://rafalab.dfci.harvard.edu/dsbook-part-1/R/tidyverse.html)
+- [ ] (for Wed) [SC Ch 22 - Data Cleaning](https://srvanderplas.github.io/stat-computing-r-python/part-wrangling/03-data-cleaning.html)
 
 
 ## 📐 Prepare for class
 
 - [ ] (for Mon) Reading Check 4.1
 - [ ] (for Wed) Reading Check 4.2
-- [ ] (for Fri) Reading Check 4.3
 
 
 ## 🥱 Monday 🌛

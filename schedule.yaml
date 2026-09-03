@@ -17,6 +17,7 @@ schedule:
         - [ ] (for Mon) [Syllabus](../syllabus.pdf)
         - [ ] (for Wed) [IDS 1 Ch 6 - Importing Data](https://rafalab.dfci.harvard.edu/dsbook-part-1/R/importing-data.html)
         - [ ] (for Fri) [IDS 1 Ch 2 - R Basics](https://rafalab.dfci.harvard.edu/dsbook-part-1/R/R-basics.html)
+        - Additional reading: [SC Ch 7 - Introduction to Programming](https://srvanderplas.github.io/stat-computing-r-python/part-gen-prog/00-intro.html) (this is just designed to help you get into the mindset)
     prepare: |
         - Print out and bring [cheat sheets](../files/cheat-sheets-combined.pdf) for R
         - [ ] (for Mon) [1.1.p Syllabus Overview](https://usu.instructure.com/courses/819584/assignments/5290598)
@@ -52,6 +53,12 @@ schedule:
         - [ ] (for Fri) Read [SC Ch 3 - RStudio](https://srvanderplas.github.io/stat-computing-r-python/part-tools/03-Rstudio-interface.html)
         - [ ] (for Fri) [Project Proposal Template](https://raw.githubusercontent.com/srvanderplas/stat1080/refs/heads/main/homework/_proposal_template.qmd)
         - [ ] (for Fri) Project Proposal Demo [(qmd)](https://raw.githubusercontent.com/srvanderplas/stat1080/refs/heads/main/homework/_proposal_demo.qmd) [html](../homework/proposal_demo.qmd)
+        - For reference/clarification, here are the chapters in SC that correspond to Chapters 2-3 in IDS1
+            - [SC Ch 8 - Variables and Data Types](https://srvanderplas.github.io/stat-computing-r-python/part-gen-prog/01-basic-var-types.html)
+            - [SC Ch 9 - Mathematical and Logical Operators](https://srvanderplas.github.io/stat-computing-r-python/part-gen-prog/01a-math-logical-operators.html)
+            - [SC Ch 10 - Functions, Packages, and Environments](https://srvanderplas.github.io/stat-computing-r-python/part-gen-prog/02-prog-functions.html)
+            - [SC Ch 11 - Data Structures - Sections 11.1, 11.2, 11.6](https://srvanderplas.github.io/stat-computing-r-python/part-gen-prog/03-data-struct.html) - Ignore the python parts, focus on understanding how you access pieces of data in a vector and a data frame, and how to differentiate between the two. 
+            - [SC Ch 13 - Control Structures](https://srvanderplas.github.io/stat-computing-r-python/part-gen-prog/04-control-struct.html)
     prepare: |
         - [ ] (for Wed) [2.2.p Reading Check: Proposal: Data Collection](https://usu.instructure.com/courses/819584/quizzes/1489310)
         - [ ] (for Fri) [2.3.p Reading Check: Introduction to R and RStudio](https://usu.instructure.com/courses/819584/quizzes/1462871)
@@ -60,10 +67,11 @@ schedule:
     class2: |
         - [Attendance Quiz 09/09](https://usu.instructure.com/courses/819584/quizzes/1463710)
         - [Intro to Programming](../slides/05-prog-intro.qmd)
-        - [Swirl Tutorial](https://usu.instructure.com/courses/819584/quizzes/1462913)
+        - [2.2.i - Swirl Tutorial](https://usu.instructure.com/courses/819584/quizzes/1462913)
     class3: |
         - [Attendance Quiz 09/11](https://usu.instructure.com/courses/819584/quizzes/1463721)
         - [Intro to RStudio](../slides/06-rstudio.qmd)
+        - [2.3.i - Swirl Tutorial II](https://usu.instructure.com/courses/819584/quizzes/1462915)
         - [ ] Submit [Project Proposal](https://usu.instructure.com/courses/819584/assignments/5290622)
     extra: |
       - [How to Name Files](https://www.youtube.com/watch?v=ES1LTlnpLMk&pp=ygUYamVubnkgYnJ5YW4gc3ByZWFkc2hlZXRz) (YouTube, Jenny Bryan, NormConf) - How to name things so that they are machine readable, human readable, and sorted usefully.
@@ -97,19 +105,16 @@ schedule:
         - [Causal Inference](https://www.youtube.com/watch?v=gRkUhg9Wb-I) (YouTube, Dr. David Sontag, MIT OpenCourseWare) - The alternative to correlation -- how to show causality
         - [Crash Course Statistics: Henrietta Lacks, the Tuskegee Experiment, and Ethical Data Collection: Crash Course Statistics #12](https://www.youtube.com/watch?v=CzNANZnoiRs) (YouTube, CrashCourse)
         - [Exploring Data Ethics](https://www.youtube.com/watch?v=MOOfj78alvs) (YouTube, Dr. Wendy Martinez, Washington Statistical Society Seminar)
-
   - week: 4
     name: Programming in R
     start: 2026-09-21
     end: 2026-09-27
     reading: |
-        - [ ] (for Mon) [SC Ch 8 - Variables and Data Types](https://srvanderplas.github.io/stat-computing-r-python/part-gen-prog/01-basic-var-types.html)
-        - [ ] (for Wed) [SC Ch 9 - Mathematical and Logical Operators](https://srvanderplas.github.io/stat-computing-r-python/part-gen-prog/01a-math-logical-operators.html)
-        - [ ] (for Fri) [SC Ch 11 - Data Structures - Sections 11.1, 11.2, 11.6](https://srvanderplas.github.io/stat-computing-r-python/part-gen-prog/03-data-struct.html) - Ignore the python parts, focus on understanding how you access pieces of data in a vector and a data frame, and how to differentiate between the two. 
+        - [ ] (for Mon) [IDS1 Ch 4 - The tidyverse](https://rafalab.dfci.harvard.edu/dsbook-part-1/R/tidyverse.html)
+        - [ ] (for Wed) [SC Ch 22 - Data Cleaning](https://srvanderplas.github.io/stat-computing-r-python/part-wrangling/03-data-cleaning.html)
     prepare: |
         - [ ] (for Mon) Reading Check 4.1
         - [ ] (for Wed) Reading Check 4.2
-        - [ ] (for Fri) Reading Check 4.3
     class1: |
         - [Attendance Quiz 09/21](https://usu.instructure.com/courses/819584/assignments/5292851)
         - [R programming basics](../slides/10-r-prog.qmd)

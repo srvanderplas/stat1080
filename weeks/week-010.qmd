@@ -9,6 +9,7 @@ August 31-06, 2026
 - [ ] (for Mon) [Syllabus](../syllabus.pdf)
 - [ ] (for Wed) [IDS 1 Ch 6 - Importing Data](https://rafalab.dfci.harvard.edu/dsbook-part-1/R/importing-data.html)
 - [ ] (for Fri) [IDS 1 Ch 2 - R Basics](https://rafalab.dfci.harvard.edu/dsbook-part-1/R/R-basics.html)
+- Additional reading: [SC Ch 7 - Introduction to Programming](https://srvanderplas.github.io/stat-computing-r-python/part-gen-prog/00-intro.html) (this is just designed to help you get into the mindset)
 
 
 ## 📐 Prepare for class
