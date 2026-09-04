@@ -1897,6 +1897,55 @@
     "text": "Finals\n\nDo NOT plan to travel during Finals Week!"
   },
   {
+    "objectID": "slides/03-prog-intro.html#reading-in-a-csv-file",
+    "href": "slides/03-prog-intro.html#reading-in-a-csv-file",
+    "title": "1.3 Introduction to Programming",
+    "section": "Reading in a CSV file",
+    "text": "Reading in a CSV file\n\n\n\n\n\n\nCSV\n\n\nComma Separated Value. Different columns are separated by comma characters (,). Any field that contains a comma must be quoted.\n\n\n\n\n\n\nlibrary(readr)\n\n1carbon_df &lt;- read_csv(files[3])\n2names(carbon_df) &lt;- c(\"Year\", \"TotalC\")\n3head(carbon_df)\n\n\n1\n\nRead in the third file in the list, which ends in carbon_emissions.csv\n\n2\n\nRename columns to have shorter names\n\n3\n\nLook at the head (the first 6 rows, by default) of the object\n\n\n\n\n# A tibble: 6 × 2\n   Year TotalC\n  &lt;dbl&gt;  &lt;dbl&gt;\n1  1751      3\n2  1752      3\n3  1753      3\n4  1754      3\n5  1755      3\n6  1756      3\n\n\n\n\n\n\nFile contents\n\n\n\n\n [1] \"Year,Total carbon emissions from fossil fuel consumption and cement production (million metric tons of C)\"\n [2] \"1751,3\"                                                                                                   \n [3] \"1752,3\"                                                                                                   \n [4] \"1753,3\"                                                                                                   \n [5] \"1754,3\"                                                                                                   \n [6] \"1755,3\"                                                                                                   \n [7] \"1756,3\"                                                                                                   \n [8] \"1757,3\"                                                                                                   \n [9] \"1758,3\"                                                                                                   \n[10] \"1759,3\""
+  },
+  {
+    "objectID": "slides/03-prog-intro.html#more-complicated-csvs",
+    "href": "slides/03-prog-intro.html#more-complicated-csvs",
+    "title": "1.3 Introduction to Programming",
+    "section": "More Complicated CSVs",
+    "text": "More Complicated CSVs\n\n1olive_df &lt;- read_csv(files[8])\n\n\n1\n\nTry reading in the olive data from CSV\n\n\n\n\nNew names:\nRows: 572 Columns: 11\n── Column specification\n──────────────────────────────────────────────────────── Delimiter: \",\" chr\n(2): Region, eicosenoic dbl (9): ...1, Area, palmitic, palmitoleic, stearic,\noleic, linoleic, linole...\nℹ Use `spec()` to retrieve the full column specification for this data. ℹ\nSpecify the column types or set `show_col_types = FALSE` to quiet this message.\n• `` -&gt; `...1`\n\n\n\nWarning: One or more parsing issues, call problems() on your data frame for details, e.g.:\ndat &lt;- vroom(...)\nproblems(dat)"
+  },
+  {
+    "objectID": "slides/03-prog-intro.html#more-complicated-csvs-1",
+    "href": "slides/03-prog-intro.html#more-complicated-csvs-1",
+    "title": "1.3 Introduction to Programming",
+    "section": "More Complicated CSVs",
+    "text": "More Complicated CSVs\n\n1problems(olive_df)\n\n\n1\n\nWhen a CSV is not properly formatted, problems can pile up. Use problems() to see what R is complaining about.\n\n\n\n\n# A tibble: 572 × 5\n     row   col expected   actual     file                                       \n   &lt;int&gt; &lt;int&gt; &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;                                      \n 1     2    12 11 columns 12 columns /home/susan/R/x86_64-pc-linux-gnu-library/…\n 2     3    12 11 columns 12 columns /home/susan/R/x86_64-pc-linux-gnu-library/…\n 3     4    12 11 columns 12 columns /home/susan/R/x86_64-pc-linux-gnu-library/…\n 4     5    12 11 columns 12 columns /home/susan/R/x86_64-pc-linux-gnu-library/…\n 5     6    12 11 columns 12 columns /home/susan/R/x86_64-pc-linux-gnu-library/…\n 6     7    12 11 columns 12 columns /home/susan/R/x86_64-pc-linux-gnu-library/…\n 7     8    12 11 columns 12 columns /home/susan/R/x86_64-pc-linux-gnu-library/…\n 8     9    12 11 columns 12 columns /home/susan/R/x86_64-pc-linux-gnu-library/…\n 9    10    12 11 columns 12 columns /home/susan/R/x86_64-pc-linux-gnu-library/…\n10    11    12 11 columns 12 columns /home/susan/R/x86_64-pc-linux-gnu-library/…\n# ℹ 562 more rows"
+  },
+  {
+    "objectID": "slides/03-prog-intro.html#more-complicated-csvs-2",
+    "href": "slides/03-prog-intro.html#more-complicated-csvs-2",
+    "title": "1.3 Introduction to Programming",
+    "section": "More Complicated CSVs",
+    "text": "More Complicated CSVs\n\n1readLines(files[8])[1:10]\n\n\n1\n\nWhen in doubt, look at the first few lines of the file. Count how many columns in several rows manually. Then come up with a hypothesis and a plan.\n\n\n\n\n [1] \",Region,Area,palmitic,palmitoleic,stearic,oleic,linoleic,linolenic,arachidic,eicosenoic\"\n [2] \"1,North-Apulia,1,1,1075,75,226,7823,672,36,60,29\"                                       \n [3] \"2,North-Apulia,1,1,1088,73,224,7709,781,31,61,29\"                                       \n [4] \"3,North-Apulia,1,1,911,54,246,8113,549,31,63,29\"                                        \n [5] \"4,North-Apulia,1,1,966,57,240,7952,619,50,78,35\"                                        \n [6] \"5,North-Apulia,1,1,1051,67,259,7771,672,50,80,46\"                                       \n [7] \"6,North-Apulia,1,1,911,49,268,7924,678,51,70,44\"                                        \n [8] \"7,North-Apulia,1,1,922,66,264,7990,618,49,56,29\"                                        \n [9] \"8,North-Apulia,1,1,1100,61,235,7728,734,39,64,35\"                                       \n[10] \"9,North-Apulia,1,1,1082,60,239,7745,709,46,83,33\""
+  },
+  {
+    "objectID": "slides/03-prog-intro.html#csv-trick-separate-the-names-from-the-data",
+    "href": "slides/03-prog-intro.html#csv-trick-separate-the-names-from-the-data",
+    "title": "1.3 Introduction to Programming",
+    "section": "CSV Trick: Separate the Names from the Data",
+    "text": "CSV Trick: Separate the Names from the Data\n\n1olive_df &lt;- read_csv(files[8],\n2                     col_names = FALSE,\n3                     skip = 1)\n4olive_names &lt;- read_csv(files[8], col_names = FALSE, n_max = 1)\n5olive_names &lt;- as.character(olive_names)\n6olive_names &lt;- c(\"row\", \"RegionName\", olive_names[-1])\n7names(olive_df) &lt;- olive_names\nhead(olive_df)\n\n\n1\n\nRead in the same file, but with additional arguments\n\n2\n\nTell read_csv you’re not providing column names\n\n3\n\nSkip the first line of the file\n\n4\n\nRead in only the first line of the file\n\n5\n\nConvert the table to a vector (a list)\n\n6\n\nAdd names for the first two columns (row, RegionName) and remove the empty entry (olive_names[-1]). Put everything into the same vector using c(...)\n\n7\n\nSet the names of the table\n\n\n\n\n# A tibble: 6 × 12\n    row RegionName   Region  Area palmitic palmitoleic stearic oleic linoleic\n  &lt;dbl&gt; &lt;chr&gt;         &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;       &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;\n1     1 North-Apulia      1     1     1075          75     226  7823      672\n2     2 North-Apulia      1     1     1088          73     224  7709      781\n3     3 North-Apulia      1     1      911          54     246  8113      549\n4     4 North-Apulia      1     1      966          57     240  7952      619\n5     5 North-Apulia      1     1     1051          67     259  7771      672\n6     6 North-Apulia      1     1      911          49     268  7924      678\n# ℹ 3 more variables: linolenic &lt;dbl&gt;, arachidic &lt;dbl&gt;, eicosenoic &lt;dbl&gt;"
+  },
+  {
+    "objectID": "slides/03-prog-intro.html#rstudio-projects",
+    "href": "slides/03-prog-intro.html#rstudio-projects",
+    "title": "1.3 Introduction to Programming",
+    "section": "RStudio Projects",
+    "text": "RStudio Projects\n\nHelp you keep track of the files for a data science project\nFile -&gt; New Project -&gt; New Directory\n\nName your new project something descriptive\nPut the project in sensible folder\n\nMove data into the project folder (into a data/ subdirectory if multiple files)\n.R files in the project folder will find your data automatically without needing a file path."
+  },
+  {
+    "objectID": "slides/03-prog-intro.html#test-your-skills",
+    "href": "slides/03-prog-intro.html#test-your-skills",
+    "title": "1.3 Introduction to Programming",
+    "section": "Test Your Skills",
+    "text": "Test Your Skills\n\nNavigate to https://www.ncdc.noaa.gov/cdo-web/search?datasetid=GHCND\nSelect daily summaries\nSearch for Zip codes\nEnter your Zip code (or 84321, Logan)\nSearch\nAdd a weather station to the cart\nSelect Custom GHCN-Daily CSV as the output format\nUse the default range\nCustom options: Select all data types\nSubmit the request and wait for the email. Download the resulting CSV file.\nWrite code to read in the data."
+  },
+  {
     "objectID": "slides/03-prog-intro.html#computers",
     "href": "slides/03-prog-intro.html#computers",
     "title": "1.3 Introduction to Programming",
