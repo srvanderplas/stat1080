@@ -94,13 +94,13 @@ schedule:
     class1: |
         - [ ] [Attendance Quiz 09/14](https://usu.instructure.com/courses/819584/assignments/5292838)
         - [Correlation and Causation](../slides/07-correlation.qmd)
-        - [ ] [3.1.p Spurious Correlation Activity](https://usu.instructure.com/courses/819584/quizzes/1462920) (Canvas)
+        - [ ] [3.1.i Spurious Correlation Activity](https://usu.instructure.com/courses/819584/quizzes/1462920) (Canvas)
     class2: |
         - [Attendance Quiz 09/16](https://usu.instructure.com/courses/819584/assignments/5292841)        
         - [Bias and Ethics](../slides/08-bias-ethics.qmd)
     class3: |
         - [Attendance Quiz 09/18](https://usu.instructure.com/courses/819584/assignments/5292843)
-        - [ ] [3.3.p - Bias and Ethics Activity](https://usu.instructure.com/courses/819584/quizzes/1462857) (submit in Canvas). [qmd file](https://raw.githubusercontent.com/srvanderplas/stat1080/refs/heads/main/lab/_08-bias-and-ethics.qmd) and [html file](lab/08-bias-and-ethics.qmd)
+        - [ ] [3.3.i - Bias and Ethics Activity](https://usu.instructure.com/courses/819584/quizzes/1462857) (submit in Canvas). [qmd file](https://raw.githubusercontent.com/srvanderplas/stat1080/refs/heads/main/lab/_08-bias-and-ethics.qmd) and [html file](lab/08-bias-and-ethics.qmd)
     extra: |
         - [Causal Inference](https://www.youtube.com/watch?v=gRkUhg9Wb-I) (YouTube, Dr. David Sontag, MIT OpenCourseWare) - The alternative to correlation -- how to show causality
         - [Crash Course Statistics: Henrietta Lacks, the Tuskegee Experiment, and Ethical Data Collection: Crash Course Statistics #12](https://www.youtube.com/watch?v=CzNANZnoiRs) (YouTube, CrashCourse)
@@ -110,10 +110,10 @@ schedule:
     start: 2026-09-21
     end: 2026-09-27
     reading: |
-        - [ ] (for Mon) [IDS1 Ch 4 - The tidyverse](https://rafalab.dfci.harvard.edu/dsbook-part-1/R/tidyverse.html)
-        - [ ] (for Wed) [SC Ch 22 - Data Cleaning](https://srvanderplas.github.io/stat-computing-r-python/part-wrangling/03-data-cleaning.html)
+        - [ ] (for Mon) [SC Ch 11 - Data Structures - Sections 11.1, 11.2, 11.6](https://srvanderplas.github.io/stat-computing-r-python/part-gen-prog/03-data-struct.html) - Ignore the python parts, focus on understanding how you access pieces of data in a vector and a data frame, and how to differentiate between the two. 
+        - [ ] (for Wed) [SC Ch 13 - Control Structures](https://srvanderplas.github.io/stat-computing-r-python/part-gen-prog/04-control-struct.html)
     prepare: |
-        - [ ] (for Mon) Reading Check 4.1
+        - [ ] (for Mon) [Reading Check 4.1 - Data Structures](https://usu.instructure.com/courses/819584/quizzes/1498243)
         - [ ] (for Wed) Reading Check 4.2
     class1: |
         - [Attendance Quiz 09/21](https://usu.instructure.com/courses/819584/assignments/5292851)
