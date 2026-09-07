@@ -1,1 +1,0 @@
-{{< include _presidency_template.qmd >}}

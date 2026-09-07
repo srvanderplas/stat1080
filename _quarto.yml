@@ -12,6 +12,8 @@ project:
     - course-overview.qmd
     - course-support.qmd
     - weeks/*.qmd
+    - demos/*.qmd
+    - "!demos/_*.qmd"
     - lab/*.qmd
     - "!lab/_*.qmd"
     - homework/*.qmd
