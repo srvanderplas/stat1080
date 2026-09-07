@@ -145,23 +145,20 @@ This course touches on all three.
 
 After taking this class, students should be able to:
 
-\begin{enumerate}
-\item Use computer programming to manipulate and visualize data.
-\item Articulate insights from data in ways that answer existing questions and spark new ones.
-\item Understand the concepts of randomness and statistical significance, and demonstrate both via computer simulation.
-\item Use computer programming to develop data models that can predict quantities of interest.
-\end{enumerate}
+1. Use computer programming to manipulate and visualize data.
+2. Articulate insights from data in ways that answer existing questions and spark new ones.
+3. Understand the concepts of randomness and statistical significance, and demonstrate both via computer simulation.
+4. Use computer programming to develop data models that can predict quantities of interest.
+
 
 Whether you see yourself as a future statistician, programmer, or simply want to make sense of the data-driven world around you, this course will give you tools to ask better questions, make informed decisions, and see the world in a new way.
 
 ## IDEA Objectives 
 The university uses IDEA learning objectives to measure course effectiveness. The most relevant for this course are:
 
-\begin{itemize}
-\item (1) Gaining a basic understanding of the subject (factual knowledge, methods, principles, generalizations, theories)
-\item (3) Learning to apply course material (to improve thinking, problem solving, and decisions)
-\item (13) Learning appropriate methods for collecting, analyzing, and interpreting numerical information
-\end{itemize}
+- (1) Gaining a basic understanding of the subject (factual knowledge, methods, principles, generalizations, theories)
+- (3) Learning to apply course material (to improve thinking, problem solving, and decisions)
+- (13) Learning appropriate methods for collecting, analyzing, and interpreting numerical information
 
 ## Required Software & Equipment {#sec-software}
 This course will teach you how to program using the R statistical programming language. 

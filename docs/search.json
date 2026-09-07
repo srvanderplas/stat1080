@@ -949,7 +949,7 @@
     "href": "weeks/week-030.html",
     "title": "Week 3: Correlation is not Causation",
     "section": "",
-    "text": "September 14-20, 2026\n\n\n\n(for Mon) IDS 2 Ch 19 - Association is Not Causation\n(for Wed) Bias and Ethics Readings\n(for Fri) Watch How Ice Cream Kills (&lt;6 mins) and Calling BS 3.3: Spurious Correlations (&lt;8 mins, UW Information School course on calling BS)\n\n\n\n\n\n(for Mon) 3.1.p Reading Check: Association is Not Causation (IDS Ch 19)\n(for Wed) 3.2.p Bias and Ethics\n(for Fri) 3.3.p “Reading” Check: How Ice Cream Kills and Calling BS: Spurious Correlations\n\n\n\n\n\nAttendance Quiz 09/14\nCorrelation and Causation\n3.1.p Spurious Correlation Activity (Canvas)\n\n\n\n\n\nAttendance Quiz 09/16\n\nBias and Ethics\n\n\n\n\n\nAttendance Quiz 09/18\n3.3.p - Bias and Ethics Activity (submit in Canvas). qmd file and html file\n\n\n\n\n\nCausal Inference (YouTube, Dr. David Sontag, MIT OpenCourseWare) - The alternative to correlation – how to show causality\nCrash Course Statistics: Henrietta Lacks, the Tuskegee Experiment, and Ethical Data Collection: Crash Course Statistics #12 (YouTube, CrashCourse)\nExploring Data Ethics (YouTube, Dr. Wendy Martinez, Washington Statistical Society Seminar)"
+    "text": "September 14-20, 2026\n\n\n\n(for Mon) IDS 2 Ch 19 - Association is Not Causation\n(for Wed) Bias and Ethics Readings\n(for Fri) Watch How Ice Cream Kills (&lt;6 mins) and Calling BS 3.3: Spurious Correlations (&lt;8 mins, UW Information School course on calling BS)\n\n\n\n\n\n(for Mon) 3.1.p Reading Check: Association is Not Causation (IDS Ch 19)\n(for Wed) 3.2.p Bias and Ethics\n(for Fri) 3.3.p “Reading” Check: How Ice Cream Kills and Calling BS: Spurious Correlations\n(for Fri) 3.3.p Presidency Associations qmd file\n\n\n\n\n\nAttendance Quiz 09/14\nCorrelation and Causation\n3.1.i Spurious Correlation Activity (Canvas)\n\n\n\n\n\nAttendance Quiz 09/16\n\nBias and Ethics\n\n\n\n\n\nAttendance Quiz 09/18\n3.3.i - Bias and Ethics Activity (submit in Canvas). qmd file and html file\n\n\n\n\n\nCausal Inference (YouTube, Dr. David Sontag, MIT OpenCourseWare) - The alternative to correlation – how to show causality\nCrash Course Statistics: Henrietta Lacks, the Tuskegee Experiment, and Ethical Data Collection: Crash Course Statistics #12 (YouTube, CrashCourse)\nExploring Data Ethics (YouTube, Dr. Wendy Martinez, Washington Statistical Society Seminar)"
   },
   {
     "objectID": "weeks/week-030.html#reading",
@@ -963,14 +963,14 @@
     "href": "weeks/week-030.html#prepare-for-class",
     "title": "Week 3: Correlation is not Causation",
     "section": "",
-    "text": "(for Mon) 3.1.p Reading Check: Association is Not Causation (IDS Ch 19)\n(for Wed) 3.2.p Bias and Ethics\n(for Fri) 3.3.p “Reading” Check: How Ice Cream Kills and Calling BS: Spurious Correlations"
+    "text": "(for Mon) 3.1.p Reading Check: Association is Not Causation (IDS Ch 19)\n(for Wed) 3.2.p Bias and Ethics\n(for Fri) 3.3.p “Reading” Check: How Ice Cream Kills and Calling BS: Spurious Correlations\n(for Fri) 3.3.p Presidency Associations qmd file"
   },
   {
     "objectID": "weeks/week-030.html#monday",
     "href": "weeks/week-030.html#monday",
     "title": "Week 3: Correlation is not Causation",
     "section": "",
-    "text": "Attendance Quiz 09/14\nCorrelation and Causation\n3.1.p Spurious Correlation Activity (Canvas)"
+    "text": "Attendance Quiz 09/14\nCorrelation and Causation\n3.1.i Spurious Correlation Activity (Canvas)"
   },
   {
     "objectID": "weeks/week-030.html#wednesday",
@@ -984,7 +984,7 @@
     "href": "weeks/week-030.html#friday",
     "title": "Week 3: Correlation is not Causation",
     "section": "",
-    "text": "Attendance Quiz 09/18\n3.3.p - Bias and Ethics Activity (submit in Canvas). qmd file and html file"
+    "text": "Attendance Quiz 09/18\n3.3.i - Bias and Ethics Activity (submit in Canvas). qmd file and html file"
   },
   {
     "objectID": "weeks/week-030.html#extra-resourcesreading",
@@ -1061,14 +1061,14 @@
     "href": "syllabus.html#objectives",
     "title": "Stat 1080 Syllabus",
     "section": "1.1 Objectives",
-    "text": "1.1 Objectives\nAfter taking this class, students should be able to:\nWhether you see yourself as a future statistician, programmer, or simply want to make sense of the data-driven world around you, this course will give you tools to ask better questions, make informed decisions, and see the world in a new way."
+    "text": "1.1 Objectives\nAfter taking this class, students should be able to:\n\nUse computer programming to manipulate and visualize data.\nArticulate insights from data in ways that answer existing questions and spark new ones.\nUnderstand the concepts of randomness and statistical significance, and demonstrate both via computer simulation.\nUse computer programming to develop data models that can predict quantities of interest.\n\nWhether you see yourself as a future statistician, programmer, or simply want to make sense of the data-driven world around you, this course will give you tools to ask better questions, make informed decisions, and see the world in a new way."
   },
   {
     "objectID": "syllabus.html#idea-objectives",
     "href": "syllabus.html#idea-objectives",
     "title": "Stat 1080 Syllabus",
     "section": "1.2 IDEA Objectives",
-    "text": "1.2 IDEA Objectives\nThe university uses IDEA learning objectives to measure course effectiveness. The most relevant for this course are:"
+    "text": "1.2 IDEA Objectives\nThe university uses IDEA learning objectives to measure course effectiveness. The most relevant for this course are:\n\n\nGaining a basic understanding of the subject (factual knowledge, methods, principles, generalizations, theories)\n\n\nLearning to apply course material (to improve thinking, problem solving, and decisions)\n\n\nLearning appropriate methods for collecting, analyzing, and interpreting numerical information"
   },
   {
     "objectID": "syllabus.html#sec-software",
@@ -1306,21 +1306,21 @@
     "href": "weeks/week-040.html",
     "title": "Week 4: Programming in R",
     "section": "",
-    "text": "September 21-27, 2026\n\n\n\n(for Mon) IDS1 Ch 4 - The tidyverse\n(for Wed) SC Ch 22 - Data Cleaning\n\n\n\n\n\n(for Mon) Reading Check 4.1\n(for Wed) Reading Check 4.2\n\n\n\n\n\nAttendance Quiz 09/21\nR programming basics\n\n\n\n\n\nAttendance Quiz 09/23\nLab: R Programming Puzzles\n\n\n\n\n\nAttendance Quiz 09/25\nLab: R Programming Puzzles\n\n\n\n\n\nTidyverse vs. Base R (YouTube, Susan B.)\nData Rectangling (YouTube, Jenny Bryan, Plotcon 2016) - The importance of getting data into the right format.\nTidy Data, Illustrated - Handy illustrations explaining the idea of tidy data"
+    "text": "September 21-27, 2026\n\n\n\n(for Mon) SC Ch 11 - Data Structures - Sections 11.1, 11.2, 11.6 - Ignore the python parts, focus on understanding how you access pieces of data in a vector and a data frame, and how to differentiate between the two.\n(for Wed) SC Ch 13 - Control Structures\n\n\n\n\n\n(for Mon) Reading Check 4.1 - Data Structures\n(for Wed) Reading Check 4.2\n\n\n\n\n\nAttendance Quiz 09/21\nR programming basics\n\n\n\n\n\nAttendance Quiz 09/23\nLab: R Programming Puzzles\n\n\n\n\n\nAttendance Quiz 09/25\nLab: R Programming Puzzles\n\n\n\n\n\nTidyverse vs. Base R (YouTube, Susan B.)\nData Rectangling (YouTube, Jenny Bryan, Plotcon 2016) - The importance of getting data into the right format.\nTidy Data, Illustrated - Handy illustrations explaining the idea of tidy data"
   },
   {
     "objectID": "weeks/week-040.html#reading",
     "href": "weeks/week-040.html#reading",
     "title": "Week 4: Programming in R",
     "section": "",
-    "text": "(for Mon) IDS1 Ch 4 - The tidyverse\n(for Wed) SC Ch 22 - Data Cleaning"
+    "text": "(for Mon) SC Ch 11 - Data Structures - Sections 11.1, 11.2, 11.6 - Ignore the python parts, focus on understanding how you access pieces of data in a vector and a data frame, and how to differentiate between the two.\n(for Wed) SC Ch 13 - Control Structures"
   },
   {
     "objectID": "weeks/week-040.html#prepare-for-class",
     "href": "weeks/week-040.html#prepare-for-class",
     "title": "Week 4: Programming in R",
     "section": "",
-    "text": "(for Mon) Reading Check 4.1\n(for Wed) Reading Check 4.2"
+    "text": "(for Mon) Reading Check 4.1 - Data Structures\n(for Wed) Reading Check 4.2"
   },
   {
     "objectID": "weeks/week-040.html#monday",
