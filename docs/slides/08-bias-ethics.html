@@ -149,28 +149,142 @@
 </div>
 
 </section>
-<section class="slide level2">
-
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure>
-<p><a href="08-bias-ethics_files/figure-revealjs/unnamed-chunk-1-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img data-src="08-bias-ethics_files/figure-revealjs/unnamed-chunk-1-1.png" width="960"></a></p>
-</figure>
+<section>
+<section id="batting-averages" class="title-slide slide level1 center">
+<h1>Batting Averages</h1>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><a href="images/derek-jeter.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img data-src="images/derek-jeter.jpg" alt="Derek Jeter baseball card"></a></p>
 </div>
-</div>
-<div class="cell-output-display">
-<div>
-<figure>
-<p><a href="08-bias-ethics_files/figure-revealjs/unnamed-chunk-1-2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img data-src="08-bias-ethics_files/figure-revealjs/unnamed-chunk-1-2.png" width="960"></a></p>
-</figure>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><a href="images/david-justice.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img data-src="images/david-justice.webp" alt="David Justice baseball card"></a></p>
 </div>
 </div>
 </div>
-<p>https://math.stackexchange.com/questions/83756/more-examples-of-simpsons-paradox-barring-the-ones-on-wikipedia-titanic-and</p>
-
+</section>
+<section id="batting-averages-1" class="slide level2">
+<h2>Batting Averages</h2>
+<p>Consider the following data:</p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Batter</th>
+<th>Year</th>
+<th>Hits</th>
+<th>At Bats</th>
+<th>Average</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Derek Jeter</td>
+<td>1995</td>
+<td>12</td>
+<td>48</td>
+<td>.250</td>
+</tr>
+<tr class="even">
+<td>David Justice</td>
+<td>1995</td>
+<td>104</td>
+<td>411</td>
+<td><strong>.253</strong></td>
+</tr>
+<tr class="odd">
+<td>Derek Jeter</td>
+<td>1996</td>
+<td>183</td>
+<td>582</td>
+<td>.314</td>
+</tr>
+<tr class="even">
+<td>David Justice</td>
+<td>1996</td>
+<td>45</td>
+<td>140</td>
+<td><strong>.321</strong></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="batting-averages-2" class="slide level2">
+<h2>Batting Averages</h2>
+<p>To summarize, David Justice is a better batter….</p>
+<div class="fragment">
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Batter</th>
+<th>Hits</th>
+<th>At Bats</th>
+<th>Average</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Derek Jeter</td>
+<td>12 + 183 = 195</td>
+<td>48 + 582 = 630</td>
+<td>195/630 = <strong>.310</strong></td>
+</tr>
+<tr class="even">
+<td>David Justice</td>
+<td>104 + 45 = 149</td>
+<td>411 + 140 = 551</td>
+<td>149/551 = .270</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><span class="fragment emph cerulean-dk large">Wait, what?</span></p>
+</section></section>
+<section>
+<section id="simpsons-paradox" class="title-slide slide level1 center">
+<h1>Simpson’s Paradox</h1>
 
 </section>
+<section id="simpsons-paradox-1" class="slide level2">
+<h2>Simpson’s Paradox</h2>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Simpson’s Paradox</strong></p>
+</div>
+<div class="callout-content">
+<p>A phenomenon in which a trend appears in several groups of data but disappears or reverses when groups are combined</p>
+</div>
+</div>
+</div>
+<p>Arises from</p>
+<ul>
+<li>confounding variables</li>
+<li>clustered data</li>
+<li>failure to manage causal data</li>
+<li>extremely different rates or amounts of data across categories</li>
+</ul>
+</section>
+<section id="simpsons-paradox-visually" class="slide level2">
+<h2>Simpson’s Paradox, Visually</h2>
+<div class="cell quarto-layout-panel" data-layout-ncol="3" data-fig-extra="fragment">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><a href="08-bias-ethics_files/figure-revealjs/unnamed-chunk-2-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img data-src="08-bias-ethics_files/figure-revealjs/unnamed-chunk-2-1.png" alt="A scatterplot with 300 observations showing a negative relationship between x, which lies between 0.8088 and 15.6080, and y, which lies between -5.2918 and 9.0437. As x increases, the value of y decreases. A linear trend line highlights this relationship." width="768"></a></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><a href="08-bias-ethics_files/figure-revealjs/unnamed-chunk-2-2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img data-src="08-bias-ethics_files/figure-revealjs/unnamed-chunk-2-2.png" alt="A scatterplot with 300 observations showing the relationship between x, which lies between 0.8088 and 15.6080, and y, which lies between -5.2918 and 9.0437. There are six groups of points, and within each group, there is a positive relationship between x and y, however, the group means show a negative relationship between x and y. A set of six linear trend lines, one for each group, highlights this relationship." width="768"></a></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><a href="08-bias-ethics_files/figure-revealjs/unnamed-chunk-2-3.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img data-src="08-bias-ethics_files/figure-revealjs/unnamed-chunk-2-3.png" alt="A scatterplot with 300 observations showing the relationship between x, which lies between 0.8088 and 15.6080, and y, which lies between -5.2918 and 9.0437. There are six groups of points, and within each group, there is a positive relationship between x and y, however, the group means show a negative relationship between x and y. Both the overall and the within-group trend lines are shown, highlighting the different ways we can interpret the relationship between x and y." width="768"></a></p>
+</div>
+</div>
+</div>
+
+
+</section></section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <p><img src="deps/usu-sq.png" alt="Utah State University Logo" class="slide-logo"></p>

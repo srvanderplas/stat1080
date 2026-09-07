@@ -949,7 +949,7 @@
     "href": "weeks/week-030.html",
     "title": "Week 3: Correlation is not Causation",
     "section": "",
-    "text": "September 14-20, 2026\n\n\n\n(for Mon) IDS 2 Ch 19 - Association is Not Causation\n(for Wed) Bias and Ethics Readings\n(for Fri) Watch How Ice Cream Kills (&lt;6 mins) and Calling BS 3.3: Spurious Correlations (&lt;8 mins, UW Information School course on calling BS)\n\n\n\n\n\n(for Mon) 3.1.p Reading Check: Association is Not Causation (IDS Ch 19)\n(for Wed) 3.2.p Bias and Ethics\n(for Fri) 3.3.p “Reading” Check: How Ice Cream Kills and Calling BS: Spurious Correlations\n(for Fri) 3.3.p Presidency Associations qmd file\n\n\n\n\n\nAttendance Quiz 09/14\nCorrelation and Causation\n3.1.i Spurious Correlation Activity (Canvas)\n\n\n\n\n\nAttendance Quiz 09/16\n\nBias and Ethics\n\n\n\n\n\nAttendance Quiz 09/18\n3.3.i - Bias and Ethics Activity (submit in Canvas). qmd file and html file\n\n\n\n\n\nCausal Inference (YouTube, Dr. David Sontag, MIT OpenCourseWare) - The alternative to correlation – how to show causality\nCrash Course Statistics: Henrietta Lacks, the Tuskegee Experiment, and Ethical Data Collection: Crash Course Statistics #12 (YouTube, CrashCourse)\nExploring Data Ethics (YouTube, Dr. Wendy Martinez, Washington Statistical Society Seminar)"
+    "text": "September 14-20, 2026\n\n\n\n(for Mon) IDS 2 Ch 19 - Association is Not Causation\n(for Wed) Bias and Ethics Readings\n(for Fri) Watch How Ice Cream Kills (&lt;6 mins) and Calling BS 3.3: Spurious Correlations (&lt;8 mins, UW Information School course on calling BS)\n\n\n\n\n\n(for Mon) 3.1.p Reading Check: Association is Not Causation (IDS Ch 19)\n(for Wed) 3.2.p Bias and Ethics\n(for Fri) 3.3.p “Reading” Check: How Ice Cream Kills and Calling BS: Spurious Correlations\n(for Fri) 3.3.p Presidency Associations example qmd template\n\n\n\n\n\nAttendance Quiz 09/14\nCorrelation and Causation\n3.1.i Spurious Correlation Activity (Canvas)\n\n\n\n\n\nAttendance Quiz 09/16\n\nBias and Ethics\n\n\n\n\n\nAttendance Quiz 09/18\n3.3.i - Bias and Ethics Activity (submit in Canvas). qmd file and html file\n\n\n\n\n\nCausal Inference (YouTube, Dr. David Sontag, MIT OpenCourseWare) - The alternative to correlation – how to show causality\nCrash Course Statistics: Henrietta Lacks, the Tuskegee Experiment, and Ethical Data Collection: Crash Course Statistics #12 (YouTube, CrashCourse)\nExploring Data Ethics (YouTube, Dr. Wendy Martinez, Washington Statistical Society Seminar)"
   },
   {
     "objectID": "weeks/week-030.html#reading",
@@ -963,7 +963,7 @@
     "href": "weeks/week-030.html#prepare-for-class",
     "title": "Week 3: Correlation is not Causation",
     "section": "",
-    "text": "(for Mon) 3.1.p Reading Check: Association is Not Causation (IDS Ch 19)\n(for Wed) 3.2.p Bias and Ethics\n(for Fri) 3.3.p “Reading” Check: How Ice Cream Kills and Calling BS: Spurious Correlations\n(for Fri) 3.3.p Presidency Associations qmd file"
+    "text": "(for Mon) 3.1.p Reading Check: Association is Not Causation (IDS Ch 19)\n(for Wed) 3.2.p Bias and Ethics\n(for Fri) 3.3.p “Reading” Check: How Ice Cream Kills and Calling BS: Spurious Correlations\n(for Fri) 3.3.p Presidency Associations example qmd template"
   },
   {
     "objectID": "weeks/week-030.html#monday",
@@ -2049,5 +2049,33 @@
     "title": "1.6 Introduction to RStudio",
     "section": "The Viewer Tab (Bottom Right)",
     "text": "The Viewer Tab (Bottom Right)\n\n\nThe Viewer tab is where you will preview quarto documents – which is how you will submit some labs and homework assignments in this class.\nYou should always preview your documents before submitting them to make sure they look correct.\nYou can also set a specific quarto document to open in a browser or in the system PDF viewer."
+  },
+  {
+    "objectID": "slides/08-bias-ethics.html#batting-averages-1",
+    "href": "slides/08-bias-ethics.html#batting-averages-1",
+    "title": "1.8 Bias and Ethics",
+    "section": "Batting Averages",
+    "text": "Batting Averages\nConsider the following data:\n\n\n\nBatter\nYear\nHits\nAt Bats\nAverage\n\n\n\n\nDerek Jeter\n1995\n12\n48\n.250\n\n\nDavid Justice\n1995\n104\n411\n.253\n\n\nDerek Jeter\n1996\n183\n582\n.314\n\n\nDavid Justice\n1996\n45\n140\n.321"
+  },
+  {
+    "objectID": "slides/08-bias-ethics.html#batting-averages-2",
+    "href": "slides/08-bias-ethics.html#batting-averages-2",
+    "title": "1.8 Bias and Ethics",
+    "section": "Batting Averages",
+    "text": "Batting Averages\nTo summarize, David Justice is a better batter….\n\n\n\n\nBatter\nHits\nAt Bats\nAverage\n\n\n\n\nDerek Jeter\n12 + 183 = 195\n48 + 582 = 630\n195/630 = .310\n\n\nDavid Justice\n104 + 45 = 149\n411 + 140 = 551\n149/551 = .270\n\n\n\n\nWait, what?"
+  },
+  {
+    "objectID": "slides/08-bias-ethics.html#simpsons-paradox-1",
+    "href": "slides/08-bias-ethics.html#simpsons-paradox-1",
+    "title": "1.8 Bias and Ethics",
+    "section": "Simpson’s Paradox",
+    "text": "Simpson’s Paradox\n\n\n\n\n\n\nSimpson’s Paradox\n\n\nA phenomenon in which a trend appears in several groups of data but disappears or reverses when groups are combined\n\n\n\nArises from\n\nconfounding variables\nclustered data\nfailure to manage causal data\nextremely different rates or amounts of data across categories"
+  },
+  {
+    "objectID": "slides/08-bias-ethics.html#simpsons-paradox-visually",
+    "href": "slides/08-bias-ethics.html#simpsons-paradox-visually",
+    "title": "1.8 Bias and Ethics",
+    "section": "Simpson’s Paradox, Visually",
+    "text": "Simpson’s Paradox, Visually"
   }
 ]
