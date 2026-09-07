@@ -6,59 +6,108 @@ lightbox:  true
 bibliography: refs.bib
 csl: chicago-syllabus.csl
 ---
+```{r}
+library(ggplot2)
+theme_set(theme_bw())
+```
+
+# Batting Averages
+
+::: {layout-ncol="2"}
+![](images/derek-jeter.jpg){fig-alt="Derek Jeter baseball card"}
+
+![](images/david-justice.webp){fig-alt="David Justice baseball card"}
+:::
+
+## Batting Averages
+
+Consider the following data:
+
+| Batter        | Year | Hits | At Bats | Average  |
+|---------------|------|------|---------|----------|
+| Derek Jeter   | 1995 | 12   | 48      | .250     |
+| David Justice | 1995 | 104  | 411     | **.253** |
+| Derek Jeter   | 1996 | 183  | 582     | .314     |
+| David Justice | 1996 | 45   | 140     | **.321** |
+
+## Batting Averages
+To summarize, David Justice is a better batter....
+
+::: fragment
+
+| Batter | Hits | At Bats | Average |
+| ------ | ---- | ------- | ------- |
+| Derek Jeter | 12 + 183 = 195 | 48 + 582 = 630 | 195/630 = **.310** |
+| David Justice | 104 + 45 = 149 | 411 + 140 = 551 | 149/551 = .270 |
+
+:::
+
+[Wait, what?]{.fragment .emph .cerulean-dk .large}
+
+
+# Simpson's Paradox
+
+## Simpson's Paradox
+
+::: callout-note
+#### Simpson's Paradox
+
+A phenomenon in which a trend appears in several groups of data but disappears or reverses when groups are combined
+
+:::
+
+Arises from 
+
+- confounding variables
+- clustered data
+- failure to manage causal data
+- extremely different rates or amounts of data across categories
+
+
+## Simpson's Paradox, Visually
 
 ```{r}
-library(tibble)
-library(dplyr)
-library(tidyr)
-library(purrr)
-library(ggplot2)
-accident_data <- tribble(
-  ~female_mileage, ~female_nAccidents, ~female_accidentRatio, ~male_mileage, ~male_nAccidents, ~male_accidentRatio, ~accident_ratio_gender,
-  1390,238,51.80,1490,182,79.87,0.649,
-  4100,173,19.51,4210,156,24.23,0.805,
-  7200,172,17.78,7420,215,17.39,1.023,
-  11190,122,12.87,11390,272,14.31,0.899,
-  18020,70,11.76,19130,250,9.72,1.210,
-  43000,14,5.12,42350,124,6.14,0.833) |>
-  mutate(id = 1:n()) |>
-  dplyr::select(-accident_ratio_gender) |>
-  pivot_longer(-id) |>
-  separate_wider_regex(name, patterns = c(gender = "female|male", "_", variable = ".*")) |>
-  pivot_wider(names_from = variable, values_from = value)  |>
-  mutate(study = 1)
+#| layout-ncol: 3
+#| fig-alt: 
+#|   - A scatterplot with 300 observations showing a negative relationship between x, which lies between 0.8088 and 15.6080, and y, which lies between -5.2918 and 9.0437. As x increases, the value of y decreases. A linear trend line highlights this relationship. 
+#|   - A scatterplot with 300 observations showing the relationship between x, which lies between 0.8088 and 15.6080, and y, which lies between -5.2918 and 9.0437. There are six groups of points, and within each group, there is a positive relationship between x and y, however, the group means show a negative relationship between x and y. A set of six linear trend lines, one for each group, highlights this relationship. 
+#|   - A scatterplot with 300 observations showing the relationship between x, which lies between 0.8088 and 15.6080, and y, which lies between -5.2918 and 9.0437. There are six groups of points, and within each group, there is a positive relationship between x and y, however, the group means show a negative relationship between x and y. Both the overall and the within-group trend lines are shown, highlighting the different ways we can interpret the relationship between x and y. 
+#| fig-width: 8
+#| fig-height: 8
+#| fig-extra: fragment
+library(tidyverse)
 
-accident_data_2 <- tribble(
-  ~female_mileage, ~female_nAccidents, ~female_accidentRatio, ~male_mileage, ~male_nAccidents, ~male_accidentRatio, ~accident_ratio_gender,
-500,102,202.00,500,31,228.00,0.886,
-2000,169,72.50,2000,103,82.50,0.879,
-4000,98,40.50,4000,99,55.75,0.726,
-6000,83,32.50,6000,102,41.00,0.793,
-8000,65,24.63,8000,113,33.13,0.743,
-12500,70,22.32,12500,183,28.48,0.784,
-20000,27,13.00,20000,146,21.45,0.606
-)|>
-  mutate(id = 1:n()) |>
-  dplyr::select(-accident_ratio_gender) |>
-  pivot_longer(-id) |>
-  separate_wider_regex(name, patterns = c(gender = "female|male", "_", variable = ".*")) |>
-  pivot_wider(names_from = variable, values_from = value) |>
-  mutate(study = 2)
+set.seed(2093467)
+n <- 300 
+p <- 2  
+x <- matrix(rnorm(n * p), nrow = n, ncol = p)
+# Define Sigma, the target correlation matrix
+sigma <- matrix(c(
+  1.0, 0.5,
+  0.5, 1.0
+), nrow = p, byrow = TRUE)
 
-accident_comb <- bind_rows(accident_data, accident_data_2) |>
-  group_by(study, gender) |>
-  mutate(
-    totalAccidents = sum(nAccidents),
-    weight = 1/(1/nAccidents + 1/(totalAccidents-nAccidents))
-  ) |>
-  group_by(study, gender) |>
-  mutate(avgRatio = weighted.mean(accidentRatio, w = weight),
-         avgRatio_unweight = mean(accidentRatio))
+# Cholesky decomposition
+L <- t(chol(sigma))
+diag <- diag(c(1,1))
+y <- t(diag %*% L %*% t(x))
 
-ggplot(accident_comb, aes(x = mileage, y = nAccidents, color = gender)) + geom_point() + facet_grid(.~gender) + geom_smooth(method = "lm", se = F) + ylab("# Accidents")
 
-ggplot(accident_comb, aes(x = mileage, y = nAccidents)) + geom_point() + geom_smooth(method = "lm", se = F) + xlab("Milleage") + ylab("# Accidents")
+df <- tibble(group = rep(1:6, each = 50),
+             x_mean = rep(c(1:6)*2+1, each = 50),
+             x = x_mean + y[,1],
+             y = 10-x_mean+y[,2])
+
+ggplot(data = df, aes(x = x, y = y)) + geom_point() + geom_smooth(method = "lm", se = F, color = "black")
+
+ggplot(data = df, aes(x = x, y = y, color = factor(group))) +
+  geom_point(alpha = 0.25) + 
+  geom_smooth(method = "lm", se = F) + 
+  scale_color_discrete("Group")
+
+ggplot(data = df, aes(x = x, y = y, color = factor(group))) +
+  geom_point(alpha = 0.25) + geom_smooth(method = "lm", se = F) +
+  geom_smooth(aes(x = x, y = y), color = "black", method = "lm", se = F, inherit.aes = F) + 
+  scale_color_discrete("Group")
 ```
-https://math.stackexchange.com/questions/83756/more-examples-of-simpsons-paradox-barring-the-ones-on-wikipedia-titanic-and
-
 
