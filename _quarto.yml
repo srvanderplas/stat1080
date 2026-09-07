@@ -75,23 +75,23 @@ website:
         - href: weeks/week-060.qmd
           text: "W6. Dates/Times and Distributions"
         - href: weeks/week-070.qmd
-          text: "W7. Visualization"
+          text: "W7. Data Visualization"
         - href: weeks/week-080.qmd
-          text: "W8. Probability"
+          text: "W8. Statistics & Probability"
         - href: weeks/week-090.qmd
-          text: "W9. Results"
+          text: "W9. Data & Probability"
         - href: weeks/week-100.qmd
-          text: "W10. Intro & Conclusions"
+          text: "W10. Random Variables"
         - href: weeks/week-110.qmd
-          text: "W11. Summaries"
+          text: "W11. Parameters & Estimates"
         - href: weeks/week-120.qmd
-          text: "W12. Fallacies"
+          text: "W12. Statistical Inference"
         - href: weeks/week-130.qmd
-          text: "W13. Reports"
+          text: "W13. Regression"
         - href: weeks/week-140.qmd
-          text: "W14. Editing"
+          text: "W14. Regression"
         - href: weeks/week-150.qmd
-          text: "W15. Presentations"
+          text: "W15. Project Meetings"
             
 fontsize: "18pt"
 lineheight: "1.5ex"
@@ -109,22 +109,22 @@ format:
     mainfont: "Atkinson Hyperlegible"
     toc: true
     
-filters:
-  - linkrot
+# filters:
+#   - linkrot
   
-extensions:
-  linkrot:
-    fail-on-error: false      # Set to true to fail the build if broken links are found
-    timeout: 10               # Timeout in seconds for each URL check
-    user-agent: "Quarto-Linkrot/1.0"  # User agent string for requests
-    cache-results: true       # Cache results to avoid checking the same URL multiple times
-    debug: false              # Enable debug logging
-    output-file: linkrot-report.txt   # Write results to a file (e.g., "linkrot-report.txt")
-    skip-patterns:            # List of regex patterns to skip
-      - "example\\.com"
-      - "localhost"
-      - "usu\\.instructure\\.com"
-      - "archive\\.org"
+# extensions:
+  # linkrot:
+  #   fail-on-error: false      # Set to true to fail the build if broken links are found
+  #   timeout: 10               # Timeout in seconds for each URL check
+  #   user-agent: "Quarto-Linkrot/1.0"  # User agent string for requests
+  #   cache-results: true       # Cache results to avoid checking the same URL multiple times
+  #   debug: false              # Enable debug logging
+  #   output-file: linkrot-report.txt   # Write results to a file (e.g., "linkrot-report.txt")
+  #   skip-patterns:            # List of regex patterns to skip
+  #     - "example\\.com"
+  #     - "localhost"
+  #     - "usu\\.instructure\\.com"
+  #     - "archive\\.org"
       
 execute:
   freeze: auto  # re-render only when source changes
