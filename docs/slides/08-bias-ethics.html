@@ -238,6 +238,31 @@
 </table>
 </div>
 <p><span class="fragment emph cerulean-dk large">Wait, what?</span></p>
+</section>
+<section id="batting-averages-3" class="slide level2">
+<h2>Batting Averages</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><a href="08-bias-ethics_files/figure-revealjs/unnamed-chunk-2-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img data-src="08-bias-ethics_files/figure-revealjs/unnamed-chunk-2-1.png" width="960"></a></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="batting-averages-4" class="slide level2">
+<h2>Batting Averages</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><a href="08-bias-ethics_files/figure-revealjs/unnamed-chunk-3-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img data-src="08-bias-ethics_files/figure-revealjs/unnamed-chunk-3-1.png" width="960"></a></p>
+</figure>
+</div>
+</div>
+</div>
+<p><span class="emph sage-dk">Times At Bat is a <strong>lurking variable</strong> that explains why the overall batting average is unexpectedly different from the by-year batting average</span></p>
 </section></section>
 <section>
 <section id="simpsons-paradox" class="title-slide slide level1 center">
@@ -276,7 +301,7 @@
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="08-bias-ethics_files/figure-revealjs/unnamed-chunk-2-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="Negative association between x and y"><img data-src="08-bias-ethics_files/figure-revealjs/unnamed-chunk-2-1.png" alt="A scatterplot with 300 observations showing a negative relationship between x, which lies between 0.8088 and 15.6080, and y, which lies between -5.2918 and 9.0437. As x increases, the value of y decreases. A linear trend line highlights this relationship." width="768"></a></p>
+<p><a href="08-bias-ethics_files/figure-revealjs/unnamed-chunk-4-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5" title="Negative association between x and y"><img data-src="08-bias-ethics_files/figure-revealjs/unnamed-chunk-4-1.png" alt="A scatterplot with 300 observations showing a negative relationship between x, which lies between 0.8088 and 15.6080, and y, which lies between -5.2918 and 9.0437. As x increases, the value of y decreases. A linear trend line highlights this relationship." width="768"></a></p>
 <figcaption>Negative association between x and y</figcaption>
 </figure>
 </div>
@@ -284,7 +309,7 @@
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="08-bias-ethics_files/figure-revealjs/unnamed-chunk-2-2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="Positive association between x and y, within each group"><img data-src="08-bias-ethics_files/figure-revealjs/unnamed-chunk-2-2.png" alt="A scatterplot with 300 observations showing the relationship between x, which lies between 0.8088 and 15.6080, and y, which lies between -5.2918 and 9.0437. There are six groups of points, and within each group, there is a positive relationship between x and y, however, the group means show a negative relationship between x and y. A set of six linear trend lines, one for each group, highlights this relationship." width="768"></a></p>
+<p><a href="08-bias-ethics_files/figure-revealjs/unnamed-chunk-4-2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6" title="Positive association between x and y, within each group"><img data-src="08-bias-ethics_files/figure-revealjs/unnamed-chunk-4-2.png" alt="A scatterplot with 300 observations showing the relationship between x, which lies between 0.8088 and 15.6080, and y, which lies between -5.2918 and 9.0437. There are six groups of points, and within each group, there is a positive relationship between x and y, however, the group means show a negative relationship between x and y. A set of six linear trend lines, one for each group, highlights this relationship." width="768"></a></p>
 <figcaption>Positive association between x and y, within each group</figcaption>
 </figure>
 </div>
@@ -292,13 +317,44 @@
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="08-bias-ethics_files/figure-revealjs/unnamed-chunk-2-3.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5" title="???"><img data-src="08-bias-ethics_files/figure-revealjs/unnamed-chunk-2-3.png" alt="A scatterplot with 300 observations showing the relationship between x, which lies between 0.8088 and 15.6080, and y, which lies between -5.2918 and 9.0437. There are six groups of points, and within each group, there is a positive relationship between x and y, however, the group means show a negative relationship between x and y. Both the overall and the within-group trend lines are shown, highlighting the different ways we can interpret the relationship between x and y." width="768"></a></p>
+<p><a href="08-bias-ethics_files/figure-revealjs/unnamed-chunk-4-3.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7" title="???"><img data-src="08-bias-ethics_files/figure-revealjs/unnamed-chunk-4-3.png" alt="A scatterplot with 300 observations showing the relationship between x, which lies between 0.8088 and 15.6080, and y, which lies between -5.2918 and 9.0437. There are six groups of points, and within each group, there is a positive relationship between x and y, however, the group means show a negative relationship between x and y. Both the overall and the within-group trend lines are shown, highlighting the different ways we can interpret the relationship between x and y." width="768"></a></p>
 <figcaption>???</figcaption>
 </figure>
 </div>
 </div>
 </div>
 </div>
+<ul>
+<li class="fragment"><p>When interpreting results, it’s critical to explain both the group-wise trend and the overall trend.<br>
+<span class="fragment emph">This can get complicated</span></p></li>
+<li class="fragment"><p>Data ethics means explaining things in <strong>context</strong> and not stopping at the first plot or model<br>
+<span class="fragment emph">Even if the first plot or model matches your expectations</span></p></li>
+</ul>
+</section></section>
+<section>
+<section id="lies-damned-lies-and-statistics" class="title-slide slide level1 center">
+<h1>Lies, Damned Lies, and Statistics</h1>
+
+</section>
+<section id="ethics" class="slide level2">
+<h2>Ethics</h2>
+<ul>
+<li class="fragment">Understand how the data was collected
+<ul>
+<li class="fragment">potential biases</li>
+<li class="fragment">missing observations</li>
+</ul></li>
+<li class="fragment">Understand relationships between variables
+<ul>
+<li class="fragment">including variables that may not be present in the data</li>
+</ul></li>
+<li class="fragment">Interpret results with humility
+<ul>
+<li class="fragment">allow for the possibility that you don’t have all the information</li>
+<li class="fragment">consider how data, model, or interpretation might be wrong</li>
+</ul></li>
+<li class="fragment">As a consumer, be skeptical, especially when results confirm your prior beliefs</li>
+</ul>
 
 
 </section></section>

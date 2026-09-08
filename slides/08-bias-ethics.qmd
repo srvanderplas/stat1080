@@ -45,6 +45,55 @@ To summarize, David Justice is a better batter....
 [Wait, what?]{.fragment .emph .cerulean-dk .large}
 
 
+## Batting Averages
+
+```{r}
+library(ggplot2)
+library(tibble)
+library(dplyr)
+
+ba <- tibble(player = c("Jeter", "Justice", "Jeter", "Justice"), year = c(1995, 1995, 1996, 1996), hits = c(12, 104, 183, 45), at_bats = c(48, 411, 582, 140)) |>
+  mutate(ba = hits/at_bats)
+ba_sum <- ba |> group_by(player) |> summarize(ba = sum(hits)/sum(at_bats))
+
+ggplot(ba, aes(x = year, y = ba, color = factor(player))) + 
+  geom_point() + 
+  geom_smooth(method = "lm") + 
+  geom_hline(data = ba_sum, aes(yintercept = ba, color = factor(player)), inherit.aes = F) + 
+  geom_text(data = ba_sum, aes(x = -Inf, y = ba, label = paste(player, "Overall\nBatting Average")), inherit.aes = F, vjust = 0.5, hjust = -0.1) + 
+  scale_x_continuous(breaks = 1995:1996) + 
+  scale_color_manual(values = c("Jeter" = "#0F2439", "Justice" = "#B21028")) +
+  guides(size = guide_legend("At bats", override.aes = list(linetype = NA, fill = NA)), color = guide_legend("Player", override.aes=list(shape = NA, fill = NA))) + 
+  theme(legend.background = element_blank(), legend.key = element_rect(fill = "white"), legend.box = element_blank(),  rect=element_rect(fill="white")) + 
+  ylab("Batting Average")
+```
+
+## Batting Averages
+
+```{r}
+library(ggplot2)
+library(tibble)
+library(dplyr)
+
+ba <- tibble(player = c("Jeter", "Justice", "Jeter", "Justice"), year = c(1995, 1995, 1996, 1996), hits = c(12, 104, 183, 45), at_bats = c(48, 411, 582, 140)) |>
+  mutate(ba = hits/at_bats)
+ba_sum <- ba |> group_by(player) |> summarize(ba = sum(hits)/sum(at_bats))
+
+ggplot(ba, aes(x = year, y = ba, color = factor(player), size = at_bats)) + 
+  geom_point() + 
+  geom_smooth(method = "lm") + 
+  geom_hline(data = ba_sum, aes(yintercept = ba, color = factor(player)), inherit.aes = F) + 
+  geom_text(data = ba_sum, aes(x = -Inf, y = ba, label = paste(player, "Overall\nBatting Average")), inherit.aes = F, vjust = 0.5, hjust = -0.1) + 
+  scale_x_continuous(breaks = 1995:1996) + 
+  scale_color_manual(values = c("Jeter" = "#0F2439", "Justice" = "#B21028")) +
+  scale_size_area() + 
+  guides(size = guide_legend("At bats", override.aes = list(linetype = NA, fill = NA)), color = guide_legend("Player", override.aes=list(shape = NA, fill = NA))) + 
+  theme(legend.background = element_blank(), legend.key = element_rect(fill = "white"), legend.box = element_blank(),  rect=element_rect(fill="white")) + 
+  ylab("Batting Average")
+```
+
+[Times At Bat is a **lurking variable** that explains why the overall batting average is unexpectedly different from the by-year batting average]{.emph .sage-dk}
+
 # Simpson's Paradox
 
 ## Simpson's Paradox
@@ -107,11 +156,42 @@ ggplot(data = df, aes(x = x, y = y)) + geom_point() + geom_smooth(method = "lm",
 ggplot(data = df, aes(x = x, y = y, color = factor(group))) +
   geom_point(alpha = 0.25) + 
   geom_smooth(method = "lm", se = F) + 
-  scale_color_discrete("Group")
+  scale_color_manual("Group", values = c("#f16278", "#f58220","#124734", "#6b9e85", "#01add8", "#288dc2"))  
 
 ggplot(data = df, aes(x = x, y = y, color = factor(group))) +
   geom_point(alpha = 0.25) + geom_smooth(method = "lm", se = F) +
   geom_smooth(aes(x = x, y = y), color = "black", method = "lm", se = F, inherit.aes = F) + 
   scale_color_discrete("Group")
 ```
+
+::: {.incremental}
+
+- When interpreting results, it's critical to explain both the group-wise trend and the overall trend.    
+[This can get complicated]{.fragment .emph}
+
+- Data ethics means explaining things in **context** and not stopping at the first plot or model    
+[Even if the first plot or model matches your expectations]{.fragment .emph}
+
+:::
+
+# Lies, Damned Lies, and Statistics
+
+## Ethics
+
+::: incremental
+
+- Understand how the data was collected
+  - potential biases
+  - missing observations
+  
+- Understand relationships between variables
+  - including variables that may not be present in the data
+
+- Interpret results with humility
+  - allow for the possibility that you don't have all the information
+  - consider how data, model, or interpretation might be wrong
+  
+- As a consumer, be skeptical, especially when results confirm your prior beliefs
+
+:::
 

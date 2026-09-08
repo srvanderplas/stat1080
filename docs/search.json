@@ -2139,6 +2139,27 @@
     "href": "slides/08-bias-ethics.html#simpsons-paradox-visually",
     "title": "1.8 Bias and Ethics",
     "section": "Simpson’s Paradox, Visually",
-    "text": "Simpson’s Paradox, Visually\n\n\n\n\n\n\nNegative association between x and y\n\n\n\n\n\n\n\nPositive association between x and y, within each group\n\n\n\n\n\n\n\n???"
+    "text": "Simpson’s Paradox, Visually\n\n\n\n\n\n\nNegative association between x and y\n\n\n\n\n\n\n\nPositive association between x and y, within each group\n\n\n\n\n\n\n\n???\n\n\n\n\n\n\nWhen interpreting results, it’s critical to explain both the group-wise trend and the overall trend.\nThis can get complicated\nData ethics means explaining things in context and not stopping at the first plot or model\nEven if the first plot or model matches your expectations"
+  },
+  {
+    "objectID": "slides/08-bias-ethics.html#batting-averages-3",
+    "href": "slides/08-bias-ethics.html#batting-averages-3",
+    "title": "1.8 Bias and Ethics",
+    "section": "Batting Averages",
+    "text": "Batting Averages"
+  },
+  {
+    "objectID": "slides/08-bias-ethics.html#batting-averages-4",
+    "href": "slides/08-bias-ethics.html#batting-averages-4",
+    "title": "1.8 Bias and Ethics",
+    "section": "Batting Averages",
+    "text": "Batting Averages\n\n\n\n\n\n\n\n\n\nTimes At Bat is a lurking variable that explains why the overall batting average is unexpectedly different from the by-year batting average"
+  },
+  {
+    "objectID": "slides/08-bias-ethics.html#ethics",
+    "href": "slides/08-bias-ethics.html#ethics",
+    "title": "1.8 Bias and Ethics",
+    "section": "Ethics",
+    "text": "Ethics\n\nUnderstand how the data was collected\n\npotential biases\nmissing observations\n\nUnderstand relationships between variables\n\nincluding variables that may not be present in the data\n\nInterpret results with humility\n\nallow for the possibility that you don’t have all the information\nconsider how data, model, or interpretation might be wrong\n\nAs a consumer, be skeptical, especially when results confirm your prior beliefs"
   }
 ]
