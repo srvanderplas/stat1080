@@ -7,7 +7,7 @@ format:
     
     css: deps/styles.scss
     includes:
-      in_header: css/header.html
+      in_header: deps/header.html
     lib_dir: libs
     highlight: "arrow"
     chalkboard: true

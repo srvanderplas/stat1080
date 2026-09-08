@@ -2132,13 +2132,13 @@
     "href": "slides/08-bias-ethics.html#simpsons-paradox-1",
     "title": "1.8 Bias and Ethics",
     "section": "Simpson’s Paradox",
-    "text": "Simpson’s Paradox\n\n\n\n\n\n\nSimpson’s Paradox\n\n\nA phenomenon in which a trend appears in several groups of data but disappears or reverses when groups are combined\n\n\n\nArises from\n\nconfounding variables\nclustered data\nfailure to manage causal data\nextremely different rates or amounts of data across categories"
+    "text": "Simpson’s Paradox\n\n\n\n\n\n\n\nDefinition: Simpson’s Paradox\n\n\nA phenomenon in which a trend appears in several groups of data but disappears or reverses when groups are combined\n\n\n\n\nArises from\n\nconfounding variables\nclustered data\nfailure to manage causal data\nextremely different rates or amounts of data across categories"
   },
   {
     "objectID": "slides/08-bias-ethics.html#simpsons-paradox-visually",
     "href": "slides/08-bias-ethics.html#simpsons-paradox-visually",
     "title": "1.8 Bias and Ethics",
     "section": "Simpson’s Paradox, Visually",
-    "text": "Simpson’s Paradox, Visually"
+    "text": "Simpson’s Paradox, Visually\n\n\n\n\n\n\nNegative association between x and y\n\n\n\n\n\n\n\nPositive association between x and y, within each group\n\n\n\n\n\n\n\n???"
   }
 ]

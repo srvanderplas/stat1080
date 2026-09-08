@@ -72,6 +72,10 @@ Arises from
 #|   - A scatterplot with 300 observations showing a negative relationship between x, which lies between 0.8088 and 15.6080, and y, which lies between -5.2918 and 9.0437. As x increases, the value of y decreases. A linear trend line highlights this relationship. 
 #|   - A scatterplot with 300 observations showing the relationship between x, which lies between 0.8088 and 15.6080, and y, which lies between -5.2918 and 9.0437. There are six groups of points, and within each group, there is a positive relationship between x and y, however, the group means show a negative relationship between x and y. A set of six linear trend lines, one for each group, highlights this relationship. 
 #|   - A scatterplot with 300 observations showing the relationship between x, which lies between 0.8088 and 15.6080, and y, which lies between -5.2918 and 9.0437. There are six groups of points, and within each group, there is a positive relationship between x and y, however, the group means show a negative relationship between x and y. Both the overall and the within-group trend lines are shown, highlighting the different ways we can interpret the relationship between x and y. 
+#| fig-cap: 
+#|   - Negative association between x and y
+#|   - Positive association between x and y, within each group
+#|   - ???
 #| fig-width: 8
 #| fig-height: 8
 #| fig-extra: fragment
