@@ -49,8 +49,8 @@ To summarize, David Justice is a better batter....
 
 ## Simpson's Paradox
 
-::: callout-note
-#### Simpson's Paradox
+::: {.callout-note .large}
+#### Definition: Simpson's Paradox
 
 A phenomenon in which a trend appears in several groups of data but disappears or reverses when groups are combined
 

@@ -278,3 +278,35 @@ $theme-colors: (
   max-width: unset !important;
   max-height: unset !important;
 }
+.highlight-last  {
+  color: $grey-dk;
+  .current-fragment {
+    color: $aggie-blue;
+  }
+}
+
+/*https://slidecrafting-book.com/fragments#sliding-code-out-and-results-in*/
+$highlightcolors: (
+  $pink: #f16278;
+  $orange: #f58220;
+  $green: #124734;
+  $sage: #6b9e85;
+  $sage-dk: #3e604c; 
+  $cerulean: #01add8;
+  $blue: #288dc2;
+);
+
+@each $name, $color in $highlightcolors {
+  .reveal .slides section .fragment.hl-#{$name} {
+    opacity: unset;
+    visibility: unset;
+
+    &.visible {
+      background-color: lighten($color, 80%);
+    }
+
+    &.current-fragment {
+      background-color: lighten($color, 50%);
+    }
+  }
+}
