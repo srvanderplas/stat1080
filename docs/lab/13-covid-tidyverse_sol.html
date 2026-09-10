@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>week-050 – STAT 1080 - Fall 2026</title>
+<title>5.2.a - Class Activity – STAT 1080 - Fall 2026</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -22,6 +22,41 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -75,8 +110,37 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<meta property="og:title" content="STAT 1080 - Fall 2026">
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<meta property="og:title" content="5.2.a - Class Activity – STAT 1080 - Fall 2026">
 <meta property="og:description" content="Homepage for STAT 1080 - Data and the Stories They Tell.">
 <meta property="og:site_name" content="STAT 1080 - Fall 2026">
 </head>
@@ -370,79 +434,114 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#week-5-the-tidyverse" id="toc-week-5-the-tidyverse" class="nav-link active" data-scroll-target="#week-5-the-tidyverse">Week 5: The Tidyverse</a>
-  <ul class="collapse">
-  <li><a href="#reading" id="toc-reading" class="nav-link" data-scroll-target="#reading">📖 Reading</a></li>
-  <li><a href="#prepare-for-class" id="toc-prepare-for-class" class="nav-link" data-scroll-target="#prepare-for-class">📐 Prepare for class</a></li>
-  <li><a href="#monday" id="toc-monday" class="nav-link" data-scroll-target="#monday">🥱 Monday 🌛</a></li>
-  <li><a href="#wednesday" id="toc-wednesday" class="nav-link" data-scroll-target="#wednesday">🐪️ Wednesday 🐦‍⬛</a></li>
-  <li><a href="#friday" id="toc-friday" class="nav-link" data-scroll-target="#friday">🎉 Friday 🥳</a></li>
-  <li><a href="#extra-resourcesreading" id="toc-extra-resourcesreading" class="nav-link" data-scroll-target="#extra-resourcesreading">Extra Resources/Reading</a></li>
-  </ul></li>
+  <li><a href="#countries-in-the-americas" id="toc-countries-in-the-americas" class="nav-link active" data-scroll-target="#countries-in-the-americas"><span class="header-section-number">1</span> Countries in the Americas</a></li>
+  <li><a href="#case-fatality-rate" id="toc-case-fatality-rate" class="nav-link" data-scroll-target="#case-fatality-rate"><span class="header-section-number">2</span> Case Fatality Rate</a></li>
+  <li><a href="#usa-vs.-canada" id="toc-usa-vs.-canada" class="nav-link" data-scroll-target="#usa-vs.-canada"><span class="header-section-number">3</span> USA vs.&nbsp;Canada</a></li>
+  <li><a href="#statistical-differences" id="toc-statistical-differences" class="nav-link" data-scroll-target="#statistical-differences"><span class="header-section-number">4</span> Statistical Differences</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://srvanderplas.github.io/stat1080/issues/new" class="toc-action"><i class="bi bi-git"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content column-page-left" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+<main class="content column-page-left" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">5.2.a - Class Activity</h1>
+</div>
 
 
 
+<div class="quarto-title-meta column-page-left">
+
+    
+  
+    
+  </div>
+  
 
 
-<section id="week-5-the-tidyverse" class="level1">
-<h1>Week 5: The Tidyverse</h1>
-<p>September 28-04, 2026</p>
-<section id="reading" class="level2">
-<h2 class="anchored" data-anchor-id="reading">📖 Reading</h2>
-<ul class="task-list">
-<li><label><input type="checkbox">(for Mon) <a href="https://rafalab.dfci.harvard.edu/dsbook-part-1/R/tidyverse.html" target="_blank">IDS I Ch 4 - The Tidyverse</a></label></li>
-<li><label><input type="checkbox">(for Mon) <a href="https://srvanderplas.github.io/stat-computing-r-python/part-wrangling/03-data-cleaning.html" target="_blank">SC Ch 22 - Data Cleaning</a> - Focus on the (R) examples of any dplyr verb you don’t quite get.</label></li>
-<li><label><input type="checkbox">(for Wed) <a href="https://srvanderplas.github.io/stat-computing-r-python/part-wrangling/05-data-reshape.html" target="_blank">SC Ch 24 - Reshaping Data</a> - Be able to identify wide and long data</label></li>
-<li><label><input type="checkbox">(for Fri) No reading – just be prepared for lab!</label></li>
-</ul>
-</section>
-<section id="prepare-for-class" class="level2">
-<h2 class="anchored" data-anchor-id="prepare-for-class">📐 Prepare for class</h2>
-<ul class="task-list">
-<li><label><input type="checkbox">(for Mon) <a href="https://usu.instructure.com/courses/819584/quizzes/1499842" target="_blank">Reading Check 5.1 - The Tidyverse, Pipes, and dplyr</a></label></li>
-<li><label><input type="checkbox">(for Wed) <a href="">Reading Check 5.2 - Wide, Long, and Tidy data with tidyr</a></label></li>
-</ul>
-</section>
-<section id="monday" class="level2">
-<h2 class="anchored" data-anchor-id="monday">🥱 Monday 🌛</h2>
+</header>
+
+
+<p>This assignment is intended to get you familiar with the tidyverse using real COVID-19 data.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>The following code chunk scrapes the <code>.csv</code> files we will be analyzing from the web renames and selects the subset of columns that we will be using for analysis.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>url <span class="ot">&lt;-</span> <span class="st">"https://srhdpeuwpubsa.blob.core.windows.net/whdh/COVID/"</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>url_case <span class="ot">&lt;-</span> <span class="fu">paste0</span>(url, <span class="st">"WHO-COVID-19-global-table-data.csv"</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>covid_case <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(url_case) <span class="sc">|&gt;</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="at">name =</span> Name, <span class="at">region =</span> <span class="st">`</span><span class="at">WHO Region</span><span class="st">`</span>, </span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">case_total =</span> <span class="st">`</span><span class="at">Cases - cumulative total</span><span class="st">`</span>,</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>         <span class="at">case_pop =</span> <span class="st">`</span><span class="at">Cases - cumulative total per 100000 population</span><span class="st">`</span>,</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>         <span class="at">death_total =</span> <span class="st">`</span><span class="at">Deaths - cumulative total</span><span class="st">`</span>,</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>         <span class="at">death_pop =</span> <span class="st">`</span><span class="at">Deaths - cumulative total per 100000 population</span><span class="st">`</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>The renamed columns that remain are:</p>
 <ul>
-<li><a href="https://usu.instructure.com/courses/819584/assignments/5292941" target="_blank">Attendance Quiz 09/28</a></li>
-<li><a href="../slides/13-tidyverse-dplyr.html" target="_blank">Tidyverse Programming Basics: Tibbles and <code>dplyr</code></a></li>
-<li><a href="https://usu.instructure.com/courses/819584/quizzes/1462923" target="_blank">5.1.i Covid Case Exploration</a> (Canvas) <a href="../lab/_13-covid-tidyverse.qmd">qmd template</a> <a href="../lab/13-covid-tidyverse.html">html file</a></li>
+<li><code>name</code>: Country name</li>
+<li><code>region</code>: World Health Organization (WHO) region.</li>
+<li><code>case_total</code>: Cumulative number of reported COVID cases since Jan 2020</li>
+<li><code>case_pop</code>: Cumulative number of reported COVID cases per 100,000 people since Jan 2020</li>
+<li><code>death_total</code>: Cumulative number of reported COVID deaths since Jan 2020</li>
+<li><code>death_pop</code>: Cumulative number of reported COVID deaths per 100,000 people since Jan 2020</li>
 </ul>
+<section id="countries-in-the-americas" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Countries in the Americas</h1>
+<p>We are interested in comparing COVID statistics from the United States to other large countries in our region. Please create a new dataframe called <code>covid_case_am</code> which contains all countries in the “Americas” region. Use the pipe <code>|&gt;</code> statement to help you complete the task.</p>
+<p><strong>How many countries are in this region?</strong> Please answer this question in the associated canvas quiz.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>covid_case_am <span class="ot">&lt;-</span> covid_case <span class="sc">|&gt;</span> </span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(region <span class="sc">==</span> <span class="st">"Americas"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
 </section>
-<section id="wednesday" class="level2">
-<h2 class="anchored" data-anchor-id="wednesday">🐪️ Wednesday 🐦‍⬛</h2>
-<ul>
-<li><a href="https://usu.instructure.com/courses/819584/assignments/5292942" target="_blank">Attendance Quiz 09/30</a></li>
-<li><a href="../slides/14-tidyverse-tidyr.html" target="_blank">Tidyverse Programming Basics: Reshaping Data</a></li>
-</ul>
+<section id="case-fatality-rate" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Case Fatality Rate</h1>
+<p>Within the “Americas” region, we want to know which countries had the highest percentage of deaths per reported case. This is calculated as <span class="math inline">\(100 * \frac{\text{deaths\_total}}{\text{case\_total}}\)</span>. Create a new variable called <code>death_rate</code> that reflects this quantity. Then, after calculating this quantity, retain only countries whose death rate exceeds 3% (or 3 deaths per 100 cases). Note that you do not need to save this dataframe to a variable, just show the output.</p>
+<p><strong>What are the three countries for which the death rate exceeds 3 deaths per 100 cases?</strong> Answer this question in the associated canvas quiz.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>covid_case_am <span class="ot">&lt;-</span> covid_case_am <span class="sc">|&gt;</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">death_rate =</span> <span class="dv">100</span> <span class="sc">*</span> (death_total <span class="sc">/</span> case_total)) </span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>covid_case_am <span class="sc">|&gt;</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(death_rate <span class="sc">&gt;</span> <span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 7
+  name    region   case_total case_pop death_total death_pop death_rate
+  &lt;chr&gt;   &lt;chr&gt;         &lt;dbl&gt;    &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt;      &lt;dbl&gt;
+1 Mexico  Americas    7631898     5919      335141       260       4.39
+2 Peru    Americas    4533859    13751      221072       670       4.88
+3 Ecuador Americas    1082356     6135       36064       204       3.33</code></pre>
+</div>
+</div>
 </section>
-<section id="friday" class="level2">
-<h2 class="anchored" data-anchor-id="friday">🎉 Friday 🥳</h2>
-<ul>
-<li><a href="https://usu.instructure.com/courses/819584/assignments/5292943" target="_blank">Attendance Quiz 10/02</a></li>
-<li><a href="../lab/15-tidyverse.html" target="_blank">Lab: Tidyverse Programming</a></li>
-</ul>
+<section id="usa-vs.-canada" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> USA vs.&nbsp;Canada</h1>
+<p>Using the variable you created in the previous problem, create a dataframe that includes only the “United States of America” and “Canada”. Retain only the columns <code>name</code>, <code>case_pop</code>, <code>death_pop</code>, and <code>death_rate</code>.</p>
+<p><strong>What is the difference in the deaths per 100,000 people, rounded to the nearest integer?</strong></p>
+<p>Please answer in your canvas quiz.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>covid_case_am <span class="sc">|&gt;</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(name <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"United States of America"</span>, <span class="st">"Canada"</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(name, case_pop, death_pop, death_rate)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 4
+  name                     case_pop death_pop death_rate
+  &lt;chr&gt;                       &lt;dbl&gt;     &lt;dbl&gt;      &lt;dbl&gt;
+1 Canada                      12768       146       1.15
+2 United States of America    31250       374       1.20</code></pre>
+</div>
+</div>
 </section>
-<section id="extra-resourcesreading" class="level2">
-<h2 class="anchored" data-anchor-id="extra-resourcesreading">Extra Resources/Reading</h2>
-<ul>
-<li><a href="https://srvanderplas.github.io/stat-computing-r-python/part-gen-prog/02-prog-functions.html#pipes" target="_blank">SC Ch 10 - Functions, section 4: Pipes</a></li>
-<li><a href="https://style.tidyverse.org/pipes.html" target="_blank">Tidyverse Style Guide - Pipes</a></li>
-<li><a href="https://srvanderplas.github.io/stat-computing-r-python/part-gen-prog/07-prog-data.html" target="_blank">SC Ch 16 - Programming with Data</a> - data explorations worked out with R/tidyverse code. You don’t know how to do graphics yet, but hopefully the data operations make sense.</li>
-<li><a href="https://www.youtube.com/watch?v=5ub92c-5xFQ&amp;list=PL19ev-r1GBwkuyiwnxoHTRC8TTqP8OEi8" target="_blank">Tidy Tuesday Screencasts</a> (YouTube, David Robinson). These show example data analyses in real time, with commentary, using a new dataset each week. These were primarily recorded during the pandemic, but are still an incredibly valuable resource for learing how to work with data.</li>
-<li><a href="https://allisonhorst.com/r-packages-functions" target="_blank">Allison Horst’s Tidyverse Illustrations</a> - mostly illustrates tidyverse functions.</li>
-<li><a href="https://allisonhorst.com/wickham-tidy-bakers" target="_blank">Functional Programming Illustrations</a></li>
-</ul>
+<section id="statistical-differences" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Statistical Differences</h1>
+<p><strong>Discuss with a partner:</strong> What do you notice about the difference in the Canadian and American statistics? Comment briefly below.</p>
+<p><em>The death rates per reported case for the US and Canada seem similar. However, the US had more than double the number of cases and deaths per 100,000 people. Remember that the <code>case_pop</code> and <code>death_pop</code> variables control for population size, so this suggests that case rates and death rates were much higher in the US than they were in Canada.</em></p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->

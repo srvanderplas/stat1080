@@ -101,7 +101,7 @@ schedule:
         - Slides: [Bias and Ethics](../slides/08-bias-ethics.qmd){target="_blank"}
     class3: |
         - [Attendance Quiz 09/18](https://usu.instructure.com/courses/819584/assignments/5292843){target="_blank"}
-        - [ ] [3.3.i - Bias and Ethics Activity](https://usu.instructure.com/courses/819584/quizzes/1462857){target="_blank"} (submit in Canvas). [qmd file](../lab/_08-bias-and-ethics.qmd){target="_blank"} and [html file](../lab/08-bias-and-ethics.qmd){target="_blank"}
+        - [ ] [3.3.i - Bias and Ethics Activity](https://usu.instructure.com/courses/819584/quizzes/1462857){target="_blank"} (submit in Canvas). [qmd template](../lab/_08-bias-and-ethics.qmd){target="_blank"}, [html file](../lab/08-bias-and-ethics.qmd){target="_blank"}
     extra: |
         - [Causal Inference](https://www.youtube.com/watch?v=gRkUhg9Wb-I){target="_blank"} (YouTube, Dr. David Sontag, MIT OpenCourseWare) - The alternative to correlation -- how to show causality
         - [Crash Course Statistics: Henrietta Lacks, the Tuskegee Experiment, and Ethical Data Collection: Crash Course Statistics #12](https://www.youtube.com/watch?v=CzNANZnoiRs){target="_blank"} (YouTube, CrashCourse)
@@ -137,15 +137,16 @@ schedule:
     reading: |
         - [ ] (for Mon) [IDS I Ch 4 - The Tidyverse](https://rafalab.dfci.harvard.edu/dsbook-part-1/R/tidyverse.html){target="_blank"}
         - [ ] (for Mon) [SC Ch 22 - Data Cleaning](https://srvanderplas.github.io/stat-computing-r-python/part-wrangling/03-data-cleaning.html){target="_blank"} - Focus on the (R) examples of any dplyr verb you don't quite get. 
-        - [ ] (for Wed) [SC Ch 24 - Reshaping Data](https://srvanderplas.github.io/stat-computing-r-python/part-wrangling/05-data-reshape.html){target="_blank"} - Be able to identify wide and long data
-        - [ ] (for Fri) No reading -- just be prepared for lab!
+        - [ ] (for Wed) [SC Ch 24 - Reshaping Data](https://srvanderplas.github.io/stat-computing-r-python/part-wrangling/05-data-reshape.html){target="_blank"} - Be able to identify wide and long data.
+        - [ ] (for Fri) Watch [I Found the Dumbest Time Zone (@vlogbrothers)](https://www.youtube.com/watch?v=Lz3jAEdzbbA) and [The Problem with Time & Timezones (@computerphile)](https://www.youtube.com/watch?v=-5wpm-gesOY) to get ready for next week.
     prepare: |
         - [ ] (for Mon) [Reading Check 5.1 - The Tidyverse, Pipes, and dplyr](https://usu.instructure.com/courses/819584/quizzes/1499842){target="_blank"}
         - [ ] (for Wed) [Reading Check 5.2 - Wide, Long, and Tidy data with tidyr]()
+        - [ ] (for Fri) [Reading Check 5.3 - Dates and Times]()
     class1: |
         - [Attendance Quiz 09/28](https://usu.instructure.com/courses/819584/assignments/5292941){target="_blank"}
         - [Tidyverse Programming Basics: Tibbles and `dplyr`](../slides/13-tidyverse-dplyr.qmd){target="_blank"}
-        - [5.1.i Covid Case Exploration](https://usu.instructure.com/courses/819584/quizzes/1462923){target="_blank"}
+        - [5.1.i Covid Case Exploration](https://usu.instructure.com/courses/819584/quizzes/1462923){target="_blank"} (Canvas) [qmd template](../lab/_13-covid-tidyverse.qmd) [html file](../lab/13-covid-tidyverse.qmd)
     class2: |
         - [Attendance Quiz 09/30](https://usu.instructure.com/courses/819584/assignments/5292942){target="_blank"}
         - [Tidyverse Programming Basics: Reshaping Data](../slides/14-tidyverse-tidyr.qmd){target="_blank"}
@@ -154,11 +155,11 @@ schedule:
         - [Lab: Tidyverse Programming](../lab/15-tidyverse.qmd){target="_blank"}
     extra: |
         - [SC Ch 10 - Functions, section 4: Pipes](https://srvanderplas.github.io/stat-computing-r-python/part-gen-prog/02-prog-functions.html#pipes){target="_blank"}
-        - [Tidyverse Style Guide - Pipes](https://style.tidyverse.org/pipes.html){target="_blank"}
         - [SC Ch 16 - Programming with Data](https://srvanderplas.github.io/stat-computing-r-python/part-gen-prog/07-prog-data.html){target="_blank"} - data explorations worked out with R/tidyverse code. You don't know how to do graphics yet, but hopefully the data operations make sense.
-        - [Tidy Tuesday Screencasts](https://www.youtube.com/watch?v=5ub92c-5xFQ&list=PL19ev-r1GBwkuyiwnxoHTRC8TTqP8OEi8){target="_blank"} (YouTube, David Robinson). These show example data analyses in real time, with commentary, using a new dataset each week. These were primarily recorded during the pandemic, but are still an incredibly valuable resource for learing how to work with data.
         - [Allison Horst's Tidyverse Illustrations](https://allisonhorst.com/r-packages-functions){target="_blank"} - mostly illustrates tidyverse functions. 
-        - [Functional Programming Illustrations](https://allisonhorst.com/wickham-tidy-bakers){target="_blank"}
+        - [Tidyverse Style Guide - Pipes](https://style.tidyverse.org/pipes.html){target="_blank"}
+        - [Tidy Tuesday Screencasts](https://www.youtube.com/watch?v=5ub92c-5xFQ&list=PL19ev-r1GBwkuyiwnxoHTRC8TTqP8OEi8){target="_blank"} (YouTube, David Robinson). These show example data analyses in real time, with commentary, using a new dataset each week. These were primarily recorded during the pandemic, but are still an incredibly valuable resource for learing how to work with data.
+        # - [Functional Programming Illustrations](https://allisonhorst.com/wickham-tidy-bakers){target="_blank"}
 
   - week: 6
     name: Dates, Times, and Distributions
