@@ -141,8 +141,8 @@ schedule:
         - [ ] (for Fri) Watch [I Found the Dumbest Time Zone (\@vlogbrothers)](https://www.youtube.com/watch?v=Lz3jAEdzbbA) and [The Problem with Time & Timezones (\@computerphile)](https://www.youtube.com/watch?v=-5wpm-gesOY) to get ready for next week.
     prepare: |
         - [ ] (for Mon) [Reading Check 5.1 - The Tidyverse, Pipes, and dplyr](https://usu.instructure.com/courses/819584/quizzes/1499842){target="_blank"}
-        - [ ] (for Wed) [Reading Check 5.2 - Wide, Long, and Tidy data with tidyr]()
-        - [ ] (for Fri) ["Reading" Check 5.3 - Dates and Times]()
+        - [ ] (for Wed) [Reading Check 5.2 - Wide, Long, and Tidy data with tidyr](https://usu.instructure.com/courses/819584/quizzes/1499858){target="_blank"}
+        - [ ] (for Fri) ["Reading" Check 5.3 - Dates and Times](https://usu.instructure.com/courses/819584/quizzes/1499859){target="_blank"}
     class1: |
         - [Attendance Quiz 09/28](https://usu.instructure.com/courses/819584/assignments/5292941){target="_blank"}
         - [Tidyverse Programming Basics: Tibbles and `dplyr`](../slides/13-tidyverse-dplyr.qmd){target="_blank"}
