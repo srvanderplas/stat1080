@@ -46,5 +46,4 @@ September 28-04, 2026
 - [Allison Horst's Tidyverse Illustrations](https://allisonhorst.com/r-packages-functions){target="_blank"} - mostly illustrates tidyverse functions. 
 - [Tidyverse Style Guide - Pipes](https://style.tidyverse.org/pipes.html){target="_blank"}
 - [Tidy Tuesday Screencasts](https://www.youtube.com/watch?v=5ub92c-5xFQ&list=PL19ev-r1GBwkuyiwnxoHTRC8TTqP8OEi8){target="_blank"} (YouTube, David Robinson). These show example data analyses in real time, with commentary, using a new dataset each week. These were primarily recorded during the pandemic, but are still an incredibly valuable resource for learing how to work with data.
-# - [Functional Programming Illustrations](https://allisonhorst.com/wickham-tidy-bakers){target="_blank"}
 
