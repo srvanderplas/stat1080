@@ -6,37 +6,37 @@ September 21-27, 2026
 
 ## 📖 Reading
 
-- [ ] (for Mon) [SC Ch 11 - Data Structures - Sections 11.1, 11.2, 11.6](https://srvanderplas.github.io/stat-computing-r-python/part-gen-prog/03-data-struct.html) - Ignore the python parts, focus on understanding how you access pieces of data in a vector and a data frame, and how to differentiate between the two. 
-- [ ] (for Wed) [SC Ch 13 - Control Structures](https://srvanderplas.github.io/stat-computing-r-python/part-gen-prog/04-control-struct.html)
+- [ ] (for Mon) [SC Ch 11 - Data Structures - Sections 11.1, 11.2, 11.6](https://srvanderplas.github.io/stat-computing-r-python/part-gen-prog/03-data-struct.html){target="_blank"} - Ignore the python parts, focus on understanding how you access pieces of data in a vector and a data frame, and how to differentiate between the two. 
+- [ ] (for Wed) [SC Ch 13 - Control Structures](https://srvanderplas.github.io/stat-computing-r-python/part-gen-prog/04-control-struct.html){target="_blank"}
 
 
 ## 📐 Prepare for class
 
-- [ ] (for Mon) [Reading Check 4.1 - Data Structures](https://usu.instructure.com/courses/819584/quizzes/1498243)
+- [ ] (for Mon) [Reading Check 4.1 - Data Structures](https://usu.instructure.com/courses/819584/quizzes/1498243){target="_blank"}
 - [ ] (for Wed) Reading Check 4.2
 
 
 ## 🥱 Monday 🌛
 
-- [Attendance Quiz 09/21](https://usu.instructure.com/courses/819584/assignments/5292851)
+- [Attendance Quiz 09/21](https://usu.instructure.com/courses/819584/assignments/5292851){target="_blank"}
 - [R programming basics](../slides/10-r-prog.qmd)
 
 
 ## 🐪️ Wednesday 🐦‍⬛ 
 
-- [Attendance Quiz 09/23](https://usu.instructure.com/courses/819584/assignments/5292935)
-- [Lab: R Programming Puzzles](../lab/11-r-prog.qmd)
+- [Attendance Quiz 09/23](https://usu.instructure.com/courses/819584/assignments/5292935){target="_blank"}
+- [Lab: R Programming Puzzles](../lab/11-r-prog.qmd){target="_blank"}
 
 
 ## 🎉 Friday 🥳
 
-- [Attendance Quiz 09/25](https://usu.instructure.com/courses/819584/assignments/5292940)
-- [Lab: R Programming Puzzles](../lab/11-r-prog.qmd)
+- [Attendance Quiz 09/25](https://usu.instructure.com/courses/819584/assignments/5292940){target="_blank"}
+- [Lab: R Programming Puzzles](../lab/11-r-prog.qmd){target="_blank"}
 
 
 ## Extra Resources/Reading
 
-- [Tidyverse vs. Base R](https://www.youtube.com/watch?v=cYu-JKP6fhA) (YouTube, Susan B.)
-- [Data Rectangling](https://www.youtube.com/watch?v=4MfUCX_KpdE) (YouTube, Jenny Bryan, Plotcon 2016) - The importance of getting data into the right format.
-- [Tidy Data, Illustrated](https://allisonhorst.com/other-r-fun) - Handy illustrations explaining the idea of tidy data
+- [Tidyverse vs. Base R](https://www.youtube.com/watch?v=cYu-JKP6fhA){target="_blank"} (YouTube, Susan B.)
+- [Data Rectangling](https://www.youtube.com/watch?v=4MfUCX_KpdE){target="_blank"} (YouTube, Jenny Bryan, Plotcon 2016) - The importance of getting data into the right format.
+- [Tidy Data, Illustrated](https://allisonhorst.com/other-r-fun){target="_blank"} - Handy illustrations explaining the idea of tidy data
 

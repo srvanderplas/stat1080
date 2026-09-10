@@ -6,41 +6,41 @@ September 14-20, 2026
 
 ## 📖 Reading
 
-- [ ] (for Mon) [IDS 2 Ch 19 - Association is Not Causation](https://rafalab.dfci.harvard.edu/dsbook-part-2/linear-models/association-not-causation.html)
-- [ ] (for Wed) [Bias and Ethics Readings](https://usu.instructure.com/courses/819584/assignments/5290530)
-- [ ] (for Fri) Watch [How Ice Cream Kills](https://www.youtube.com/watch?v=VMUQSMFGBDo&t=4s) (<6 mins) and [Calling BS 3.3: Spurious Correlations](https://youtu.be/WNsLcg2GQMY) (<8 mins, UW Information School course on calling BS)
+- [ ] (for Mon) [IDS 2 Ch 19 - Association is Not Causation](https://rafalab.dfci.harvard.edu/dsbook-part-2/linear-models/association-not-causation.html){target="_blank"}
+- [ ] (for Wed) [Bias and Ethics Readings](https://usu.instructure.com/courses/819584/assignments/5290530){target="_blank"}
+- [ ] (for Fri) Watch [How Ice Cream Kills](https://www.youtube.com/watch?v=VMUQSMFGBDo&t=4s){target="_blank"} (<6 mins) and [Calling BS 3.3: Spurious Correlations](https://youtu.be/WNsLcg2GQMY){target="_blank"} (<8 mins, UW Information School course on calling BS)
 
 
 ## 📐 Prepare for class
 
-- [ ] (for Mon) [3.1.p Reading Check: Association is Not Causation (IDS Ch 19)](https://usu.instructure.com/courses/819584/quizzes/1462848)
-- [ ] (for Wed) [3.2.p Bias and Ethics](https://usu.instructure.com/courses/819584/assignments/5290530)
-- [ ] (for Fri) [3.3.p "Reading" Check: How Ice Cream Kills and Calling BS: Spurious Correlations](https://usu.instructure.com/courses/819584/quizzes/1498138)
-- [ ] (for Fri) 3.3.p Presidency Associations [Canvas](https://usu.instructure.com/courses/819584/assignments/5290617) [Example (html)](../demos/presidency_template.qmd) [Template (qmd)](../demos/_presidency_template.qmd)
+- [ ] (for Mon) [3.1.p Reading Check: Association is Not Causation (IDS Ch 19)](https://usu.instructure.com/courses/819584/quizzes/1462848){target="_blank"}
+- [ ] (for Wed) [3.2.p Bias and Ethics](https://usu.instructure.com/courses/819584/assignments/5290530){target="_blank"}
+- [ ] (for Fri) [3.3.p "Reading" Check: How Ice Cream Kills and Calling BS: Spurious Correlations](https://usu.instructure.com/courses/819584/quizzes/1498138){target="_blank"}
+- [ ] (for Fri) 3.3.p Presidency Associations [Canvas](https://usu.instructure.com/courses/819584/assignments/5290617){target="_blank"} [Example (html)](../demos/presidency_template.qmd){target="_blank"} [Template (qmd)](../demos/_presidency_template.qmd){target="_blank"}
 
 
 ## 🥱 Monday 🌛
 
-- [ ] [Attendance Quiz 09/14](https://usu.instructure.com/courses/819584/assignments/5292838)
-- [Correlation and Causation](../slides/07-correlation.qmd)
-- [ ] [3.1.i Spurious Correlation Activity](https://usu.instructure.com/courses/819584/quizzes/1462920) (Canvas)
+- [ ] [Attendance Quiz 09/14](https://usu.instructure.com/courses/819584/assignments/5292838){target="_blank"}
+- Slides: [Correlation and Causation](../slides/07-correlation.qmd)
+- [ ] [3.1.i Spurious Correlation Activity](https://usu.instructure.com/courses/819584/quizzes/1462920){target="_blank"} (Canvas)
 
 
 ## 🐪️ Wednesday 🐦‍⬛ 
 
-- [Attendance Quiz 09/16](https://usu.instructure.com/courses/819584/assignments/5292841)        
-- [Bias and Ethics](../slides/08-bias-ethics.qmd)
+- [Attendance Quiz 09/16](https://usu.instructure.com/courses/819584/assignments/5292841){target="_blank"}        
+- Slides: [Bias and Ethics](../slides/08-bias-ethics.qmd){target="_blank"}
 
 
 ## 🎉 Friday 🥳
 
-- [Attendance Quiz 09/18](https://usu.instructure.com/courses/819584/assignments/5292843)
-- [ ] [3.3.i - Bias and Ethics Activity](https://usu.instructure.com/courses/819584/quizzes/1462857) (submit in Canvas). [qmd file](lab/_08-bias-and-ethics.qmd) and [html file](lab/08-bias-and-ethics.qmd)
+- [Attendance Quiz 09/18](https://usu.instructure.com/courses/819584/assignments/5292843){target="_blank"}
+- [ ] [3.3.i - Bias and Ethics Activity](https://usu.instructure.com/courses/819584/quizzes/1462857){target="_blank"} (submit in Canvas). [qmd file](lab/_08-bias-and-ethics.qmd){target="_blank"} and [html file](lab/08-bias-and-ethics.qmd){target="_blank"}
 
 
 ## Extra Resources/Reading
 
-- [Causal Inference](https://www.youtube.com/watch?v=gRkUhg9Wb-I) (YouTube, Dr. David Sontag, MIT OpenCourseWare) - The alternative to correlation -- how to show causality
-- [Crash Course Statistics: Henrietta Lacks, the Tuskegee Experiment, and Ethical Data Collection: Crash Course Statistics #12](https://www.youtube.com/watch?v=CzNANZnoiRs) (YouTube, CrashCourse)
-- [Exploring Data Ethics](https://www.youtube.com/watch?v=MOOfj78alvs) (YouTube, Dr. Wendy Martinez, Washington Statistical Society Seminar)
+- [Causal Inference](https://www.youtube.com/watch?v=gRkUhg9Wb-I){target="_blank"} (YouTube, Dr. David Sontag, MIT OpenCourseWare) - The alternative to correlation -- how to show causality
+- [Crash Course Statistics: Henrietta Lacks, the Tuskegee Experiment, and Ethical Data Collection: Crash Course Statistics #12](https://www.youtube.com/watch?v=CzNANZnoiRs){target="_blank"} (YouTube, CrashCourse)
+- [Exploring Data Ethics](https://www.youtube.com/watch?v=MOOfj78alvs){target="_blank"} (YouTube, Dr. Wendy Martinez, Washington Statistical Society Seminar)
 

@@ -84,51 +84,51 @@ schedule:
     start: 2026-09-14
     end: 2026-09-20
     reading: |
-        - [ ] (for Mon) [IDS 2 Ch 19 - Association is Not Causation](https://rafalab.dfci.harvard.edu/dsbook-part-2/linear-models/association-not-causation.html)
-        - [ ] (for Wed) [Bias and Ethics Readings](https://usu.instructure.com/courses/819584/assignments/5290530)
-        - [ ] (for Fri) Watch [How Ice Cream Kills](https://www.youtube.com/watch?v=VMUQSMFGBDo&t=4s) (<6 mins) and [Calling BS 3.3: Spurious Correlations](https://youtu.be/WNsLcg2GQMY) (<8 mins, UW Information School course on calling BS)
+        - [ ] (for Mon) [IDS 2 Ch 19 - Association is Not Causation](https://rafalab.dfci.harvard.edu/dsbook-part-2/linear-models/association-not-causation.html){target="_blank"}
+        - [ ] (for Wed) [Bias and Ethics Readings](https://usu.instructure.com/courses/819584/assignments/5290530){target="_blank"}
+        - [ ] (for Fri) Watch [How Ice Cream Kills](https://www.youtube.com/watch?v=VMUQSMFGBDo&t=4s){target="_blank"} (<6 mins) and [Calling BS 3.3: Spurious Correlations](https://youtu.be/WNsLcg2GQMY){target="_blank"} (<8 mins, UW Information School course on calling BS)
     prepare: |
-        - [ ] (for Mon) [3.1.p Reading Check: Association is Not Causation (IDS Ch 19)](https://usu.instructure.com/courses/819584/quizzes/1462848)
-        - [ ] (for Wed) [3.2.p Bias and Ethics](https://usu.instructure.com/courses/819584/assignments/5290530)
-        - [ ] (for Fri) [3.3.p "Reading" Check: How Ice Cream Kills and Calling BS: Spurious Correlations](https://usu.instructure.com/courses/819584/quizzes/1498138)
-        - [ ] (for Fri) 3.3.p Presidency Associations [Canvas](https://usu.instructure.com/courses/819584/assignments/5290617) [Example (html)](../demos/presidency_template.qmd) [Template (qmd)](../demos/_presidency_template.qmd)
+        - [ ] (for Mon) [3.1.p Reading Check: Association is Not Causation (IDS Ch 19)](https://usu.instructure.com/courses/819584/quizzes/1462848){target="_blank"}
+        - [ ] (for Wed) [3.2.p Bias and Ethics](https://usu.instructure.com/courses/819584/assignments/5290530){target="_blank"}
+        - [ ] (for Fri) [3.3.p "Reading" Check: How Ice Cream Kills and Calling BS: Spurious Correlations](https://usu.instructure.com/courses/819584/quizzes/1498138){target="_blank"}
+        - [ ] (for Fri) 3.3.p Presidency Associations [Canvas](https://usu.instructure.com/courses/819584/assignments/5290617){target="_blank"} [Example (html)](../demos/presidency_template.qmd){target="_blank"} [Template (qmd)](../demos/_presidency_template.qmd){target="_blank"}
     class1: |
-        - [ ] [Attendance Quiz 09/14](https://usu.instructure.com/courses/819584/assignments/5292838)
-        - [Correlation and Causation](../slides/07-correlation.qmd)
-        - [ ] [3.1.i Spurious Correlation Activity](https://usu.instructure.com/courses/819584/quizzes/1462920) (Canvas)
+        - [ ] [Attendance Quiz 09/14](https://usu.instructure.com/courses/819584/assignments/5292838){target="_blank"}
+        - Slides: [Correlation and Causation](../slides/07-correlation.qmd)
+        - [ ] [3.1.i Spurious Correlation Activity](https://usu.instructure.com/courses/819584/quizzes/1462920){target="_blank"} (Canvas)
     class2: |
-        - [Attendance Quiz 09/16](https://usu.instructure.com/courses/819584/assignments/5292841)        
-        - [Bias and Ethics](../slides/08-bias-ethics.qmd)
+        - [Attendance Quiz 09/16](https://usu.instructure.com/courses/819584/assignments/5292841){target="_blank"}        
+        - Slides: [Bias and Ethics](../slides/08-bias-ethics.qmd){target="_blank"}
     class3: |
-        - [Attendance Quiz 09/18](https://usu.instructure.com/courses/819584/assignments/5292843)
-        - [ ] [3.3.i - Bias and Ethics Activity](https://usu.instructure.com/courses/819584/quizzes/1462857) (submit in Canvas). [qmd file](lab/_08-bias-and-ethics.qmd) and [html file](lab/08-bias-and-ethics.qmd)
+        - [Attendance Quiz 09/18](https://usu.instructure.com/courses/819584/assignments/5292843){target="_blank"}
+        - [ ] [3.3.i - Bias and Ethics Activity](https://usu.instructure.com/courses/819584/quizzes/1462857){target="_blank"} (submit in Canvas). [qmd file](lab/_08-bias-and-ethics.qmd){target="_blank"} and [html file](lab/08-bias-and-ethics.qmd){target="_blank"}
     extra: |
-        - [Causal Inference](https://www.youtube.com/watch?v=gRkUhg9Wb-I) (YouTube, Dr. David Sontag, MIT OpenCourseWare) - The alternative to correlation -- how to show causality
-        - [Crash Course Statistics: Henrietta Lacks, the Tuskegee Experiment, and Ethical Data Collection: Crash Course Statistics #12](https://www.youtube.com/watch?v=CzNANZnoiRs) (YouTube, CrashCourse)
-        - [Exploring Data Ethics](https://www.youtube.com/watch?v=MOOfj78alvs) (YouTube, Dr. Wendy Martinez, Washington Statistical Society Seminar)
+        - [Causal Inference](https://www.youtube.com/watch?v=gRkUhg9Wb-I){target="_blank"} (YouTube, Dr. David Sontag, MIT OpenCourseWare) - The alternative to correlation -- how to show causality
+        - [Crash Course Statistics: Henrietta Lacks, the Tuskegee Experiment, and Ethical Data Collection: Crash Course Statistics #12](https://www.youtube.com/watch?v=CzNANZnoiRs){target="_blank"} (YouTube, CrashCourse)
+        - [Exploring Data Ethics](https://www.youtube.com/watch?v=MOOfj78alvs){target="_blank"} (YouTube, Dr. Wendy Martinez, Washington Statistical Society Seminar)
   - week: 4
     name: Programming in R
     start: 2026-09-21
     end: 2026-09-27
     reading: |
-        - [ ] (for Mon) [SC Ch 11 - Data Structures - Sections 11.1, 11.2, 11.6](https://srvanderplas.github.io/stat-computing-r-python/part-gen-prog/03-data-struct.html) - Ignore the python parts, focus on understanding how you access pieces of data in a vector and a data frame, and how to differentiate between the two. 
-        - [ ] (for Wed) [SC Ch 13 - Control Structures](https://srvanderplas.github.io/stat-computing-r-python/part-gen-prog/04-control-struct.html)
+        - [ ] (for Mon) [SC Ch 11 - Data Structures - Sections 11.1, 11.2, 11.6](https://srvanderplas.github.io/stat-computing-r-python/part-gen-prog/03-data-struct.html){target="_blank"} - Ignore the python parts, focus on understanding how you access pieces of data in a vector and a data frame, and how to differentiate between the two. 
+        - [ ] (for Wed) [SC Ch 13 - Control Structures](https://srvanderplas.github.io/stat-computing-r-python/part-gen-prog/04-control-struct.html){target="_blank"}
     prepare: |
-        - [ ] (for Mon) [Reading Check 4.1 - Data Structures](https://usu.instructure.com/courses/819584/quizzes/1498243)
+        - [ ] (for Mon) [Reading Check 4.1 - Data Structures](https://usu.instructure.com/courses/819584/quizzes/1498243){target="_blank"}
         - [ ] (for Wed) Reading Check 4.2
     class1: |
-        - [Attendance Quiz 09/21](https://usu.instructure.com/courses/819584/assignments/5292851)
+        - [Attendance Quiz 09/21](https://usu.instructure.com/courses/819584/assignments/5292851){target="_blank"}
         - [R programming basics](../slides/10-r-prog.qmd)
     class2: |
-        - [Attendance Quiz 09/23](https://usu.instructure.com/courses/819584/assignments/5292935)
-        - [Lab: R Programming Puzzles](../lab/11-r-prog.qmd)
+        - [Attendance Quiz 09/23](https://usu.instructure.com/courses/819584/assignments/5292935){target="_blank"}
+        - [Lab: R Programming Puzzles](../lab/11-r-prog.qmd){target="_blank"}
     class3: | 
-        - [Attendance Quiz 09/25](https://usu.instructure.com/courses/819584/assignments/5292940)
-        - [Lab: R Programming Puzzles](../lab/11-r-prog.qmd)
+        - [Attendance Quiz 09/25](https://usu.instructure.com/courses/819584/assignments/5292940){target="_blank"}
+        - [Lab: R Programming Puzzles](../lab/11-r-prog.qmd){target="_blank"}
     extra: |
-        - [Tidyverse vs. Base R](https://www.youtube.com/watch?v=cYu-JKP6fhA) (YouTube, Susan B.)
-        - [Data Rectangling](https://www.youtube.com/watch?v=4MfUCX_KpdE) (YouTube, Jenny Bryan, Plotcon 2016) - The importance of getting data into the right format.
-        - [Tidy Data, Illustrated](https://allisonhorst.com/other-r-fun) - Handy illustrations explaining the idea of tidy data
+        - [Tidyverse vs. Base R](https://www.youtube.com/watch?v=cYu-JKP6fhA){target="_blank"} (YouTube, Susan B.)
+        - [Data Rectangling](https://www.youtube.com/watch?v=4MfUCX_KpdE){target="_blank"} (YouTube, Jenny Bryan, Plotcon 2016) - The importance of getting data into the right format.
+        - [Tidy Data, Illustrated](https://allisonhorst.com/other-r-fun){target="_blank"} - Handy illustrations explaining the idea of tidy data
 
   - week: 5
     name: The Tidyverse
