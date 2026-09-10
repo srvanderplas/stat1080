@@ -2128,20 +2128,6 @@
     "text": "Batting Averages\nTo summarize, David Justice is a better batter….\n\n\n\n\nBatter\nHits\nAt Bats\nAverage\n\n\n\n\nDerek Jeter\n12 + 183 = 195\n48 + 582 = 630\n195/630 = .310\n\n\nDavid Justice\n104 + 45 = 149\n411 + 140 = 551\n149/551 = .270\n\n\n\n\nWait, what?"
   },
   {
-    "objectID": "slides/08-bias-ethics.html#simpsons-paradox-1",
-    "href": "slides/08-bias-ethics.html#simpsons-paradox-1",
-    "title": "1.8 Bias and Ethics",
-    "section": "Simpson’s Paradox",
-    "text": "Simpson’s Paradox\n\n\n\n\n\n\n\nDefinition: Simpson’s Paradox\n\n\nA phenomenon in which a trend appears in several groups of data but disappears or reverses when groups are combined\n\n\n\n\nArises from\n\nconfounding variables\nclustered data\nfailure to manage causal data\nextremely different rates or amounts of data across categories"
-  },
-  {
-    "objectID": "slides/08-bias-ethics.html#simpsons-paradox-visually",
-    "href": "slides/08-bias-ethics.html#simpsons-paradox-visually",
-    "title": "1.8 Bias and Ethics",
-    "section": "Simpson’s Paradox, Visually",
-    "text": "Simpson’s Paradox, Visually\n\n\n\n\n\n\nNegative association between x and y\n\n\n\n\n\n\n\nPositive association between x and y, within each group\n\n\n\n\n\n\n\n???\n\n\n\n\n\n\nWhen interpreting results, it’s critical to explain both the group-wise trend and the overall trend.\nThis can get complicated\nData ethics means explaining things in context and not stopping at the first plot or model\nEven if the first plot or model matches your expectations"
-  },
-  {
     "objectID": "slides/08-bias-ethics.html#batting-averages-3",
     "href": "slides/08-bias-ethics.html#batting-averages-3",
     "title": "1.8 Bias and Ethics",
@@ -2154,6 +2140,20 @@
     "title": "1.8 Bias and Ethics",
     "section": "Batting Averages",
     "text": "Batting Averages\n\n\n\n\n\n\n\n\n\nTimes At Bat is a lurking variable that explains why the overall batting average is unexpectedly different from the by-year batting average"
+  },
+  {
+    "objectID": "slides/08-bias-ethics.html#simpsons-paradox-1",
+    "href": "slides/08-bias-ethics.html#simpsons-paradox-1",
+    "title": "1.8 Bias and Ethics",
+    "section": "Simpson’s Paradox",
+    "text": "Simpson’s Paradox\n\n\n\n\n\n\n\nDefinition: Simpson’s Paradox\n\n\nA phenomenon in which a trend appears in several groups of data but disappears or reverses when groups are combined\n\n\n\n\nArises from\n\nconfounding variables\nclustered data\nfailure to manage causal data\nextremely different rates or amounts of data across categories"
+  },
+  {
+    "objectID": "slides/08-bias-ethics.html#simpsons-paradox-visually",
+    "href": "slides/08-bias-ethics.html#simpsons-paradox-visually",
+    "title": "1.8 Bias and Ethics",
+    "section": "Simpson’s Paradox, Visually",
+    "text": "Simpson’s Paradox, Visually\n\n\n\n\n\n\nNegative association between x and y\n\n\n\n\n\n\n\nPositive association between x and y, within each group\n\n\n\n\n\n\n\n???\n\n\n\n\n\n\nWhen interpreting results, it’s critical to explain both the group-wise trend and the overall trend.\nThis can get complicated\nData ethics means explaining things in context and not stopping at the first plot or model\nEven if the first plot or model matches your expectations"
   },
   {
     "objectID": "slides/08-bias-ethics.html#ethics",
