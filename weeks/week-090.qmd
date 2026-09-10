@@ -6,7 +6,7 @@ October 26-01, 2026
 
 ## 📖 Reading
 
-- [ ] (for Mon) [IDS 2 Ch 4 - Connecting Data and Probability](https://rafalab.dfci.harvard.edu/dsbook-part-2/prob/connecting-data-and-probability.html)
+- [ ] (for Mon) [IDS 2 Ch 4 - Connecting Data and Probability](https://rafalab.dfci.harvard.edu/dsbook-part-2/prob/connecting-data-and-probability.html){target="_blank"}
 
 
 ## 📐 Prepare for class
@@ -16,20 +16,20 @@ October 26-01, 2026
 
 ## 🥱 Monday 🌛
 
-- [Attendance Quiz 10/26](https://usu.instructure.com/courses/819584/assignments/5293067)
-- [Data and Probability](../slides/25-data-prob.qmd)
+- [Attendance Quiz 10/26](https://usu.instructure.com/courses/819584/assignments/5293067){target="_blank"}
+- [Data and Probability](../slides/25-data-prob.qmd){target="_blank"}
 
 
 ## 🐪️ Wednesday 🐦‍⬛ 
 
-- [Attendance Quiz 10/28](https://usu.instructure.com/courses/819584/assignments/5293068)
+- [Attendance Quiz 10/28](https://usu.instructure.com/courses/819584/assignments/5293068){target="_blank"}
 - TBD probability
 
 
 ## 🎉 Friday 🥳
 
-- [Attendance Quiz 10/30](https://usu.instructure.com/courses/819584/assignments/5293102)
-- [Lab: Probability](../lab/27-probability.qmd)
+- [Attendance Quiz 10/30](https://usu.instructure.com/courses/819584/assignments/5293102){target="_blank"}
+- [Lab: Probability](../lab/27-probability.qmd){target="_blank"}
 
 
 

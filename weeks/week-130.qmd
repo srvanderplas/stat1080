@@ -6,7 +6,7 @@ November 23-29, 2026
 
 ## 📖 Reading
 
-- [ ] (for Mon) [IDS 2 Ch 15 - Regression](https://rafalab.dfci.harvard.edu/dsbook-part-2/linear-models/regression.html)  
+- [ ] (for Mon) [IDS 2 Ch 15 - Regression](https://rafalab.dfci.harvard.edu/dsbook-part-2/linear-models/regression.html){target="_blank"}  
 
 
 ## 📐 Prepare for class
@@ -16,9 +16,9 @@ November 23-29, 2026
 
 ## 🥱 Monday 🌛
 
-- [Attendance Quiz 11/23](https://usu.instructure.com/courses/819584/assignments/5293133/edit?quiz_lti=true)
-- [Introduction to Regression](../slides/37-regression-intro.qmd)
-- [Activity: Regression By Hand](../lab/37-regression-by-hand.qmd)
+- [Attendance Quiz 11/23](https://usu.instructure.com/courses/819584/assignments/5293133/){target="_blank"}
+- [Introduction to Regression](../slides/37-regression-intro.qmd){target="_blank"}
+- [Activity: Regression By Hand](../lab/37-regression-by-hand.qmd){target="_blank"}
 
 
 ## 🐪️ Wednesday 🐦‍⬛ 

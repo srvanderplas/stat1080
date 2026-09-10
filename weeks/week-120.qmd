@@ -6,8 +6,8 @@ November 16-22, 2026
 
 ## 📖 Reading
 
-- [ ] (for Mon) [IDS 2 Ch 13 - Hypothesis Testing](https://rafalab.dfci.harvard.edu/dsbook-part-2/inference/hypothesis-testing.html)
-- [ ] (for Wed) [IDS 2 Ch 9.4 - Confidence Intervals](https://rafalab.dfci.harvard.edu/dsbook-part-2/inference/estimates-confidence-intervals.html#confidence-intervals)
+- [ ] (for Mon) [IDS 2 Ch 13 - Hypothesis Testing](https://rafalab.dfci.harvard.edu/dsbook-part-2/inference/hypothesis-testing.html){target="_blank"}
+- [ ] (for Wed) [IDS 2 Ch 9.4 - Confidence Intervals](https://rafalab.dfci.harvard.edu/dsbook-part-2/inference/estimates-confidence-intervals.html#confidence-intervals){target="_blank"}
 
 
 ## 📐 Prepare for class
@@ -18,20 +18,20 @@ November 16-22, 2026
 
 ## 🥱 Monday 🌛
 
-- [Attendance Quiz 11/16](https://usu.instructure.com/courses/819584/assignments/5293129/edit?quiz_lti=true)
-- [Hypothesis Testing](../slides/34-hypothesis.qmd)
+- [Attendance Quiz 11/16](https://usu.instructure.com/courses/819584/assignments/5293129/){target="_blank"}
+- [Hypothesis Testing](../slides/34-hypothesis.qmd){target="_blank"}
 
 
 ## 🐪️ Wednesday 🐦‍⬛ 
 
-- [Attendance Quiz 11/18](https://usu.instructure.com/courses/819584/assignments/5293132/edit?quiz_lti=true)
-- [Confidence Intervals](../slides/35-ci.qmd)
+- [Attendance Quiz 11/18](https://usu.instructure.com/courses/819584/assignments/5293132/){target="_blank"}
+- [Confidence Intervals](../slides/35-ci.qmd){target="_blank"}
 
 
 ## 🎉 Friday 🥳
 
-- [Attendance Quiz 11/20](https://usu.instructure.com/courses/819584/assignments/5293131/edit?quiz_lti=true)
-- [Lab: Inference](../lab/36-inference.qmd)
+- [Attendance Quiz 11/20](https://usu.instructure.com/courses/819584/assignments/5293131/){target="_blank"}
+- [Lab: Inference](../lab/36-inference.qmd){target="_blank"}
 
 
 

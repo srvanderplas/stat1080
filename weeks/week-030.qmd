@@ -35,7 +35,7 @@ September 14-20, 2026
 ## 🎉 Friday 🥳
 
 - [Attendance Quiz 09/18](https://usu.instructure.com/courses/819584/assignments/5292843){target="_blank"}
-- [ ] [3.3.i - Bias and Ethics Activity](https://usu.instructure.com/courses/819584/quizzes/1462857){target="_blank"} (submit in Canvas). [qmd file](lab/_08-bias-and-ethics.qmd){target="_blank"} and [html file](lab/08-bias-and-ethics.qmd){target="_blank"}
+- [ ] [3.3.i - Bias and Ethics Activity](https://usu.instructure.com/courses/819584/quizzes/1462857){target="_blank"} (submit in Canvas). [qmd file](../lab/_08-bias-and-ethics.qmd){target="_blank"} and [html file](../lab/08-bias-and-ethics.qmd){target="_blank"}
 
 
 ## Extra Resources/Reading

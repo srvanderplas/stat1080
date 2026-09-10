@@ -1,0 +1,86 @@
+---
+title: "5.2.a - Class Activity"
+format: html
+number-sections: true
+execute:
+  echo: true   # show code by default
+  warning: false
+  message: false
+---
+
+This assignment is intended to get you familiar with the tidyverse using real COVID-19 data. 
+
+```{r}
+library(tidyverse)
+```
+
+
+The following code chunk scrapes the `.csv` files we will be analyzing from the web renames and selects the subset of columns that we will be using for analysis. 
+
+```{r}
+url <- "https://srhdpeuwpubsa.blob.core.windows.net/whdh/COVID/"
+url_case <- paste0(url, "WHO-COVID-19-global-table-data.csv")
+
+covid_case <- read_csv(url_case) |>
+  select(name = Name, region = `WHO Region`, 
+         case_total = `Cases - cumulative total`,
+         case_pop = `Cases - cumulative total per 100000 population`,
+         death_total = `Deaths - cumulative total`,
+         death_pop = `Deaths - cumulative total per 100000 population`)
+```
+
+The renamed columns that remain are: 
+
+- `name`: Country name
+- `region`: World Health Organization (WHO) region. 
+- `case_total`: Cumulative number of reported COVID cases since Jan 2020
+- `case_pop`: Cumulative number of reported COVID cases per 100,000 people since Jan 2020
+- `death_total`: Cumulative number of reported COVID deaths since Jan 2020
+- `death_pop`: Cumulative number of reported COVID deaths per 100,000 people since Jan 2020
+
+# Countries in the Americas 
+
+We are interested in comparing COVID statistics from the United States to other large countries in our region. Please create a new dataframe called `covid_case_am` which contains all countries in the "Americas" region. Use the pipe `|>` statement to help you complete the task. 
+
+**How many countries are in this region?** Please answer this question in the associated canvas quiz. 
+
+```{r}
+covid_case_am <- covid_case |> 
+  filter(region == "Americas")
+```
+
+# Case Fatality Rate 
+
+Within the "Americas" region, we want to know which countries had the highest percentage of deaths per reported case. This is calculated as $100 * \frac{\text{deaths\_total}}{\text{case\_total}}$. Create a new variable called `death_rate` that reflects this quantity. Then, after calculating this quantity, retain only countries whose death rate exceeds 3\% (or 3 deaths per 100 cases). Note that you do not need to save this dataframe to a variable, just show the output. 
+
+**What are the three countries for which the death rate exceeds 3 deaths per 100 cases?** Answer this question in the associated canvas quiz. 
+
+
+```{r}
+covid_case_am <- covid_case_am |>
+  mutate(death_rate = 100 * (death_total / case_total)) 
+
+covid_case_am |>
+  filter(death_rate > 3)
+```
+
+# USA vs. Canada 
+
+Using the variable you created in the previous problem, create a dataframe that includes only the "United States of America" and "Canada". Retain only the columns `name`, `case_pop`, `death_pop`, and `death_rate`.
+
+**What is the difference in the deaths per 100,000 people, rounded to the nearest integer?** 
+
+Please answer in your canvas quiz.  
+
+```{r}
+covid_case_am |>
+  filter(name %in% c("United States of America", "Canada")) |> 
+  select(name, case_pop, death_pop, death_rate)
+```
+
+# Statistical Differences 
+
+**Discuss with a partner:** What do you notice about the difference in the Canadian and American statistics? Comment briefly below. 
+
+
+*The death rates per reported case for the US and Canada seem similar. However, the US had more than double the number of cases and deaths per 100,000 people. Remember that the `case_pop` and `death_pop` variables control for population size, so this suggests that case rates and death rates were much higher in the US than they were in Canada.*

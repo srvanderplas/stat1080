@@ -13,7 +13,7 @@ September 21-27, 2026
 ## 📐 Prepare for class
 
 - [ ] (for Mon) [Reading Check 4.1 - Data Structures](https://usu.instructure.com/courses/819584/quizzes/1498243){target="_blank"}
-- [ ] (for Wed) Reading Check 4.2
+- [ ] (for Wed) [Reading Check 4.2 - R programming and Control Structures](https://usu.instructure.com/courses/819584/modules/items/7928110){target="_blank"}
 
 
 ## 🥱 Monday 🌛

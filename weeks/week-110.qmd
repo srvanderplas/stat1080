@@ -6,8 +6,8 @@ November 09-15, 2026
 
 ## 📖 Reading
 
-- [ ] (for Mon) [IDS 2 Ch 9.1-9.3 - Estimates](https://rafalab.dfci.harvard.edu/dsbook-part-2/inference/estimates-confidence-intervals.html)
-- [ ] (for Wed) [IDS 2 Ch 8 - Sampling Models and the Central Limit Theorem](https://rafalab.dfci.harvard.edu/dsbook-part-2/prob/sampling-models-and-clt.html)
+- [ ] (for Mon) [IDS 2 Ch 9.1-9.3 - Estimates](https://rafalab.dfci.harvard.edu/dsbook-part-2/inference/estimates-confidence-intervals.html){target="_blank"}
+- [ ] (for Wed) [IDS 2 Ch 8 - Sampling Models and the Central Limit Theorem](https://rafalab.dfci.harvard.edu/dsbook-part-2/prob/sampling-models-and-clt.html){target="_blank"}
 
 
 ## 📐 Prepare for class
@@ -18,20 +18,20 @@ November 09-15, 2026
 
 ## 🥱 Monday 🌛
 
-- [Attendance Quiz 11/09](https://usu.instructure.com/courses/819584/assignments/5293126/edit?quiz_lti=true)
-- [Parameters and Estimates](../slides/31-param-est.qmd)
+- [Attendance Quiz 11/09](https://usu.instructure.com/courses/819584/assignments/5293126/){target="_blank"}
+- [Parameters and Estimates](../slides/31-param-est.qmd){target="_blank"}
 
 
 ## 🐪️ Wednesday 🐦‍⬛ 
 
-- [Attendance Quiz 11/11](https://usu.instructure.com/courses/819584/assignments/5293127/edit?quiz_lti=true)
-- [Central Limit Theorem](../slides/32-clt.qmd)
+- [Attendance Quiz 11/11](https://usu.instructure.com/courses/819584/assignments/5293127/){target="_blank"}
+- [Central Limit Theorem](../slides/32-clt.qmd){target="_blank"}
 
 
 ## 🎉 Friday 🥳
 
-- [Attendance Quiz 11/13](https://usu.instructure.com/courses/819584/assignments/5293128/edit?quiz_lti=true)
-- [Lab: CLT](../lab/33-clt.qmd)
+- [Attendance Quiz 11/13](https://usu.instructure.com/courses/819584/assignments/5293128/){target="_blank"}
+- [Lab: CLT](../lab/33-clt.qmd){target="_blank"}
 
 
 

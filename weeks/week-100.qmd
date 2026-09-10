@@ -6,8 +6,8 @@ November 02-08, 2026
 
 ## 📖 Reading
 
-- [ ] (for Mon) [IDS 2 Ch 7 - Random Variables](https://rafalab.dfci.harvard.edu/dsbook-part-2/prob/random-variables.html)
-- [ ] (for Fri) [IDS 2 Intro to Statistical Inference](https://rafalab.dfci.harvard.edu/dsbook-part-2/inference/intro-inference.html)
+- [ ] (for Mon) [IDS 2 Ch 7 - Random Variables](https://rafalab.dfci.harvard.edu/dsbook-part-2/prob/random-variables.html){target="_blank"}
+- [ ] (for Fri) [IDS 2 Intro to Statistical Inference](https://rafalab.dfci.harvard.edu/dsbook-part-2/inference/intro-inference.html){target="_blank"}
 
 
 ## 📐 Prepare for class
@@ -18,20 +18,20 @@ November 02-08, 2026
 
 ## 🥱 Monday 🌛
 
-- [Attendance Quiz 11/02](https://usu.instructure.com/courses/819584/assignments/5293103)
-- [Random Variables](../slides/28-rv.qmd)
+- [Attendance Quiz 11/02](https://usu.instructure.com/courses/819584/assignments/5293103){target="_blank"}
+- [Random Variables](../slides/28-rv.qmd){target="_blank"}
 
 
 ## 🐪️ Wednesday 🐦‍⬛ 
 
-- [Attendance Quiz 11/04](https://usu.instructure.com/courses/819584/assignments/5293124/edit?quiz_lti=true)
-- [Random Variables](../slides/29-rv.qmd)
+- [Attendance Quiz 11/04](https://usu.instructure.com/courses/819584/assignments/5293124/){target="_blank"}
+- [Random Variables](../slides/29-rv.qmd){target="_blank"}
 
 
 ## 🎉 Friday 🥳
 
-- [Attendance Quiz 11/06](https://usu.instructure.com/courses/819584/assignments/5293125/edit?quiz_lti=true)
-- [Lab: Random Variables](../lab/30-rv.qmd)
+- [Attendance Quiz 11/06](https://usu.instructure.com/courses/819584/assignments/5293125/){target="_blank"}
+- [Lab: Random Variables](../lab/30-rv.qmd){target="_blank"}
 
 
 

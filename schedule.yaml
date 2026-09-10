@@ -101,7 +101,7 @@ schedule:
         - Slides: [Bias and Ethics](../slides/08-bias-ethics.qmd){target="_blank"}
     class3: |
         - [Attendance Quiz 09/18](https://usu.instructure.com/courses/819584/assignments/5292843){target="_blank"}
-        - [ ] [3.3.i - Bias and Ethics Activity](https://usu.instructure.com/courses/819584/quizzes/1462857){target="_blank"} (submit in Canvas). [qmd file](lab/_08-bias-and-ethics.qmd){target="_blank"} and [html file](lab/08-bias-and-ethics.qmd){target="_blank"}
+        - [ ] [3.3.i - Bias and Ethics Activity](https://usu.instructure.com/courses/819584/quizzes/1462857){target="_blank"} (submit in Canvas). [qmd file](../lab/_08-bias-and-ethics.qmd){target="_blank"} and [html file](../lab/08-bias-and-ethics.qmd){target="_blank"}
     extra: |
         - [Causal Inference](https://www.youtube.com/watch?v=gRkUhg9Wb-I){target="_blank"} (YouTube, Dr. David Sontag, MIT OpenCourseWare) - The alternative to correlation -- how to show causality
         - [Crash Course Statistics: Henrietta Lacks, the Tuskegee Experiment, and Ethical Data Collection: Crash Course Statistics #12](https://www.youtube.com/watch?v=CzNANZnoiRs){target="_blank"} (YouTube, CrashCourse)
@@ -115,7 +115,7 @@ schedule:
         - [ ] (for Wed) [SC Ch 13 - Control Structures](https://srvanderplas.github.io/stat-computing-r-python/part-gen-prog/04-control-struct.html){target="_blank"}
     prepare: |
         - [ ] (for Mon) [Reading Check 4.1 - Data Structures](https://usu.instructure.com/courses/819584/quizzes/1498243){target="_blank"}
-        - [ ] (for Wed) Reading Check 4.2
+        - [ ] (for Wed) [Reading Check 4.2 - R programming and Control Structures](https://usu.instructure.com/courses/819584/modules/items/7928110){target="_blank"}
     class1: |
         - [Attendance Quiz 09/21](https://usu.instructure.com/courses/819584/assignments/5292851){target="_blank"}
         - [R programming basics](../slides/10-r-prog.qmd)
@@ -135,79 +135,82 @@ schedule:
     start: 2026-09-28
     end: 2026-10-04
     reading: |
-        - [ ] (for Mon) [IDS I Ch 4 - The Tidyverse](https://rafalab.dfci.harvard.edu/dsbook-part-1/R/tidyverse.html)
-        - [ ] (for Wed) [SC Ch 22 - Data Cleaning](https://srvanderplas.github.io/stat-computing-r-python/part-wrangling/03-data-cleaning.html) - Read to get a sense of the different types of operations which are useful
-        - [ ] (for Fri) [SC Ch 24 - Reshaping Data](https://srvanderplas.github.io/stat-computing-r-python/part-wrangling/05-data-reshape.html) - Be able to ID wide and long data images
+        - [ ] (for Mon) [IDS I Ch 4 - The Tidyverse](https://rafalab.dfci.harvard.edu/dsbook-part-1/R/tidyverse.html){target="_blank"}
+        - [ ] (for Mon) [SC Ch 22 - Data Cleaning](https://srvanderplas.github.io/stat-computing-r-python/part-wrangling/03-data-cleaning.html){target="_blank"} - Focus on the (R) examples of any dplyr verb you don't quite get. 
+        - [ ] (for Wed) [SC Ch 24 - Reshaping Data](https://srvanderplas.github.io/stat-computing-r-python/part-wrangling/05-data-reshape.html){target="_blank"} - Be able to identify wide and long data
+        - [ ] (for Fri) No reading -- just be prepared for lab!
     prepare: |
-        - [ ] (for Mon) Reading Check 5.1
-        - [ ] (for Wed) Reading Check 5.2
-        - [ ] (for Fri) Reading Check 5.3
+        - [ ] (for Mon) [Reading Check 5.1 - The Tidyverse, Pipes, and dplyr](https://usu.instructure.com/courses/819584/quizzes/1499842){target="_blank"}
+        - [ ] (for Wed) [Reading Check 5.2 - Wide, Long, and Tidy data with tidyr]
     class1: |
-        - [Attendance Quiz 09/28](https://usu.instructure.com/courses/819584/assignments/5292941)
-        - [Tidyverse Programming Basics: Tibbles and `dplyr`](../slides/13-tidyverse-dplyr.qmd)
+        - [Attendance Quiz 09/28](https://usu.instructure.com/courses/819584/assignments/5292941){target="_blank"}
+        - [Tidyverse Programming Basics: Tibbles and `dplyr`](../slides/13-tidyverse-dplyr.qmd){target="_blank"}
+        - [5.1.i Covid Case Exploration](https://usu.instructure.com/courses/819584/quizzes/1462923) {target="_blank"}
     class2: |
-        - [Attendance Quiz 09/30](https://usu.instructure.com/courses/819584/assignments/5292942)
-        - [Tidyverse Programming Basics: Reshaping Data](../slides/14-tidyverse-tidyr.qmd)
+        - [Attendance Quiz 09/30](https://usu.instructure.com/courses/819584/assignments/5292942){target="_blank"}
+        - [Tidyverse Programming Basics: Reshaping Data](../slides/14-tidyverse-tidyr.qmd){target="_blank"}
     class3: |
-        - [Attendance Quiz 10/02](https://usu.instructure.com/courses/819584/assignments/5292943)
-        - [Lab: Tidyverse Programming](../lab/15-tidyverse.qmd)
+        - [Attendance Quiz 10/02](https://usu.instructure.com/courses/819584/assignments/5292943){target="_blank"}
+        - [Lab: Tidyverse Programming](../lab/15-tidyverse.qmd){target="_blank"}
     extra: |
-        - [SC Ch 16 - Programming with Data](https://srvanderplas.github.io/stat-computing-r-python/part-gen-prog/07-prog-data.html) - data explorations worked out with R/tidyverse code. You don't know how to do graphics yet, but hopefully the data operations make sense.
-        - [Tidy Tuesday Screencasts](https://www.youtube.com/watch?v=5ub92c-5xFQ&list=PL19ev-r1GBwkuyiwnxoHTRC8TTqP8OEi8) (YouTube, David Robinson). These show example data analyses in real time, with commentary, using a new dataset each week. These were primarily recorded during the pandemic, but are still an incredibly valuable resource for learing how to work with data.
-        - [Allison Horst's Tidyverse Illustrations](https://allisonhorst.com/r-packages-functions) - mostly illustrates tidyverse functions. 
-        - [Functional Programming Illustrations](https://allisonhorst.com/wickham-tidy-bakers)
+        - [SC Ch 10 - Functions, section 4: Pipes](https://srvanderplas.github.io/stat-computing-r-python/part-gen-prog/02-prog-functions.html#pipes){target="_blank"}
+        - [Tidyverse Style Guide - Pipes](https://style.tidyverse.org/pipes.html){target="_blank"}
+        - [SC Ch 16 - Programming with Data](https://srvanderplas.github.io/stat-computing-r-python/part-gen-prog/07-prog-data.html){target="_blank"} - data explorations worked out with R/tidyverse code. You don't know how to do graphics yet, but hopefully the data operations make sense.
+        - [Tidy Tuesday Screencasts](https://www.youtube.com/watch?v=5ub92c-5xFQ&list=PL19ev-r1GBwkuyiwnxoHTRC8TTqP8OEi8){target="_blank"} (YouTube, David Robinson). These show example data analyses in real time, with commentary, using a new dataset each week. These were primarily recorded during the pandemic, but are still an incredibly valuable resource for learing how to work with data.
+        - [Allison Horst's Tidyverse Illustrations](https://allisonhorst.com/r-packages-functions){target="_blank"} - mostly illustrates tidyverse functions. 
+        - [Functional Programming Illustrations](https://allisonhorst.com/wickham-tidy-bakers){target="_blank"}
 
   - week: 6
     name: Dates, Times, and Distributions
     start: 2026-10-05
     end: 2026-10-11
     reading: |
-        - [ ] (for Mon) [IDS I Ch 13 - Dates and Times](https://rafalab.dfci.harvard.edu/dsbook-part-1/wrangling/dates-and-times.html)
-        - [ ] (for Wed) [IDS I Ch 7 - Visualizing Data Distributions](https://rafalab.dfci.harvard.edu/dsbook-part-1/dataviz/distributions.html)
+        - [ ] (for Mon) [IDS I Ch 13 - Dates and Times](https://rafalab.dfci.harvard.edu/dsbook-part-1/wrangling/dates-and-times.html){target="_blank"}
+        - [ ] (for Wed) [IDS I Ch 7 - Visualizing Data Distributions](https://rafalab.dfci.harvard.edu/dsbook-part-1/dataviz/distributions.html){target="_blank"}
     prepare: |
         - [ ] (for Mon) Reading Check 6.1  
         - [ ] (for Wed) Reading Check 6.2
     class1: |
-        - [Attendance Quiz 10/05](https://usu.instructure.com/courses/819584/assignments/5292944)
+        - [Attendance Quiz 10/05](https://usu.instructure.com/courses/819584/assignments/5292944){target="_blank"}
         - [Dates and Times](../slides/16-dates-times.qmd)
     class2: |
-        - [Attendance Quiz 10/07](https://usu.instructure.com/courses/819584/assignments/5292945)
-        - [Visualizing Data Distributions](../slides/17-vis-dist.qmd)
+        - [Attendance Quiz 10/07](https://usu.instructure.com/courses/819584/assignments/5292945){target="_blank"}
+        - [Visualizing Data Distributions](../slides/17-vis-dist.qmd){target="_blank"}
     class3: |
         - Fall Break
     extra: |
-        - [SC Ch 27 - Dates and Times](https://srvanderplas.github.io/stat-computing-r-python/part-wrangling/07-datetime.html)
-        - [IDS I Ch 14 - Locales](https://rafalab.dfci.harvard.edu/dsbook-part-1/wrangling/locales.html)
+        - [SC Ch 27 - Dates and Times](https://srvanderplas.github.io/stat-computing-r-python/part-wrangling/07-datetime.html){target="_blank"}
+        - [IDS I Ch 14 - Locales](https://rafalab.dfci.harvard.edu/dsbook-part-1/wrangling/locales.html){target="_blank"}
 
   - week: 7
     name: Data Visualization
     start: 2026-10-12
     end: 2026-10-18
     reading: |
-        - [ ] (for Mon) [IDS I Ch 8 - ggplot2](https://rafalab.dfci.harvard.edu/dsbook-part-1/dataviz/ggplot2.html)
-        - [ ] (for Wed) [IDS I Ch 10 - Data Visualization in Practice](https://rafalab.dfci.harvard.edu/dsbook-part-1/dataviz/dataviz-in-practice.html)
-        - [ ] (for Fri) [IDS I Ch 9 - Data Visualization Principles](https://rafalab.dfci.harvard.edu/dsbook-part-1/dataviz/dataviz-principles.html)
+        - [ ] (for Mon) [IDS I Ch 8 - ggplot2](https://rafalab.dfci.harvard.edu/dsbook-part-1/dataviz/ggplot2.html){target="_blank"}
+        - [ ] (for Wed) [IDS I Ch 10 - Data Visualization in Practice](https://rafalab.dfci.harvard.edu/dsbook-part-1/dataviz/dataviz-in-practice.html){target="_blank"}
+        - [ ] (for Fri) [IDS I Ch 9 - Data Visualization Principles](https://rafalab.dfci.harvard.edu/dsbook-part-1/dataviz/dataviz-principles.html){target="_blank"}
     prepare: |
         - [ ] (for Mon) Reading Check 7.1
         - [ ] (for Wed) Reading Check 7.2
         - [ ] (for Fri) Reading Check 7.3
     class1: |
-        - [Attendance Quiz 10/12](https://usu.instructure.com/courses/819584/assignments/5292946)
-        - [Data Visualization with `ggplot2`](../slides/19-ggplot2.qmd)
+        - [Attendance Quiz 10/12](https://usu.instructure.com/courses/819584/assignments/5292946){target="_blank"}
+        - [Data Visualization with `ggplot2`](../slides/19-ggplot2.qmd){target="_blank"}
     class2: |
-        - [Attendance Quiz 10/14](https://usu.instructure.com/courses/819584/assignments/5292947)
-        - [Data Visualization in Practice/Advanced `ggplot2`](../slides/20-adv-ggplot2.qmd)
+        - [Attendance Quiz 10/14](https://usu.instructure.com/courses/819584/assignments/5292947){target="_blank"}
+        - [Data Visualization in Practice/Advanced `ggplot2`](../slides/20-adv-ggplot2.qmd){target="_blank"}
     class3: |
-        - [Attendance Quiz 10/16](https://usu.instructure.com/courses/819584/assignments/5292962)
-        - [Data Visualization Principles](../slides/21-data-vis-principles.qmd)
-        - [Lab: Effective Data Visualization](../lab/21-effective-data-vis.qmd)
+        - [Attendance Quiz 10/16](https://usu.instructure.com/courses/819584/assignments/5292962){target="_blank"}
+        - [Data Visualization Principles](../slides/21-data-vis-principles.qmd){target="_blank"}
+        - [Lab: Effective Data Visualization](../lab/21-effective-data-vis.qmd){target="_blank"}
     extra: |
       This is my research area, so here's an info-dump from my textbook. I'm also happy to discuss data visualization at any point in office hours! 
       
-        - [SC Ch 18 - Data Visualization Basics](https://srvanderplas.github.io/stat-computing-r-python/part-wrangling/02-basic-data-vis.html)a
-        - [SC Ch 19 - Exploratory Data Analysis](https://srvanderplas.github.io/stat-computing-r-python/part-wrangling/02a-eda.html)
-        - [SC Ch 20 - A Grammar of Graphics](https://srvanderplas.github.io/stat-computing-r-python/part-wrangling/02b-graphics.html)
-        - [SC Ch 21 - Creating Good Charts](https://srvanderplas.github.io/stat-computing-r-python/part-wrangling/02c-good-graphics.html)
+        - [SC Ch 18 - Data Visualization Basics](https://srvanderplas.github.io/stat-computing-r-python/part-wrangling/02-basic-data-vis.html){target="_blank"}
+        - [SC Ch 19 - Exploratory Data Analysis](https://srvanderplas.github.io/stat-computing-r-python/part-wrangling/02a-eda.html){target="_blank"}
+        - [SC Ch 20 - A Grammar of Graphics](https://srvanderplas.github.io/stat-computing-r-python/part-wrangling/02b-graphics.html){target="_blank"}
+        - [SC Ch 21 - Creating Good Charts](https://srvanderplas.github.io/stat-computing-r-python/part-wrangling/02c-good-graphics.html){target="_blank"}
         
 
   - week: 8
@@ -215,23 +218,23 @@ schedule:
     start: 2026-10-19
     end: 2026-10-25
     reading: |
-        - [ ] (for Mon) [IDS 2, Ch 2 - Numerical Summaries](https://rafalab.dfci.harvard.edu/dsbook-part-2/summaries/numerical-summaries.html)
-        - [ ] (for Mon) [IDS 2, Ch 3.3 - Comparing Groups with Stratification](https://rafalab.dfci.harvard.edu/dsbook-part-2/summaries/comparing-groups.html#sec-stratification)
-        - [ ] (for Wed) [IDS 2, Ch 5 - Discrete Probability](https://rafalab.dfci.harvard.edu/dsbook-part-2/prob/discrete-probability.html)
-        - [ ] (for Fri) [IDS 2, Ch 6 - Continuous Probability](https://rafalab.dfci.harvard.edu/dsbook-part-2/prob/continuous-probability.html)
+        - [ ] (for Mon) [IDS 2, Ch 2 - Numerical Summaries](https://rafalab.dfci.harvard.edu/dsbook-part-2/summaries/numerical-summaries.html){target="_blank"}
+        - [ ] (for Mon) [IDS 2, Ch 3.3 - Comparing Groups with Stratification](https://rafalab.dfci.harvard.edu/dsbook-part-2/summaries/comparing-groups.html#sec-stratification){target="_blank"}
+        - [ ] (for Wed) [IDS 2, Ch 5 - Discrete Probability](https://rafalab.dfci.harvard.edu/dsbook-part-2/prob/discrete-probability.html){target="_blank"}
+        - [ ] (for Fri) [IDS 2, Ch 6 - Continuous Probability](https://rafalab.dfci.harvard.edu/dsbook-part-2/prob/continuous-probability.html){target="_blank"}
     prepare: |
         - [ ] (for Mon) Reading Check 8.1
         - [ ] (for Wed) Reading Check 8.2
         - [ ] (for Fri) Reading Check 8.3
     class1: |
-        - [Attendance Quiz 10/19](https://usu.instructure.com/courses/819584/assignments/5292963)
-        - [Summary Statistics](../slides/22-summary-stats.qmd)
+        - [Attendance Quiz 10/19](https://usu.instructure.com/courses/819584/assignments/5292963){target="_blank"}
+        - [Summary Statistics](../slides/22-summary-stats.qmd){target="_blank"}
     class2: |
-        - [Attendance Quiz 10/21](https://usu.instructure.com/courses/819584/assignments/5293065)
-        - [Discrete Probability](../slides/23-discrete-prob.qmd)
+        - [Attendance Quiz 10/21](https://usu.instructure.com/courses/819584/assignments/5293065){target="_blank"}
+        - [Discrete Probability](../slides/23-discrete-prob.qmd){target="_blank"}
     class3: |
-        - [Attendance Quiz 10/23](https://usu.instructure.com/courses/819584/assignments/5293066)
-        - [Continuous Probability](../slides/24-cts-prob.qmd)
+        - [Attendance Quiz 10/23](https://usu.instructure.com/courses/819584/assignments/5293066){target="_blank"}
+        - [Continuous Probability](../slides/24-cts-prob.qmd){target="_blank"}
     # extra: |
     #     - 
         
@@ -240,18 +243,18 @@ schedule:
     start: 2026-10-26
     end: 2026-11-01
     reading: |
-        - [ ] (for Mon) [IDS 2 Ch 4 - Connecting Data and Probability](https://rafalab.dfci.harvard.edu/dsbook-part-2/prob/connecting-data-and-probability.html)
+        - [ ] (for Mon) [IDS 2 Ch 4 - Connecting Data and Probability](https://rafalab.dfci.harvard.edu/dsbook-part-2/prob/connecting-data-and-probability.html){target="_blank"}
     prepare: |
         - [ ] (for Mon) Reading Check 9.1
     class1: |
-        - [Attendance Quiz 10/26](https://usu.instructure.com/courses/819584/assignments/5293067)
-        - [Data and Probability](../slides/25-data-prob.qmd)
+        - [Attendance Quiz 10/26](https://usu.instructure.com/courses/819584/assignments/5293067){target="_blank"}
+        - [Data and Probability](../slides/25-data-prob.qmd){target="_blank"}
     class2: |
-        - [Attendance Quiz 10/28](https://usu.instructure.com/courses/819584/assignments/5293068)
+        - [Attendance Quiz 10/28](https://usu.instructure.com/courses/819584/assignments/5293068){target="_blank"}
         - TBD probability
     class3: |
-        - [Attendance Quiz 10/30](https://usu.instructure.com/courses/819584/assignments/5293102)
-        - [Lab: Probability](../lab/27-probability.qmd)
+        - [Attendance Quiz 10/30](https://usu.instructure.com/courses/819584/assignments/5293102){target="_blank"}
+        - [Lab: Probability](../lab/27-probability.qmd){target="_blank"}
     # extra: |
     #     - 
         
@@ -260,20 +263,20 @@ schedule:
     start: 2026-11-02
     end: 2026-11-08
     reading: |
-        - [ ] (for Mon) [IDS 2 Ch 7 - Random Variables](https://rafalab.dfci.harvard.edu/dsbook-part-2/prob/random-variables.html)
-        - [ ] (for Fri) [IDS 2 Intro to Statistical Inference](https://rafalab.dfci.harvard.edu/dsbook-part-2/inference/intro-inference.html)
+        - [ ] (for Mon) [IDS 2 Ch 7 - Random Variables](https://rafalab.dfci.harvard.edu/dsbook-part-2/prob/random-variables.html){target="_blank"}
+        - [ ] (for Fri) [IDS 2 Intro to Statistical Inference](https://rafalab.dfci.harvard.edu/dsbook-part-2/inference/intro-inference.html){target="_blank"}
     prepare: |
         - [ ] (for Mon) Reading Check 10.1
         - [ ] (for Fri) Reading Check 10.3
     class1: |
-        - [Attendance Quiz 11/02](https://usu.instructure.com/courses/819584/assignments/5293103)
-        - [Random Variables](../slides/28-rv.qmd)
+        - [Attendance Quiz 11/02](https://usu.instructure.com/courses/819584/assignments/5293103){target="_blank"}
+        - [Random Variables](../slides/28-rv.qmd){target="_blank"}
     class2: |
-        - [Attendance Quiz 11/04](https://usu.instructure.com/courses/819584/assignments/5293124/edit?quiz_lti=true)
-        - [Random Variables](../slides/29-rv.qmd)
+        - [Attendance Quiz 11/04](https://usu.instructure.com/courses/819584/assignments/5293124/){target="_blank"}
+        - [Random Variables](../slides/29-rv.qmd){target="_blank"}
     class3: |
-        - [Attendance Quiz 11/06](https://usu.instructure.com/courses/819584/assignments/5293125/edit?quiz_lti=true)
-        - [Lab: Random Variables](../lab/30-rv.qmd)
+        - [Attendance Quiz 11/06](https://usu.instructure.com/courses/819584/assignments/5293125/){target="_blank"}
+        - [Lab: Random Variables](../lab/30-rv.qmd){target="_blank"}
     # extra: |
     #     - 
     
@@ -282,20 +285,20 @@ schedule:
     start: 2026-11-09
     end: 2026-11-15
     reading: |
-        - [ ] (for Mon) [IDS 2 Ch 9.1-9.3 - Estimates](https://rafalab.dfci.harvard.edu/dsbook-part-2/inference/estimates-confidence-intervals.html)
-        - [ ] (for Wed) [IDS 2 Ch 8 - Sampling Models and the Central Limit Theorem](https://rafalab.dfci.harvard.edu/dsbook-part-2/prob/sampling-models-and-clt.html)
+        - [ ] (for Mon) [IDS 2 Ch 9.1-9.3 - Estimates](https://rafalab.dfci.harvard.edu/dsbook-part-2/inference/estimates-confidence-intervals.html){target="_blank"}
+        - [ ] (for Wed) [IDS 2 Ch 8 - Sampling Models and the Central Limit Theorem](https://rafalab.dfci.harvard.edu/dsbook-part-2/prob/sampling-models-and-clt.html){target="_blank"}
     prepare: |
         - [ ] (for Mon) Reading Check 11.1
         - [ ] (for Wed) Reading Check 11.2
     class1: |
-        - [Attendance Quiz 11/09](https://usu.instructure.com/courses/819584/assignments/5293126/edit?quiz_lti=true)
-        - [Parameters and Estimates](../slides/31-param-est.qmd)
+        - [Attendance Quiz 11/09](https://usu.instructure.com/courses/819584/assignments/5293126/){target="_blank"}
+        - [Parameters and Estimates](../slides/31-param-est.qmd){target="_blank"}
     class2: |
-        - [Attendance Quiz 11/11](https://usu.instructure.com/courses/819584/assignments/5293127/edit?quiz_lti=true)
-        - [Central Limit Theorem](../slides/32-clt.qmd)
+        - [Attendance Quiz 11/11](https://usu.instructure.com/courses/819584/assignments/5293127/){target="_blank"}
+        - [Central Limit Theorem](../slides/32-clt.qmd){target="_blank"}
     class3: |
-        - [Attendance Quiz 11/13](https://usu.instructure.com/courses/819584/assignments/5293128/edit?quiz_lti=true)
-        - [Lab: CLT](../lab/33-clt.qmd)
+        - [Attendance Quiz 11/13](https://usu.instructure.com/courses/819584/assignments/5293128/){target="_blank"}
+        - [Lab: CLT](../lab/33-clt.qmd){target="_blank"}
     # extra: |
     #     - 
 
@@ -304,20 +307,20 @@ schedule:
     start: 2026-11-16
     end: 2026-11-22
     reading: |
-        - [ ] (for Mon) [IDS 2 Ch 13 - Hypothesis Testing](https://rafalab.dfci.harvard.edu/dsbook-part-2/inference/hypothesis-testing.html)
-        - [ ] (for Wed) [IDS 2 Ch 9.4 - Confidence Intervals](https://rafalab.dfci.harvard.edu/dsbook-part-2/inference/estimates-confidence-intervals.html#confidence-intervals)
+        - [ ] (for Mon) [IDS 2 Ch 13 - Hypothesis Testing](https://rafalab.dfci.harvard.edu/dsbook-part-2/inference/hypothesis-testing.html){target="_blank"}
+        - [ ] (for Wed) [IDS 2 Ch 9.4 - Confidence Intervals](https://rafalab.dfci.harvard.edu/dsbook-part-2/inference/estimates-confidence-intervals.html#confidence-intervals){target="_blank"}
     prepare: |
         - [ ] (for Mon) Reading Check 12.1
         - [ ] (for Wed) Reading Check 12.2
     class1: |
-        - [Attendance Quiz 11/16](https://usu.instructure.com/courses/819584/assignments/5293129/edit?quiz_lti=true)
-        - [Hypothesis Testing](../slides/34-hypothesis.qmd)
+        - [Attendance Quiz 11/16](https://usu.instructure.com/courses/819584/assignments/5293129/){target="_blank"}
+        - [Hypothesis Testing](../slides/34-hypothesis.qmd){target="_blank"}
     class2: |
-        - [Attendance Quiz 11/18](https://usu.instructure.com/courses/819584/assignments/5293132/edit?quiz_lti=true)
-        - [Confidence Intervals](../slides/35-ci.qmd)
+        - [Attendance Quiz 11/18](https://usu.instructure.com/courses/819584/assignments/5293132/){target="_blank"}
+        - [Confidence Intervals](../slides/35-ci.qmd){target="_blank"}
     class3: |
-        - [Attendance Quiz 11/20](https://usu.instructure.com/courses/819584/assignments/5293131/edit?quiz_lti=true)
-        - [Lab: Inference](../lab/36-inference.qmd)
+        - [Attendance Quiz 11/20](https://usu.instructure.com/courses/819584/assignments/5293131/){target="_blank"}
+        - [Lab: Inference](../lab/36-inference.qmd){target="_blank"}
     # extra: |
     #     - 
         
@@ -326,13 +329,13 @@ schedule:
     start: 2026-11-23
     end: 2026-11-29
     reading: |
-        - [ ] (for Mon) [IDS 2 Ch 15 - Regression](https://rafalab.dfci.harvard.edu/dsbook-part-2/linear-models/regression.html)  
+        - [ ] (for Mon) [IDS 2 Ch 15 - Regression](https://rafalab.dfci.harvard.edu/dsbook-part-2/linear-models/regression.html){target="_blank"}  
     prepare: |
         - [ ] 
     class1: |
-        - [Attendance Quiz 11/23](https://usu.instructure.com/courses/819584/assignments/5293133/edit?quiz_lti=true)
-        - [Introduction to Regression](../slides/37-regression-intro.qmd)
-        - [Activity: Regression By Hand](../lab/37-regression-by-hand.qmd)
+        - [Attendance Quiz 11/23](https://usu.instructure.com/courses/819584/assignments/5293133/){target="_blank"}
+        - [Introduction to Regression](../slides/37-regression-intro.qmd){target="_blank"}
+        - [Activity: Regression By Hand](../lab/37-regression-by-hand.qmd){target="_blank"}
     class2: |
         - 🦃 Thanksgiving Break
     class3: |
@@ -345,20 +348,20 @@ schedule:
     start: 2026-11-30
     end: 2026-12-06
     reading: |
-        - [ ] (for Mon) [IDS 2 Ch 16 - The Linear Model Framework](https://rafalab.dfci.harvard.edu/dsbook-part-2/linear-models/linear-model-framework.html)
-        - [ ] (for Wed) [IDS 2 Ch 20 - Multivariable Regression](https://rafalab.dfci.harvard.edu/dsbook-part-2/linear-models/multivariable-regression.html)
+        - [ ] (for Mon) [IDS 2 Ch 16 - The Linear Model Framework](https://rafalab.dfci.harvard.edu/dsbook-part-2/linear-models/linear-model-framework.html){target="_blank"}
+        - [ ] (for Wed) [IDS 2 Ch 20 - Multivariable Regression](https://rafalab.dfci.harvard.edu/dsbook-part-2/linear-models/multivariable-regression.html){target="_blank"}
     prepare: |
         - [ ] (for Mon) Reading Check 14.1
         - [ ] (for Wed) Reading Check 14.2
     class1: |
-        - [Attendance Quiz 11/30](https://usu.instructure.com/courses/819584/assignments/5293135/edit?quiz_lti=true)
-        - [Linear Models](../slides/40-linear-models.qmd)
+        - [Attendance Quiz 11/30](https://usu.instructure.com/courses/819584/assignments/5293135/){target="_blank"}
+        - [Linear Models](../slides/40-linear-models.qmd){target="_blank"}
     class2: |
-        - [Attendance Quiz 12/02](https://usu.instructure.com/courses/819584/assignments/5293134/edit?quiz_lti=true)
-        - [Multivariate Regression](../slides/41-multivariate.qmd)
+        - [Attendance Quiz 12/02](https://usu.instructure.com/courses/819584/assignments/5293134/){target="_blank"}
+        - [Multivariate Regression](../slides/41-multivariate.qmd){target="_blank"}
     class3: |
-        - [Attendance Quiz 12/04](https://usu.instructure.com/courses/819584/assignments/5293136/edit?quiz_lti=true)
-        - [Lab: Regression](../lab/42-regression.qmd)
+        - [Attendance Quiz 12/04](https://usu.instructure.com/courses/819584/assignments/5293136/){target="_blank"}
+        - [Lab: Regression](../lab/42-regression.qmd){target="_blank"}
     # extra: |
     #     - 
 
@@ -367,13 +370,13 @@ schedule:
     start: 2026-12-07
     end: 2026-12-13
     class1: |
-        - [Attendance Quiz 12/07](https://usu.instructure.com/courses/819584/assignments/5293137/edit?quiz_lti=true)
+        - [Attendance Quiz 12/07](https://usu.instructure.com/courses/819584/assignments/5293137/){target="_blank"}
         - Project Meetings 
     class2: |
-        - [Attendance Quiz 12/09](https://usu.instructure.com/courses/819584/assignments/5293138/edit?quiz_lti=true)
+        - [Attendance Quiz 12/09](https://usu.instructure.com/courses/819584/assignments/5293138/){target="_blank"}
         - Project Meetings
     class3: |
-        - [Attendance Quiz 12/11](https://usu.instructure.com/courses/819584/assignments/5293139/edit?quiz_lti=true)
+        - [Attendance Quiz 12/11](https://usu.instructure.com/courses/819584/assignments/5293139/){target="_blank"}
         - Project Meetings and Honors presentations
     # extra: |
     #     - 

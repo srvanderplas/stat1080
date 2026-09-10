@@ -6,8 +6,8 @@ October 05-11, 2026
 
 ## 📖 Reading
 
-- [ ] (for Mon) [IDS I Ch 13 - Dates and Times](https://rafalab.dfci.harvard.edu/dsbook-part-1/wrangling/dates-and-times.html)
-- [ ] (for Wed) [IDS I Ch 7 - Visualizing Data Distributions](https://rafalab.dfci.harvard.edu/dsbook-part-1/dataviz/distributions.html)
+- [ ] (for Mon) [IDS I Ch 13 - Dates and Times](https://rafalab.dfci.harvard.edu/dsbook-part-1/wrangling/dates-and-times.html){target="_blank"}
+- [ ] (for Wed) [IDS I Ch 7 - Visualizing Data Distributions](https://rafalab.dfci.harvard.edu/dsbook-part-1/dataviz/distributions.html){target="_blank"}
 
 
 ## 📐 Prepare for class
@@ -18,14 +18,14 @@ October 05-11, 2026
 
 ## 🥱 Monday 🌛
 
-- [Attendance Quiz 10/05](https://usu.instructure.com/courses/819584/assignments/5292944)
+- [Attendance Quiz 10/05](https://usu.instructure.com/courses/819584/assignments/5292944){target="_blank"}
 - [Dates and Times](../slides/16-dates-times.qmd)
 
 
 ## 🐪️ Wednesday 🐦‍⬛ 
 
-- [Attendance Quiz 10/07](https://usu.instructure.com/courses/819584/assignments/5292945)
-- [Visualizing Data Distributions](../slides/17-vis-dist.qmd)
+- [Attendance Quiz 10/07](https://usu.instructure.com/courses/819584/assignments/5292945){target="_blank"}
+- [Visualizing Data Distributions](../slides/17-vis-dist.qmd){target="_blank"}
 
 
 ## 🎉 Friday 🥳
@@ -35,6 +35,6 @@ October 05-11, 2026
 
 ## Extra Resources/Reading
 
-- [SC Ch 27 - Dates and Times](https://srvanderplas.github.io/stat-computing-r-python/part-wrangling/07-datetime.html)
-- [IDS I Ch 14 - Locales](https://rafalab.dfci.harvard.edu/dsbook-part-1/wrangling/locales.html)
+- [SC Ch 27 - Dates and Times](https://srvanderplas.github.io/stat-computing-r-python/part-wrangling/07-datetime.html){target="_blank"}
+- [IDS I Ch 14 - Locales](https://rafalab.dfci.harvard.edu/dsbook-part-1/wrangling/locales.html){target="_blank"}
 

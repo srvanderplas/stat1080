@@ -6,8 +6,8 @@ November 30-06, 2026
 
 ## 📖 Reading
 
-- [ ] (for Mon) [IDS 2 Ch 16 - The Linear Model Framework](https://rafalab.dfci.harvard.edu/dsbook-part-2/linear-models/linear-model-framework.html)
-- [ ] (for Wed) [IDS 2 Ch 20 - Multivariable Regression](https://rafalab.dfci.harvard.edu/dsbook-part-2/linear-models/multivariable-regression.html)
+- [ ] (for Mon) [IDS 2 Ch 16 - The Linear Model Framework](https://rafalab.dfci.harvard.edu/dsbook-part-2/linear-models/linear-model-framework.html){target="_blank"}
+- [ ] (for Wed) [IDS 2 Ch 20 - Multivariable Regression](https://rafalab.dfci.harvard.edu/dsbook-part-2/linear-models/multivariable-regression.html){target="_blank"}
 
 
 ## 📐 Prepare for class
@@ -18,20 +18,20 @@ November 30-06, 2026
 
 ## 🥱 Monday 🌛
 
-- [Attendance Quiz 11/30](https://usu.instructure.com/courses/819584/assignments/5293135/edit?quiz_lti=true)
-- [Linear Models](../slides/40-linear-models.qmd)
+- [Attendance Quiz 11/30](https://usu.instructure.com/courses/819584/assignments/5293135/){target="_blank"}
+- [Linear Models](../slides/40-linear-models.qmd){target="_blank"}
 
 
 ## 🐪️ Wednesday 🐦‍⬛ 
 
-- [Attendance Quiz 12/02](https://usu.instructure.com/courses/819584/assignments/5293134/edit?quiz_lti=true)
-- [Multivariate Regression](../slides/41-multivariate.qmd)
+- [Attendance Quiz 12/02](https://usu.instructure.com/courses/819584/assignments/5293134/){target="_blank"}
+- [Multivariate Regression](../slides/41-multivariate.qmd){target="_blank"}
 
 
 ## 🎉 Friday 🥳
 
-- [Attendance Quiz 12/04](https://usu.instructure.com/courses/819584/assignments/5293136/edit?quiz_lti=true)
-- [Lab: Regression](../lab/42-regression.qmd)
+- [Attendance Quiz 12/04](https://usu.instructure.com/courses/819584/assignments/5293136/){target="_blank"}
+- [Lab: Regression](../lab/42-regression.qmd){target="_blank"}
 
 
 

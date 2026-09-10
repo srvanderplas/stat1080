@@ -6,10 +6,10 @@ October 19-25, 2026
 
 ## 📖 Reading
 
-- [ ] (for Mon) [IDS 2, Ch 2 - Numerical Summaries](https://rafalab.dfci.harvard.edu/dsbook-part-2/summaries/numerical-summaries.html)
-- [ ] (for Mon) [IDS 2, Ch 3.3 - Comparing Groups with Stratification](https://rafalab.dfci.harvard.edu/dsbook-part-2/summaries/comparing-groups.html#sec-stratification)
-- [ ] (for Wed) [IDS 2, Ch 5 - Discrete Probability](https://rafalab.dfci.harvard.edu/dsbook-part-2/prob/discrete-probability.html)
-- [ ] (for Fri) [IDS 2, Ch 6 - Continuous Probability](https://rafalab.dfci.harvard.edu/dsbook-part-2/prob/continuous-probability.html)
+- [ ] (for Mon) [IDS 2, Ch 2 - Numerical Summaries](https://rafalab.dfci.harvard.edu/dsbook-part-2/summaries/numerical-summaries.html){target="_blank"}
+- [ ] (for Mon) [IDS 2, Ch 3.3 - Comparing Groups with Stratification](https://rafalab.dfci.harvard.edu/dsbook-part-2/summaries/comparing-groups.html#sec-stratification){target="_blank"}
+- [ ] (for Wed) [IDS 2, Ch 5 - Discrete Probability](https://rafalab.dfci.harvard.edu/dsbook-part-2/prob/discrete-probability.html){target="_blank"}
+- [ ] (for Fri) [IDS 2, Ch 6 - Continuous Probability](https://rafalab.dfci.harvard.edu/dsbook-part-2/prob/continuous-probability.html){target="_blank"}
 
 
 ## 📐 Prepare for class
@@ -21,20 +21,20 @@ October 19-25, 2026
 
 ## 🥱 Monday 🌛
 
-- [Attendance Quiz 10/19](https://usu.instructure.com/courses/819584/assignments/5292963)
-- [Summary Statistics](../slides/22-summary-stats.qmd)
+- [Attendance Quiz 10/19](https://usu.instructure.com/courses/819584/assignments/5292963){target="_blank"}
+- [Summary Statistics](../slides/22-summary-stats.qmd){target="_blank"}
 
 
 ## 🐪️ Wednesday 🐦‍⬛ 
 
-- [Attendance Quiz 10/21](https://usu.instructure.com/courses/819584/assignments/5293065)
-- [Discrete Probability](../slides/23-discrete-prob.qmd)
+- [Attendance Quiz 10/21](https://usu.instructure.com/courses/819584/assignments/5293065){target="_blank"}
+- [Discrete Probability](../slides/23-discrete-prob.qmd){target="_blank"}
 
 
 ## 🎉 Friday 🥳
 
-- [Attendance Quiz 10/23](https://usu.instructure.com/courses/819584/assignments/5293066)
-- [Continuous Probability](../slides/24-cts-prob.qmd)
+- [Attendance Quiz 10/23](https://usu.instructure.com/courses/819584/assignments/5293066){target="_blank"}
+- [Continuous Probability](../slides/24-cts-prob.qmd){target="_blank"}
 
 
 
