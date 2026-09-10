@@ -1355,7 +1355,7 @@
     "href": "weeks/week-050.html",
     "title": "Week 5: The Tidyverse",
     "section": "",
-    "text": "September 28-04, 2026\n\n\n\n(for Mon) IDS I Ch 4 - The Tidyverse\n(for Mon) SC Ch 22 - Data Cleaning - Focus on the (R) examples of any dplyr verb you don’t quite get.\n(for Wed) SC Ch 24 - Reshaping Data - Be able to identify wide and long data\n(for Fri) No reading – just be prepared for lab!\n\n\n\n\n\n(for Mon) Reading Check 5.1 - The Tidyverse, Pipes, and dplyr\n(for Wed) [Reading Check 5.2 - Wide, Long, and Tidy data with tidyr]\n\n\n\n\n\nAttendance Quiz 09/28\nTidyverse Programming Basics: Tibbles and dplyr\n5.1.i Covid Case Exploration {target=“_blank”}\n\n\n\n\n\nAttendance Quiz 09/30\nTidyverse Programming Basics: Reshaping Data\n\n\n\n\n\nAttendance Quiz 10/02\nLab: Tidyverse Programming\n\n\n\n\n\nSC Ch 10 - Functions, section 4: Pipes\nTidyverse Style Guide - Pipes\nSC Ch 16 - Programming with Data - data explorations worked out with R/tidyverse code. You don’t know how to do graphics yet, but hopefully the data operations make sense.\nTidy Tuesday Screencasts (YouTube, David Robinson). These show example data analyses in real time, with commentary, using a new dataset each week. These were primarily recorded during the pandemic, but are still an incredibly valuable resource for learing how to work with data.\nAllison Horst’s Tidyverse Illustrations - mostly illustrates tidyverse functions.\nFunctional Programming Illustrations"
+    "text": "September 28-04, 2026\n\n\n\n(for Mon) IDS I Ch 4 - The Tidyverse\n(for Mon) SC Ch 22 - Data Cleaning - Focus on the (R) examples of any dplyr verb you don’t quite get.\n(for Wed) SC Ch 24 - Reshaping Data - Be able to identify wide and long data\n(for Fri) No reading – just be prepared for lab!\n\n\n\n\n\n(for Mon) Reading Check 5.1 - The Tidyverse, Pipes, and dplyr\n(for Wed) [Reading Check 5.2 - Wide, Long, and Tidy data with tidyr]\n\n\n\n\n\nAttendance Quiz 09/28\nTidyverse Programming Basics: Tibbles and dplyr\n5.1.i Covid Case Exploration\n\n\n\n\n\nAttendance Quiz 09/30\nTidyverse Programming Basics: Reshaping Data\n\n\n\n\n\nAttendance Quiz 10/02\nLab: Tidyverse Programming\n\n\n\n\n\nSC Ch 10 - Functions, section 4: Pipes\nTidyverse Style Guide - Pipes\nSC Ch 16 - Programming with Data - data explorations worked out with R/tidyverse code. You don’t know how to do graphics yet, but hopefully the data operations make sense.\nTidy Tuesday Screencasts (YouTube, David Robinson). These show example data analyses in real time, with commentary, using a new dataset each week. These were primarily recorded during the pandemic, but are still an incredibly valuable resource for learing how to work with data.\nAllison Horst’s Tidyverse Illustrations - mostly illustrates tidyverse functions.\nFunctional Programming Illustrations"
   },
   {
     "objectID": "weeks/week-050.html#reading",
@@ -1376,7 +1376,7 @@
     "href": "weeks/week-050.html#monday",
     "title": "Week 5: The Tidyverse",
     "section": "",
-    "text": "Attendance Quiz 09/28\nTidyverse Programming Basics: Tibbles and dplyr\n5.1.i Covid Case Exploration {target=“_blank”}"
+    "text": "Attendance Quiz 09/28\nTidyverse Programming Basics: Tibbles and dplyr\n5.1.i Covid Case Exploration"
   },
   {
     "objectID": "weeks/week-050.html#wednesday",

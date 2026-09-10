@@ -22,7 +22,7 @@ September 28-04, 2026
 
 - [Attendance Quiz 09/28](https://usu.instructure.com/courses/819584/assignments/5292941){target="_blank"}
 - [Tidyverse Programming Basics: Tibbles and `dplyr`](../slides/13-tidyverse-dplyr.qmd){target="_blank"}
-- [5.1.i Covid Case Exploration](https://usu.instructure.com/courses/819584/quizzes/1462923) {target="_blank"}
+- [5.1.i Covid Case Exploration](https://usu.instructure.com/courses/819584/quizzes/1462923){target="_blank"}
 
 
 ## 🐪️ Wednesday 🐦‍⬛ 

@@ -141,11 +141,11 @@ schedule:
         - [ ] (for Fri) No reading -- just be prepared for lab!
     prepare: |
         - [ ] (for Mon) [Reading Check 5.1 - The Tidyverse, Pipes, and dplyr](https://usu.instructure.com/courses/819584/quizzes/1499842){target="_blank"}
-        - [ ] (for Wed) [Reading Check 5.2 - Wide, Long, and Tidy data with tidyr]
+        - [ ] (for Wed) [Reading Check 5.2 - Wide, Long, and Tidy data with tidyr]()
     class1: |
         - [Attendance Quiz 09/28](https://usu.instructure.com/courses/819584/assignments/5292941){target="_blank"}
         - [Tidyverse Programming Basics: Tibbles and `dplyr`](../slides/13-tidyverse-dplyr.qmd){target="_blank"}
-        - [5.1.i Covid Case Exploration](https://usu.instructure.com/courses/819584/quizzes/1462923) {target="_blank"}
+        - [5.1.i Covid Case Exploration](https://usu.instructure.com/courses/819584/quizzes/1462923){target="_blank"}
     class2: |
         - [Attendance Quiz 09/30](https://usu.instructure.com/courses/819584/assignments/5292942){target="_blank"}
         - [Tidyverse Programming Basics: Reshaping Data](../slides/14-tidyverse-tidyr.qmd){target="_blank"}
