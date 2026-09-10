@@ -143,6 +143,7 @@ schedule:
         - [ ] (for Mon) [Reading Check 5.1 - The Tidyverse, Pipes, and dplyr](https://usu.instructure.com/courses/819584/quizzes/1499842){target="_blank"}
         - [ ] (for Wed) [Reading Check 5.2 - Wide, Long, and Tidy data with tidyr](https://usu.instructure.com/courses/819584/quizzes/1499858){target="_blank"}
         - [ ] (for Fri) ["Reading" Check 5.3 - Dates and Times](https://usu.instructure.com/courses/819584/quizzes/1499859){target="_blank"}
+        - [ ] (During October) [Get what you pay for!](https://usu.instructure.com/courses/819584/assignments/5290610/){target="_blank"} [qmd template](../demos/_get_what_you_pay_for_template.qmd)
     class1: |
         - [Attendance Quiz 09/28](https://usu.instructure.com/courses/819584/assignments/5292941){target="_blank"}
         - [Tidyverse Programming Basics: Tibbles and `dplyr`](../slides/13-tidyverse-dplyr.qmd){target="_blank"}
@@ -152,7 +153,7 @@ schedule:
         - [Tidyverse Programming Basics: Reshaping Data](../slides/14-tidyverse-tidyr.qmd){target="_blank"}
     class3: |
         - [Attendance Quiz 10/02](https://usu.instructure.com/courses/819584/assignments/5292943){target="_blank"}
-        - [Lab: Tidyverse Programming](../lab/15-tidyverse.qmd){target="_blank"}
+        - [Lab: Tidyverse Programming](https://usu.instructure.com/courses/819584/modules/items/7928133){target="_blank"} (Canvas) [html file](../lab/15-tidyverse.qmd){target="_blank"} [qmd template](../lab/_15-tidyverse.qmd){target="_blank"}
     extra: |
         - [SC Ch 10 - Functions, section 4: Pipes](https://srvanderplas.github.io/stat-computing-r-python/part-gen-prog/02-prog-functions.html#pipes){target="_blank"}
         - [SC Ch 16 - Programming with Data](https://srvanderplas.github.io/stat-computing-r-python/part-gen-prog/07-prog-data.html){target="_blank"} - data explorations worked out with R/tidyverse code. You don't know how to do graphics yet, but hopefully the data operations make sense.

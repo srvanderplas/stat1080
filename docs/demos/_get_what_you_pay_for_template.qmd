@@ -1,0 +1,27 @@
+---
+title: "Get What You Pay For"
+author: "(Put Name Here)"
+editor: source
+format: 
+  html:
+    self-contained: true
+---
+
+# Description
+
+Please provide a brief description of the resource you took advantage of and why you chose it. Please also provide the date and approximate time of the activity at which the selfie was taken. 
+
+*I used the employee weight room for exercise. The selfie was taken on 9/12/2025 just after 12:00pm. I chose this activity because I am trying to focus on my health as I get older and this is a university benefit that I have found to be very supportive of my health goals.*
+
+# Selfie
+
+Please provide a copy of your selfie engaging in the activity. I put my figure in the same folder as this file, which explains the file path I am using. 
+
+![Figure of me in the weight room.](workout_pic.jpeg)
+
+# Reflection
+
+Please provide a brief summary of your experience, including any benefits you experienced as a result of participation. 
+
+*The weight room was quieter than usual on the day I took this selfie. I have found that working out nearly every day has helped me manage some chronic pain in my legs and back and help me to clear my mind to be effective at work. I am grateful that the university has on-site facilities that allow me to take an exercise break in the middle of my work day.* 
+
