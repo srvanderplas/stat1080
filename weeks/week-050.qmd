@@ -9,14 +9,14 @@ September 28-04, 2026
 - [ ] (for Mon) [IDS I Ch 4 - The Tidyverse](https://rafalab.dfci.harvard.edu/dsbook-part-1/R/tidyverse.html){target="_blank"}
 - [ ] (for Mon) [SC Ch 22 - Data Cleaning](https://srvanderplas.github.io/stat-computing-r-python/part-wrangling/03-data-cleaning.html){target="_blank"} - Focus on the (R) examples of any dplyr verb you don't quite get. 
 - [ ] (for Wed) [SC Ch 24 - Reshaping Data](https://srvanderplas.github.io/stat-computing-r-python/part-wrangling/05-data-reshape.html){target="_blank"} - Be able to identify wide and long data.
-- [ ] (for Fri) Watch [I Found the Dumbest Time Zone (@vlogbrothers)](https://www.youtube.com/watch?v=Lz3jAEdzbbA) and [The Problem with Time & Timezones (@computerphile)](https://www.youtube.com/watch?v=-5wpm-gesOY) to get ready for next week.
+- [ ] (for Fri) Watch [I Found the Dumbest Time Zone (\@vlogbrothers)](https://www.youtube.com/watch?v=Lz3jAEdzbbA) and [The Problem with Time & Timezones (\@computerphile)](https://www.youtube.com/watch?v=-5wpm-gesOY) to get ready for next week.
 
 
 ## 📐 Prepare for class
 
 - [ ] (for Mon) [Reading Check 5.1 - The Tidyverse, Pipes, and dplyr](https://usu.instructure.com/courses/819584/quizzes/1499842){target="_blank"}
 - [ ] (for Wed) [Reading Check 5.2 - Wide, Long, and Tidy data with tidyr]()
-- [ ] (for Fri) [Reading Check 5.3 - Dates and Times]()
+- [ ] (for Fri) ["Reading" Check 5.3 - Dates and Times]()
 
 
 ## 🥱 Monday 🌛
