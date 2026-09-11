@@ -6,23 +6,28 @@ September 07-13, 2026
 
 ## 📖 Reading
 
-- [ ] (for Wed) Read [Proposal: Data Collection](https://usu.instructure.com/courses/819584/assignments/5290622)
-- [ ] (for Wed) Skim [IDS 1 Ch 3 - Programming Basics](https://rafalab.dfci.harvard.edu/dsbook-part-1/R/programming-basics.html) so that you know where to look up different programming concepts
-- [ ] (for Fri) Read [SC Ch 3 - RStudio](https://srvanderplas.github.io/stat-computing-r-python/part-tools/03-Rstudio-interface.html)
-- [ ] (for Fri) [Project Proposal Template](https://raw.githubusercontent.com/srvanderplas/stat1080/refs/heads/main/homework/_proposal_template.qmd)
-- [ ] (for Fri) Project Proposal Demo [(qmd)](https://raw.githubusercontent.com/srvanderplas/stat1080/refs/heads/main/homework/_proposal_demo.qmd) [html](../homework/proposal_demo.qmd)
-- For reference/clarification, here are the chapters in SC that correspond to Chapters 2-3 in IDS1
-    - [SC Ch 8 - Variables and Data Types](https://srvanderplas.github.io/stat-computing-r-python/part-gen-prog/01-basic-var-types.html)
-    - [SC Ch 9 - Mathematical and Logical Operators](https://srvanderplas.github.io/stat-computing-r-python/part-gen-prog/01a-math-logical-operators.html)
-    - [SC Ch 10 - Functions, Packages, and Environments](https://srvanderplas.github.io/stat-computing-r-python/part-gen-prog/02-prog-functions.html)
-    - [SC Ch 11 - Data Structures - Sections 11.1, 11.2, 11.6](https://srvanderplas.github.io/stat-computing-r-python/part-gen-prog/03-data-struct.html) - Ignore the python parts, focus on understanding how you access pieces of data in a vector and a data frame, and how to differentiate between the two. 
-    - [SC Ch 13 - Control Structures](https://srvanderplas.github.io/stat-computing-r-python/part-gen-prog/04-control-struct.html)
+- [ ] (for Wed) Read [Proposal: Data Collection](https://usu.instructure.com/courses/819584/assignments/5290622){target="_blank"}
+- [ ] (for Wed) Skim [IDS 1 Ch 3 - Programming Basics](https://rafalab.dfci.harvard.edu/dsbook-part-1/R/programming-basics.html){target="_blank"} so that you know where to look up different programming concepts
+- [ ] (for Fri) Read [SC Ch 3 - RStudio](https://srvanderplas.github.io/stat-computing-r-python/part-tools/03-Rstudio-interface.html){target="_blank"}
+- [ ] (for Fri) [Project Proposal Template](https://raw.githubusercontent.com/srvanderplas/stat1080/refs/heads/main/homework/_proposal_template.qmd){target="_blank"}
+- [ ] (for Fri) Project Proposal Demo [(qmd)](https://raw.githubusercontent.com/srvanderplas/stat1080/refs/heads/main/homework/_proposal_demo.qmd){target="_blank"} [html](../homework/proposal_demo.qmd){target="_blank"}
+
+::: {.callout-note collapse=true}
+#### Corresponding SC Chapters
+For reference/clarification, here are the chapters in SC that correspond to Chapters 2-3 in IDS1
+
+  - [SC Ch 8 - Variables and Data Types](https://srvanderplas.github.io/stat-computing-r-python/part-gen-prog/01-basic-var-types.html){target="_blank"}
+  - [SC Ch 9 - Mathematical and Logical Operators](https://srvanderplas.github.io/stat-computing-r-python/part-gen-prog/01a-math-logical-operators.html){target="_blank"}
+  - [SC Ch 10 - Functions, Packages, and Environments](https://srvanderplas.github.io/stat-computing-r-python/part-gen-prog/02-prog-functions.html){target="_blank"}
+  - [SC Ch 11 - Data Structures - Sections 11.1, 11.2, 11.6](https://srvanderplas.github.io/stat-computing-r-python/part-gen-prog/03-data-struct.html){target="_blank"} - Ignore the python parts, focus on understanding how you access pieces of data in a vector and a data frame, and how to differentiate between the two. 
+  - [SC Ch 13 - Control Structures](https://srvanderplas.github.io/stat-computing-r-python/part-gen-prog/04-control-struct.html){target="_blank"}
+:::
 
 
 ## 📐 Prepare for class
 
-- [ ] (for Wed) [2.2.p Reading Check: Proposal: Data Collection](https://usu.instructure.com/courses/819584/quizzes/1489310)
-- [ ] (for Fri) [2.3.p Reading Check: Introduction to R and RStudio](https://usu.instructure.com/courses/819584/quizzes/1462871)
+- [ ] (for Wed) [2.2.p Reading Check: Proposal: Data Collection](https://usu.instructure.com/courses/819584/quizzes/1489310){target="_blank"}
+- [ ] (for Fri) [2.3.p Reading Check: Introduction to R and RStudio](https://usu.instructure.com/courses/819584/quizzes/1462871){target="_blank"}
 
 
 ## 🥱 Monday 🌛
@@ -32,23 +37,23 @@ September 07-13, 2026
 
 ## 🐪️ Wednesday 🐦‍⬛ 
 
-- [Attendance Quiz 09/09](https://usu.instructure.com/courses/819584/quizzes/1463710)
-- [Intro to Programming](../slides/05-prog-intro.qmd)
-- [2.2.i - Swirl Tutorial](https://usu.instructure.com/courses/819584/quizzes/1462913)
+- [Attendance Quiz 09/09](https://usu.instructure.com/courses/819584/quizzes/1463710){target="_blank"}
+- [Intro to Programming](../slides/05-prog-intro.qmd){target="_blank"}
+- [2.2.i - Swirl Tutorial](https://usu.instructure.com/courses/819584/quizzes/1462913){target="_blank"}
 
 
 ## 🎉 Friday 🥳
 
-- [Attendance Quiz 09/11](https://usu.instructure.com/courses/819584/quizzes/1463721)
-- [Intro to RStudio](../slides/06-rstudio.qmd)
-- [2.3.i - Swirl Tutorial II](https://usu.instructure.com/courses/819584/quizzes/1462915)
-- [ ] Submit [Project Proposal](https://usu.instructure.com/courses/819584/assignments/5290622)
+- [Attendance Quiz 09/11](https://usu.instructure.com/courses/819584/quizzes/1463721){target="_blank"}
+- [Intro to RStudio](../slides/06-rstudio.qmd){target="_blank"}
+- [2.3.i - Swirl Tutorial II](https://usu.instructure.com/courses/819584/quizzes/1462915){target="_blank"}
+- [ ] Submit [Project Proposal](https://usu.instructure.com/courses/819584/assignments/5290622){target="_blank"}
 
 
 ## Extra Resources/Reading
 
-- [How to Name Files](https://www.youtube.com/watch?v=ES1LTlnpLMk&pp=ygUYamVubnkgYnJ5YW4gc3ByZWFkc2hlZXRz) (YouTube, Jenny Bryan, NormConf) - How to name things so that they are machine readable, human readable, and sorted usefully.
-- [Teach Me How to Google: Debugging in R](https://www.youtube.com/watch?v=BoquVknEfoM) (YouTube, Jasmine Lai, R-Ladies Vancouver)
-- [RStudio Themes List](https://github.com/max-alletsee/rstudio-themes) - Make RStudio look the way you want it!
-- [Fira Code](https://github.com/tonsky/FiraCode) is a free font with ligatures. Ligatures combine adjacent characters into symbols, so -> becomes ➡️ (but without the background). Some people find this annoying, others find it much easier to read. Once you install the font, you should be able to start RStudio and then select Fira Code as the font in Tools -> Global Options -> Appearance. 
+- [How to Name Files](https://www.youtube.com/watch?v=ES1LTlnpLMk&pp=ygUYamVubnkgYnJ5YW4gc3ByZWFkc2hlZXRz){target="_blank"} (YouTube, Jenny Bryan, NormConf) - How to name things so that they are machine readable, human readable, and sorted usefully.
+- [Teach Me How to Google: Debugging in R](https://www.youtube.com/watch?v=BoquVknEfoM){target="_blank"} (YouTube, Jasmine Lai, R-Ladies Vancouver)
+- [RStudio Themes List](https://github.com/max-alletsee/rstudio-themes){target="_blank"} - Make RStudio look the way you want it!
+- [Fira Code](https://github.com/tonsky/FiraCode){target="_blank"} is a free font with ligatures. Ligatures combine adjacent characters into symbols, so -> becomes ➡️ (but without the background). Some people find this annoying, others find it much easier to read. Once you install the font, you should be able to start RStudio and then select Fira Code as the font in Tools -> Global Options -> Appearance. 
 

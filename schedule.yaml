@@ -14,70 +14,75 @@ schedule:
     start: 2026-08-31
     end: 2026-09-06
     reading: |
-        - [ ] (for Mon) [Syllabus](../syllabus.pdf)
-        - [ ] (for Wed) [IDS 1 Ch 6 - Importing Data](https://rafalab.dfci.harvard.edu/dsbook-part-1/R/importing-data.html)
-        - [ ] (for Fri) [IDS 1 Ch 2 - R Basics](https://rafalab.dfci.harvard.edu/dsbook-part-1/R/R-basics.html)
-        - Additional reading: [SC Ch 7 - Introduction to Programming](https://srvanderplas.github.io/stat-computing-r-python/part-gen-prog/00-intro.html) (this is just designed to help you get into the mindset)
+        - [ ] (for Mon) [Syllabus](../syllabus.pdf){target="_blank"}
+        - [ ] (for Wed) [IDS 1 Ch 6 - Importing Data](https://rafalab.dfci.harvard.edu/dsbook-part-1/R/importing-data.html){target="_blank"}
+        - [ ] (for Fri) [IDS 1 Ch 2 - R Basics](https://rafalab.dfci.harvard.edu/dsbook-part-1/R/R-basics.html){target="_blank"}
+        - Additional reading: [SC Ch 7 - Introduction to Programming](https://srvanderplas.github.io/stat-computing-r-python/part-gen-prog/00-intro.html){target="_blank"} (this is just designed to help you get into the mindset)
     prepare: |
-        - Print out and bring [cheat sheets](../files/cheat-sheets-combined.pdf) for R
-        - [ ] (for Mon) [1.1.p Syllabus Overview](https://usu.instructure.com/courses/819584/assignments/5290598)
-        - [ ] (for Wed) [1.2.p Reading Check: Importing Data (IDS Ch 6)](https://usu.instructure.com/courses/819584/assignments/5290579)
-        - [ ] (for Wed) [1.2.p Install R](https://usu.instructure.com/courses/819584/assignments/5290555)
-        - [ ] (for Fri) [1.3.p Reading Check: R Basics (IDS Ch 2)](https://usu.instructure.com/courses/819584/quizzes/1489305)
+        - Print out and bring [cheat sheets](../files/cheat-sheets-combined.pdf){target="_blank"} for R
+        - [ ] (for Mon) [1.1.p Syllabus Overview](https://usu.instructure.com/courses/819584/assignments/5290598){target="_blank"}
+        - [ ] (for Wed) [1.2.p Reading Check: Importing Data (IDS Ch 6)](https://usu.instructure.com/courses/819584/assignments/5290579){target="_blank"}
+        - [ ] (for Wed) [1.2.p Install R](https://usu.instructure.com/courses/819584/assignments/5290555){target="_blank"}
+        - [ ] (for Fri) [1.3.p Reading Check: R Basics (IDS Ch 2)](https://usu.instructure.com/courses/819584/quizzes/1489305){target="_blank"}
     class1: |
-        - [ ] [Attendence Quiz 08/31](https://usu.instructure.com/courses/819584/quizzes/1463212)
-        - [Discussion: Syllabus](../slides/01-syllabus.qmd)
-        - [Course Introduction and Motivation](../slides/01-intro.qmd)
-        - [ ] [Syllabus Quiz](https://usu.instructure.com/courses/819584/assignments/5290551)
+        - [ ] [Attendence Quiz 08/31](https://usu.instructure.com/courses/819584/quizzes/1463212){target="_blank"}
+        - [Discussion: Syllabus](../slides/01-syllabus.qmd){target="_blank"}
+        - [Course Introduction and Motivation](../slides/01-intro.qmd){target="_blank"}
+        - [ ] [Syllabus Quiz](https://usu.instructure.com/courses/819584/assignments/5290551){target="_blank"}
     class2: |
-        - [ ] [Attendence Quiz 09/2](https://usu.instructure.com/courses/819584/quizzes/1463708)
+        - [ ] [Attendence Quiz 09/2](https://usu.instructure.com/courses/819584/quizzes/1463708){target="_blank"}
         - [Organizing Data](../slides/02-data.qmd)
-        - [ ] [1.2.p Introduction to Data Science](https://usu.instructure.com/courses/819584/assignments/5290558) (Individual + In Class)
+        - [ ] [1.2.p Introduction to Data Science](https://usu.instructure.com/courses/819584/assignments/5290558){target="_blank"} (Individual + In Class)
     class3: |
-        - [ ] [Attendence Quiz 09/4](https://usu.instructure.com/courses/819584/quizzes/1463709)
-        - [Intro to Programming](../slides/03-prog-intro.qmd)
-        - Programming a Sandwich. [html](../lab/03-programming-sandwich.qmd),  [qmd template](../lab/_03-programming-sandwich.qmd) 
-        - [ ] [Getting to Know You Assignment](https://usu.instructure.com/courses/819584/quizzes/1462883)
+        - [ ] [Attendence Quiz 09/4](https://usu.instructure.com/courses/819584/quizzes/1463709){target="_blank"}
+        - [Intro to Programming](../slides/03-prog-intro.qmd){target="_blank"}
+        - Programming a Sandwich. [html](../lab/03-programming-sandwich.qmd){target="_blank"},  [qmd template](../lab/_03-programming-sandwich.qmd){target="_blank"} 
+        - [ ] [Getting to Know You Assignment](https://usu.instructure.com/courses/819584/quizzes/1462883){target="_blank"}
     extra: |
-        - [R cheat sheets](../demos/r-cheat-sheets.pdf) - handout from class, but you can reprint them if you lose yours, or keep a digital copy on a tablet if you prefer.
-        - [Hadley Wickham: Spreadsheets, bikes, and the accidental empire of R packages](https://www.youtube.com/watch?v=KxRnZTl2HVY) (YouTube, The Test Set) - Hadley Wickham developed many of the R packages we'll use in this course. Hear the back-story as to how he got started!
-        - [The Jevons Paradox](https://www.youtube.com/watch?v=a6sYYrLTOjQ) (YouTube, Hank Green) - Why AI (and statistics) do not generate new information.
+        - [R cheat sheets](../demos/r-cheat-sheets.pdf){target="_blank"} - handout from class, but you can reprint them if you lose yours, or keep a digital copy on a tablet if you prefer.
+        - [Hadley Wickham: Spreadsheets, bikes, and the accidental empire of R packages](https://www.youtube.com/watch?v=KxRnZTl2HVY){target="_blank"} (YouTube, The Test Set) - Hadley Wickham developed many of the R packages we'll use in this course. Hear the back-story as to how he got started!
+        - [The Jevons Paradox](https://www.youtube.com/watch?v=a6sYYrLTOjQ){target="_blank"} (YouTube, Hank Green) - Why AI (and statistics) do not generate new information.
 
   - week: 2
     name: Programming and RStudio
     start: 2026-09-07
     end: 2026-09-13
     reading: |
-        - [ ] (for Wed) Read [Proposal: Data Collection](https://usu.instructure.com/courses/819584/assignments/5290622)
-        - [ ] (for Wed) Skim [IDS 1 Ch 3 - Programming Basics](https://rafalab.dfci.harvard.edu/dsbook-part-1/R/programming-basics.html) so that you know where to look up different programming concepts
-        - [ ] (for Fri) Read [SC Ch 3 - RStudio](https://srvanderplas.github.io/stat-computing-r-python/part-tools/03-Rstudio-interface.html)
-        - [ ] (for Fri) [Project Proposal Template](https://raw.githubusercontent.com/srvanderplas/stat1080/refs/heads/main/homework/_proposal_template.qmd)
-        - [ ] (for Fri) Project Proposal Demo [(qmd)](https://raw.githubusercontent.com/srvanderplas/stat1080/refs/heads/main/homework/_proposal_demo.qmd) [html](../homework/proposal_demo.qmd)
-        - For reference/clarification, here are the chapters in SC that correspond to Chapters 2-3 in IDS1
-            - [SC Ch 8 - Variables and Data Types](https://srvanderplas.github.io/stat-computing-r-python/part-gen-prog/01-basic-var-types.html)
-            - [SC Ch 9 - Mathematical and Logical Operators](https://srvanderplas.github.io/stat-computing-r-python/part-gen-prog/01a-math-logical-operators.html)
-            - [SC Ch 10 - Functions, Packages, and Environments](https://srvanderplas.github.io/stat-computing-r-python/part-gen-prog/02-prog-functions.html)
-            - [SC Ch 11 - Data Structures - Sections 11.1, 11.2, 11.6](https://srvanderplas.github.io/stat-computing-r-python/part-gen-prog/03-data-struct.html) - Ignore the python parts, focus on understanding how you access pieces of data in a vector and a data frame, and how to differentiate between the two. 
-            - [SC Ch 13 - Control Structures](https://srvanderplas.github.io/stat-computing-r-python/part-gen-prog/04-control-struct.html)
+        - [ ] (for Wed) Read [Proposal: Data Collection](https://usu.instructure.com/courses/819584/assignments/5290622){target="_blank"}
+        - [ ] (for Wed) Skim [IDS 1 Ch 3 - Programming Basics](https://rafalab.dfci.harvard.edu/dsbook-part-1/R/programming-basics.html){target="_blank"} so that you know where to look up different programming concepts
+        - [ ] (for Fri) Read [SC Ch 3 - RStudio](https://srvanderplas.github.io/stat-computing-r-python/part-tools/03-Rstudio-interface.html){target="_blank"}
+        - [ ] (for Fri) [Project Proposal Template](https://raw.githubusercontent.com/srvanderplas/stat1080/refs/heads/main/homework/_proposal_template.qmd){target="_blank"}
+        - [ ] (for Fri) Project Proposal Demo [(qmd)](https://raw.githubusercontent.com/srvanderplas/stat1080/refs/heads/main/homework/_proposal_demo.qmd){target="_blank"} [html](../homework/proposal_demo.qmd){target="_blank"}
+        
+        ::: {.callout-note collapse=true}
+        #### Corresponding SC Chapters
+        For reference/clarification, here are the chapters in SC that correspond to Chapters 2-3 in IDS1
+        
+          - [SC Ch 8 - Variables and Data Types](https://srvanderplas.github.io/stat-computing-r-python/part-gen-prog/01-basic-var-types.html){target="_blank"}
+          - [SC Ch 9 - Mathematical and Logical Operators](https://srvanderplas.github.io/stat-computing-r-python/part-gen-prog/01a-math-logical-operators.html){target="_blank"}
+          - [SC Ch 10 - Functions, Packages, and Environments](https://srvanderplas.github.io/stat-computing-r-python/part-gen-prog/02-prog-functions.html){target="_blank"}
+          - [SC Ch 11 - Data Structures - Sections 11.1, 11.2, 11.6](https://srvanderplas.github.io/stat-computing-r-python/part-gen-prog/03-data-struct.html){target="_blank"} - Ignore the python parts, focus on understanding how you access pieces of data in a vector and a data frame, and how to differentiate between the two. 
+          - [SC Ch 13 - Control Structures](https://srvanderplas.github.io/stat-computing-r-python/part-gen-prog/04-control-struct.html){target="_blank"}
+        :::
     prepare: |
-        - [ ] (for Wed) [2.2.p Reading Check: Proposal: Data Collection](https://usu.instructure.com/courses/819584/quizzes/1489310)
-        - [ ] (for Fri) [2.3.p Reading Check: Introduction to R and RStudio](https://usu.instructure.com/courses/819584/quizzes/1462871)
+        - [ ] (for Wed) [2.2.p Reading Check: Proposal: Data Collection](https://usu.instructure.com/courses/819584/quizzes/1489310){target="_blank"}
+        - [ ] (for Fri) [2.3.p Reading Check: Introduction to R and RStudio](https://usu.instructure.com/courses/819584/quizzes/1462871){target="_blank"}
     class1: |
         - Labor Day
     class2: |
-        - [Attendance Quiz 09/09](https://usu.instructure.com/courses/819584/quizzes/1463710)
-        - [Intro to Programming](../slides/05-prog-intro.qmd)
-        - [2.2.i - Swirl Tutorial](https://usu.instructure.com/courses/819584/quizzes/1462913)
+        - [Attendance Quiz 09/09](https://usu.instructure.com/courses/819584/quizzes/1463710){target="_blank"}
+        - [Intro to Programming](../slides/05-prog-intro.qmd){target="_blank"}
+        - [2.2.i - Swirl Tutorial](https://usu.instructure.com/courses/819584/quizzes/1462913){target="_blank"}
     class3: |
-        - [Attendance Quiz 09/11](https://usu.instructure.com/courses/819584/quizzes/1463721)
-        - [Intro to RStudio](../slides/06-rstudio.qmd)
-        - [2.3.i - Swirl Tutorial II](https://usu.instructure.com/courses/819584/quizzes/1462915)
-        - [ ] Submit [Project Proposal](https://usu.instructure.com/courses/819584/assignments/5290622)
+        - [Attendance Quiz 09/11](https://usu.instructure.com/courses/819584/quizzes/1463721){target="_blank"}
+        - [Intro to RStudio](../slides/06-rstudio.qmd){target="_blank"}
+        - [2.3.i - Swirl Tutorial II](https://usu.instructure.com/courses/819584/quizzes/1462915){target="_blank"}
+        - [ ] Submit [Project Proposal](https://usu.instructure.com/courses/819584/assignments/5290622){target="_blank"}
     extra: |
-      - [How to Name Files](https://www.youtube.com/watch?v=ES1LTlnpLMk&pp=ygUYamVubnkgYnJ5YW4gc3ByZWFkc2hlZXRz) (YouTube, Jenny Bryan, NormConf) - How to name things so that they are machine readable, human readable, and sorted usefully.
-      - [Teach Me How to Google: Debugging in R](https://www.youtube.com/watch?v=BoquVknEfoM) (YouTube, Jasmine Lai, R-Ladies Vancouver)
-      - [RStudio Themes List](https://github.com/max-alletsee/rstudio-themes) - Make RStudio look the way you want it!
-      - [Fira Code](https://github.com/tonsky/FiraCode) is a free font with ligatures. Ligatures combine adjacent characters into symbols, so -> becomes ➡️ (but without the background). Some people find this annoying, others find it much easier to read. Once you install the font, you should be able to start RStudio and then select Fira Code as the font in Tools -> Global Options -> Appearance. 
+      - [How to Name Files](https://www.youtube.com/watch?v=ES1LTlnpLMk&pp=ygUYamVubnkgYnJ5YW4gc3ByZWFkc2hlZXRz){target="_blank"} (YouTube, Jenny Bryan, NormConf) - How to name things so that they are machine readable, human readable, and sorted usefully.
+      - [Teach Me How to Google: Debugging in R](https://www.youtube.com/watch?v=BoquVknEfoM){target="_blank"} (YouTube, Jasmine Lai, R-Ladies Vancouver)
+      - [RStudio Themes List](https://github.com/max-alletsee/rstudio-themes){target="_blank"} - Make RStudio look the way you want it!
+      - [Fira Code](https://github.com/tonsky/FiraCode){target="_blank"} is a free font with ligatures. Ligatures combine adjacent characters into symbols, so -> becomes ➡️ (but without the background). Some people find this annoying, others find it much easier to read. Once you install the font, you should be able to start RStudio and then select Fira Code as the font in Tools -> Global Options -> Appearance. 
   
   - week: 3
     name: Correlation is not Causation
