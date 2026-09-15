@@ -6,6 +6,7 @@ lightbox:  true
 bibliography: refs.bib
 csl: chicago-syllabus.csl
 ---
+
 ```{r}
 library(ggplot2)
 theme_set(theme_bw())
@@ -18,6 +19,7 @@ theme_set(theme_bw())
 
 ![](images/david-justice.webp){fig-alt="David Justice baseball card"}
 :::
+
 
 ## Batting Averages
 

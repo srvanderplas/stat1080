@@ -4,7 +4,6 @@ format:
     logo: 
       path: deps/usu-sq.png
       alt: "Utah State University Logo"
-    
     css: deps/styles.scss
     includes:
       in_header: deps/header.html
