@@ -108,6 +108,7 @@ schedule:
         - [Attendance Quiz 09/18](https://usu.instructure.com/courses/819584/assignments/5292843){target="_blank"}
         - [ ] [3.3.i - Bias and Ethics Activity](https://usu.instructure.com/courses/819584/quizzes/1462857){target="_blank"} (submit in Canvas). [qmd template](../lab/_08-bias-and-ethics.qmd){target="_blank"}, [html file](../lab/08-bias-and-ethics.qmd){target="_blank"}
     extra: |
+        - [It's Not About the Bias per se - Kaiser Fung](https://www.junkcharts.com/its-not-about-the-bias-per-se/){target="_blank"}
         - [Causal Inference](https://www.youtube.com/watch?v=gRkUhg9Wb-I){target="_blank"} (YouTube, Dr. David Sontag, MIT OpenCourseWare) - The alternative to correlation -- how to show causality
         - [Crash Course Statistics: Henrietta Lacks, the Tuskegee Experiment, and Ethical Data Collection: Crash Course Statistics #12](https://www.youtube.com/watch?v=CzNANZnoiRs){target="_blank"} (YouTube, CrashCourse)
         - [Exploring Data Ethics](https://www.youtube.com/watch?v=MOOfj78alvs){target="_blank"} (YouTube, Dr. Wendy Martinez, Washington Statistical Society Seminar)
