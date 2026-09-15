@@ -2181,48 +2181,118 @@
     "href": "slides/10-r-prog.html#adding-a-column-to-a-data-frame",
     "title": "1.10 R Programming",
     "section": "Adding A Column To A Data Frame",
-    "text": "Adding A Column To A Data Frame\nCalculating Murder Rates\n\n\n        state abb region population total\n1     Alabama  AL  South    4779736   135\n2      Alaska  AK   West     710231    19\n3     Arizona  AZ   West    6392017   232\n4    Arkansas  AR  South    2915918    93\n5  California  CA   West   37253956  1257\n6    Colorado  CO   West    5029196    65\n51    Wyoming  WY   West     563626     5\n\n\n\nLoad the dslabs package\nLoad the murders data from the dslabs package\nShow the first 6 and last 1 rows of the murders data"
+    "text": "Adding A Column To A Data Frame\nCalculating Murder Rates\n\n\n\n1library(dslabs)\n2data(murders)\n3murders[c(1:6, 51),]\n\n\n1\n\nLoad the dslabs package\n\n2\n\nLoad the murders data from the dslabs package\n\n3\n\nShow the first 6 and last 1 rows of the murders data\n\n\n\n\n        state abb region population total\n1     Alabama  AL  South    4779736   135\n2      Alaska  AK   West     710231    19\n3     Arizona  AZ   West    6392017   232\n4    Arkansas  AR  South    2915918    93\n5  California  CA   West   37253956  1257\n6    Colorado  CO   West    5029196    65\n51    Wyoming  WY   West     563626     5"
   },
   {
     "objectID": "slides/10-r-prog.html#adding-a-column-to-a-data-frame-1",
     "href": "slides/10-r-prog.html#adding-a-column-to-a-data-frame-1",
     "title": "1.10 R Programming",
     "section": "Adding A Column To A Data Frame",
-    "text": "Adding A Column To A Data Frame\nCalculating Murder Rates"
+    "text": "Adding A Column To A Data Frame\nCalculating Murder Rates\n\n\n\nWe want to add a rate column"
   },
   {
     "objectID": "slides/10-r-prog.html#finding-rows-in-a-data-frame",
     "href": "slides/10-r-prog.html#finding-rows-in-a-data-frame",
     "title": "1.10 R Programming",
     "section": "Finding Rows in a Data Frame",
-    "text": "Finding Rows in a Data Frame\nCalculating Murder Rates\n\n\n[1] 0.3196211\n[1] 46\n[1] \"Vermont\"\n\n\n\nThis tells us the value of the minimum murder rate\nThis tells us the row of the minimum murder rate\nUsing the row, we can then get which state is in that row."
+    "text": "Finding Rows in a Data Frame\nCalculating Murder Rates\n\n1min(murders$rate)\n\n\n1\n\nThis tells us the value of the minimum murder rate\n\n\n\n\n[1] 0.3196211"
   },
   {
     "objectID": "slides/10-r-prog.html#adding-a-column-to-a-data-frame-2",
     "href": "slides/10-r-prog.html#adding-a-column-to-a-data-frame-2",
     "title": "1.10 R Programming",
     "section": "Adding A Column To A Data Frame",
-    "text": "Adding A Column To A Data Frame\nCalculating Murder Rates\n\n\n\nWe want to add a rate column"
+    "text": "Adding A Column To A Data Frame\nCalculating Murder Rates\n\n\n\nDoing math with columns"
   },
   {
     "objectID": "slides/10-r-prog.html#adding-a-column-to-a-data-frame-3",
     "href": "slides/10-r-prog.html#adding-a-column-to-a-data-frame-3",
     "title": "1.10 R Programming",
     "section": "Adding A Column To A Data Frame",
-    "text": "Adding A Column To A Data Frame\nCalculating Murder Rates\n\n\n\nDoing math with columns"
+    "text": "Adding A Column To A Data Frame\nCalculating Murder Rates\n\n\n\nResult"
   },
   {
     "objectID": "slides/10-r-prog.html#adding-a-column-to-a-data-frame-4",
     "href": "slides/10-r-prog.html#adding-a-column-to-a-data-frame-4",
     "title": "1.10 R Programming",
     "section": "Adding A Column To A Data Frame",
-    "text": "Adding A Column To A Data Frame\nCalculating Murder Rates\n\n\n\nResult"
+    "text": "Adding A Column To A Data Frame\nCalculating Murder Rates\n\n1murders$rate &lt;- murders$total / murders$population * 100000\n\n\n1\n\nCreate a column named rate by dividing the total number of murders in a state by the state’s population. Then, multiply by 100k because it’s easier to interpret rates when they’re scaled to not be so small.\n\n\n\n\n\n\n\n\n\n\n\nstate\nabb\nregion\npopulation\ntotal\nrate\n\n\n\n\n1\nAlabama\nAL\nSouth\n4779736\n135\n2.8244\n\n\n2\nAlaska\nAK\nWest\n710231\n19\n2.6752\n\n\n3\nArizona\nAZ\nWest\n6392017\n232\n3.6295\n\n\n4\nArkansas\nAR\nSouth\n2915918\n93\n3.1894\n\n\n5\nCalifornia\nCA\nWest\n37253956\n1257\n3.3741\n\n\n6\nColorado\nCO\nWest\n5029196\n65\n1.2925\n\n\n46\nVermont\nVT\nNortheast\n625741\n2\n0.3196\n\n\n47\nVirginia\nVA\nSouth\n8001024\n250\n3.1246\n\n\n48\nWashington\nWA\nWest\n6724540\n93\n1.3830\n\n\n49\nWest Virginia\nWV\nSouth\n1852994\n27\n1.4571\n\n\n50\nWisconsin\nWI\nNorth Central\n5686986\n97\n1.7056\n\n\n51\nWyoming\nWY\nWest\n563626\n5\n0.8871"
   },
   {
     "objectID": "slides/10-r-prog.html#adding-a-column-to-a-data-frame-5",
     "href": "slides/10-r-prog.html#adding-a-column-to-a-data-frame-5",
     "title": "1.10 R Programming",
     "section": "Adding A Column To A Data Frame",
-    "text": "Adding A Column To A Data Frame\nCalculating Murder Rates\n\nCreate a column named rate by dividing the total number of murders in a state by the state’s population. Then, multiply by 100k because it’s easier to interpret rates when they’re scaled to not be so small."
+    "text": "Adding A Column To A Data Frame\nCalculating Murder Rates\n\n1murders$rate &lt;- murders$total / murders$population * 100000\n\n\n1\n\nCreate a column named rate by dividing the total number of murders in a state by the state’s population. Then, multiply by 100k because it’s easier to interpret rates when they’re scaled to not be so small."
+  },
+  {
+    "objectID": "slides/10-r-prog.html#finding-rows-in-a-data-frame-1",
+    "href": "slides/10-r-prog.html#finding-rows-in-a-data-frame-1",
+    "title": "1.10 R Programming",
+    "section": "Finding Rows in a Data Frame",
+    "text": "Finding Rows in a Data Frame\nCalculating Murder Rates\n\n1which.min(murders$rate)\n2murders$state[which.min(murders$rate)]\n\n\n1\n\nThis tells us the row of the minimum murder rate\n\n2\n\nUsing the row, we can then get which state is in that row.\n\n\n\n\n[1] 46\n[1] \"Vermont\""
+  },
+  {
+    "objectID": "slides/10-r-prog.html#finding-rows-in-a-data-frame-2",
+    "href": "slides/10-r-prog.html#finding-rows-in-a-data-frame-2",
+    "title": "1.10 R Programming",
+    "section": "Finding Rows in a Data Frame",
+    "text": "Finding Rows in a Data Frame\nCalculating Murder Rates"
+  },
+  {
+    "objectID": "slides/10-r-prog.html#doing-math-with-columns",
+    "href": "slides/10-r-prog.html#doing-math-with-columns",
+    "title": "1.10 R Programming",
+    "section": "Doing Math With Columns",
+    "text": "Doing Math With Columns\nNumber of Even/Odd Values\n\n\n\nRemember this?"
+  },
+  {
+    "objectID": "slides/10-r-prog.html#doing-math-with-columns-1",
+    "href": "slides/10-r-prog.html#doing-math-with-columns-1",
+    "title": "1.10 R Programming",
+    "section": "Doing Math With Columns",
+    "text": "Doing Math With Columns\nNumber of Even/Odd Values\n\nModular Division (%% in R) provides the remainder value \\[\\begin{array}{rl}\n3\\ \\%\\%\\  2 &= 1\\\\    \n153\\  \\%\\%\\  5 &= 3\\\\    \n24\\  \\%\\%\\  2 &= 0\\\\\n\\end{array}\\]"
+  },
+  {
+    "objectID": "slides/10-r-prog.html#doing-math-with-columns-2",
+    "href": "slides/10-r-prog.html#doing-math-with-columns-2",
+    "title": "1.10 R Programming",
+    "section": "Doing Math With Columns",
+    "text": "Doing Math With Columns\nNumber of Even/Odd Values\n\n\ntmp &lt;- data.frame(\n1  total = murders$total,\n2  modulo = murders$total %% 2\n)\ntmp[c(1:6,46:51),]\n\n\n\n1\n\nOriginal value for comparison\n\n2\n\nModular division by 2. Odd values show up as 1, even values show up as 0.\n\n\n\n\n   total modulo\n1    135      1\n2     19      1\n3    232      0\n4     93      1\n5   1257      1\n6     65      1\n46     2      0\n47   250      0\n48    93      1\n49    27      1\n50    97      1\n51     5      1"
+  },
+  {
+    "objectID": "slides/10-r-prog.html#doing-math-with-columns-3",
+    "href": "slides/10-r-prog.html#doing-math-with-columns-3",
+    "title": "1.10 R Programming",
+    "section": "Doing Math With Columns",
+    "text": "Doing Math With Columns\nNumber of Even/Odd Values\n\ntmp &lt;- data.frame(\n  total = murders$total,\n  modulo = murders$total %% 2 \n)\n1sum(tmp$modulo==0)\n2sum(tmp$modulo)\n\n\n1\n\nCalculating the number of even values by testing for whether modulo is 0\n\n2\n\nCalculating the number of odd values by adding up modulo results. We could also test for modulo==1 or modulo != 0 (modulo is nonzero) and get equivalent results.\n\n\n\n\n[1] 22\n[1] 29"
+  },
+  {
+    "objectID": "slides/10-r-prog.html#doing-math-with-columns-4",
+    "href": "slides/10-r-prog.html#doing-math-with-columns-4",
+    "title": "1.10 R Programming",
+    "section": "Doing Math With Columns",
+    "text": "Doing Math With Columns\nTaking Columns to a Power\nSuppose we know that the number of person-to-person interactions is proportional to the number of people (\\(n\\)) squared (e.g. \\(n^2\\))\n\n\n\n1murders$interactions &lt;- murders$population^2\n\n2with(murders, cor(total, population))\n3with(murders, cor(total, interactions))\n\n\n1\n\nSquare the population and store the result in a column named interactions\n\n2\n\nCalculate the correlation of murders with population. with() allows me to refer to the columns of the data frame without using the name of the data frame first – it’s here to save space.\n\n3\n\nCalculate the correlation of murders with interactions. with() allows me to refer to the columns of the data frame without using the name of the data frame first – it’s here to save space.\n\n\n\n\n[1] 0.9635956\n[1] 0.9004965"
+  },
+  {
+    "objectID": "slides/10-r-prog.html#the-tidyverse",
+    "href": "slides/10-r-prog.html#the-tidyverse",
+    "title": "1.10 R Programming",
+    "section": "The Tidyverse",
+    "text": "The Tidyverse\n\na set of packages to make it easy to work with data\nuse the same structure: function(data, ...)\nwork nicely with pipes |&gt; and %&gt;%\n(these are essentially the same, with very minor differences)"
+  },
+  {
+    "objectID": "slides/10-r-prog.html#dplyr",
+    "href": "slides/10-r-prog.html#dplyr",
+    "title": "1.10 R Programming",
+    "section": "dplyr",
+    "text": "dplyr\n\n\n\n\n\nmodify and summarize data frames\n5 main verbs:\n\nfilter - get a set of rows\nselect - get a set of columns\nmutate - make a new column\narrange - sort the rows by one or more variables\nsummarize - collapse a data frame into a single row with specified columns\n\nmostly used with group_by - split data by one/more variables, then summarize, then recombine"
+  },
+  {
+    "objectID": "slides/10-r-prog.html#tidyr",
+    "href": "slides/10-r-prog.html#tidyr",
+    "title": "1.10 R Programming",
+    "section": "tidyr",
+    "text": "tidyr\n\n\n\n\n\nreshape and reorganize data frames\npivot_wider and pivot_longer for rectangle reorganization\nseparate_wider_... and separate_longer_... to split a variable into multiple columns or rows\ncrossing and nesting to build data frames with combinations of values\nnest and unnest to put data frames (or lists) into columns or pull them back out"
   }
 ]

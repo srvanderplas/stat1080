@@ -33,6 +33,72 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-d2cfaf4017ec6d6e95d384acfb7920a7.css">
   <link rel="stylesheet" href="deps/styles.scss">
@@ -157,7 +223,28 @@
 <section id="adding-a-column-to-a-data-frame" class="slide level2">
 <h2>Adding A Column To A Data Frame</h2>
 <h3 id="calculating-murder-rates">Calculating Murder Rates</h3>
+<div class="columns">
+<div class="column">
 <div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-6"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="1">1</button><span id="annotated-cell-6-1" class="code-annotation-target"><a href="#annotated-cell-6-1"></a><span class="fu">library</span>(dslabs)</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="2">2</button><span id="annotated-cell-6-2" class="code-annotation-target"><a href="#annotated-cell-6-2"></a><span class="fu">data</span>(murders)</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="3">3</button><span id="annotated-cell-6-3" class="code-annotation-target"><a href="#annotated-cell-6-3"></a>murders[<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="dv">51</span>),]</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-annotation">
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-6" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-6" data-code-lines="1" data-code-annotation="1">Load the <code>dslabs</code> package</span>
+</dd>
+<dt data-target-cell="annotated-cell-6" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-6" data-code-lines="2" data-code-annotation="2">Load the <code>murders</code> data from the <code>dslabs</code> package</span>
+</dd>
+<dt data-target-cell="annotated-cell-6" data-target-annotation="3">3</dt>
+<dd>
+<span data-code-cell="annotated-cell-6" data-code-lines="3" data-code-annotation="3">Show the first 6 and last 1 rows of the <code>murders</code> data</span>
+</dd>
+</dl>
+</div>
 <div class="cell-output cell-output-stdout">
 <pre><code>        state abb region population total
 1     Alabama  AL  South    4779736   135
@@ -169,24 +256,27 @@
 51    Wyoming  WY   West     563626     5</code></pre>
 </div>
 </div>
-<ol type="1">
-<li>Load the <code>dslabs</code> package</li>
-<li>Load the <code>murders</code> data from the <code>dslabs</code> package</li>
-<li>Show the first 6 and last 1 rows of the <code>murders</code> data</li>
-</ol>
+</div><div class="column">
+<p><a href="images/murder-initial-data.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img data-src="images/murder-initial-data.png" alt="An image of the first 6 rows + last row of the murders data, showing columns state, abb, region, population, and total, with corresponding values for alabama, alaska, arizona, arkansas, california, colorado, and wyoming"></a></p>
+</div></div>
 </section>
 <section id="adding-a-column-to-a-data-frame-1" class="slide level2">
 <h2>Adding A Column To A Data Frame</h2>
 <h3 id="calculating-murder-rates-1">Calculating Murder Rates</h3>
-<p><a href="images/murder-initial-data.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img data-src="images/murder-initial-data.png" alt="An image of the first 6 rows + last row of the murders data, showing columns state, abb, region, population, and total, with corresponding values for alabama, alaska, arizona, arkansas, california, colorado, and wyoming"></a></p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="images/murders-create-columns.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="We want to add a rate column"><img data-src="images/murders-create-columns.png" alt="An image of the first 6 rows + last row of the murders data, showing columns state, abb, region, population, and total, with corresponding values for alabama, alaska, arizona, arkansas, california, colorado, and wyoming. A rate column is shown appended to the data table, in teal"></a></p>
+<figcaption>We want to add a rate column</figcaption>
+</figure>
+</div>
 </section>
 <section id="adding-a-column-to-a-data-frame-2" class="slide level2">
 <h2>Adding A Column To A Data Frame</h2>
 <h3 id="calculating-murder-rates-2">Calculating Murder Rates</h3>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="images/murders-create-columns.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="We want to add a rate column"><img data-src="images/murders-create-columns.png" alt="An image of the first 6 rows + last row of the murders data, showing columns state, abb, region, population, and total, with corresponding values for alabama, alaska, arizona, arkansas, california, colorado, and wyoming. A rate column is shown appended to the data table, in teal"></a></p>
-<figcaption>We want to add a rate column</figcaption>
+<p><a href="images/murders-create-columns-math.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="Doing math with columns"><img data-src="images/murders-create-columns-math.png" alt="An image of the first 6 rows + last row of the murders data. A rate column is shown appended to the data table, in teal. The population column is highlighted in blue, and the total column is highlighted in green. Below the table, (100,000) x total / population = rate is shown, with each variable in its matching color (green, blue, teal respectively). Arrows point from each column to the respective variable. Constants (100,000) and mathematical operators (x, /, =) are shown in black. "></a></p>
+<figcaption>Doing math with columns</figcaption>
 </figure>
 </div>
 </section>
@@ -195,43 +285,383 @@
 <h3 id="calculating-murder-rates-3">Calculating Murder Rates</h3>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="images/murders-create-columns-math.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="Doing math with columns"><img data-src="images/murders-create-columns-math.png" alt="An image of the first 6 rows + last row of the murders data. A rate column is shown appended to the data table, in teal. The population column is highlighted in blue, and the total column is highlighted in green. Below the table, (100,000) x total / population = rate is shown, with each variable in its matching color (green, blue, teal respectively). Arrows point from each column to the respective variable. Constants (100,000) and mathematical operators (x, /, =) are shown in black. "></a></p>
-<figcaption>Doing math with columns</figcaption>
+<p><a href="images/murders-create-columns-result.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="Result"><img data-src="images/murders-create-columns-result.png" alt="An image of the first 6 rows + last 6 rows of the murders data. columns state, abb, region, pouplation, total, and rate are shown."></a></p>
+<figcaption>Result</figcaption>
 </figure>
 </div>
 </section>
 <section id="adding-a-column-to-a-data-frame-4" class="slide level2">
 <h2>Adding A Column To A Data Frame</h2>
 <h3 id="calculating-murder-rates-4">Calculating Murder Rates</h3>
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><a href="images/murders-create-columns-math.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="Result"><img data-src="images/murders-create-columns-math.png" alt="An image of the first 6 rows + last 6 rows of the murders data. columns state, abb, region, pouplation, total, and rate are shown."></a></p>
-<figcaption>Result</figcaption>
-</figure>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-1"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="1">1</button><span id="annotated-cell-1-1" class="code-annotation-target"><a href="#annotated-cell-1-1"></a>murders<span class="sc">$</span>rate <span class="ot">&lt;-</span> murders<span class="sc">$</span>total <span class="sc">/</span> murders<span class="sc">$</span>population <span class="sc">*</span> <span class="dv">100000</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-annotation">
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-1" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-1" data-code-lines="1" data-code-annotation="1">Create a column named rate by dividing the total number of murders in a state by the state’s population. Then, multiply by 100k because it’s easier to interpret rates when they’re scaled to not be so small.</span>
+</dd>
+</dl>
 </div>
-</section>
-<section id="adding-a-column-to-a-data-frame-5" class="slide level2">
-<h2>Adding A Column To A Data Frame</h2>
-<h3 id="calculating-murder-rates-5">Calculating Murder Rates</h3>
-<ol type="1">
-<li>Create a column named rate by dividing the total number of murders in a state by the state’s population. Then, multiply by 100k because it’s easier to interpret rates when they’re scaled to not be so small.</li>
-</ol>
+</div>
+<div class="small">
+<div class="cell">
+<div class="cell-output-display">
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: left;">state</th>
+<th style="text-align: left;">abb</th>
+<th style="text-align: left;">region</th>
+<th style="text-align: right;">population</th>
+<th style="text-align: right;">total</th>
+<th style="text-align: right;">rate</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">Alabama</td>
+<td style="text-align: left;">AL</td>
+<td style="text-align: left;">South</td>
+<td style="text-align: right;">4779736</td>
+<td style="text-align: right;">135</td>
+<td style="text-align: right;">2.8244</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">Alaska</td>
+<td style="text-align: left;">AK</td>
+<td style="text-align: left;">West</td>
+<td style="text-align: right;">710231</td>
+<td style="text-align: right;">19</td>
+<td style="text-align: right;">2.6752</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">Arizona</td>
+<td style="text-align: left;">AZ</td>
+<td style="text-align: left;">West</td>
+<td style="text-align: right;">6392017</td>
+<td style="text-align: right;">232</td>
+<td style="text-align: right;">3.6295</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">4</td>
+<td style="text-align: left;">Arkansas</td>
+<td style="text-align: left;">AR</td>
+<td style="text-align: left;">South</td>
+<td style="text-align: right;">2915918</td>
+<td style="text-align: right;">93</td>
+<td style="text-align: right;">3.1894</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">5</td>
+<td style="text-align: left;">California</td>
+<td style="text-align: left;">CA</td>
+<td style="text-align: left;">West</td>
+<td style="text-align: right;">37253956</td>
+<td style="text-align: right;">1257</td>
+<td style="text-align: right;">3.3741</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">6</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">CO</td>
+<td style="text-align: left;">West</td>
+<td style="text-align: right;">5029196</td>
+<td style="text-align: right;">65</td>
+<td style="text-align: right;">1.2925</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">46</td>
+<td style="text-align: left;">Vermont</td>
+<td style="text-align: left;">VT</td>
+<td style="text-align: left;">Northeast</td>
+<td style="text-align: right;">625741</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0.3196</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">47</td>
+<td style="text-align: left;">Virginia</td>
+<td style="text-align: left;">VA</td>
+<td style="text-align: left;">South</td>
+<td style="text-align: right;">8001024</td>
+<td style="text-align: right;">250</td>
+<td style="text-align: right;">3.1246</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">48</td>
+<td style="text-align: left;">Washington</td>
+<td style="text-align: left;">WA</td>
+<td style="text-align: left;">West</td>
+<td style="text-align: right;">6724540</td>
+<td style="text-align: right;">93</td>
+<td style="text-align: right;">1.3830</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">49</td>
+<td style="text-align: left;">West Virginia</td>
+<td style="text-align: left;">WV</td>
+<td style="text-align: left;">South</td>
+<td style="text-align: right;">1852994</td>
+<td style="text-align: right;">27</td>
+<td style="text-align: right;">1.4571</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">50</td>
+<td style="text-align: left;">Wisconsin</td>
+<td style="text-align: left;">WI</td>
+<td style="text-align: left;">North Central</td>
+<td style="text-align: right;">5686986</td>
+<td style="text-align: right;">97</td>
+<td style="text-align: right;">1.7056</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">51</td>
+<td style="text-align: left;">Wyoming</td>
+<td style="text-align: left;">WY</td>
+<td style="text-align: left;">West</td>
+<td style="text-align: right;">563626</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">0.8871</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
 </section>
 <section id="finding-rows-in-a-data-frame" class="slide level2">
 <h2>Finding Rows in a Data Frame</h2>
+<h3 id="calculating-murder-rates-5">Calculating Murder Rates</h3>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-2"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="1">1</button><span id="annotated-cell-2-1" class="code-annotation-target"><a href="#annotated-cell-2-1"></a><span class="fu">min</span>(murders<span class="sc">$</span>rate)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-annotation">
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-2" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-2" data-code-lines="1" data-code-annotation="1">This tells us the value of the minimum murder rate</span>
+</dd>
+</dl>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.3196211</code></pre>
+</div>
+</div>
+<p><a href="images/murders-min-rate.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img data-src="images/murders-min-rate.png" alt="An image of the first 6 rows + last 6 rows of the murders data, showing columns state, abb, region, population, total, and rate, with corresponding values for alabama, alaska, arizona, arkansas, california, colorado, vermont, virginia, washington, west virginia, wisconsin, and wyoming. Text next to the table says 'min(murder$rate)' in black, and in red underneath, 'finds the smallest value in murder$rate'. The corresponding minimum murder rate is highlighted in red."></a></p>
+</section>
+<section id="finding-rows-in-a-data-frame-1" class="slide level2">
+<h2>Finding Rows in a Data Frame</h2>
 <h3 id="calculating-murder-rates-6">Calculating Murder Rates</h3>
 <div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-3"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="1">1</button><span id="annotated-cell-3-1" class="code-annotation-target"><a href="#annotated-cell-3-1"></a><span class="fu">which.min</span>(murders<span class="sc">$</span>rate)</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="2">2</button><span id="annotated-cell-3-2" class="code-annotation-target"><a href="#annotated-cell-3-2"></a>murders<span class="sc">$</span>state[<span class="fu">which.min</span>(murders<span class="sc">$</span>rate)]</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-annotation">
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-3" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-3" data-code-lines="1" data-code-annotation="1">This tells us the row of the minimum murder rate</span>
+</dd>
+<dt data-target-cell="annotated-cell-3" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-3" data-code-lines="2" data-code-annotation="2">Using the row, we can then get which state is in that row.</span>
+</dd>
+</dl>
+</div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.3196211
-[1] 46
+<pre><code>[1] 46
 [1] "Vermont"</code></pre>
 </div>
 </div>
-<ol type="1">
-<li>This tells us the value of the minimum murder rate</li>
-<li>This tells us the row of the minimum murder rate</li>
-<li>Using the row, we can then get which state is in that row.</li>
-</ol>
+<p><a href="images/murders-which-min.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6"><img data-src="images/murders-which-min.png" style="width:70.0%" alt="An image of the first 6 rows + last 6 rows of the murders data, showing columns state, abb, region, population, total, and rate, with corresponding values for alabama, alaska, arizona, arkansas, california, colorado, vermont, virginia, washington, west virginia, wisconsin, and wyoming. Text next to the table says 'which.min(murder$rate)' in black, and in red underneath, 'finds the row with the smallest value in murder$rate'. The corresponding full row is highlighted in red."></a></p>
+</section>
+<section id="doing-math-with-columns" class="slide level2">
+<h2>Doing Math With Columns</h2>
+<h3 id="number-of-evenodd-values">Number of Even/Odd Values</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="images/long-division.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7" title="Remember this?"><img data-src="images/long-division.png" alt="A long division problem (75 divided by 4) with the parts labeled: 4 is the divisor, 75 is the dividend, 18 is the quotient, 3 is the remainder. The problem shows the 7-4 step, where the remainder is 35, and then shows 35-32 = 03 for the remainder."></a></p>
+<figcaption>Remember this?</figcaption>
+</figure>
+</div>
+</section>
+<section id="doing-math-with-columns-1" class="slide level2">
+<h2>Doing Math With Columns</h2>
+<h3 id="number-of-evenodd-values-1">Number of Even/Odd Values</h3>
+<div class="huge">
+<p><strong>Modular Division</strong> (%% in R) provides the remainder value <span class="math display">\[\begin{array}{rl}
+3\ \%\%\  2 &amp;= 1\\    
+153\  \%\%\  5 &amp;= 3\\    
+24\  \%\%\  2 &amp;= 0\\
+\end{array}\]</span></p>
+</div>
+</section>
+<section id="doing-math-with-columns-2" class="slide level2">
+<h2>Doing Math With Columns</h2>
+<h3 id="number-of-evenodd-values-2">Number of Even/Odd Values</h3>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-4"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-4-1"><a href="#annotated-cell-4-1"></a>tmp <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="1">1</button><span id="annotated-cell-4-2" class="code-annotation-target"><a href="#annotated-cell-4-2"></a>  <span class="at">total =</span> murders<span class="sc">$</span>total,</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="2">2</button><span id="annotated-cell-4-3" class="code-annotation-target"><a href="#annotated-cell-4-3"></a>  <span class="at">modulo =</span> murders<span class="sc">$</span>total <span class="sc">%%</span> <span class="dv">2</span></span>
+<span id="annotated-cell-4-4"><a href="#annotated-cell-4-4"></a>)</span>
+<span id="annotated-cell-4-5"><a href="#annotated-cell-4-5"></a>tmp[<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>,<span class="dv">46</span><span class="sc">:</span><span class="dv">51</span>),]</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div><div class="column fragment">
+<div class="cell-annotation">
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-4" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-4" data-code-lines="2" data-code-annotation="1">Original value for comparison</span>
+</dd>
+<dt data-target-cell="annotated-cell-4" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-4" data-code-lines="3" data-code-annotation="2">Modular division by 2. Odd values show up as 1, even values show up as 0.</span>
+</dd>
+</dl>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   total modulo
+1    135      1
+2     19      1
+3    232      0
+4     93      1
+5   1257      1
+6     65      1
+46     2      0
+47   250      0
+48    93      1
+49    27      1
+50    97      1
+51     5      1</code></pre>
+</div>
+</div></div>
+<p><a href="images/murders-modulo-demo.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8"><img data-src="images/murders-modulo-demo.png" style="width:65.0%" alt="An image of the first 6 rows + last 6 rows of the murders data, showing columns state, abb, region, population, total, and rate, with corresponding values for alabama, alaska, arizona, arkansas, california, colorado, vermont, virginia, washington, west virginia, wisconsin, and wyoming. Total values which are odd are highlighted in red. A second table is shown next to the first, with just columns total and modulo. The total column is the same as previously shown, and the modulo column has 1 if the value in total is odd, 0 if it is even."></a></p>
+</section>
+<section id="doing-math-with-columns-3" class="slide level2">
+<h2>Doing Math With Columns</h2>
+<h3 id="number-of-evenodd-values-3">Number of Even/Odd Values</h3>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-5"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-5-1"><a href="#annotated-cell-5-1"></a>tmp <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="annotated-cell-5-2"><a href="#annotated-cell-5-2"></a>  <span class="at">total =</span> murders<span class="sc">$</span>total,</span>
+<span id="annotated-cell-5-3"><a href="#annotated-cell-5-3"></a>  <span class="at">modulo =</span> murders<span class="sc">$</span>total <span class="sc">%%</span> <span class="dv">2</span> </span>
+<span id="annotated-cell-5-4"><a href="#annotated-cell-5-4"></a>)</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-5" data-target-annotation="1">1</button><span id="annotated-cell-5-5" class="code-annotation-target"><a href="#annotated-cell-5-5"></a><span class="fu">sum</span>(tmp<span class="sc">$</span>modulo<span class="sc">==</span><span class="dv">0</span>)</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-5" data-target-annotation="2">2</button><span id="annotated-cell-5-6" class="code-annotation-target"><a href="#annotated-cell-5-6"></a><span class="fu">sum</span>(tmp<span class="sc">$</span>modulo)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-annotation">
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-5" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-5" data-code-lines="5" data-code-annotation="1">Calculating the number of even values by testing for whether modulo is 0</span>
+</dd>
+<dt data-target-cell="annotated-cell-5" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-5" data-code-lines="6" data-code-annotation="2">Calculating the number of odd values by adding up modulo results. We could also test for modulo==1 or modulo != 0 (modulo is nonzero) and get equivalent results.</span>
+</dd>
+</dl>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 22
+[1] 29</code></pre>
+</div>
+</div>
+</section>
+<section id="doing-math-with-columns-4" class="slide level2">
+<h2>Doing Math With Columns</h2>
+<h3 id="taking-columns-to-a-power">Taking Columns to a Power</h3>
+<p>Suppose we know that the number of person-to-person interactions is proportional to the number of people (<span class="math inline">\(n\)</span>) squared (e.g.&nbsp;<span class="math inline">\(n^2\)</span>)</p>
+<div class="columns">
+<div class="column" style="width:70%;">
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-12"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-12" data-target-annotation="1">1</button><span id="annotated-cell-12-1" class="code-annotation-target"><a href="#annotated-cell-12-1"></a>murders<span class="sc">$</span>interactions <span class="ot">&lt;-</span> murders<span class="sc">$</span>population<span class="sc">^</span><span class="dv">2</span></span>
+<span id="annotated-cell-12-2"><a href="#annotated-cell-12-2"></a></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-12" data-target-annotation="2">2</button><span id="annotated-cell-12-3" class="code-annotation-target"><a href="#annotated-cell-12-3"></a><span class="fu">with</span>(murders, <span class="fu">cor</span>(total, population))</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-12" data-target-annotation="3">3</button><span id="annotated-cell-12-4" class="code-annotation-target"><a href="#annotated-cell-12-4"></a><span class="fu">with</span>(murders, <span class="fu">cor</span>(total, interactions))</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-annotation">
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-12" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-12" data-code-lines="1" data-code-annotation="1">Square the population and store the result in a column named <code>interactions</code></span>
+</dd>
+<dt data-target-cell="annotated-cell-12" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-12" data-code-lines="3" data-code-annotation="2">Calculate the correlation of murders with population. <code>with()</code> allows me to refer to the columns of the data frame without using the name of the data frame first – it’s here to save space.</span>
+</dd>
+<dt data-target-cell="annotated-cell-12" data-target-annotation="3">3</dt>
+<dd>
+<span data-code-cell="annotated-cell-12" data-code-lines="4" data-code-annotation="3">Calculate the correlation of murders with interactions. <code>with()</code> allows me to refer to the columns of the data frame without using the name of the data frame first – it’s here to save space.</span>
+</dd>
+</dl>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.9635956
+[1] 0.9004965</code></pre>
+</div>
+</div>
+</div><div class="column" style="width:30%;">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><a href="10-r-prog_files/figure-revealjs/unnamed-chunk-9-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-9"><img data-src="10-r-prog_files/figure-revealjs/unnamed-chunk-9-1.png" width="384"></a></p>
+</figure>
+</div>
+</div>
+</div>
+</div></div>
+</section></section>
+<section>
+<section id="preview-the-tidyverse" class="title-slide slide level1 center">
+<h1>Preview: The Tidyverse</h1>
+<p><a href="https://github.com/rstudio/hex-stickers/blob/main/PNG/tidyverse.png?raw=true" class="lightbox" data-gallery="quarto-lightbox-gallery-10"><img data-src="https://github.com/rstudio/hex-stickers/blob/main/PNG/tidyverse.png?raw=true" style="width:50.0%" data-align="center" alt="A hexagon covered in tiny hexagons that has the text 'tidyverse'."></a></p>
+</section>
+<section id="the-tidyverse" class="slide level2">
+<h2>The Tidyverse</h2>
+<ul>
+<li>a set of packages to make it easy to work with data</li>
+<li>use the same structure: <code>function(data, ...)</code></li>
+<li>work nicely with pipes <code>|&gt;</code> and <code>%&gt;%</code><br>
+(these are essentially the same, with very minor differences)</li>
+</ul>
+</section>
+<section id="dplyr" class="slide level2">
+<h2><code>dplyr</code></h2>
+<div class="columns">
+<div class="column">
+<p><a href="https://github.com/rstudio/hex-stickers/blob/main/PNG/dplyr.png?raw=true" class="lightbox" data-gallery="quarto-lightbox-gallery-11"><img data-src="https://github.com/rstudio/hex-stickers/blob/main/PNG/dplyr.png?raw=true" style="width:80.0%"></a></p>
+</div><div class="column">
+<ul>
+<li>modify and summarize data frames</li>
+<li>5 main verbs:
+<ul>
+<li><code>filter</code> - get a set of rows</li>
+<li><code>select</code> - get a set of columns</li>
+<li><code>mutate</code> - make a new column</li>
+<li><code>arrange</code> - sort the rows by one or more variables</li>
+<li><code>summarize</code> - collapse a data frame into a single row with specified columns
+<ul>
+<li>mostly used with <code>group_by</code> - split data by one/more variables, then summarize, then recombine</li>
+</ul></li>
+</ul></li>
+</ul>
+</div></div>
+</section>
+<section id="tidyr" class="slide level2">
+<h2><code>tidyr</code></h2>
+<div class="columns">
+<div class="column">
+<p><a href="https://github.com/rstudio/hex-stickers/blob/main/PNG/tidyr.png?raw=true" class="lightbox" data-gallery="quarto-lightbox-gallery-12"><img data-src="https://github.com/rstudio/hex-stickers/blob/main/PNG/tidyr.png?raw=true" style="width:80.0%"></a></p>
+</div><div class="column">
+<ul>
+<li>reshape and reorganize data frames</li>
+<li><code>pivot_wider</code> and <code>pivot_longer</code> for rectangle reorganization</li>
+<li><code>separate_wider_...</code> and <code>separate_longer_...</code> to split a variable into multiple columns or rows</li>
+<li><code>crossing</code> and <code>nesting</code> to build data frames with combinations of values</li>
+<li><code>nest</code> and <code>unnest</code> to put data frames (or lists) into columns or pull them back out</li>
+</ul>
+</div></div>
 
 
 </section></section>

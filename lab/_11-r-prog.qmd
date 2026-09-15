@@ -69,7 +69,7 @@ By altering this top secret set of numbers, you will be able to create a message
 1. Add 14 to every number.
 2. Multiply every number by 18, then subtract 257.
 3. Exponentiate every number.  (That is, do e^[number].)
-4. Square every number.
+4. Square every number. (Remember that (number)^(power) is how you raise a number to a power.)
 
 **Checkpoint:** Headquarters has informed you that at this stage of decoding, there should be 352 numbers in the secret message that are below 17.
 
