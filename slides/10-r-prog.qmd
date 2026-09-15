@@ -1,0 +1,64 @@
+---
+title: "1.10 R Programming"
+format: revealjs
+code-annotations: hover
+lightbox:  true
+bibliography: refs.bib
+csl: chicago-syllabus.csl
+---
+
+# Programming Basics
+
+## Adding A Column To A Data Frame
+### Calculating Murder Rates
+
+```{r}
+library(dslabs) # <1>
+data(murders) # <2>
+murders[c(1:6, 51),] # <3>
+```
+1. Load the `dslabs` package
+2. Load the `murders` data from the `dslabs` package
+3. Show the first 6 and last 1 rows of the `murders` data
+
+## Adding A Column To A Data Frame
+### Calculating Murder Rates
+
+![](images/murder-initial-data.png){fig-alt="An image of the first 6 rows + last row of the murders data, showing columns state, abb, region, population, and total, with corresponding values for alabama, alaska, arizona, arkansas, california, colorado, and wyoming"}
+
+## Adding A Column To A Data Frame
+### Calculating Murder Rates
+
+![We want to add a rate column](images/murders-create-columns.png){fig-alt="An image of the first 6 rows + last row of the murders data, showing columns state, abb, region, population, and total, with corresponding values for alabama, alaska, arizona, arkansas, california, colorado, and wyoming. A rate column is shown appended to the data table, in teal"}
+
+## Adding A Column To A Data Frame
+### Calculating Murder Rates
+
+![Doing math with columns](images/murders-create-columns-math.png){fig-alt="An image of the first 6 rows + last row of the murders data. A rate column is shown appended to the data table, in teal. The population column is highlighted in blue, and the total column is highlighted in green. Below the table, (100,000) x total / population = rate is shown, with each variable in its matching color (green, blue, teal respectively). Arrows point from each column to the respective variable. Constants (100,000) and mathematical operators (x, /, =) are shown in black. "}
+
+## Adding A Column To A Data Frame
+### Calculating Murder Rates
+
+![Result](images/murders-create-columns-math.png){fig-alt="An image of the first 6 rows + last 6 rows of the murders data. columns state, abb, region, pouplation, total, and rate are shown."}
+
+## Adding A Column To A Data Frame
+### Calculating Murder Rates
+
+```{r}
+murders$rate <- murders$total / murders$population * 100000 # <1>
+```
+1. Create a column named rate by dividing the total number of murders in a state by the state's population. Then, multiply by 100k because it's easier to interpret rates when they're scaled to not be so small.
+
+## Finding Rows in a Data Frame
+### Calculating Murder Rates
+
+```{r}
+min(murders$rate) # <1>
+which.min(murders$rate) # <2>
+murders$state[which.min(murders$rate)] # <3>
+```
+
+1. This tells us the value of the minimum murder rate
+2. This tells us the row of the minimum murder rate
+3. Using the row, we can then get which state is in that row.
+

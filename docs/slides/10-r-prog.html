@@ -6,10 +6,13 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.9.38">
 
-  <title>STAT 1080 - Fall 2026 – r-prog</title>
+  <title>STAT 1080 - Fall 2026 – 1.10 R Programming</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -132,19 +135,106 @@
       margin-right: 0;
     }
   </style>
-<meta property="og:title" content="STAT 1080 - Fall 2026">
+<meta property="og:title" content="1.10 R Programming – STAT 1080 - Fall 2026">
 <meta property="og:site_name" content="STAT 1080 - Fall 2026">
 </head>
 <body class="quarto-light">
   <div class="reveal">
     <div class="slides">
 
+<section id="title-slide" class="quarto-title-block center">
+  <h1 class="title">1.10 R Programming</h1>
 
-<section class="slide level2">
-
-
+<div class="quarto-title-authors">
+</div>
 
 </section>
+<section>
+<section id="programming-basics" class="title-slide slide level1 center">
+<h1>Programming Basics</h1>
+
+</section>
+<section id="adding-a-column-to-a-data-frame" class="slide level2">
+<h2>Adding A Column To A Data Frame</h2>
+<h3 id="calculating-murder-rates">Calculating Murder Rates</h3>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>        state abb region population total
+1     Alabama  AL  South    4779736   135
+2      Alaska  AK   West     710231    19
+3     Arizona  AZ   West    6392017   232
+4    Arkansas  AR  South    2915918    93
+5  California  CA   West   37253956  1257
+6    Colorado  CO   West    5029196    65
+51    Wyoming  WY   West     563626     5</code></pre>
+</div>
+</div>
+<ol type="1">
+<li>Load the <code>dslabs</code> package</li>
+<li>Load the <code>murders</code> data from the <code>dslabs</code> package</li>
+<li>Show the first 6 and last 1 rows of the <code>murders</code> data</li>
+</ol>
+</section>
+<section id="adding-a-column-to-a-data-frame-1" class="slide level2">
+<h2>Adding A Column To A Data Frame</h2>
+<h3 id="calculating-murder-rates-1">Calculating Murder Rates</h3>
+<p><a href="images/murder-initial-data.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img data-src="images/murder-initial-data.png" alt="An image of the first 6 rows + last row of the murders data, showing columns state, abb, region, population, and total, with corresponding values for alabama, alaska, arizona, arkansas, california, colorado, and wyoming"></a></p>
+</section>
+<section id="adding-a-column-to-a-data-frame-2" class="slide level2">
+<h2>Adding A Column To A Data Frame</h2>
+<h3 id="calculating-murder-rates-2">Calculating Murder Rates</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="images/murders-create-columns.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="We want to add a rate column"><img data-src="images/murders-create-columns.png" alt="An image of the first 6 rows + last row of the murders data, showing columns state, abb, region, population, and total, with corresponding values for alabama, alaska, arizona, arkansas, california, colorado, and wyoming. A rate column is shown appended to the data table, in teal"></a></p>
+<figcaption>We want to add a rate column</figcaption>
+</figure>
+</div>
+</section>
+<section id="adding-a-column-to-a-data-frame-3" class="slide level2">
+<h2>Adding A Column To A Data Frame</h2>
+<h3 id="calculating-murder-rates-3">Calculating Murder Rates</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="images/murders-create-columns-math.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="Doing math with columns"><img data-src="images/murders-create-columns-math.png" alt="An image of the first 6 rows + last row of the murders data. A rate column is shown appended to the data table, in teal. The population column is highlighted in blue, and the total column is highlighted in green. Below the table, (100,000) x total / population = rate is shown, with each variable in its matching color (green, blue, teal respectively). Arrows point from each column to the respective variable. Constants (100,000) and mathematical operators (x, /, =) are shown in black. "></a></p>
+<figcaption>Doing math with columns</figcaption>
+</figure>
+</div>
+</section>
+<section id="adding-a-column-to-a-data-frame-4" class="slide level2">
+<h2>Adding A Column To A Data Frame</h2>
+<h3 id="calculating-murder-rates-4">Calculating Murder Rates</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="images/murders-create-columns-math.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="Result"><img data-src="images/murders-create-columns-math.png" alt="An image of the first 6 rows + last 6 rows of the murders data. columns state, abb, region, pouplation, total, and rate are shown."></a></p>
+<figcaption>Result</figcaption>
+</figure>
+</div>
+</section>
+<section id="adding-a-column-to-a-data-frame-5" class="slide level2">
+<h2>Adding A Column To A Data Frame</h2>
+<h3 id="calculating-murder-rates-5">Calculating Murder Rates</h3>
+<ol type="1">
+<li>Create a column named rate by dividing the total number of murders in a state by the state’s population. Then, multiply by 100k because it’s easier to interpret rates when they’re scaled to not be so small.</li>
+</ol>
+</section>
+<section id="finding-rows-in-a-data-frame" class="slide level2">
+<h2>Finding Rows in a Data Frame</h2>
+<h3 id="calculating-murder-rates-6">Calculating Murder Rates</h3>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.3196211
+[1] 46
+[1] "Vermont"</code></pre>
+</div>
+</div>
+<ol type="1">
+<li>This tells us the value of the minimum murder rate</li>
+<li>This tells us the row of the minimum murder rate</li>
+<li>Using the row, we can then get which state is in that row.</li>
+</ol>
+
+
+</section></section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <p><img src="deps/usu-sq.png" alt="Utah State University Logo" class="slide-logo"></p>
@@ -363,6 +453,44 @@
         ]
       });
     </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
     <script id="quarto-html-after-body" type="application/javascript">
       window.document.addEventListener("DOMContentLoaded", function (event) {
         const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
@@ -683,6 +811,38 @@
         }
       });
       </script>
+    <script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+    (function() {
+      let previousOnload = window.onload;
+      window.onload = () => {
+        if (previousOnload) {
+          previousOnload();
+        }
+        lightboxQuarto.on('slide_before_load', (data) => {
+          const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+          const href = trigger.getAttribute('href');
+          if (href !== null) {
+            const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+            if (imgEl !== null) {
+              const srcAttr = imgEl.getAttribute("src");
+              if (srcAttr && srcAttr.startsWith("data:")) {
+                slideConfig.href = srcAttr;
+              }
+            }
+          } 
+        });
+      
+        lightboxQuarto.on('slide_after_load', (data) => {
+          const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(slideNode);
+          }
+        });
+      
+      };
+      
+    })();
+              </script>
     
 
 </body></html>

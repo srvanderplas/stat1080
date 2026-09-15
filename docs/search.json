@@ -2175,5 +2175,54 @@
     "title": "1.8 Bias and Ethics",
     "section": "Ethics",
     "text": "Ethics\n\nUnderstand how the data was collected\n\npotential biases\nmissing observations\n\nUnderstand relationships between variables\n\nincluding variables that may not be present in the data\n\nInterpret results with humility\n\nallow for the possibility that you don’t have all the information\nconsider how data, model, or interpretation might be wrong\n\nAs a consumer, be skeptical, especially when results confirm your prior beliefs"
+  },
+  {
+    "objectID": "slides/10-r-prog.html#adding-a-column-to-a-data-frame",
+    "href": "slides/10-r-prog.html#adding-a-column-to-a-data-frame",
+    "title": "1.10 R Programming",
+    "section": "Adding A Column To A Data Frame",
+    "text": "Adding A Column To A Data Frame\nCalculating Murder Rates\n\n\n        state abb region population total\n1     Alabama  AL  South    4779736   135\n2      Alaska  AK   West     710231    19\n3     Arizona  AZ   West    6392017   232\n4    Arkansas  AR  South    2915918    93\n5  California  CA   West   37253956  1257\n6    Colorado  CO   West    5029196    65\n51    Wyoming  WY   West     563626     5\n\n\n\nLoad the dslabs package\nLoad the murders data from the dslabs package\nShow the first 6 and last 1 rows of the murders data"
+  },
+  {
+    "objectID": "slides/10-r-prog.html#adding-a-column-to-a-data-frame-1",
+    "href": "slides/10-r-prog.html#adding-a-column-to-a-data-frame-1",
+    "title": "1.10 R Programming",
+    "section": "Adding A Column To A Data Frame",
+    "text": "Adding A Column To A Data Frame\nCalculating Murder Rates"
+  },
+  {
+    "objectID": "slides/10-r-prog.html#finding-rows-in-a-data-frame",
+    "href": "slides/10-r-prog.html#finding-rows-in-a-data-frame",
+    "title": "1.10 R Programming",
+    "section": "Finding Rows in a Data Frame",
+    "text": "Finding Rows in a Data Frame\nCalculating Murder Rates\n\n\n[1] 0.3196211\n[1] 46\n[1] \"Vermont\"\n\n\n\nThis tells us the value of the minimum murder rate\nThis tells us the row of the minimum murder rate\nUsing the row, we can then get which state is in that row."
+  },
+  {
+    "objectID": "slides/10-r-prog.html#adding-a-column-to-a-data-frame-2",
+    "href": "slides/10-r-prog.html#adding-a-column-to-a-data-frame-2",
+    "title": "1.10 R Programming",
+    "section": "Adding A Column To A Data Frame",
+    "text": "Adding A Column To A Data Frame\nCalculating Murder Rates\n\n\n\nWe want to add a rate column"
+  },
+  {
+    "objectID": "slides/10-r-prog.html#adding-a-column-to-a-data-frame-3",
+    "href": "slides/10-r-prog.html#adding-a-column-to-a-data-frame-3",
+    "title": "1.10 R Programming",
+    "section": "Adding A Column To A Data Frame",
+    "text": "Adding A Column To A Data Frame\nCalculating Murder Rates\n\n\n\nDoing math with columns"
+  },
+  {
+    "objectID": "slides/10-r-prog.html#adding-a-column-to-a-data-frame-4",
+    "href": "slides/10-r-prog.html#adding-a-column-to-a-data-frame-4",
+    "title": "1.10 R Programming",
+    "section": "Adding A Column To A Data Frame",
+    "text": "Adding A Column To A Data Frame\nCalculating Murder Rates\n\n\n\nResult"
+  },
+  {
+    "objectID": "slides/10-r-prog.html#adding-a-column-to-a-data-frame-5",
+    "href": "slides/10-r-prog.html#adding-a-column-to-a-data-frame-5",
+    "title": "1.10 R Programming",
+    "section": "Adding A Column To A Data Frame",
+    "text": "Adding A Column To A Data Frame\nCalculating Murder Rates\n\nCreate a column named rate by dividing the total number of murders in a state by the state’s population. Then, multiply by 100k because it’s easier to interpret rates when they’re scaled to not be so small."
   }
 ]
