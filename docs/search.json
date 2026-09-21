@@ -84,6 +84,20 @@
     "text": "Doing Math With Columns\nTaking Columns to a Power\nSuppose we know that the number of person-to-person interactions is proportional to the number of people (\\(n\\)) squared (e.g. \\(n^2\\))\n\n\n\n1murders$interactions &lt;- murders$population^2\n\n2with(murders, cor(total, population))\n3with(murders, cor(total, interactions))\n\n\n1\n\nSquare the population and store the result in a column named interactions\n\n2\n\nCalculate the correlation of murders with population. with() allows me to refer to the columns of the data frame without using the name of the data frame first – it’s here to save space.\n\n3\n\nCalculate the correlation of murders with interactions. with() allows me to refer to the columns of the data frame without using the name of the data frame first – it’s here to save space.\n\n\n\n\n[1] 0.9635956\n[1] 0.9004965"
   },
   {
+    "objectID": "slides/10-r-prog.html#pipes",
+    "href": "slides/10-r-prog.html#pipes",
+    "title": "1.10 R Programming",
+    "section": "Pipes",
+    "text": "Pipes\nR functions are sometimes nested:\n\nmean(na.omit(murders$population))\n\n[1] 6075769\n\n\n\nToo many nested functions in a row can be hard to read\npipes allow us to “chain” functions together into a “recipe” of steps to take"
+  },
+  {
+    "objectID": "slides/10-r-prog.html#pipes-1",
+    "href": "slides/10-r-prog.html#pipes-1",
+    "title": "1.10 R Programming",
+    "section": "Pipes",
+    "text": "Pipes\n\nPipes are essential to working with tidyverse functions"
+  },
+  {
     "objectID": "slides/10-r-prog.html#the-tidyverse",
     "href": "slides/10-r-prog.html#the-tidyverse",
     "title": "1.10 R Programming",
@@ -2296,6 +2310,13 @@
     "text": "Messy Data"
   },
   {
+    "objectID": "slides/13-tidyverse-dplyr.html#setting-up-read-in-some-data",
+    "href": "slides/13-tidyverse-dplyr.html#setting-up-read-in-some-data",
+    "title": "1.13 dplyr - Data Manipulation",
+    "section": "Setting up: Read In Some Data",
+    "text": "Setting up: Read In Some Data\n\nlibrary(readr)\nlibrary(dplyr)\n\npoke &lt;- read_csv(\"https://bit.ly/poke-data\")\n# https://github.com/srvanderplas/datasets/raw/main/clean/pokemon_gen_1-9.csv\n\nhead(poke)\n\n# A tibble: 6 × 16\n    gen pokedex_no img_link       name  variant type  total    hp attack defense\n  &lt;dbl&gt;      &lt;dbl&gt; &lt;chr&gt;          &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;\n1     1          1 https://img.p… Bulb… &lt;NA&gt;    Gras…   318    45     49      49\n2     1          2 https://img.p… Ivys… &lt;NA&gt;    Gras…   405    60     62      63\n3     1          3 https://img.p… Venu… &lt;NA&gt;    Gras…   525    80     82      83\n4     1          3 https://img.p… Venu… Mega    Gras…   625    80    100     123\n5     1          4 https://img.p… Char… &lt;NA&gt;    Fire    309    39     52      43\n6     1          5 https://img.p… Char… &lt;NA&gt;    Fire    405    58     64      58\n# ℹ 6 more variables: sp_attack &lt;dbl&gt;, sp_defense &lt;dbl&gt;, speed &lt;dbl&gt;,\n#   species &lt;chr&gt;, height_m &lt;dbl&gt;, weight_kg &lt;dbl&gt;"
+  },
+  {
     "objectID": "slides/13-tidyverse-dplyr.html#common-data-cleaning-tasks",
     "href": "slides/13-tidyverse-dplyr.html#common-data-cleaning-tasks",
     "title": "1.13 dplyr - Data Manipulation",
@@ -2338,24 +2359,24 @@
     "text": "Common Data Cleaning Tasks\n\nGroup by + summarize:\n\ndf |&gt; group_by(varname) |&gt; summarize(newvar = XXX(...))\nOne row returned per group (e.g. per value of varname)\nAll non-grouping variables dropped unless defined in summarize"
   },
   {
-    "objectID": "slides/13-tidyverse-dplyr.html#setting-up-read-in-some-data",
-    "href": "slides/13-tidyverse-dplyr.html#setting-up-read-in-some-data",
+    "objectID": "slides/13-tidyverse-dplyr.html#pipes",
+    "href": "slides/13-tidyverse-dplyr.html#pipes",
     "title": "1.13 dplyr - Data Manipulation",
-    "section": "Setting up: Read In Some Data",
-    "text": "Setting up: Read In Some Data\n\nlibrary(readr)\nlibrary(dplyr)\n\npoke &lt;- read_csv(\"https://bit.ly/poke-data\")\n# https://github.com/srvanderplas/datasets/raw/main/clean/pokemon_gen_1-9.csv\n\nhead(poke)\n\n# A tibble: 6 × 16\n    gen pokedex_no img_link       name  variant type  total    hp attack defense\n  &lt;dbl&gt;      &lt;dbl&gt; &lt;chr&gt;          &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;\n1     1          1 https://img.p… Bulb… &lt;NA&gt;    Gras…   318    45     49      49\n2     1          2 https://img.p… Ivys… &lt;NA&gt;    Gras…   405    60     62      63\n3     1          3 https://img.p… Venu… &lt;NA&gt;    Gras…   525    80     82      83\n4     1          3 https://img.p… Venu… Mega    Gras…   625    80    100     123\n5     1          4 https://img.p… Char… &lt;NA&gt;    Fire    309    39     52      43\n6     1          5 https://img.p… Char… &lt;NA&gt;    Fire    405    58     64      58\n# ℹ 6 more variables: sp_attack &lt;dbl&gt;, sp_defense &lt;dbl&gt;, speed &lt;dbl&gt;,\n#   species &lt;chr&gt;, height_m &lt;dbl&gt;, weight_kg &lt;dbl&gt;"
-  },
-  {
-    "objectID": "slides/10-r-prog.html#pipes",
-    "href": "slides/10-r-prog.html#pipes",
-    "title": "1.10 R Programming",
     "section": "Pipes",
-    "text": "Pipes\nR functions are sometimes nested:\n\nmean(na.omit(murders$population))\n\n[1] 6075769\n\n\n\nToo many nested functions in a row can be hard to read\npipes allow us to “chain” functions together into a “recipe” of steps to take"
+    "text": "Pipes\nR functions are sometimes nested:\n\n1data(midwest, package = \"ggplot2\")\n2head(midwest[midwest$state==\"WI\",1:6])\n3wi_pop &lt;- sum(midwest[midwest$state==\"WI\",]$poptotal)\n\n\n1\n\nLoad midwest data from the ggplot2 package\n\n2\n\nShow the first few rows of Wisconsin data, but only the first 6 columns (to save space on the slide)\n\n3\n\nGet the poptotal column from that data, and sum up all of the county-level values to get a single state-level value. Store the result in wi_pop\n\n\n\n\n     PID   county state  area poptotal popdensity\n366 2981    ADAMS    WI 0.041    15682   382.4878\n367 2982  ASHLAND    WI 0.054    16307   301.9815\n368 2983   BARRON    WI 0.053    40750   768.8679\n369 2984 BAYFIELD    WI 0.089    14008   157.3933\n370 2985    BROWN    WI 0.032   194594  6081.0625\n371 2986  BUFFALO    WI 0.040    13584   339.6000\n\n\n\nToo many nested functions (or operations) in a row can be hard to read\npipes allow us to “chain” functions together into a “recipe” of steps to take"
   },
   {
-    "objectID": "slides/10-r-prog.html#pipes-1",
-    "href": "slides/10-r-prog.html#pipes-1",
-    "title": "1.10 R Programming",
+    "objectID": "slides/13-tidyverse-dplyr.html#pipes-1",
+    "href": "slides/13-tidyverse-dplyr.html#pipes-1",
+    "title": "1.13 dplyr - Data Manipulation",
     "section": "Pipes",
     "text": "Pipes\n\nPipes are essential to working with tidyverse functions"
+  },
+  {
+    "objectID": "slides/13-tidyverse-dplyr.html#pipes-dplyr",
+    "href": "slides/13-tidyverse-dplyr.html#pipes-dplyr",
+    "title": "1.13 dplyr - Data Manipulation",
+    "section": "Pipes + dplyr",
+    "text": "Pipes + dplyr\nToday, we’re going to turn this code into something more readable:\n\n\n# A tibble: 72 × 6\n     PID county   state  area poptotal popdensity\n   &lt;int&gt; &lt;chr&gt;    &lt;chr&gt; &lt;dbl&gt;    &lt;int&gt;      &lt;dbl&gt;\n 1  2981 ADAMS    WI    0.041    15682       382.\n 2  2982 ASHLAND  WI    0.054    16307       302.\n 3  2983 BARRON   WI    0.053    40750       769.\n 4  2984 BAYFIELD WI    0.089    14008       157.\n 5  2985 BROWN    WI    0.032   194594      6081.\n 6  2986 BUFFALO  WI    0.04     13584       340.\n 7  2987 BURNETT  WI    0.053    13084       247.\n 8  2988 CALUMET  WI    0.023    34291      1491.\n 9  2989 CHIPPEWA WI    0.063    52360       831.\n10  2990 CLARK    WI    0.072    31647       440.\n# ℹ 62 more rows\n# A tibble: 1 × 1\n  poptotal\n     &lt;int&gt;\n1  4891769\n\n\n\n1data(midwest, package = \"ggplot2\")\n2head(midwest[midwest$state==\"WI\",1:6])\n3wi_pop &lt;- sum(midwest[midwest$state==\"WI\",]$poptotal)\n\n\n1\n\nGet the first 6 columns of the data\n\n2\n\nGet the rows corresponding to wisconsin\n\n3\n\nSummarize across all rows (since it’s only WI data at this point) and add up the population total for each county"
   }
 ]

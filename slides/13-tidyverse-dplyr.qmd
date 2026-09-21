@@ -14,6 +14,60 @@ title-slide-attributes:
 ---
 
 
+## Pipes
+
+R functions are sometimes nested:
+```{r}
+#| echo: true
+
+data(midwest, package = "ggplot2") # <1>
+head(midwest[midwest$state=="WI",1:6]) # <2>
+wi_pop <- sum(midwest[midwest$state=="WI",]$poptotal) # <3>
+```
+1. Load midwest data from the ggplot2 package
+2. Show the first few rows of Wisconsin data, but only the first 6 columns (to save space on the slide)
+3. Get the `poptotal` column from that data, and sum up all of the county-level values to get a single state-level value. Store the result in `wi_pop`
+
+::: incremental
+
+- Too many nested functions (or operations) in a row can be hard to read
+
+- **pipes** allow us to "chain" functions together into a "recipe" of steps to take
+
+:::
+
+## Pipes
+
+![](images/Pipe_baking_backAssign.gif){fig-alt="A gif showing ingredients being piped into a mix function. The batter from the mix function is then piped into a bake function. The bake function outputs a cake, which is then piped into a decorate function, and the resulting decorated cake is piped into a slice function, which is assigned to cake slice at the top. " width="70%"}
+
+[Pipes are essential to working with tidyverse functions]{.emph .large .sage-dk .fragment}
+
+## Pipes + `dplyr`
+
+Today, we're going to turn this code into something more readable:
+```{r}
+#| echo: true
+#| eval: false
+
+data(midwest, package = "ggplot2") # <1>
+head(midwest[midwest$state=="WI",1:6]) # <2>
+wi_pop <- sum(midwest[midwest$state=="WI",]$poptotal) # <3>
+```
+
+```{r}
+library(dplyr)
+midwest |> 
+  select(1:6) |>  # <1> 
+  filter(state == "WI") # <2>
+
+midwest |>
+  filter(state == "WI") |> # <2>
+  summarize(poptotal = sum(poptotal)) # <3>
+```
+1. Get the first 6 columns of the data
+2. Get the rows corresponding to wisconsin
+3. Summarize across all rows (since it's only WI data at this point) and add up the population total for each county
+
 ## Tidy Data
 
 ![](images/tidy-data-horst.jpg){fig-alt="Stylized text providing an overview of Tidy Data. The top reads “Tidy data is a standard way of mapping the meaning of a dataset to its structure. - Hadley Wickham.” On the left reads “In tidy data: each variable forms a column; each observation forms a row; each cell is a single measurement.” There is an example table on the lower right with columns ‘id’, ‘name’ and ‘color’ with observations for different cats, illustrating tidy data structure."}
