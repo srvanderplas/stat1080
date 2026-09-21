@@ -483,7 +483,7 @@
 <h3 id="number-of-evenodd-values">Number of Even/Odd Values</h3>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="images/long-division.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7" title="Remember this?"><img data-src="images/long-division.png" alt="A long division problem (75 divided by 4) with the parts labeled: 4 is the divisor, 75 is the dividend, 18 is the quotient, 3 is the remainder. The problem shows the 7-4 step, where the remainder is 35, and then shows 35-32 = 03 for the remainder."></a></p>
+<p><a href="images/long-division.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7" title="Remember this?"><img data-src="images/long-division.png" style="width:80.0%" alt="A long division problem (75 divided by 4) with the parts labeled: 4 is the divisor, 75 is the dividend, 18 is the quotient, 3 is the remainder. The problem shows the 7-4 step, where the remainder is 35, and then shows 35-32 = 03 for the remainder."></a></p>
 <figcaption>Remember this?</figcaption>
 </figure>
 </div>
@@ -538,11 +538,15 @@
 51     5      1</code></pre>
 </div>
 </div></div>
-<p><a href="images/murders-modulo-demo.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8"><img data-src="images/murders-modulo-demo.png" style="width:60.0%" alt="An image of the first 6 rows + last 6 rows of the murders data, showing columns state, abb, region, population, total, and rate, with corresponding values for alabama, alaska, arizona, arkansas, california, colorado, vermont, virginia, washington, west virginia, wisconsin, and wyoming. Total values which are odd are highlighted in red. A second table is shown next to the first, with just columns total and modulo. The total column is the same as previously shown, and the modulo column has 1 if the value in total is odd, 0 if it is even."></a></p>
 </section>
 <section id="doing-math-with-columns-3" class="slide level2">
 <h2>Doing Math With Columns</h2>
 <h3 id="number-of-evenodd-values-3">Number of Even/Odd Values</h3>
+<p><a href="images/murders-modulo-demo.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8"><img data-src="images/murders-modulo-demo.png" style="width:60.0%" alt="An image of the first 6 rows + last 6 rows of the murders data, showing columns state, abb, region, population, total, and rate, with corresponding values for alabama, alaska, arizona, arkansas, california, colorado, vermont, virginia, washington, west virginia, wisconsin, and wyoming. Total values which are odd are highlighted in red. A second table is shown next to the first, with just columns total and modulo. The total column is the same as previously shown, and the modulo column has 1 if the value in total is odd, 0 if it is even."></a></p>
+</section>
+<section id="doing-math-with-columns-4" class="slide level2">
+<h2>Doing Math With Columns</h2>
+<h3 id="number-of-evenodd-values-4">Number of Even/Odd Values</h3>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-5"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-5-1"><a href="#annotated-cell-5-1"></a>tmp <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
 <span id="annotated-cell-5-2"><a href="#annotated-cell-5-2"></a>  <span class="at">total =</span> murders<span class="sc">$</span>total,</span>
@@ -568,7 +572,7 @@
 </div>
 </div>
 </section>
-<section id="doing-math-with-columns-4" class="slide level2">
+<section id="doing-math-with-columns-5" class="slide level2">
 <h2>Doing Math With Columns</h2>
 <h3 id="taking-columns-to-a-power">Taking Columns to a Power</h3>
 <p>Suppose we know that the number of person-to-person interactions is proportional to the number of people (<span class="math inline">\(n\)</span>) squared (e.g.&nbsp;<span class="math inline">\(n^2\)</span>)</p>
@@ -626,9 +630,9 @@
 <li class="fragment"><p><strong>pipes</strong> allow us to “chain” functions together into a “recipe” of steps to take</p></li>
 </ul>
 </section>
-<section id="pipes-1" class="slide level2">
-<h2>Pipes</h2>
-<p><a href="images/Pipe_baking_backAssign.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-10"><img data-src="images/Pipe_baking_backAssign.gif" style="width:70.0%" alt="A gif showing ingredients being piped into a mix function. The batter from the mix function is then piped into a bake function. The bake function outputs a cake, which is then piped into a decorate function, and the resulting decorated cake is piped into a slice function, which is assigned to cake slice at the top. "></a></p>
+<section class="slide level2">
+
+<p><a href="images/Pipe_baking_backAssign.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-10"><img data-src="images/Pipe_baking_backAssign.gif" style="width:50.0%" alt="A gif showing ingredients being piped into a mix function. The batter from the mix function is then piped into a bake function. The bake function outputs a cake, which is then piped into a decorate function, and the resulting decorated cake is piped into a slice function, which is assigned to cake slice at the top. "></a></p>
 <p><span class="emph large sage-dk fragment">Pipes are essential to working with tidyverse functions</span></p>
 </section></section>
 <section>

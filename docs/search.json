@@ -74,14 +74,14 @@
     "href": "slides/10-r-prog.html#doing-math-with-columns-3",
     "title": "1.10 R Programming",
     "section": "Doing Math With Columns",
-    "text": "Doing Math With Columns\nNumber of Even/Odd Values\n\ntmp &lt;- data.frame(\n  total = murders$total,\n  modulo = murders$total %% 2 \n)\n1sum(tmp$modulo==0)\n2sum(tmp$modulo)\n\n\n1\n\nCalculating the number of even values by testing for whether modulo is 0\n\n2\n\nCalculating the number of odd values by adding up modulo results. We could also test for modulo==1 or modulo != 0 (modulo is nonzero) and get equivalent results.\n\n\n\n\n[1] 22\n[1] 29"
+    "text": "Doing Math With Columns\nNumber of Even/Odd Values"
   },
   {
     "objectID": "slides/10-r-prog.html#doing-math-with-columns-4",
     "href": "slides/10-r-prog.html#doing-math-with-columns-4",
     "title": "1.10 R Programming",
     "section": "Doing Math With Columns",
-    "text": "Doing Math With Columns\nTaking Columns to a Power\nSuppose we know that the number of person-to-person interactions is proportional to the number of people (\\(n\\)) squared (e.g. \\(n^2\\))\n\n\n\n1murders$interactions &lt;- murders$population^2\n\n2with(murders, cor(total, population))\n3with(murders, cor(total, interactions))\n\n\n1\n\nSquare the population and store the result in a column named interactions\n\n2\n\nCalculate the correlation of murders with population. with() allows me to refer to the columns of the data frame without using the name of the data frame first – it’s here to save space.\n\n3\n\nCalculate the correlation of murders with interactions. with() allows me to refer to the columns of the data frame without using the name of the data frame first – it’s here to save space.\n\n\n\n\n[1] 0.9635956\n[1] 0.9004965"
+    "text": "Doing Math With Columns\nNumber of Even/Odd Values\n\ntmp &lt;- data.frame(\n  total = murders$total,\n  modulo = murders$total %% 2 \n)\n1sum(tmp$modulo==0)\n2sum(tmp$modulo)\n\n\n1\n\nCalculating the number of even values by testing for whether modulo is 0\n\n2\n\nCalculating the number of odd values by adding up modulo results. We could also test for modulo==1 or modulo != 0 (modulo is nonzero) and get equivalent results.\n\n\n\n\n[1] 22\n[1] 29"
   },
   {
     "objectID": "slides/10-r-prog.html#pipes",
@@ -2378,5 +2378,12 @@
     "title": "1.13 dplyr - Data Manipulation",
     "section": "Pipes + dplyr",
     "text": "Pipes + dplyr\nToday, we’re going to turn this code into something more readable:\n\n\n# A tibble: 72 × 6\n     PID county   state  area poptotal popdensity\n   &lt;int&gt; &lt;chr&gt;    &lt;chr&gt; &lt;dbl&gt;    &lt;int&gt;      &lt;dbl&gt;\n 1  2981 ADAMS    WI    0.041    15682       382.\n 2  2982 ASHLAND  WI    0.054    16307       302.\n 3  2983 BARRON   WI    0.053    40750       769.\n 4  2984 BAYFIELD WI    0.089    14008       157.\n 5  2985 BROWN    WI    0.032   194594      6081.\n 6  2986 BUFFALO  WI    0.04     13584       340.\n 7  2987 BURNETT  WI    0.053    13084       247.\n 8  2988 CALUMET  WI    0.023    34291      1491.\n 9  2989 CHIPPEWA WI    0.063    52360       831.\n10  2990 CLARK    WI    0.072    31647       440.\n# ℹ 62 more rows\n# A tibble: 1 × 1\n  poptotal\n     &lt;int&gt;\n1  4891769\n\n\n\n1data(midwest, package = \"ggplot2\")\n2head(midwest[midwest$state==\"WI\",1:6])\n3wi_pop &lt;- sum(midwest[midwest$state==\"WI\",]$poptotal)\n\n\n1\n\nGet the first 6 columns of the data\n\n2\n\nGet the rows corresponding to wisconsin\n\n3\n\nSummarize across all rows (since it’s only WI data at this point) and add up the population total for each county"
+  },
+  {
+    "objectID": "slides/10-r-prog.html#doing-math-with-columns-5",
+    "href": "slides/10-r-prog.html#doing-math-with-columns-5",
+    "title": "1.10 R Programming",
+    "section": "Doing Math With Columns",
+    "text": "Doing Math With Columns\nTaking Columns to a Power\nSuppose we know that the number of person-to-person interactions is proportional to the number of people (\\(n\\)) squared (e.g. \\(n^2\\))\n\n\n\n1murders$interactions &lt;- murders$population^2\n\n2with(murders, cor(total, population))\n3with(murders, cor(total, interactions))\n\n\n1\n\nSquare the population and store the result in a column named interactions\n\n2\n\nCalculate the correlation of murders with population. with() allows me to refer to the columns of the data frame without using the name of the data frame first – it’s here to save space.\n\n3\n\nCalculate the correlation of murders with interactions. with() allows me to refer to the columns of the data frame without using the name of the data frame first – it’s here to save space.\n\n\n\n\n[1] 0.9635956\n[1] 0.9004965"
   }
 ]
