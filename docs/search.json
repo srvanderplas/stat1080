@@ -2307,7 +2307,7 @@
     "href": "slides/13-tidyverse-dplyr.html#common-data-cleaning-tasks-1",
     "title": "1.13 dplyr - Data Manipulation",
     "section": "Common Data Cleaning Tasks",
-    "text": "Common Data Cleaning Tasks\nFilter - Pick certain rows\n\ndf |&gt; filter(...)\n... replaced by a logical condition involving a variable\nkeep only rows where that condition is true"
+    "text": "Common Data Cleaning Tasks\nFilter - Pick certain rows\n\ndf |&gt; filter(...)\n... replaced by a logical condition involving a variable\nkeep only rows where that condition is true\n\n\n\n# A tibble: 1,526 × 16\n     gen pokedex_no img_link      name  variant type  total    hp attack defense\n   &lt;dbl&gt;      &lt;dbl&gt; &lt;chr&gt;         &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;\n 1     1          1 https://img.… Bulb… &lt;NA&gt;    Gras…   318    45     49      49\n 2     1          2 https://img.… Ivys… &lt;NA&gt;    Gras…   405    60     62      63\n 3     1          3 https://img.… Venu… &lt;NA&gt;    Gras…   525    80     82      83\n 4     1          3 https://img.… Venu… Mega    Gras…   625    80    100     123\n 5     1          4 https://img.… Char… &lt;NA&gt;    Fire    309    39     52      43\n 6     1          5 https://img.… Char… &lt;NA&gt;    Fire    405    58     64      58\n 7     1          6 https://img.… Char… &lt;NA&gt;    Fire…   534    78     84      78\n 8     1          6 https://img.… Char… Mega  X Fire…   634    78    130     111\n 9     1          6 https://img.… Char… Mega  Y Fire…   634    78    104      78\n10     1          7 https://img.… Squi… &lt;NA&gt;    Water   314    44     48      65\n# ℹ 1,516 more rows\n# ℹ 6 more variables: sp_attack &lt;dbl&gt;, sp_defense &lt;dbl&gt;, speed &lt;dbl&gt;,\n#   species &lt;chr&gt;, height_m &lt;dbl&gt;, weight_kg &lt;dbl&gt;"
   },
   {
     "objectID": "slides/13-tidyverse-dplyr.html#common-data-cleaning-tasks-2",
@@ -2336,5 +2336,26 @@
     "title": "1.13 dplyr - Data Manipulation",
     "section": "Common Data Cleaning Tasks",
     "text": "Common Data Cleaning Tasks\n\nGroup by + summarize:\n\ndf |&gt; group_by(varname) |&gt; summarize(newvar = XXX(...))\nOne row returned per group (e.g. per value of varname)\nAll non-grouping variables dropped unless defined in summarize"
+  },
+  {
+    "objectID": "slides/13-tidyverse-dplyr.html#setting-up-read-in-some-data",
+    "href": "slides/13-tidyverse-dplyr.html#setting-up-read-in-some-data",
+    "title": "1.13 dplyr - Data Manipulation",
+    "section": "Setting up: Read In Some Data",
+    "text": "Setting up: Read In Some Data\n\nlibrary(readr)\nlibrary(dplyr)\n\npoke &lt;- read_csv(\"https://bit.ly/poke-data\")\n# https://github.com/srvanderplas/datasets/raw/main/clean/pokemon_gen_1-9.csv\n\nhead(poke)\n\n# A tibble: 6 × 16\n    gen pokedex_no img_link       name  variant type  total    hp attack defense\n  &lt;dbl&gt;      &lt;dbl&gt; &lt;chr&gt;          &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;\n1     1          1 https://img.p… Bulb… &lt;NA&gt;    Gras…   318    45     49      49\n2     1          2 https://img.p… Ivys… &lt;NA&gt;    Gras…   405    60     62      63\n3     1          3 https://img.p… Venu… &lt;NA&gt;    Gras…   525    80     82      83\n4     1          3 https://img.p… Venu… Mega    Gras…   625    80    100     123\n5     1          4 https://img.p… Char… &lt;NA&gt;    Fire    309    39     52      43\n6     1          5 https://img.p… Char… &lt;NA&gt;    Fire    405    58     64      58\n# ℹ 6 more variables: sp_attack &lt;dbl&gt;, sp_defense &lt;dbl&gt;, speed &lt;dbl&gt;,\n#   species &lt;chr&gt;, height_m &lt;dbl&gt;, weight_kg &lt;dbl&gt;"
+  },
+  {
+    "objectID": "slides/10-r-prog.html#pipes",
+    "href": "slides/10-r-prog.html#pipes",
+    "title": "1.10 R Programming",
+    "section": "Pipes",
+    "text": "Pipes\nR functions are sometimes nested:\n\nmean(na.omit(murders$population))\n\n[1] 6075769\n\n\n\nToo many nested functions in a row can be hard to read\npipes allow us to “chain” functions together into a “recipe” of steps to take"
+  },
+  {
+    "objectID": "slides/10-r-prog.html#pipes-1",
+    "href": "slides/10-r-prog.html#pipes-1",
+    "title": "1.10 R Programming",
+    "section": "Pipes",
+    "text": "Pipes\n\nPipes are essential to working with tidyverse functions"
   }
 ]

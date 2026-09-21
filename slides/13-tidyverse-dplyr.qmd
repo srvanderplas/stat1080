@@ -8,9 +8,9 @@ csl: chicago-syllabus.csl
 title-slide-attributes:
   data-background-image: images/dplyr.png
   data-background-image-alt: A hexagonal sticker with `dplyr` as the text, showing several pairs of plyers zooming cross a dark background.
-  data-background-size: "30%"
+  data-background-size: "20%"
   data-background-repeat: "no-repeat"
-  data-background-position: "50% 75%"
+  data-background-position: "50% 90%"
 ---
 
 
@@ -23,6 +23,19 @@ title-slide-attributes:
 
 ![](images/messy-data-horst.jpg){fig-alt="There are two sets of anthropomorphized data tables. The top group of three tables are all rectangular and smiling, with a shared speech bubble reading “our columns are variables and our rows are observations!”. Text to the left of that group reads “The standard structure of tidy data means that “tidy datasets are all alike…” The lower group of four tables are all different shapes, look ragged and concerned, and have different speech bubbles reading (from left to right) “my column are values and my rows are variables”, “I have variables in columns AND in rows”, “I have multiple variables in a single column”, and “I don’t even KNOW what my deal is.” Next to the frazzled data tables is text “...but every messy dataset is messy in its own way. -Hadley Wickham.”"}
 
+## Setting up: Read In Some Data
+
+```{r}
+#| echo: true
+library(readr)
+library(dplyr)
+
+poke <- read_csv("https://bit.ly/poke-data")
+# https://github.com/srvanderplas/datasets/raw/main/clean/pokemon_gen_1-9.csv
+
+head(poke)
+```
+
 ## Common Data Cleaning Tasks
 
 ![](images/horst-dplyr-filter.png){fig-alt="Cartoon showing three fuzzy monsters either selecting or crossing out rows of a data table. If the type of animal in the table is “otter” and the site is “bay”, a monster is drawing a purple rectangle around the row. If those conditions are not met, another monster is putting a line through the column indicating it will be excluded. Stylized text reads “dplyr::filter() - keep rows that satisfy your conditions.” Learn more about dplyr::filter."}
@@ -33,6 +46,10 @@ title-slide-attributes:
 - `df |> filter(...)`
 - `...` replaced by a logical condition involving a variable
 - keep only rows where that condition is true
+
+```{r}
+poke |> filter()
+```
 
 
 ## Common Data Cleaning Tasks

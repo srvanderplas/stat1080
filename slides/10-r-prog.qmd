@@ -186,6 +186,28 @@ murders |>
 :::
 :::
 
+## Pipes
+
+R functions are sometimes nested:
+```{r}
+#| echo: true
+mean(na.omit(murders$population))
+```
+
+::: incremental
+
+- Too many nested functions in a row can be hard to read
+
+- **pipes** allow us to "chain" functions together into a "recipe" of steps to take
+
+:::
+
+## Pipes
+
+![](images/Pipe_baking_backAssign.gif){fig-alt="A gif showing ingredients being piped into a mix function. The batter from the mix function is then piped into a bake function. The bake function outputs a cake, which is then piped into a decorate function, and the resulting decorated cake is piped into a slice function, which is assigned to cake slice at the top. "}
+
+[Pipes are essential to working with tidyverse functions]{.emph .large .sage-dk .fragment}
+
 
 # Preview: The Tidyverse
 
