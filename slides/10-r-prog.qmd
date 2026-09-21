@@ -169,6 +169,7 @@ with(murders, cor(total, interactions)) # <3>
 ```{r}
 #| fig-width: 4
 #| fig-height: 8
+#| fig-alt: "A plot with two panels - the first shows the interactions (e.g. the population squared) and its relationship with murders. The second shows the population and its relationship with murders."
 library(ggplot2)
 library(dplyr)
 library(tidyr)
