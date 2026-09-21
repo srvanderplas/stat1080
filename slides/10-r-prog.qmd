@@ -93,7 +93,7 @@ murders$state[which.min(murders$rate)] # <2>
 ## Doing Math With Columns
 ### Number of Even/Odd Values
 
-![Remember this?](images/long-division.png){fig-alt="A long division problem (75 divided by 4) with the parts labeled: 4 is the divisor, 75 is the dividend, 18 is the quotient, 3 is the remainder. The problem shows the 7-4 step, where the remainder is 35, and then shows 35-32 = 03 for the remainder."}
+![Remember this?](images/long-division.png){fig-alt="A long division problem (75 divided by 4) with the parts labeled: 4 is the divisor, 75 is the dividend, 18 is the quotient, 3 is the remainder. The problem shows the 7-4 step, where the remainder is 35, and then shows 35-32 = 03 for the remainder." width="80%"}
 
 ## Doing Math With Columns
 ### Number of Even/Odd Values
@@ -124,6 +124,10 @@ tmp[c(1:6,46:51),]
 ```
 1. Original value for comparison
 2. Modular division by 2. Odd values show up as 1, even values show up as 0.
+
+
+## Doing Math With Columns
+### Number of Even/Odd Values
 
 ![](images/murders-modulo-demo.png){fig-alt="An image of the first 6 rows + last 6 rows of the murders data, showing columns state, abb, region, population, total, and rate, with corresponding values for alabama, alaska, arizona, arkansas, california, colorado, vermont, virginia, washington, west virginia, wisconsin, and wyoming. Total values which are odd are highlighted in red. A second table is shown next to the first, with just columns total and modulo. The total column is the same as previously shown, and the modulo column has 1 if the value in total is odd, 0 if it is even." width="60%"}
 
@@ -168,7 +172,7 @@ with(murders, cor(total, interactions)) # <3>
 ::: {.column width="30%"}
 ```{r}
 #| fig-width: 4
-#| fig-height: 8
+#| fig-height: 6
 #| fig-alt: "A plot with two panels - the first shows the interactions (e.g. the population squared) and its relationship with murders. The second shows the population and its relationship with murders."
 library(ggplot2)
 library(dplyr)
@@ -202,10 +206,10 @@ mean(na.omit(murders$population))
 
 :::
 
-## Pipes
+---
 
 
-![](images/Pipe_baking_backAssign.gif){fig-alt="A gif showing ingredients being piped into a mix function. The batter from the mix function is then piped into a bake function. The bake function outputs a cake, which is then piped into a decorate function, and the resulting decorated cake is piped into a slice function, which is assigned to cake slice at the top. " width="70%"}
+![](images/Pipe_baking_backAssign.gif){fig-alt="A gif showing ingredients being piped into a mix function. The batter from the mix function is then piped into a bake function. The bake function outputs a cake, which is then piped into a decorate function, and the resulting decorated cake is piped into a slice function, which is assigned to cake slice at the top. " width="50%"}
 
 [Pipes are essential to working with tidyverse functions]{.emph .large .sage-dk .fragment}
 
