@@ -1,0 +1,74 @@
+---
+title: "1.13 `dplyr` - Data Manipulation"
+format: revealjs
+code-annotations: hover
+lightbox:  true
+bibliography: refs.bib
+csl: chicago-syllabus.csl
+title-slide-attributes:
+  data-background-image: images/dplyr.png
+  data-background-image-alt: A hexagonal sticker with `dplyr` as the text, showing several pairs of plyers zooming cross a dark background.
+  data-background-size: "30%"
+  data-background-repeat: "no-repeat"
+  data-background-position: "50% 75%"
+---
+
+
+## Tidy Data
+
+![](images/tidy-data-horst.jpg){fig-alt="Stylized text providing an overview of Tidy Data. The top reads “Tidy data is a standard way of mapping the meaning of a dataset to its structure. - Hadley Wickham.” On the left reads “In tidy data: each variable forms a column; each observation forms a row; each cell is a single measurement.” There is an example table on the lower right with columns ‘id’, ‘name’ and ‘color’ with observations for different cats, illustrating tidy data structure."}
+
+
+## Messy Data
+
+![](images/messy-data-horst.jpg){fig-alt="There are two sets of anthropomorphized data tables. The top group of three tables are all rectangular and smiling, with a shared speech bubble reading “our columns are variables and our rows are observations!”. Text to the left of that group reads “The standard structure of tidy data means that “tidy datasets are all alike…” The lower group of four tables are all different shapes, look ragged and concerned, and have different speech bubbles reading (from left to right) “my column are values and my rows are variables”, “I have variables in columns AND in rows”, “I have multiple variables in a single column”, and “I don’t even KNOW what my deal is.” Next to the frazzled data tables is text “...but every messy dataset is messy in its own way. -Hadley Wickham.”"}
+
+## Common Data Cleaning Tasks
+
+![](images/horst-dplyr-filter.png){fig-alt="Cartoon showing three fuzzy monsters either selecting or crossing out rows of a data table. If the type of animal in the table is “otter” and the site is “bay”, a monster is drawing a purple rectangle around the row. If those conditions are not met, another monster is putting a line through the column indicating it will be excluded. Stylized text reads “dplyr::filter() - keep rows that satisfy your conditions.” Learn more about dplyr::filter."}
+
+## Common Data Cleaning Tasks
+### Filter - Pick certain rows
+
+- `df |> filter(...)`
+- `...` replaced by a logical condition involving a variable
+- keep only rows where that condition is true
+
+
+## Common Data Cleaning Tasks
+
+- Pick out columns: 
+  - `df |> select(...)`
+  - `...` replaced by names or indices/positions of a variable
+  - keep only columns that are mentioned
+  - Remove columns by putting `-c(...)` around columns to eliminate
+
+## Common Data Cleaning Tasks
+
+- Pick out columns: `df |> select(...)`
+- Select helpers can help get the right columns
+  - `matches(...)`, e.g. `matches("year")` will get all variables that have "year" in the name
+    - `starts_with(...)`, `ends_with(...)`
+  - `where(is.XXX)` e.g. `where(is.numeric)` will get all numeric variables
+  - `any_of()`, `all_of()` will match variables to names stored in a vector. `any_of()` gets anything that matches, `all_of()` will error if something is not found
+  - `everything()` gets all variables
+  - `last_col()` gets the last column
+
+
+## Common Data Cleaning Tasks
+
+
+- Create new variables: 
+  - `df |> mutate(newvar= XXX(...))`
+  - XXX may be `transform`, `replace`, or another function
+  - `...` provides arguments to the function
+  
+  
+
+## Common Data Cleaning Tasks
+
+- Group by + summarize: 
+  - `df |> group_by(varname) |> summarize(newvar = XXX(...))` 
+  - One row returned per group (e.g. per value of `varname`)
+  - All non-grouping variables dropped unless defined in `summarize`
+

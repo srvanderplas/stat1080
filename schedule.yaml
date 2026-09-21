@@ -127,10 +127,10 @@ schedule:
         - [R programming basics](../slides/10-r-prog.qmd)
     class2: |
         - [Attendance Quiz 09/23](https://usu.instructure.com/courses/819584/assignments/5292935){target="_blank"}
-        - [Lab: R Programming Puzzles](../lab/11-r-prog.qmd){target="_blank"}
+        - [Lab: R Programming Puzzles](https://usu.instructure.com/courses/819584/modules/items/7928132) (Canvas) [HTML version](../lab/11-r-prog.qmd){target="_blank"} [quarto template](../lab/_11-r-prog.qmd){target="_blank"}
     class3: | 
         - [Attendance Quiz 09/25](https://usu.instructure.com/courses/819584/assignments/5292940){target="_blank"}
-        - [Lab: R Programming Puzzles](../lab/11-r-prog.qmd){target="_blank"}
+        - [Lab: R Programming Puzzles](https://usu.instructure.com/courses/819584/modules/items/7928132) (Canvas) [HTML version](../lab/11-r-prog.qmd){target="_blank"} [quarto template](../lab/_11-r-prog.qmd){target="_blank"}
     extra: |
         - [Tidyverse vs. Base R](https://www.youtube.com/watch?v=cYu-JKP6fhA){target="_blank"} (YouTube, Susan B.)
         - [Data Rectangling](https://www.youtube.com/watch?v=4MfUCX_KpdE){target="_blank"} (YouTube, Jenny Bryan, Plotcon 2016) - The importance of getting data into the right format.

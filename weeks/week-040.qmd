@@ -25,13 +25,13 @@ September 21-27, 2026
 ## 🐪️ Wednesday 🐦‍⬛ 
 
 - [Attendance Quiz 09/23](https://usu.instructure.com/courses/819584/assignments/5292935){target="_blank"}
-- [Lab: R Programming Puzzles](../lab/11-r-prog.qmd){target="_blank"}
+- [Lab: R Programming Puzzles](https://usu.instructure.com/courses/819584/modules/items/7928132) (Canvas) [HTML version](../lab/11-r-prog.qmd){target="_blank"} [quarto template](../lab/_11-r-prog.qmd){target="_blank"}
 
 
 ## 🎉 Friday 🥳
 
 - [Attendance Quiz 09/25](https://usu.instructure.com/courses/819584/assignments/5292940){target="_blank"}
-- [Lab: R Programming Puzzles](../lab/11-r-prog.qmd){target="_blank"}
+- [Lab: R Programming Puzzles](https://usu.instructure.com/courses/819584/modules/items/7928132) (Canvas) [HTML version](../lab/11-r-prog.qmd){target="_blank"} [quarto template](../lab/_11-r-prog.qmd){target="_blank"}
 
 
 ## Extra Resources/Reading

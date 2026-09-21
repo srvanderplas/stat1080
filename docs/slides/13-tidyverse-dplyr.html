@@ -6,10 +6,13 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.9.38">
 
-  <title>STAT 1080 - Fall 2026 – tidyverse-dplyr</title>
+  <title>STAT 1080 - Fall 2026 – 1.13 dplyr - Data Manipulation</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -132,16 +135,91 @@
       margin-right: 0;
     }
   </style>
-<meta property="og:title" content="STAT 1080 - Fall 2026">
+<meta property="og:title" content="1.13 dplyr - Data Manipulation – STAT 1080 - Fall 2026">
 <meta property="og:site_name" content="STAT 1080 - Fall 2026">
 </head>
 <body class="quarto-light">
   <div class="reveal">
     <div class="slides">
 
+<section id="title-slide" data-background-image="images/dplyr.png" data-background-image-alt="A hexagonal sticker with <code>dplyr</code> as the text, showing several pairs of plyers zooming cross a dark background." data-background-position="50% 75%" data-background-repeat="no-repeat" data-background-size="30%" class="quarto-title-block center">
+  <h1 class="title">1.13 <code>dplyr</code> - Data Manipulation</h1>
 
-<section class="slide level2">
+<div class="quarto-title-authors">
+</div>
 
+</section>
+<section id="tidy-data" class="slide level2">
+<h2>Tidy Data</h2>
+<p><a href="images/tidy-data-horst.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img data-src="images/tidy-data-horst.jpg" alt="Stylized text providing an overview of Tidy Data. The top reads “Tidy data is a standard way of mapping the meaning of a dataset to its structure. - Hadley Wickham.” On the left reads “In tidy data: each variable forms a column; each observation forms a row; each cell is a single measurement.” There is an example table on the lower right with columns ‘id’, ‘name’ and ‘color’ with observations for different cats, illustrating tidy data structure."></a></p>
+</section>
+<section id="messy-data" class="slide level2">
+<h2>Messy Data</h2>
+<p><a href="images/messy-data-horst.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img data-src="images/messy-data-horst.jpg" alt="There are two sets of anthropomorphized data tables. The top group of three tables are all rectangular and smiling, with a shared speech bubble reading “our columns are variables and our rows are observations!”. Text to the left of that group reads “The standard structure of tidy data means that “tidy datasets are all alike…” The lower group of four tables are all different shapes, look ragged and concerned, and have different speech bubbles reading (from left to right) “my column are values and my rows are variables”, “I have variables in columns AND in rows”, “I have multiple variables in a single column”, and “I don’t even KNOW what my deal is.” Next to the frazzled data tables is text “...but every messy dataset is messy in its own way. -Hadley Wickham.”"></a></p>
+</section>
+<section id="common-data-cleaning-tasks" class="slide level2">
+<h2>Common Data Cleaning Tasks</h2>
+<p><a href="images/horst-dplyr-filter.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img data-src="images/horst-dplyr-filter.png" alt="Cartoon showing three fuzzy monsters either selecting or crossing out rows of a data table. If the type of animal in the table is “otter” and the site is “bay”, a monster is drawing a purple rectangle around the row. If those conditions are not met, another monster is putting a line through the column indicating it will be excluded. Stylized text reads “dplyr::filter() - keep rows that satisfy your conditions.” Learn more about dplyr::filter."></a></p>
+</section>
+<section id="common-data-cleaning-tasks-1" class="slide level2">
+<h2>Common Data Cleaning Tasks</h2>
+<h3 id="filter---pick-certain-rows">Filter - Pick certain rows</h3>
+<ul>
+<li><code>df |&gt; filter(...)</code></li>
+<li><code>...</code> replaced by a logical condition involving a variable</li>
+<li>keep only rows where that condition is true</li>
+</ul>
+</section>
+<section id="common-data-cleaning-tasks-2" class="slide level2">
+<h2>Common Data Cleaning Tasks</h2>
+<ul>
+<li>Pick out columns:
+<ul>
+<li><code>df |&gt; select(...)</code></li>
+<li><code>...</code> replaced by names or indices/positions of a variable</li>
+<li>keep only columns that are mentioned</li>
+<li>Remove columns by putting <code>-c(...)</code> around columns to eliminate</li>
+</ul></li>
+</ul>
+</section>
+<section id="common-data-cleaning-tasks-3" class="slide level2">
+<h2>Common Data Cleaning Tasks</h2>
+<ul>
+<li>Pick out columns: <code>df |&gt; select(...)</code></li>
+<li>Select helpers can help get the right columns
+<ul>
+<li><code>matches(...)</code>, e.g.&nbsp;<code>matches("year")</code> will get all variables that have “year” in the name
+<ul>
+<li><code>starts_with(...)</code>, <code>ends_with(...)</code></li>
+</ul></li>
+<li><code>where(is.XXX)</code> e.g.&nbsp;<code>where(is.numeric)</code> will get all numeric variables</li>
+<li><code>any_of()</code>, <code>all_of()</code> will match variables to names stored in a vector. <code>any_of()</code> gets anything that matches, <code>all_of()</code> will error if something is not found</li>
+<li><code>everything()</code> gets all variables</li>
+<li><code>last_col()</code> gets the last column</li>
+</ul></li>
+</ul>
+</section>
+<section id="common-data-cleaning-tasks-4" class="slide level2">
+<h2>Common Data Cleaning Tasks</h2>
+<ul>
+<li>Create new variables:
+<ul>
+<li><code>df |&gt; mutate(newvar= XXX(...))</code></li>
+<li>XXX may be <code>transform</code>, <code>replace</code>, or another function</li>
+<li><code>...</code> provides arguments to the function</li>
+</ul></li>
+</ul>
+</section>
+<section id="common-data-cleaning-tasks-5" class="slide level2">
+<h2>Common Data Cleaning Tasks</h2>
+<ul>
+<li>Group by + summarize:
+<ul>
+<li><code>df |&gt; group_by(varname) |&gt; summarize(newvar = XXX(...))</code></li>
+<li>One row returned per group (e.g.&nbsp;per value of <code>varname</code>)</li>
+<li>All non-grouping variables dropped unless defined in <code>summarize</code></li>
+</ul></li>
+</ul>
 
 
 </section>
@@ -683,6 +761,38 @@
         }
       });
       </script>
+    <script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+    (function() {
+      let previousOnload = window.onload;
+      window.onload = () => {
+        if (previousOnload) {
+          previousOnload();
+        }
+        lightboxQuarto.on('slide_before_load', (data) => {
+          const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+          const href = trigger.getAttribute('href');
+          if (href !== null) {
+            const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+            if (imgEl !== null) {
+              const srcAttr = imgEl.getAttribute("src");
+              if (srcAttr && srcAttr.startsWith("data:")) {
+                slideConfig.href = srcAttr;
+              }
+            }
+          } 
+        });
+      
+        lightboxQuarto.on('slide_after_load', (data) => {
+          const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(slideNode);
+          }
+        });
+      
+      };
+      
+    })();
+              </script>
     
 
 </body></html>

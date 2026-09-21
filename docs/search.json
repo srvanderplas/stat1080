@@ -1432,7 +1432,7 @@
     "href": "weeks/week-040.html",
     "title": "Week 4: Programming in R",
     "section": "",
-    "text": "September 21-27, 2026\n\n\n\n(for Mon) SC Ch 11 - Data Structures - Sections 11.1, 11.2, 11.6 - Ignore the python parts, focus on understanding how you access pieces of data in a vector and a data frame, and how to differentiate between the two.\n(for Wed) SC Ch 13 - Control Structures\n\n\n\n\n\n(for Mon) Reading Check 4.1 - Data Structures\n(for Wed) Reading Check 4.2 - R programming and Control Structures\n\n\n\n\n\nAttendance Quiz 09/21\nR programming basics\n\n\n\n\n\nAttendance Quiz 09/23\nLab: R Programming Puzzles\n\n\n\n\n\nAttendance Quiz 09/25\nLab: R Programming Puzzles\n\n\n\n\n\nTidyverse vs. Base R (YouTube, Susan B.)\nData Rectangling (YouTube, Jenny Bryan, Plotcon 2016) - The importance of getting data into the right format.\nTidy Data, Illustrated - Handy illustrations explaining the idea of tidy data"
+    "text": "September 21-27, 2026\n\n\n\n(for Mon) SC Ch 11 - Data Structures - Sections 11.1, 11.2, 11.6 - Ignore the python parts, focus on understanding how you access pieces of data in a vector and a data frame, and how to differentiate between the two.\n(for Wed) SC Ch 13 - Control Structures\n\n\n\n\n\n(for Mon) Reading Check 4.1 - Data Structures\n(for Wed) Reading Check 4.2 - R programming and Control Structures\n\n\n\n\n\nAttendance Quiz 09/21\nR programming basics\n\n\n\n\n\nAttendance Quiz 09/23\nLab: R Programming Puzzles (Canvas) HTML version quarto template\n\n\n\n\n\nAttendance Quiz 09/25\nLab: R Programming Puzzles (Canvas) HTML version quarto template\n\n\n\n\n\nTidyverse vs. Base R (YouTube, Susan B.)\nData Rectangling (YouTube, Jenny Bryan, Plotcon 2016) - The importance of getting data into the right format.\nTidy Data, Illustrated - Handy illustrations explaining the idea of tidy data"
   },
   {
     "objectID": "weeks/week-040.html#reading",
@@ -1460,14 +1460,14 @@
     "href": "weeks/week-040.html#wednesday",
     "title": "Week 4: Programming in R",
     "section": "",
-    "text": "Attendance Quiz 09/23\nLab: R Programming Puzzles"
+    "text": "Attendance Quiz 09/23\nLab: R Programming Puzzles (Canvas) HTML version quarto template"
   },
   {
     "objectID": "weeks/week-040.html#friday",
     "href": "weeks/week-040.html#friday",
     "title": "Week 4: Programming in R",
     "section": "",
-    "text": "Attendance Quiz 09/25\nLab: R Programming Puzzles"
+    "text": "Attendance Quiz 09/25\nLab: R Programming Puzzles (Canvas) HTML version quarto template"
   },
   {
     "objectID": "weeks/week-040.html#extra-resourcesreading",
@@ -2280,5 +2280,61 @@
     "title": "1.8 Bias and Ethics",
     "section": "Ethics",
     "text": "Ethics\n\nUnderstand how the data was collected\n\npotential biases\nmissing observations\n\nUnderstand relationships between variables\n\nincluding variables that may not be present in the data\n\nInterpret results with humility\n\nallow for the possibility that you don’t have all the information\nconsider how data, model, or interpretation might be wrong\n\nAs a consumer, be skeptical, especially when results confirm your prior beliefs"
+  },
+  {
+    "objectID": "slides/13-tidyverse-dplyr.html#tidy-data",
+    "href": "slides/13-tidyverse-dplyr.html#tidy-data",
+    "title": "1.13 dplyr - Data Manipulation",
+    "section": "Tidy Data",
+    "text": "Tidy Data"
+  },
+  {
+    "objectID": "slides/13-tidyverse-dplyr.html#messy-data",
+    "href": "slides/13-tidyverse-dplyr.html#messy-data",
+    "title": "1.13 dplyr - Data Manipulation",
+    "section": "Messy Data",
+    "text": "Messy Data"
+  },
+  {
+    "objectID": "slides/13-tidyverse-dplyr.html#common-data-cleaning-tasks",
+    "href": "slides/13-tidyverse-dplyr.html#common-data-cleaning-tasks",
+    "title": "1.13 dplyr - Data Manipulation",
+    "section": "Common Data Cleaning Tasks",
+    "text": "Common Data Cleaning Tasks"
+  },
+  {
+    "objectID": "slides/13-tidyverse-dplyr.html#common-data-cleaning-tasks-1",
+    "href": "slides/13-tidyverse-dplyr.html#common-data-cleaning-tasks-1",
+    "title": "1.13 dplyr - Data Manipulation",
+    "section": "Common Data Cleaning Tasks",
+    "text": "Common Data Cleaning Tasks\nFilter - Pick certain rows\n\ndf |&gt; filter(...)\n... replaced by a logical condition involving a variable\nkeep only rows where that condition is true"
+  },
+  {
+    "objectID": "slides/13-tidyverse-dplyr.html#common-data-cleaning-tasks-2",
+    "href": "slides/13-tidyverse-dplyr.html#common-data-cleaning-tasks-2",
+    "title": "1.13 dplyr - Data Manipulation",
+    "section": "Common Data Cleaning Tasks",
+    "text": "Common Data Cleaning Tasks\n\nPick out columns:\n\ndf |&gt; select(...)\n... replaced by names or indices/positions of a variable\nkeep only columns that are mentioned\nRemove columns by putting -c(...) around columns to eliminate"
+  },
+  {
+    "objectID": "slides/13-tidyverse-dplyr.html#common-data-cleaning-tasks-3",
+    "href": "slides/13-tidyverse-dplyr.html#common-data-cleaning-tasks-3",
+    "title": "1.13 dplyr - Data Manipulation",
+    "section": "Common Data Cleaning Tasks",
+    "text": "Common Data Cleaning Tasks\n\nPick out columns: df |&gt; select(...)\nSelect helpers can help get the right columns\n\nmatches(...), e.g. matches(\"year\") will get all variables that have “year” in the name\n\nstarts_with(...), ends_with(...)\n\nwhere(is.XXX) e.g. where(is.numeric) will get all numeric variables\nany_of(), all_of() will match variables to names stored in a vector. any_of() gets anything that matches, all_of() will error if something is not found\neverything() gets all variables\nlast_col() gets the last column"
+  },
+  {
+    "objectID": "slides/13-tidyverse-dplyr.html#common-data-cleaning-tasks-4",
+    "href": "slides/13-tidyverse-dplyr.html#common-data-cleaning-tasks-4",
+    "title": "1.13 dplyr - Data Manipulation",
+    "section": "Common Data Cleaning Tasks",
+    "text": "Common Data Cleaning Tasks\n\nCreate new variables:\n\ndf |&gt; mutate(newvar= XXX(...))\nXXX may be transform, replace, or another function\n... provides arguments to the function"
+  },
+  {
+    "objectID": "slides/13-tidyverse-dplyr.html#common-data-cleaning-tasks-5",
+    "href": "slides/13-tidyverse-dplyr.html#common-data-cleaning-tasks-5",
+    "title": "1.13 dplyr - Data Manipulation",
+    "section": "Common Data Cleaning Tasks",
+    "text": "Common Data Cleaning Tasks\n\nGroup by + summarize:\n\ndf |&gt; group_by(varname) |&gt; summarize(newvar = XXX(...))\nOne row returned per group (e.g. per value of varname)\nAll non-grouping variables dropped unless defined in summarize"
   }
 ]
