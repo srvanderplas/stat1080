@@ -1,9 +1,13 @@
 ---
 title: "Pokemon `dplyr` practice"
+code-annotations: hover
+echo: true
 ---
 
 ```{r}
 #| echo: false
+#| message: false
+#| warning: false
 library(readr) 
 library(dplyr)
 library(tidyr) 

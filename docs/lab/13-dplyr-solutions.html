@@ -440,36 +440,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<div class="cell">
-<div class="cell-output cell-output-stderr">
-<pre><code>
-Attaching package: 'dplyr'</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>The following objects are masked from 'package:stats':
-
-    filter, lag</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>The following objects are masked from 'package:base':
-
-    intersect, setdiff, setequal, union</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Rows: 1526 Columns: 16
-── Column specification ────────────────────────────────────────────────────────
-Delimiter: ","
-chr  (5): img_link, name, variant, type, species
-dbl (11): gen, pokedex_no, total, hp, attack, defense, sp_attack, sp_defense...
-
-ℹ Use `spec()` to retrieve the full column specification for this data.
-ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-</div>
-</div>
-<ol type="1">
-<li>Read in the CSV using the short bit.ly URL (to make it easier to follow along in class)</li>
-<li>Create a data frame that splits type into two columns (before the comma, after the comma) – this will be used for Your Turns.</li>
-</ol>
 <section id="filter" class="level2">
 <h2 class="anchored" data-anchor-id="filter">Filter</h2>
 <p>Using <code>poke_types</code>, get Pokemon matching the following criteria:</p>
@@ -479,10 +449,10 @@ dbl (11): gen, pokedex_no, total, hp, attack, defense, sp_attack, sp_defense...
 <li>Attack stats of more than 120</li>
 </ol>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>poke_types <span class="sc">|&gt;</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(pokedex_no <span class="sc">&gt;=</span> <span class="dv">800</span>, pokedex_no <span class="sc">&lt;=</span> <span class="dv">900</span>) <span class="sc">|&gt;</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(type1 <span class="sc">==</span> <span class="st">"Grass"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(attack <span class="sc">&gt;</span> <span class="dv">120</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>poke_types <span class="sc">|&gt;</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(pokedex_no <span class="sc">&gt;=</span> <span class="dv">800</span>, pokedex_no <span class="sc">&lt;=</span> <span class="dv">900</span>) <span class="sc">|&gt;</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(type1 <span class="sc">==</span> <span class="st">"Grass"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(attack <span class="sc">&gt;</span> <span class="dv">120</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 17
     gen pokedex_no img_link name  variant type1 type2 total    hp attack defense
@@ -492,7 +462,6 @@ dbl (11): gen, pokedex_no, total, hp, attack, defense, sp_attack, sp_defense...
 #   species &lt;chr&gt;, height_m &lt;dbl&gt;, weight_kg &lt;dbl&gt;</code></pre>
 </div>
 </div>
-<p>You should get only one pokemon: Rillaboom.</p>
 </section>
 <section id="select" class="level2">
 <h2 class="anchored" data-anchor-id="select">Select</h2>
@@ -503,8 +472,8 @@ dbl (11): gen, pokedex_no, total, hp, attack, defense, sp_attack, sp_defense...
 <li>the pokemon name</li>
 </ol>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>poke_types <span class="sc">|&gt;</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">starts_with</span>(<span class="st">"t"</span>), <span class="dv">9</span>, name)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>poke_types <span class="sc">|&gt;</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">starts_with</span>(<span class="st">"t"</span>), <span class="dv">9</span>, name)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1,526 × 5
    type1 type2  total    hp name      
@@ -522,22 +491,6 @@ dbl (11): gen, pokedex_no, total, hp, attack, defense, sp_attack, sp_defense...
 # ℹ 1,516 more rows</code></pre>
 </div>
 </div>
-<p>The output from this chunk should look roughly like this, but your row order may be different.</p>
-<pre><code># A tibble: 1,526 × 4
-   type          total attack name      
-   &lt;chr&gt;         &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;     
- 1 Grass           310     61 Sprigatito
- 2 Fighting        455    105 Hitmonchan
- 3 Fire            420     86 Raboot    
- 4 Normal          420     70 Castform  
- 5 Dark,Fighting   488     90 Scrafty   
- 6 Dragon,Water    475     50 Tatsugiri 
- 7 Psychic         600     95 Deoxys    
- 8 Rock,Flying     500    100 Minior    
- 9 Dragon,Ghost    410     80 Drakloak  
-10 Water           295     40 Horsea    
-# ℹ 1,516 more rows
-# ℹ Use `print(n = ...)` to see more rows</code></pre>
 </section>
 <section id="mutate" class="level2">
 <h2 class="anchored" data-anchor-id="mutate">Mutate</h2>
@@ -546,10 +499,10 @@ dbl (11): gen, pokedex_no, total, hp, attack, defense, sp_attack, sp_defense...
 <p>Remember, you will need to convert kg to lbs, so you may want to create an additional column named <code>weight_lbs</code>.</p>
 <p>Output only <code>gen</code>, <code>name</code>, and the columns you created.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>poke_types <span class="sc">|&gt;</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">weight_lbs =</span> weight_kg <span class="sc">*</span> <span class="fl">2.204623</span>, </span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">n_elevator =</span> <span class="fu">floor</span>(<span class="dv">6000</span><span class="sc">/</span>weight_lbs)) <span class="sc">|&gt;</span></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(gen, name, weight_lbs, n_elevator)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>poke_types <span class="sc">|&gt;</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">weight_lbs =</span> weight_kg <span class="sc">*</span> <span class="fl">2.204623</span>, </span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">n_elevator =</span> <span class="fu">floor</span>(<span class="dv">6000</span><span class="sc">/</span>weight_lbs)) <span class="sc">|&gt;</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(gen, name, weight_lbs, n_elevator)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1,526 × 4
      gen name       weight_lbs n_elevator
@@ -567,22 +520,6 @@ dbl (11): gen, pokedex_no, total, hp, attack, defense, sp_attack, sp_defense...
 # ℹ 1,516 more rows</code></pre>
 </div>
 </div>
-<p>Your output should look something like this:</p>
-<pre><code># A tibble: 1,526 × 5
-     gen name       type          weight_lbs n_elevator
-   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;              &lt;dbl&gt;      &lt;dbl&gt;
- 1     9 Sprigatito Grass               9.04        663
- 2     1 Hitmonchan Fighting          111.           54
- 3     8 Raboot     Fire               19.8         302
- 4     3 Castform   Normal              1.76       3401
- 5     5 Scrafty    Dark,Fighting      66.1          90
- 6     9 Tatsugiri  Dragon,Water       17.6         340
- 7     3 Deoxys     Psychic           134.           44
- 8     7 Minior     Rock,Flying        88.2          68
- 9     8 Drakloak   Dragon,Ghost       24.3         247
-10     1 Horsea     Water              17.6         340
-# ℹ 1,516 more rows
-# ℹ Use `print(n = ...)` to see more rows</code></pre>
 </section>
 <section id="group_by-summarize" class="level2">
 <h2 class="anchored" data-anchor-id="group_by-summarize">Group_by + Summarize!</h2>
@@ -591,10 +528,10 @@ dbl (11): gen, pokedex_no, total, hp, attack, defense, sp_attack, sp_defense...
 <h3 class="anchored" data-anchor-id="bug-pokemon-by-generation">Bug Pokemon by Generation</h3>
 <p>Calculate the total number of bug pokemon in each generation.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>poke_types <span class="sc">|&gt;</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(type1 <span class="sc">==</span> <span class="st">"Bug"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(gen) <span class="sc">|&gt;</span></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">Bug =</span> <span class="fu">n</span>())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>poke_types <span class="sc">|&gt;</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(type1 <span class="sc">==</span> <span class="st">"Bug"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(gen) <span class="sc">|&gt;</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">Bug =</span> <span class="fu">n</span>())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 9 × 2
     gen   Bug
@@ -609,11 +546,11 @@ dbl (11): gen, pokedex_no, total, hp, attack, defense, sp_attack, sp_defense...
 8     8     4
 9     9     7</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># OR</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>poke_types <span class="sc">|&gt;</span></span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(gen) <span class="sc">|&gt;</span></span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">Bug =</span> <span class="fu">sum</span>(type1<span class="sc">==</span><span class="st">"Bug"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># OR</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>poke_types <span class="sc">|&gt;</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(gen) <span class="sc">|&gt;</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">Bug =</span> <span class="fu">sum</span>(type1<span class="sc">==</span><span class="st">"Bug"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 9 × 2
     gen   Bug
@@ -629,29 +566,16 @@ dbl (11): gen, pokedex_no, total, hp, attack, defense, sp_attack, sp_defense...
 9     9     7</code></pre>
 </div>
 </div>
-<p>Your output should be as follows:</p>
-<pre><code># A tibble: 9 × 2
-    gen   Bug
-  &lt;dbl&gt; &lt;int&gt;
-1     1    14
-2     2    12
-3     3    12
-4     4    24
-5     5    22
-6     6     3
-7     7     9
-8     8     4
-9     9     7</code></pre>
 </section>
 <section id="pokemon-weight-by-type" class="level3">
 <h3 class="anchored" data-anchor-id="pokemon-weight-by-type">Pokemon Weight By Type</h3>
 <p>Find the heaviest pokemon of each type, making sure to remove any duplicate rows.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>poke_types <span class="sc">|&gt;</span></span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(gen, name, type1, weight_kg) <span class="sc">|&gt;</span> <span class="co"># Keep only basic info</span></span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unique</span>() <span class="sc">|&gt;</span> <span class="co"># Remove duplicate rows</span></span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(type1) <span class="sc">|&gt;</span></span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(weight_kg <span class="sc">==</span> <span class="fu">max</span>(weight_kg))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>poke_types <span class="sc">|&gt;</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(gen, name, type1, weight_kg) <span class="sc">|&gt;</span> <span class="co"># Keep only basic info</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unique</span>() <span class="sc">|&gt;</span> <span class="co"># Remove duplicate rows</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(type1) <span class="sc">|&gt;</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(weight_kg <span class="sc">==</span> <span class="fu">max</span>(weight_kg))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 18 × 4
 # Groups:   type1 [18]
@@ -677,39 +601,17 @@ dbl (11): gen, pokedex_no, total, hp, attack, defense, sp_attack, sp_defense...
 18     9 Miraidon     Electric      240 </code></pre>
 </div>
 </div>
-<p>Your results should be as follows:</p>
-<pre><code># A tibble: 18 × 4
-     gen name         type1    weight_kg
-   &lt;dbl&gt; &lt;chr&gt;        &lt;chr&gt;        &lt;dbl&gt;
- 1     3 Wailord      Water         398 
- 2     6 Noivern      Flying         85 
- 3     4 Giratina     Ghost         750 
- 4     8 Eternatus    Poison        950 
- 5     3 Groudon      Ground        950 
- 6     7 Celesteela   Steel        1000.
- 7     6 Xerneas      Fairy         215 
- 8     7 Cosmoem      Psychic      1000.
- 9     8 Glastrier    Ice           800 
-10     4 Heatran      Fire          430 
-11     1 Snorlax      Normal        460 
-12     7 Guzzlord     Dark          888 
-13     9 Iron Hands   Fighting      381.
-14     9 Roaring Moon Dragon        380 
-15     7 Stakataka    Rock          820 
-16     7 Buzzwole     Bug           334.
-17     9 Miraidon     Electric      240 
-18     4 Torterra     Grass         310 </code></pre>
 </section>
 <section id="pokemon-hp-by-generation" class="level3">
 <h3 class="anchored" data-anchor-id="pokemon-hp-by-generation">Pokemon HP by Generation</h3>
 <p>Find the pokemon with the highest HP for each generation. Include all tied rows.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>poke_types <span class="sc">|&gt;</span></span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(gen, name, hp) <span class="sc">|&gt;</span></span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unique</span>() <span class="sc">|&gt;</span></span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(gen) <span class="sc">|&gt;</span></span>
-<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(hp <span class="sc">==</span> <span class="fu">max</span>(hp)) <span class="sc">|&gt;</span></span>
-<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(gen)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>poke_types <span class="sc">|&gt;</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(gen, name, hp) <span class="sc">|&gt;</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unique</span>() <span class="sc">|&gt;</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(gen) <span class="sc">|&gt;</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(hp <span class="sc">==</span> <span class="fu">max</span>(hp)) <span class="sc">|&gt;</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(gen)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 10 × 3
 # Groups:   gen [9]
@@ -727,19 +629,6 @@ dbl (11): gen, pokedex_no, total, hp, attack, defense, sp_attack, sp_defense...
 10     9 Cetitan     170</code></pre>
 </div>
 </div>
-<pre><code># A tibble: 10 × 3
-     gen name         hp
-   &lt;dbl&gt; &lt;chr&gt;     &lt;dbl&gt;
- 1     1 Chansey     250
- 2     2 Blissey     255
- 3     3 Wailord     170
- 4     4 Giratina    150
- 5     4 Drifblim    150
- 6     5 Alomomola   165
- 7     6 Zygarde     216
- 8     7 Guzzlord    223
- 9     8 Eternatus   255
-10     9 Cetitan     170</code></pre>
 
 
 </section>
@@ -1100,25 +989,64 @@ dbl (11): gen, pokedex_no, total, hp, attack, defense, sp_attack, sp_defense...
           }
         };
       }
-        // Attach click handler to the DT
-        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
-        for (const annoteDlNode of annoteDls) {
-          annoteDlNode.addEventListener('click', (event) => {
-            const clickedEl = event.target;
-            if (clickedEl !== selectedAnnoteEl) {
-              unselectCodeLines();
-              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
-              if (activeEl) {
-                activeEl.classList.remove('code-annotation-active');
-              }
-              selectCodeLines(clickedEl);
-              clickedEl.classList.add('code-annotation-active');
-            } else {
-              // Unselect the line
-              unselectCodeLines();
-              clickedEl.classList.remove('code-annotation-active');
+        const annoteTargets = window.document.querySelectorAll('.code-annotation-anchor');
+        for (let i=0; i<annoteTargets.length; i++) {
+          const annoteTarget = annoteTargets[i];
+          const targetCell = annoteTarget.getAttribute("data-target-cell");
+          const targetAnnotation = annoteTarget.getAttribute("data-target-annotation");
+          const contentFn = () => {
+            const content = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+            if (content) {
+              const tipContent = content.cloneNode(true);
+              tipContent.classList.add("code-annotation-tip-content");
+              return tipContent.outerHTML;
             }
-          });
+          }
+          const config = {
+            allowHTML: true,
+            content: contentFn,
+            onShow: (instance) => {
+              selectCodeLines(instance.reference);
+              instance.reference.classList.add('code-annotation-active');
+              window.tippy.hideAll();
+            },
+            onHide: (instance) => {
+              unselectCodeLines();
+              instance.reference.classList.remove('code-annotation-active');
+            },
+            maxWidth: 300,
+            delay: [50, 0],
+            duration: [200, 0],
+            offset: [5, 10],
+            arrow: true,
+            appendTo: function(el) {
+              return el.parentElement.parentElement.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'quarto',
+            placement: 'right',
+            popperOptions: {
+              modifiers: [
+              {
+                name: 'flip',
+                options: {
+                  flipVariations: false, // true by default
+                  allowedAutoPlacements: ['right'],
+                  fallbackPlacements: ['right', 'top', 'top-start', 'top-end', 'bottom', 'bottom-start', 'bottom-end', 'left'],
+                },
+              },
+              {
+                name: 'preventOverflow',
+                options: {
+                  mainAxis: false,
+                  altAxis: false
+                }
+              }
+              ]        
+            }      
+          };
+          window.tippy(annoteTarget, config); 
         }
     const findCites = (el) => {
       const parentEl = el.parentElement;
