@@ -1,0 +1,193 @@
+---
+title: "Pokemon `dplyr` practice"
+---
+
+```{r}
+#| echo: false
+library(readr) 
+library(dplyr)
+library(tidyr) 
+
+poke <- read_csv("https://bit.ly/poke-data") # <1>
+poke_types <- separate(poke, type, c("type1", "type2"), sep = ",") # <2>
+```
+1. Read in the CSV using the short bit.ly URL (to make it easier to follow along in class)
+2. Create a data frame that splits type into two columns (before the comma, after the comma) -- this will be used for Your Turns.
+
+
+
+## Filter
+
+Using `poke_types`, get only columns matching any of the following criteria:
+
+1. Pokedex number between 800 and 900
+2. Grass type
+3. Attack stats of more than 120
+
+
+```{r}
+#| echo: true
+## Your code goes here ##
+```
+
+You should get only one pokemon: Rillaboom.
+
+## Select 
+
+Using the original `poke` data, get only columns matching any of the following criteria:
+
+
+1. columns starting with `t`
+2. the 9th column
+3. the pokemon name
+
+```{r}
+#| echo: true
+## Your code goes here ##
+```
+
+The output from this chunk should look roughly like this, but your row order may be different.
+
+```
+# A tibble: 1,526 × 4
+   type          total attack name      
+   <chr>         <dbl>  <dbl> <chr>     
+ 1 Grass           310     61 Sprigatito
+ 2 Fighting        455    105 Hitmonchan
+ 3 Fire            420     86 Raboot    
+ 4 Normal          420     70 Castform  
+ 5 Dark,Fighting   488     90 Scrafty   
+ 6 Dragon,Water    475     50 Tatsugiri 
+ 7 Psychic         600     95 Deoxys    
+ 8 Rock,Flying     500    100 Minior    
+ 9 Dragon,Ghost    410     80 Drakloak  
+10 Water           295     40 Horsea    
+# ℹ 1,516 more rows
+# ℹ Use `print(n = ...)` to see more rows
+```
+
+## Mutate 
+
+Create a column named `n_elevator` that calculates how many of these pokemon 
+could fit in an elevator with a weight limit of 6000 lbs. 
+You may assume that pokemon can be infinitely compressed, so that the volume of the pokemon is not a concern.
+
+Round your answer down to the nearest integer with the `floor()` function - no one needs to get hurt!
+
+Remember, you will need to convert kg to lbs, so you may want to create an additional column named `weight_lbs`.
+
+Output only `gen`, `name`, and the columns you created.
+
+```{r}
+#| echo: true
+## Your answer here ##
+```
+
+Your output should look something like this:
+
+```
+# A tibble: 1,526 × 5
+     gen name       type          weight_lbs n_elevator
+   <dbl> <chr>      <chr>              <dbl>      <dbl>
+ 1     9 Sprigatito Grass               9.04        663
+ 2     1 Hitmonchan Fighting          111.           54
+ 3     8 Raboot     Fire               19.8         302
+ 4     3 Castform   Normal              1.76       3401
+ 5     5 Scrafty    Dark,Fighting      66.1          90
+ 6     9 Tatsugiri  Dragon,Water       17.6         340
+ 7     3 Deoxys     Psychic           134.           44
+ 8     7 Minior     Rock,Flying        88.2          68
+ 9     8 Drakloak   Dragon,Ghost       24.3         247
+10     1 Horsea     Water              17.6         340
+# ℹ 1,516 more rows
+# ℹ Use `print(n = ...)` to see more rows
+```
+
+
+## Group_by + Summarize! 
+
+Work with `poke_types` and only worry about the primary type (`type1`)
+
+
+### Bug Pokemon by Generation
+Calculate the total number of bug pokemon in each generation.
+
+```{r}
+#| echo: true
+
+## Your code here ##
+```
+
+Your output should be as follows:
+```
+# A tibble: 9 × 2
+    gen   Bug
+  <dbl> <int>
+1     1    14
+2     2    12
+3     3    12
+4     4    24
+5     5    22
+6     6     3
+7     7     9
+8     8     4
+9     9     7
+```
+
+
+### Pokemon Weight By Type
+
+Find the heaviest pokemon of each type, making sure to remove any duplicate rows. 
+
+```{r}
+## Your code here ##
+```
+
+Your results should be as follows:
+```
+# A tibble: 18 × 4
+     gen name         type1    weight_kg
+   <dbl> <chr>        <chr>        <dbl>
+ 1     3 Wailord      Water         398 
+ 2     6 Noivern      Flying         85 
+ 3     4 Giratina     Ghost         750 
+ 4     8 Eternatus    Poison        950 
+ 5     3 Groudon      Ground        950 
+ 6     7 Celesteela   Steel        1000.
+ 7     6 Xerneas      Fairy         215 
+ 8     7 Cosmoem      Psychic      1000.
+ 9     8 Glastrier    Ice           800 
+10     4 Heatran      Fire          430 
+11     1 Snorlax      Normal        460 
+12     7 Guzzlord     Dark          888 
+13     9 Iron Hands   Fighting      381.
+14     9 Roaring Moon Dragon        380 
+15     7 Stakataka    Rock          820 
+16     7 Buzzwole     Bug           334.
+17     9 Miraidon     Electric      240 
+18     4 Torterra     Grass         310 
+```
+
+### Pokemon HP by Generation
+
+Find the pokemon with the highest HP for each generation. Include all tied rows.
+
+```{r}
+## Your code here ##
+```
+
+```
+# A tibble: 10 × 3
+     gen name         hp
+   <dbl> <chr>     <dbl>
+ 1     1 Chansey     250
+ 2     2 Blissey     255
+ 3     3 Wailord     170
+ 4     4 Giratina    150
+ 5     4 Drifblim    150
+ 6     5 Alomomola   165
+ 7     6 Zygarde     216
+ 8     7 Guzzlord    223
+ 9     8 Eternatus   255
+10     9 Cetitan     170
+```

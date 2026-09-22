@@ -215,64 +215,250 @@
 </div>
 
 </section>
+<section>
+<section id="review-pipes" class="title-slide slide level1 center">
+<h1>Review: Pipes</h1>
+
+</section>
 <section id="pipes" class="slide level2">
+<h2>Pipes</h2>
+<p>R functions are sometimes nested:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-1"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="1">1</button><span id="annotated-cell-1-1" class="code-annotation-target"><a href="#annotated-cell-1-1"></a><span class="fu">data</span>(midwest, <span class="at">package =</span> <span class="st">"ggplot2"</span>)</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="2">2</button><span id="annotated-cell-1-2" class="code-annotation-target"><a href="#annotated-cell-1-2"></a><span class="fu">head</span>(midwest[midwest<span class="sc">$</span>state <span class="sc">==</span> <span class="st">"WI"</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>])</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="3">3</button><span id="annotated-cell-1-3" class="code-annotation-target"><a href="#annotated-cell-1-3"></a>wi_pop <span class="ot">&lt;-</span> <span class="fu">sum</span>(midwest[midwest<span class="sc">$</span>state <span class="sc">==</span> <span class="st">"WI"</span>, ]<span class="sc">$</span>poptotal)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-annotation">
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-1" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-1" data-code-lines="1" data-code-annotation="1">Load midwest data from the ggplot2 package</span>
+</dd>
+<dt data-target-cell="annotated-cell-1" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-1" data-code-lines="2" data-code-annotation="2">Show the first few rows of Wisconsin data, but only the first 6 columns (to save space on the slide)</span>
+</dd>
+<dt data-target-cell="annotated-cell-1" data-target-annotation="3">3</dt>
+<dd>
+<span data-code-cell="annotated-cell-1" data-code-lines="3" data-code-annotation="3">Get the <code>poptotal</code> column from that data, and sum up all of the county-level values to get a single state-level value. Store the result in <code>wi_pop</code></span>
+</dd>
+</dl>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     PID   county state  area poptotal popdensity
+366 2981    ADAMS    WI 0.041    15682   382.4878
+367 2982  ASHLAND    WI 0.054    16307   301.9815
+368 2983   BARRON    WI 0.053    40750   768.8679
+369 2984 BAYFIELD    WI 0.089    14008   157.3933
+370 2985    BROWN    WI 0.032   194594  6081.0625
+371 2986  BUFFALO    WI 0.040    13584   339.6000</code></pre>
+</div>
+</div>
+<ul>
+<li class="fragment"><p>Too many nested functions (or operations) in a row can be hard to read</p></li>
+<li class="fragment"><p><strong>pipes</strong> allow us to “chain” functions together into a “recipe” of steps to take</p></li>
+</ul>
+</section>
+<section id="pipes-1" class="slide level2">
 <h2>Pipes</h2>
 <p><a href="images/horst-pipe-treats101.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img data-src="images/horst-pipe-treats101.png" style="width:80.0%" alt="A cartoon dog teaches a group of other dogs how to beg for treats. On a sign they are pointing at is a picture of a dog, showing step 1: drop one ear, then (|>) rotate your head for max cuteness."></a></p>
 <p><span class="emph large sage-dk fragment">Pipes are essential to working with tidyverse functions</span></p>
-<h3 id="dplyr"><code>dplyr</code></h3>
 </section>
+<section id="pipes-dplyr-setup" class="slide level2">
+<h2>Pipes + <code>dplyr</code> Setup</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-2"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="1">1</button><span id="annotated-cell-2-1" class="code-annotation-target"><a href="#annotated-cell-2-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="annotated-cell-2-2"><a href="#annotated-cell-2-2"></a><span class="fu">library</span>(tibble)</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="2">2</button><span id="annotated-cell-2-3" class="code-annotation-target"><a href="#annotated-cell-2-3"></a><span class="fu">data</span>(midwest, <span class="at">package =</span> <span class="st">"ggplot2"</span>)</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="3">3</button><span id="annotated-cell-2-4" class="code-annotation-target"><a href="#annotated-cell-2-4"></a>midwest <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(midwest)</span>
+<span id="annotated-cell-2-5"><a href="#annotated-cell-2-5"></a><span class="fu">head</span>(midwest)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-annotation">
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-2" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-2" data-code-lines="1,2" data-code-annotation="1">Load the dplyr and tibble packages</span>
+</dd>
+<dt data-target-cell="annotated-cell-2" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-2" data-code-lines="3" data-code-annotation="2">Load the midwest data from the ggplot2 package</span>
+</dd>
+<dt data-target-cell="annotated-cell-2" data-target-annotation="3">3</dt>
+<dd>
+<span data-code-cell="annotated-cell-2" data-code-lines="4" data-code-annotation="3">Convert to a tibble (fancy data frame) so that output looks similar in base as in tidyverse</span>
+</dd>
+</dl>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 28
+    PID county   state  area poptotal popdensity popwhite popblack popamerindian
+  &lt;int&gt; &lt;chr&gt;    &lt;chr&gt; &lt;dbl&gt;    &lt;int&gt;      &lt;dbl&gt;    &lt;int&gt;    &lt;int&gt;         &lt;int&gt;
+1   561 ADAMS    IL    0.052    66090      1271.    63917     1702            98
+2   562 ALEXAND… IL    0.014    10626       759      7054     3496            19
+3   563 BOND     IL    0.022    14991       681.    14477      429            35
+4   564 BOONE    IL    0.017    30806      1812.    29344      127            46
+5   565 BROWN    IL    0.018     5836       324.     5264      547            14
+6   566 BUREAU   IL    0.05     35688       714.    35157       50            65
+# ℹ 19 more variables: popasian &lt;int&gt;, popother &lt;int&gt;, percwhite &lt;dbl&gt;,
+#   percblack &lt;dbl&gt;, percamerindan &lt;dbl&gt;, percasian &lt;dbl&gt;, percother &lt;dbl&gt;,
+#   popadults &lt;int&gt;, perchsd &lt;dbl&gt;, percollege &lt;dbl&gt;, percprof &lt;dbl&gt;,
+#   poppovertyknown &lt;int&gt;, percpovertyknown &lt;dbl&gt;, percbelowpoverty &lt;dbl&gt;,
+#   percchildbelowpovert &lt;dbl&gt;, percadultpoverty &lt;dbl&gt;,
+#   percelderlypoverty &lt;dbl&gt;, inmetro &lt;int&gt;, category &lt;chr&gt;</code></pre>
+</div>
+</div>
+</section>
+<section id="pipes-dplyr" class="slide level2">
+<h2>Pipes + <code>dplyr</code></h2>
+<div class="panel-tabset">
+<ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1">“Base” R</a></li><li><a href="#tabset-1-2"><code>dplyr</code></a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1">
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-10"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-10" data-target-annotation="1">1</button><span id="annotated-cell-10-1" class="code-annotation-target"><a href="#annotated-cell-10-1"></a>tmp1 <span class="ot">&lt;-</span> midwest[, <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>]</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-10" data-target-annotation="2">2</button><span id="annotated-cell-10-2" class="code-annotation-target"><a href="#annotated-cell-10-2"></a>tmp1 <span class="ot">&lt;-</span> midwest[midwest<span class="sc">$</span>state <span class="sc">==</span> <span class="st">"WI"</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>]</span>
+<span id="annotated-cell-10-3"><a href="#annotated-cell-10-3"></a></span>
+<span id="annotated-cell-10-4"><a href="#annotated-cell-10-4"></a><span class="fu">head</span>(tmp1)</span>
+<span id="annotated-cell-10-5"><a href="#annotated-cell-10-5"></a></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-10" data-target-annotation="3">3</button><span id="annotated-cell-10-6" class="code-annotation-target"><a href="#annotated-cell-10-6"></a>wi_pop <span class="ot">&lt;-</span> <span class="fu">sum</span>(midwest[midwest<span class="sc">$</span>state <span class="sc">==</span> <span class="st">"WI"</span>, ]<span class="sc">$</span>poptotal)</span>
+<span id="annotated-cell-10-7"><a href="#annotated-cell-10-7"></a>wi_pop</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-annotation">
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-10" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-10" data-code-lines="1" data-code-annotation="1">Get the first 6 columns of the data</span>
+</dd>
+<dt data-target-cell="annotated-cell-10" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-10" data-code-lines="2" data-code-annotation="2">Get the rows corresponding to wisconsin</span>
+</dd>
+<dt data-target-cell="annotated-cell-10" data-target-annotation="3">3</dt>
+<dd>
+<span data-code-cell="annotated-cell-10" data-code-lines="6" data-code-annotation="3">Add up the population total for each county, since we only have rows from Wisconsin</span>
+</dd>
+</dl>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 6
+    PID county   state  area poptotal popdensity
+  &lt;int&gt; &lt;chr&gt;    &lt;chr&gt; &lt;dbl&gt;    &lt;int&gt;      &lt;dbl&gt;
+1  2981 ADAMS    WI    0.041    15682       382.
+2  2982 ASHLAND  WI    0.054    16307       302.
+3  2983 BARRON   WI    0.053    40750       769.
+4  2984 BAYFIELD WI    0.089    14008       157.
+5  2985 BROWN    WI    0.032   194594      6081.
+6  2986 BUFFALO  WI    0.04     13584       340.
+[1] 4891769</code></pre>
+</div>
+</div>
+</div>
+<div id="tabset-1-2">
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-12"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-12-1"><a href="#annotated-cell-12-1"></a>tmp1 <span class="ot">&lt;-</span> midwest <span class="sc">|&gt;</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-12" data-target-annotation="1">1</button><span id="annotated-cell-12-2" class="code-annotation-target"><a href="#annotated-cell-12-2"></a>  <span class="fu">select</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>) <span class="sc">|&gt;</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-12" data-target-annotation="2">2</button><span id="annotated-cell-12-3" class="code-annotation-target"><a href="#annotated-cell-12-3"></a>  <span class="fu">filter</span>(state <span class="sc">==</span> <span class="st">"WI"</span>)</span>
+<span id="annotated-cell-12-4"><a href="#annotated-cell-12-4"></a></span>
+<span id="annotated-cell-12-5"><a href="#annotated-cell-12-5"></a><span class="fu">head</span>(tmp1)</span>
+<span id="annotated-cell-12-6"><a href="#annotated-cell-12-6"></a></span>
+<span id="annotated-cell-12-7"><a href="#annotated-cell-12-7"></a>tmp1 <span class="sc">|&gt;</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-12" data-target-annotation="3">3</button><span id="annotated-cell-12-8" class="code-annotation-target"><a href="#annotated-cell-12-8"></a>  <span class="fu">summarize</span>(<span class="at">poptotal =</span> <span class="fu">sum</span>(poptotal))</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-annotation">
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-12" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-12" data-code-lines="2" data-code-annotation="1">Get the first 6 columns of the data</span>
+</dd>
+<dt data-target-cell="annotated-cell-12" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-12" data-code-lines="3" data-code-annotation="2">Get the rows corresponding to wisconsin</span>
+</dd>
+<dt data-target-cell="annotated-cell-12" data-target-annotation="3">3</dt>
+<dd>
+<span data-code-cell="annotated-cell-12" data-code-lines="8" data-code-annotation="3">Summarize across all rows (since it’s only WI data at this point) and add up the population total for each county</span>
+</dd>
+</dl>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 6
+    PID county   state  area poptotal popdensity
+  &lt;int&gt; &lt;chr&gt;    &lt;chr&gt; &lt;dbl&gt;    &lt;int&gt;      &lt;dbl&gt;
+1  2981 ADAMS    WI    0.041    15682       382.
+2  2982 ASHLAND  WI    0.054    16307       302.
+3  2983 BARRON   WI    0.053    40750       769.
+4  2984 BAYFIELD WI    0.089    14008       157.
+5  2985 BROWN    WI    0.032   194594      6081.
+6  2986 BUFFALO  WI    0.04     13584       340.
+# A tibble: 1 × 1
+  poptotal
+     &lt;int&gt;
+1  4891769</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section></section>
+<section id="tidy-data" class="title-slide slide level1 center">
+<h1>Tidy Data</h1>
+<p><a href="images/tidy-data-horst.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img data-src="images/tidy-data-horst.jpg" alt="Stylized text providing an overview of Tidy Data. The top reads “Tidy data is a standard way of mapping the meaning of a dataset to its structure. - Hadley Wickham.” On the left reads “In tidy data: each variable forms a column; each observation forms a row; each cell is a single measurement.” There is an example table on the lower right with columns ‘id’, ‘name’ and ‘color’ with observations for different cats, illustrating tidy data structure."></a></p>
+</section>
+
+<section id="messy-data" class="title-slide slide level1 center">
+<h1>Messy Data</h1>
+<p><a href="images/messy-data-horst.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img data-src="images/messy-data-horst.jpg" alt="There are two sets of anthropomorphized data tables. The top group of three tables are all rectangular and smiling, with a shared speech bubble reading “our columns are variables and our rows are observations!”. Text to the left of that group reads “The standard structure of tidy data means that “tidy datasets are all alike…” The lower group of four tables are all different shapes, look ragged and concerned, and have different speech bubbles reading (from left to right) “my column are values and my rows are variables”, “I have variables in columns AND in rows”, “I have multiple variables in a single column”, and “I don’t even KNOW what my deal is.” Next to the frazzled data tables is text “...but every messy dataset is messy in its own way. -Hadley Wickham.”"></a></p>
+</section>
+
 <section>
-<section id="dplyr-common-data-cleaning-tasks" class="title-slide slide level1 center">
-<h1><code>dplyr</code>: Common Data Cleaning Tasks</h1>
+<section id="common-data-cleaning-tasks" class="title-slide slide level1 center">
+<h1>Common Data Cleaning Tasks</h1>
 
 </section>
 <section id="setting-up-read-in-some-data" class="slide level2">
 <h2>Setting up: Read In Some Data</h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-1"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="1">1</button><span id="annotated-cell-1-1" class="code-annotation-target"><a href="#annotated-cell-1-1"></a><span class="fu">library</span>(readr)</span>
-<span id="annotated-cell-1-2"><a href="#annotated-cell-1-2"></a><span class="fu">library</span>(dplyr)</span>
-<span id="annotated-cell-1-3"><a href="#annotated-cell-1-3"></a><span class="fu">library</span>(tidyr)</span>
-<span id="annotated-cell-1-4"><a href="#annotated-cell-1-4"></a></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="2">2</button><span id="annotated-cell-1-5" class="code-annotation-target"><a href="#annotated-cell-1-5"></a>poke <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://bit.ly/poke-data"</span>)</span>
-<span id="annotated-cell-1-6"><a href="#annotated-cell-1-6"></a></span>
-<span id="annotated-cell-1-7"><a href="#annotated-cell-1-7"></a><span class="co"># Scramble the rows - easier to see what each operation does to the data</span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="3">3</button><span id="annotated-cell-1-8" class="code-annotation-target"><a href="#annotated-cell-1-8"></a>new_row_order <span class="ot">&lt;-</span> <span class="fu">sample</span>(</span>
-<span id="annotated-cell-1-9"><a href="#annotated-cell-1-9"></a>  <span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(poke),</span>
-<span id="annotated-cell-1-10"><a href="#annotated-cell-1-10"></a>  <span class="at">size =</span> <span class="fu">nrow</span>(poke), <span class="at">replace =</span> F</span>
-<span id="annotated-cell-1-11"><a href="#annotated-cell-1-11"></a>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-3"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="1">1</button><span id="annotated-cell-3-1" class="code-annotation-target"><a href="#annotated-cell-3-1"></a><span class="fu">library</span>(readr)</span>
+<span id="annotated-cell-3-2"><a href="#annotated-cell-3-2"></a><span class="fu">library</span>(dplyr)</span>
+<span id="annotated-cell-3-3"><a href="#annotated-cell-3-3"></a><span class="fu">library</span>(tidyr)</span>
+<span id="annotated-cell-3-4"><a href="#annotated-cell-3-4"></a></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="2">2</button><span id="annotated-cell-3-5" class="code-annotation-target"><a href="#annotated-cell-3-5"></a>poke <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://bit.ly/poke-data"</span>)</span>
+<span id="annotated-cell-3-6"><a href="#annotated-cell-3-6"></a></span>
+<span id="annotated-cell-3-7"><a href="#annotated-cell-3-7"></a><span class="co"># Scramble the rows - easier to see what each operation does to the data</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="3">3</button><span id="annotated-cell-3-8" class="code-annotation-target"><a href="#annotated-cell-3-8"></a>new_row_order <span class="ot">&lt;-</span> <span class="fu">sample</span>(</span>
+<span id="annotated-cell-3-9"><a href="#annotated-cell-3-9"></a>  <span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(poke),</span>
+<span id="annotated-cell-3-10"><a href="#annotated-cell-3-10"></a>  <span class="at">size =</span> <span class="fu">nrow</span>(poke), <span class="at">replace =</span> F</span>
+<span id="annotated-cell-3-11"><a href="#annotated-cell-3-11"></a>)</span>
+<span id="annotated-cell-3-12"><a href="#annotated-cell-3-12"></a></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="4">4</button><span id="annotated-cell-3-13" class="code-annotation-target"><a href="#annotated-cell-3-13"></a>poke <span class="ot">&lt;-</span> poke[new_row_order, ]</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="5">5</button><span id="annotated-cell-3-14" class="code-annotation-target"><a href="#annotated-cell-3-14"></a>poke_types <span class="ot">&lt;-</span> <span class="fu">separate</span>(poke, type, <span class="fu">c</span>(<span class="st">"type1"</span>, <span class="st">"type2"</span>), <span class="at">sep =</span> <span class="st">","</span>)</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="6">6</button><span id="annotated-cell-3-15" class="code-annotation-target"><a href="#annotated-cell-3-15"></a>poke_short <span class="ot">&lt;-</span> poke[, <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">4</span><span class="sc">:</span><span class="dv">8</span>, <span class="dv">14</span><span class="sc">:</span><span class="dv">16</span>)]</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="7">7</button><span id="annotated-cell-3-16" class="code-annotation-target"><a href="#annotated-cell-3-16"></a><span class="fu">head</span>(poke_short)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-annotation">
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-1" data-target-annotation="1">1</dt>
+<dt data-target-cell="annotated-cell-3" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-1" data-code-lines="1,2,3" data-code-annotation="1">Load the <code>readr</code> package for the <code>read_csv</code> function, and the dplyr package (for everything else we’re going to do later)</span>
+<span data-code-cell="annotated-cell-3" data-code-lines="1,2,3" data-code-annotation="1">Load the <code>readr</code> package for the <code>read_csv</code> function, and the dplyr package (for everything else we’re going to do later)</span>
 </dd>
-<dt data-target-cell="annotated-cell-1" data-target-annotation="2">2</dt>
+<dt data-target-cell="annotated-cell-3" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-1" data-code-lines="5" data-code-annotation="2">Read in the CSV using the short bit.ly URL (to make it easier to follow along in class)</span>
+<span data-code-cell="annotated-cell-3" data-code-lines="5" data-code-annotation="2">Read in the CSV using the short bit.ly URL (to make it easier to follow along in class)</span>
 </dd>
-<dt data-target-cell="annotated-cell-1" data-target-annotation="3">3</dt>
+<dt data-target-cell="annotated-cell-3" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-cell="annotated-cell-1" data-code-lines="8,9,10,11" data-code-annotation="3">Scramble the row order so that you can see what different operations do to the data, by listing out the number of rows in the data (<code>1:nrow(poke)</code>) and sampling without replacement from those rows (`sample(…, ))</span>
+<span data-code-cell="annotated-cell-3" data-code-lines="8,9,10,11" data-code-annotation="3">Scramble the row order so that you can see what different operations do to the data, by listing out the number of rows in the data (<code>1:nrow(poke)</code>) and sampling without replacement from those rows (`sample(…, ))</span>
 </dd>
-</dl>
-</div>
-</div>
-</section>
-<section id="setting-up-read-in-some-data-1" class="slide level2">
-<h2>Setting up: Read In Some Data</h2>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-2"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="4">4</button><span id="annotated-cell-2-1" class="code-annotation-target"><a href="#annotated-cell-2-1"></a>poke <span class="ot">&lt;-</span> poke[new_row_order, ]</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="5">5</button><span id="annotated-cell-2-2" class="code-annotation-target"><a href="#annotated-cell-2-2"></a>poke_short <span class="ot">&lt;-</span> poke[, <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">4</span><span class="sc">:</span><span class="dv">8</span>, <span class="dv">14</span><span class="sc">:</span><span class="dv">16</span>)]</span>
-<span id="annotated-cell-2-3"><a href="#annotated-cell-2-3"></a><span class="fu">head</span>(poke_short) </span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-annotation">
-<dl class="code-annotation-container-hidden code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-2" data-target-annotation="4">4</dt>
+<dt data-target-cell="annotated-cell-3" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-cell="annotated-cell-2" data-code-lines="1" data-code-annotation="4">Rearrange rows in the shuffled order</span>
+<span data-code-cell="annotated-cell-3" data-code-lines="13" data-code-annotation="4">Rearrange rows in the shuffled order</span>
 </dd>
-<dt data-target-cell="annotated-cell-2" data-target-annotation="5">5</dt>
+<dt data-target-cell="annotated-cell-3" data-target-annotation="5">5</dt>
 <dd>
-<span data-code-cell="annotated-cell-2" data-code-lines="2" data-code-annotation="5">Take a smaller subset of the columns to make it easier to display – exclude the image URL and some specific stats like attack, defense, sp_attack, sp_defense, and speed that are relevant for battle calculations.</span>
+<span data-code-cell="annotated-cell-3" data-code-lines="14" data-code-annotation="5">Create a data frame that splits type into two columns (before the comma, after the comma) – this will be used for Your Turns.</span>
+</dd>
+<dt data-target-cell="annotated-cell-3" data-target-annotation="6">6</dt>
+<dd>
+<span data-code-cell="annotated-cell-3" data-code-lines="15" data-code-annotation="6">Take a smaller subset of the columns to make it easier to display – exclude the image URL and some specific stats like attack, defense, sp_attack, sp_defense, and speed that are relevant for battle calculations.</span>
+</dd>
+<dt data-target-cell="annotated-cell-3" data-target-annotation="7">7</dt>
+<dd>
+<span data-code-cell="annotated-cell-3" data-code-lines="16" data-code-annotation="7">Preview the data</span>
 </dd>
 </dl>
 </div>
@@ -291,7 +477,7 @@
 </section>
 <section id="get-rows-matching-a-condition" class="slide level2">
 <h2>Get Rows Matching A Condition</h2>
-<p><a href="images/horst-dplyr-filter.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img data-src="images/horst-dplyr-filter.png" alt="Cartoon showing three fuzzy monsters either selecting or crossing out rows of a data table. If the type of animal in the table is “otter” and the site is “bay”, a monster is drawing a purple rectangle around the row. If those conditions are not met, another monster is putting a line through the column indicating it will be excluded. Stylized text reads “dplyr::filter() - keep rows that satisfy your conditions.” [Learn more about dplyr::filter.](https://dplyr.tidyverse.org/reference/filter.html)"></a></p>
+<p><a href="images/horst-dplyr-filter.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img data-src="images/horst-dplyr-filter.png" alt="Cartoon showing three fuzzy monsters either selecting or crossing out rows of a data table. If the type of animal in the table is “otter” and the site is “bay”, a monster is drawing a purple rectangle around the row. If those conditions are not met, another monster is putting a line through the column indicating it will be excluded. Stylized text reads “dplyr::filter() - keep rows that satisfy your conditions.” [Learn more about dplyr::filter.](https://dplyr.tidyverse.org/reference/filter.html)"></a></p>
 </section>
 <section id="filter-get-rows-matching-a-condition" class="slide level2">
 <h2>Filter: Get Rows Matching A Condition</h2>
@@ -301,18 +487,18 @@
 <li>keep only rows where that condition is true</li>
 </ul>
 <div class="panel-tabset">
-<ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1">By Generation</a></li><li><a href="#tabset-1-2">By Height</a></li><li><a href="#tabset-1-3">By Multiple Conditions</a></li><li><a href="#tabset-1-4">Only NAs</a></li><li><a href="#tabset-1-5">Removing NAs</a></li></ul>
+<ul id="tabset-2" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-2-1">By Generation</a></li><li><a href="#tabset-2-2">By Height</a></li><li><a href="#tabset-2-3">By Multiple Conditions</a></li><li><a href="#tabset-2-4">Only NAs</a></li><li><a href="#tabset-2-5">Removing NAs</a></li></ul>
 <div class="tab-content">
-<div id="tabset-1-1">
+<div id="tabset-2-1">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-7"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-7-1"><a href="#annotated-cell-7-1"></a>poke_short <span class="sc">|&gt;</span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="1">1</button><span id="annotated-cell-7-2" class="code-annotation-target"><a href="#annotated-cell-7-2"></a>  <span class="fu">filter</span>(gen <span class="sc">==</span> <span class="dv">1</span>) <span class="sc">|&gt;</span></span>
-<span id="annotated-cell-7-3"><a href="#annotated-cell-7-3"></a>  <span class="fu">head</span>()</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-15"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-15-1"><a href="#annotated-cell-15-1"></a>poke_short <span class="sc">|&gt;</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-15" data-target-annotation="1">1</button><span id="annotated-cell-15-2" class="code-annotation-target"><a href="#annotated-cell-15-2"></a>  <span class="fu">filter</span>(gen <span class="sc">==</span> <span class="dv">1</span>) <span class="sc">|&gt;</span></span>
+<span id="annotated-cell-15-3"><a href="#annotated-cell-15-3"></a>  <span class="fu">head</span>()</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-annotation">
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-7" data-target-annotation="1">1</dt>
+<dt data-target-cell="annotated-cell-15" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-7" data-code-lines="2" data-code-annotation="1">Get rows where the pokemon are in the first generation</span>
+<span data-code-cell="annotated-cell-15" data-code-lines="2" data-code-annotation="1">Get rows where the pokemon are in the first generation</span>
 </dd>
 </dl>
 </div>
@@ -329,16 +515,16 @@
 </div>
 </div>
 </div>
-<div id="tabset-1-2">
+<div id="tabset-2-2">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-9"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-9-1"><a href="#annotated-cell-9-1"></a>poke_short <span class="sc">|&gt;</span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-9" data-target-annotation="2">2</button><span id="annotated-cell-9-2" class="code-annotation-target"><a href="#annotated-cell-9-2"></a>  <span class="fu">filter</span>(height_m <span class="sc">&gt;</span> <span class="dv">2</span>) <span class="sc">|&gt;</span></span>
-<span id="annotated-cell-9-3"><a href="#annotated-cell-9-3"></a>  <span class="fu">head</span>()</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-17"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-17-1"><a href="#annotated-cell-17-1"></a>poke_short <span class="sc">|&gt;</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-17" data-target-annotation="2">2</button><span id="annotated-cell-17-2" class="code-annotation-target"><a href="#annotated-cell-17-2"></a>  <span class="fu">filter</span>(height_m <span class="sc">&gt;</span> <span class="dv">2</span>) <span class="sc">|&gt;</span></span>
+<span id="annotated-cell-17-3"><a href="#annotated-cell-17-3"></a>  <span class="fu">head</span>()</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-annotation">
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-9" data-target-annotation="2">2</dt>
+<dt data-target-cell="annotated-cell-17" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-9" data-code-lines="2" data-code-annotation="2">Get rows where the pokemon is taller than 2 meters</span>
+<span data-code-cell="annotated-cell-17" data-code-lines="2" data-code-annotation="2">Get rows where the pokemon is taller than 2 meters</span>
 </dd>
 </dl>
 </div>
@@ -355,16 +541,16 @@
 </div>
 </div>
 </div>
-<div id="tabset-1-3">
+<div id="tabset-2-3">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-11"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-11-1"><a href="#annotated-cell-11-1"></a>poke_short <span class="sc">|&gt;</span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-11" data-target-annotation="3">3</button><span id="annotated-cell-11-2" class="code-annotation-target"><a href="#annotated-cell-11-2"></a>  <span class="fu">filter</span>(height_m <span class="sc">&lt;</span> .<span class="dv">5</span>, weight_kg <span class="sc">&gt;</span> <span class="dv">40</span>) <span class="sc">|&gt;</span></span>
-<span id="annotated-cell-11-3"><a href="#annotated-cell-11-3"></a>  <span class="fu">head</span>()</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-19"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-19-1"><a href="#annotated-cell-19-1"></a>poke_short <span class="sc">|&gt;</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-19" data-target-annotation="3">3</button><span id="annotated-cell-19-2" class="code-annotation-target"><a href="#annotated-cell-19-2"></a>  <span class="fu">filter</span>(height_m <span class="sc">&lt;</span> .<span class="dv">5</span>, weight_kg <span class="sc">&gt;</span> <span class="dv">40</span>) <span class="sc">|&gt;</span></span>
+<span id="annotated-cell-19-3"><a href="#annotated-cell-19-3"></a>  <span class="fu">head</span>()</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-annotation">
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-11" data-target-annotation="3">3</dt>
+<dt data-target-cell="annotated-cell-19" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-cell="annotated-cell-11" data-code-lines="2" data-code-annotation="3">Get rows where the pokemon is shorter than 0.5 meters and weighs more than 40 kg</span>
+<span data-code-cell="annotated-cell-19" data-code-lines="2" data-code-annotation="3">Get rows where the pokemon is shorter than 0.5 meters and weighs more than 40 kg</span>
 </dd>
 </dl>
 </div>
@@ -380,16 +566,16 @@
 </div>
 </div>
 </div>
-<div id="tabset-1-4">
+<div id="tabset-2-4">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-13"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-13-1"><a href="#annotated-cell-13-1"></a>poke_short <span class="sc">|&gt;</span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-13" data-target-annotation="4">4</button><span id="annotated-cell-13-2" class="code-annotation-target"><a href="#annotated-cell-13-2"></a>  <span class="fu">filter</span>(<span class="fu">is.na</span>(variant)) <span class="sc">|&gt;</span></span>
-<span id="annotated-cell-13-3"><a href="#annotated-cell-13-3"></a>  <span class="fu">head</span>()</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-21"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-21-1"><a href="#annotated-cell-21-1"></a>poke_short <span class="sc">|&gt;</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-21" data-target-annotation="4">4</button><span id="annotated-cell-21-2" class="code-annotation-target"><a href="#annotated-cell-21-2"></a>  <span class="fu">filter</span>(<span class="fu">is.na</span>(variant)) <span class="sc">|&gt;</span></span>
+<span id="annotated-cell-21-3"><a href="#annotated-cell-21-3"></a>  <span class="fu">head</span>()</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-annotation">
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-13" data-target-annotation="4">4</dt>
+<dt data-target-cell="annotated-cell-21" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-cell="annotated-cell-13" data-code-lines="2" data-code-annotation="4">Get rows where <code>variant</code> is NA (missing)</span>
+<span data-code-cell="annotated-cell-21" data-code-lines="2" data-code-annotation="4">Get rows where <code>variant</code> is NA (missing)</span>
 </dd>
 </dl>
 </div>
@@ -406,16 +592,16 @@
 </div>
 </div>
 </div>
-<div id="tabset-1-5">
+<div id="tabset-2-5">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-15"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-15-1"><a href="#annotated-cell-15-1"></a>poke_short <span class="sc">|&gt;</span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-15" data-target-annotation="5">5</button><span id="annotated-cell-15-2" class="code-annotation-target"><a href="#annotated-cell-15-2"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(variant)) <span class="sc">|&gt;</span></span>
-<span id="annotated-cell-15-3"><a href="#annotated-cell-15-3"></a>  <span class="fu">head</span>()</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-23"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-23-1"><a href="#annotated-cell-23-1"></a>poke_short <span class="sc">|&gt;</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-23" data-target-annotation="5">5</button><span id="annotated-cell-23-2" class="code-annotation-target"><a href="#annotated-cell-23-2"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(variant)) <span class="sc">|&gt;</span></span>
+<span id="annotated-cell-23-3"><a href="#annotated-cell-23-3"></a>  <span class="fu">head</span>()</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-annotation">
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-15" data-target-annotation="5">5</dt>
+<dt data-target-cell="annotated-cell-23" data-target-annotation="5">5</dt>
 <dd>
-<span data-code-cell="annotated-cell-15" data-code-lines="2" data-code-annotation="5">Get rows where <code>variant</code> is NOT NA</span>
+<span data-code-cell="annotated-cell-23" data-code-lines="2" data-code-annotation="5">Get rows where <code>variant</code> is NOT NA</span>
 </dd>
 </dl>
 </div>
@@ -435,6 +621,33 @@
 </div>
 </div>
 </section>
+<section id="your-turn-filter" class="slide level2 inverse">
+<h2>Your Turn: Filter</h2>
+<p>Using the original <code>poke</code> data, get Pokemon matching the following criteria:</p>
+<div class="columns">
+<div class="column">
+<ol type="1">
+<li>Pokedex number between 800 and 900</li>
+<li>Grass type</li>
+<li>Attack stats of more than 100</li>
+</ol>
+<p><a href="images/rillaboom.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img data-src="images/rillaboom.png" class="fragment" alt="An image of the pokemon Rillaboom"></a></p>
+</div><div class="column">
+<div class="fragment">
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a>tmp <span class="ot">&lt;-</span> poke <span class="sc">|&gt;</span> </span>
+<span id="cb11-2"><a></a>  <span class="fu">filter</span>(pokedex_no <span class="sc">&gt;=</span> <span class="dv">800</span>, </span>
+<span id="cb11-3"><a></a>         pokedex_no <span class="sc">&lt;=</span> <span class="dv">900</span>, </span>
+<span id="cb11-4"><a></a>         type <span class="sc">==</span> <span class="st">"Grass"</span>, </span>
+<span id="cb11-5"><a></a>         attack <span class="sc">&gt;</span> <span class="dv">100</span>)</span>
+<span id="cb11-6"><a></a>tmp<span class="sc">$</span>name</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Rillaboom"</code></pre>
+</div>
+</div>
+</div>
+</div></div>
+</section>
 <section id="get-or-remove-some-of-the-columns" class="slide level2">
 <h2>Get (or Remove) Some of the Columns</h2>
 <ul>
@@ -447,13 +660,13 @@
 </ul></li>
 </ul>
 <div class="panel-tabset">
-<ul id="tabset-2" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-2-1">Positive Selection</a></li><li><a href="#tabset-2-2">Negative Selection</a></li><li><a href="#tabset-2-3">Compare to Base R</a></li></ul>
+<ul id="tabset-3" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-3-1">Positive Selection</a></li><li><a href="#tabset-3-2">Negative Selection</a></li><li><a href="#tabset-3-3">Compare to Base R</a></li></ul>
 <div class="tab-content">
-<div id="tabset-2-1">
+<div id="tabset-3-1">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a>poke <span class="sc">|&gt;</span></span>
-<span id="cb7-2"><a></a>  <span class="fu">select</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">4</span><span class="sc">:</span><span class="dv">8</span>, <span class="dv">14</span><span class="sc">:</span><span class="dv">16</span>) <span class="sc">|&gt;</span></span>
-<span id="cb7-3"><a></a>  <span class="fu">head</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a>poke <span class="sc">|&gt;</span></span>
+<span id="cb13-2"><a></a>  <span class="fu">select</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">4</span><span class="sc">:</span><span class="dv">8</span>, <span class="dv">14</span><span class="sc">:</span><span class="dv">16</span>) <span class="sc">|&gt;</span></span>
+<span id="cb13-3"><a></a>  <span class="fu">head</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 10
     gen pokedex_no name     variant type  total    hp species height_m weight_kg
@@ -467,11 +680,11 @@
 </div>
 </div>
 </div>
-<div id="tabset-2-2">
+<div id="tabset-3-2">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a>poke <span class="sc">|&gt;</span></span>
-<span id="cb9-2"><a></a>  <span class="fu">select</span>(<span class="sc">-</span><span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">9</span><span class="sc">:</span><span class="dv">13</span>)) <span class="sc">|&gt;</span></span>
-<span id="cb9-3"><a></a>  <span class="fu">head</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a>poke <span class="sc">|&gt;</span></span>
+<span id="cb15-2"><a></a>  <span class="fu">select</span>(<span class="sc">-</span><span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">9</span><span class="sc">:</span><span class="dv">13</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb15-3"><a></a>  <span class="fu">head</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 10
     gen pokedex_no name     variant type  total    hp species height_m weight_kg
@@ -485,10 +698,10 @@
 </div>
 </div>
 </div>
-<div id="tabset-2-3">
+<div id="tabset-3-3">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a>poke[, <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">4</span><span class="sc">:</span><span class="dv">8</span>, <span class="dv">14</span><span class="sc">:</span><span class="dv">16</span>)] <span class="sc">|&gt;</span></span>
-<span id="cb11-2"><a></a>  <span class="fu">head</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a>poke[, <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">4</span><span class="sc">:</span><span class="dv">8</span>, <span class="dv">14</span><span class="sc">:</span><span class="dv">16</span>)] <span class="sc">|&gt;</span></span>
+<span id="cb17-2"><a></a>  <span class="fu">head</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 10
     gen pokedex_no name     variant type  total    hp species height_m weight_kg
@@ -526,13 +739,13 @@
 <h2>Get (or Remove) Some of the Columns</h2>
 <h3 id="select-helpers">Select Helpers</h3>
 <div class="panel-tabset">
-<ul id="tabset-3" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-3-1">Matches</a></li><li><a href="#tabset-3-2">Any_Of</a></li><li><a href="#tabset-3-3">Last_col()</a></li><li><a href="#tabset-3-4">Where + is.numeric</a></li></ul>
+<ul id="tabset-4" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-4-1">Matches</a></li><li><a href="#tabset-4-2">Any_Of</a></li><li><a href="#tabset-4-3">Last_col()</a></li><li><a href="#tabset-4-4">Where + is.numeric</a></li></ul>
 <div class="tab-content">
-<div id="tabset-3-1">
+<div id="tabset-4-1">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a>poke <span class="sc">|&gt;</span></span>
-<span id="cb13-2"><a></a>  <span class="fu">select</span>(<span class="sc">-</span><span class="fu">matches</span>(<span class="st">"img|attack|defense|speed"</span>)) <span class="sc">|&gt;</span></span>
-<span id="cb13-3"><a></a>  <span class="fu">head</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a>poke <span class="sc">|&gt;</span></span>
+<span id="cb19-2"><a></a>  <span class="fu">select</span>(<span class="sc">-</span><span class="fu">matches</span>(<span class="st">"img|attack|defense|speed"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb19-3"><a></a>  <span class="fu">head</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 10
     gen pokedex_no name     variant type  total    hp species height_m weight_kg
@@ -546,13 +759,13 @@
 </div>
 </div>
 </div>
-<div id="tabset-3-2">
+<div id="tabset-4-2">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a>battle_stats <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"attack"</span>, <span class="st">"defense"</span>, <span class="st">"sp_attack"</span>, <span class="st">"sp_defense"</span>, <span class="st">"speed"</span>)</span>
-<span id="cb15-2"><a></a></span>
-<span id="cb15-3"><a></a>poke <span class="sc">|&gt;</span></span>
-<span id="cb15-4"><a></a>  <span class="fu">select</span>(<span class="sc">-</span><span class="fu">any_of</span>(battle_stats), <span class="sc">-</span>img_link) <span class="sc">|&gt;</span></span>
-<span id="cb15-5"><a></a>  <span class="fu">head</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a>battle_stats <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"attack"</span>, <span class="st">"defense"</span>, <span class="st">"sp_attack"</span>, <span class="st">"sp_defense"</span>, <span class="st">"speed"</span>)</span>
+<span id="cb21-2"><a></a></span>
+<span id="cb21-3"><a></a>poke <span class="sc">|&gt;</span></span>
+<span id="cb21-4"><a></a>  <span class="fu">select</span>(<span class="sc">-</span><span class="fu">any_of</span>(battle_stats), <span class="sc">-</span>img_link) <span class="sc">|&gt;</span></span>
+<span id="cb21-5"><a></a>  <span class="fu">head</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 10
     gen pokedex_no name     variant type  total    hp species height_m weight_kg
@@ -566,11 +779,11 @@
 </div>
 </div>
 </div>
-<div id="tabset-3-3">
+<div id="tabset-4-3">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a>poke <span class="sc">|&gt;</span></span>
-<span id="cb17-2"><a></a>  <span class="fu">select</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, name, type, height_m<span class="sc">:</span><span class="fu">last_col</span>()) <span class="sc">|&gt;</span></span>
-<span id="cb17-3"><a></a>  <span class="fu">head</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a></a>poke <span class="sc">|&gt;</span></span>
+<span id="cb23-2"><a></a>  <span class="fu">select</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, name, type, height_m<span class="sc">:</span><span class="fu">last_col</span>()) <span class="sc">|&gt;</span></span>
+<span id="cb23-3"><a></a>  <span class="fu">head</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 6
     gen pokedex_no name       type          height_m weight_kg
@@ -584,11 +797,11 @@
 </div>
 </div>
 </div>
-<div id="tabset-3-4">
+<div id="tabset-4-4">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a>poke <span class="sc">|&gt;</span></span>
-<span id="cb19-2"><a></a>  <span class="fu">select</span>(<span class="fu">where</span>(is.numeric)) <span class="sc">|&gt;</span></span>
-<span id="cb19-3"><a></a>  <span class="fu">head</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a></a>poke <span class="sc">|&gt;</span></span>
+<span id="cb25-2"><a></a>  <span class="fu">select</span>(<span class="fu">where</span>(is.numeric)) <span class="sc">|&gt;</span></span>
+<span id="cb25-3"><a></a>  <span class="fu">head</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 11
     gen pokedex_no total    hp attack defense sp_attack sp_defense speed
@@ -606,26 +819,97 @@
 </div>
 </div>
 </section>
+<section id="your-turn-select" class="slide level2 inverse">
+<h2>Your Turn: Select</h2>
+<p>Using the original <code>poke</code> data, get only columns matching any of the following criteria:</p>
+<div class="columns">
+<div class="column">
+<ol type="1">
+<li>columns starting with <code>t</code></li>
+<li>the 9th column</li>
+<li>the pokemon name</li>
+</ol>
+</div><div class="column">
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1,526 × 4
+   type          total attack name      
+   &lt;chr&gt;         &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;     
+ 1 Grass           310     61 Sprigatito
+ 2 Fighting        455    105 Hitmonchan
+ 3 Fire            420     86 Raboot    
+ 4 Normal          420     70 Castform  
+ 5 Dark,Fighting   488     90 Scrafty   
+ 6 Dragon,Water    475     50 Tatsugiri 
+ 7 Psychic         600     95 Deoxys    
+ 8 Rock,Flying     500    100 Minior    
+ 9 Dragon,Ghost    410     80 Drakloak  
+10 Water           295     40 Horsea    
+# ℹ 1,516 more rows</code></pre>
+</div>
+</div>
+</div></div>
+</section>
+<section id="your-turn-select-1" class="slide level2 inverse">
+<h2>Your Turn: Select</h2>
+<p>Using the original <code>poke</code> data, get only columns matching any of the following criteria:</p>
+<div class="columns">
+<div class="column">
+<ol type="1">
+<li>columns starting with <code>t</code></li>
+<li>the 9th column</li>
+<li>the pokemon name</li>
+</ol>
+</div><div class="column">
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a></a>poke <span class="sc">|&gt;</span> </span>
+<span id="cb28-2"><a></a>  <span class="fu">select</span>(<span class="fu">starts_with</span>(<span class="st">'t'</span>), </span>
+<span id="cb28-3"><a></a>         <span class="dv">9</span>, </span>
+<span id="cb28-4"><a></a>         name)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1,526 × 4
+   type          total attack name      
+   &lt;chr&gt;         &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;     
+ 1 Grass           310     61 Sprigatito
+ 2 Fighting        455    105 Hitmonchan
+ 3 Fire            420     86 Raboot    
+ 4 Normal          420     70 Castform  
+ 5 Dark,Fighting   488     90 Scrafty   
+ 6 Dragon,Water    475     50 Tatsugiri 
+ 7 Psychic         600     95 Deoxys    
+ 8 Rock,Flying     500    100 Minior    
+ 9 Dragon,Ghost    410     80 Drakloak  
+10 Water           295     40 Horsea    
+# ℹ 1,516 more rows</code></pre>
+</div>
+</div>
+</div></div>
+</section>
 <section id="create-new-variables" class="slide level2">
 <h2>Create New Variables</h2>
-<p><a href="images/horst-dplyr-mutate.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img data-src="images/horst-dplyr-mutate.png" style="width:80.0%" alt="Cartoon of cute fuzzy monsters dressed up as different X-men characters, working together to add a new column to an existing data frame. Stylized title text reads “dplyr::mutate - add columns, keep existing.” [Learn more about dplyr::mutate.](https://dplyr.tidyverse.org/reference/mutate.html)"></a></p>
+<p><a href="images/horst-dplyr-mutate.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6"><img data-src="images/horst-dplyr-mutate.png" alt="Cartoon of cute fuzzy monsters dressed up as different X-men characters, working together to add a new column to an existing data frame. Stylized title text reads “dplyr::mutate - add columns, keep existing.” [Learn more about dplyr::mutate.](https://dplyr.tidyverse.org/reference/mutate.html)"></a></p>
 </section>
 <section id="create-new-variables-1" class="slide level2">
 <h2>Create New Variables</h2>
+<ul>
+<li>Create new variables:
 <ul>
 <li><code>df |&gt; mutate(newvar= XXX(...))</code></li>
 <li>XXX can be any function</li>
 <li>use ‘bare’ column names (not <code>df$variable_name</code> – just <code>variable_name</code>)</li>
 <li><code>...</code> provides arguments to the function</li>
+</ul></li>
 </ul>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a>poke_short <span class="ot">&lt;-</span> poke_short <span class="sc">|&gt;</span></span>
-<span id="cb21-2"><a></a>  <span class="fu">mutate</span>(</span>
-<span id="cb21-3"><a></a>    <span class="at">bmi =</span> weight_kg <span class="sc">/</span> (height_m<span class="sc">^</span><span class="dv">2</span>),</span>
-<span id="cb21-4"><a></a>    <span class="at">weight_lbs =</span> weight_kg <span class="sc">*</span> <span class="fl">2.204623</span></span>
-<span id="cb21-5"><a></a>  )</span>
-<span id="cb21-6"><a></a></span>
-<span id="cb21-7"><a></a>poke_short <span class="sc">|&gt;</span> <span class="fu">select</span>(<span class="sc">-</span><span class="fu">c</span>(variant, species)) <span class="sc">|&gt;</span>  <span class="fu">head</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a></a>poke_short <span class="ot">&lt;-</span> poke_short <span class="sc">|&gt;</span></span>
+<span id="cb30-2"><a></a>  <span class="fu">mutate</span>(</span>
+<span id="cb30-3"><a></a>    <span class="at">bmi =</span> weight_kg <span class="sc">/</span> (height_m<span class="sc">^</span><span class="dv">2</span>),</span>
+<span id="cb30-4"><a></a>    <span class="at">weight_lbs =</span> weight_kg <span class="sc">*</span> <span class="fl">2.204623</span></span>
+<span id="cb30-5"><a></a>  )</span>
+<span id="cb30-6"><a></a></span>
+<span id="cb30-7"><a></a>poke_short <span class="sc">|&gt;</span></span>
+<span id="cb30-8"><a></a>  <span class="fu">select</span>(<span class="sc">-</span><span class="fu">c</span>(variant, species)) <span class="sc">|&gt;</span></span>
+<span id="cb30-9"><a></a>  <span class="fu">head</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 10
     gen pokedex_no name    type  total    hp height_m weight_kg   bmi weight_lbs
@@ -639,6 +923,34 @@
 </div>
 </div>
 </section>
+<section id="your-turn-mutate" class="slide level2 inverse">
+<h2>Your Turn: Mutate</h2>
+<p>Create a column named <code>n_elevator</code> that calculates how many of these pokemon could fit in an elevator with a weight limit of 6000 lbs.</p>
+<p>Round your answer down to the nearest integer with the <code>floor()</code> function - no one needs to get hurt!</p>
+<div class="fragment">
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a></a>poke_short <span class="sc">|&gt;</span></span>
+<span id="cb32-2"><a></a>  <span class="fu">select</span>(gen, name, type, weight_lbs) <span class="sc">|&gt;</span></span>
+<span id="cb32-3"><a></a>  <span class="fu">mutate</span>(<span class="at">n_elevator =</span> <span class="fu">floor</span>(<span class="dv">6000</span><span class="sc">/</span>weight_lbs))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1,526 × 5
+     gen name       type          weight_lbs n_elevator
+   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;              &lt;dbl&gt;      &lt;dbl&gt;
+ 1     9 Sprigatito Grass               9.04        663
+ 2     1 Hitmonchan Fighting          111.           54
+ 3     8 Raboot     Fire               19.8         302
+ 4     3 Castform   Normal              1.76       3401
+ 5     5 Scrafty    Dark,Fighting      66.1          90
+ 6     9 Tatsugiri  Dragon,Water       17.6         340
+ 7     3 Deoxys     Psychic           134.           44
+ 8     7 Minior     Rock,Flying        88.2          68
+ 9     8 Drakloak   Dragon,Ghost       24.3         247
+10     1 Horsea     Water              17.6         340
+# ℹ 1,516 more rows</code></pre>
+</div>
+</div>
+</div>
+</section>
 <section id="sort-rows-by-variable-values" class="slide level2">
 <h2>Sort Rows By Variable Values</h2>
 <ul>
@@ -646,24 +958,24 @@
 <li><code>desc()</code> is a helper function used within <code>arrange</code> to indicate descending order</li>
 </ul>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-4"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-4-1"><a href="#annotated-cell-4-1"></a>poke_short <span class="sc">|&gt;</span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="1">1</button><span id="annotated-cell-4-2" class="code-annotation-target"><a href="#annotated-cell-4-2"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(bmi), <span class="fu">desc</span>(height_m)) <span class="sc">|&gt;</span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="2">2</button><span id="annotated-cell-4-3" class="code-annotation-target"><a href="#annotated-cell-4-3"></a>  <span class="fu">select</span>(<span class="sc">-</span><span class="fu">c</span>(variant, species)) <span class="sc">|&gt;</span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="3">3</button><span id="annotated-cell-4-4" class="code-annotation-target"><a href="#annotated-cell-4-4"></a>  <span class="fu">unique</span>() <span class="sc">|&gt;</span></span>
-<span id="annotated-cell-4-5"><a href="#annotated-cell-4-5"></a>  <span class="fu">head</span>()</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-5"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-5-1"><a href="#annotated-cell-5-1"></a>poke_short <span class="sc">|&gt;</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-5" data-target-annotation="1">1</button><span id="annotated-cell-5-2" class="code-annotation-target"><a href="#annotated-cell-5-2"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(bmi), <span class="fu">desc</span>(height_m)) <span class="sc">|&gt;</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-5" data-target-annotation="2">2</button><span id="annotated-cell-5-3" class="code-annotation-target"><a href="#annotated-cell-5-3"></a>  <span class="fu">select</span>(<span class="sc">-</span><span class="fu">c</span>(variant, species)) <span class="sc">|&gt;</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-5" data-target-annotation="3">3</button><span id="annotated-cell-5-4" class="code-annotation-target"><a href="#annotated-cell-5-4"></a>  <span class="fu">unique</span>() <span class="sc">|&gt;</span></span>
+<span id="annotated-cell-5-5"><a href="#annotated-cell-5-5"></a>  <span class="fu">head</span>()</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-annotation">
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-4" data-target-annotation="1">1</dt>
+<dt data-target-cell="annotated-cell-5" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-4" data-code-lines="2" data-code-annotation="1">Arrange by BMI in descending order. Break any ties in BMI by sorting in descending order by height as a secondary variable.</span>
+<span data-code-cell="annotated-cell-5" data-code-lines="2" data-code-annotation="1">Arrange by BMI in descending order. Break any ties in BMI by sorting in descending order by height as a secondary variable.</span>
 </dd>
-<dt data-target-cell="annotated-cell-4" data-target-annotation="2">2</dt>
+<dt data-target-cell="annotated-cell-5" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-4" data-code-lines="3" data-code-annotation="2">Remove variant and species (to save room)</span>
+<span data-code-cell="annotated-cell-5" data-code-lines="3" data-code-annotation="2">Remove variant and species (to save room)</span>
 </dd>
-<dt data-target-cell="annotated-cell-4" data-target-annotation="3">3</dt>
+<dt data-target-cell="annotated-cell-5" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-cell="annotated-cell-4" data-code-lines="4" data-code-annotation="3">Get rid of duplicate rows (e.g.&nbsp;different variants of the same pokemon that have the same stats)</span>
+<span data-code-cell="annotated-cell-5" data-code-lines="4" data-code-annotation="3">Get rid of duplicate rows (e.g.&nbsp;different variants of the same pokemon that have the same stats)</span>
 </dd>
 </dl>
 </div>
@@ -688,9 +1000,9 @@
 <li><span class="large emph cerulean-dk">Combine</span>: Put resulting sub-tables back together into a single table</li>
 </ul>
 <div class="panel-tabset">
-<ul id="tabset-4" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-4-1">Original Data</a></li><li><a href="#tabset-4-2">Split By Gen</a></li><li><a href="#tabset-4-3">Apply a Function</a></li><li><a href="#tabset-4-4">Recombine</a></li></ul>
+<ul id="tabset-5" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-5-1">Original Data</a></li><li><a href="#tabset-5-2">Split By Gen</a></li><li><a href="#tabset-5-3">Apply a Function</a></li><li><a href="#tabset-5-4">Recombine</a></li></ul>
 <div class="tab-content">
-<div id="tabset-4-1">
+<div id="tabset-5-1">
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1,526 × 5
@@ -750,7 +1062,7 @@
 </div>
 </div>
 </div>
-<div id="tabset-4-2">
+<div id="tabset-5-2">
 <p><code>poke_short |&gt; group_by(gen)</code></p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
@@ -909,7 +1221,7 @@
 </div>
 </div>
 </div>
-<div id="tabset-4-3">
+<div id="tabset-5-3">
 <p><code>poke_short |&gt; group_by(gen) |&gt; mutate(height_gen_rank = order(height_m))</code></p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
@@ -1068,7 +1380,7 @@
 </div>
 </div>
 </div>
-<div id="tabset-4-4">
+<div id="tabset-5-4">
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1,102 × 6
@@ -1143,45 +1455,45 @@
 </ul></li>
 </ul>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-5"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-5-1"><a href="#annotated-cell-5-1"></a>poke_short <span class="sc">|&gt;</span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-5" data-target-annotation="0">0</button><span id="annotated-cell-5-2" class="code-annotation-target"><a href="#annotated-cell-5-2"></a>  <span class="fu">group_by</span>(gen) <span class="sc">|&gt;</span></span>
-<span id="annotated-cell-5-3"><a href="#annotated-cell-5-3"></a>  <span class="fu">summarize</span>(</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-5" data-target-annotation="1">1</button><span id="annotated-cell-5-4" class="code-annotation-target"><a href="#annotated-cell-5-4"></a>    <span class="at">n_entries =</span> <span class="fu">n</span>(),</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-5" data-target-annotation="2">2</button><span id="annotated-cell-5-5" class="code-annotation-target"><a href="#annotated-cell-5-5"></a>    <span class="at">n_species =</span> <span class="fu">length</span>(<span class="fu">unique</span>(species)),</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-5" data-target-annotation="3">3</button><span id="annotated-cell-5-6" class="code-annotation-target"><a href="#annotated-cell-5-6"></a>    <span class="at">hp_mean =</span> <span class="fu">mean</span>(hp),</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-5" data-target-annotation="4">4</button><span id="annotated-cell-5-7" class="code-annotation-target"><a href="#annotated-cell-5-7"></a>    <span class="at">height_m_max =</span> <span class="fu">max</span>(height_m),</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-5" data-target-annotation="5">5</button><span id="annotated-cell-5-8" class="code-annotation-target"><a href="#annotated-cell-5-8"></a>    <span class="at">weight_kg_min =</span> <span class="fu">min</span>(weight_kg),</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-5" data-target-annotation="6">6</button><span id="annotated-cell-5-9" class="code-annotation-target"><a href="#annotated-cell-5-9"></a>    <span class="at">bmi_median =</span> <span class="fu">median</span>(bmi)</span>
-<span id="annotated-cell-5-10"><a href="#annotated-cell-5-10"></a>  )</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-6"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-6-1"><a href="#annotated-cell-6-1"></a>poke_short <span class="sc">|&gt;</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="0">0</button><span id="annotated-cell-6-2" class="code-annotation-target"><a href="#annotated-cell-6-2"></a>  <span class="fu">group_by</span>(gen) <span class="sc">|&gt;</span></span>
+<span id="annotated-cell-6-3"><a href="#annotated-cell-6-3"></a>  <span class="fu">summarize</span>(</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="1">1</button><span id="annotated-cell-6-4" class="code-annotation-target"><a href="#annotated-cell-6-4"></a>    <span class="at">n_entries =</span> <span class="fu">n</span>(),</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="2">2</button><span id="annotated-cell-6-5" class="code-annotation-target"><a href="#annotated-cell-6-5"></a>    <span class="at">n_species =</span> <span class="fu">length</span>(<span class="fu">unique</span>(species)),</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="3">3</button><span id="annotated-cell-6-6" class="code-annotation-target"><a href="#annotated-cell-6-6"></a>    <span class="at">hp_mean =</span> <span class="fu">mean</span>(hp),</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="4">4</button><span id="annotated-cell-6-7" class="code-annotation-target"><a href="#annotated-cell-6-7"></a>    <span class="at">height_m_max =</span> <span class="fu">max</span>(height_m),</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="5">5</button><span id="annotated-cell-6-8" class="code-annotation-target"><a href="#annotated-cell-6-8"></a>    <span class="at">weight_kg_min =</span> <span class="fu">min</span>(weight_kg),</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="6">6</button><span id="annotated-cell-6-9" class="code-annotation-target"><a href="#annotated-cell-6-9"></a>    <span class="at">bmi_median =</span> <span class="fu">median</span>(bmi)</span>
+<span id="annotated-cell-6-10"><a href="#annotated-cell-6-10"></a>  )</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-annotation">
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-5" data-target-annotation="0">0</dt>
+<dt data-target-cell="annotated-cell-6" data-target-annotation="0">0</dt>
 <dd>
-<span data-code-cell="annotated-cell-5" data-code-lines="2" data-code-annotation="0">Group by generation</span>
+<span data-code-cell="annotated-cell-6" data-code-lines="2" data-code-annotation="0">Group by generation</span>
 </dd>
-<dt data-target-cell="annotated-cell-5" data-target-annotation="1">1</dt>
+<dt data-target-cell="annotated-cell-6" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-5" data-code-lines="4" data-code-annotation="1">Get the total number of rows in the group</span>
+<span data-code-cell="annotated-cell-6" data-code-lines="4" data-code-annotation="1">Get the total number of rows in the group</span>
 </dd>
-<dt data-target-cell="annotated-cell-5" data-target-annotation="2">2</dt>
+<dt data-target-cell="annotated-cell-6" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-5" data-code-lines="5" data-code-annotation="2">Get the number of different species in the group</span>
+<span data-code-cell="annotated-cell-6" data-code-lines="5" data-code-annotation="2">Get the number of different species in the group</span>
 </dd>
-<dt data-target-cell="annotated-cell-5" data-target-annotation="3">3</dt>
+<dt data-target-cell="annotated-cell-6" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-cell="annotated-cell-5" data-code-lines="6" data-code-annotation="3">Calculate the average hp for all pokemon in the group</span>
+<span data-code-cell="annotated-cell-6" data-code-lines="6" data-code-annotation="3">Calculate the average hp for all pokemon in the group</span>
 </dd>
-<dt data-target-cell="annotated-cell-5" data-target-annotation="4">4</dt>
+<dt data-target-cell="annotated-cell-6" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-cell="annotated-cell-5" data-code-lines="7" data-code-annotation="4">Calculate the maximum height for the pokemon in the group</span>
+<span data-code-cell="annotated-cell-6" data-code-lines="7" data-code-annotation="4">Calculate the maximum height for the pokemon in the group</span>
 </dd>
-<dt data-target-cell="annotated-cell-5" data-target-annotation="5">5</dt>
+<dt data-target-cell="annotated-cell-6" data-target-annotation="5">5</dt>
 <dd>
-<span data-code-cell="annotated-cell-5" data-code-lines="8" data-code-annotation="5">Calculate the minimum weight for all pokemon in the group</span>
+<span data-code-cell="annotated-cell-6" data-code-lines="8" data-code-annotation="5">Calculate the minimum weight for all pokemon in the group</span>
 </dd>
-<dt data-target-cell="annotated-cell-5" data-target-annotation="6">6</dt>
+<dt data-target-cell="annotated-cell-6" data-target-annotation="6">6</dt>
 <dd>
-<span data-code-cell="annotated-cell-5" data-code-lines="9" data-code-annotation="6">Calculate the median BMI for all pokemon in the group</span>
+<span data-code-cell="annotated-cell-6" data-code-lines="9" data-code-annotation="6">Calculate the median BMI for all pokemon in the group</span>
 </dd>
 </dl>
 </div>
@@ -1198,6 +1510,397 @@
 7     7       133        72    73.2          9.2           0.1       27  
 8     8       134        79    77.9         20             0.2       24.8
 9     9       123        65    75.8         12             0.4       35  </code></pre>
+</div>
+</div>
+</section>
+<section id="group-rows-and-summarize-1" class="slide level2">
+<h2>Group Rows and Summarize</h2>
+<ul>
+<li>Group by + summarize:
+<ul>
+<li><code>df |&gt; group_by(varname) |&gt; summarize(newvar = XXX(...))</code></li>
+<li>One row returned per group (e.g.&nbsp;per value of <code>varname</code>)</li>
+<li>All non-grouping variables dropped unless defined in <code>summarize</code></li>
+<li>One level of grouping is removed</li>
+</ul></li>
+</ul>
+</section>
+<section id="grouping-by-type" class="slide level2">
+<h2>Grouping by Type</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-7"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-7-1"><a href="#annotated-cell-7-1"></a>poke_types <span class="sc">|&gt;</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="1">1</button><span id="annotated-cell-7-2" class="code-annotation-target"><a href="#annotated-cell-7-2"></a>  <span class="fu">group_by</span>(gen, type1) <span class="sc">|&gt;</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="2">2</button><span id="annotated-cell-7-3" class="code-annotation-target"><a href="#annotated-cell-7-3"></a>  <span class="fu">summarize</span>(<span class="at">n =</span> <span class="fu">n</span>(), <span class="at">hp =</span> <span class="fu">mean</span>(hp)) <span class="sc">|&gt;</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="3">3</button><span id="annotated-cell-7-4" class="code-annotation-target"><a href="#annotated-cell-7-4"></a>  <span class="fu">ungroup</span>() <span class="sc">|&gt;</span></span>
+<span id="annotated-cell-7-5"><a href="#annotated-cell-7-5"></a>  <span class="fu">head</span>()</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-annotation">
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-7" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-7" data-code-lines="2" data-code-annotation="1">Group by generation and type1</span>
+</dd>
+<dt data-target-cell="annotated-cell-7" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-7" data-code-lines="3" data-code-annotation="2">Calculate the number of pokemon with each type combination, and the mean HP for each type combination</span>
+</dd>
+<dt data-target-cell="annotated-cell-7" data-target-annotation="3">3</dt>
+<dd>
+<span data-code-cell="annotated-cell-7" data-code-lines="4" data-code-annotation="3">Remove any remaining grouping variables</span>
+</dd>
+</dl>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 4
+    gen type1        n    hp
+  &lt;dbl&gt; &lt;chr&gt;    &lt;int&gt; &lt;dbl&gt;
+1     1 Bug         14  56.8
+2     1 Dark        11  58.2
+3     1 Dragon       3  64.3
+4     1 Electric    20  55.2
+5     1 Fairy        2  82.5
+6     1 Fighting    23  70.8</code></pre>
+</div>
+</div>
+</section>
+<section id="group-rows-and-summarize-2" class="slide level2">
+<h2>Group Rows and Summarize</h2>
+<p>With a bit of <code>tidyr</code> magic… (next time)</p>
+<div class="small">
+<div class="cell">
+<div class="cell-output-display">
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Primary</th>
+<th style="text-align: right;">1</th>
+<th style="text-align: right;">2</th>
+<th style="text-align: right;">3</th>
+<th style="text-align: right;">4</th>
+<th style="text-align: right;">5</th>
+<th style="text-align: right;">6</th>
+<th style="text-align: right;">7</th>
+<th style="text-align: right;">8</th>
+<th style="text-align: right;">9</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Bug</td>
+<td style="text-align: right;">14</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">24</td>
+<td style="text-align: right;">22</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">7</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Dark</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">15</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">8</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Dragon</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">-</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">15</td>
+<td style="text-align: right;">14</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">14</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Electric</td>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">42</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">15</td>
+<td style="text-align: right;">9</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Fairy</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">-</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">-</td>
+<td style="text-align: right;">22</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">7</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Fighting</td>
+<td style="text-align: right;">23</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">13</td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Fire</td>
+<td style="text-align: right;">27</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">16</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">7</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Ghost</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">7</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Grass</td>
+<td style="text-align: right;">16</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">13</td>
+<td style="text-align: right;">18</td>
+<td style="text-align: right;">18</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">15</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">11</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Ground</td>
+<td style="text-align: right;">17</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">17</td>
+<td style="text-align: right;">-</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Ice</td>
+<td style="text-align: right;">13</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">16</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">-</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Normal</td>
+<td style="text-align: right;">34</td>
+<td style="text-align: right;">15</td>
+<td style="text-align: right;">23</td>
+<td style="text-align: right;">18</td>
+<td style="text-align: right;">32</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">13</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Poison</td>
+<td style="text-align: right;">25</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Psychic</td>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">24</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">16</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">21</td>
+<td style="text-align: right;">16</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Rock</td>
+<td style="text-align: right;">19</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">17</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">7</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Steel</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Water</td>
+<td style="text-align: right;">34</td>
+<td style="text-align: right;">22</td>
+<td style="text-align: right;">31</td>
+<td style="text-align: right;">18</td>
+<td style="text-align: right;">31</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">13</td>
+<td style="text-align: right;">12</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Flying</td>
+<td style="text-align: right;">-</td>
+<td style="text-align: right;">-</td>
+<td style="text-align: right;">-</td>
+<td style="text-align: right;">-</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">-</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">2</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</section>
+<section id="your-turn-group_by-summarize" class="slide level2 inverse">
+<h2>Your Turn: Group_by + Summarize!</h2>
+<p>Work with <code>poke_types</code> and only worry about the primary type (<code>type1</code>)</p>
+<ol type="1">
+<li>Calculate the total number of bug pokemon in each generation</li>
+<li>Find the heaviest pokemon of each type, making sure to remove any duplicate rows.</li>
+<li>Find the pokemon with the highest HP for each generation. Include all tied rows.</li>
+</ol>
+</section>
+<section id="your-turn-group_by-summarize-1" class="slide level2 inverse">
+<h2>Your Turn: Group_by + Summarize!</h2>
+<p>Work with <code>poke_types</code> and only worry about the primary type (<code>type1</code>)</p>
+<ol type="1">
+<li><span class="cerulean-lt">Calculate the total number of bug pokemon in each generation</span></li>
+<li>Find the heaviest pokemon of each type, making sure to remove any duplicate rows.</li>
+<li>Find the pokemon with the highest HP for each generation. Include all tied rows.</li>
+</ol>
+<div class="fragment">
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 9 × 2
+    gen   Bug
+  &lt;dbl&gt; &lt;int&gt;
+1     1    14
+2     2    12
+3     3    12
+4     4    24
+5     5    22
+6     6     3
+7     7     9
+8     8     4
+9     9     7</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="your-turn-group_by-summarize-2" class="slide level2 inverse">
+<h2>Your Turn: Group_by + Summarize!</h2>
+<ol type="1">
+<li>Calculate the total number of bug pokemon in each generation</li>
+<li><span class="cerulean-lt">Find the heaviest pokemon of each type, making sure to remove any duplicate rows.</span></li>
+<li>Find the pokemon with the highest HP for each generation. Include all tied rows.</li>
+</ol>
+<div class="fragment">
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 18 × 4
+     gen name         type1    weight_kg
+   &lt;dbl&gt; &lt;chr&gt;        &lt;chr&gt;        &lt;dbl&gt;
+ 1     3 Wailord      Water         398 
+ 2     6 Noivern      Flying         85 
+ 3     4 Giratina     Ghost         750 
+ 4     8 Eternatus    Poison        950 
+ 5     3 Groudon      Ground        950 
+ 6     7 Celesteela   Steel        1000.
+ 7     6 Xerneas      Fairy         215 
+ 8     7 Cosmoem      Psychic      1000.
+ 9     8 Glastrier    Ice           800 
+10     4 Heatran      Fire          430 
+11     1 Snorlax      Normal        460 
+12     7 Guzzlord     Dark          888 
+13     9 Iron Hands   Fighting      381.
+14     9 Roaring Moon Dragon        380 
+15     7 Stakataka    Rock          820 
+16     7 Buzzwole     Bug           334.
+17     9 Miraidon     Electric      240 
+18     4 Torterra     Grass         310 </code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="your-turn-group_by-summarize-3" class="slide level2 inverse">
+<h2>Your Turn: Group_by + Summarize!</h2>
+<ol type="1">
+<li>Calculate the total number of bug pokemon in each generation</li>
+<li>Find the heaviest pokemon of each type, making sure to remove any duplicate rows.</li>
+<li><span class="cerulean-lt">Find the pokemon with the highest HP for each generation. Include all tied rows.</span></li>
+</ol>
+<div class="fragment">
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 10 × 3
+     gen name         hp
+   &lt;dbl&gt; &lt;chr&gt;     &lt;dbl&gt;
+ 1     1 Chansey     250
+ 2     2 Blissey     255
+ 3     3 Wailord     170
+ 4     4 Giratina    150
+ 5     4 Drifblim    150
+ 6     5 Alomomola   165
+ 7     6 Zygarde     216
+ 8     7 Guzzlord    223
+ 9     8 Eternatus   255
+10     9 Cetitan     170</code></pre>
+</div>
 </div>
 </div>
 

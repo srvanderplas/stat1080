@@ -6,10 +6,13 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.9.38">
 
-  <title>STAT 1080 - Fall 2026 – tidyverse-tidyr</title>
+  <title>STAT 1080 - Fall 2026 – 1.14 tidyr - Tidy Data</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -132,16 +135,28 @@
       margin-right: 0;
     }
   </style>
-<meta property="og:title" content="STAT 1080 - Fall 2026">
+<meta property="og:title" content="1.14 tidyr - Tidy Data – STAT 1080 - Fall 2026">
 <meta property="og:site_name" content="STAT 1080 - Fall 2026">
 </head>
 <body class="quarto-light">
   <div class="reveal">
     <div class="slides">
 
+<section id="title-slide" data-background-image="images/dplyr.png" data-background-image-alt="A hexagonal sticker with <code>dplyr</code> as the text, showing several pairs of plyers zooming cross a dark background." data-background-position="50% 90%" data-background-repeat="no-repeat" data-background-size="20%" class="quarto-title-block center">
+  <h1 class="title">1.14 <code>tidyr</code> - Tidy Data</h1>
 
-<section class="slide level2">
+<div class="quarto-title-authors">
+</div>
 
+</section>
+<section id="tidy-data" class="title-slide slide level1 center">
+<h1>Tidy Data</h1>
+<p><a href="images/tidy-data-horst.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img data-src="images/tidy-data-horst.jpg" alt="Stylized text providing an overview of Tidy Data. The top reads “Tidy data is a standard way of mapping the meaning of a dataset to its structure. - Hadley Wickham.” On the left reads “In tidy data: each variable forms a column; each observation forms a row; each cell is a single measurement.” There is an example table on the lower right with columns ‘id’, ‘name’ and ‘color’ with observations for different cats, illustrating tidy data structure."></a></p>
+</section>
+
+<section id="messy-data" class="title-slide slide level1 center">
+<h1>Messy Data</h1>
+<p><a href="images/messy-data-horst.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img data-src="images/messy-data-horst.jpg" alt="There are two sets of anthropomorphized data tables. The top group of three tables are all rectangular and smiling, with a shared speech bubble reading “our columns are variables and our rows are observations!”. Text to the left of that group reads “The standard structure of tidy data means that “tidy datasets are all alike…” The lower group of four tables are all different shapes, look ragged and concerned, and have different speech bubbles reading (from left to right) “my column are values and my rows are variables”, “I have variables in columns AND in rows”, “I have multiple variables in a single column”, and “I don’t even KNOW what my deal is.” Next to the frazzled data tables is text “...but every messy dataset is messy in its own way. -Hadley Wickham.”"></a></p>
 
 
 </section>
@@ -683,6 +698,38 @@
         }
       });
       </script>
+    <script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+    (function() {
+      let previousOnload = window.onload;
+      window.onload = () => {
+        if (previousOnload) {
+          previousOnload();
+        }
+        lightboxQuarto.on('slide_before_load', (data) => {
+          const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+          const href = trigger.getAttribute('href');
+          if (href !== null) {
+            const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+            if (imgEl !== null) {
+              const srcAttr = imgEl.getAttribute("src");
+              if (srcAttr && srcAttr.startsWith("data:")) {
+                slideConfig.href = srcAttr;
+              }
+            }
+          } 
+        });
+      
+        lightboxQuarto.on('slide_after_load', (data) => {
+          const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(slideNode);
+          }
+        });
+      
+      };
+      
+    })();
+              </script>
     
 
 </body></html>

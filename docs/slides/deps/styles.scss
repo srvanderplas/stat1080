@@ -152,6 +152,11 @@ $theme-colors: (
 	color: #9febfe!important;
 }
 
+.reveal .slide.inverse code a {
+  background-color: #FFFFFF!important;
+  color: #016179;
+}
+
 /* Other font formatting stuff */
 .reveal section .emph { font-family: 'Handlee', cursive!important; }
 .reveal section .read { font-family: 'Atkinson Hyperlegible'!important; }
@@ -312,4 +317,8 @@ $highlightcolors: (
 
 .cell-output {
   font-size: 130%
+}
+.code-copy-outer-scaffold:has(.code-annotated)>.code-copy-button {
+  right: 3em!important;
+  margin-right: 1em!important;
 }
