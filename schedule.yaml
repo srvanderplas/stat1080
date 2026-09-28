@@ -187,6 +187,7 @@ schedule:
     class3: |
         - Fall Break
     extra: |
+        - [Tidyverse Practice II - Covid](../lab/16-covid-tidyverse2.qmd) [qmd template](../lab/_16-covid-tidyverse2.qmd) [solutions](../lab/16-covid-tidyverse2-solutions.qmd)
         - [SC Ch 27 - Dates and Times](https://srvanderplas.github.io/stat-computing-r-python/part-wrangling/07-datetime.html){target="_blank"}
         - [IDS I Ch 14 - Locales](https://rafalab.dfci.harvard.edu/dsbook-part-1/wrangling/locales.html){target="_blank"}
 

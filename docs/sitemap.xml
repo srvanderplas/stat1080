@@ -89,6 +89,10 @@
     <lastmod>2026-07-14T18:10:58.016Z</lastmod>
   </url>
   <url>
+    <loc>https://srvanderplas.github.io/stat1080/lab/16-covid-tidyverse2-solutions.html</loc>
+    <lastmod>2026-09-28T23:32:35.105Z</lastmod>
+  </url>
+  <url>
     <loc>https://srvanderplas.github.io/stat1080/lab/13-dplyr-solutions.html</loc>
     <lastmod>2026-09-22T19:56:39.573Z</lastmod>
   </url>
@@ -110,15 +114,15 @@
   </url>
   <url>
     <loc>https://srvanderplas.github.io/stat1080/weeks/week-150.html</loc>
-    <lastmod>2026-09-22T19:56:37.357Z</lastmod>
+    <lastmod>2026-09-28T23:35:42.585Z</lastmod>
   </url>
   <url>
     <loc>https://srvanderplas.github.io/stat1080/weeks/week-130.html</loc>
-    <lastmod>2026-09-22T19:56:37.357Z</lastmod>
+    <lastmod>2026-09-28T23:35:42.581Z</lastmod>
   </url>
   <url>
     <loc>https://srvanderplas.github.io/stat1080/weeks/week-110.html</loc>
-    <lastmod>2026-09-22T19:56:37.353Z</lastmod>
+    <lastmod>2026-09-28T23:35:42.581Z</lastmod>
   </url>
   <url>
     <loc>https://srvanderplas.github.io/stat1080/weeks/week-095.html</loc>
@@ -126,19 +130,19 @@
   </url>
   <url>
     <loc>https://srvanderplas.github.io/stat1080/weeks/week-080.html</loc>
-    <lastmod>2026-09-22T19:56:37.353Z</lastmod>
+    <lastmod>2026-09-28T23:35:42.581Z</lastmod>
   </url>
   <url>
     <loc>https://srvanderplas.github.io/stat1080/weeks/week-060.html</loc>
-    <lastmod>2026-09-22T19:56:37.353Z</lastmod>
+    <lastmod>2026-09-28T23:35:42.581Z</lastmod>
   </url>
   <url>
     <loc>https://srvanderplas.github.io/stat1080/weeks/week-040.html</loc>
-    <lastmod>2026-09-22T19:56:37.353Z</lastmod>
+    <lastmod>2026-09-28T23:35:42.581Z</lastmod>
   </url>
   <url>
     <loc>https://srvanderplas.github.io/stat1080/weeks/week-020.html</loc>
-    <lastmod>2026-09-22T19:56:37.353Z</lastmod>
+    <lastmod>2026-09-28T23:35:42.581Z</lastmod>
   </url>
   <url>
     <loc>https://srvanderplas.github.io/stat1080/course-support.html</loc>
@@ -162,39 +166,39 @@
   </url>
   <url>
     <loc>https://srvanderplas.github.io/stat1080/weeks/week-010.html</loc>
-    <lastmod>2026-09-22T19:56:37.353Z</lastmod>
+    <lastmod>2026-09-28T23:35:42.581Z</lastmod>
   </url>
   <url>
     <loc>https://srvanderplas.github.io/stat1080/weeks/week-030.html</loc>
-    <lastmod>2026-09-22T19:56:37.353Z</lastmod>
+    <lastmod>2026-09-28T23:35:42.581Z</lastmod>
   </url>
   <url>
     <loc>https://srvanderplas.github.io/stat1080/weeks/week-050.html</loc>
-    <lastmod>2026-09-22T19:56:37.353Z</lastmod>
+    <lastmod>2026-09-28T23:35:42.581Z</lastmod>
   </url>
   <url>
     <loc>https://srvanderplas.github.io/stat1080/weeks/week-070.html</loc>
-    <lastmod>2026-09-22T19:56:37.353Z</lastmod>
+    <lastmod>2026-09-28T23:35:42.581Z</lastmod>
   </url>
   <url>
     <loc>https://srvanderplas.github.io/stat1080/weeks/week-090.html</loc>
-    <lastmod>2026-09-22T19:56:37.353Z</lastmod>
+    <lastmod>2026-09-28T23:35:42.581Z</lastmod>
   </url>
   <url>
     <loc>https://srvanderplas.github.io/stat1080/weeks/week-100.html</loc>
-    <lastmod>2026-09-22T19:56:37.353Z</lastmod>
+    <lastmod>2026-09-28T23:35:42.581Z</lastmod>
   </url>
   <url>
     <loc>https://srvanderplas.github.io/stat1080/weeks/week-120.html</loc>
-    <lastmod>2026-09-22T19:56:37.353Z</lastmod>
+    <lastmod>2026-09-28T23:35:42.581Z</lastmod>
   </url>
   <url>
     <loc>https://srvanderplas.github.io/stat1080/weeks/week-140.html</loc>
-    <lastmod>2026-09-22T19:56:37.357Z</lastmod>
+    <lastmod>2026-09-28T23:35:42.581Z</lastmod>
   </url>
   <url>
     <loc>https://srvanderplas.github.io/stat1080/weeks/week-160.html</loc>
-    <lastmod>2026-09-22T19:56:37.357Z</lastmod>
+    <lastmod>2026-09-28T23:35:42.585Z</lastmod>
   </url>
   <url>
     <loc>https://srvanderplas.github.io/stat1080/demos/styler-lintr-test.html</loc>
@@ -215,6 +219,10 @@
   <url>
     <loc>https://srvanderplas.github.io/stat1080/lab/15-tidyverse.html</loc>
     <lastmod>2026-09-03T20:20:10.698Z</lastmod>
+  </url>
+  <url>
+    <loc>https://srvanderplas.github.io/stat1080/lab/16-covid-tidyverse2.html</loc>
+    <lastmod>2026-09-28T23:31:35.905Z</lastmod>
   </url>
   <url>
     <loc>https://srvanderplas.github.io/stat1080/lab/27-probability.html</loc>

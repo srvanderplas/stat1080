@@ -1,0 +1,100 @@
+---
+title: "6.1.i - Class Activity"
+format: html
+number-sections: true
+execute:
+  echo: true   # show code by default
+  warning: false
+  message: false
+---
+
+This assignment is intended to get you familiar with the tidyverse using real COVID-19 data.
+
+```{r}
+library(tidyverse)
+```
+
+
+The following code chunk scrapes the `.csv` files we will be analyzing from the web renames and selects the subset of columns that we will be using for analysis. 
+
+```{r}
+url <- "https://srhdpeuwpubsa.blob.core.windows.net/whdh/COVID/"
+url_case <- paste0(url, "WHO-COVID-19-global-table-data.csv")
+
+covid_case <- read_csv(url_case) |>
+  select(name = Name, region = `WHO Region`, 
+         case_total = `Cases - cumulative total`,
+         case_pop = `Cases - cumulative total per 100000 population`,
+         death_total = `Deaths - cumulative total`,
+         death_pop = `Deaths - cumulative total per 100000 population`)
+```
+
+The renamed columns that remain are: 
+
+- `name`: Country name
+- `region`: World Health Organization (WHO) region. 
+- `case_total`: Cumulative number of reported COVID cases since Jan 2020
+- `case_pop`: Cumulative number of reported COVID cases per 100,000 people since Jan 2020
+- `death_total`: Cumulative number of reported COVID deaths since Jan 2020
+- `death_pop`: Cumulative number of reported COVID deaths per 100,000 people since Jan 2020
+
+# Problem 
+
+We want to know how the different regions of the world fared in terms of their covid case rates per 100,000 people. To get started with this, create a new dataframe called `covid_case_region` that contains the country-level averages (i.e., `mean()`) for both cases and deaths per 100,000 people by region. Call the variable containing the averages `mean_case_pop`. Be sure to remove missing values prior to calculating the averages. **Question for Canvas: What is the mean deaths per 100,000 people in the "Africa" region, rounded to the nearest whole number?** 
+
+```{r}
+covid_case_region <- covid_case |>
+  group_by(region) |> 
+  summarize(mean_case_pop = mean(case_pop, na.rm = TRUE), 
+            mean_death_pop = mean(death_pop, na.rm = TRUE))
+
+covid_case_region
+```
+
+# Problem 
+
+Notice that we have two issues with our summary. The "other" region has no non-missing observations (indicated by the `NaN` values) and there is an `NA` region that contains an unknown number of countries. Please update the `covid_case_region` dataframe to exclude any rows that contain `NaN` values for `mean_case_pop`, as well as any rows with missing region information. Hint: check out the `is.nan()` and `is.na()` function for help in excluding a row that contain `NaN` or `NA` values in a particular column. Your updated dataset should have precisely 6 rows. 
+
+```{r}
+covid_case_region <- covid_case_region |>
+  filter(!is.nan(mean_case_pop) & !is.na(region))
+
+covid_case_region
+```
+
+# Problem 
+
+Arrange the `covid_case_region` dataframe so that the average deaths per 100,000 people go from smallest to largest. **Question for Canvas: which region has the second largest deaths per 100,000 people due to COVID?**
+
+```{r}
+covid_case_region |>
+  arrange(mean_death_pop)
+```
+
+# Problem 
+
+**Discuss with a partner:** The deaths per 100,000 people in the Europe region appears to be nearly 10 times larger than the deaths per 100,000 people in the Africa region. Does this imply that COVID was 10 times more deadly for Europeans? Explain why or why not, knowing that this course will not provide a definitive answer.
+
+*Likely not. It is likely the case that the European countries were much more aggressive in monitoring and reporting deaths. It is perhaps the case that COVID cases in Africa were more likely to go unreported due to less developed infrastructure for reporting cases. This highlights a crucial point that data can only tell the stories of measured information, which may or may not be reflective of what actually happened!* 
+
+# Problem 
+
+Write a new and single R statement (using pipes `|>`) that starts from the original `covid_case` dataframe and does the following: 
+
+- Calculates the average of `case_pop` and `death_pop` by region (as previously done)
+- Omits the `NaN` rows and `NA` rows (as previously done)
+- Calculates the deaths per reported case (i.e., `death_rate`) using $100*\frac{\text{mean\_death\_pop}}{\text{mean\_case\_pop}}$ using `mutate`
+- Retains only rows with `death_rate` exceeding 0.8.  
+
+**Question for Canvas: How many regions have death rates exceeding 0.8?** 
+
+```{r}
+covid_case |>
+  group_by(region) |> 
+  summarize(mean_case_pop = mean(case_pop, na.rm = TRUE), 
+            mean_death_pop = mean(death_pop, na.rm = TRUE)) |>
+  filter(!is.nan(mean_case_pop) & !is.na(region)) |>
+  mutate(death_rate = 100 * (mean_death_pop / mean_case_pop)) |> 
+  filter(death_rate > 0.8)
+```
+
