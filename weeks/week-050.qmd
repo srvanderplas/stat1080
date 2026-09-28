@@ -32,6 +32,7 @@ September 28-04, 2026
 
 - [Attendance Quiz 09/30](https://usu.instructure.com/courses/819584/assignments/5292942){target="_blank"}
 - [Tidyverse Programming Basics: Reshaping Data](../slides/14-tidyverse-tidyr.qmd){target="_blank"}
+- [Tidyverse Practice II - Covid](../lab/14-covid-tidyverse2.qmd) [qmd template](../lab/_14-covid-tidyverse2.qmd) [solutions](../lab/14-covid-tidyverse2-solutions.qmd)
 
 
 ## 🎉 Friday 🥳

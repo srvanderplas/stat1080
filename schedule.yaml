@@ -158,6 +158,7 @@ schedule:
     class2: |
         - [Attendance Quiz 09/30](https://usu.instructure.com/courses/819584/assignments/5292942){target="_blank"}
         - [Tidyverse Programming Basics: Reshaping Data](../slides/14-tidyverse-tidyr.qmd){target="_blank"}
+        - [Tidyverse Practice II - Covid](../lab/14-covid-tidyverse2.qmd) [qmd template](../lab/_14-covid-tidyverse2.qmd) [solutions](../lab/14-covid-tidyverse2-solutions.qmd)
     class3: |
         - [Attendance Quiz 10/02](https://usu.instructure.com/courses/819584/assignments/5292943){target="_blank"}
         - [Lab: Tidyverse Programming](https://usu.instructure.com/courses/819584/modules/items/7928133){target="_blank"} (Canvas) [html file](../lab/15-tidyverse.qmd){target="_blank"} [qmd template](../lab/_15-tidyverse.qmd){target="_blank"}
@@ -187,7 +188,6 @@ schedule:
     class3: |
         - Fall Break
     extra: |
-        - [Tidyverse Practice II - Covid](../lab/16-covid-tidyverse2.qmd) [qmd template](../lab/_16-covid-tidyverse2.qmd) [solutions](../lab/16-covid-tidyverse2-solutions.qmd)
         - [SC Ch 27 - Dates and Times](https://srvanderplas.github.io/stat-computing-r-python/part-wrangling/07-datetime.html){target="_blank"}
         - [IDS I Ch 14 - Locales](https://rafalab.dfci.harvard.edu/dsbook-part-1/wrangling/locales.html){target="_blank"}
 
