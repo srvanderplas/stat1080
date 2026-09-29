@@ -2658,5 +2658,82 @@
     "title": "1.14 tidyr - Tidy Data",
     "section": "Messy Data Examples",
     "text": "Messy Data Examples\n\nTB cases documented by the WHO in Afghanistan, Brazil, and China, between 1999 and 2000.\nThere are 4 variables: country, year, cases, and population\n\n\nTidy DataLong FormShared ColumnsMultiple TablesVariable in Multiple Columns\n\n\n\n\n\n\n\nTable 1\n\n\ncountry\nyear\ncases\npopulation\n\n\n\n\nAfghanistan\n1999\n745\n19987071\n\n\nAfghanistan\n2000\n2666\n20595360\n\n\nBrazil\n1999\n37737\n172006362\n\n\nBrazil\n2000\n80488\n174504898\n\n\nChina\n1999\n212258\n1272915272\n\n\nChina\n2000\n213766\n1280428583\n\n\n\n\n\n\n\nEach observation is a row\nEach variable is a column\nEverything is nicely arranged\nEasy to compute new variables\n\n\n\n\n\n\n\n\n\n\nTable 2\n\n\ncountry\nyear\ntype\ncount\n\n\n\n\nAfghanistan\n1999\ncases\n745\n\n\nAfghanistan\n1999\npopulation\n19987071\n\n\nAfghanistan\n2000\ncases\n2666\n\n\nAfghanistan\n2000\npopulation\n20595360\n\n\nBrazil\n1999\ncases\n37737\n\n\nBrazil\n1999\npopulation\n172006362\n\n\nBrazil\n2000\ncases\n80488\n\n\nBrazil\n2000\npopulation\n174504898\n\n\nChina\n1999\ncases\n212258\n\n\nChina\n1999\npopulation\n1272915272\n\n\nChina\n2000\ncases\n213766\n\n\nChina\n2000\npopulation\n1280428583\n\n\n\n\n\n\n\ntype and count contain info for two variables\neach observation takes up 2 rows\neasier to plot: separate panels for cases & population with a single command\n\n\nlibrary(ggplot2)\ntable2 |&gt; \n1  ggplot(aes(x = year, y = count,\n2             color = country)) +\n3  geom_line() +\n4  facet_wrap(~type,\n5             scales = \"free_y\")\n\n\n1\n\nput year on the x-axis, count on the y-axis\n\n2\n\ncompute and draw separate shapes (with different colors) for each country\n\n3\n\ndraw lines connecting sequential observations\n\n4\n\ncreate plots for each value of type\n\n5\n\neach plot should have its own y-scale (since cases are much smaller than the population)\n\n\n\n\n\n\n\n\n\n\n\n\nTable 3\n\n\ncountry\nyear\nrate\n\n\n\n\nAfghanistan\n1999\n745/19987071\n\n\nAfghanistan\n2000\n2666/20595360\n\n\nBrazil\n1999\n37737/172006362\n\n\nBrazil\n2000\n80488/174504898\n\n\nChina\n1999\n212258/1272915272\n\n\nChina\n2000\n213766/1280428583\n\n\n\n\n\n\n\nrate contains cases and population\nrate isn’t numeric! (we can’t do any math on it in this form)\neasier to record data in (maybe)?\n\n\n\n\n\n\n\n\n\nTable 4a\n\n\ncountry\n1999\n2000\n\n\n\n\nAfghanistan\n745\n2666\n\n\nBrazil\n37737\n80488\n\n\nChina\n212258\n213766\n\n\n\n\n\n\nTable 4b\n\n\ncountry\n1999\n2000\n\n\n\n\nAfghanistan\n19987071\n20595360\n\n\nBrazil\n172006362\n174504898\n\n\nChina\n1272915272\n1280428583\n\n\n\n\n\n\n\ntwo tables - one for population, one for cases\neach year’s observation in a separate column\noften found in Excel (different sheets)\nNeed to make a column for year with the population or case counts, then merge\n\n\n\n\n\n\n\n\n\nTable 5\n\n\ncountry\ncentury\nyear\nrate\n\n\n\n\nAfghanistan\n19\n99\n745/19987071\n\n\nAfghanistan\n20\n00\n2666/20595360\n\n\nBrazil\n19\n99\n37737/172006362\n\n\nBrazil\n20\n00\n80488/174504898\n\n\nChina\n19\n99\n212258/1272915272\n\n\nChina\n20\n00\n213766/1280428583\n\n\n\n\n\n\n\nExcel messes up dates\nEasier to store Month, Day, Year (maybe Century) separately\nCombine century and year, split rate as in Table 3"
+  },
+  {
+    "objectID": "slides/14-tidyverse-tidyr.html#converting-between-wide-and-long-form",
+    "href": "slides/14-tidyverse-tidyr.html#converting-between-wide-and-long-form",
+    "title": "1.14 tidyr - Tidy Data",
+    "section": "Converting Between Wide and Long Form",
+    "text": "Converting Between Wide and Long Form\n\n\n\n\n\n\n\n\n\n\nImages from https://github.com/gadenbuie/tidyexplain"
+  },
+  {
+    "objectID": "slides/14-tidyverse-tidyr.html#example-gas-prices",
+    "href": "slides/14-tidyverse-tidyr.html#example-gas-prices",
+    "title": "1.14 tidyr - Tidy Data",
+    "section": "Example: Gas Prices",
+    "text": "Example: Gas Prices\n\nlibrary(rvest) # &lt;1&gt; scrape data from the web\nlibrary(xml2) # &lt;2&gt; parse xml data\n3library(tidyr)\n4library(dplyr)\nurl &lt;- \"https://www.eia.gov/dnav/pet/hist/LeafHandler.ashx?n=pet&s=emm_epm0u_pte_nus_dpg&f=w\"\n\n5htmldoc &lt;- read_html(url)\n6gas_prices_html &lt;- html_table(htmldoc, fill = T, trim = T)[[5]][,1:11]\nhead(gas_prices_html, 10)\n\n\n3\n\nLoad tidyr for demonstration\n\n4\n\nLoad dplyr to work with data frames\n\n5\n\nRead HTML from the URL\n\n6\n\nParse the table and convert to a data frame\n\n\n\n\n# A tibble: 10 × 11\n   `Year-Month` `Week 1`   `Week 1` `Week 2` `Week 2` `Week 3` `Week 3` `Week 4`\n   &lt;chr&gt;        &lt;chr&gt;      &lt;chr&gt;    &lt;chr&gt;    &lt;chr&gt;    &lt;chr&gt;    &lt;chr&gt;    &lt;chr&gt;   \n 1 \"Year-Month\" \"End Date\" \"Value\"  \"End Da… \"Value\"  \"End Da… \"Value\"  \"End Da…\n 2 \"1994-Nov\"   \"\"         \"\"       \"\"       \"\"       \"\"       \"\"       \"11/28\" \n 3 \"1994-Dec\"   \"12/05\"    \"1.143\"  \"12/12\"  \"1.118\"  \"12/19\"  \"1.099\"  \"12/26\" \n 4 \"\"           \"\"         \"\"       \"\"       \"\"       \"\"       \"\"       \"\"      \n 5 \"1995-Jan\"   \"01/02\"    \"1.104\"  \"01/09\"  \"1.111\"  \"01/16\"  \"1.102\"  \"01/23\" \n 6 \"1995-Feb\"   \"02/06\"    \"1.103\"  \"02/13\"  \"1.099\"  \"02/20\"  \"1.093\"  \"02/27\" \n 7 \"1995-Mar\"   \"03/06\"    \"1.103\"  \"03/13\"  \"1.096\"  \"03/20\"  \"1.095\"  \"03/27\" \n 8 \"1995-Apr\"   \"04/03\"    \"1.116\"  \"04/10\"  \"1.134\"  \"04/17\"  \"1.149\"  \"04/24\" \n 9 \"1995-May\"   \"05/01\"    \"1.181\"  \"05/08\"  \"1.204\"  \"05/15\"  \"1.213\"  \"05/22\" \n10 \"1995-Jun\"   \"06/05\"    \"1.234\"  \"06/12\"  \"1.230\"  \"06/19\"  \"1.224\"  \"06/26\" \n# ℹ 3 more variables: `Week 4` &lt;chr&gt;, `Week 5` &lt;chr&gt;, `Week 5` &lt;chr&gt;"
+  },
+  {
+    "objectID": "slides/14-tidyverse-tidyr.html#example-gas-prices-1",
+    "href": "slides/14-tidyverse-tidyr.html#example-gas-prices-1",
+    "title": "1.14 tidyr - Tidy Data",
+    "section": "Example: Gas Prices",
+    "text": "Example: Gas Prices\n\n1col_names &lt;- c(\"Year.Month\",\n2               paste(\"Week\",\n                     rep(1:5, each = 2),\n                     rep(c(\"Date\", \"Value\"), times = 5), sep = \".\"))\n3library(magrittr)\n\ngas_prices_raw &lt;- gas_prices_html |&gt;\n4  set_names(col_names) |&gt;\n5  filter(Year.Month != \"Year-Month\") |&gt;\n6  filter(Year.Month != \"\")\n\nhead(gas_prices_raw)\n\n\n1\n\nThe first column name is differently structured than the others\n\n2\n\nCreate a vector of names that are patterned after the column structure – repeat 1 to 5 with each number twice, e.g. 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, and then repeat Date, Value five times, e.g. Date, Value, Date, Value, …\n\n3\n\nLoad the magrittr package, which contains some helpful functions for working with pipes and data - in this case, set_names\n\n4\n\nSet the names of the columns in the data to be col_names\n\n5\n\nRemove the first row that is really an extra header row\n\n6\n\nGet rid of any empty rows.\n\n\n\n\n# A tibble: 6 × 11\n  Year.Month Week.1.Date Week.1.Value Week.2.Date Week.2.Value Week.3.Date\n  &lt;chr&gt;      &lt;chr&gt;       &lt;chr&gt;        &lt;chr&gt;       &lt;chr&gt;        &lt;chr&gt;      \n1 1994-Nov   \"\"          \"\"           \"\"          \"\"           \"\"         \n2 1994-Dec   \"12/05\"     \"1.143\"      \"12/12\"     \"1.118\"      \"12/19\"    \n3 1995-Jan   \"01/02\"     \"1.104\"      \"01/09\"     \"1.111\"      \"01/16\"    \n4 1995-Feb   \"02/06\"     \"1.103\"      \"02/13\"     \"1.099\"      \"02/20\"    \n5 1995-Mar   \"03/06\"     \"1.103\"      \"03/13\"     \"1.096\"      \"03/20\"    \n6 1995-Apr   \"04/03\"     \"1.116\"      \"04/10\"     \"1.134\"      \"04/17\"    \n# ℹ 5 more variables: Week.3.Value &lt;chr&gt;, Week.4.Date &lt;chr&gt;,\n#   Week.4.Value &lt;chr&gt;, Week.5.Date &lt;chr&gt;, Week.5.Value &lt;chr&gt;"
+  },
+  {
+    "objectID": "slides/14-tidyverse-tidyr.html#example-gas-prices-2",
+    "href": "slides/14-tidyverse-tidyr.html#example-gas-prices-2",
+    "title": "1.14 tidyr - Tidy Data",
+    "section": "Example: Gas Prices",
+    "text": "Example: Gas Prices\n\ngas_prices_long &lt;- pivot_longer(\n  gas_prices_raw, \n1  -Year.Month,\n2  names_to = \"variable\",\n3  values_to = \"value\"\n)\n\nhead(gas_prices_long)\n\n\n1\n\nWe don’t want to change Year.Month at all (yet)\n\n2\n\nWe need to keep track of what is a date and what is a value\n\n3\n\nValue information should be kept in a value column. We’ll use it in a bit to pivot into a wider form.\n\n\n\n\n# A tibble: 6 × 3\n  Year.Month variable     value\n  &lt;chr&gt;      &lt;chr&gt;        &lt;chr&gt;\n1 1994-Nov   Week.1.Date  \"\"   \n2 1994-Nov   Week.1.Value \"\"   \n3 1994-Nov   Week.2.Date  \"\"   \n4 1994-Nov   Week.2.Value \"\"   \n5 1994-Nov   Week.3.Date  \"\"   \n6 1994-Nov   Week.3.Value \"\""
+  },
+  {
+    "objectID": "slides/14-tidyverse-tidyr.html#sketch",
+    "href": "slides/14-tidyverse-tidyr.html#sketch",
+    "title": "1.14 tidyr - Tidy Data",
+    "section": "Sketch",
+    "text": "Sketch"
+  },
+  {
+    "objectID": "slides/14-tidyverse-tidyr.html#sketch-1",
+    "href": "slides/14-tidyverse-tidyr.html#sketch-1",
+    "title": "1.14 tidyr - Tidy Data",
+    "section": "Sketch",
+    "text": "Sketch"
+  },
+  {
+    "objectID": "slides/14-tidyverse-tidyr.html#sketch-2",
+    "href": "slides/14-tidyverse-tidyr.html#sketch-2",
+    "title": "1.14 tidyr - Tidy Data",
+    "section": "Sketch",
+    "text": "Sketch"
+  },
+  {
+    "objectID": "slides/14-tidyverse-tidyr.html#example-gas-prices-3",
+    "href": "slides/14-tidyverse-tidyr.html#example-gas-prices-3",
+    "title": "1.14 tidyr - Tidy Data",
+    "section": "Example: Gas Prices",
+    "text": "Example: Gas Prices\n\n\n# A tibble: 6 × 4\n  Year.Month  week variable value\n  &lt;chr&gt;      &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;\n1 1994-Nov       4 Date     11/28\n2 1994-Nov       4 Value    1.175\n3 1994-Dec       1 Date     12/05\n4 1994-Dec       1 Value    1.143\n5 1994-Dec       2 Date     12/12\n6 1994-Dec       2 Value    1.118\n\n\n\nRemove empty rows from gas_prices_long\nSeparate variable into “week”, week number, and “variable” (either “Date” or “Value”)\nWe don’t need a column that only has value “Week”, so get rid of it.\nConvert week to numeric"
+  },
+  {
+    "objectID": "slides/14-tidyverse-tidyr.html#example-gas-prices-4",
+    "href": "slides/14-tidyverse-tidyr.html#example-gas-prices-4",
+    "title": "1.14 tidyr - Tidy Data",
+    "section": "Example: Gas Prices",
+    "text": "Example: Gas Prices\n\n\n# A tibble: 6 × 4\n  Year.Month  week Date  Value\n  &lt;chr&gt;      &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;\n1 1994-Nov       4 11/28 1.175\n2 1994-Dec       1 12/05 1.143\n3 1994-Dec       2 12/12 1.118\n4 1994-Dec       3 12/19 1.099\n5 1994-Dec       4 12/26 1.088\n6 1995-Jan       1 01/02 1.104\n\n\n\nColumns to keep\nWhich column should be used to make new column labels?\nWhich column should be used to fill in the values?"
+  },
+  {
+    "objectID": "slides/14-tidyverse-tidyr.html#example-gas-prices-5",
+    "href": "slides/14-tidyverse-tidyr.html#example-gas-prices-5",
+    "title": "1.14 tidyr - Tidy Data",
+    "section": "Example: Gas Prices",
+    "text": "Example: Gas Prices\n\n\n# A tibble: 6 × 2\n  Date       Value\n  &lt;chr&gt;      &lt;chr&gt;\n1 1994/11/28 1.175\n2 1994/12/05 1.143\n3 1994/12/12 1.118\n4 1994/12/19 1.099\n5 1994/12/26 1.088\n6 1995/01/02 1.104\n\n\n\nRemove any value rows with no characters\nSplit year.month into two columns\ncreate a date column with year, month, day\nRemove redundant information"
+  },
+  {
+    "objectID": "slides/14-tidyverse-tidyr.html#example-gas-prices-6",
+    "href": "slides/14-tidyverse-tidyr.html#example-gas-prices-6",
+    "title": "1.14 tidyr - Tidy Data",
+    "section": "Example: Gas Prices",
+    "text": "Example: Gas Prices\n\n\n# A tibble: 6 × 2\n  Date       Price.per.gallon\n  &lt;date&gt;                &lt;dbl&gt;\n1 1994-11-28             1.18\n2 1994-12-05             1.14\n3 1994-12-12             1.12\n4 1994-12-19             1.10\n5 1994-12-26             1.09\n6 1995-01-02             1.10"
   }
 ]
