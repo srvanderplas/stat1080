@@ -2713,27 +2713,34 @@
     "href": "slides/14-tidyverse-tidyr.html#example-gas-prices-3",
     "title": "1.14 tidyr - Tidy Data",
     "section": "Example: Gas Prices",
-    "text": "Example: Gas Prices\n\n\n# A tibble: 6 × 4\n  Year.Month  week variable value\n  &lt;chr&gt;      &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;\n1 1994-Nov       4 Date     11/28\n2 1994-Nov       4 Value    1.175\n3 1994-Dec       1 Date     12/05\n4 1994-Dec       1 Value    1.143\n5 1994-Dec       2 Date     12/12\n6 1994-Dec       2 Value    1.118\n\n\n\nRemove empty rows from gas_prices_long\nSeparate variable into “week”, week number, and “variable” (either “Date” or “Value”)\nWe don’t need a column that only has value “Week”, so get rid of it.\nConvert week to numeric"
+    "text": "Example: Gas Prices\n\ngas_prices_long &lt;- gas_prices_long |&gt;\n1  filter(value != \"\")\n\ngas_prices_sep &lt;- gas_prices_long |&gt;\n2  separate(variable, into = c(\"extra\", \"week\", \"variable\"), sep = \"\\\\.\") |&gt;\n3  select(-extra) |&gt;\n4  mutate(week = as.numeric(week))\n\nhead(gas_prices_sep)\n\n\n1\n\nRemove empty rows from gas_prices_long\n\n2\n\nSeparate variable into “week”, week number, and “variable” (either “Date” or “Value”)\n\n3\n\nWe don’t need a column that only has value “Week”, so get rid of it.\n\n4\n\nConvert week to numeric\n\n\n\n\n# A tibble: 6 × 4\n  Year.Month  week variable value\n  &lt;chr&gt;      &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;\n1 1994-Nov       4 Date     11/28\n2 1994-Nov       4 Value    1.175\n3 1994-Dec       1 Date     12/05\n4 1994-Dec       1 Value    1.143\n5 1994-Dec       2 Date     12/12\n6 1994-Dec       2 Value    1.118"
   },
   {
     "objectID": "slides/14-tidyverse-tidyr.html#example-gas-prices-4",
     "href": "slides/14-tidyverse-tidyr.html#example-gas-prices-4",
     "title": "1.14 tidyr - Tidy Data",
     "section": "Example: Gas Prices",
-    "text": "Example: Gas Prices\n\n\n# A tibble: 6 × 4\n  Year.Month  week Date  Value\n  &lt;chr&gt;      &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;\n1 1994-Nov       4 11/28 1.175\n2 1994-Dec       1 12/05 1.143\n3 1994-Dec       2 12/12 1.118\n4 1994-Dec       3 12/19 1.099\n5 1994-Dec       4 12/26 1.088\n6 1995-Jan       1 01/02 1.104\n\n\n\nColumns to keep\nWhich column should be used to make new column labels?\nWhich column should be used to fill in the values?"
+    "text": "Example: Gas Prices\n\ngas_prices_wide &lt;- pivot_wider(\n  gas_prices_sep, \n1  id_cols = c(\"Year.Month\", \"week\"),\n2  names_from = variable,\n3  values_from = value)\n\nhead(gas_prices_wide)\n\n\n1\n\nColumns to keep\n\n2\n\nWhich column should be used to make new column labels?\n\n3\n\nWhich column should be used to fill in the values?\n\n\n\n\n# A tibble: 6 × 4\n  Year.Month  week Date  Value\n  &lt;chr&gt;      &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;\n1 1994-Nov       4 11/28 1.175\n2 1994-Dec       1 12/05 1.143\n3 1994-Dec       2 12/12 1.118\n4 1994-Dec       3 12/19 1.099\n5 1994-Dec       4 12/26 1.088\n6 1995-Jan       1 01/02 1.104"
   },
   {
     "objectID": "slides/14-tidyverse-tidyr.html#example-gas-prices-5",
     "href": "slides/14-tidyverse-tidyr.html#example-gas-prices-5",
     "title": "1.14 tidyr - Tidy Data",
     "section": "Example: Gas Prices",
-    "text": "Example: Gas Prices\n\n\n# A tibble: 6 × 2\n  Date       Value\n  &lt;chr&gt;      &lt;chr&gt;\n1 1994/11/28 1.175\n2 1994/12/05 1.143\n3 1994/12/12 1.118\n4 1994/12/19 1.099\n5 1994/12/26 1.088\n6 1995/01/02 1.104\n\n\n\nRemove any value rows with no characters\nSplit year.month into two columns\ncreate a date column with year, month, day\nRemove redundant information"
+    "text": "Example: Gas Prices\n\ngas_prices_date &lt;- gas_prices_wide |&gt;\n1  filter(nchar(Value) &gt; 0) |&gt;\n2  separate(Year.Month, into = c(\"Year\", \"Month\"), sep = \"-\") |&gt;\n3  mutate(Date = paste(Year, Date, sep = \"/\")) |&gt;\n4  select(-c(1:3))\n  \nhead(gas_prices_date)\n\n\n1\n\nRemove any value rows with no characters\n\n2\n\nSplit year.month into two columns\n\n3\n\ncreate a date column with year, month, day\n\n4\n\nRemove redundant information\n\n\n\n\n# A tibble: 6 × 2\n  Date       Value\n  &lt;chr&gt;      &lt;chr&gt;\n1 1994/11/28 1.175\n2 1994/12/05 1.143\n3 1994/12/12 1.118\n4 1994/12/19 1.099\n5 1994/12/26 1.088\n6 1995/01/02 1.104"
   },
   {
     "objectID": "slides/14-tidyverse-tidyr.html#example-gas-prices-6",
     "href": "slides/14-tidyverse-tidyr.html#example-gas-prices-6",
     "title": "1.14 tidyr - Tidy Data",
     "section": "Example: Gas Prices",
-    "text": "Example: Gas Prices\n\n\n# A tibble: 6 × 2\n  Date       Price.per.gallon\n  &lt;date&gt;                &lt;dbl&gt;\n1 1994-11-28             1.18\n2 1994-12-05             1.14\n3 1994-12-12             1.12\n4 1994-12-19             1.10\n5 1994-12-26             1.09\n6 1995-01-02             1.10"
+    "text": "Example: Gas Prices\n\nlibrary(lubridate) # Dates and Times -- we will see this next week\nlibrary(ggplot2)\n\ngas_prices &lt;- gas_prices_date |&gt;\n  mutate(Date = ymd(Date),\n         Price.per.gallon = as.numeric(Value)) |&gt;\n  select(-Value) \n\nhead(gas_prices)\n\n# A tibble: 6 × 2\n  Date       Price.per.gallon\n  &lt;date&gt;                &lt;dbl&gt;\n1 1994-11-28             1.18\n2 1994-12-05             1.14\n3 1994-12-12             1.12\n4 1994-12-19             1.10\n5 1994-12-26             1.09\n6 1995-01-02             1.10"
+  },
+  {
+    "objectID": "slides/14-tidyverse-tidyr.html#example-gas-prices-7",
+    "href": "slides/14-tidyverse-tidyr.html#example-gas-prices-7",
+    "title": "1.14 tidyr - Tidy Data",
+    "section": "Example: Gas Prices",
+    "text": "Example: Gas Prices\nAnd at the end, we get a nice reward!\n\nggplot(gas_prices, aes(x = Date, y = Price.per.gallon)) + geom_line()"
   }
 ]

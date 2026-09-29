@@ -217,12 +217,12 @@ head(gas_prices_html, 10)
 
 ## Sketch
 
-![](images/gas-price-steps-2.png){fig-alt="Step 3: separate the week and variable information into different columns, discarding the week label. Step 4: pivot wider, so that date and value information are each in a single column. "}
+![](images/gas-price-steps-2.png){fig-alt="Step 3: separate the week and variable information into different columns, discarding the week label. Step 4: pivot wider, so that date and value information are each in a single column." width="80%"}
 
 
 ## Sketch
 
-![](images/gas-price-steps-3.png){fig-alt="Step 5: remove rows with no values and create a yyyy-mm-dd format date. Step 6: Convert date and value into appropriate types (date, numeric). "}
+![](images/gas-price-steps-3.png){fig-alt="Step 5: remove rows with no values and create a yyyy-mm-dd format date. Step 6: Convert date and value into appropriate types (date, numeric)." width="80%"}
 
 
 ## Example: Gas Prices
@@ -270,6 +270,8 @@ head(gas_prices_long)
 ## Example: Gas Prices
 
 ```{r}
+#| echo: true
+#| 
 gas_prices_long <- gas_prices_long |>
   filter(value != "") # <1>
 
@@ -289,6 +291,8 @@ head(gas_prices_sep)
 ## Example: Gas Prices
 
 ```{r}
+#| echo: true
+#| 
 gas_prices_wide <- pivot_wider(
   gas_prices_sep, 
   id_cols = c("Year.Month", "week"), # <1> 
@@ -305,6 +309,8 @@ head(gas_prices_wide)
 ## Example: Gas Prices
 
 ```{r}
+#| echo: true
+#| 
 gas_prices_date <- gas_prices_wide |>
   filter(nchar(Value) > 0) |> # <1>
   separate(Year.Month, into = c("Year", "Month"), sep = "-") |> # <2>
@@ -321,6 +327,8 @@ head(gas_prices_date)
 
 ## Example: Gas Prices
 ```{r}
+#| echo: true
+#| 
 library(lubridate) # Dates and Times -- we will see this next week
 library(ggplot2)
 
@@ -330,7 +338,13 @@ gas_prices <- gas_prices_date |>
   select(-Value) 
 
 head(gas_prices)
+```
 
+## Example: Gas Prices
+
+And at the end, we get a nice reward!
+```{r}
+#| echo: true
 ggplot(gas_prices, aes(x = Date, y = Price.per.gallon)) + geom_line()
 ```
 

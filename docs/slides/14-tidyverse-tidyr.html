@@ -399,34 +399,34 @@
 <li>easier to <strong>plot</strong>: separate panels for cases &amp; population with a single command</li>
 </ul>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-4"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-4-1"><a href="#annotated-cell-4-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="annotated-cell-4-2"><a href="#annotated-cell-4-2"></a>table2 <span class="sc">|&gt;</span> </span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="1">1</button><span id="annotated-cell-4-3" class="code-annotation-target"><a href="#annotated-cell-4-3"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> count,</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="2">2</button><span id="annotated-cell-4-4" class="code-annotation-target"><a href="#annotated-cell-4-4"></a>             <span class="at">color =</span> country)) <span class="sc">+</span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="3">3</button><span id="annotated-cell-4-5" class="code-annotation-target"><a href="#annotated-cell-4-5"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="4">4</button><span id="annotated-cell-4-6" class="code-annotation-target"><a href="#annotated-cell-4-6"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>type,</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="5">5</button><span id="annotated-cell-4-7" class="code-annotation-target"><a href="#annotated-cell-4-7"></a>             <span class="at">scales =</span> <span class="st">"free_y"</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-9"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-9-1"><a href="#annotated-cell-9-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="annotated-cell-9-2"><a href="#annotated-cell-9-2"></a>table2 <span class="sc">|&gt;</span> </span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-9" data-target-annotation="1">1</button><span id="annotated-cell-9-3" class="code-annotation-target"><a href="#annotated-cell-9-3"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> count,</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-9" data-target-annotation="2">2</button><span id="annotated-cell-9-4" class="code-annotation-target"><a href="#annotated-cell-9-4"></a>             <span class="at">color =</span> country)) <span class="sc">+</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-9" data-target-annotation="3">3</button><span id="annotated-cell-9-5" class="code-annotation-target"><a href="#annotated-cell-9-5"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-9" data-target-annotation="4">4</button><span id="annotated-cell-9-6" class="code-annotation-target"><a href="#annotated-cell-9-6"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>type,</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-9" data-target-annotation="5">5</button><span id="annotated-cell-9-7" class="code-annotation-target"><a href="#annotated-cell-9-7"></a>             <span class="at">scales =</span> <span class="st">"free_y"</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-annotation">
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-4" data-target-annotation="1">1</dt>
+<dt data-target-cell="annotated-cell-9" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-4" data-code-lines="3" data-code-annotation="1">put year on the x-axis, count on the y-axis</span>
+<span data-code-cell="annotated-cell-9" data-code-lines="3" data-code-annotation="1">put year on the x-axis, count on the y-axis</span>
 </dd>
-<dt data-target-cell="annotated-cell-4" data-target-annotation="2">2</dt>
+<dt data-target-cell="annotated-cell-9" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-4" data-code-lines="4" data-code-annotation="2">compute and draw separate shapes (with different colors) for each country</span>
+<span data-code-cell="annotated-cell-9" data-code-lines="4" data-code-annotation="2">compute and draw separate shapes (with different colors) for each country</span>
 </dd>
-<dt data-target-cell="annotated-cell-4" data-target-annotation="3">3</dt>
+<dt data-target-cell="annotated-cell-9" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-cell="annotated-cell-4" data-code-lines="5" data-code-annotation="3">draw lines connecting sequential observations</span>
+<span data-code-cell="annotated-cell-9" data-code-lines="5" data-code-annotation="3">draw lines connecting sequential observations</span>
 </dd>
-<dt data-target-cell="annotated-cell-4" data-target-annotation="4">4</dt>
+<dt data-target-cell="annotated-cell-9" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-cell="annotated-cell-4" data-code-lines="6" data-code-annotation="4">create plots for each value of type</span>
+<span data-code-cell="annotated-cell-9" data-code-lines="6" data-code-annotation="4">create plots for each value of type</span>
 </dd>
-<dt data-target-cell="annotated-cell-4" data-target-annotation="5">5</dt>
+<dt data-target-cell="annotated-cell-9" data-target-annotation="5">5</dt>
 <dd>
-<span data-code-cell="annotated-cell-4" data-code-lines="7" data-code-annotation="5">each plot should have its own y-scale (since cases are much smaller than the population)</span>
+<span data-code-cell="annotated-cell-9" data-code-lines="7" data-code-annotation="5">each plot should have its own y-scale (since cases are much smaller than the population)</span>
 </dd>
 </dl>
 </div>
@@ -699,11 +699,11 @@
 </section>
 <section id="sketch-1" class="slide level2">
 <h2>Sketch</h2>
-<p><a href="images/gas-price-steps-2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7"><img data-src="images/gas-price-steps-2.png" alt="Step 3: separate the week and variable information into different columns, discarding the week label. Step 4: pivot wider, so that date and value information are each in a single column. "></a></p>
+<p><a href="images/gas-price-steps-2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7"><img data-src="images/gas-price-steps-2.png" style="width:80.0%" alt="Step 3: separate the week and variable information into different columns, discarding the week label. Step 4: pivot wider, so that date and value information are each in a single column."></a></p>
 </section>
 <section id="sketch-2" class="slide level2">
 <h2>Sketch</h2>
-<p><a href="images/gas-price-steps-3.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8"><img data-src="images/gas-price-steps-3.png" alt="Step 5: remove rows with no values and create a yyyy-mm-dd format date. Step 6: Convert date and value into appropriate types (date, numeric). "></a></p>
+<p><a href="images/gas-price-steps-3.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8"><img data-src="images/gas-price-steps-3.png" style="width:80.0%" alt="Step 5: remove rows with no values and create a yyyy-mm-dd format date. Step 6: Convert date and value into appropriate types (date, numeric)."></a></p>
 </section>
 <section id="example-gas-prices-1" class="slide level2">
 <h2>Example: Gas Prices</h2>
@@ -806,6 +806,35 @@
 <section id="example-gas-prices-3" class="slide level2">
 <h2>Example: Gas Prices</h2>
 <div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-4"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-4-1"><a href="#annotated-cell-4-1"></a>gas_prices_long <span class="ot">&lt;-</span> gas_prices_long <span class="sc">|&gt;</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="1">1</button><span id="annotated-cell-4-2" class="code-annotation-target"><a href="#annotated-cell-4-2"></a>  <span class="fu">filter</span>(value <span class="sc">!=</span> <span class="st">""</span>)</span>
+<span id="annotated-cell-4-3"><a href="#annotated-cell-4-3"></a></span>
+<span id="annotated-cell-4-4"><a href="#annotated-cell-4-4"></a>gas_prices_sep <span class="ot">&lt;-</span> gas_prices_long <span class="sc">|&gt;</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="2">2</button><span id="annotated-cell-4-5" class="code-annotation-target"><a href="#annotated-cell-4-5"></a>  <span class="fu">separate</span>(variable, <span class="at">into =</span> <span class="fu">c</span>(<span class="st">"extra"</span>, <span class="st">"week"</span>, <span class="st">"variable"</span>), <span class="at">sep =</span> <span class="st">"</span><span class="sc">\\</span><span class="st">."</span>) <span class="sc">|&gt;</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="3">3</button><span id="annotated-cell-4-6" class="code-annotation-target"><a href="#annotated-cell-4-6"></a>  <span class="fu">select</span>(<span class="sc">-</span>extra) <span class="sc">|&gt;</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="4">4</button><span id="annotated-cell-4-7" class="code-annotation-target"><a href="#annotated-cell-4-7"></a>  <span class="fu">mutate</span>(<span class="at">week =</span> <span class="fu">as.numeric</span>(week))</span>
+<span id="annotated-cell-4-8"><a href="#annotated-cell-4-8"></a></span>
+<span id="annotated-cell-4-9"><a href="#annotated-cell-4-9"></a><span class="fu">head</span>(gas_prices_sep)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-annotation">
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-4" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-4" data-code-lines="2" data-code-annotation="1">Remove empty rows from <code>gas_prices_long</code></span>
+</dd>
+<dt data-target-cell="annotated-cell-4" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-4" data-code-lines="5" data-code-annotation="2">Separate variable into “week”, week number, and “variable” (either “Date” or “Value”)</span>
+</dd>
+<dt data-target-cell="annotated-cell-4" data-target-annotation="3">3</dt>
+<dd>
+<span data-code-cell="annotated-cell-4" data-code-lines="6" data-code-annotation="3">We don’t need a column that only has value “Week”, so get rid of it.</span>
+</dd>
+<dt data-target-cell="annotated-cell-4" data-target-annotation="4">4</dt>
+<dd>
+<span data-code-cell="annotated-cell-4" data-code-lines="7" data-code-annotation="4">Convert week to numeric</span>
+</dd>
+</dl>
+</div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 4
   Year.Month  week variable value
@@ -818,16 +847,33 @@
 6 1994-Dec       2 Value    1.118</code></pre>
 </div>
 </div>
-<ol type="1">
-<li>Remove empty rows from <code>gas_prices_long</code></li>
-<li>Separate variable into “week”, week number, and “variable” (either “Date” or “Value”)</li>
-<li>We don’t need a column that only has value “Week”, so get rid of it.</li>
-<li>Convert week to numeric</li>
-</ol>
 </section>
 <section id="example-gas-prices-4" class="slide level2">
 <h2>Example: Gas Prices</h2>
 <div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-5"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-5-1"><a href="#annotated-cell-5-1"></a>gas_prices_wide <span class="ot">&lt;-</span> <span class="fu">pivot_wider</span>(</span>
+<span id="annotated-cell-5-2"><a href="#annotated-cell-5-2"></a>  gas_prices_sep, </span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-5" data-target-annotation="1">1</button><span id="annotated-cell-5-3" class="code-annotation-target"><a href="#annotated-cell-5-3"></a>  <span class="at">id_cols =</span> <span class="fu">c</span>(<span class="st">"Year.Month"</span>, <span class="st">"week"</span>),</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-5" data-target-annotation="2">2</button><span id="annotated-cell-5-4" class="code-annotation-target"><a href="#annotated-cell-5-4"></a>  <span class="at">names_from =</span> variable,</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-5" data-target-annotation="3">3</button><span id="annotated-cell-5-5" class="code-annotation-target"><a href="#annotated-cell-5-5"></a>  <span class="at">values_from =</span> value)</span>
+<span id="annotated-cell-5-6"><a href="#annotated-cell-5-6"></a></span>
+<span id="annotated-cell-5-7"><a href="#annotated-cell-5-7"></a><span class="fu">head</span>(gas_prices_wide)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-annotation">
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-5" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-5" data-code-lines="3" data-code-annotation="1">Columns to keep</span>
+</dd>
+<dt data-target-cell="annotated-cell-5" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-5" data-code-lines="4" data-code-annotation="2">Which column should be used to make new column labels?</span>
+</dd>
+<dt data-target-cell="annotated-cell-5" data-target-annotation="3">3</dt>
+<dd>
+<span data-code-cell="annotated-cell-5" data-code-lines="5" data-code-annotation="3">Which column should be used to fill in the values?</span>
+</dd>
+</dl>
+</div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 4
   Year.Month  week Date  Value
@@ -840,15 +886,37 @@
 6 1995-Jan       1 01/02 1.104</code></pre>
 </div>
 </div>
-<ol type="1">
-<li>Columns to keep</li>
-<li>Which column should be used to make new column labels?</li>
-<li>Which column should be used to fill in the values?</li>
-</ol>
 </section>
 <section id="example-gas-prices-5" class="slide level2">
 <h2>Example: Gas Prices</h2>
 <div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-6"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-6-1"><a href="#annotated-cell-6-1"></a>gas_prices_date <span class="ot">&lt;-</span> gas_prices_wide <span class="sc">|&gt;</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="1">1</button><span id="annotated-cell-6-2" class="code-annotation-target"><a href="#annotated-cell-6-2"></a>  <span class="fu">filter</span>(<span class="fu">nchar</span>(Value) <span class="sc">&gt;</span> <span class="dv">0</span>) <span class="sc">|&gt;</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="2">2</button><span id="annotated-cell-6-3" class="code-annotation-target"><a href="#annotated-cell-6-3"></a>  <span class="fu">separate</span>(Year.Month, <span class="at">into =</span> <span class="fu">c</span>(<span class="st">"Year"</span>, <span class="st">"Month"</span>), <span class="at">sep =</span> <span class="st">"-"</span>) <span class="sc">|&gt;</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="3">3</button><span id="annotated-cell-6-4" class="code-annotation-target"><a href="#annotated-cell-6-4"></a>  <span class="fu">mutate</span>(<span class="at">Date =</span> <span class="fu">paste</span>(Year, Date, <span class="at">sep =</span> <span class="st">"/"</span>)) <span class="sc">|&gt;</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="4">4</button><span id="annotated-cell-6-5" class="code-annotation-target"><a href="#annotated-cell-6-5"></a>  <span class="fu">select</span>(<span class="sc">-</span><span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>))</span>
+<span id="annotated-cell-6-6"><a href="#annotated-cell-6-6"></a>  </span>
+<span id="annotated-cell-6-7"><a href="#annotated-cell-6-7"></a><span class="fu">head</span>(gas_prices_date)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-annotation">
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-6" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-6" data-code-lines="2" data-code-annotation="1">Remove any value rows with no characters</span>
+</dd>
+<dt data-target-cell="annotated-cell-6" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-6" data-code-lines="3" data-code-annotation="2">Split year.month into two columns</span>
+</dd>
+<dt data-target-cell="annotated-cell-6" data-target-annotation="3">3</dt>
+<dd>
+<span data-code-cell="annotated-cell-6" data-code-lines="4" data-code-annotation="3">create a date column with year, month, day</span>
+</dd>
+<dt data-target-cell="annotated-cell-6" data-target-annotation="4">4</dt>
+<dd>
+<span data-code-cell="annotated-cell-6" data-code-lines="5" data-code-annotation="4">Remove redundant information</span>
+</dd>
+</dl>
+</div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 2
   Date       Value
@@ -861,16 +929,19 @@
 6 1995/01/02 1.104</code></pre>
 </div>
 </div>
-<ol type="1">
-<li>Remove any value rows with no characters</li>
-<li>Split year.month into two columns</li>
-<li>create a date column with year, month, day</li>
-<li>Remove redundant information</li>
-</ol>
 </section>
 <section id="example-gas-prices-6" class="slide level2">
 <h2>Example: Gas Prices</h2>
 <div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="fu">library</span>(lubridate) <span class="co"># Dates and Times -- we will see this next week</span></span>
+<span id="cb7-2"><a></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb7-3"><a></a></span>
+<span id="cb7-4"><a></a>gas_prices <span class="ot">&lt;-</span> gas_prices_date <span class="sc">|&gt;</span></span>
+<span id="cb7-5"><a></a>  <span class="fu">mutate</span>(<span class="at">Date =</span> <span class="fu">ymd</span>(Date),</span>
+<span id="cb7-6"><a></a>         <span class="at">Price.per.gallon =</span> <span class="fu">as.numeric</span>(Value)) <span class="sc">|&gt;</span></span>
+<span id="cb7-7"><a></a>  <span class="fu">select</span>(<span class="sc">-</span>Value) </span>
+<span id="cb7-8"><a></a></span>
+<span id="cb7-9"><a></a><span class="fu">head</span>(gas_prices)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 2
   Date       Price.per.gallon
@@ -882,10 +953,17 @@
 5 1994-12-26             1.09
 6 1995-01-02             1.10</code></pre>
 </div>
+</div>
+</section>
+<section id="example-gas-prices-7" class="slide level2">
+<h2>Example: Gas Prices</h2>
+<p>And at the end, we get a nice reward!</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="fu">ggplot</span>(gas_prices, <span class="fu">aes</span>(<span class="at">x =</span> Date, <span class="at">y =</span> Price.per.gallon)) <span class="sc">+</span> <span class="fu">geom_line</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure>
-<p><a href="14-tidyverse-tidyr_files/figure-revealjs/unnamed-chunk-8-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-9"><img data-src="14-tidyverse-tidyr_files/figure-revealjs/unnamed-chunk-8-1.png" width="960"></a></p>
+<p><a href="14-tidyverse-tidyr_files/figure-revealjs/unnamed-chunk-9-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-9"><img data-src="14-tidyverse-tidyr_files/figure-revealjs/unnamed-chunk-9-1.png" width="960"></a></p>
 </figure>
 </div>
 </div>
