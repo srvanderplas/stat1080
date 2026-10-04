@@ -6,10 +6,13 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.9.38">
 
-  <title>STAT 1080 - Fall 2026 – dates-times</title>
+  <title>STAT 1080 - Fall 2026 – 1.16 lubridate - Tidy Data</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -132,19 +135,114 @@
       margin-right: 0;
     }
   </style>
-<meta property="og:title" content="STAT 1080 - Fall 2026">
+<meta property="og:title" content="1.16 lubridate - Tidy Data – STAT 1080 - Fall 2026">
 <meta property="og:site_name" content="STAT 1080 - Fall 2026">
 </head>
 <body class="quarto-light">
   <div class="reveal">
     <div class="slides">
 
+<section id="title-slide" data-background-image="images/lubridate.png" data-background-image-alt="A hexagonal sticker with <code>lubridate</code> as the text, showing a calendar icon on a green background." data-background-position="50% 100%" data-background-repeat="no-repeat" data-background-size="20%" class="quarto-title-block center">
+  <h1 class="title">1.16 <code>lubridate</code> - Tidy Data</h1>
 
-<section class="slide level2">
-
-
+<div class="quarto-title-authors">
+</div>
 
 </section>
+<section>
+<section id="why-is-time-so-hard" class="title-slide slide level1 center">
+<h1>Why is Time So Hard?</h1>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 36.4%;justify-content: center;">
+<p><a href="images/doctor-who-timey-wimey.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img data-src="images/doctor-who-timey-wimey.gif" alt="People assume that time is a strict progression of cause to effect, but actually, from a non-linear, non-subjective viewpoint it's more like a big ball of wibbly-wobbly timey-wimey stuff. Shows a gif of David Tennant (the 10th doctor who) making a ball gesture with his hands."></a></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 63.6%;justify-content: center;">
+<p><a href="images/tardis.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img data-src="images/tardis.gif" alt="A spiralling set of roman numerals with a tardis flying out of the middle, and then flying into another similar spiral next to the original."></a></p>
+</div>
+</div>
+</div>
+</section>
+<section id="physical-phenomena" class="slide level2">
+<h2>Physical phenomena</h2>
+<p><a href="images/world.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img data-src="images/world.gif" alt="A gif of a spinning earth"></a></p>
+<ul>
+<li>Rotation of the Earth</li>
+<li>Earth’s orbit around the sun</li>
+<li>Lunar orbit around Earth (for some calendars)</li>
+</ul>
+</section>
+<section id="geopolitical-phenomena" class="slide level2">
+<h2>Geopolitical phenomena</h2>
+<ul>
+<li>Months, time zones, leap years, and daylight savings time</li>
+<li>The Tzolk’in Mayan calendar had 260 days!</li>
+<li><a href="https://en.wikipedia.org/wiki/French_Republican_calendar">Alternative calendar schemes</a> have some <a href="https://calendars.fandom.com/wiki/Symmetry454_Calendar">interesting properties</a></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="images/house-sunshine-protection-act.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="Link to archived article"><img data-src="images/house-sunshine-protection-act.png" style="width:50.0%" alt="A screenshot of a fox news headline - Time enough at last: What's next after the House passes bill to do away with daylight savings time? The article can be found at https://web.archive.org/web/2/https://www.foxnews.com/politics/time-enough-last-whats-next-after-house-passes-bill-do-away-daylight-saving-time"></a></p>
+<figcaption><a href="https://web.archive.org/web/2/https://www.foxnews.com/politics/time-enough-last-whats-next-after-house-passes-bill-do-away-daylight-saving-time">Link to archived article</a></figcaption>
+</figure>
+</div>
+</section>
+<section id="computer-specifications" class="slide level2">
+<h2>Computer Specifications</h2>
+<div class="columns">
+<div class="column" style="width:70%;">
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Data Types</strong></p>
+</div>
+<div class="callout-content">
+<ol type="1">
+<li>A date (<code>&lt;date&gt;</code>)</li>
+<li>A time (<code>&lt;time&gt;</code>)</li>
+<li>A date-time (<code>&lt;dttm&gt;</code>) a date plus time.</li>
+<li>A date-time with a time zone/locale (<code>&lt;POSIXct&gt;</code>)</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="fragment">
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Can be built from</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li>Strings<br>
+<span class="small"><code>"09/10/2010"</code>, <code>"2026-08-07"</code>, <code>"01.01.1970 00:00:00"</code></span></li>
+<li>Existing date/time objects<br>
+<span class="small"><code>ymd("2026-10-05") + hours(12) + minutes(30)</code></span></li>
+<li>Date-time components (year = 1990, month = 12, day = 4)</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:30%;">
+<p><a href="images/good-times-only-murders.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img data-src="images/good-times-only-murders.gif" style="width:100.0%" alt="A gif from Only Murders in the Building featuring a man in a track suit saying 'Good Times'."></a></p>
+</div></div>
+</section>
+<section id="lubridate" class="slide level2">
+<h2>Lubridate</h2>
+<p><a href="images/lubridate-cheatsheet-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6"><img data-src="images/lubridate-cheatsheet-1.png" style="width:85.0%" alt="The lubridate cheat sheet from posit, with certain sections highlighted showcasing the importance of functions such as ymd_hms, ymd, mdy, now, and today."></a></p>
+</section>
+<section id="lubridate-1" class="slide level2">
+<h2>Lubridate</h2>
+<p><a href="images/lubridate-cheatsheet-2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7"><img data-src="images/lubridate-cheatsheet-2.png" style="width:85.0%" alt="The lubridate cheat sheet from posit, with certain sections highlighted showcasing the importance of periods (events that happen at specific clock times) and durations (physical processes, modeled as seconds)."></a></p>
+
+
+</section></section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <p><img src="deps/usu-sq.png" alt="Utah State University Logo" class="slide-logo"></p>
@@ -683,6 +781,38 @@
         }
       });
       </script>
+    <script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+    (function() {
+      let previousOnload = window.onload;
+      window.onload = () => {
+        if (previousOnload) {
+          previousOnload();
+        }
+        lightboxQuarto.on('slide_before_load', (data) => {
+          const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+          const href = trigger.getAttribute('href');
+          if (href !== null) {
+            const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+            if (imgEl !== null) {
+              const srcAttr = imgEl.getAttribute("src");
+              if (srcAttr && srcAttr.startsWith("data:")) {
+                slideConfig.href = srcAttr;
+              }
+            }
+          } 
+        });
+      
+        lightboxQuarto.on('slide_after_load', (data) => {
+          const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(slideNode);
+          }
+        });
+      
+      };
+      
+    })();
+              </script>
     
 
 </body></html>

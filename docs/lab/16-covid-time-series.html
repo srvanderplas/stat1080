@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>week-060 – STAT 1080 - Fall 2026</title>
+<title>1.10.a - Class Activity – STAT 1080 - Fall 2026</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -22,6 +22,41 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -76,7 +111,7 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<meta property="og:title" content="STAT 1080 - Fall 2026">
+<meta property="og:title" content="1.10.a - Class Activity – STAT 1080 - Fall 2026">
 <meta property="og:description" content="Homepage for STAT 1080 - Data and the Stories They Tell.">
 <meta property="og:site_name" content="STAT 1080 - Fall 2026">
 </head>
@@ -370,74 +405,137 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#week-6-dates-times-and-distributions" id="toc-week-6-dates-times-and-distributions" class="nav-link active" data-scroll-target="#week-6-dates-times-and-distributions">Week 6: Dates, Times, and Distributions</a>
-  <ul class="collapse">
-  <li><a href="#reading" id="toc-reading" class="nav-link" data-scroll-target="#reading">📖 Reading</a></li>
-  <li><a href="#prepare-for-class" id="toc-prepare-for-class" class="nav-link" data-scroll-target="#prepare-for-class">📐 Prepare for class</a></li>
-  <li><a href="#monday" id="toc-monday" class="nav-link" data-scroll-target="#monday">🥱 Monday 🌛</a></li>
-  <li><a href="#wednesday" id="toc-wednesday" class="nav-link" data-scroll-target="#wednesday">🐪️ Wednesday 🐦‍⬛</a></li>
-  <li><a href="#friday" id="toc-friday" class="nav-link" data-scroll-target="#friday">🎉 Friday 🥳</a></li>
-  <li><a href="#extra-resourcesreading" id="toc-extra-resourcesreading" class="nav-link" data-scroll-target="#extra-resourcesreading">Extra Resources/Reading</a></li>
-  </ul></li>
+  <li><a href="#problem" id="toc-problem" class="nav-link active" data-scroll-target="#problem"><span class="header-section-number">1</span> Problem</a></li>
+  <li><a href="#problem-1" id="toc-problem-1" class="nav-link" data-scroll-target="#problem-1"><span class="header-section-number">2</span> Problem</a></li>
+  <li><a href="#problem-2" id="toc-problem-2" class="nav-link" data-scroll-target="#problem-2"><span class="header-section-number">3</span> Problem</a></li>
+  <li><a href="#problem-3" id="toc-problem-3" class="nav-link" data-scroll-target="#problem-3"><span class="header-section-number">4</span> Problem</a></li>
+  <li><a href="#problem-4" id="toc-problem-4" class="nav-link" data-scroll-target="#problem-4"><span class="header-section-number">5</span> Problem</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://srvanderplas.github.io/stat1080/issues/new" class="toc-action"><i class="bi bi-git"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content column-page-left" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+<main class="content column-page-left" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">1.10.a - Class Activity</h1>
+</div>
 
 
 
+<div class="quarto-title-meta column-page-left">
+
+    
+  
+    
+  </div>
+  
 
 
-<section id="week-6-dates-times-and-distributions" class="level1">
-<h1>Week 6: Dates, Times, and Distributions</h1>
-<p>October 05-11, 2026</p>
-<section id="reading" class="level2">
-<h2 class="anchored" data-anchor-id="reading">📖 Reading</h2>
-<ul class="task-list">
-<li><label><input type="checkbox">(for Mon) <a href="https://rafalab.dfci.harvard.edu/dsbook-part-1/wrangling/dates-and-times.html" target="_blank">IDS I Ch 13 - Dates and Times</a></label></li>
-<li><label><input type="checkbox">(for Wed) <a href="https://rafalab.dfci.harvard.edu/dsbook-part-1/dataviz/distributions.html" target="_blank">IDS I Ch 7 - Visualizing Data Distributions</a></label></li>
-</ul>
-</section>
-<section id="prepare-for-class" class="level2">
-<h2 class="anchored" data-anchor-id="prepare-for-class">📐 Prepare for class</h2>
-<ul class="task-list">
-<li><label><input type="checkbox">(for Mon) Reading Check 6.1<br>
-</label></li>
-<li><label><input type="checkbox">(for Wed) Reading Check 6.2</label></li>
-</ul>
-</section>
-<section id="monday" class="level2">
-<h2 class="anchored" data-anchor-id="monday">🥱 Monday 🌛</h2>
+</header>
+
+
+<p>This assignment is intended to get you familiar with the tidyverse using real time-series COVID-19 data.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>The following code chunk scrapes the <code>.csv</code> file we will be analyzing from the web renames and selects the subset of columns that we will be using for analysis.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>url <span class="ot">&lt;-</span> <span class="st">"https://srhdpeuwpubsa.blob.core.windows.net/whdh/COVID/"</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>url_death <span class="ot">&lt;-</span> <span class="fu">paste0</span>(url, <span class="st">"WHO-COVID-19-global-hosp-icu-data.csv"</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>covid_hos <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(url_death) <span class="sc">|&gt;</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="at">date =</span> Date_reported,</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">country =</span> Country, </span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>         <span class="at">region =</span> WHO_region, </span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>         <span class="at">new_hos =</span> Covid_new_hospitalizations_last_7days)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>This dataset contains COVID hospitalization data for all countries on a weekly basis since January 2020. The renamed columns retained for analysis are:</p>
 <ul>
-<li><a href="https://usu.instructure.com/courses/819584/assignments/5292944" target="_blank">Attendance Quiz 10/05</a></li>
-<li><a href="../slides/16-dates-times.html">Dates and Times</a></li>
-<li><a href="">Lab: Dates and Times</a> <a href="../lab/_16-lubridate.qmd">quarto</a> <a href="../lab/16-lubridate.html">html</a></li>
-<li>Extra Practice: Covid Time Series <a href="../lab/_16-covid-time-series.qmd">quarto</a> <a href="../lab/16-covid-time-series.html">html</a> <a href="16-covid-time-series-sol.qmd">solutions</a></li>
+<li><code>date</code> The date of reporting.</li>
+<li><code>country</code> The name of the country.</li>
+<li><code>region</code> The name of the World Health Organization (WHO) region that the country belongs to.</li>
+<li><code>new_hos</code> The number of new reported hospitalizations over the last 7 days. days.</li>
 </ul>
+<section id="problem" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Problem</h1>
+<p>We will look at the hospitalization statistics for the US and Canada across the pandemic time period. Create a new dataframe called <code>covid_hos_usc</code> that retains only the rows that contain information for the “UNITED STATES OF AMERICA” and “CANADA”.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="do">## covid_hos_usc &lt;- covid_hos |&gt;</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="do">##   #...#</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
 </section>
-<section id="wednesday" class="level2">
-<h2 class="anchored" data-anchor-id="wednesday">🐪️ Wednesday 🐦‍⬛</h2>
-<ul>
-<li><a href="https://usu.instructure.com/courses/819584/assignments/5292945" target="_blank">Attendance Quiz 10/07</a></li>
-<li><a href="../slides/17-vis-dist.html" target="_blank">Visualizing Data Distributions</a></li>
-</ul>
+<section id="problem-1" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Problem</h1>
+<p>We are going to make an assumption that <code>NA</code> values are equivalent to “no new hospitalizations reported. In other words, an <code>NA</code> value is treated as a zero value. Below is some code that will do that for our new dataset. This code also makes a time series plot of new hospitalizations over time.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Uncomment the following code once you have completed the </span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># previous code chunk.</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="do">## covid_hos_usc &lt;- covid_hos_usc |&gt;</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="do">##   replace_na(list(new_hos = 0))</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="do">## ggplot(covid_hos_usc, aes(x = date, y = new_hos)) + </span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="do">##   geom_path()</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>The plot has an interesting look, lets zoom in on a few months in 2021. Note that this code shows you how you how to filter by dates when you have a date variable.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="do">## covid_hos_usc |&gt;</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="do">##   filter(date &gt; ymd("2021-01-01") &amp; date &lt; ymd("2021-07-01")) |&gt;</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="do">##   ggplot(aes(x = date, y = new_hos)) + </span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="do">##   geom_path()</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><strong>Discuss with a partner:</strong> What seems to be going on with the time series plot in this visual? Why are the lines so jagged?</p>
+<p><em>Replace this text with your answer. Optional if discussing aloud in groups but required if doing the assignment on your own.</em></p>
 </section>
-<section id="friday" class="level2">
-<h2 class="anchored" data-anchor-id="friday">🎉 Friday 🥳</h2>
-<ul>
-<li>Fall Break</li>
-</ul>
+<section id="problem-2" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Problem</h1>
+<p>The following two chunks of code show two different ways to plot country level time series. The first uses color to separate the countries. This is nice to have both time series on the same plot, but the vast difference in the reported numbers for Canada makes it hard to see the hospitalization patterns in that country.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="do">## covid_hos_usc |&gt;</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="do">##   ggplot(aes(x = date, y = new_hos, color = country)) + </span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="do">##   geom_path() +</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="do">##   theme(legend.position = "bottom")</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>An alternative is to make what we call a “facet wrap” plot (more on this later) where the y-axis range can be adjusted for each plot.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="do">## covid_hos_usc |&gt;</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="do">##   ggplot(aes(x = date, y = new_hos)) + </span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="do">##   geom_path() +</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="do">##   facet_wrap(~country, ncol = 1, scales = "free_y")</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><strong>Discuss with a partner:</strong> What do you notice in the time series plots of hospitalizations in the US and Canada? What do you wonder?</p>
+<p><em>Replace this text with your answer. Optional if discussing aloud in groups but required if doing the assignment on your own.</em></p>
 </section>
-<section id="extra-resourcesreading" class="level2">
-<h2 class="anchored" data-anchor-id="extra-resourcesreading">Extra Resources/Reading</h2>
-<ul>
-<li><a href="https://srvanderplas.github.io/stat-computing-r-python/part-wrangling/07-datetime.html" target="_blank">SC Ch 27 - Dates and Times</a></li>
-<li><a href="https://rafalab.dfci.harvard.edu/dsbook-part-1/wrangling/locales.html" target="_blank">IDS I Ch 14 - Locales</a></li>
-</ul>
+<section id="problem-3" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Problem</h1>
+<p>Use the <code>round_date()</code> function to aggregate the data in monthly blocks. This will involve first rounding the data by month, then grouping by month AND country, and then summarizing the total number of hospitalizations per month (i.e., <code>sum()</code>). Then, adapt the facet_wrap plot code to remake the plot of hospitalizations over time.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="do">## covid_hos_usc_month &lt;- covid_hos_usc |&gt;</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="do">##   mutate(month = #...#) |&gt;</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="do">##   group_by(month, country) |&gt;</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="do">##   summarize(new_hos = #...#)</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Then, plot</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="do">## ggplot(covid_hos_usc_month, aes(#...#)) + </span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="do">##   geom_path() +</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="do">##   facet_wrap(~country, ncol = 1, scales = "free_y")</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><strong>Discuss with a partner:</strong> What effect did the use of aggregated monthly values have on the visual?</p>
+<p><em>Replace this text with your answer. Optional if discussing aloud in groups but required if doing the assignment on your own.</em></p>
+</section>
+<section id="problem-4" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Problem</h1>
+<p>Use the <code>year()</code> function to extract the year from each observation and determine the total number of annual cases by year for both countries using a group_by/summarize strategy. <strong>Then, answer some questions about these annual statistics in your canvas quiz.</strong> You may optionally arrange the results by country and year to better see some of the statistics you need to obtain.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="do">## covid_hos_usc |&gt;</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="do">##   mutate(year = #...#) |&gt;</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="do">##   group_by(#...#) |&gt;</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="do">##   summarize(new_hos = #...#) |&gt;</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="do">##   arrange(country, new_hos)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->

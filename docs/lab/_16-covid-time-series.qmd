@@ -1,0 +1,125 @@
+---
+title: "1.10.a - Class Activity"
+format: html
+number-sections: true
+execute:
+  echo: true   # show code by default
+  warning: false
+  message: false
+---
+
+This assignment is intended to get you familiar with the tidyverse using real time-series COVID-19 data.
+
+```{r}
+library(tidyverse)
+```
+
+
+The following code chunk scrapes the `.csv` file we will be analyzing from the web renames and selects the subset of columns that we will be using for analysis. 
+
+```{r}
+url <- "https://srhdpeuwpubsa.blob.core.windows.net/whdh/COVID/"
+url_death <- paste0(url, "WHO-COVID-19-global-hosp-icu-data.csv")
+
+covid_hos <- read_csv(url_death) |>
+  select(date = Date_reported,
+         country = Country, 
+         region = WHO_region, 
+         new_hos = Covid_new_hospitalizations_last_7days)
+```
+
+This dataset contains COVID hospitalization data for all countries on a weekly basis since January 2020. The renamed columns retained for analysis are: 
+
+- `date` The date of reporting. 
+- `country` The name of the country. 
+- `region` The name of the World Health Organization (WHO) region that the country belongs to. 
+- `new_hos` The number of new reported hospitalizations over the last 7 days.  days. 
+
+# Problem  
+We will look at the hospitalization statistics for the US and Canada across the pandemic time period. Create a new dataframe called `covid_hos_usc` that retains only the rows that contain information for the "UNITED STATES OF AMERICA" and "CANADA". 
+
+```{r}
+## covid_hos_usc <- covid_hos |>
+##   #...#
+```
+
+# Problem 
+
+We are going to make an assumption that `NA` values are equivalent to "no new hospitalizations reported. In other words, an `NA` value is treated as a zero value. Below is some code that will do that for our new dataset. This code also makes a time series plot of new hospitalizations over time. 
+```{r}
+# Uncomment the following code once you have completed the 
+# previous code chunk.
+## covid_hos_usc <- covid_hos_usc |>
+##   replace_na(list(new_hos = 0))
+
+## ggplot(covid_hos_usc, aes(x = date, y = new_hos)) + 
+##   geom_path()
+```
+The plot has an interesting look, lets zoom in on a few months in 2021. Note that this code shows you how you how to filter by dates when you have a date variable. 
+
+```{r}
+## covid_hos_usc |>
+##   filter(date > ymd("2021-01-01") & date < ymd("2021-07-01")) |>
+##   ggplot(aes(x = date, y = new_hos)) + 
+##   geom_path()
+```
+**Discuss with a partner:** What seems to be going on with the time series plot in this visual? Why are the lines so jagged? 
+
+*Replace this text with your answer. Optional if discussing aloud in groups but required if doing the assignment on your own.*
+
+# Problem 
+
+The following two chunks of code show two different ways to plot country level time series. The first uses color to separate the countries. This is nice to have both time series on the same plot, but the vast difference in the reported numbers for Canada makes it hard to see the hospitalization patterns in that country. 
+
+```{r}
+## covid_hos_usc |>
+##   ggplot(aes(x = date, y = new_hos, color = country)) + 
+##   geom_path() +
+##   theme(legend.position = "bottom")
+```
+
+An alternative is to make what we call a "facet wrap" plot (more on this later) where the y-axis range can be adjusted for each plot. 
+
+```{r}
+## covid_hos_usc |>
+##   ggplot(aes(x = date, y = new_hos)) + 
+##   geom_path() +
+##   facet_wrap(~country, ncol = 1, scales = "free_y")
+```
+**Discuss with a partner:** What do you notice in the time series plots of hospitalizations in the US and Canada? What do you wonder? 
+
+*Replace this text with your answer. Optional if discussing aloud in groups but required if doing the assignment on your own.*
+
+# Problem 
+
+Use the `round_date()` function to aggregate the data in monthly blocks. This will involve first rounding the data by month, then grouping by month AND country, and then summarizing the total number of hospitalizations per month (i.e., `sum()`). Then, adapt the facet_wrap plot code to remake the plot of hospitalizations over time.  
+
+```{r}
+## covid_hos_usc_month <- covid_hos_usc |>
+##   mutate(month = #...#) |>
+##   group_by(month, country) |>
+##   summarize(new_hos = #...#)
+
+# Then, plot
+## ggplot(covid_hos_usc_month, aes(#...#)) + 
+##   geom_path() +
+##   facet_wrap(~country, ncol = 1, scales = "free_y")
+```
+
+**Discuss with a partner:** What effect did the use of aggregated monthly values have on the visual?
+
+*Replace this text with your answer. Optional if discussing aloud in groups but required if doing the assignment on your own.*
+
+# Problem 
+
+Use the `year()` function to extract the year from each observation and determine the total number of annual cases by year for both countries using a group_by/summarize strategy. **Then, answer some questions about these annual statistics in your canvas quiz.** You may optionally arrange the results by country and year to better see some of the statistics you need to obtain. 
+
+```{r}
+## covid_hos_usc |>
+##   mutate(year = #...#) |>
+##   group_by(#...#) |>
+##   summarize(new_hos = #...#) |>
+##   arrange(country, new_hos)
+```
+
+

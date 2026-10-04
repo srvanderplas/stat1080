@@ -6,11 +6,11 @@ lightbox:  true
 bibliography: refs.bib
 csl: chicago-syllabus.csl
 title-slide-attributes:
-  data-background-image: images/dplyr.png
-  data-background-image-alt: A hexagonal sticker with `dplyr` as the text, showing several pairs of plyers zooming cross a dark background.
+  data-background-image: images/tidyr.png
+  data-background-image-alt: A hexagonal sticker with `tidyr` as the text, showing several brooms zooming cross a dark background.
   data-background-size: "20%"
   data-background-repeat: "no-repeat"
-  data-background-position: "50% 90%"
+  data-background-position: "50% 100%"
 ---
 
 
