@@ -177,12 +177,12 @@ schedule:
         - [ ] (for Mon) [IDS I Ch 13 - Dates and Times](https://rafalab.dfci.harvard.edu/dsbook-part-1/wrangling/dates-and-times.html){target="_blank"}
         - [ ] (for Wed) [IDS I Ch 7 - Visualizing Data Distributions](https://rafalab.dfci.harvard.edu/dsbook-part-1/dataviz/distributions.html){target="_blank"}
     prepare: |
-        - [ ] (for Mon) Reading Check 6.1  
-        - [ ] (for Wed) Reading Check 6.2
+        - [ ] (for Mon) [Reading Check 6.1.p - Dates and Times](https://usu.instructure.com/courses/819584/modules/items/7946533)  
+        - [ ] (for Wed) [Reading Check 6.2.p - Visualizing Distributions](https://usu.instructure.com/courses/819584/modules/items/7946987)
     class1: |
         - [Attendance Quiz 10/05](https://usu.instructure.com/courses/819584/assignments/5292944){target="_blank"}
         - [Dates and Times](../slides/16-dates-times.qmd)
-        - [Lab: Dates and Times]() [quarto](../lab/_16-lubridate.qmd) [html](../lab/16-lubridate.qmd)
+        - [Lab: Dates and Times](https://usu.instructure.com/courses/819584/quizzes/1502123) [quarto](../lab/_16-lubridate.qmd) [html](../lab/16-lubridate.qmd)
         - Extra Practice: Covid Time Series [quarto](../lab/_16-covid-time-series.qmd) [html](../lab/16-covid-time-series.qmd) [solutions](16-covid-time-series-sol.qmd)
     class2: |
         - [Attendance Quiz 10/07](https://usu.instructure.com/courses/819584/assignments/5292945){target="_blank"}
