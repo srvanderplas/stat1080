@@ -1,0 +1,420 @@
+---
+title: "Homework 2 - STAT 1080"
+author: "(Put Name Here)"
+editor: source
+format: 
+  html:
+    self-contained: true
+execute:
+  echo: true   # show code by default
+  warning: false
+  message: false
+---
+
+## Introduction 
+
+This assignment will give you experience visualizing and interpreting numerical information.
+You won’t need to bring in your own datasets — everything you need comes from R packages. 
+Homework datasets and solutions are included in the `stat1080r` course package, so make sure you have the latest version installed before you begin. 
+
+```{r}
+#| eval: false
+# You can run this code to install the pak package, and then
+# use pak to install the stat1080r package from github.
+install.packages("pak")
+pak::pak("https://github.com/beanb2/stat1080r")
+```
+
+
+You’ll complete this file by finishing the code and filling in the answer prompts. 
+Replace each `#...#` with the code needed to answer the question. 
+Sometimes I’ll give you a code “shell” (marked with `##`) that you’ll need to uncomment and complete.
+
+When you’re done, submit your `.qmd` file in Canvas. 
+Be sure it successfully renders to HTML with all your answers showing.
+Don’t forget to check the style guidelines at the end before submitting. 
+Note that you must use the "modern" pipe command `|>` in your code. 
+Please avoid the use of the old `%>%` in your code which will result in a loss of points. 
+
+There are 3 problems in this assignment (each with several parts), worth a total of 80 points. 
+
+# Problem 1 - Cereal Data Histograms (27 points)
+
+We will be using the same cereals dataset that we used in Homework 1. 
+
+```{r}
+library(tidyverse)
+library(stat1080r)
+
+head(cereal)
+glimpse(cereal)
+```
+
+##  Part a (2 points)
+
+First, remove the rows that contain missing (i.e., `NA`) values for `Sugars` using the `filter()` function with a tidyverse pipe (i.e., `|>`). 
+
+<!-- Part 1a Answer -->
+
+```{r}
+cereal_sug <- cereal |>
+  filter(!is.na(Sugars))
+
+# REMEMBER TO UNCOMMENT ALL ## LINES before submitting!
+all.equal(cereal_sug, hw2_sol[["cereal_sug"]])
+```
+
+<!-- End Part 1a Answer -->
+
+## Part b (5 points)
+
+Create an unrefined histogram of the sugar content of cereals. 
+Note the R code chunk options I am using to help with the formatting of the HTML documents. 
+Visually check your answer against the solution. 
+They should be visually identical.  
+
+<!-- Part 1b Answer -->
+
+```{r}
+#| fig-width: 7
+#| fig-height: 5
+#| fig-align: center
+#| fig-cap: "Histogram of sugar content for cereals sold in the grocery store."
+
+# Note the "header" options above that determine how the figure is formatted.
+ggplot(cereal_sug, aes(x = Sugars)) +
+  geom_histogram()
+```
+
+<!-- End Part 1b Answer -->
+
+## Part c (5 points)
+
+Visuals often need refinement before we present them to other people. 
+One way to accomplish this is through ggplot themes. 
+We will use the following theme throughout the remainder of this assignment, which does the following. 
+
+::: callout-note
+
+### Custom Theme
+
+- Changes the plot background from grey to white and changes the plot grid lines from white to gray. 
+- Increases the size of the fonts for all plots and legend labels. 
+- Centers plot titles whenever they are present. 
+- Moves any plot legends (when applicable) to the bottom of each plot. 
+
+
+```{r}
+# Do not change this code, but be sure to run this code
+# before you try to do anything else!
+my_theme <- theme_bw() +
+  theme(
+    text = element_text(size = 14),
+    plot.title = element_text(hjust = 0.5),
+    legend.position = "bottom"
+  )
+```
+:::
+
+Using this theme, create a refined version of the histogram you created in Part b.
+Your refined histogram should visually match the solution provided on canvas.
+Some of the refinements you need to make (or that the partial code already does for you) are as follows: 
+
+- Remove the y-axis label and change the x-axis label using `xlab()` and `ylab()`. 
+- Adjust the limits and the breaks of the axis labels using `scale_x_continuous()` and `scale_y_continuous()`, using the visual solution to guide your inputs. 
+- Use the `breaks` argument in `geom_histogram()` to make the bins of length 1 starting at 0 and ending at 16. 
+- Use the `color` and `fill` arguments in `geom_histogram` to make "black" boundaries and "gray50" fill for the rectangles.
+- Use the custom theme we created above. 
+
+<!-- Part 1c Answer -->
+
+```{r}
+#| fig-width: 7
+#| fig-height: 5
+#| fig-align: center
+#| fig-cap: "Histogram of sugar content for cereals sold in the grocery store."
+
+ggplot(cereal_sug, aes(x = Sugars)) +
+  geom_histogram(
+    breaks = seq(0, 16, 1),
+    col = "black", fill = "gray50"
+  ) +
+  scale_x_continuous(breaks = seq(0, 16, 4)) +
+  scale_y_continuous(
+    limits = c(0, 14),
+    breaks = seq(0, 14, 2)
+  ) +
+  xlab("Sugars (grams)") +
+  ylab("") +
+  my_theme
+```
+
+<!-- End Part 1c Answer -->
+
+## Part d (5 points)
+
+Please describe in 1-3 sentences what the histogram suggests about the shape of the distribution of the sugar content in cereals. 
+Comment specifically: does sugar content appear to follow a normal distribution?
+Explain why or why not. 
+
+<!-- Part 1d Answer -->
+
+*I would describe the distribution as "multi-modal" with a high concentration of low sugar (< 3 grams) cereals, but small spikes of moderate (5-6 grams) and high (11-12) grams of sugar. The sugar contents definitely do NOT follow a normal distribution as the peak sugar content occurs on the low end of the sugar spectrum, rather than the center.* 
+
+<!-- End Part 1d Answer -->
+
+## Part e (5 points)
+Create a series of three histograms, one for each shelf, of the sugar content in cereals using the `facet_wrap()` function. 
+Make it so the histograms are vertically aligned, which will facilitate comparisons in the distribution shape. 
+Adjust the y-axis to eliminate unnecessary white space in the plot. 
+Be sure that your final plot visually matches the solution plot provided. 
+
+<!-- Part 1e Answer -->
+
+```{r}
+#| fig-width: 7
+#| fig-height: 10
+#| fig-align: center
+#| fig-cap: |
+#|   Histogram of sugar content for cereals sold in the grocery store by shelf.
+
+ggplot(cereal_sug, aes(x = Sugars)) +
+  geom_histogram(
+    breaks = seq(0, 16, 2),
+    col = "black", fill = "gray50"
+  ) +
+  scale_x_continuous(breaks = seq(0, 16, 4)) +
+  scale_y_continuous(
+    limits = c(0, 8),
+    breaks = seq(0, 8, 2)
+  ) +
+  facet_wrap(~Shelf, ncol = 1) +
+  xlab("Sugars (grams)") +
+  ylab("") +
+  my_theme
+```
+
+<!-- End Part 1e Answer -->
+
+## Part f (5 points)
+DISCUSS: Please write 2-4 sentences to compare the shape of the distribution of cereal sugar amounts per serving based on shelf. 
+Comment specifically: Do any of the distributions seem to follow a normal distribution? 
+
+<!-- Part 1f Answer -->
+
+*The distribution of sugar content is right skewed on the top and bottom shelf, but left skewed on the middle shelf. The range of sugar contents is nearly identical on each shelf, but the overwhelming majority of high sugar cereals are on the middle shelf. None of the distributions come close to following a normal distribution, though the top shelf seems to get the closest.*  
+
+<!-- End Part 1f Answer -->
+
+# Problem 2 - Cereal Data Density Plots and Boxplots (23 points)
+
+# Part a (5 points)
+
+Create a single plot with three colored density curves of cereal sugar content, with each color representing a different cereal shelf. 
+For this plot, make the same kind refinements, as necessary, that you did for the histogram, (obviously excluding the refinement that was specific to the histogram bin widths). 
+Note that the code to color the density lines is provided to you. 
+Additional color palettes are available at <https://colorbrewer2.org/>, in the `tayloRswift` package (for palettes drawn from albums), and in the `ggsci` package (for palettes from TV shows and media outlets). 
+
+<!-- Part 2a Answer -->
+
+```{r}
+#| fig-width: 7
+#| fig-height: 5
+#| fig-align: center
+#| fig-cap: >
+#|   Density plots of sugar content for cereals sold in
+#|   the grocery store as separated by shelf.
+
+ggplot(cereal_sug, aes(x = Sugars, color = Shelf)) +
+  geom_density(lwd = 1) +
+  scale_color_brewer(type = "qual", palette = "Dark2") +
+  xlab("Sugars (grams)") +
+  my_theme
+```
+
+<!-- End Part 2a Answer -->
+
+## Part b (5 points)
+Name at least one advantage of the density plot representation of the distribution as compared to the three histogram representation. 
+Name at least one disadvantage. 
+
+<!-- Part 2b Answer -->
+
+*The density plot provides a more efficient representation of the shape of the distributions as we are able to show all three distributions on the same plot. One disadvantage is that the y-axis label is not as intuitive as the observation counts provided by the histogram. The histogram is easier to explain to a non-statistics person than a density plot.*
+
+<!-- End Part 2b Answer -->
+
+## Part c (3 points)
+In Part (d) we will create side-by-side boxplots of the sugar content of the cereals on the three different shelves. 
+In order to follow the best-practices of good statistical graphics, we wish to order the boxplots on the x-axis so that the shelf with the **smallest median sugar content** appears on the far left, while the shelf with the **largest median sugar content** appears on  the far right. 
+To accomplish this, we need to re-factor the `Shelf` variable in the order that we want.
+Please write a tidyverse chain that completes this arrangement and saves it as a vector that matches the provided solution. 
+
+
+<!-- Part 2c Answer -->
+
+```{r}
+shelf_order <- cereal_sug |>
+  group_by(Shelf) |>
+  summarize(sugars_median = median(Sugars)) |>
+  arrange(sugars_median) |>
+  pull(Shelf) # grab the vector of shelves.
+
+all.equal(shelf_order, hw2_sol[["shelf_order"]])
+```
+
+<!-- End Part 2c Answer -->
+
+## Part d (5 points)
+Create side-by-side boxplots as described in Part (c), please use strategies from the previous problem parts to make your answer visually match the one provided in the solution.
+
+
+<!-- Part 2d Answer -->
+```{r}
+#| fig-width: 7
+#| fig-height: 5
+#| fig-align: center
+#| fig-cap: >
+#|   Boxplots of sugar content for cereals sold in the
+#|   grocery store as separated by shelf.
+
+# Uncomment this line for your boxplot. No need to change anything
+cereal_sug2 <- cereal_sug |>
+  mutate(Shelf = factor(Shelf, levels = shelf_order))
+
+ggplot(cereal_sug2) +
+  geom_boxplot(aes(x = Shelf, y = Sugars)) +
+  ylab("Sugars (grams)") +
+  my_theme
+```
+
+<!-- End Part 2d Answer -->
+
+## Part e (5 points)
+Identify at least one way in which this visual is better than the histogram or density plots we have made previously. Identify at least one way in which this visual is worse. 
+
+<!-- Part 2e Answer -->
+
+
+*I feel like this visual communicates the essential takeaway (i.e. that the typical cereal is way more sugary on the middle shelf, at kid-eye-level) in a really straightforward way. The disadvantage of this visual is that it makes it harder to see differences in the shape of the distribution of sugar cereals on the three shelves.* 
+
+<!-- End Part 2e Answer -->
+
+# Problem 3 Utah Snow Loads (20 points)
+The `rt_load_ut` dataset in the `stat1080r` package contains the design snow loads for the state of Utah. 
+A design snow load is the weight in snow that a roof must be able to withstand in order to ensure that the building will keep its occupants safe during the winter. 
+The values you are working with are the actual design standard values developed by Dr. Brennan Bean in 2020. 
+Please check out `?rt_load_ut` for additional documentation for the data set. 
+
+# Part a (5 points)
+Create a scatterplot with site elevation on the x-axis and design snow load (`load`) on the y-axis, color the points based on their ecological region (`eco_region`). 
+Note that the code below uses a log2 transformation for the y-axis and re-labels the x-axis to be in thousands of feet. 
+
+
+<!-- Part 3a Answer -->
+```{r}
+#| fig-width: 7
+#| fig-height: 5
+#| fig-align: center
+#| fig-cap: >
+#|   Scatterplot of ground snow load values against
+#|   elevation in the state of Utah.
+
+ggplot(rt_load_ut, aes(x = elevation, y = load, color = eco_region)) +
+  geom_point() +
+  scale_y_continuous(
+    trans = "log2", breaks = 2^(1:10),
+    limits = c(16, 1024)
+  ) +
+  scale_x_continuous(
+    breaks = seq(3000, 11000, 2000),
+    labels = seq(3, 11, 2)
+  ) +
+  scale_color_brewer(type = "qual", palette = "Dark2") +
+  xlab("Elevation (Thousands of Feet)") +
+  ylab("Snow Load (psf - log scale)") +
+  my_theme
+```
+
+<!-- End Part 3a Answer -->
+
+## Part b (5 points)
+What can you say about the relationship between ground snow loads and elevation? How do the points from the two eco-regions differ? In what ways are the points from the two regions similar? What data properties would be better visualized using histograms or boxplots as compared to this scatterplot? Please answer these questions in a single paragraph. 
+
+<!-- Part 3b Answer -->
+
+*Replace this text with your answer* 
+
+<!-- End Part 3b Answer -->
+
+## Part c (5 points)
+Repeat the plot in Part a, but plot latitude on the x-axis instead of elevation. Change the `scale_x_continuous` arguments to reflect the change in scale associated with this new variable. 
+
+
+<!-- Part 3c Answer -->
+```{r}
+#| fig-width: 7
+#| fig-height: 5
+#| fig-align: center
+#| fig-cap: >
+#|   Scatterplot of ground snow load values
+#|   against latitude in the state of Utah.
+
+ggplot(rt_load_ut) +
+  geom_point(aes(x = latitude, y = load, color = eco_region)) +
+  scale_y_continuous(
+    trans = "log2", breaks = 2^(1:10),
+    limits = c(16, 1024)
+  ) +
+  scale_x_continuous(limits = c(37, 42)) +
+  scale_color_brewer(type = "qual", palette = "Dark2") +
+  xlab("Latitude") +
+  ylab("Snow Load (psf - log scale)") +
+  my_theme
+```
+
+<!-- End Part 3c Answer -->
+
+## Part d (5 points)
+
+How does the relationship between latitude and snow load compare to the relationship between elevation and snow load? Comment briefly. 
+
+<!-- Part 3d Answer -->
+
+*There does not appear to be any meaningful relationship between ground snow load and latitude. It seems that the eco-region 6 values tend to be higher than the eco-region 10 values, but this, based on our previous plot, is likely due to the fact that those locations tend to be at higher elevations.* 
+
+
+<!-- End Part 3d Answer -->
+
+# Submission Style (10 points)
+Each submission should have the following elements: 
+
+- You should submit the `.qmd` file (not the `HTML` rendering) with a file name in the style of `<last_name>_<first_name>_homework2.qmd`.
+
+- Your `.qmd` file should run without errors when the grader attempts to render it to a html.
+
+- Your code needs to run "clean" on any lintr checks. Please see the brief videos available on the "Style Guides" tabs of the course canvas page that introduce you to `lintr`, and `styler`. Note that you can ignore any flags with the tags: `trailing_whitespace_linter`, `trailing_blank_lines_linter`, and `commented_code_linter`.
+
+# Submission Checklist
+
+- [ ] Check your filename -- is it of the form `lastname_firstname_homework02.qmd`?
+
+- [ ] Check the author (specified around line 3 of this file) -- is your name there?
+
+- [ ] Render your file using the blue arrow at the top of the RStudio text editor window.
+    - [ ] If your file does not render, address any errors in the code leading to failure.
+    
+- [ ] Preview your rendered file in a browser. Do all of your answers show up the way you expected them to?    
+If the answers do not show up the way you want them, check your markdown formatting against the cheat sheet in RStudio (Help -> Cheat Sheets -> Rmarkdown cheat sheets)
+
+- [ ] Run the `lintr` style checks (Canvas -> Course homepage -> Style Guides link under USU picture)
+    - [ ] Switch to source mode in RStudio
+    - [ ] Addins -> Style active file
+    - [ ] Addins -> Lint current file
+    - [ ] Address any issues that the lint command raises
+
+- [ ] Render your file again, to check that the `styler` and `lintr` addons didn't mess up any formatting. 
+
+- [ ] Upload your **qmd** file (NOT the html file) to Canvas
+
+- [ ] Double-check your submission - is the file you uploaded the one you want to be graded?

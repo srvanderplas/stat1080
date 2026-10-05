@@ -1,0 +1,508 @@
+---
+title: "Homework 3 - STAT 1080"
+author: "(Put Name Here)"
+editor: source
+format: 
+  html:
+    self-contained: true
+execute:
+  echo: true   # show code by default
+  warning: false
+  message: false
+---
+
+This assignment is intended to give you experience programming and analyzing random variables in R and using those random variables to conduct statistical inference. You won’t need to bring in your own datasets—everything you need comes from R packages. Homework datasets and solutions are included in the `stat1080r` course package, so make sure you have the latest version installed before you begin. 
+
+You’ll complete this file by finishing the code and filling in the answer prompts. Replace each `#...#` with the code needed to answer the question. Sometimes I’ll give you a code "shell" (marked with `##`) that you’ll need to uncomment and complete.
+
+When you’re done, submit your `.qmd` file in Canvas. Be sure it successfully renders to HTML with all your answers showing.
+
+There are 3 problems in this assignment (each with several parts), worth a total of 80 points. Don’t forget to check the style guidelines at the end before submitting. Note that you must use the "modern" pipe command `|>` in your code. Please avoid the use of the old `%>%` in your code which will result in a loss of points.
+
+# Problem 1 (15 points)
+
+A small, but consequential, mistake has crept into the cereal dataset that we have used in previous homework assignments in this course. Our goal in this problem is to identify the mistake in the dataset using summary statistics and visuals. For this, we will compare summary statistics from the `cereal` and `cereal_infected` datasets. 
+
+```{r}
+library(tidyverse)
+library(stat1080r)
+
+head(cereal_infected)
+glimpse(cereal_infected)
+```
+
+##  Part a  (3 points)
+
+Create two tables that show the following summary statistics for each dataset by shelf. Be sure to have your summary statistics ignore any missing observations in the dataset in order to avoid returning `NA` in the summary. 
+
+- `mean_sugars`
+- `median_sugars`
+- `sd_sugars`
+- `mad_sugars` (median absolute deviation, see `mad()` function)
+
+
+<!-- Part 1a Answer -->
+
+```{r}
+## cereal_sum <- cereal |>
+##   group_by(#...#) |>
+##   summarize(#...#)
+
+## cereal_infected_sum <- cereal_infected |>
+##   group_by(#...#) |>
+##   summarize(#...#)
+
+# PLEASE REMEMBER TO UNCOMMENT ALL OF THE "##" LINES!
+## all.equal(cereal_sum, hw3_sol[["cereal_sum"]])
+## all.equal(cereal_infected_sum, hw3_sol[["cereal_infected_sum"]])
+```
+
+<!-- End Part 1a Answer -->
+
+## Part b (3 points)
+
+The following code computes the absolute difference between variables in the two datasets.  
+
+
+```{r}
+## cereal_diff <- bind_rows(cereal_sum, cereal_infected_sum) |>
+##  group_by(Shelf) |>
+##  summarize(across(everything(), ~ max(diff(.x))))
+
+## cereal_diff
+```
+
+Based on the observed differences in the `cereal_diff` table, please describe the nature of the "infection" and identify which shelf the issue is occurring on. 
+
+<!-- Part 1b Answer -->
+
+(Replace this text with your answer.)
+
+<!-- End Part 1b Answer -->
+
+## Part c (3 points)
+
+In order to identify the outlier, we intend to use Tukey's definition of a "far out" outlier, which, given a vector of observations $x$, is a value $v$ where
+$$v < q_{25} - 3*IQR(x) \text{ OR } v > q_{75} + 3*IQR(x).$$
+with $q_x$ representing the "xth" percentile of the vector $x$ and $IQR(x)$ representing the interquartile range.
+
+Based on this definition, create a vector of length two called `bounds` that represents the threshold for identifying outlier observations of sugars. While we know that the issue occurs on the middle shelf, create your bounds by using the vector of ALL sugar measurements, regardless of shelf. Note that all your calculations for the bounds should be made using sugar information from `cereal_infected` dataset.  
+
+<!-- Part 1c Answer -->
+
+```{r}
+# You should use the quantile() and IQR() functions to help you create the
+# intermediate values necessary to create the thresholds.
+## sugars <- cereal_infected |> pull(Sugars)
+## q_25 <- quantile(#...#)
+## q_75 <- quantile(#...#)
+## iqr <- IQR(#...#)
+
+# Now create the vector of bounds.
+## bounds <- vector("numeric", 2)
+## bounds[1] <- #...#
+## bounds[2] <- #...#
+
+## bounds
+## all.equal(bounds, hw3_sol[["bounds"]])
+```
+
+<!-- End Part 1c Answer -->
+
+## Part d (3 points)
+
+Observe that there is at least one obvious way in which we could "tighten" the `bounds` vector using context, rather than the data. Thinking about the physical limitations of sugar content, what would be an acceptable change to the vector of bounds for identifying outliers that would reduce its length? 
+
+<!-- Part 1d Answer -->
+
+(Replace this text with your answer.)
+
+<!-- End Part 1d Answer -->
+
+## Part e (3 points)
+
+Use the `bounds` vector and the `filter()` tidyverse function to create a dataset with all rows exceeding the outlier bounds. Use the `select()` function to make it so your dataset only contains the cereal name, shelf, sugar content, and the serving size in cups.  
+
+
+<!-- Part 1e Answer -->
+```{r}
+## cereal_outliers <- cereal_infected |>
+##   filter(#...#) |>
+##   select(#...#)
+
+## cereal_outliers
+
+## all.equal(cereal_outliers, hw3_sol[["cereal_outliers"]])
+```
+
+<!-- End Part 1e Answer -->
+
+# Problem 2 - Random Variables (26 points)
+
+Suppose that Kellogg cereal is conducting an especially "sweet" promotion for Frosted Flakes: in their next shipment of 50,000 boxes of cereal to Logan, they plan to place \$40 vouchers to Buffalo Wild Wings (i.e., "B-dubs") in 2,500 of them. 
+
+You love B-dubs but hate Frosted Flakes. Thus, buying a cereal box for \$3.50 with no voucher would be considered a total waste, while buying a cereal box with a voucher would be considered a net gain of \$36.50. 
+
+## Part a (2 points)
+
+Using R, write code for a random variable `k` that represents your possible payouts for the purchase of a single box of cereal. Assume that the number of cereal boxes you might purchase will be so small, relative to the total number of possible boxes, it is virtually equivalent to sampling the cereal boxes with replacement.  
+
+
+<!-- Part 2a Answer -->
+```{r}
+## k <- sample(#...#,
+##             size = #...#,
+##             replace = #...#,
+##             prob = #...#)
+```
+
+<!-- End Part 2a Answer -->
+
+## Part b (3 points)
+
+What is the expected value and standard error of this random variable? Write an equation using R code that correctly calculates the quantities provided in the `all.equal` statements below. 
+
+<!-- Part 2b Answer -->
+```{r}
+# Use the round() function to round your answers to two decimal places.
+## e_x <- #...#
+## se_x <- #...#
+
+# BE SURE TO UNCOMMENT THE all.equal() STATEMENTS!
+## all.equal(e_x, -1.5)
+## all.equal(se_x, 8.72)
+```
+
+<!-- End Part 2b Answer -->
+
+## Part c (3 points)
+
+Now write a function that computes the net winnings/loss (i.e. sum) from the purchase of `n` boxes of cereal. Use this function in a Monte Carlo simulation of 10,000 replications of randomly purchasing 100 boxes of cereal and taking the net winnings/loss. Your function should take a single variable `n` that represents the size of the sample from which you calculate a sum.
+
+<!-- Part 2c Answer -->
+```{r}
+# Function to return the sum of n boxes of cereal based on an argument n
+## get_net <- function(n) {
+##   k <- #...#
+##   sum(k)
+## }
+
+# Your function should be able to run the following code and get the same
+# answer as the provided solution.
+## set.seed(90210)
+## sim_k <- replicate(10000, get_net(100))
+
+## all.equal(sim_k, hw3_sol[["sim_k"]])
+```
+
+<!-- End Part 2c Answer -->
+
+## Part d (3 points)
+
+What is the probability of getting a net gain from 100 boxes of cereal based on the Monte Carlo simulation? What is the probability of losing more than \$300 based on the simulation? The code for this answer should make use of the `sim_k` vector you created in the previous problem part.   
+
+<!-- Part 2d Answer -->
+
+```{r}
+## prob_gain <- #...#
+## prob_gain
+## all.equal(prob_gain, hw3_sol[["prob_gain"]])
+
+## prob_big_loss <- #...#
+## prob_big_loss
+## all.equal(prob_big_loss, hw3_sol[["prob_big_loss"]])
+```
+
+<!-- End Part 2d Answer -->
+
+## Part e (5 points)
+
+We would like to think that a sample size of 100 is large enough to invoke the central limit theorem. Create a qqplot of the simulated net gains/losses to check if the assumption is reasonably justified. Your plot should exactly match the one provided in the `homework_3_visual_sol`. Note that your plot should make use of the `sim_k` vector from earlier. You should also make use of the `scale()` function to map the `sim_k` values from their original units to the number of standard deviations away from the mean. 
+
+
+<!-- Part 2e Answer 1 -->
+```{r}
+#| fig-width: 7
+#| fig-height: 5
+#| fig-align: center
+#| fig-cap: >
+#|  qqplot of Monte Carlo simulations of sum of winnings/losses from
+#|  purchasing 100 boxes of cereal.
+
+# Save your ggplot to a variable called p2
+## p2 <- #...#
+
+# Print your plot by calling p2
+## p2
+```
+<!-- End Part 2e Answer 1 -->
+
+After making the visual, comment, with appropriate justification, on whether or not you feel that the net winnings/losses from the purchase of 100 boxes of cereal appears to follow a normal distribution. 
+
+
+<!-- Part 2e Answer 2 -->
+
+(Replace this text with your answer.)
+
+<!-- End Part 2e Answer 2 -->
+
+## Part f (5 points)
+
+Regardless of your answer to Part (d), assume that the sample size is large enough to use the Central Limit Theorem. Under the assumption of normality, what is the estimated probability of having a net positive gain when purchasing 100 boxes of cereal looking for vouchers? What is the probability of having a big loss (losing 300 dollars or more)? Save your answers as the variable `theory_gain` and `theory_big_loss` respectively. Note that you might want to create some intermediate variables (like the expected value and standard error) to help answer this question. 
+
+
+<!-- Part 2f Answer -->
+```{r}
+## e_x <- #...#
+## sd_x <- #...#
+
+## theory_gain <- #...#
+## theory_gain
+
+## theory_big_loss <- #...#
+## theory_big_loss
+
+## all.equal(theory_gain, hw3_sol[["theory_gain"]])
+## all.equal(theory_big_loss, hw3_sol[["theory_big_loss"]])
+```
+
+<!-- End Part 2f Answer -->
+
+## Part g (5 points)
+
+Repeat part (e), but now assume that you will buy 1000 boxes of cereal instead of 100. Report the change in probability for a net gain and a big loss (losing more than \$300). 
+
+<!-- Part 2g Answer 1 -->
+
+```{r}
+## e_x <- #...#
+## sd_x <- #...#
+
+## theory_gain_2 <- #...#
+## theory_gain_2
+
+## theory_big_loss_2 <- #...#
+## theory_big_loss_2
+
+## all.equal(theory_gain_2, hw3_sol[["theory_gain_2"]])
+## all.equal(theory_big_loss_2, hw3_sol[["theory_big_loss_2"]])
+```
+
+<!-- End Part 2g Answer 1 -->
+Write 1-3 sentences to explain why the probability of both events changed the way that it did. 
+
+<!-- Part 2g Answer 2 -->
+(Replace this text with your answer.)
+
+<!-- End Part 2g Answer 2 -->
+
+# Problem 3 - Statistical Inference (29 points)
+
+This problem is adapted from a real clinical trial (see <https://clinicaltrials.gov/ct2/show/study/NCT04452435?recrs=e&cond=Covid19&draw=2>) related to an oral medication used to treat patients hospitalized with COVID-19. 
+One hope of the drug is that it will reduce the likelihood that the patient requires supplementary Oxygen in order to survive.
+Suppose it is known that 45% of patients hospitalized with COVID-19 require supplementary Oxygen (normally, this percentage also needs to be estimated with a Placebo group in a clinical trial, but we will, for now, suppose it is simply known). 
+A random sample of 51 patients hospitalized with COVID-19 are given the experimental drug for a period of seven. 
+**Of the 51 patients who took the drug, only 14 of them required supplemental oxygen.** 
+We now seek to determine if taking the drug results in a significant reduction in the likelihood that a patient will require supplementary oxygen. 
+
+## Part a (2 points)
+
+Write code that represents random variable `oxy` that represents the likelihood that a patient hospitalized with COVID-19 will require supplemental oxygen. Assume, for now, that the patient does not have access to the experimental drug. 
+
+<!-- Part 3a Answer -->
+```{r}
+## oxy <- sample(#...#)
+```
+<!-- End Part 3a Answer -->
+
+## Part b (3 points)
+
+Now conduct a Monte Carlo simulation of the proportion of 51 patients that would require Oxygen, assuming that $p = 0.45$. Make 50,000 replicates using the random seed provided below and check your answer. 
+
+<!-- Part 3b Answer -->
+```{r}
+# Write a function where n represents your sample size
+# from the random variable.
+sample_prop <- function(n) {
+  # ...#
+}
+
+## set.seed(707071)
+# Replicate the results
+## oxy_mc <- replicate(50000, sample_prop(51))
+
+## all.equal(oxy_mc, hw3_sol[["oxy_mc"]])
+```
+
+<!-- End Part 3b Answer -->
+
+## Part c (2 points) 
+Plot a histogram of the replicates. 
+
+<!-- Part 3c Answer -->
+```{r}
+#| fig-width: 7
+#| fig-height: 5
+#| fig-align: center
+#| fig-cap: >
+#|   Histogram of Monte Carlo simulations of the sample proportion of
+#|   people requiring supplemental oxygen in a sample of 51 patients.
+
+# Save your ggplot to an object called p1
+## p1 <- #...#
+
+# Print your ggplot to the screen by calling p1
+## p1
+```
+
+<!-- End Part 3c Answer -->
+
+
+## Part d (2 points) 
+Does it appear that the sample proportions follow a normal distribution? Answer this question as a comment below your figure. Your plot should visually match the one provided in the commented code chunk below (including the theme, axis limits, and axis labels.)
+
+
+<!-- Part 3d Answer -->
+
+(Replace this text with your comment.)
+
+
+<!-- End Part 3d Answer -->
+
+## Part d (3 points)
+
+What proportion of your Monte Carlo simulated values are either below .31 OR above 0.79? Please provide your answer using code. 
+
+<!-- Part 3e Answer -->
+
+```{r}
+## oxy_mc_prop <- #...#
+
+## round(oxy_mc_prop, 3)
+## all.equal(round(oxy_mc_prop, 3), 0.016)
+```
+
+<!-- End Part 3e Answer -->
+
+## Part f (3 points)
+In order to conduct statistical inference, we need a null hypothesis. The question we want to answer is whether or not the experimental drug changes the likelihood that a patient will require supplemental oxygen. Please write a null hypothesis appropriate to answer such a question. 
+
+<!-- Part 3f Answer -->
+**Null hypothesis:**  (Replace this text with your answer.)
+ 
+<!-- End Part 3f Answer -->
+
+## Part g (3 points)
+
+Using your sample of 51 patients, create a 90\% confidence interval for the true proportion of patients hospitalized with COVID-19, but take the experimental drug, that require supplemental oxygen. Note that you will need to use the `qnorm` function to determine the necessary multiplier for a 90\% confidence interval (HINT: it is not 1.96!). 
+
+<!-- Part 3g Answer -->
+```{r}
+## n <- #...#
+## e_x <- #...#
+## se_x <- #...#
+## mult <- #...#
+
+## ci <- c(#...#, #...#)
+## ci
+
+## all.equal(ci, hw3_sol[["ci"]])
+```
+
+<!-- End Part 3g Answer -->
+
+## Part h (2 points)
+
+Comment on what your 90\% confidence interval implies about your null hypothesis. 
+
+<!-- Part 3h Answer -->
+
+(Replace this text with your answer.)
+
+<!-- End Part 3h Answer -->
+
+## Part i (4 points)
+
+Using the null hypothesis, obtain a p-value for the sample proportion of patients hospitalized with COVID-19 who took the drug, yet still required supplemental oxygen. Based on this p-value, what can you say about the effectiveness of the drug in reducing the need for supplemental oxygen?  
+
+<!-- Part 3i Answer -->
+```{r}
+## n <- #...#
+## samp_prop <- #...#
+## se_x <- #...#
+## z <- #...#
+
+## p_val <- #...#
+
+## p_val
+## all.equal(p_val, hw3_sol[["p_val"]])
+```
+
+<!-- Based on this p-value, what can you say about the effectiveness of the drug in reducing the need for supplemental oxygen?  -->
+
+(Replace this text with your answer.)
+
+<!-- End Part 3i Answer -->
+
+## Part j (5 points)
+
+Now suppose that 2,365 out of a sample of 5,500 patients (i.e. 43\%) who take the drug require supplemental oxygen. 
+Redo Part (g) with this new sample size and sample proportion. 
+What is the p-value? 
+What does this say about the null hypothesis (i.e. $p = 0.45$)? 
+Show the p-value with code and then comment below. 
+
+<!-- Part 3j Answer -->
+
+```{r}
+## n <- #...#
+## samp_prop <- #...#
+## se_x <- #...#
+## z <- #...#
+
+## p_val_2 <- #...#
+
+## p_val_2
+## all.equal(p_val_2, hw3_sol[["p_val_2"]])
+```
+
+
+<!-- What does this say about the null hypothesis (i.e. $p = 0.45$)?  -->
+
+**Answer:**
+
+<!-- End Part 3j Answer -->
+
+# Submission Style (10 points)
+Each submission should have the following elements: 
+
+- You should submit the `.qmd` file (not the `HTML` rendering) with a file name in the style of `<last_name>_<first_name>_homework3.qmd`.
+
+- Your `.qmd` file should run without errors when the grader attempts to render it to a html.
+
+- Your code needs to run "clean" on any lintr checks. Please see the brief videos available on the "Style Guides" tabs of the course canvas page that introduce you to `lintr`, and `styler`. Note that you can ignore any flags with the tags: `trailing_whitespace_linter`, `trailing_blank_lines_linter`, and `commented_code_linter`.
+
+
+# Submission Checklist
+
+- [ ] Check your filename -- is it of the form `lastname_firstname_homework02.qmd`?
+
+- [ ] Check the author (specified around line 3 of this file) -- is your name there?
+
+- [ ] Render your file using the blue arrow at the top of the RStudio text editor window.
+    - [ ] If your file does not render, address any errors in the code leading to failure.
+    
+- [ ] Preview your rendered file in a browser. Do all of your answers show up the way you expected them to?    
+If the answers do not show up the way you want them, check your markdown formatting against the cheat sheet in RStudio (Help -> Cheat Sheets -> Rmarkdown cheat sheets)
+
+- [ ] Run the `lintr` style checks (Canvas -> Course homepage -> Style Guides link under USU picture)
+    - [ ] Switch to source mode in RStudio
+    - [ ] Addins -> Style active file
+    - [ ] Addins -> Lint current file
+    - [ ] Address any issues that the lint command raises
+
+- [ ] Render your file again, to check that the `styler` and `lintr` addons didn't mess up any formatting. 
+
+- [ ] Upload your **qmd** file (NOT the html file) to Canvas
+
+- [ ] Double-check your submission - is the file you uploaded the one you want to be graded?

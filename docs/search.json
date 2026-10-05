@@ -777,102 +777,207 @@
     "text": "Part d (5 points)\nHow does the relationship between latitude and snow load compare to the relationship between elevation and snow load? Comment briefly.\n\nReplace this text with your answer."
   },
   {
-    "objectID": "homework/homework01.html",
-    "href": "homework/homework01.html",
+    "objectID": "homework/homework02-sol.html",
+    "href": "homework/homework02-sol.html",
+    "title": "Homework 2 - STAT 1080",
+    "section": "",
+    "text": "This assignment will give you experience visualizing and interpreting numerical information. You won’t need to bring in your own datasets — everything you need comes from R packages. Homework datasets and solutions are included in the stat1080r course package, so make sure you have the latest version installed before you begin.\n\n# You can run this code to install the pak package, and then\n# use pak to install the stat1080r package from github.\ninstall.packages(\"pak\")\npak::pak(\"https://github.com/beanb2/stat1080r\")\n\nYou’ll complete this file by finishing the code and filling in the answer prompts. Replace each #...# with the code needed to answer the question. Sometimes I’ll give you a code “shell” (marked with ##) that you’ll need to uncomment and complete.\nWhen you’re done, submit your .qmd file in Canvas. Be sure it successfully renders to HTML with all your answers showing. Don’t forget to check the style guidelines at the end before submitting. Note that you must use the “modern” pipe command |&gt; in your code. Please avoid the use of the old %&gt;% in your code which will result in a loss of points.\nThere are 3 problems in this assignment (each with several parts), worth a total of 80 points."
+  },
+  {
+    "objectID": "homework/homework02-sol.html#introduction",
+    "href": "homework/homework02-sol.html#introduction",
+    "title": "Homework 2 - STAT 1080",
+    "section": "",
+    "text": "This assignment will give you experience visualizing and interpreting numerical information. You won’t need to bring in your own datasets — everything you need comes from R packages. Homework datasets and solutions are included in the stat1080r course package, so make sure you have the latest version installed before you begin.\n\n# You can run this code to install the pak package, and then\n# use pak to install the stat1080r package from github.\ninstall.packages(\"pak\")\npak::pak(\"https://github.com/beanb2/stat1080r\")\n\nYou’ll complete this file by finishing the code and filling in the answer prompts. Replace each #...# with the code needed to answer the question. Sometimes I’ll give you a code “shell” (marked with ##) that you’ll need to uncomment and complete.\nWhen you’re done, submit your .qmd file in Canvas. Be sure it successfully renders to HTML with all your answers showing. Don’t forget to check the style guidelines at the end before submitting. Note that you must use the “modern” pipe command |&gt; in your code. Please avoid the use of the old %&gt;% in your code which will result in a loss of points.\nThere are 3 problems in this assignment (each with several parts), worth a total of 80 points."
+  },
+  {
+    "objectID": "homework/homework02-sol.html#part-a-2-points",
+    "href": "homework/homework02-sol.html#part-a-2-points",
+    "title": "Homework 2 - STAT 1080",
+    "section": "Part a (2 points)",
+    "text": "Part a (2 points)\nFirst, remove the rows that contain missing (i.e., NA) values for Sugars using the filter() function with a tidyverse pipe (i.e., |&gt;).\n\n\ncereal_sug &lt;- cereal |&gt;\n  filter(!is.na(Sugars))\n\n# REMEMBER TO UNCOMMENT ALL ## LINES before submitting!\nall.equal(cereal_sug, hw2_sol[[\"cereal_sug\"]])\n\n[1] TRUE"
+  },
+  {
+    "objectID": "homework/homework02-sol.html#part-b-5-points",
+    "href": "homework/homework02-sol.html#part-b-5-points",
+    "title": "Homework 2 - STAT 1080",
+    "section": "Part b (5 points)",
+    "text": "Part b (5 points)\nCreate an unrefined histogram of the sugar content of cereals. Note the R code chunk options I am using to help with the formatting of the HTML documents. Visually check your answer against the solution. They should be visually identical.\n\n\n# Note the \"header\" options above that determine how the figure is formatted.\nggplot(cereal_sug, aes(x = Sugars)) +\n  geom_histogram()\n\n\n\n\nHistogram of sugar content for cereals sold in the grocery store."
+  },
+  {
+    "objectID": "homework/homework02-sol.html#part-c-5-points",
+    "href": "homework/homework02-sol.html#part-c-5-points",
+    "title": "Homework 2 - STAT 1080",
+    "section": "Part c (5 points)",
+    "text": "Part c (5 points)\nVisuals often need refinement before we present them to other people. One way to accomplish this is through ggplot themes. We will use the following theme throughout the remainder of this assignment, which does the following.\n\n\n\n\n\n\nNoteCustom Theme\n\n\n\n\nChanges the plot background from grey to white and changes the plot grid lines from white to gray.\nIncreases the size of the fonts for all plots and legend labels.\nCenters plot titles whenever they are present.\nMoves any plot legends (when applicable) to the bottom of each plot.\n\n\n# Do not change this code, but be sure to run this code\n# before you try to do anything else!\nmy_theme &lt;- theme_bw() +\n  theme(\n    text = element_text(size = 14),\n    plot.title = element_text(hjust = 0.5),\n    legend.position = \"bottom\"\n  )\n\n\n\nUsing this theme, create a refined version of the histogram you created in Part b. Your refined histogram should visually match the solution provided on canvas. Some of the refinements you need to make (or that the partial code already does for you) are as follows:\n\nRemove the y-axis label and change the x-axis label using xlab() and ylab().\nAdjust the limits and the breaks of the axis labels using scale_x_continuous() and scale_y_continuous(), using the visual solution to guide your inputs.\nUse the breaks argument in geom_histogram() to make the bins of length 1 starting at 0 and ending at 16.\nUse the color and fill arguments in geom_histogram to make “black” boundaries and “gray50” fill for the rectangles.\nUse the custom theme we created above.\n\n\n\nggplot(cereal_sug, aes(x = Sugars)) +\n  geom_histogram(\n    breaks = seq(0, 16, 1),\n    col = \"black\", fill = \"gray50\"\n  ) +\n  scale_x_continuous(breaks = seq(0, 16, 4)) +\n  scale_y_continuous(\n    limits = c(0, 14),\n    breaks = seq(0, 14, 2)\n  ) +\n  xlab(\"Sugars (grams)\") +\n  ylab(\"\") +\n  my_theme\n\n\n\n\nHistogram of sugar content for cereals sold in the grocery store."
+  },
+  {
+    "objectID": "homework/homework02-sol.html#part-d-5-points",
+    "href": "homework/homework02-sol.html#part-d-5-points",
+    "title": "Homework 2 - STAT 1080",
+    "section": "Part d (5 points)",
+    "text": "Part d (5 points)\nPlease describe in 1-3 sentences what the histogram suggests about the shape of the distribution of the sugar content in cereals. Comment specifically: does sugar content appear to follow a normal distribution? Explain why or why not.\n\nI would describe the distribution as “multi-modal” with a high concentration of low sugar (&lt; 3 grams) cereals, but small spikes of moderate (5-6 grams) and high (11-12) grams of sugar. The sugar contents definitely do NOT follow a normal distribution as the peak sugar content occurs on the low end of the sugar spectrum, rather than the center."
+  },
+  {
+    "objectID": "homework/homework02-sol.html#part-e-5-points",
+    "href": "homework/homework02-sol.html#part-e-5-points",
+    "title": "Homework 2 - STAT 1080",
+    "section": "Part e (5 points)",
+    "text": "Part e (5 points)\nCreate a series of three histograms, one for each shelf, of the sugar content in cereals using the facet_wrap() function. Make it so the histograms are vertically aligned, which will facilitate comparisons in the distribution shape. Adjust the y-axis to eliminate unnecessary white space in the plot. Be sure that your final plot visually matches the solution plot provided.\n\n\nggplot(cereal_sug, aes(x = Sugars)) +\n  geom_histogram(\n    breaks = seq(0, 16, 2),\n    col = \"black\", fill = \"gray50\"\n  ) +\n  scale_x_continuous(breaks = seq(0, 16, 4)) +\n  scale_y_continuous(\n    limits = c(0, 8),\n    breaks = seq(0, 8, 2)\n  ) +\n  facet_wrap(~Shelf, ncol = 1) +\n  xlab(\"Sugars (grams)\") +\n  ylab(\"\") +\n  my_theme\n\n\n\n\nHistogram of sugar content for cereals sold in the grocery store by shelf."
+  },
+  {
+    "objectID": "homework/homework02-sol.html#part-f-5-points",
+    "href": "homework/homework02-sol.html#part-f-5-points",
+    "title": "Homework 2 - STAT 1080",
+    "section": "Part f (5 points)",
+    "text": "Part f (5 points)\nDISCUSS: Please write 2-4 sentences to compare the shape of the distribution of cereal sugar amounts per serving based on shelf. Comment specifically: Do any of the distributions seem to follow a normal distribution?\n\nThe distribution of sugar content is right skewed on the top and bottom shelf, but left skewed on the middle shelf. The range of sugar contents is nearly identical on each shelf, but the overwhelming majority of high sugar cereals are on the middle shelf. None of the distributions come close to following a normal distribution, though the top shelf seems to get the closest."
+  },
+  {
+    "objectID": "homework/homework02-sol.html#part-b-5-points-1",
+    "href": "homework/homework02-sol.html#part-b-5-points-1",
+    "title": "Homework 2 - STAT 1080",
+    "section": "Part b (5 points)",
+    "text": "Part b (5 points)\nName at least one advantage of the density plot representation of the distribution as compared to the three histogram representation. Name at least one disadvantage.\n\nThe density plot provides a more efficient representation of the shape of the distributions as we are able to show all three distributions on the same plot. One disadvantage is that the y-axis label is not as intuitive as the observation counts provided by the histogram. The histogram is easier to explain to a non-statistics person than a density plot."
+  },
+  {
+    "objectID": "homework/homework02-sol.html#part-c-3-points",
+    "href": "homework/homework02-sol.html#part-c-3-points",
+    "title": "Homework 2 - STAT 1080",
+    "section": "Part c (3 points)",
+    "text": "Part c (3 points)\nIn Part (d) we will create side-by-side boxplots of the sugar content of the cereals on the three different shelves. In order to follow the best-practices of good statistical graphics, we wish to order the boxplots on the x-axis so that the shelf with the smallest median sugar content appears on the far left, while the shelf with the largest median sugar content appears on the far right. To accomplish this, we need to re-factor the Shelf variable in the order that we want. Please write a tidyverse chain that completes this arrangement and saves it as a vector that matches the provided solution.\n\n\nshelf_order &lt;- cereal_sug |&gt;\n  group_by(Shelf) |&gt;\n  summarize(sugars_median = median(Sugars)) |&gt;\n  arrange(sugars_median) |&gt;\n  pull(Shelf) # grab the vector of shelves.\n\nall.equal(shelf_order, hw2_sol[[\"shelf_order\"]])\n\n[1] TRUE"
+  },
+  {
+    "objectID": "homework/homework02-sol.html#part-d-5-points-1",
+    "href": "homework/homework02-sol.html#part-d-5-points-1",
+    "title": "Homework 2 - STAT 1080",
+    "section": "Part d (5 points)",
+    "text": "Part d (5 points)\nCreate side-by-side boxplots as described in Part (c), please use strategies from the previous problem parts to make your answer visually match the one provided in the solution.\n\n\n# Uncomment this line for your boxplot. No need to change anything\ncereal_sug2 &lt;- cereal_sug |&gt;\n  mutate(Shelf = factor(Shelf, levels = shelf_order))\n\nggplot(cereal_sug2) +\n  geom_boxplot(aes(x = Shelf, y = Sugars)) +\n  ylab(\"Sugars (grams)\") +\n  my_theme\n\n\n\n\nBoxplots of sugar content for cereals sold in the grocery store as separated by shelf."
+  },
+  {
+    "objectID": "homework/homework02-sol.html#part-e-5-points-1",
+    "href": "homework/homework02-sol.html#part-e-5-points-1",
+    "title": "Homework 2 - STAT 1080",
+    "section": "Part e (5 points)",
+    "text": "Part e (5 points)\nIdentify at least one way in which this visual is better than the histogram or density plots we have made previously. Identify at least one way in which this visual is worse.\n\nI feel like this visual communicates the essential takeaway (i.e. that the typical cereal is way more sugary on the middle shelf, at kid-eye-level) in a really straightforward way. The disadvantage of this visual is that it makes it harder to see differences in the shape of the distribution of sugar cereals on the three shelves."
+  },
+  {
+    "objectID": "homework/homework02-sol.html#part-b-5-points-2",
+    "href": "homework/homework02-sol.html#part-b-5-points-2",
+    "title": "Homework 2 - STAT 1080",
+    "section": "Part b (5 points)",
+    "text": "Part b (5 points)\nWhat can you say about the relationship between ground snow loads and elevation? How do the points from the two eco-regions differ? In what ways are the points from the two regions similar? What data properties would be better visualized using histograms or boxplots as compared to this scatterplot? Please answer these questions in a single paragraph.\n\nReplace this text with your answer"
+  },
+  {
+    "objectID": "homework/homework02-sol.html#part-c-5-points-1",
+    "href": "homework/homework02-sol.html#part-c-5-points-1",
+    "title": "Homework 2 - STAT 1080",
+    "section": "Part c (5 points)",
+    "text": "Part c (5 points)\nRepeat the plot in Part a, but plot latitude on the x-axis instead of elevation. Change the scale_x_continuous arguments to reflect the change in scale associated with this new variable.\n\n\nggplot(rt_load_ut) +\n  geom_point(aes(x = latitude, y = load, color = eco_region)) +\n  scale_y_continuous(\n    trans = \"log2\", breaks = 2^(1:10),\n    limits = c(16, 1024)\n  ) +\n  scale_x_continuous(limits = c(37, 42)) +\n  scale_color_brewer(type = \"qual\", palette = \"Dark2\") +\n  xlab(\"Latitude\") +\n  ylab(\"Snow Load (psf - log scale)\") +\n  my_theme\n\n\n\n\nScatterplot of ground snow load values against latitude in the state of Utah."
+  },
+  {
+    "objectID": "homework/homework02-sol.html#part-d-5-points-2",
+    "href": "homework/homework02-sol.html#part-d-5-points-2",
+    "title": "Homework 2 - STAT 1080",
+    "section": "Part d (5 points)",
+    "text": "Part d (5 points)\nHow does the relationship between latitude and snow load compare to the relationship between elevation and snow load? Comment briefly.\n\nThere does not appear to be any meaningful relationship between ground snow load and latitude. It seems that the eco-region 6 values tend to be higher than the eco-region 10 values, but this, based on our previous plot, is likely due to the fact that those locations tend to be at higher elevations."
+  },
+  {
+    "objectID": "homework/homework01-sol.html",
+    "href": "homework/homework01-sol.html",
     "title": "Homework 1 - STAT 1080",
     "section": "",
     "text": "This assignment will give you hands-on practice working with numerical summaries of data in R, using the tidyverse. You won’t need to bring in your own datasets — everything you need comes from R packages.\nHomework datasets and solutions are included in the stat1080r course package, so make sure you have the latest version installed before you begin. You can install the package using the command install.packages(\"stat1080r\", repos = \"https://beanb2.r-universe.dev\"). You should only have to install this package once during the semester.\nYou’ll complete this file by finishing the code and filling in the answer prompts. Replace each #...# with the code needed to answer the question. Sometimes I’ll give you a longer sequence of code (a code “shell”, marked with ##) that you’ll need to uncomment and complete.\nWhen you’re done, go through the checklist at the end of this file, and then submit your .qmd file in Canvas.\nThere are 2 problems in this assignment (each with several parts), worth a total of 80 points. Don’t forget to check the style guidelines at the end before submitting. Note that you must use the “modern” pipe command |&gt; in your code. Please avoid the use of the old %&gt;% in your code which will result in a loss of points."
   },
   {
-    "objectID": "homework/homework01.html#introduction",
-    "href": "homework/homework01.html#introduction",
+    "objectID": "homework/homework01-sol.html#introduction",
+    "href": "homework/homework01-sol.html#introduction",
     "title": "Homework 1 - STAT 1080",
     "section": "",
     "text": "This assignment will give you hands-on practice working with numerical summaries of data in R, using the tidyverse. You won’t need to bring in your own datasets — everything you need comes from R packages.\nHomework datasets and solutions are included in the stat1080r course package, so make sure you have the latest version installed before you begin. You can install the package using the command install.packages(\"stat1080r\", repos = \"https://beanb2.r-universe.dev\"). You should only have to install this package once during the semester.\nYou’ll complete this file by finishing the code and filling in the answer prompts. Replace each #...# with the code needed to answer the question. Sometimes I’ll give you a longer sequence of code (a code “shell”, marked with ##) that you’ll need to uncomment and complete.\nWhen you’re done, go through the checklist at the end of this file, and then submit your .qmd file in Canvas.\nThere are 2 problems in this assignment (each with several parts), worth a total of 80 points. Don’t forget to check the style guidelines at the end before submitting. Note that you must use the “modern” pipe command |&gt; in your code. Please avoid the use of the old %&gt;% in your code which will result in a loss of points."
   },
   {
-    "objectID": "homework/homework01.html#part-a-5-points",
-    "href": "homework/homework01.html#part-a-5-points",
+    "objectID": "homework/homework01-sol.html#part-a-5-points",
+    "href": "homework/homework01-sol.html#part-a-5-points",
     "title": "Homework 1 - STAT 1080",
     "section": "Part a (5 points)",
-    "text": "Part a (5 points)\nUsing tidyverse syntax, determine the mean, or average, added sugar content in a single serving of cereal, using all cereals with non-missing sugars information. Your solution should make use of the mean function in R. Check out the mean() function using ?mean to determine what options you have to remove missing values in your calculation.\nAssign this value to the variable named sugar_mean_1. You will know that you have succeeded if the code chunk below prints the message TRUE when you render the document.\n\n\n## sugar_mean_1 &lt;- cereal |&gt;\n##   summarize(tmean = #...#) |&gt;\n##   pull(tmean)\n\n## all.equal(sugar_mean_1, hw1_sol$sugar_mean_1)"
+    "text": "Part a (5 points)\nUsing tidyverse syntax, determine the mean, or average, added sugar content in a single serving of cereal, using all cereals with non-missing sugars information. Your solution should make use of the mean function in R. Check out the mean() function using ?mean to determine what options you have to remove missing values in your calculation.\nAssign this value to the variable named sugar_mean_1. You will know that you have succeeded if the code chunk below prints the message TRUE when you render the document.\n\n\nsugar_mean_1 &lt;- cereal |&gt;\n  summarize(tmean = mean(Sugars, na.rm = TRUE)) |&gt;\n  pull(tmean)\n\nall.equal(sugar_mean_1, hw1_sol$sugar_mean_1)\n\n[1] TRUE"
   },
   {
-    "objectID": "homework/homework01.html#part-b-5-points",
-    "href": "homework/homework01.html#part-b-5-points",
+    "objectID": "homework/homework01-sol.html#part-b-5-points",
+    "href": "homework/homework01-sol.html#part-b-5-points",
     "title": "Homework 1 - STAT 1080",
     "section": "Part b (5 points)",
-    "text": "Part b (5 points)\nNow, write an equivalent expression that calculates the mean, without using the mean() function. For this, we will rely on the general definition of a mean. Let \\(X\\) represent a vector of values, with the individual elements of the vector denoted as \\(x_1, x_2, \\ldots, x_n\\) respectively. Under this definition we can calculate the sample mean of \\(X\\) (called \\(\\bar{x}\\)) as\n\\[\\bar{x} = \\frac{\\sum_{i=1}^n x_i}{n}.\\]\n\n\n\n\n\n\nNoteMath Notation for the mean\n\n\n\n\n\nLet’s break the math down a bit.\n\n\\(\\bar{x}\\) is the sample mean of the vector \\(X\\), which has values – \\(x_1, x_2, ..., x_n\\). We use capital letters for vectors and lower-case values for observations.\n\\(\\sum_{i=1}^n\\) says we’re going to take the sum of \\(n\\) things, which are indexed (\\(i\\) is the index of \\(x_i\\)) from 1 to \\(n\\).\nWe then divide the sum of the \\(x_i\\) (that is, the sum over \\(X\\)) by the length of \\(X\\), which is \\(n\\).\n\n\n\n\nRestated in plain English, I am taking the sum of all the elements of the vector, and then dividing by the length of the vector (or, if I am ignoring NAs, the sum of instances for which !is.na() evaluates to TRUE).\n\n\n\n\n\n\nNoteMissing Observations\n\n\n\n\n\nSometimes, we can have missing observations, which are denoted by NA. If there are missing observations, we should exclude the missing observations from the sum (in the numerator/on the top of the fraction), and then exclude the missing observations from the number of total observations.\nIn R, we can exclude NAs from most functions by using fn(..., na.rm = T), where fn is the function name and ... are the other arguments.\n\n\n\nUsing this definition, re-calculate the mean added sugar content of the cereals without using the mean() function in R. You may consider using functions in R that match one, or both, of the bolded words in the equation description. Remember that, should you have to remove any missing values as part of your calculation, you need to account for that in your estimation of the vector length. Assign this to the variable name sugar_mean_2 and use the last line of code to make sure that this calculation of the mean exactly matches the previous calculation.\n\n\n## sugar_mean_2 &lt;- cereal |&gt;\n##   summarize(tmean = #...#) |&gt;\n##   pull(tmean)\n\n## all.equal(sugar_mean_2, hw1_sol$sugar_mean_1)"
+    "text": "Part b (5 points)\nNow, write an equivalent expression that calculates the mean, without using the mean() function. For this, we will rely on the general definition of a mean. Let \\(X\\) represent a vector of values, with the individual elements of the vector denoted as \\(x_1, x_2, \\ldots, x_n\\) respectively. Under this definition we can calculate the sample mean of \\(X\\) (called \\(\\bar{x}\\)) as\n\\[\\bar{x} = \\frac{\\sum_{i=1}^n x_i}{n}.\\]\n\n\n\n\n\n\nNoteMath Notation for the mean\n\n\n\n\n\nLet’s break the math down a bit.\n\n\\(\\bar{x}\\) is the sample mean of the vector \\(X\\), which has values – \\(x_1, x_2, ..., x_n\\). We use capital letters for vectors and lower-case values for observations.\n\\(\\sum_{i=1}^n\\) says we’re going to take the sum of \\(n\\) things, which are indexed (\\(i\\) is the index of \\(x_i\\)) from 1 to \\(n\\).\nWe then divide the sum of the \\(x_i\\) (that is, the sum over \\(X\\)) by the length of \\(X\\), which is \\(n\\).\n\n\n\n\nRestated in plain English, I am taking the sum of all the elements of the vector, and then dividing by the length of the vector (or, if I am ignoring NAs, the sum of instances for which !is.na() evaluates to TRUE).\n\n\n\n\n\n\nNoteMissing Observations\n\n\n\n\n\nSometimes, we can have missing observations, which are denoted by NA. If there are missing observations, we should exclude the missing observations from the sum (in the numerator/on the top of the fraction), and then exclude the missing observations from the number of total observations.\nIn R, we can exclude NAs from most functions by using fn(..., na.rm = T), where fn is the function name and ... are the other arguments.\n\n\n\nUsing this definition, re-calculate the mean added sugar content of the cereals without using the mean() function in R. You may consider using functions in R that match one, or both, of the bolded words in the equation description. Remember that, should you have to remove any missing values as part of your calculation, you need to account for that in your estimation of the vector length. Assign this to the variable name sugar_mean_2 and use the last line of code to make sure that this calculation of the mean exactly matches the previous calculation.\n\n\nsugar_mean_2 &lt;- cereal |&gt;\n  summarize(tmean = sum(Sugars, na.rm = TRUE) / sum(!is.na(Sugars))) |&gt;\n  pull(tmean)\n\nall.equal(sugar_mean_2, hw1_sol$sugar_mean_1)\n\n[1] TRUE"
   },
   {
-    "objectID": "homework/homework01.html#part-c-5-points",
-    "href": "homework/homework01.html#part-c-5-points",
+    "objectID": "homework/homework01-sol.html#part-c-5-points",
+    "href": "homework/homework01-sol.html#part-c-5-points",
     "title": "Homework 1 - STAT 1080",
     "section": "Part c (5 points)",
-    "text": "Part c (5 points)\nNote that a “serving” of cereal is a relative measure: there is no standard weight OR volume to describe a serving of cereal. One way to know this is to take a look at the unique values of weight and cups in the cereal dataset. You can see these values by using the unique() function. A solution for weight_u is provided. Your task is to adapt the weight_u code to work for the cups_u calculation. Please ensure that the provided code prints a TRUE statement when the document is rendered.\n\n\nweight_u &lt;- cereal |&gt; \n  pull(Weight) |&gt;\n  unique()\n\n## cups_u &lt;- #...#\n\n## all.equal(cups_u, hw1_sol$cups_u)"
+    "text": "Part c (5 points)\nNote that a “serving” of cereal is a relative measure: there is no standard weight OR volume to describe a serving of cereal. One way to know this is to take a look at the unique values of weight and cups in the cereal dataset. You can see these values by using the unique() function. A solution for weight_u is provided. Your task is to adapt the weight_u code to work for the cups_u calculation. Please ensure that the provided code prints a TRUE statement when the document is rendered.\n\n\nweight_u &lt;- cereal |&gt; \n  pull(Weight) |&gt;\n  unique()\n\ncups_u &lt;- cereal |&gt; \n  pull(Cups) |&gt;\n  unique()\n\nall.equal(cups_u, hw1_sol$cups_u)\n\n[1] TRUE"
   },
   {
-    "objectID": "homework/homework01.html#part-d-5-points",
-    "href": "homework/homework01.html#part-d-5-points",
+    "objectID": "homework/homework01-sol.html#part-d-5-points",
+    "href": "homework/homework01-sol.html#part-d-5-points",
     "title": "Homework 1 - STAT 1080",
     "section": "Part d (5 points)",
-    "text": "Part d (5 points)\nBased on what we learned in Part c, create a new variable in our data frame that represents “normalized” or “standardized” estimates of the added sugars in a “serving” of cereal. This variable should be named sugars_weight and should represent the total number of sugars per unit of Weight. Note that Weight is a standardized measure that represents the relative weight of a typical serving of cereal. It does not represent ounces, or grams, or other typical measurements of weight. Normally, we would say “total number of sugars per ounce” or “sugars per gram”. But, because of the way our measurements were taken, all we can say about this new variable is “sugars per unit of weight.”\nNote that you must use the mutate() function from the tidyverse to add this variable to your dataframe. Then, using the same tidyverse pipe, calculate the average number of sugars per unit of weight using the variable you have created and assign that value to the variable sugars_weight_mean. Ensure that the provided code prints TRUE when you are finished.\n\n\n## sugars_weight_mean &lt;- cereal |&gt;\n##   mutate(sugars_weight = #...#) |&gt;\n##   summarize(mean_sugar_weight = #...#) |&gt;\n##   pull(mean_sugar_weight)\n\n## all.equal(sugars_weight_mean, hw1_sol$sugars_weight_mean)"
+    "text": "Part d (5 points)\nBased on what we learned in Part c, create a new variable in our data frame that represents “normalized” or “standardized” estimates of the added sugars in a “serving” of cereal. This variable should be named sugars_weight and should represent the total number of sugars per unit of Weight. Note that Weight is a standardized measure that represents the relative weight of a typical serving of cereal. It does not represent ounces, or grams, or other typical measurements of weight. Normally, we would say “total number of sugars per ounce” or “sugars per gram”. But, because of the way our measurements were taken, all we can say about this new variable is “sugars per unit of weight.”\nNote that you must use the mutate() function from the tidyverse to add this variable to your dataframe. Then, using the same tidyverse pipe, calculate the average number of sugars per unit of weight using the variable you have created and assign that value to the variable sugars_weight_mean. Ensure that the provided code prints TRUE when you are finished.\n\n\nsugars_weight_mean &lt;- cereal |&gt;\n  mutate(sugars_weight = Sugars / Weight) |&gt;\n  summarize(mean_sugar_weight = mean(sugars_weight, na.rm = TRUE)) |&gt;\n  pull(mean_sugar_weight)\n\nall.equal(sugars_weight_mean, hw1_sol$sugars_weight_mean)\n\n[1] TRUE"
   },
   {
-    "objectID": "homework/homework01.html#part-e-5-points",
-    "href": "homework/homework01.html#part-e-5-points",
+    "objectID": "homework/homework01-sol.html#part-e-5-points",
+    "href": "homework/homework01-sol.html#part-e-5-points",
     "title": "Homework 1 - STAT 1080",
     "section": "Part e (5 points)",
-    "text": "Part e (5 points)\nNow repeat Part (d) but this time normalize by volume (i.e. “Sugars per cup”) rather than by weight. Call the name of the new column you create sugars_cup and store the calculated mean of column in the variable name sugars_cup_mean. As before, make sure that TRUE prints to the screen when you are finished.\n\n\n## sugars_cup_mean &lt;- cereal |&gt;\n##   mutate(sugars_cup = #...#) |&gt;\n##   summarize(mean_sugar_cup = #...#) |&gt;\n##   pull(mean_sugar_cup)\n\n## all.equal(sugars_cup_mean, hw1_sol$sugars_cup_mean)"
+    "text": "Part e (5 points)\nNow repeat Part (d) but this time normalize by volume (i.e. “Sugars per cup”) rather than by weight. Call the name of the new column you create sugars_cup and store the calculated mean of column in the variable name sugars_cup_mean. As before, make sure that TRUE prints to the screen when you are finished.\n\n\nsugars_cup_mean &lt;- cereal |&gt;\n  mutate(sugars_cup = Sugars / Cups) |&gt;\n  summarize(mean_sugar_cup = mean(sugars_cup, na.rm = TRUE)) |&gt;\n  pull(mean_sugar_cup)\n\nall.equal(sugars_cup_mean, hw1_sol$sugars_cup_mean)\n\n[1] TRUE"
   },
   {
-    "objectID": "homework/homework01.html#part-f-10-points",
-    "href": "homework/homework01.html#part-f-10-points",
+    "objectID": "homework/homework01-sol.html#part-f-10-points",
+    "href": "homework/homework01-sol.html#part-f-10-points",
     "title": "Homework 1 - STAT 1080",
     "section": "Part f (10 points)",
-    "text": "Part f (10 points)\nDiscuss: We now have three different estimates of the average added sugar content in box cereals: one by serving, one by weight, and one by volume (i.e. cup). Please identify at least one good thing (PRO) and one limitation (CON) for using each form of measurement.\nAdd your answer to each PRO: and CON: statement below. Note that you can create a “sub-bullet” by putting exactly two spaces before the - symbol, as shown below.\n\n\nRegular Measurements\n\nPro:\nCon:\n\nStandardized by weight\n\nPro:\nCon:\n\nStandardized by Volume\n\nPro:\nCon:"
+    "text": "Part f (10 points)\nDiscuss: We now have three different estimates of the average added sugar content in box cereals: one by serving, one by weight, and one by volume (i.e. cup). Please identify at least one good thing (PRO) and one limitation (CON) for using each form of measurement.\nAdd your answer to each PRO: and CON: statement below. Note that you can create a “sub-bullet” by putting exactly two spaces before the - symbol, as shown below.\n\n\nRegular Measurements\n\nPro: This is the unit of measurement on the back of the box, which is the one users are most likely to interact with.\nCon: There is no common unit measurement that makes all observations comparable for this serving size.\n\nStandardized by weight\n\nPro: Sugar is already a weight measurement, so it makes sense to normalize by weight and think about the proportion of sugar, relative to the weight of other ingredients.\nCon: The volume of sugar in a single unit of weight varies drastically.\n\nStandardized by Volume\n\nPro: serving sizes are typically normalized by volume.\nCon: Ignores data density."
   },
   {
-    "objectID": "homework/homework01.html#part-g-5-points",
-    "href": "homework/homework01.html#part-g-5-points",
+    "objectID": "homework/homework01-sol.html#part-g-5-points",
+    "href": "homework/homework01-sol.html#part-g-5-points",
     "title": "Homework 1 - STAT 1080",
     "section": "Part g (5 points)",
-    "text": "Part g (5 points)\nSuppose that your friend eats exactly one bowl of cereal, filled to the brim, for breakfast. They are wanting to better understand how much sugar would be contained in each bowl of cereal if they were to switch brands. Based on this, which of the three variables (Sugars, sugars_weight, sugars_cup) would be the most appropriate variable to consider and why?\n\n(Replace this text with your answer)"
+    "text": "Part g (5 points)\nSuppose that your friend eats exactly one bowl of cereal, filled to the brim, for breakfast. They are wanting to better understand how much sugar would be contained in each bowl of cereal if they were to switch brands. Based on this, which of the three variables (Sugars, sugars_weight, sugars_cup) would be the most appropriate variable to consider and why?\n\nThe answer would be sugars_cup because the friend is eating a set volume of cereal, regardless of the weight. Sugars per cup would allow them to easily determine how much sugar would be in each bowl of cereal without having to worry about the listed serving size."
   },
   {
-    "objectID": "homework/homework01.html#part-a-5-points-1",
-    "href": "homework/homework01.html#part-a-5-points-1",
+    "objectID": "homework/homework01-sol.html#part-a-5-points-1",
+    "href": "homework/homework01-sol.html#part-a-5-points-1",
     "title": "Homework 1 - STAT 1080",
     "section": "Part a (5 points)",
-    "text": "Part a (5 points)\nFor the first problem, we want to look at the mean added sugar content for the original servings for the different cereal manufacturers. Create a data frame named cereals_man that shows the group average/max/min sugar content per serving for all manufacturers that have at least five non-missing cereal types in the dataset. Arrange cereals_man using the average sugar content in descending order.\n\n\n## cereals_man &lt;- cereal |&gt; \n##   filter(#...#) |&gt; # remove rows with missing Sugar information\n##   group_by(#...#) |&gt; # group by Manufacturer\n##   summarize(sugars_mean = #...#,\n##            sugars_max = #...#,\n##            sugars_min = #...#,\n##            count = n()) |&gt; # n() gives the size of each group\n##  filter(#...#) |&gt; # retain only manufacturers with at least 5 obs\n##  arrange(desc(#...#)) # arrange by mean sugar content in descending order\n\n## all.equal(cereals_man, hw1_sol[[\"cereals_man\"]])"
+    "text": "Part a (5 points)\nFor the first problem, we want to look at the mean added sugar content for the original servings for the different cereal manufacturers. Create a data frame named cereals_man that shows the group average/max/min sugar content per serving for all manufacturers that have at least five non-missing cereal types in the dataset. Arrange cereals_man using the average sugar content in descending order.\n\n\ncereals_man &lt;- cereal |&gt; \n  filter(!is.na(Sugars)) |&gt;\n  group_by(Manufacturer) |&gt;\n  summarize(sugars_mean = mean(Sugars),\n            sugars_max = max(Sugars),\n            sugars_min = min(Sugars),\n            count = n()) |&gt;\n  filter(count &gt;= 5) |&gt;\n  arrange(desc(sugars_mean))\n\n\nall.equal(cereals_man, hw1_sol[[\"cereals_man\"]])\n\n[1] TRUE"
   },
   {
-    "objectID": "homework/homework01.html#part-b-5-points-1",
-    "href": "homework/homework01.html#part-b-5-points-1",
+    "objectID": "homework/homework01-sol.html#part-b-5-points-1",
+    "href": "homework/homework01-sol.html#part-b-5-points-1",
     "title": "Homework 1 - STAT 1080",
     "section": "Part b (5 points)",
-    "text": "Part b (5 points)\nNow repeat Part (a) but instead looking at the average sugar content per shelf, see Shelf variable, instead of Manufacturer. You will use the same variable names that you used in Part (a). See the hw1_sol[[\"cereals_shelf\"]] dataframe to see how you should name the variables and arrange the rows. Your final answer should match the hw1_sol[[\"cereals_shelf\"]] exactly.\n\n\n# Adapt the code from the previous problem. This time using a \n# different grouping variable. \n## cereals_shelf &lt;- #...#\n\n## all.equal(cereals_shelf, hw1_sol[[\"cereals_shelf\"]])"
+    "text": "Part b (5 points)\nNow repeat Part (a) but instead looking at the average sugar content per shelf, see Shelf variable, instead of Manufacturer. You will use the same variable names that you used in Part (a). See the hw1_sol[[\"cereals_shelf\"]] dataframe to see how you should name the variables and arrange the rows. Your final answer should match the hw1_sol[[\"cereals_shelf\"]] exactly.\n\n\ncereals_shelf &lt;- cereal |&gt; \n  filter(!is.na(Sugars)) |&gt;\n  group_by(Shelf) |&gt;\n  summarize(sugars_mean = mean(Sugars),\n            sugars_max = max(Sugars),\n            sugars_min = min(Sugars),\n            count = n()) |&gt;\n  filter(count &gt;= 5) |&gt;\n  arrange(desc(sugars_mean))\n\nall.equal(cereals_shelf, hw1_sol[[\"cereals_shelf\"]])\n\n[1] TRUE"
   },
   {
-    "objectID": "homework/homework01.html#part-c-5-points-1",
-    "href": "homework/homework01.html#part-c-5-points-1",
+    "objectID": "homework/homework01-sol.html#part-c-5-points-1",
+    "href": "homework/homework01-sol.html#part-c-5-points-1",
     "title": "Homework 1 - STAT 1080",
     "section": "Part c (5 points)",
-    "text": "Part c (5 points)\nDiscuss What interesting observations can you make about the grouped sugar content averages/max/min? Identify at least three different things of interest to you. For at least one thing that you identify, provide a possible reason for the observation (there is no way to “know” with the information that we have).\n\n\nObservation 1:\nObservation 2:\nObservation 3:"
+    "text": "Part c (5 points)\nDiscuss What interesting observations can you make about the grouped sugar content averages/max/min? Identify at least three different things of interest to you. For at least one thing that you identify, provide a possible reason for the observation (there is no way to “know” with the information that we have).\n\n\nObservation 1: It seems that no cereal manufacturer dares to go beyond 15 grams of sugar in a serving.\nObservation 2: The major manufacturers have far less representation on the bottom/middle shelf than the top shelf.\nObservation 3: The average sugar content is notably higher on the middle shelf than the other two shelves. This is likely due to cereals being traditionally marketed to children and the middle shelf is the shelf that would be at eye level for them."
   },
   {
-    "objectID": "homework/homework01.html#part-d-5-points-1",
-    "href": "homework/homework01.html#part-d-5-points-1",
+    "objectID": "homework/homework01-sol.html#part-d-5-points-1",
+    "href": "homework/homework01-sol.html#part-d-5-points-1",
     "title": "Homework 1 - STAT 1080",
     "section": "Part d (5 points)",
-    "text": "Part d (5 points)\nSuppose you are participating in a competition where you will be required to eat one pound of cereal blindfolded. You do not get to pick the cereal, but you DO get to pick which shelf in the grocery store that the cereal box is selected from. Suppose that you are trying to limit your sodium content so that your ONLY goal with shelf selection is to minimize the worst-case (i.e., highest possible) scenario for sodium intake. Please identify (1) which variable form (sodium per serving, sodium per cup, sodium per unit weight) and (2) which variable summary (min, mean, or max) would be most appropriate in helping you make your shelf selection. No need for an explanation.\n\nAnswer: (Replace this text with your answer)"
+    "text": "Part d (5 points)\nSuppose you are participating in a competition where you will be required to eat one pound of cereal blindfolded. You do not get to pick the cereal, but you DO get to pick which shelf in the grocery store that the cereal box is selected from. Suppose that you are trying to limit your sodium content so that your ONLY goal with shelf selection is to minimize the worst-case (i.e., highest possible) scenario for sodium intake. Please identify (1) which variable form (sodium per serving, sodium per cup, sodium per unit weight) and (2) which variable summary (min, mean, or max) would be most appropriate in helping you make your shelf selection. No need for an explanation.\n\nAnswer: You would want to consider sodium per unit weight since you will be eating a set weight of cereal (rather than a bowl or a cup) and you would want to consider the maximum summary since you are only interested in the worst-case (i.e. largest possible) amount of sodium that you might have to ingest in random cereal selection."
   },
   {
-    "objectID": "homework/homework01.html#part-e-10-points",
-    "href": "homework/homework01.html#part-e-10-points",
+    "objectID": "homework/homework01-sol.html#part-e-10-points",
+    "href": "homework/homework01-sol.html#part-e-10-points",
     "title": "Homework 1 - STAT 1080",
     "section": "Part e (10 points)",
-    "text": "Part e (10 points)\nLooking at the original cereal data, propose a grouped summary of a variable other than Sugars. You are welcome to group by Shelf, Manufacturer, or both Shelf and Manufacturer. In order to ensure reasonable estimates of the min/max/mean, you need to make sure that you only retain groups that have at least 5 non-missing observations of interest. To complete this problem, you must:\n\n(2.5 points) Write a sentence explaining what grouped summary you plan to take and why you chose to summarize that variable. You should select one variable so summarize, and at least one variable to group by.\n(5 points) Create a dataframe that contains the grouped summaries (min/max/mean) of that variable. Print this dataframe as part of your report (which can be done simply by putting the name of the dataframe on the last line of your code chunk).\n(2.5 points) Describe at least one interesting feature of your grouped summary. Also provide a possible explanation for what might be causing the difference (or lack of difference) between the groups?\n\n\n\n#...#\n\nAnswer:\n(Replace this text with your explanation)"
+    "text": "Part e (10 points)\nLooking at the original cereal data, propose a grouped summary of a variable other than Sugars. You are welcome to group by Shelf, Manufacturer, or both Shelf and Manufacturer. In order to ensure reasonable estimates of the min/max/mean, you need to make sure that you only retain groups that have at least 5 non-missing observations of interest. To complete this problem, you must:\n\n(2.5 points) Write a sentence explaining what grouped summary you plan to take and why you chose to summarize that variable. You should select one variable so summarize, and at least one variable to group by.\n(5 points) Create a dataframe that contains the grouped summaries (min/max/mean) of that variable. Print this dataframe as part of your report (which can be done simply by putting the name of the dataframe on the last line of your code chunk).\n(2.5 points) Describe at least one interesting feature of your grouped summary. Also provide a possible explanation for what might be causing the difference (or lack of difference) between the groups?\n\n\n\ncereal_sum_fat &lt;- cereal |&gt; \n  filter(!is.na(Fat)) |&gt;\n  group_by(Shelf) |&gt;\n  summarize(fat_mean = mean(Fat),\n            fat_max = max(Fat),\n            fat_min = min(Fat),\n            count = n()) |&gt;\n  arrange(desc(fat_mean))\n\n\ncereal_sum_fat\n\n# A tibble: 3 × 5\n  Shelf  fat_mean fat_max fat_min count\n  &lt;chr&gt;     &lt;dbl&gt;   &lt;int&gt;   &lt;int&gt; &lt;int&gt;\n1 Top        1.25       5       0    36\n2 Middle     1          3       0    21\n3 Bottom     0.6        2       0    20\n\n\nAnswer:\nI picked to summarize fats by shelf because I hypothesized that, unlike, sugar, there will be no meaningful difference in the fat content on the different cereal shelves since it seems to be sugar that drives cereal popularity.\nThe results show that the average fat content of the bottom shelf cereals is less than half of the top shelf. All shelves have fat-free cereals but the maximum grams of fat per serving increases as shelf height increases. This possibly suggests that, while sugary cereals are placed at a height where children are most likely to see them, that savory cereals are placed at a height where adults are most likely to see them. The biggest takeaway is that if you want low-fat, low-sugar cereals, you better be willing to bend down and explore the bottom shelf!"
   },
   {
     "objectID": "lab/16-lubridate.html",
@@ -2072,6 +2177,104 @@
     "text": "Solve the mystery\nSpeaking of the Zodiac, one of the most famous mysteries in California history is the identity of the so-called “Zodiac Killer”, who murdered 7 people in Northern California between 1968 and 1969.\nA new murder was committed last year in California, suspected to be the work of a new Zodiac Killer on the loose. Fortunately, a camera was planted at the location where the body was found. The FBI has provided you with a list of people who entered the building last year, and what date and time they entered, in Pacific Standard Time (PST).\n\nsuspects &lt;- read.csv(\"https://github.com/kbodwin/decodeR/raw/refs/heads/master/lubridate/suspects.csv\")\n\nUnfortunately, the date and time of the murder is not known. You have been hired to crack the case. Use the clues below to discover the murderer’s identity.\n\nBased on the sunburn patterns on the body, the murder was not committed in the morning.\n\n\nstep1 &lt;- suspects |&gt;\n  mutate(Time.Spotted = ymd_hms(Time.Spotted, tz = \"US/Pacific\")) |&gt;\n  filter(!am(Time.Spotted))\n\n\nThe room where the murder was committed is closed Tuesdays and Thursdays, so the murder did not happen on those days.\n\n\nstep2 &lt;- step1 |&gt;\n  filter(!wday(Time.Spotted, label = T) %in% c(\"Tue\", \"Thu\"))\n\n\nIt is believed that the murder was committed within 5 weeks (35 days) of Thanksgiving, 2018.\n\n\n# Thanksgiving = Nov 22, 2018\nstep3 &lt;- step2 |&gt;\n  filter(Time.Spotted&gt;=(ymd(\"20181122\") - days(35)))\n\n\nIt was discovered that just before being murdered, the victim tried to send a text to her sister in Iceland, saying “Goodnight over there!”\n\n\n# Iceland is on GMT (UTC+0)\n# Assume anything after 6pm or so could be \"goodnight\" - in winter, sun sets early\nstep4 &lt;- step3 |&gt;\n  mutate(Iceland.time = with_tz(Time.Spotted, tzone = \"UTC\")) |&gt;\n  filter(hour(Iceland.time) &gt;= 18)\n\n\nThe Killer left behind a birthday card at the scene of the crime. The date is smudged, but the number of the month is shown to be 22. It is thought that perhaps this murder took place less than two days after the Killer’s birthday.\n\n\n# Killer's bday is 22, so day &lt;= 24\nstep5 &lt;- step4 |&gt; filter(day(Time.Spotted) &lt;= 24 & day(Time.Spotted) &gt; 22)\n\n\nThe Killer him/herself is amused by our efforts, and he has sent us a cryptic clue: “The number of minutes between Jan 1, 1970 at midnight and the time I arrived on the scene is divisible by 10.”\n\n\n# Times are written as epochs since 1-1-1970 00:00:00\nstep6 &lt;- step5 |&gt;\n  filter(as.numeric(Time.Spotted)%%10 == 0)\n\nWho is the killer?\nTed Cruz."
   },
   {
+    "objectID": "homework/homework01.html",
+    "href": "homework/homework01.html",
+    "title": "Homework 1 - STAT 1080",
+    "section": "",
+    "text": "This assignment will give you hands-on practice working with numerical summaries of data in R, using the tidyverse. You won’t need to bring in your own datasets — everything you need comes from R packages.\nHomework datasets and solutions are included in the stat1080r course package, so make sure you have the latest version installed before you begin. You can install the package using the command install.packages(\"stat1080r\", repos = \"https://beanb2.r-universe.dev\"). You should only have to install this package once during the semester.\nYou’ll complete this file by finishing the code and filling in the answer prompts. Replace each #...# with the code needed to answer the question. Sometimes I’ll give you a longer sequence of code (a code “shell”, marked with ##) that you’ll need to uncomment and complete.\nWhen you’re done, go through the checklist at the end of this file, and then submit your .qmd file in Canvas.\nThere are 2 problems in this assignment (each with several parts), worth a total of 80 points. Don’t forget to check the style guidelines at the end before submitting. Note that you must use the “modern” pipe command |&gt; in your code. Please avoid the use of the old %&gt;% in your code which will result in a loss of points."
+  },
+  {
+    "objectID": "homework/homework01.html#introduction",
+    "href": "homework/homework01.html#introduction",
+    "title": "Homework 1 - STAT 1080",
+    "section": "",
+    "text": "This assignment will give you hands-on practice working with numerical summaries of data in R, using the tidyverse. You won’t need to bring in your own datasets — everything you need comes from R packages.\nHomework datasets and solutions are included in the stat1080r course package, so make sure you have the latest version installed before you begin. You can install the package using the command install.packages(\"stat1080r\", repos = \"https://beanb2.r-universe.dev\"). You should only have to install this package once during the semester.\nYou’ll complete this file by finishing the code and filling in the answer prompts. Replace each #...# with the code needed to answer the question. Sometimes I’ll give you a longer sequence of code (a code “shell”, marked with ##) that you’ll need to uncomment and complete.\nWhen you’re done, go through the checklist at the end of this file, and then submit your .qmd file in Canvas.\nThere are 2 problems in this assignment (each with several parts), worth a total of 80 points. Don’t forget to check the style guidelines at the end before submitting. Note that you must use the “modern” pipe command |&gt; in your code. Please avoid the use of the old %&gt;% in your code which will result in a loss of points."
+  },
+  {
+    "objectID": "homework/homework01.html#part-a-5-points",
+    "href": "homework/homework01.html#part-a-5-points",
+    "title": "Homework 1 - STAT 1080",
+    "section": "Part a (5 points)",
+    "text": "Part a (5 points)\nUsing tidyverse syntax, determine the mean, or average, added sugar content in a single serving of cereal, using all cereals with non-missing sugars information. Your solution should make use of the mean function in R. Check out the mean() function using ?mean to determine what options you have to remove missing values in your calculation.\nAssign this value to the variable named sugar_mean_1. You will know that you have succeeded if the code chunk below prints the message TRUE when you render the document.\n\n\n## sugar_mean_1 &lt;- cereal |&gt;\n##   summarize(tmean = #...#) |&gt;\n##   pull(tmean)\n\n## all.equal(sugar_mean_1, hw1_sol$sugar_mean_1)"
+  },
+  {
+    "objectID": "homework/homework01.html#part-b-5-points",
+    "href": "homework/homework01.html#part-b-5-points",
+    "title": "Homework 1 - STAT 1080",
+    "section": "Part b (5 points)",
+    "text": "Part b (5 points)\nNow, write an equivalent expression that calculates the mean, without using the mean() function. For this, we will rely on the general definition of a mean. Let \\(X\\) represent a vector of values, with the individual elements of the vector denoted as \\(x_1, x_2, \\ldots, x_n\\) respectively. Under this definition we can calculate the sample mean of \\(X\\) (called \\(\\bar{x}\\)) as\n\\[\\bar{x} = \\frac{\\sum_{i=1}^n x_i}{n}.\\]\n\n\n\n\n\n\nNoteMath Notation for the mean\n\n\n\n\n\nLet’s break the math down a bit.\n\n\\(\\bar{x}\\) is the sample mean of the vector \\(X\\), which has values – \\(x_1, x_2, ..., x_n\\). We use capital letters for vectors and lower-case values for observations.\n\\(\\sum_{i=1}^n\\) says we’re going to take the sum of \\(n\\) things, which are indexed (\\(i\\) is the index of \\(x_i\\)) from 1 to \\(n\\).\nWe then divide the sum of the \\(x_i\\) (that is, the sum over \\(X\\)) by the length of \\(X\\), which is \\(n\\).\n\n\n\n\nRestated in plain English, I am taking the sum of all the elements of the vector, and then dividing by the length of the vector (or, if I am ignoring NAs, the sum of instances for which !is.na() evaluates to TRUE).\n\n\n\n\n\n\nNoteMissing Observations\n\n\n\n\n\nSometimes, we can have missing observations, which are denoted by NA. If there are missing observations, we should exclude the missing observations from the sum (in the numerator/on the top of the fraction), and then exclude the missing observations from the number of total observations.\nIn R, we can exclude NAs from most functions by using fn(..., na.rm = T), where fn is the function name and ... are the other arguments.\n\n\n\nUsing this definition, re-calculate the mean added sugar content of the cereals without using the mean() function in R. You may consider using functions in R that match one, or both, of the bolded words in the equation description. Remember that, should you have to remove any missing values as part of your calculation, you need to account for that in your estimation of the vector length. Assign this to the variable name sugar_mean_2 and use the last line of code to make sure that this calculation of the mean exactly matches the previous calculation.\n\n\n## sugar_mean_2 &lt;- cereal |&gt;\n##   summarize(tmean = #...#) |&gt;\n##   pull(tmean)\n\n## all.equal(sugar_mean_2, hw1_sol$sugar_mean_1)"
+  },
+  {
+    "objectID": "homework/homework01.html#part-c-5-points",
+    "href": "homework/homework01.html#part-c-5-points",
+    "title": "Homework 1 - STAT 1080",
+    "section": "Part c (5 points)",
+    "text": "Part c (5 points)\nNote that a “serving” of cereal is a relative measure: there is no standard weight OR volume to describe a serving of cereal. One way to know this is to take a look at the unique values of weight and cups in the cereal dataset. You can see these values by using the unique() function. A solution for weight_u is provided. Your task is to adapt the weight_u code to work for the cups_u calculation. Please ensure that the provided code prints a TRUE statement when the document is rendered.\n\n\nweight_u &lt;- cereal |&gt; \n  pull(Weight) |&gt;\n  unique()\n\n## cups_u &lt;- #...#\n\n## all.equal(cups_u, hw1_sol$cups_u)"
+  },
+  {
+    "objectID": "homework/homework01.html#part-d-5-points",
+    "href": "homework/homework01.html#part-d-5-points",
+    "title": "Homework 1 - STAT 1080",
+    "section": "Part d (5 points)",
+    "text": "Part d (5 points)\nBased on what we learned in Part c, create a new variable in our data frame that represents “normalized” or “standardized” estimates of the added sugars in a “serving” of cereal. This variable should be named sugars_weight and should represent the total number of sugars per unit of Weight. Note that Weight is a standardized measure that represents the relative weight of a typical serving of cereal. It does not represent ounces, or grams, or other typical measurements of weight. Normally, we would say “total number of sugars per ounce” or “sugars per gram”. But, because of the way our measurements were taken, all we can say about this new variable is “sugars per unit of weight.”\nNote that you must use the mutate() function from the tidyverse to add this variable to your dataframe. Then, using the same tidyverse pipe, calculate the average number of sugars per unit of weight using the variable you have created and assign that value to the variable sugars_weight_mean. Ensure that the provided code prints TRUE when you are finished.\n\n\n## sugars_weight_mean &lt;- cereal |&gt;\n##   mutate(sugars_weight = #...#) |&gt;\n##   summarize(mean_sugar_weight = #...#) |&gt;\n##   pull(mean_sugar_weight)\n\n## all.equal(sugars_weight_mean, hw1_sol$sugars_weight_mean)"
+  },
+  {
+    "objectID": "homework/homework01.html#part-e-5-points",
+    "href": "homework/homework01.html#part-e-5-points",
+    "title": "Homework 1 - STAT 1080",
+    "section": "Part e (5 points)",
+    "text": "Part e (5 points)\nNow repeat Part (d) but this time normalize by volume (i.e. “Sugars per cup”) rather than by weight. Call the name of the new column you create sugars_cup and store the calculated mean of column in the variable name sugars_cup_mean. As before, make sure that TRUE prints to the screen when you are finished.\n\n\n## sugars_cup_mean &lt;- cereal |&gt;\n##   mutate(sugars_cup = #...#) |&gt;\n##   summarize(mean_sugar_cup = #...#) |&gt;\n##   pull(mean_sugar_cup)\n\n## all.equal(sugars_cup_mean, hw1_sol$sugars_cup_mean)"
+  },
+  {
+    "objectID": "homework/homework01.html#part-f-10-points",
+    "href": "homework/homework01.html#part-f-10-points",
+    "title": "Homework 1 - STAT 1080",
+    "section": "Part f (10 points)",
+    "text": "Part f (10 points)\nDiscuss: We now have three different estimates of the average added sugar content in box cereals: one by serving, one by weight, and one by volume (i.e. cup). Please identify at least one good thing (PRO) and one limitation (CON) for using each form of measurement.\nAdd your answer to each PRO: and CON: statement below. Note that you can create a “sub-bullet” by putting exactly two spaces before the - symbol, as shown below.\n\n\nRegular Measurements\n\nPro:\nCon:\n\nStandardized by weight\n\nPro:\nCon:\n\nStandardized by Volume\n\nPro:\nCon:"
+  },
+  {
+    "objectID": "homework/homework01.html#part-g-5-points",
+    "href": "homework/homework01.html#part-g-5-points",
+    "title": "Homework 1 - STAT 1080",
+    "section": "Part g (5 points)",
+    "text": "Part g (5 points)\nSuppose that your friend eats exactly one bowl of cereal, filled to the brim, for breakfast. They are wanting to better understand how much sugar would be contained in each bowl of cereal if they were to switch brands. Based on this, which of the three variables (Sugars, sugars_weight, sugars_cup) would be the most appropriate variable to consider and why?\n\n(Replace this text with your answer)"
+  },
+  {
+    "objectID": "homework/homework01.html#part-a-5-points-1",
+    "href": "homework/homework01.html#part-a-5-points-1",
+    "title": "Homework 1 - STAT 1080",
+    "section": "Part a (5 points)",
+    "text": "Part a (5 points)\nFor the first problem, we want to look at the mean added sugar content for the original servings for the different cereal manufacturers. Create a data frame named cereals_man that shows the group average/max/min sugar content per serving for all manufacturers that have at least five non-missing cereal types in the dataset. Arrange cereals_man using the average sugar content in descending order.\n\n\n## cereals_man &lt;- cereal |&gt; \n##   filter(#...#) |&gt; # remove rows with missing Sugar information\n##   group_by(#...#) |&gt; # group by Manufacturer\n##   summarize(sugars_mean = #...#,\n##            sugars_max = #...#,\n##            sugars_min = #...#,\n##            count = n()) |&gt; # n() gives the size of each group\n##  filter(#...#) |&gt; # retain only manufacturers with at least 5 obs\n##  arrange(desc(#...#)) # arrange by mean sugar content in descending order\n\n## all.equal(cereals_man, hw1_sol[[\"cereals_man\"]])"
+  },
+  {
+    "objectID": "homework/homework01.html#part-b-5-points-1",
+    "href": "homework/homework01.html#part-b-5-points-1",
+    "title": "Homework 1 - STAT 1080",
+    "section": "Part b (5 points)",
+    "text": "Part b (5 points)\nNow repeat Part (a) but instead looking at the average sugar content per shelf, see Shelf variable, instead of Manufacturer. You will use the same variable names that you used in Part (a). See the hw1_sol[[\"cereals_shelf\"]] dataframe to see how you should name the variables and arrange the rows. Your final answer should match the hw1_sol[[\"cereals_shelf\"]] exactly.\n\n\n# Adapt the code from the previous problem. This time using a \n# different grouping variable. \n## cereals_shelf &lt;- #...#\n\n## all.equal(cereals_shelf, hw1_sol[[\"cereals_shelf\"]])"
+  },
+  {
+    "objectID": "homework/homework01.html#part-c-5-points-1",
+    "href": "homework/homework01.html#part-c-5-points-1",
+    "title": "Homework 1 - STAT 1080",
+    "section": "Part c (5 points)",
+    "text": "Part c (5 points)\nDiscuss What interesting observations can you make about the grouped sugar content averages/max/min? Identify at least three different things of interest to you. For at least one thing that you identify, provide a possible reason for the observation (there is no way to “know” with the information that we have).\n\n\nObservation 1:\nObservation 2:\nObservation 3:"
+  },
+  {
+    "objectID": "homework/homework01.html#part-d-5-points-1",
+    "href": "homework/homework01.html#part-d-5-points-1",
+    "title": "Homework 1 - STAT 1080",
+    "section": "Part d (5 points)",
+    "text": "Part d (5 points)\nSuppose you are participating in a competition where you will be required to eat one pound of cereal blindfolded. You do not get to pick the cereal, but you DO get to pick which shelf in the grocery store that the cereal box is selected from. Suppose that you are trying to limit your sodium content so that your ONLY goal with shelf selection is to minimize the worst-case (i.e., highest possible) scenario for sodium intake. Please identify (1) which variable form (sodium per serving, sodium per cup, sodium per unit weight) and (2) which variable summary (min, mean, or max) would be most appropriate in helping you make your shelf selection. No need for an explanation.\n\nAnswer: (Replace this text with your answer)"
+  },
+  {
+    "objectID": "homework/homework01.html#part-e-10-points",
+    "href": "homework/homework01.html#part-e-10-points",
+    "title": "Homework 1 - STAT 1080",
+    "section": "Part e (10 points)",
+    "text": "Part e (10 points)\nLooking at the original cereal data, propose a grouped summary of a variable other than Sugars. You are welcome to group by Shelf, Manufacturer, or both Shelf and Manufacturer. In order to ensure reasonable estimates of the min/max/mean, you need to make sure that you only retain groups that have at least 5 non-missing observations of interest. To complete this problem, you must:\n\n(2.5 points) Write a sentence explaining what grouped summary you plan to take and why you chose to summarize that variable. You should select one variable so summarize, and at least one variable to group by.\n(5 points) Create a dataframe that contains the grouped summaries (min/max/mean) of that variable. Print this dataframe as part of your report (which can be done simply by putting the name of the dataframe on the last line of your code chunk).\n(2.5 points) Describe at least one interesting feature of your grouped summary. Also provide a possible explanation for what might be causing the difference (or lack of difference) between the groups?\n\n\n\n#...#\n\nAnswer:\n(Replace this text with your explanation)"
+  },
+  {
     "objectID": "homework/homework02-visual-sol.html",
     "href": "homework/homework02-visual-sol.html",
     "title": "Homework 2 - STAT 1080",
@@ -2177,151 +2380,165 @@
     "text": "Part d (5 points)\nHow does the relationship between latitude and snow load compare to the relationship between elevation and snow load? Comment briefly.\n\nReplace this text with your answer."
   },
   {
-    "objectID": "homework/homework_3.html",
-    "href": "homework/homework_3.html",
+    "objectID": "homework/homework03.html",
+    "href": "homework/homework03.html",
     "title": "Homework 3 - STAT 1080",
     "section": "",
     "text": "This assignment is intended to give you experience programming and analyzing random variables in R and using those random variables to conduct statistical inference. You won’t need to bring in your own datasets—everything you need comes from R packages. Homework datasets and solutions are included in the stat1080r course package, so make sure you have the latest version installed before you begin.\nYou’ll complete this file by finishing the code and filling in the answer prompts. Replace each #...# with the code needed to answer the question. Sometimes I’ll give you a code “shell” (marked with ##) that you’ll need to uncomment and complete.\nWhen you’re done, submit your .qmd file in Canvas. Be sure it successfully renders to HTML with all your answers showing.\nThere are 3 problems in this assignment (each with several parts), worth a total of 80 points. Don’t forget to check the style guidelines at the end before submitting. Note that you must use the “modern” pipe command |&gt; in your code. Please avoid the use of the old %&gt;% in your code which will result in a loss of points."
   },
   {
-    "objectID": "homework/homework_3.html#part-a-3-points",
-    "href": "homework/homework_3.html#part-a-3-points",
+    "objectID": "homework/homework03.html#part-a-3-points",
+    "href": "homework/homework03.html#part-a-3-points",
     "title": "Homework 3 - STAT 1080",
     "section": "Part a (3 points)",
-    "text": "Part a (3 points)\nCreate two tables that show the following summary statistics for each dataset by shelf. Be sure to have your summary statistics ignore any missing observations in the dataset in order to avoid returning NA in the summary.\n\nmean_sugars\nmedian_sugars\nsd_sugars\nmad_sugars (median absolute deviation, see mad() function)\n\n\n## cereal_sum &lt;- cereal |&gt;\n##   group_by(#...#) |&gt;\n##   summarize(#...#)\n\n## cereal_infected_sum &lt;- cereal_infected |&gt;\n##   group_by(#...#) |&gt;\n##   summarize(#...#)\n\n# PLEASE REMEMBER TO UNCOMMENT ALL OF THE \"##\" LINES!\n## all.equal(cereal_sum, hw3_sol[[\"cereal_sum\"]])\n## all.equal(cereal_infected_sum, hw3_sol[[\"cereal_infected_sum\"]])"
+    "text": "Part a (3 points)\nCreate two tables that show the following summary statistics for each dataset by shelf. Be sure to have your summary statistics ignore any missing observations in the dataset in order to avoid returning NA in the summary.\n\nmean_sugars\nmedian_sugars\nsd_sugars\nmad_sugars (median absolute deviation, see mad() function)\n\n\n\n## cereal_sum &lt;- cereal |&gt;\n##   group_by(#...#) |&gt;\n##   summarize(#...#)\n\n## cereal_infected_sum &lt;- cereal_infected |&gt;\n##   group_by(#...#) |&gt;\n##   summarize(#...#)\n\n# PLEASE REMEMBER TO UNCOMMENT ALL OF THE \"##\" LINES!\n## all.equal(cereal_sum, hw3_sol[[\"cereal_sum\"]])\n## all.equal(cereal_infected_sum, hw3_sol[[\"cereal_infected_sum\"]])"
   },
   {
-    "objectID": "homework/homework_3.html#part-b-3-points",
-    "href": "homework/homework_3.html#part-b-3-points",
+    "objectID": "homework/homework03.html#part-b-3-points",
+    "href": "homework/homework03.html#part-b-3-points",
     "title": "Homework 3 - STAT 1080",
     "section": "Part b (3 points)",
-    "text": "Part b (3 points)\nThe following code computes the absolute difference between variables in the two datasets.\n\n## cereal_diff &lt;- bind_rows(cereal_sum, cereal_infected_sum) |&gt;\n##  group_by(Shelf) |&gt;\n##  summarize(across(everything(), ~ max(diff(.x))))\n\n## cereal_diff\n\nBased on the observed differences in the cereal_diff table, please describe the nature of the “infection” and identify which shelf the issue is occurring on.\nAnswer: (Replace this text with your answer.)"
+    "text": "Part b (3 points)\nThe following code computes the absolute difference between variables in the two datasets.\n\n## cereal_diff &lt;- bind_rows(cereal_sum, cereal_infected_sum) |&gt;\n##  group_by(Shelf) |&gt;\n##  summarize(across(everything(), ~ max(diff(.x))))\n\n## cereal_diff\n\nBased on the observed differences in the cereal_diff table, please describe the nature of the “infection” and identify which shelf the issue is occurring on.\n\n(Replace this text with your answer.)"
   },
   {
-    "objectID": "homework/homework_3.html#part-c-3-points",
-    "href": "homework/homework_3.html#part-c-3-points",
+    "objectID": "homework/homework03.html#part-c-3-points",
+    "href": "homework/homework03.html#part-c-3-points",
     "title": "Homework 3 - STAT 1080",
     "section": "Part c (3 points)",
-    "text": "Part c (3 points)\nIn order to identify the outlier, we intend to use Tukey’s definition of a “far out” outlier, which, given a vector of observations \\(x\\), is a value \\(v\\) where \\[v &lt; q_{25} - 3*IQR(x) \\text{ OR } v &gt; q_{75} + 3*IQR(x).\\] with \\(q_x\\) representing the “xth” percentile of the vector \\(x\\) and \\(IQR(x)\\) representing the interquartile range.\nBased on this definition, create a vector of length two called bounds that represents the threshold for identifying outlier observations of sugars. While we know that the issue occurs on the middle shelf, create your bounds by using the vector of ALL sugar measurements, regardless of shelf. Note that all your calculations for the bounds should be made using sugar information from cereal_infected dataset.\n\n# You should use the quantile() and IQR() functions to help you create the\n# intermediate values necessary to create the thresholds.\n## sugars &lt;- cereal_infected |&gt; pull(Sugars)\n## q_25 &lt;- quantile(#...#)\n## q_75 &lt;- quantile(#...#)\n## iqr &lt;- IQR(#...#)\n\n# Now create the vector of bounds.\n## bounds &lt;- vector(\"numeric\", 2)\n## bounds[1] &lt;- #...#\n## bounds[2] &lt;- #...#\n\n## bounds\n## all.equal(bounds, hw3_sol[[\"bounds\"]])"
+    "text": "Part c (3 points)\nIn order to identify the outlier, we intend to use Tukey’s definition of a “far out” outlier, which, given a vector of observations \\(x\\), is a value \\(v\\) where \\[v &lt; q_{25} - 3*IQR(x) \\text{ OR } v &gt; q_{75} + 3*IQR(x).\\] with \\(q_x\\) representing the “xth” percentile of the vector \\(x\\) and \\(IQR(x)\\) representing the interquartile range.\nBased on this definition, create a vector of length two called bounds that represents the threshold for identifying outlier observations of sugars. While we know that the issue occurs on the middle shelf, create your bounds by using the vector of ALL sugar measurements, regardless of shelf. Note that all your calculations for the bounds should be made using sugar information from cereal_infected dataset.\n\n\n# You should use the quantile() and IQR() functions to help you create the\n# intermediate values necessary to create the thresholds.\n## sugars &lt;- cereal_infected |&gt; pull(Sugars)\n## q_25 &lt;- quantile(#...#)\n## q_75 &lt;- quantile(#...#)\n## iqr &lt;- IQR(#...#)\n\n# Now create the vector of bounds.\n## bounds &lt;- vector(\"numeric\", 2)\n## bounds[1] &lt;- #...#\n## bounds[2] &lt;- #...#\n\n## bounds\n## all.equal(bounds, hw3_sol[[\"bounds\"]])"
   },
   {
-    "objectID": "homework/homework_3.html#part-d-3-points",
-    "href": "homework/homework_3.html#part-d-3-points",
+    "objectID": "homework/homework03.html#part-d-3-points",
+    "href": "homework/homework03.html#part-d-3-points",
     "title": "Homework 3 - STAT 1080",
     "section": "Part d (3 points)",
-    "text": "Part d (3 points)\nObserve that there is at least one obvious way in which we could “tighten” the bounds vector using context, rather than the data. Thinking about the physical limitations of sugar content, what would be an acceptable change to the vector of bounds for identifying outliers that would reduce its length?\nAnswer:\n(Replace this text with your answer.)"
+    "text": "Part d (3 points)\nObserve that there is at least one obvious way in which we could “tighten” the bounds vector using context, rather than the data. Thinking about the physical limitations of sugar content, what would be an acceptable change to the vector of bounds for identifying outliers that would reduce its length?\n\n(Replace this text with your answer.)"
   },
   {
-    "objectID": "homework/homework_3.html#part-e-3-points",
-    "href": "homework/homework_3.html#part-e-3-points",
+    "objectID": "homework/homework03.html#part-e-3-points",
+    "href": "homework/homework03.html#part-e-3-points",
     "title": "Homework 3 - STAT 1080",
     "section": "Part e (3 points)",
-    "text": "Part e (3 points)\nUse the bounds vector and the filter() tidyverse function to create a dataset with all rows exceeding the outlier bounds. Use the select() function to make it so your dataset only contains the cereal name, shelf, sugar content, and the serving size in cups.\n\n## cereal_outliers &lt;- cereal_infected |&gt;\n##   filter(#...#) |&gt;\n##   select(#...#)\n\n## cereal_outliers\n\n## all.equal(cereal_outliers, hw3_sol[[\"cereal_outliers\"]])"
+    "text": "Part e (3 points)\nUse the bounds vector and the filter() tidyverse function to create a dataset with all rows exceeding the outlier bounds. Use the select() function to make it so your dataset only contains the cereal name, shelf, sugar content, and the serving size in cups.\n\n\n## cereal_outliers &lt;- cereal_infected |&gt;\n##   filter(#...#) |&gt;\n##   select(#...#)\n\n## cereal_outliers\n\n## all.equal(cereal_outliers, hw3_sol[[\"cereal_outliers\"]])"
   },
   {
-    "objectID": "homework/homework_3.html#part-a-2-points",
-    "href": "homework/homework_3.html#part-a-2-points",
+    "objectID": "homework/homework03.html#part-a-2-points",
+    "href": "homework/homework03.html#part-a-2-points",
     "title": "Homework 3 - STAT 1080",
     "section": "Part a (2 points)",
-    "text": "Part a (2 points)\nUsing R, write code for a random variable k that represents your possible payouts for the purchase of a single box of cereal. Assume that the number of cereal boxes you might purchase will be so small, relative to the total number of possible boxes, it is virtually equivalent to sampling the cereal boxes with replacement.\n\n## k &lt;- sample(#...#,\n##             size = #...#,\n##             replace = #...#,\n##             prob = #...#)"
+    "text": "Part a (2 points)\nUsing R, write code for a random variable k that represents your possible payouts for the purchase of a single box of cereal. Assume that the number of cereal boxes you might purchase will be so small, relative to the total number of possible boxes, it is virtually equivalent to sampling the cereal boxes with replacement.\n\n\n## k &lt;- sample(#...#,\n##             size = #...#,\n##             replace = #...#,\n##             prob = #...#)"
   },
   {
-    "objectID": "homework/homework_3.html#part-b-3-points-1",
-    "href": "homework/homework_3.html#part-b-3-points-1",
+    "objectID": "homework/homework03.html#part-b-3-points-1",
+    "href": "homework/homework03.html#part-b-3-points-1",
     "title": "Homework 3 - STAT 1080",
     "section": "Part b (3 points)",
-    "text": "Part b (3 points)\nWhat is the expected value and standard error of this random variable? Write an equation using R code that correctly calculates the quantities provided in the all.equal statements below.\n\n# Use the round() function to round your answers to two decimal places.\n## e_x &lt;- #...#\n## se_x &lt;- #...#\n\n# BE SURE TO UNCOMMENT THE all.equal() STATEMENTS!\n## all.equal(e_x, -1.5)\n## all.equal(se_x, 8.72)"
+    "text": "Part b (3 points)\nWhat is the expected value and standard error of this random variable? Write an equation using R code that correctly calculates the quantities provided in the all.equal statements below.\n\n\n# Use the round() function to round your answers to two decimal places.\n## e_x &lt;- #...#\n## se_x &lt;- #...#\n\n# BE SURE TO UNCOMMENT THE all.equal() STATEMENTS!\n## all.equal(e_x, -1.5)\n## all.equal(se_x, 8.72)"
   },
   {
-    "objectID": "homework/homework_3.html#part-c-3-points-1",
-    "href": "homework/homework_3.html#part-c-3-points-1",
+    "objectID": "homework/homework03.html#part-c-3-points-1",
+    "href": "homework/homework03.html#part-c-3-points-1",
     "title": "Homework 3 - STAT 1080",
     "section": "Part c (3 points)",
-    "text": "Part c (3 points)\nNow write a function that computes the net winnings/loss (i.e. sum) from the purchase of n boxes of cereal. Use this function in a Monte Carlo simulation of 10,000 replications of randomly purchasing 100 boxes of cereal and taking the net winnings/loss. Your function should take a single variable n that represents the size of the sample from which you calculate a sum.\n\n# Function to return the sum of n boxes of cereal based on an argument n\n## get_net &lt;- function(n) {\n##   k &lt;- #...#\n##   sum(k)\n## }\n\n# Your function should be able to run the following code and get the same\n# answer as the provided solution.\n## set.seed(90210)\n## sim_k &lt;- replicate(10000, get_net(100))\n\n## all.equal(sim_k, hw3_sol[[\"sim_k\"]])"
+    "text": "Part c (3 points)\nNow write a function that computes the net winnings/loss (i.e. sum) from the purchase of n boxes of cereal. Use this function in a Monte Carlo simulation of 10,000 replications of randomly purchasing 100 boxes of cereal and taking the net winnings/loss. Your function should take a single variable n that represents the size of the sample from which you calculate a sum.\n\n\n# Function to return the sum of n boxes of cereal based on an argument n\n## get_net &lt;- function(n) {\n##   k &lt;- #...#\n##   sum(k)\n## }\n\n# Your function should be able to run the following code and get the same\n# answer as the provided solution.\n## set.seed(90210)\n## sim_k &lt;- replicate(10000, get_net(100))\n\n## all.equal(sim_k, hw3_sol[[\"sim_k\"]])"
   },
   {
-    "objectID": "homework/homework_3.html#part-d-3-points-1",
-    "href": "homework/homework_3.html#part-d-3-points-1",
+    "objectID": "homework/homework03.html#part-d-3-points-1",
+    "href": "homework/homework03.html#part-d-3-points-1",
     "title": "Homework 3 - STAT 1080",
     "section": "Part d (3 points)",
-    "text": "Part d (3 points)\nWhat is the probability of getting a net gain from 100 boxes of cereal based on the Monte Carlo simulation? What is the probability of losing more than $300 based on the simulation? The code for this answer should make use of the sim_k vector you created in the previous problem part.\n\n## prob_gain &lt;- #...#\n## prob_gain\n## all.equal(prob_gain, hw3_sol[[\"prob_gain\"]])\n\n## prob_big_loss &lt;- #...#\n## prob_big_loss\n## all.equal(prob_big_loss, hw3_sol[[\"prob_big_loss\"]])"
+    "text": "Part d (3 points)\nWhat is the probability of getting a net gain from 100 boxes of cereal based on the Monte Carlo simulation? What is the probability of losing more than $300 based on the simulation? The code for this answer should make use of the sim_k vector you created in the previous problem part.\n\n\n## prob_gain &lt;- #...#\n## prob_gain\n## all.equal(prob_gain, hw3_sol[[\"prob_gain\"]])\n\n## prob_big_loss &lt;- #...#\n## prob_big_loss\n## all.equal(prob_big_loss, hw3_sol[[\"prob_big_loss\"]])"
   },
   {
-    "objectID": "homework/homework_3.html#part-e-5-points",
-    "href": "homework/homework_3.html#part-e-5-points",
+    "objectID": "homework/homework03.html#part-e-5-points",
+    "href": "homework/homework03.html#part-e-5-points",
     "title": "Homework 3 - STAT 1080",
     "section": "Part e (5 points)",
-    "text": "Part e (5 points)\nWe would like to think that a sample size of 100 is large enough to invoke the central limit theorem. Create a qqplot of the simulated net gains/losses to check if the assumption is reasonably justified. Your plot should exactly match the one provided in the homework_3_visual_sol. Note that your plot should make use of the sim_k vector from earlier. You should also make use of the scale() function to map the sim_k values from their original units to the number of standard deviations away from the mean.\nAfter making the visual, comment, with appropriate justification, on whether or not you feel that the net winnings/losses from the purchase of 100 boxes of cereal appears to follow a normal distribution.\n\n# Save your ggplot to a variable called p2\n## p2 &lt;- #...#\n\n# Print your plot by calling p2\n## p2\n\nAnswer:\n(Replace this text with your answer.)"
+    "text": "Part e (5 points)\nWe would like to think that a sample size of 100 is large enough to invoke the central limit theorem. Create a qqplot of the simulated net gains/losses to check if the assumption is reasonably justified. Your plot should exactly match the one provided in the homework_3_visual_sol. Note that your plot should make use of the sim_k vector from earlier. You should also make use of the scale() function to map the sim_k values from their original units to the number of standard deviations away from the mean.\n\n\n# Save your ggplot to a variable called p2\n## p2 &lt;- #...#\n\n# Print your plot by calling p2\n## p2\n\n\nAfter making the visual, comment, with appropriate justification, on whether or not you feel that the net winnings/losses from the purchase of 100 boxes of cereal appears to follow a normal distribution.\n\n(Replace this text with your answer.)"
   },
   {
-    "objectID": "homework/homework_3.html#part-f-5-points",
-    "href": "homework/homework_3.html#part-f-5-points",
+    "objectID": "homework/homework03.html#part-f-5-points",
+    "href": "homework/homework03.html#part-f-5-points",
     "title": "Homework 3 - STAT 1080",
     "section": "Part f (5 points)",
-    "text": "Part f (5 points)\nRegardless of your answer to Part (d), assume that the sample size is large enough to use the Central Limit Theorem. Under the assumption of normality, what is the estimated probability of having a net positive gain when purchasing 100 boxes of cereal looking for vouchers? What is the probability of having a big loss (losing 300 dollars or more)? Save your answers as the variable theory_gain and theory_big_loss respectively. Note that you might want to create some intermediate variables (like the expected value and standard error) to help answer this question.\n\n## e_x &lt;- #...#\n## sd_x &lt;- #...#\n\n## theory_gain &lt;- #...#\n## theory_gain\n\n## theory_big_loss &lt;- #...#\n## theory_big_loss\n\n## all.equal(theory_gain, hw3_sol[[\"theory_gain\"]])\n## all.equal(theory_big_loss, hw3_sol[[\"theory_big_loss\"]])"
+    "text": "Part f (5 points)\nRegardless of your answer to Part (d), assume that the sample size is large enough to use the Central Limit Theorem. Under the assumption of normality, what is the estimated probability of having a net positive gain when purchasing 100 boxes of cereal looking for vouchers? What is the probability of having a big loss (losing 300 dollars or more)? Save your answers as the variable theory_gain and theory_big_loss respectively. Note that you might want to create some intermediate variables (like the expected value and standard error) to help answer this question.\n\n\n## e_x &lt;- #...#\n## sd_x &lt;- #...#\n\n## theory_gain &lt;- #...#\n## theory_gain\n\n## theory_big_loss &lt;- #...#\n## theory_big_loss\n\n## all.equal(theory_gain, hw3_sol[[\"theory_gain\"]])\n## all.equal(theory_big_loss, hw3_sol[[\"theory_big_loss\"]])"
   },
   {
-    "objectID": "homework/homework_3.html#part-g-5-points",
-    "href": "homework/homework_3.html#part-g-5-points",
+    "objectID": "homework/homework03.html#part-g-5-points",
+    "href": "homework/homework03.html#part-g-5-points",
     "title": "Homework 3 - STAT 1080",
     "section": "Part g (5 points)",
-    "text": "Part g (5 points)\nRepeat part (e), but now assume that you will buy 1000 boxes of cereal instead of 100. Report the change in probability for a net gain and a big loss (losing more than $300). Write 1-3 sentences to explain why the probability of both events changed the way that it did.\n\n## e_x &lt;- #...#\n## sd_x &lt;- #...#\n\n## theory_gain_2 &lt;- #...#\n## theory_gain_2\n\n## theory_big_loss_2 &lt;- #...#\n## theory_big_loss_2\n\n## all.equal(theory_gain_2, hw3_sol[[\"theory_gain_2\"]])\n## all.equal(theory_big_loss_2, hw3_sol[[\"theory_big_loss_2\"]])\n\nAnswer:\n(Replace this text with your answer.)"
+    "text": "Part g (5 points)\nRepeat part (e), but now assume that you will buy 1000 boxes of cereal instead of 100. Report the change in probability for a net gain and a big loss (losing more than $300).\n\n\n## e_x &lt;- #...#\n## sd_x &lt;- #...#\n\n## theory_gain_2 &lt;- #...#\n## theory_gain_2\n\n## theory_big_loss_2 &lt;- #...#\n## theory_big_loss_2\n\n## all.equal(theory_gain_2, hw3_sol[[\"theory_gain_2\"]])\n## all.equal(theory_big_loss_2, hw3_sol[[\"theory_big_loss_2\"]])\n\n\nWrite 1-3 sentences to explain why the probability of both events changed the way that it did.\n\n(Replace this text with your answer.)"
   },
   {
-    "objectID": "homework/homework_3.html#part-a-2-points-1",
-    "href": "homework/homework_3.html#part-a-2-points-1",
+    "objectID": "homework/homework03.html#part-a-2-points-1",
+    "href": "homework/homework03.html#part-a-2-points-1",
     "title": "Homework 3 - STAT 1080",
     "section": "Part a (2 points)",
-    "text": "Part a (2 points)\nWrite code that represents random variable oxy that represents the likelihood that a patient hospitalized with COVID-19 will require supplemental oxygen. Assume, for now, that the patient does not have access to the experimental drug.\n\n## oxy &lt;- sample(#...#)"
+    "text": "Part a (2 points)\nWrite code that represents random variable oxy that represents the likelihood that a patient hospitalized with COVID-19 will require supplemental oxygen. Assume, for now, that the patient does not have access to the experimental drug.\n\n\n## oxy &lt;- sample(#...#)"
   },
   {
-    "objectID": "homework/homework_3.html#part-b-3-points-2",
-    "href": "homework/homework_3.html#part-b-3-points-2",
+    "objectID": "homework/homework03.html#part-b-3-points-2",
+    "href": "homework/homework03.html#part-b-3-points-2",
     "title": "Homework 3 - STAT 1080",
     "section": "Part b (3 points)",
-    "text": "Part b (3 points)\nNow conduct a Monte Carlo simulation of the proportion of 51 patients that would require Oxygen, assuming that \\(p = 0.45\\). Make 50,000 replicates using the random seed provided below and check your answer.\n\n# Write a function where n represents your sample size\n# from the random variable.\nsample_prop &lt;- function(n) {\n  # ...#\n}\n\n## set.seed(707071)\n# Replicate the results\n## oxy_mc &lt;- replicate(50000, sample_prop(51))\n\n## all.equal(oxy_mc, hw3_sol[[\"oxy_mc\"]])"
+    "text": "Part b (3 points)\nNow conduct a Monte Carlo simulation of the proportion of 51 patients that would require Oxygen, assuming that \\(p = 0.45\\). Make 50,000 replicates using the random seed provided below and check your answer.\n\n\n# Write a function where n represents your sample size\n# from the random variable.\nsample_prop &lt;- function(n) {\n  # ...#\n}\n\n## set.seed(707071)\n# Replicate the results\n## oxy_mc &lt;- replicate(50000, sample_prop(51))\n\n## all.equal(oxy_mc, hw3_sol[[\"oxy_mc\"]])"
   },
   {
-    "objectID": "homework/homework_3.html#part-c-4-points",
-    "href": "homework/homework_3.html#part-c-4-points",
+    "objectID": "homework/homework03.html#part-c-2-points",
+    "href": "homework/homework03.html#part-c-2-points",
     "title": "Homework 3 - STAT 1080",
-    "section": "Part c (4 points)",
-    "text": "Part c (4 points)\nPlot a histogram of the replicates. Does it appear that the sample proportions follow a normal distribution? Answer this question as a comment below your figure. Your plot should visually match the one provided in the commented code chunk below (including the theme, axis limits, and axis labels.)\n\n# Save your ggplot to an object called p1\n## p1 &lt;- #...#\n\n# Print your ggplot to the screen by calling p1\n## p1\n\nComment:\n(Replace this text with your comment.)"
+    "section": "Part c (2 points)",
+    "text": "Part c (2 points)\nPlot a histogram of the replicates.\n\n\n# Save your ggplot to an object called p1\n## p1 &lt;- #...#\n\n# Print your ggplot to the screen by calling p1\n## p1"
   },
   {
-    "objectID": "homework/homework_3.html#part-d-3-points-2",
-    "href": "homework/homework_3.html#part-d-3-points-2",
+    "objectID": "homework/homework03.html#part-d-2-points",
+    "href": "homework/homework03.html#part-d-2-points",
+    "title": "Homework 3 - STAT 1080",
+    "section": "Part d (2 points)",
+    "text": "Part d (2 points)\nDoes it appear that the sample proportions follow a normal distribution? Answer this question as a comment below your figure. Your plot should visually match the one provided in the commented code chunk below (including the theme, axis limits, and axis labels.)\n\n(Replace this text with your comment.)"
+  },
+  {
+    "objectID": "homework/homework03.html#part-d-3-points-2",
+    "href": "homework/homework03.html#part-d-3-points-2",
     "title": "Homework 3 - STAT 1080",
     "section": "Part d (3 points)",
-    "text": "Part d (3 points)\nWhat proportion of your Monte Carlo simulated values are either below .31 OR above 0.79? Please provide your answer using code.\n\n## oxy_mc_prop &lt;- #...#\n\n## round(oxy_mc_prop, 3)\n## all.equal(round(oxy_mc_prop, 3), 0.016)"
+    "text": "Part d (3 points)\nWhat proportion of your Monte Carlo simulated values are either below .31 OR above 0.79? Please provide your answer using code.\n\n\n## oxy_mc_prop &lt;- #...#\n\n## round(oxy_mc_prop, 3)\n## all.equal(round(oxy_mc_prop, 3), 0.016)"
   },
   {
-    "objectID": "homework/homework_3.html#part-e-3-points-1",
-    "href": "homework/homework_3.html#part-e-3-points-1",
+    "objectID": "homework/homework03.html#part-f-3-points",
+    "href": "homework/homework03.html#part-f-3-points",
     "title": "Homework 3 - STAT 1080",
-    "section": "Part e (3 points)",
-    "text": "Part e (3 points)\nIn order to conduct statistical inference, we need a null hypothesis. The question we want to answer is whether or not the experimental drug changes the likelihood that a patient will require supplemental oxygen. Please write a null hypothesis appropriate to answer such a question.\nNull hypothesis: (Replace this text with your answer.)"
+    "section": "Part f (3 points)",
+    "text": "Part f (3 points)\nIn order to conduct statistical inference, we need a null hypothesis. The question we want to answer is whether or not the experimental drug changes the likelihood that a patient will require supplemental oxygen. Please write a null hypothesis appropriate to answer such a question.\n\nNull hypothesis: (Replace this text with your answer.)"
   },
   {
-    "objectID": "homework/homework_3.html#part-f-5-points-1",
-    "href": "homework/homework_3.html#part-f-5-points-1",
+    "objectID": "homework/homework03.html#part-g-3-points",
+    "href": "homework/homework03.html#part-g-3-points",
     "title": "Homework 3 - STAT 1080",
-    "section": "Part f (5 points)",
-    "text": "Part f (5 points)\nUsing your sample of 51 patients, create a 90% confidence interval for the true proportion of patients hospitalized with COVID-19, but take the experimental drug, that require supplemental oxygen. Note that you will need to use the qnorm function to determine the necessary multiplier for a 90% confidence interval (HINT: it is not 1.96!). Comment on what your 90% confidence interval implies about your null hypothesis.\n\n## n &lt;- #...#\n## e_x &lt;- #...#\n## se_x &lt;- #...#\n## mult &lt;- #...#\n\n## ci &lt;- c(#...#, #...#)\n## ci\n\n## all.equal(ci, hw3_sol[[\"ci\"]])\n\nAnswer:\n(Replace this text with your answer.)"
+    "section": "Part g (3 points)",
+    "text": "Part g (3 points)\nUsing your sample of 51 patients, create a 90% confidence interval for the true proportion of patients hospitalized with COVID-19, but take the experimental drug, that require supplemental oxygen. Note that you will need to use the qnorm function to determine the necessary multiplier for a 90% confidence interval (HINT: it is not 1.96!).\n\n\n## n &lt;- #...#\n## e_x &lt;- #...#\n## se_x &lt;- #...#\n## mult &lt;- #...#\n\n## ci &lt;- c(#...#, #...#)\n## ci\n\n## all.equal(ci, hw3_sol[[\"ci\"]])"
   },
   {
-    "objectID": "homework/homework_3.html#part-g-4-points",
-    "href": "homework/homework_3.html#part-g-4-points",
+    "objectID": "homework/homework03.html#part-h-2-points",
+    "href": "homework/homework03.html#part-h-2-points",
     "title": "Homework 3 - STAT 1080",
-    "section": "Part g (4 points)",
-    "text": "Part g (4 points)\nUsing the null hypothesis, obtain a p-value for the sample proportion of patients hospitalized with COVID-19 who took the drug, yet still required supplemental oxygen. Based on this p-value, what can you say about the effectiveness of the drug in reducing the need for supplemental oxygen?\n\n## n &lt;- #...#\n## samp_prop &lt;- #...#\n## se_x &lt;- #...#\n## z &lt;- #...#\n\n## p_val &lt;- #...#\n\n## p_val\n## all.equal(p_val, hw3_sol[[\"p_val\"]])\n\nAnswer:\n(Replace this text with your answer.)"
+    "section": "Part h (2 points)",
+    "text": "Part h (2 points)\nComment on what your 90% confidence interval implies about your null hypothesis.\n\n(Replace this text with your answer.)"
   },
   {
-    "objectID": "homework/homework_3.html#part-h-5-points",
-    "href": "homework/homework_3.html#part-h-5-points",
+    "objectID": "homework/homework03.html#part-i-4-points",
+    "href": "homework/homework03.html#part-i-4-points",
     "title": "Homework 3 - STAT 1080",
-    "section": "Part h (5 points)",
-    "text": "Part h (5 points)\nNow suppose that 2,365 out of a sample of 5,500 patients (i.e. 43%) who take the drug require supplemental oxygen. Redo Part (g) with this new sample size and sample proportion. What is the p-value? What does this say about the null hypothesis (i.e. \\(p = 0.45\\))? Show the p-value with code and then comment below.\n\n## n &lt;- #...#\n## samp_prop &lt;- #...#\n## se_x &lt;- #...#\n## z &lt;- #...#\n\n## p_val_2 &lt;- #...#\n\n## p_val_2\n## all.equal(p_val_2, hw3_sol[[\"p_val_2\"]])\n\nAnswer:\n(Replace this text with your answer.)"
+    "section": "Part i (4 points)",
+    "text": "Part i (4 points)\nUsing the null hypothesis, obtain a p-value for the sample proportion of patients hospitalized with COVID-19 who took the drug, yet still required supplemental oxygen. Based on this p-value, what can you say about the effectiveness of the drug in reducing the need for supplemental oxygen?\n\n\n## n &lt;- #...#\n## samp_prop &lt;- #...#\n## se_x &lt;- #...#\n## z &lt;- #...#\n\n## p_val &lt;- #...#\n\n## p_val\n## all.equal(p_val, hw3_sol[[\"p_val\"]])\n\n\n(Replace this text with your answer.)"
+  },
+  {
+    "objectID": "homework/homework03.html#part-j-5-points",
+    "href": "homework/homework03.html#part-j-5-points",
+    "title": "Homework 3 - STAT 1080",
+    "section": "Part j (5 points)",
+    "text": "Part j (5 points)\nNow suppose that 2,365 out of a sample of 5,500 patients (i.e. 43%) who take the drug require supplemental oxygen. Redo Part (g) with this new sample size and sample proportion. What is the p-value? What does this say about the null hypothesis (i.e. \\(p = 0.45\\))? Show the p-value with code and then comment below.\n\n\n## n &lt;- #...#\n## samp_prop &lt;- #...#\n## se_x &lt;- #...#\n## z &lt;- #...#\n\n## p_val_2 &lt;- #...#\n\n## p_val_2\n## all.equal(p_val_2, hw3_sol[[\"p_val_2\"]])\n\n\nAnswer:"
   },
   {
     "objectID": "homework/proposal_demo.html",
