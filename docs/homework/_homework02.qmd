@@ -214,7 +214,7 @@ Additional color palettes are available at <https://colorbrewer2.org/>, in the `
 #|   the grocery store as separated by shelf.
 
 ## ggplot(#...#) +
-##   geom_#...#(lwd = 1) +
+##   geom_#...#(size = 1) +
 ##   scale_color_brewer(type = "qual", palette = "Dark2") +
 ##   xlab(#...#) +
 ##   my_theme
@@ -271,7 +271,8 @@ Create side-by-side boxplots as described in Part (c), please use strategies fro
 ##   mutate(Shelf = factor(Shelf, levels = shelf_order))
 
 ## ggplot(cereal_sug2) +
-##   #...#
+##   #...# +
+##   my_theme
 ```
 
 <!-- End Part 2d Answer -->
@@ -312,7 +313,7 @@ Note that the code below uses a log2 transformation for the y-axis and re-labels
 ##                      limits = c(16, 1024)) +
 ##   scale_x_continuous(breaks = seq(3000, 11000, 2000),
 ##                      labels = seq(3, 11, 2)) +
-##   scale_color_brewer(#...#) +
+##   scale_color_brewer(#...#, palette = "Paired") +
 ##   xlab(#...#) +
 ##   ylab(#...#) +
 ##   my_theme
@@ -347,7 +348,7 @@ Repeat the plot in Part a, but plot latitude on the x-axis instead of elevation.
 ##   scale_y_continuous(trans = "log2", breaks = 2^(1:10),
 ##                      limits = c(16, 1024)) +
 ##   scale_x_continuous(limits = c(37, 42)) +
-##   scale_color_brewer(#...#) +
+##   scale_color_brewer(#...#, palette = "Paired") +
 ##   #...# +
 ##   my_theme
 ```
