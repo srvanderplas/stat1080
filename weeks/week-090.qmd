@@ -12,6 +12,7 @@ October 26-01, 2026
 ## 📐 Prepare for class
 
 - [ ] (for Mon) Reading Check 9.1
+- [ ] [Homework 2](https://usu.instructure.com/courses/819584/assignments/5290612) [qmd template](../homework/_homework02.qmd) [html](../homework/homework02.qmd)
 
 
 ## 🥱 Monday 🌛

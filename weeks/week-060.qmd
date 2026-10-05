@@ -14,14 +14,15 @@ October 05-11, 2026
 
 - [ ] (for Mon) [Reading Check 6.1.p - Dates and Times](https://usu.instructure.com/courses/819584/modules/items/7946533)  
 - [ ] (for Wed) [Reading Check 6.2.p - Visualizing Distributions](https://usu.instructure.com/courses/819584/modules/items/7946987)
+- [ ] [Homework 1](https://usu.instructure.com/courses/819584/assignments/5290611) [qmd template](../homework/_homework01.qmd) [html](../homework/homework01.qmd)
 
 
 ## 🥱 Monday 🌛
 
 - [Attendance Quiz 10/05](https://usu.instructure.com/courses/819584/assignments/5292944){target="_blank"}
 - [Dates and Times](../slides/16-dates-times.qmd)
-- [Lab: Dates and Times](https://usu.instructure.com/courses/819584/quizzes/1502123) [quarto](../lab/_16-lubridate.qmd) [html](../lab/16-lubridate.qmd)
-- Extra Practice: Covid Time Series [quarto](../lab/_16-covid-time-series.qmd) [html](../lab/16-covid-time-series.qmd) [solutions](16-covid-time-series-sol.qmd)
+- [Activity: Dates and Times](https://usu.instructure.com/courses/819584/quizzes/1502123) [quarto](../lab/_16-lubridate.qmd) [html](../lab/16-lubridate.qmd)
+- Extra Practice: Covid Time Series [quarto](../lab/_16-covid-time-series.qmd) [html](../lab/16-covid-time-series.qmd) [solutions](../lab/16-covid-time-series-sol.qmd)
 
 
 ## 🐪️ Wednesday 🐦‍⬛ 
