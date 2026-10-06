@@ -28,6 +28,7 @@ October 05-11, 2026
 ## 🐪️ Wednesday 🐦‍⬛ 
 
 - [Attendance Quiz 10/07](https://usu.instructure.com/courses/819584/assignments/5292945){target="_blank"}
+- [Demo: Visualizing Data Distributions](../demos/17-visualizing-distributions.qmd){target="_blank"}
 - [Visualizing Data Distributions](../slides/17-vis-dist.qmd){target="_blank"}
 
 
