@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>week-060 – STAT 1080 - Fall 2026</title>
+<title>6.2.p - Class Activity – STAT 1080 - Fall 2026</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -22,6 +22,41 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -76,7 +111,7 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<meta property="og:title" content="STAT 1080 - Fall 2026">
+<meta property="og:title" content="6.2.p - Class Activity – STAT 1080 - Fall 2026">
 <meta property="og:description" content="Homepage for STAT 1080 - Data and the Stories They Tell.">
 <meta property="og:site_name" content="STAT 1080 - Fall 2026">
 </head>
@@ -370,78 +405,128 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#week-6-dates-times-and-distributions" id="toc-week-6-dates-times-and-distributions" class="nav-link active" data-scroll-target="#week-6-dates-times-and-distributions">Week 6: Dates, Times, and Distributions</a>
-  <ul class="collapse">
-  <li><a href="#reading" id="toc-reading" class="nav-link" data-scroll-target="#reading">📖 Reading</a></li>
-  <li><a href="#prepare-for-class" id="toc-prepare-for-class" class="nav-link" data-scroll-target="#prepare-for-class">📐 Prepare for class</a></li>
-  <li><a href="#monday" id="toc-monday" class="nav-link" data-scroll-target="#monday">🥱 Monday 🌛</a></li>
-  <li><a href="#wednesday" id="toc-wednesday" class="nav-link" data-scroll-target="#wednesday">🐪️ Wednesday 🐦‍⬛</a></li>
-  <li><a href="#friday" id="toc-friday" class="nav-link" data-scroll-target="#friday">🎉 Friday 🥳</a></li>
-  <li><a href="#extra-resourcesreading" id="toc-extra-resourcesreading" class="nav-link" data-scroll-target="#extra-resourcesreading">Extra Resources/Reading</a></li>
-  </ul></li>
+  <li><a href="#problem" id="toc-problem" class="nav-link active" data-scroll-target="#problem"><span class="header-section-number">1</span> Problem</a></li>
+  <li><a href="#problem-1" id="toc-problem-1" class="nav-link" data-scroll-target="#problem-1"><span class="header-section-number">2</span> Problem</a></li>
+  <li><a href="#problem-2" id="toc-problem-2" class="nav-link" data-scroll-target="#problem-2"><span class="header-section-number">3</span> Problem</a></li>
+  <li><a href="#problem-3" id="toc-problem-3" class="nav-link" data-scroll-target="#problem-3"><span class="header-section-number">4</span> Problem</a></li>
+  <li><a href="#problem-4" id="toc-problem-4" class="nav-link" data-scroll-target="#problem-4"><span class="header-section-number">5</span> Problem</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://srvanderplas.github.io/stat1080/issues/new" class="toc-action"><i class="bi bi-git"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content column-page-left" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+<main class="content column-page-left" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">6.2.p - Class Activity</h1>
+</div>
 
 
 
+<div class="quarto-title-meta column-page-left">
+
+    
+  
+    
+  </div>
+  
 
 
-<section id="week-6-dates-times-and-distributions" class="level1">
-<h1>Week 6: Dates, Times, and Distributions</h1>
-<p>October 05-11, 2026</p>
-<section id="reading" class="level2">
-<h2 class="anchored" data-anchor-id="reading">📖 Reading</h2>
-<ul class="task-list">
-<li><label><input type="checkbox">(for Mon) <a href="https://rafalab.dfci.harvard.edu/dsbook-part-1/wrangling/dates-and-times.html" target="_blank">IDS I Ch 13 - Dates and Times</a></label></li>
-<li><label><input type="checkbox">(for Wed) <a href="https://rafalab.dfci.harvard.edu/dsbook-part-1/dataviz/distributions.html" target="_blank">IDS I Ch 7 - Visualizing Data Distributions</a></label></li>
-</ul>
+</header>
+
+
+<p>This assignment illustrates the important of data visuals when trying to understand the distribution of data. We will use data available in the <code>datasauRus</code>. Please be sure you have installed this package (perhaps using the <code>install.packages()</code> function) before you try to proceed with the activity.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(datasauRus)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<section id="problem" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Problem</h1>
+<p><strong>Discuss with a partner:</strong> What is the difference in the two datasets printed below? Which of the two datasets would be considered “tidy”?</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>datasaurus_dozen_wide</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 142 × 26
+   away_x away_y bullseye_x bullseye_y circle_x circle_y dino_x dino_y dots_x
+    &lt;dbl&gt;  &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
+ 1   32.3   61.4       51.2       83.3     56.0     79.3   55.4   97.2   51.1
+ 2   53.4   26.2       59.0       85.5     50.0     79.0   51.5   96.0   50.5
+ 3   63.9   30.8       51.9       85.8     51.3     82.4   46.2   94.5   50.2
+ 4   70.3   82.5       48.2       85.0     51.2     79.2   42.8   91.4   50.1
+ 5   34.1   45.7       41.7       84.0     44.4     78.2   40.8   88.3   50.6
+ 6   67.7   37.1       37.9       82.6     45.0     77.9   38.7   84.9   50.3
+ 7   53.3   97.5       39.5       80.8     48.6     78.8   35.6   79.9   25.6
+ 8   63.5   25.1       39.6       82.7     42.1     76.9   33.1   77.6   25.5
+ 9   68.0   81.0       34.8       80.0     41.0     76.4   29.0   74.5   25.4
+10   67.4   29.7       27.6       72.8     34.6     72.7   26.2   71.4   25.6
+# ℹ 132 more rows
+# ℹ 17 more variables: dots_y &lt;dbl&gt;, h_lines_x &lt;dbl&gt;, h_lines_y &lt;dbl&gt;,
+#   high_lines_x &lt;dbl&gt;, high_lines_y &lt;dbl&gt;, slant_down_x &lt;dbl&gt;,
+#   slant_down_y &lt;dbl&gt;, slant_up_x &lt;dbl&gt;, slant_up_y &lt;dbl&gt;, star_x &lt;dbl&gt;,
+#   star_y &lt;dbl&gt;, v_lines_x &lt;dbl&gt;, v_lines_y &lt;dbl&gt;, wide_lines_x &lt;dbl&gt;,
+#   wide_lines_y &lt;dbl&gt;, x_shape_x &lt;dbl&gt;, x_shape_y &lt;dbl&gt;</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>datasaurus_dozen</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1,846 × 3
+   dataset     x     y
+   &lt;chr&gt;   &lt;dbl&gt; &lt;dbl&gt;
+ 1 dino     55.4  97.2
+ 2 dino     51.5  96.0
+ 3 dino     46.2  94.5
+ 4 dino     42.8  91.4
+ 5 dino     40.8  88.3
+ 6 dino     38.7  84.9
+ 7 dino     35.6  79.9
+ 8 dino     33.1  77.6
+ 9 dino     29.0  74.5
+10 dino     26.2  71.4
+# ℹ 1,836 more rows</code></pre>
+</div>
+</div>
+<p><em>Replace this text with your answer (optional if you have a discussion with a partner, required if you do this assignment on your own).</em></p>
 </section>
-<section id="prepare-for-class" class="level2">
-<h2 class="anchored" data-anchor-id="prepare-for-class">📐 Prepare for class</h2>
-<ul class="task-list">
-<li><label><input type="checkbox">(for Mon) <a href="https://usu.instructure.com/courses/819584/modules/items/7946533" target="_blank">Reading Check 6.1.p - Dates and Times</a><br>
-</label></li>
-<li><label><input type="checkbox">(for Wed) <a href="https://usu.instructure.com/courses/819584/modules/items/7666801" target="_blank">Reading Check 6.2.p - Visualizing Distributions</a></label></li>
-<li><label><input type="checkbox"><a href="https://usu.instructure.com/courses/819584/assignments/5290611" target="_blank">Homework 1</a> <a href="../homework/_homework01.qmd" target="_blank">qmd template</a> <a href="../homework/homework01.html" target="_blank">html</a></label></li>
-</ul>
-</section>
-<section id="monday" class="level2">
-<h2 class="anchored" data-anchor-id="monday">🥱 Monday 🌛</h2>
+<section id="problem-1" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Problem</h1>
+<p>Use a tidyverse chain (code separated by pipes) to determine the mean and standard deviation for the “x” and “y” variable for each unique dataset in the <code>datasaurus_dozen</code> tibble (i.e.&nbsp;tidyverse data.frame). This means that your dataset should have four variables:</p>
 <ul>
-<li><a href="https://usu.instructure.com/courses/819584/assignments/5292944" target="_blank">Attendance Quiz 10/05</a></li>
-<li><a href="../slides/16-dates-times.html" target="_blank">Dates and Times</a></li>
-<li><a href="https://usu.instructure.com/courses/819584/quizzes/1502123" target="_blank">Activity: Dates and Times</a> <a href="../lab/_16-lubridate.qmd">quarto</a> <a href="../lab/16-lubridate.html" target="_blank">html</a></li>
-<li>Extra Practice: Covid Time Series <a href="../lab/_16-covid-time-series.qmd" target="_blank">quarto</a> <a href="../lab/16-covid-time-series.html">html</a> <a href="../lab/16-covid-time-series-sol.html" target="_blank">solutions</a></li>
+<li><code>mean_x</code></li>
+<li><code>mean_y</code></li>
+<li><code>sd_x</code></li>
+<li><code>sd_y</code></li>
 </ul>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="do">## datasaurus_summary &lt;- datasaurus_dozen |&gt; </span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="do">##   group_by(#...#) |&gt; </span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="do">##   summarize(#...#)</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="do">## datasaurus_summary</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
 </section>
-<section id="wednesday" class="level2">
-<h2 class="anchored" data-anchor-id="wednesday">🐪️ Wednesday 🐦‍⬛</h2>
-<ul>
-<li><a href="https://usu.instructure.com/courses/819584/assignments/5292945" target="_blank">Attendance Quiz 10/07</a></li>
-<li><a href="../slides/17-vis-dist.html" target="_blank">Visualizing Data Distributions</a></li>
-<li><a href="../demos/17-visualizing-distributions.html" target="_blank">Demo: Visualizing Data Distributions</a></li>
-<li><a href="../slides/17-vis-dist-ex.html" target="_blank">Additional Distribution Visualizations: World Cappuccino Index</a></li>
-<li><a href="https://usu.instructure.com/courses/819584/quizzes/1462899" target="_blank">Activity: Datasaurus</a> <a href="../lab/17-datasaurus.html" target="_blank">html</a> <a href="../lab/_17-datasaurus.qmd" target="_blank">quarto template</a></li>
-</ul>
+<section id="problem-2" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Problem</h1>
+<p><strong>Discuss with a partner:</strong> What do you observe about the grouped means and standard deviations for both variables?</p>
+<p><em>Replace this text with your answer (optional if you have a discussion with a partner, required if you do this assignment on your own).</em></p>
 </section>
-<section id="friday" class="level2">
-<h2 class="anchored" data-anchor-id="friday">🎉 Friday 🥳</h2>
-<ul>
-<li>Fall Break</li>
-</ul>
+<section id="problem-3" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Problem</h1>
+<p>Create a scatterplot (pairs of x-y points) for all 12 groups in the <code>datasaurus_dozen</code> dataset.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Uncomment this plot after you have answered the previous questions. </span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="do">## ggplot(datasaurus_dozen, aes(x = x, y = y)) + </span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="do">##   geom_point() + </span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="do">##   facet_wrap(~ dataset) + </span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="do">##   theme_bw()</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Note that each of the above plots follow the principle of “small multiples” which means that each plot is identical in format and differs only in the data that is represented. This is a really powerful way to compare information across groups.</p>
 </section>
-<section id="extra-resourcesreading" class="level2">
-<h2 class="anchored" data-anchor-id="extra-resourcesreading">Extra Resources/Reading</h2>
-<ul>
-<li><a href="https://srvanderplas.github.io/stat-computing-r-python/part-wrangling/07-datetime.html" target="_blank">SC Ch 27 - Dates and Times</a></li>
-<li><a href="https://rafalab.dfci.harvard.edu/dsbook-part-1/wrangling/locales.html" target="_blank">IDS I Ch 14 - Locales</a></li>
-</ul>
+<section id="problem-4" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Problem</h1>
+<p><strong>Discuss with a partner:</strong> Describe what you see in the above plot. What do these visuals say about the representative-ness of the mean and standard deviation in describing the distribution of the data?</p>
+<p><em>Replace this text with your answer (optional if you have a discussion with a partner, required if you do this assignment on your own).</em></p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->

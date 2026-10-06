@@ -151,8 +151,8 @@ heights |>
   ggplot(aes(x = height_ft, color = sex)) + # <1>
   geom_density() # <2>
 ```
-2. Show `height_ft` on the x-axis, and plot different values for each sex.
-3. Use a kernel density estimate, which creates a smoothed version of a histogram. By default, ggplot estimates the best 'bandwidth' (similar to the bin width) for you.
+1. Show `height_ft` on the x-axis, and plot different values for each sex.
+2. Use a kernel density estimate, which creates a smoothed version of a histogram. By default, ggplot estimates the best 'bandwidth' (similar to the bin width) for you.
 
 As with histograms, density curves are sensitive to the bin width, but because they are continuous and not actual bins, we talk about the 'bandwidth' of a density rather than the bin width. You can adjust the bandwidth of a density curve using the `adjust` parameter in `geom_density`
 

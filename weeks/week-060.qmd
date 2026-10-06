@@ -28,8 +28,10 @@ October 05-11, 2026
 ## 🐪️ Wednesday 🐦‍⬛ 
 
 - [Attendance Quiz 10/07](https://usu.instructure.com/courses/819584/assignments/5292945){target="_blank"}
-- [Demo: Visualizing Data Distributions](../demos/17-visualizing-distributions.qmd){target="_blank"}
 - [Visualizing Data Distributions](../slides/17-vis-dist.qmd){target="_blank"}
+- [Demo: Visualizing Data Distributions](../demos/17-visualizing-distributions.qmd){target="_blank"}
+- [Additional Distribution Visualizations: World Cappuccino Index](../slides/17-vis-dist-ex.qmd){target="_blank"}
+- [Activity: Datasaurus](https://usu.instructure.com/courses/819584/quizzes/1462899){target="_blank"} [html](../lab/17-datasaurus.qmd){target="_blank"} [quarto template](../lab/_17-datasaurus.qmd){target="_blank"}
 
 
 ## 🎉 Friday 🥳

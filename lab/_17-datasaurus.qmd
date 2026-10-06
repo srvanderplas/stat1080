@@ -1,0 +1,77 @@
+---
+title: "6.2.p - Class Activity"
+format: html
+number-sections: true
+execute:
+  echo: true   # show code by default
+  warning: false
+  message: false
+---
+
+This assignment illustrates the important of data visuals when trying to understand the distribution of data. We will use data available in the `datasauRus`. Please be sure you have installed this package (perhaps using the `install.packages()` function) before you try to proceed with the activity. 
+
+```{r}
+library(tidyverse)
+library(datasauRus)
+```
+
+# Problem 
+
+**Discuss with a partner:** What is the difference in the two datasets printed below? Which of the two datasets would be considered "tidy"?
+
+```{r}
+datasaurus_dozen_wide
+datasaurus_dozen
+```
+
+*Replace this text with your answer (optional if you have a discussion with a partner, required if you do this assignment on your own).*
+
+# Problem 
+
+Use a tidyverse chain (code separated by pipes) to determine the mean and standard deviation for the "x" and "y" variable for each unique dataset in the `datasaurus_dozen` tibble (i.e. tidyverse data.frame). This means that your dataset should have four variables: 
+
+- `mean_x`
+- `mean_y`
+- `sd_x`
+- `sd_y`
+
+
+```{r}
+## datasaurus_summary <- datasaurus_dozen |> 
+##   group_by(#...#) |> 
+##   summarize(#...#)
+
+## datasaurus_summary
+```
+
+# Problem
+
+**Discuss with a partner:** What do you observe about the grouped means and standard deviations for both variables? 
+
+*Replace this text with your answer (optional if you have a discussion with a partner, required if you do this assignment on your own).*
+
+# Problem
+
+Create a scatterplot (pairs of x-y points) for all 12 groups in the `datasaurus_dozen` dataset. 
+
+```{r}
+# Uncomment this plot after you have answered the previous questions. 
+## ggplot(datasaurus_dozen, aes(x = x, y = y)) + 
+##   geom_point() + 
+##   facet_wrap(~ dataset) + 
+##   theme_bw()
+```
+
+Note that each of the above plots follow the principle of "small multiples" which means that each plot is identical in format and differs only in the data that is represented. This is a really powerful way to compare information across groups. 
+
+# Problem 
+
+**Discuss with a partner:** Describe what you see in the above plot. What do these visuals say about the representative-ness of the mean and standard deviation in describing the distribution of the data? 
+
+*Replace this text with your answer (optional if you have a discussion with a partner, required if you do this assignment on your own).*
+
+
+
+
+
+

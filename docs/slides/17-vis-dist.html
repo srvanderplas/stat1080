@@ -6,10 +6,13 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.9.38">
 
-  <title>STAT 1080 - Fall 2026 – vis-dist</title>
+  <title>STAT 1080 - Fall 2026 – 1.17 Visualizing Data Distributions</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -132,19 +135,167 @@
       margin-right: 0;
     }
   </style>
-<meta property="og:title" content="STAT 1080 - Fall 2026">
+<meta property="og:title" content="1.17 Visualizing Data Distributions – STAT 1080 - Fall 2026">
 <meta property="og:site_name" content="STAT 1080 - Fall 2026">
 </head>
 <body class="quarto-light">
   <div class="reveal">
     <div class="slides">
 
+<section id="title-slide" data-background-image="images/SimulationTheoryCartoon.png" data-background-image-alt="A density curve and a histogram with faces and arms sit next to each other. The histogram and the density are approximately the same shape." data-background-position="50% 90%" data-background-repeat="no-repeat" data-background-size="30%" class="quarto-title-block center">
+  <h1 class="title">1.17 Visualizing Data Distributions</h1>
 
-<section class="slide level2">
-
-
+<div class="quarto-title-authors">
+</div>
 
 </section>
+<section>
+<section id="numeric-distributions" class="title-slide slide level1 center">
+<h1>Numeric Distributions</h1>
+
+</section>
+<section id="ecdfs" class="slide level2">
+<h2>ECDFs</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><a href="17-vis-dist_files/figure-revealjs/unnamed-chunk-2-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img data-src="17-vis-dist_files/figure-revealjs/unnamed-chunk-2-1.png" alt="A set of three empirical CDFs drawn from 300 samples of a gamma(2, 2) distribution, a normal (9, 3) distribution, and a poisson(10) distribution. The gamma and normal eCDFs appear relatively smooth, while the poisson eCDF is jagged." width="864"></a></p>
+</figure>
+</div>
+</div>
+</div>
+<ul>
+<li>Shows all of the data in the distribution</li>
+<li>Continuous variables will look relatively smooth for large enough <span class="math inline">\(n\)</span> (plots 1, 2)</li>
+<li>Discrete variables will have “steps” (plot 3)</li>
+<li>Hard to see the mean, variability, range</li>
+</ul>
+</section>
+<section id="histograms" class="slide level2">
+<h2>Histograms</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><a href="17-vis-dist_files/figure-revealjs/unnamed-chunk-3-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img data-src="17-vis-dist_files/figure-revealjs/unnamed-chunk-3-1.png" alt="A set of three histograms drawn from 300 samples of a gamma(2, 2) distribution, a normal (9, 3) distribution, and a poisson(10) distribution. The mean, median, and mode of each distribution are marked with vertical lines and labels. The gamma distribution is skewed, with mode < median < mean. The normal distribution is roughly symmetric, with mode,  median, and mean approximately equal. The poisson distribution has odd gaps, and the mode is slightly lower than the mean and median, which are equal." width="864"></a></p>
+</figure>
+</div>
+</div>
+</div>
+<ul>
+<li>Easy to see distribution center and spread</li>
+<li>Sensitive to bin width/number of bins</li>
+</ul>
+</section>
+<section id="histograms-1" class="slide level2">
+<h2>Histograms</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><a href="17-vis-dist_files/figure-revealjs/unnamed-chunk-4-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img data-src="17-vis-dist_files/figure-revealjs/unnamed-chunk-4-1.png" alt="A set of three histograms drawn from 300 samples of a gamma(2, 2) distribution, a normal (9, 3) distribution, and a poisson(10) distribution. The mean, median, and mode of each distribution are marked with vertical lines and labels. The gamma distribution is skewed, with mode < median < mean. The normal distribution is roughly symmetric, with mode,  median, and mean approximately equal. The poisson distribution has gaps between integer values, and the mode is slightly lower than the mean and median, which are equal." width="864"></a></p>
+</figure>
+</div>
+</div>
+</div>
+<ul>
+<li>Easy to see distribution center and spread</li>
+<li>Sensitive to bin width/number of bins
+<ul>
+<li>Extra-sensitive if data are discrete or rounded</li>
+</ul></li>
+</ul>
+</section>
+<section id="density-plots" class="slide level2">
+<h2>Density Plots</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><a href="17-vis-dist_files/figure-revealjs/unnamed-chunk-5-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img data-src="17-vis-dist_files/figure-revealjs/unnamed-chunk-5-1.png" alt="A set of three density curves drawn from 300 samples of a gamma(2, 2) distribution, a normal (9, 3) distribution, and a poisson(10) distribution. The mean, median, and mode of each distribution are marked with vertical lines and labels. The gamma distribution is skewed, with mode < median < mean. The normal distribution is roughly symmetric, with mode,  median, and mean approximately equal. The poisson distribution has a mode which is slightly lower than the mean and median, which are equal." width="864"></a></p>
+</figure>
+</div>
+</div>
+</div>
+<ul>
+<li>Smoothed out version of a histogram</li>
+<li>Masks rounded/discrete variables</li>
+</ul>
+</section>
+<section id="density-plots-1" class="slide level2">
+<h2>Density Plots</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><a href="17-vis-dist_files/figure-revealjs/unnamed-chunk-6-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img data-src="17-vis-dist_files/figure-revealjs/unnamed-chunk-6-1.png" alt="A set of three density curves drawn from 300 samples of a gamma(2, 2) distribution, a normal (9, 3) distribution, and a poisson(10) distribution. The mean, median, and mode of each distribution are marked with vertical lines and labels. The gamma distribution is skewed, with mode < median < mean. The normal distribution is roughly symmetric, with mode,  median, and mean approximately equal. The poisson distribution has a mode which is slightly lower than the mean and median, which are equal." width="864"></a></p>
+</figure>
+</div>
+</div>
+</div>
+<ul>
+<li>Smoothed out version of a histogram</li>
+<li>Masks rounded/discrete variables</li>
+<li>With smaller bandwidth/adjustment, discrete variables look like zigzags.</li>
+<li>Adjust bandwidth using <code>geom_density(adjust=XXX)</code>
+<ul>
+<li>Try values of XXX of 0.5, 1.5 to start</li>
+</ul></li>
+</ul>
+</section>
+<section id="box-plots" class="slide level2">
+<h2>Box Plots</h2>
+<div class="columns">
+<div class="column">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><a href="17-vis-dist_files/figure-revealjs/unnamed-chunk-7-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6"><img data-src="17-vis-dist_files/figure-revealjs/unnamed-chunk-7-1.png" width="384"></a></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column">
+<ul>
+<li>Box:
+<ul>
+<li>lower: 25th percentile</li>
+<li>upper: 75th percentile</li>
+<li>middle: median, 50th percentile</li>
+</ul></li>
+<li>Whiskers:
+<ul>
+<li>smallest observation that is greater than or equal to (lower hinge - 1.5 * (upper - lower))</li>
+<li>largest observation that is less than or equal to (upper hinge + 1.5 * (upper - lower))</li>
+</ul></li>
+<li>Outliers: anything not covered by the whiskers are shown as individual points</li>
+</ul>
+</div></div>
+</section>
+<section id="violin-plots" class="slide level2">
+<h2>Violin Plots</h2>
+<div class="columns">
+<div class="column">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><a href="17-vis-dist_files/figure-revealjs/unnamed-chunk-8-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7"><img data-src="17-vis-dist_files/figure-revealjs/unnamed-chunk-8-1.png" width="384"></a></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column">
+<ul>
+<li>Density curve plotted vertically, then mirrored</li>
+<li>Often shown with a boxplot (or quantile lines) overlaid on top</li>
+</ul>
+</div></div>
+
+
+</section></section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <p><img src="deps/usu-sq.png" alt="Utah State University Logo" class="slide-logo"></p>
@@ -363,6 +514,44 @@
         ]
       });
     </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
     <script id="quarto-html-after-body" type="application/javascript">
       window.document.addEventListener("DOMContentLoaded", function (event) {
         const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
@@ -683,6 +872,38 @@
         }
       });
       </script>
+    <script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+    (function() {
+      let previousOnload = window.onload;
+      window.onload = () => {
+        if (previousOnload) {
+          previousOnload();
+        }
+        lightboxQuarto.on('slide_before_load', (data) => {
+          const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+          const href = trigger.getAttribute('href');
+          if (href !== null) {
+            const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+            if (imgEl !== null) {
+              const srcAttr = imgEl.getAttribute("src");
+              if (srcAttr && srcAttr.startsWith("data:")) {
+                slideConfig.href = srcAttr;
+              }
+            }
+          } 
+        });
+      
+        lightboxQuarto.on('slide_after_load', (data) => {
+          const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(slideNode);
+          }
+        });
+      
+      };
+      
+    })();
+              </script>
     
 
 </body></html>

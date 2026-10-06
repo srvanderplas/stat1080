@@ -1,0 +1,237 @@
+---
+title: "1.17 Visualizing Data Distributions"
+format: revealjs
+code-annotations: hover
+lightbox:  true
+bibliography: refs.bib
+csl: chicago-syllabus.csl
+title-slide-attributes:
+  data-background-image: "images/SimulationTheoryCartoon.png"
+  data-background-image-alt: A density curve and a histogram with faces and arms sit next to each other. The histogram and the density are approximately the same shape.
+  data-background-size: "30%"
+  data-background-repeat: "no-repeat"
+  data-background-position: "50% 90%"
+---
+
+# Numeric Distributions
+
+## ECDFs
+
+```{r}
+library(tidyverse)
+theme_set(theme_bw())
+set.seed(20934382)
+sets <- bind_rows(
+    tibble(x = rgamma(300, shape = 2, scale = 2), set = 1, dist = "gamma"),
+    tibble(x = rnorm(300, 9, 3), set = 2, dist = "normal"),
+    tibble(x = rpois(300, 10), set = 3, dist = "poisson")
+  )
+```
+
+```{r}
+#| fig-width: 9
+#| fig-height: 3
+#| fig-alt: A set of three empirical CDFs drawn from 300 samples of a gamma(2, 2) distribution, a normal (9, 3) distribution, and a poisson(10) distribution. The gamma and normal eCDFs appear relatively smooth, while the poisson eCDF is jagged. 
+ggplot(sets, aes(x = x, group = dist)) + 
+  stat_ecdf(geom = "step") + 
+  facet_wrap(~set)
+```
+
+- Shows all of the data in the distribution
+- Continuous variables will look relatively smooth for large enough $n$ (plots 1, 2)
+- Discrete variables will have "steps" (plot 3)
+- Hard to see the mean, variability, range
+
+## Histograms
+
+```{r}
+#| fig-width: 9
+#| fig-height: 3
+#| fig-alt: A set of three histograms drawn from 300 samples of a gamma(2, 2) distribution, a normal (9, 3) distribution, and a poisson(10) distribution. The mean, median, and mode of each distribution are marked with vertical lines and labels. The gamma distribution is skewed, with mode < median < mean. The normal distribution is roughly symmetric, with mode,  median, and mean approximately equal. The poisson distribution has odd gaps, and the mode is slightly lower than the mean and median, which are equal.
+ 
+find_mode <- function(x) {
+  if (length(unique(x)) < length(x)) {
+    u <- unique(x)
+    tab <- tabulate(match(x, u))
+    u[tab == max(tab)][1]
+  } else {
+    dens <- density(x)
+    dens$x[which.max(dens$y)]
+  }
+}
+
+set_summary <- sets |>
+  group_by(set, dist) |>
+  summarize(mean = mean(x), sd = sd(x), median = median(x), mode = find_mode(x), min = min(x), max = max(x), range = max-min) |>
+  pivot_longer(-c(1:2)) |>
+  mutate(y = case_when(name=="mean" ~ 65, name == "median" ~ 70, name == "mode" ~ 75, TRUE ~ NA))
+
+ggplot(sets, aes(x = x, group = dist)) + 
+  geom_histogram(boundary = 0, closed="left") + 
+  facet_wrap(~set) +
+  geom_segment(data = filter(set_summary, name %in% c("mean", "median", "mode")), aes(x = value, xend = value, y = 0, yend = y, color = name)) + 
+  geom_label(data = filter(set_summary, name %in% c("mean", "median", "mode")), aes(x = value, y = y, color = name, label = name)) + 
+  guides(color = 'none')
+  
+```
+
+- Easy to see distribution center and spread
+- Sensitive to bin width/number of bins
+
+## Histograms
+
+```{r}
+#| fig-width: 9
+#| fig-height: 3
+#| fig-alt: A set of three histograms drawn from 300 samples of a gamma(2, 2) distribution, a normal (9, 3) distribution, and a poisson(10) distribution. The mean, median, and mode of each distribution are marked with vertical lines and labels. The gamma distribution is skewed, with mode < median < mean. The normal distribution is roughly symmetric, with mode,  median, and mean approximately equal. The poisson distribution has gaps between integer values, and the mode is slightly lower than the mean and median, which are equal.
+ 
+find_mode <- function(x) {
+  if (length(unique(x)) < length(x)) {
+    u <- unique(x)
+    tab <- tabulate(match(x, u))
+    u[tab == max(tab)][1]
+  } else {
+    dens <- density(x)
+    dens$x[which.max(dens$y)]
+  }
+}
+
+set_summary <- sets |>
+  group_by(set, dist) |>
+  summarize(mean = mean(x), sd = sd(x), median = median(x), mode = find_mode(x), min = min(x), max = max(x), range = max-min) |>
+  pivot_longer(-c(1:2)) |>
+  mutate(y = case_when(name=="mean" ~ 65, name == "median" ~ 70, name == "mode" ~ 75, TRUE ~ NA))
+
+ggplot(sets, aes(x = x, group = dist)) + 
+  geom_histogram(boundary = 0, closed="left", binwidth = .5) + 
+  facet_wrap(~set) +
+  geom_segment(data = filter(set_summary, name %in% c("mean", "median", "mode")), aes(x = value, xend = value, y = 0, yend = y, color = name)) + 
+  geom_label(data = filter(set_summary, name %in% c("mean", "median", "mode")), aes(x = value, y = y, color = name, label = name)) + 
+  guides(color = 'none')
+  
+```
+
+- Easy to see distribution center and spread
+- Sensitive to bin width/number of bins
+  - Extra-sensitive if data are discrete or rounded
+
+## Density Plots
+
+```{r}
+#| fig-width: 9
+#| fig-height: 3
+#| fig-alt: A set of three density curves drawn from 300 samples of a gamma(2, 2) distribution, a normal (9, 3) distribution, and a poisson(10) distribution. The mean, median, and mode of each distribution are marked with vertical lines and labels. The gamma distribution is skewed, with mode < median < mean. The normal distribution is roughly symmetric, with mode,  median, and mean approximately equal. The poisson distribution has a mode which is slightly lower than the mean and median, which are equal.
+ 
+find_mode <- function(x) {
+  if (length(unique(x)) < length(x)) {
+    u <- unique(x)
+    tab <- tabulate(match(x, u))
+    u[tab == max(tab)][1]
+  } else {
+    dens <- density(x)
+    dens$x[which.max(dens$y)]
+  }
+}
+
+set_summary <- sets |>
+  group_by(set, dist) |>
+  summarize(mean = mean(x), sd = sd(x), median = median(x), mode = find_mode(x), min = min(x), max = max(x), range = max-min) |>
+  pivot_longer(-c(1:2)) |>
+  mutate(y = case_when(name=="mean" ~ .2, name == "median" ~ .22, name == "mode" ~ .24, TRUE ~ NA))
+
+ggplot(sets, aes(x = x, group = dist)) + 
+  geom_density() + 
+  facet_wrap(~set) +
+  geom_segment(data = filter(set_summary, name %in% c("mean", "median", "mode")), aes(x = value, xend = value, y = 0, yend = y, color = name)) + 
+  geom_label(data = filter(set_summary, name %in% c("mean", "median", "mode")), aes(x = value, y = y, color = name, label = name)) + 
+  guides(color = 'none')
+  
+```
+
+- Smoothed out version of a histogram
+- Masks rounded/discrete variables
+
+## Density Plots
+
+```{r}
+#| fig-width: 9
+#| fig-height: 3
+#| fig-alt: A set of three density curves drawn from 300 samples of a gamma(2, 2) distribution, a normal (9, 3) distribution, and a poisson(10) distribution. The mean, median, and mode of each distribution are marked with vertical lines and labels. The gamma distribution is skewed, with mode < median < mean. The normal distribution is roughly symmetric, with mode,  median, and mean approximately equal. The poisson distribution has a mode which is slightly lower than the mean and median, which are equal.
+ 
+find_mode <- function(x) {
+  if (length(unique(x)) < length(x)) {
+    u <- unique(x)
+    tab <- tabulate(match(x, u))
+    u[tab == max(tab)][1]
+  } else {
+    dens <- density(x)
+    dens$x[which.max(dens$y)]
+  }
+}
+
+set_summary <- sets |>
+  group_by(set, dist) |>
+  summarize(mean = mean(x), sd = sd(x), median = median(x), mode = find_mode(x), min = min(x), max = max(x), range = max-min) |>
+  pivot_longer(-c(1:2)) |>
+  mutate(y = case_when(name=="mean" ~ .2, name == "median" ~ .22, name == "mode" ~ .24, TRUE ~ NA))
+
+ggplot(sets, aes(x = x, group = dist)) + 
+  geom_density(adjust=.25) + 
+  facet_wrap(~set) +
+  geom_segment(data = filter(set_summary, name %in% c("mean", "median", "mode")), aes(x = value, xend = value, y = 0, yend = y, color = name)) + 
+  geom_label(data = filter(set_summary, name %in% c("mean", "median", "mode")), aes(x = value, y = y, color = name, label = name)) + 
+  guides(color = 'none')
+  
+```
+
+- Smoothed out version of a histogram
+- Masks rounded/discrete variables
+- With smaller bandwidth/adjustment, discrete variables look like zigzags.
+- Adjust bandwidth using `geom_density(adjust=XXX)`
+  - Try values of XXX of 0.5, 1.5 to start
+
+## Box Plots
+
+::::: columns
+::: column
+```{r}
+#| fig-width: 4
+#| fig-height: 6
+
+ggplot(sets, aes(x = factor(set), y = x)) + 
+  geom_boxplot()
+```
+:::
+
+::: column
+- Box:
+  - lower: 25th percentile
+  - upper: 75th percentile
+  - middle: median, 50th percentile
+- Whiskers:
+  - smallest observation that is greater than or equal to (lower hinge - 1.5 \* (upper - lower))
+  - largest observation that is less than or equal to (upper hinge + 1.5 \* (upper - lower))
+- Outliers: anything not covered by the whiskers are shown as individual points
+:::
+:::::
+
+## Violin Plots
+
+::::: columns
+::: column
+```{r}
+#| fig-width: 4
+#| fig-height: 6
+
+ggplot(sets, aes(x = factor(set), y = x, fill = factor(set))) + 
+  geom_violin() + 
+  geom_boxplot(width=.2, fill = "white") + 
+  guides(fill = "none")
+```
+:::
+
+::: column
+- Density curve plotted vertically, then mirrored
+- Often shown with a boxplot (or quantile lines) overlaid on top
+:::
+:::::
