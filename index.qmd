@@ -2,7 +2,7 @@
 title: Stat 1080 - Data and the Stories They Tell
 format: html
 ---
-
+ 
 ```{r}
 #| echo: false
 #| message: false
