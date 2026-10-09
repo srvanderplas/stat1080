@@ -212,6 +212,7 @@ schedule:
     class1: |
         - [Attendance Quiz 10/12](https://usu.instructure.com/courses/819584/assignments/5292946){target="_blank"}
         - [Data Visualization with `ggplot2`](../slides/19-ggplot2.qmd){target="_blank"}
+        - [Activity 7.1.p - Introduction to `ggplot2`](https://usu.instructure.com/courses/819584/quizzes/1462912){target="_blank"} [qmd template](../lab/_19-ggplot2.qmd) [html](../lab/19-ggplot2.qmd)
     class2: |
         - [Attendance Quiz 10/14](https://usu.instructure.com/courses/819584/assignments/5292947){target="_blank"}
         - [Data Visualization in Practice/Advanced `ggplot2`](../slides/20-adv-ggplot2.qmd){target="_blank"}

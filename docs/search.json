@@ -1120,6 +1120,13 @@
     "text": "Part e (10 points)\nLooking at the original cereal data, propose a grouped summary of a variable other than Sugars. You are welcome to group by Shelf, Manufacturer, or both Shelf and Manufacturer. In order to ensure reasonable estimates of the min/max/mean, you need to make sure that you only retain groups that have at least 5 non-missing observations of interest. To complete this problem, you must:\n\n(2.5 points) Write a sentence explaining what grouped summary you plan to take and why you chose to summarize that variable. You should select one variable so summarize, and at least one variable to group by.\n(5 points) Create a dataframe that contains the grouped summaries (min/max/mean) of that variable. Print this dataframe as part of your report (which can be done simply by putting the name of the dataframe on the last line of your code chunk).\n(2.5 points) Describe at least one interesting feature of your grouped summary. Also provide a possible explanation for what might be causing the difference (or lack of difference) between the groups?\n\n\n\n#...#\n\nAnswer:\n(Replace this text with your explanation)"
   },
   {
+    "objectID": "lab/19-ggplot2-sol.html",
+    "href": "lab/19-ggplot2-sol.html",
+    "title": "2.2.a - Class Activity",
+    "section": "",
+    "text": "This assignment is intended to give you experience using ggplot2 as well as developing an understanding of quantiles in numeric data. For this assignment, we will be using the mpg_hawkes dataset available in the stat1080r package. Recall from the homework assignments that this package is installed using the command install.packages(\"stat1080r\", repos = \"https://beanb2.r-universe.dev\"). Remember that you only need to install this package once per semester. However, you still need to use library(stat1080r) each time you start R and want to use it. Do not try to run the following block of code until the stat1080r package has been installed.\n\nlibrary(tidyverse)\nlibrary(stat1080r)\n\nThis assignment will focus on the mpg_hawkes dataset. For more information about the variables in mpg_hawkes, please use the ?mpg_hawkes command in the console. Note that the dataset will only be available to use after running library(stat1080r) in your R session.\nThe following code takes mpg_hawkes and creates two new variables. The first variable (decade) is a factor based on the decade the vehicle was made. The second variable (v_class_2) is a factor based on the vehicle type, after using “regular expressions” to group some smaller categories into larger groups. Note that you must run this provided code in order to answer the rest of the questions in this assignment.\n\nmpg_hawkes &lt;- mpg_hawkes |&gt; \n  mutate(decade = case_when(year &gt;= 1980 & year &lt; 1990 ~ \"1980s\",\n                            year &gt;= 1990 & year &lt; 2000 ~ \"1990s\",\n                            year &gt;= 2000 & year &lt; 2010 ~ \"2000s\",\n                            year &gt;= 2010 & year &lt; 2020 ~ \"2010s\"),\n         v_class_2 = case_when(regexpr(\"Cars\", VClass) &gt; 0 ~ \"Cars\",\n                               regexpr(\"Two Seaters\", VClass) &gt; 0 ~ \"Cars\",\n                               regexpr(\"Utility\", VClass) &gt; 0 ~ \"SUV/Van\",\n                               regexpr(\"[Vv]an\", VClass) &gt; 0 ~ \"SUV/Van\",\n                               regexpr(\"Truck\", VClass) &gt; 0 ~ \"Trucks\",\n                               TRUE ~ \"Other\")\n  )\n\n\n1 Problem\nThe following code considers a subset of the variables in mpg_hawkes\n\nmpg_select &lt;- mpg_hawkes |&gt;\n  select(city, fuelType, trans, year)\n\nhead(mpg_select)\n\n# A tibble: 6 × 4\n   city fuelType trans            year\n  &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;           &lt;dbl&gt;\n1    19 Regular  Manual 5-spd     1985\n2     9 Regular  Manual 5-spd     1985\n3    23 Regular  Manual 5-spd     1985\n4    10 Regular  Automatic 3-spd  1985\n5    17 Premium  Manual 5-spd     1993\n6    21 Regular  Automatic 3-spd  1993\n\n\nOf these four variables, which are “quantitative” and which are “categorical” (i.e., “qualitative”), please provide your answer to this question in the associated Canvas quiz.\ncity and year are quantitative variables because they are numbers that can be ordered, while fuelType and trans are categorical variables.\n\n\n2 Problem\nThe following code uses the quantile function to determine the 90th percentile of city miles per gallon (mpg). This is the mpg quantity for which 90 percent of the 38,000+ vehicles in our dataset have city mpg ratings less than or equal to this value.\n\nq90_city &lt;- mpg_hawkes |&gt;\n  pull(city) |&gt; # extract the city column as a vector\n  quantile(0.9) # extract the 90th percentile of the city column vector\n\nq90_city\n\n90% \n 24 \n\n\nUsing the above code as reference, find the 90th percentile highway mpg rating for the vehicles in our dataset and then note this amount in your Canvas quiz.\n\nq90_highway &lt;- mpg_hawkes |&gt;\n  pull(highway) |&gt;\n  quantile(0.9)\n\nq90_highway\n\n90% \n 31 \n\n\n\n\n3 Problem\nDiscuss briefly (2 min or less) with a partner Based on what you know about vehicles, why do you think that the highway mpg are larger than city mpg?\nVehicles traveling in the city have to stop and accelerate constantly, which is not very efficient. Vehicles on the highway are able to travel more efficiently because they are able to maintain high speeds without having to stop.\n\n\n4 Problem\nCreate a plot that compares city (x-axis) vs highway (y-axis) mileage for “Cars” (as defined in the v_class_2 variable) from the 1980s. This will require you to first subset the rows of the data and then use ggplot2 to visualize. The provided code will create the “line of equality” (i.e., the line where x = y) which will help us to visualize how different city and highway mileage are for vehicles in this decade. Points above the line are vehicles for which highway mpg &gt; city mpg, points below are vehicles for which city mpg &gt; highway mpg.\n\nmpg_hawkes |&gt;\n  filter(v_class_2 == \"Cars\" & decade == \"1980s\") |&gt;\n  ggplot(aes(x = city, y = highway)) +\n  geom_point() + \n  geom_abline(slope = 1, intercept = 0, lty = 2)\n\n\n\n\n\n\n\n\n\n\n5 Problem\nThe following code makes the following adaptations to the visual you created in the previous problem.\n\nPlot vehicles across all decades, rather than just the 1980s, coloring each point based on the decade that the vehicle was produced.\nUse the geom_jitter() geometry to randomly move the points slightly up/down and left/right to help with “overplotting”, which is where we have two observations that have exactly the same x and y coordinates.\nUse the alpha argument to make the points semi-transparent, which will further aid with the overplotting issue in the graph with so many observations.\nFit a “linear model” to the points to find the “line of best fit” between city and highway mileage and add it to the plot. This is the solid line.\nProvide the “line of equality” as in the previous plot. This is the dashed line.\n\n\nmpg_cars &lt;- mpg_hawkes |&gt;\n  filter(v_class_2 == \"Cars\") \n\nmpg_lm &lt;- lm(highway ~ city, data = mpg_cars)\n\nggplot(mpg_cars, aes(x = city, y = highway, color = decade)) +\n  geom_jitter(alpha = 0.5) + \n  geom_abline(intercept = 0, slope = 1, lty = 2) + # line of equality\n  geom_abline(intercept = mpg_lm$coefficients[1], # line of regression\n              slope = mpg_lm$coefficients[2])\n\n\n\n\n\n\n\n\nNotice in this plot that there is a lot of purple points that fall well below the line of best fit, which means that the highway mileage was less than expected based on their city mileage. Discuss briefly (2 min or less) with a partner what might cause modern vehicles to have much higher city mileage (as compared to highway mileage) than vehicles from previous decades.\nHybrid vehicles, which are a modern invention, use batteries to store power from braking and use it to drastically improve city mileage, which “breaks” the relationship we saw between city and highway mileage in previous decades."
+  },
+  {
     "objectID": "lab/17-datasaurus-sol.html",
     "href": "lab/17-datasaurus-sol.html",
     "title": "2.1.a - Class Activity",
@@ -1481,7 +1488,7 @@
     "href": "weeks/week-070.html",
     "title": "Week 7: Data Visualization",
     "section": "",
-    "text": "October 12-18, 2026\n\n\n\n(for Mon) IDS I Ch 8 - ggplot2\n(for Wed) IDS I Ch 10 - Data Visualization in Practice\n(for Fri) IDS I Ch 9 - Data Visualization Principles\n\n\n\n\n\n(for Mon) Reading Check 7.1\n(for Wed) Reading Check 7.2\n(for Fri) Reading Check 7.3\n\n\n\n\n\nAttendance Quiz 10/12\nData Visualization with ggplot2\n\n\n\n\n\nAttendance Quiz 10/14\nData Visualization in Practice/Advanced ggplot2\n\n\n\n\n\nAttendance Quiz 10/16\nData Visualization Principles\nLab: Effective Data Visualization\n\n\n\n\nThis is my research area, so here’s an info-dump from my textbook. I’m also happy to discuss data visualization at any point in office hours!\n\nSC Ch 18 - Data Visualization Basics\nSC Ch 19 - Exploratory Data Analysis\nSC Ch 20 - A Grammar of Graphics\nSC Ch 21 - Creating Good Charts"
+    "text": "October 12-18, 2026\n\n\n\n(for Mon) IDS I Ch 8 - ggplot2\n(for Wed) IDS I Ch 10 - Data Visualization in Practice\n(for Fri) IDS I Ch 9 - Data Visualization Principles\n\n\n\n\n\n(for Mon) Reading Check 7.1\n(for Wed) Reading Check 7.2\n(for Fri) Reading Check 7.3\n\n\n\n\n\nAttendance Quiz 10/12\nData Visualization with ggplot2\nActivity 7.1.p - Introduction to ggplot2 qmd template html\n\n\n\n\n\nAttendance Quiz 10/14\nData Visualization in Practice/Advanced ggplot2\n\n\n\n\n\nAttendance Quiz 10/16\nData Visualization Principles\nLab: Effective Data Visualization\n\n\n\n\nThis is my research area, so here’s an info-dump from my textbook. I’m also happy to discuss data visualization at any point in office hours!\n\nSC Ch 18 - Data Visualization Basics\nSC Ch 19 - Exploratory Data Analysis\nSC Ch 20 - A Grammar of Graphics\nSC Ch 21 - Creating Good Charts"
   },
   {
     "objectID": "weeks/week-070.html#reading",
@@ -1502,7 +1509,7 @@
     "href": "weeks/week-070.html#monday",
     "title": "Week 7: Data Visualization",
     "section": "",
-    "text": "Attendance Quiz 10/12\nData Visualization with ggplot2"
+    "text": "Attendance Quiz 10/12\nData Visualization with ggplot2\nActivity 7.1.p - Introduction to ggplot2 qmd template html"
   },
   {
     "objectID": "weeks/week-070.html#wednesday",
@@ -2371,6 +2378,13 @@
     "title": "6.2.p - Class Activity",
     "section": "",
     "text": "This assignment illustrates the important of data visuals when trying to understand the distribution of data. We will use data available in the datasauRus. Please be sure you have installed this package (perhaps using the install.packages() function) before you try to proceed with the activity.\n\nlibrary(tidyverse)\nlibrary(datasauRus)\n\n\n1 Problem\nDiscuss with a partner: What is the difference in the two datasets printed below? Which of the two datasets would be considered “tidy”?\n\ndatasaurus_dozen_wide\n\n# A tibble: 142 × 26\n   away_x away_y bullseye_x bullseye_y circle_x circle_y dino_x dino_y dots_x\n    &lt;dbl&gt;  &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;\n 1   32.3   61.4       51.2       83.3     56.0     79.3   55.4   97.2   51.1\n 2   53.4   26.2       59.0       85.5     50.0     79.0   51.5   96.0   50.5\n 3   63.9   30.8       51.9       85.8     51.3     82.4   46.2   94.5   50.2\n 4   70.3   82.5       48.2       85.0     51.2     79.2   42.8   91.4   50.1\n 5   34.1   45.7       41.7       84.0     44.4     78.2   40.8   88.3   50.6\n 6   67.7   37.1       37.9       82.6     45.0     77.9   38.7   84.9   50.3\n 7   53.3   97.5       39.5       80.8     48.6     78.8   35.6   79.9   25.6\n 8   63.5   25.1       39.6       82.7     42.1     76.9   33.1   77.6   25.5\n 9   68.0   81.0       34.8       80.0     41.0     76.4   29.0   74.5   25.4\n10   67.4   29.7       27.6       72.8     34.6     72.7   26.2   71.4   25.6\n# ℹ 132 more rows\n# ℹ 17 more variables: dots_y &lt;dbl&gt;, h_lines_x &lt;dbl&gt;, h_lines_y &lt;dbl&gt;,\n#   high_lines_x &lt;dbl&gt;, high_lines_y &lt;dbl&gt;, slant_down_x &lt;dbl&gt;,\n#   slant_down_y &lt;dbl&gt;, slant_up_x &lt;dbl&gt;, slant_up_y &lt;dbl&gt;, star_x &lt;dbl&gt;,\n#   star_y &lt;dbl&gt;, v_lines_x &lt;dbl&gt;, v_lines_y &lt;dbl&gt;, wide_lines_x &lt;dbl&gt;,\n#   wide_lines_y &lt;dbl&gt;, x_shape_x &lt;dbl&gt;, x_shape_y &lt;dbl&gt;\n\ndatasaurus_dozen\n\n# A tibble: 1,846 × 3\n   dataset     x     y\n   &lt;chr&gt;   &lt;dbl&gt; &lt;dbl&gt;\n 1 dino     55.4  97.2\n 2 dino     51.5  96.0\n 3 dino     46.2  94.5\n 4 dino     42.8  91.4\n 5 dino     40.8  88.3\n 6 dino     38.7  84.9\n 7 dino     35.6  79.9\n 8 dino     33.1  77.6\n 9 dino     29.0  74.5\n10 dino     26.2  71.4\n# ℹ 1,836 more rows\n\n\nReplace this text with your answer (optional if you have a discussion with a partner, required if you do this assignment on your own).\n\n\n2 Problem\nUse a tidyverse chain (code separated by pipes) to determine the mean and standard deviation for the “x” and “y” variable for each unique dataset in the datasaurus_dozen tibble (i.e. tidyverse data.frame). This means that your dataset should have four variables:\n\nmean_x\nmean_y\nsd_x\nsd_y\n\n\n## datasaurus_summary &lt;- datasaurus_dozen |&gt; \n##   group_by(#...#) |&gt; \n##   summarize(#...#)\n\n## datasaurus_summary\n\n\n\n3 Problem\nDiscuss with a partner: What do you observe about the grouped means and standard deviations for both variables?\nReplace this text with your answer (optional if you have a discussion with a partner, required if you do this assignment on your own).\n\n\n4 Problem\nCreate a scatterplot (pairs of x-y points) for all 12 groups in the datasaurus_dozen dataset.\n\n# Uncomment this plot after you have answered the previous questions. \n## ggplot(datasaurus_dozen, aes(x = x, y = y)) + \n##   geom_point() + \n##   facet_wrap(~ dataset) + \n##   theme_bw()\n\nNote that each of the above plots follow the principle of “small multiples” which means that each plot is identical in format and differs only in the data that is represented. This is a really powerful way to compare information across groups.\n\n\n5 Problem\nDiscuss with a partner: Describe what you see in the above plot. What do these visuals say about the representative-ness of the mean and standard deviation in describing the distribution of the data?\nReplace this text with your answer (optional if you have a discussion with a partner, required if you do this assignment on your own)."
+  },
+  {
+    "objectID": "lab/19-ggplot2.html",
+    "href": "lab/19-ggplot2.html",
+    "title": "7.1.a - Class Activity",
+    "section": "",
+    "text": "This assignment is intended to give you experience using ggplot2 as well as developing an understanding of quantiles in numeric data. For this assignment, we will be using the mpg_hawkes dataset available in the stat1080r package. You only need to install this package once per semester, using install.packages(\"stat1080r\", repos = \"https://beanb2.r-universe.dev\"). However, you still need to use library(stat1080r) each time you start R. The block of code below will check that stat1080r is installed, and if not, it will install it before loading the library. It will also check that essential packages within the tidyverse are installed, and if not, will install those packages.\nThis assignment will focus on the mpg_hawkes dataset. For more information about the variables in mpg_hawkes, please use the ?mpg_hawkes command in the console. Note that the dataset will only be available to use after running library(stat1080r) in your R session.\nThe following code takes mpg_hawkes and creates two new variables. The first variable, decade, is a factor variable that provides the decade the vehicle was made. The second variable, v_class_2, is a factor variable that provides the vehicle type. I have used regular expressions to group some smaller categories into larger groups. Note that you must run this provided code in order to answer the rest of the questions in this assignment.\n\n1 Problem: Types of Variables\nThe following code considers a subset of the variables in mpg_hawkes\n\nmpg_select &lt;- mpg_hawkes |&gt;\n  select(city, fuelType, trans, year)\n\nhead(mpg_select)\n\n# A tibble: 6 × 4\n   city fuelType trans            year\n  &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;           &lt;dbl&gt;\n1    19 Regular  Manual 5-spd     1985\n2     9 Regular  Manual 5-spd     1985\n3    23 Regular  Manual 5-spd     1985\n4    10 Regular  Automatic 3-spd  1985\n5    17 Premium  Manual 5-spd     1993\n6    21 Regular  Automatic 3-spd  1993\n\n\nOf these four variables, which are “quantitative” and which are “categorical” (i.e., “qualitative”), please provide your answer to this question in the associated Canvas quiz.\nReplace this text with your answer. Optional if discussing in a group and required if doing this on your own.\n\n\n2 Problem: Calculating Quantiles\nThe following code uses the quantile function to determine the 90th percentile of city miles per gallon (mpg). This is the mpg quantity for which 90 percent of the 38,000+ vehicles in our dataset have city mpg ratings less than or equal to this value.\n\nq90_city &lt;- mpg_hawkes |&gt;\n  pull(city) |&gt; # extract the city column as a vector\n  quantile(0.9) # extract the 90th percentile of the city column vector\n\nq90_city\n\n90% \n 24 \n\n\nUsing the above code as reference, find the 90th percentile highway mpg rating for the vehicles in our dataset and then note this amount in your Canvas quiz.\n\n## q90_highway &lt;- #...#\n  \n## q90_highway\n\n\n\n3 Problem: Variable Interpretation\nDiscuss briefly (2 min or less) with a partner Based on what you know about vehicles, why do you think that the highway mpg are larger than city mpg?\nReplace this text with your answer. Optional if discussing in a group and required if doing this on your own.\n\n\n4 Problem: City and Highway Mileage\nCreate a plot that compares city (x-axis) vs highway (y-axis) mileage for “Cars” (as defined in the v_class_2 variable) from the 1980s.\nHINT: This will require a filter statement with two logical conditions.\nThis will require you to first subset the rows of the data and then use ggplot2 to visualize. The provided code will create the “line of equality” (i.e., the line where x = y) which will help us to visualize how different city and highway mileage are for vehicles in this decade. Points above the line are vehicles for which highway mpg &gt; city mpg, points below are vehicles for which city mpg &gt; highway mpg.\n\n## mpg_hawkes |&gt;\n##   filter(#...#) |&gt;\n##   ggplot(aes(#...#)) +\n##   geom_point() + \n##   geom_abline(slope = 1, intercept = 0, lty = 2) # line of equality\n\n\n\n5 Problem: Plot Modifications\nThe following code makes the following adaptations to the visual you created in the previous problem.\n\nPlot vehicles across all decades, rather than just the 1980s, coloring each point based on the decade that the vehicle was produced.\nHINT: Remember that the floor() function rounds down to the nearest whole number. Can you use that, division, and multiplication to make a decade variable? You may want to take the numeric decade (say you’ve called it decade) and use decade = factor(decade, ordered = T) to convert it to a factor so that ggplot2 interprets it as a categorical variable.\nUse the geom_jitter() geometry to randomly move the points slightly up/down and left/right to help with “overplotting” (multiple observations that have exactly the same x and y coordinates and are plotted on top of each other).\nUse the alpha argument to make the points semi-transparent, which will further aid with the overplotting issue in the graph with so many observations.\nFit a “linear model” to the points to find the “line of best fit” between city and highway mileage and add it to the plot. This is the solid line.\nProvide the “line of equality” as in the previous plot. This is the dashed line.\n\n\nmpg_cars &lt;- mpg_hawkes |&gt;\n  filter(v_class_2 == \"Cars\")\n\nggplot(mpg_cars, aes(x = city, y = highway, color = decade)) +\n  geom_jitter(alpha = 0.5) + \n  geom_abline(intercept = 0, slope = 1, lty = 2) + # line of equality\n  geom_smooth(aes(x = city, y = highway),\n              inherit.aes = F, method = \"lm\", \n              color = \"black\") + # regression line\n  coord_fixed()\n\n\n\n\n\n\n\n\nAnother way to do this is to explicitly fit the linear regression (this allows you to actually see what the equation is and/or examine how well it fits), and then plot the regression line directly.\n\nmpg_lm &lt;- lm(highway ~ city, data = mpg_cars)\n\nggplot(mpg_cars, aes(x = city, y = highway, color = decade)) +\n  geom_jitter(alpha = 0.5) +\n  geom_abline(intercept = 0, slope = 1, lty = 2) + # line of equality\n  geom_abline(intercept = mpg_lm$coefficients[1], # line of regression\n              slope = mpg_lm$coefficients[2]) + \n  coord_fixed()\n\n\n\n\n\n\n\n\nNotice in these plots that there are a lot of purple points that fall well below the line of best fit, which means that the highway mileage was less than expected based on their city mileage. Discuss briefly (2 min or less) with a partner what might cause modern vehicles to have much higher city mileage (as compared to highway mileage) than vehicles from previous decades.\nReplace this text with your answer. Optional if discussing in a group and required if doing this on your own."
   },
   {
     "objectID": "homework/homework01-sol.html",
@@ -3409,167 +3423,6 @@
     "text": "Categorizing Charts\n\n\n\n\n\n\nSource\n\n\n\n\n\n\n\nWhole Textbooks have been written on the subject\n\n\n\n\n\n\n\nSource"
   },
   {
-    "objectID": "slides/19-ggplot2.html#a-grammar-of-graphics",
-    "href": "slides/19-ggplot2.html#a-grammar-of-graphics",
-    "title": "1.19 ggplot2",
-    "section": "A grammar of graphics",
-    "text": "A grammar of graphics\nA grammar of graphics is\n\na set of rules and conventions\nto describe these relationships\nin a structured way\n\nWe start with the data and the axes."
-  },
-  {
-    "objectID": "slides/19-ggplot2.html#a-grammar-of-graphics-1",
-    "href": "slides/19-ggplot2.html#a-grammar-of-graphics-1",
-    "title": "1.19 ggplot2",
-    "section": "A grammar of graphics",
-    "text": "A grammar of graphics"
-  },
-  {
-    "objectID": "slides/19-ggplot2.html#a-grammar-of-graphics-2",
-    "href": "slides/19-ggplot2.html#a-grammar-of-graphics-2",
-    "title": "1.19 ggplot2",
-    "section": "A grammar of graphics",
-    "text": "A grammar of graphics"
-  },
-  {
-    "objectID": "slides/19-ggplot2.html#a-grammar-of-graphics-3",
-    "href": "slides/19-ggplot2.html#a-grammar-of-graphics-3",
-    "title": "1.19 ggplot2",
-    "section": "A grammar of graphics",
-    "text": "A grammar of graphics"
-  },
-  {
-    "objectID": "slides/19-ggplot2.html#a-grammar-of-graphics-4",
-    "href": "slides/19-ggplot2.html#a-grammar-of-graphics-4",
-    "title": "1.19 ggplot2",
-    "section": "A grammar of graphics",
-    "text": "A grammar of graphics\n\n\ndata(\"penguins\")\nlibrary(ggplot2)\n\nggplot(\n  penguins, \n  aes(x = bill_len, \n      y = flipper_len)\n)"
-  },
-  {
-    "objectID": "slides/19-ggplot2.html#a-grammar-of-graphics-5",
-    "href": "slides/19-ggplot2.html#a-grammar-of-graphics-5",
-    "title": "1.19 ggplot2",
-    "section": "A grammar of graphics",
-    "text": "A grammar of graphics\n\nggplot(\n  data = &lt;dataset&gt;,\n  aes(&lt;mappings&gt;)\n) + \n  geom_function(\n    aes(&lt;additional mappings&gt;), # &lt;- This line is optional\n    stat = &lt;stat&gt;, position = &lt;position&gt;) + \n  coordinate_function() + \n  facet_function() + \n  scale_function() + \n  theme_function()\n\nYou can layer multiple geoms together to get a more complicated graphic"
-  },
-  {
-    "objectID": "slides/19-ggplot2.html#geometric-objects",
-    "href": "slides/19-ggplot2.html#geometric-objects",
-    "title": "1.19 ggplot2",
-    "section": "Geometric Objects",
-    "text": "Geometric Objects\nNext, we specify the geometric object we want to use to show the data.\nEach geom has required aesthetic mappings as well as optional mappings.\n\n\n\n\n\n\n\n\n\n\n\ngeom\nrequired aesthetics\noptional aesthetics\n\n\n\n\npoint\nx, y\ncolor, shape, size, alpha\n\n\ntext\nx, y, label\ncolor, shape, size, angle, alpha, font family, font face, hjust, vjust\n\n\nline\nx, y\ncolor, group, linetype, size\n\n\nrect\nxmin, xmax, ymin, ymax\ncolor, fill, alpha, linetype, size\n\n\nabline\nintercept, slope\nalpha, color, linetype, size\n\n\nsegment\nx, y, xend, yend\nalpha, color, linetype, size\n\n\nbar\nx\nalpha, color, fill, linetype, size, weight\n\n\n\n\n\n\n\n\nConsult the ggplot2 reference card to see all the geoms and their required mappings"
-  },
-  {
-    "objectID": "slides/19-ggplot2.html#geometric-objects-1",
-    "href": "slides/19-ggplot2.html#geometric-objects-1",
-    "title": "1.19 ggplot2",
-    "section": "Geometric Objects",
-    "text": "Geometric Objects\n\n\n\n\n\n\ngeom_rect\n\n\n\n\n\n\n\ngeom_text\n\n\n\n\n\n\n\ngeom_line"
-  },
-  {
-    "objectID": "slides/19-ggplot2.html#geometric-objects-2",
-    "href": "slides/19-ggplot2.html#geometric-objects-2",
-    "title": "1.19 ggplot2",
-    "section": "Geometric Objects",
-    "text": "Geometric Objects\n\n\ndata(\"penguins\")\nlibrary(ggplot2)\n\nggplot(\n  penguins, \n  aes(x = bill_len, \n      y = flipper_len)\n) + \n  # aes is inherited from \n  # ggplot() statement\n  geom_point()"
-  },
-  {
-    "objectID": "slides/19-ggplot2.html#geometric-objects-3",
-    "href": "slides/19-ggplot2.html#geometric-objects-3",
-    "title": "1.19 ggplot2",
-    "section": "Geometric Objects",
-    "text": "Geometric Objects\n\n\ndata(\"penguins\")\nlibrary(ggplot2)\n\nggplot(\n  penguins, \n  aes(x = bill_len, \n      y = flipper_len, \n      color = species)\n) + \n  # aes is inherited from \n  # ggplot() statement\n  geom_point() \n\n\n\n\n\n\n\n\n\n\nChoices of colors for each species are made automatically\n(but can be customized w/ more code)\nLegend appears automatically\nOne line of code changes"
-  },
-  {
-    "objectID": "slides/19-ggplot2.html#statistics",
-    "href": "slides/19-ggplot2.html#statistics",
-    "title": "1.19 ggplot2",
-    "section": "Statistics",
-    "text": "Statistics\nSometimes, we want to compute statistics based on our data, and map geoms to those computations."
-  },
-  {
-    "objectID": "slides/19-ggplot2.html#statistics-1",
-    "href": "slides/19-ggplot2.html#statistics-1",
-    "title": "1.19 ggplot2",
-    "section": "Statistics",
-    "text": "Statistics\nSometimes, we want to compute statistics based on our data, and map geoms to those computations.\n\n\nSmooth or Trend Line: stat_smooth()\n\n\ngeom_line(aes(x = after_stat(x),     \n              y = after_stat(y))) +    \ngeom_ribbon(    \n  aes(x = after_stat(x), \n      ymin = after_stat(ymin), \n      ymax = after_stat(ymax)))\n\n\nBoxplots (5-number summary): stat_boxplot()\n\n\ngeom_boxplot() \n# A shortcut for something like this:\ngeom_rect(aes(xmin = x - after_stat(width)/2,\n              xmax = x + after_stat(width)/2,\n              ymin = after_stat(lower),\n              ymax = after_stat(upper)) + \ngeom_segment(aes(x = x - after_stat(width)/2,\n                 xend = x + after_stat(width)/2,\n                 y = after_stat(middle),\n                 yend = after_stat(middle))) + \ngeom_segment(aes(x = x, xend = xend, \n                 y = after_stat(lower),\n                 yend = after_stat(ymin))) + \ngeom_segment(aes(x = x, xend = xend, \n                 y = after_stat(upper),\n                 yend = after_stat(ymax)))"
-  },
-  {
-    "objectID": "slides/19-ggplot2.html#statistics-2",
-    "href": "slides/19-ggplot2.html#statistics-2",
-    "title": "1.19 ggplot2",
-    "section": "Statistics",
-    "text": "Statistics\nSometimes, we want to compute statistics based on our data, and map geoms to those computations.\n\n\nbar plots (count up data by category): stat_count()\n\n\ngeom_bar(aes(x = x, y = after_stat(count)))\n# A shortcut for something like this:\ngeom_rect(aes(xmin = x - after_stat(width),\n              xmax = x + after_stat(width),\n              ymin = 0,\n              ymax = after_stat(count)))\n\n\nHistograms (cut into bins, then count): stat_bin()\n\n\ngeom_histogram(aes(x = x, y = after_stat(count)))\n# A shortcut for something like this:\ngeom_rect(aes(xmin = after_stat(xstart),\n              xmax = after_stat(xend),\n              ymin = 0,\n              ymax = after_stat(count)))\n\n\nFrequency Polygons (cut into bins, then count): stat_bin()\n\n\ngeom_freqpoly(aes(x = x, y = after_stat(count)))\n# A shortcut for something like this:\ngeom_line(aes(x = x,\n              y = after_stat(count)))"
-  },
-  {
-    "objectID": "slides/19-ggplot2.html#statistics-3",
-    "href": "slides/19-ggplot2.html#statistics-3",
-    "title": "1.19 ggplot2",
-    "section": "Statistics",
-    "text": "Statistics\nSometimes, we want to compute statistics based on our data, and map geoms to those computations.\n\n\ndensity plots: stat_density()\n\n\ngeom_density(aes(x = x, y = after_stat(density)))\n\n# A shortcut for something like this:\ngeom_line(aes(x = x, y = after_stat(density)))\n\n# Or this (if fill is specified)\ngeom_ribbon(aes(x = x, ymin = 0, ymax = after_stat(density)))\n\n\neCDF (sort, calculate proportion &lt;= each x value): stat_ecdf()\n\n\ngeom_step(aes(x = x, y = after_stat(count)))\n\n# A shortcut for something like this: \n# Vertical piece\ngeom_segment(aes(x = x_prev,\n                 xend = x_prev,\n                 y = after_stat(prop_prev),\n                 yend = after_stat(prop))) + \n# Horizontal piece\ngeom_segment(aes(x = x_prev,\n                 xend = x,\n                 y = after_stat(prop),\n                 yend = after_stat(prop)))"
-  },
-  {
-    "objectID": "slides/19-ggplot2.html#statistics-4",
-    "href": "slides/19-ggplot2.html#statistics-4",
-    "title": "1.19 ggplot2",
-    "section": "Statistics",
-    "text": "Statistics\nSometimes, we want to compute statistics based on our data, and map geoms to those computations.\n\nbest fit line\n\nboxplots\nbar plots\ndensity plots\neCDFs\n\nMany statistics have commonly used geoms to go with the statistic."
-  },
-  {
-    "objectID": "slides/19-ggplot2.html#scales",
-    "href": "slides/19-ggplot2.html#scales",
-    "title": "1.19 ggplot2",
-    "section": "Scales",
-    "text": "Scales\nBy default, ggplot2 chooses reasonable default scales\n\n\n\n\n\n\n\ngeom_bar uses scale_x_discrete()\n\n\n\n\n\n\n\n\n\ngeom_histogram and geom_density use scale_x_continuous()\n\n\n\n\n\n\n\nscale_{aesthetic}_{type}\n\naesthetic can be x, y, fill, color, shape, etc.,"
-  },
-  {
-    "objectID": "slides/19-ggplot2.html#scale-types",
-    "href": "slides/19-ggplot2.html#scale-types",
-    "title": "1.19 ggplot2",
-    "section": "Scale Types",
-    "text": "Scale Types\n\nmanual - available for almost all scales\nposition (x, y): continuous, discrete, date, datetime\n\ntransforms: scale_*_log10, scale_*_reverse, scale_*_sqrt\n\n\n\n\n\n\n\n\n\n\n\nColor/fill have special scales:\n\ndiscrete: scale_*_brewer, scale_*_grey\n\n\n\n\n\n\n\n\n\n\ntayloRswift has album-themed color palettes. ggsci has palettes from Futurama, Simsons, StarTrek, Tron, Rick and Morty and various news outlets"
-  },
-  {
-    "objectID": "slides/19-ggplot2.html#scale-types-1",
-    "href": "slides/19-ggplot2.html#scale-types-1",
-    "title": "1.19 ggplot2",
-    "section": "Scale Types",
-    "text": "Scale Types\nColor/fill have special scales:\n\ndiscrete: scale_*_brewer, scale_*_grey\ncontinuous: scale_*_distiller (discrete scale interpolated), scale_*_gradient (low to high), scale_*_gradient2 (bidirectional)\n\n“trans” argument to add a transformation (log10 is useful)\n\nPalette choices:\n\nColorBrewer has palettes for maps\nColor Palette Finder applet\n\n\n\n\n\n\n\n\n\n\n\nWe’ll talk more about color next time"
-  },
-  {
-    "objectID": "slides/19-ggplot2.html#coordinate-systems",
-    "href": "slides/19-ggplot2.html#coordinate-systems",
-    "title": "1.19 ggplot2",
-    "section": "Coordinate Systems",
-    "text": "Coordinate Systems\n+ coord_xxx()\n\nCartesian: Standard x and y axis\nFixed: Ensure there is a fixed aspect ratio\nFlip: swap x and y axes\nPolar: specify which variable (x, y) is the angle (theta)\nTrans: specify x or y axis transformations"
-  },
-  {
-    "objectID": "slides/19-ggplot2.html#position-adjustments",
-    "href": "slides/19-ggplot2.html#position-adjustments",
-    "title": "1.19 ggplot2",
-    "section": "Position Adjustments",
-    "text": "Position Adjustments\nArrange geoms that would otherwise use the same space\np &lt;- ggplot(data = penguins, aes(x = species, fill = sex)) +\n  theme(legend.position = \"bottom\")\n\np + geom_bar(position = \"stack\") + ggtitle(\"Position: Stack\")\np + geom_bar(position = \"dodge\") + ggtitle(\"Position: Dodge\")\np + geom_bar(position = \"fill\") + ggtitle(\"Position: Fill\")"
-  },
-  {
-    "objectID": "slides/19-ggplot2.html#position-adjustments-1",
-    "href": "slides/19-ggplot2.html#position-adjustments-1",
-    "title": "1.19 ggplot2",
-    "section": "Position Adjustments",
-    "text": "Position Adjustments\nArrange geoms that would otherwise use the same space\np &lt;- ggplot(penguins, \n            aes(x = flipper_len, y = bill_dep, \n                color = species)) + \n  guides(color = 'none')\n\np + geom_point(shape = 16, alpha = .5)\np + geom_point(shape = 16, alpha = .5, position = \"jitter\")\n\n\n\n\n\n\nSome points lie exactly on top of other points because data was recorded as integer measurements\n\n\n\n\n\n\n\nJittering the point position allows a visual estimate of how many points overlap."
-  },
-  {
-    "objectID": "slides/19-ggplot2.html#subplots-facets",
-    "href": "slides/19-ggplot2.html#subplots-facets",
-    "title": "1.19 ggplot2",
-    "section": "Subplots (Facets)",
-    "text": "Subplots (Facets)\nWhen there are too many categorical variables, subplots can help!\n\n\nggplot(data = penguins,\n       aes(x = body_mass, \n           y = bill_len, \n           color = sex)) + \n  geom_point() + \n  facet_wrap(~species, \n             ncol = 2) +\n  guides(color = 'none')\n\n\n\n\n\n\n\n\n\n\nfacet_wrap() - no ordering\nfacet_grid(rowvar ~ colvar) - align in a grid"
-  },
-  {
-    "objectID": "slides/19-ggplot2.html#a-grammar-of-graphics-6",
-    "href": "slides/19-ggplot2.html#a-grammar-of-graphics-6",
-    "title": "1.19 ggplot2",
-    "section": "A grammar of graphics",
-    "text": "A grammar of graphics\n\nggplot(\n  data = &lt;dataset&gt;,\n  aes(&lt;mappings&gt;)\n) + \n  geom_function(\n    aes(&lt;additional mappings&gt;), # &lt;- This line is optional\n    stat = &lt;stat&gt;, position = &lt;position&gt;) + \n  coordinate_function() + \n  facet_function() + \n  scale_function() + \n  theme_function()\n\nYou can layer multiple geoms together to get a more complicated graphic"
-  },
-  {
     "objectID": "slides/19-ggplot2.html#the-grammar-of-graphics-1",
     "href": "slides/19-ggplot2.html#the-grammar-of-graphics-1",
     "title": "1.19 ggplot2",
@@ -3619,10 +3472,101 @@
     "text": "The Grammar of Graphics\n\nggplot(\n  data = &lt;dataset&gt;,\n  aes(&lt;mappings&gt;)\n) + \n  geom_function(\n    aes(&lt;additional mappings&gt;), # &lt;- This line is optional\n    stat = &lt;stat&gt;, position = &lt;position&gt;) + \n  coordinate_function() + \n  facet_function() + \n  scale_function() + \n  theme_function()\n\nYou can layer multiple geoms together to get a more complicated graphic"
   },
   {
+    "objectID": "slides/19-ggplot2.html#geometric-objects",
+    "href": "slides/19-ggplot2.html#geometric-objects",
+    "title": "1.19 ggplot2",
+    "section": "Geometric Objects",
+    "text": "Geometric Objects\nNext, we specify the geometric object we want to use to show the data.\nEach geom has required aesthetic mappings as well as optional mappings.\n\n\n\n\n\n\n\n\n\n\n\ngeom\nrequired aesthetics\noptional aesthetics\n\n\n\n\npoint\nx, y\ncolor, shape, size, alpha\n\n\ntext\nx, y, label\ncolor, shape, size, angle, alpha, font family, font face, hjust, vjust\n\n\nline\nx, y\ncolor, group, linetype, size\n\n\nrect\nxmin, xmax, ymin, ymax\ncolor, fill, alpha, linetype, size\n\n\nabline\nintercept, slope\nalpha, color, linetype, size\n\n\nsegment\nx, y, xend, yend\nalpha, color, linetype, size\n\n\nbar\nx\nalpha, color, fill, linetype, size, weight\n\n\n\n\n\n\n\n\nConsult the ggplot2 reference card to see all the geoms and their required mappings"
+  },
+  {
+    "objectID": "slides/19-ggplot2.html#geometric-objects-1",
+    "href": "slides/19-ggplot2.html#geometric-objects-1",
+    "title": "1.19 ggplot2",
+    "section": "Geometric Objects",
+    "text": "Geometric Objects\n\n\n\n\n\n\ngeom_rect\n\n\n\n\n\n\n\ngeom_text\n\n\n\n\n\n\n\ngeom_line"
+  },
+  {
+    "objectID": "slides/19-ggplot2.html#geometric-objects-2",
+    "href": "slides/19-ggplot2.html#geometric-objects-2",
+    "title": "1.19 ggplot2",
+    "section": "Geometric Objects",
+    "text": "Geometric Objects\n\n\ndata(\"penguins\")\nlibrary(ggplot2)\n\nggplot(\n  penguins, \n  aes(x = bill_len, \n      y = flipper_len)\n) + \n  # aes is inherited from \n  # ggplot() statement\n  geom_point()"
+  },
+  {
+    "objectID": "slides/19-ggplot2.html#geometric-objects-3",
+    "href": "slides/19-ggplot2.html#geometric-objects-3",
+    "title": "1.19 ggplot2",
+    "section": "Geometric Objects",
+    "text": "Geometric Objects\n\n\ndata(\"penguins\")\nlibrary(ggplot2)\n\nggplot(\n  penguins, \n  aes(x = bill_len, \n      y = flipper_len, \n      color = species)\n) + \n  # aes is inherited from \n  # ggplot() statement\n  geom_point() \n\n\n\n\n\n\n\n\n\n\nChoices of colors for each species are made automatically\n(but can be customized w/ more code)\nLegend appears automatically\nOne line of code changes"
+  },
+  {
+    "objectID": "slides/19-ggplot2.html#position-adjustments",
+    "href": "slides/19-ggplot2.html#position-adjustments",
+    "title": "1.19 ggplot2",
+    "section": "Position Adjustments",
+    "text": "Position Adjustments\nArrange geoms that would otherwise use the same space\np &lt;- ggplot(data = penguins, aes(x = species, fill = sex)) +\n  theme(legend.position = \"bottom\")\n\np + geom_bar(position = \"stack\") + ggtitle(\"Position: Stack\")\np + geom_bar(position = \"dodge\") + ggtitle(\"Position: Dodge\")\np + geom_bar(position = \"fill\") + ggtitle(\"Position: Fill\")"
+  },
+  {
+    "objectID": "slides/19-ggplot2.html#position-adjustments-1",
+    "href": "slides/19-ggplot2.html#position-adjustments-1",
+    "title": "1.19 ggplot2",
+    "section": "Position Adjustments",
+    "text": "Position Adjustments\nArrange geoms that would otherwise use the same space\np &lt;- ggplot(penguins, \n            aes(x = flipper_len, y = bill_dep, \n                color = species)) + \n  guides(color = 'none')\n\np + geom_point(shape = 16, alpha = .5)\np + geom_point(shape = 16, alpha = .5, position = \"jitter\")\n\n\n\n\n\n\nSome points lie exactly on top of other points because data was recorded as integer measurements\n\n\n\n\n\n\n\nJittering the point position allows a visual estimate of how many points overlap."
+  },
+  {
+    "objectID": "slides/19-ggplot2.html#statistics-1",
+    "href": "slides/19-ggplot2.html#statistics-1",
+    "title": "1.19 ggplot2",
+    "section": "Statistics",
+    "text": "Statistics\nSometimes, we want to compute statistics based on our data, and map geoms to those computations.\n\n\nSmooth or Trend Line: stat_smooth()\n\n\ngeom_line(aes(x = after_stat(x),     \n              y = after_stat(y))) +    \ngeom_ribbon(    \n  aes(x = after_stat(x), \n      ymin = after_stat(ymin), \n      ymax = after_stat(ymax)))\n\n\nBoxplots (5-number summary): stat_boxplot()\n\n\ngeom_boxplot() \n# A shortcut for something like this:\ngeom_rect(aes(xmin = x - after_stat(width)/2,\n              xmax = x + after_stat(width)/2,\n              ymin = after_stat(lower),\n              ymax = after_stat(upper)) + \ngeom_segment(aes(x = x - after_stat(width)/2,\n                 xend = x + after_stat(width)/2,\n                 y = after_stat(middle),\n                 yend = after_stat(middle))) + \ngeom_segment(aes(x = x, xend = xend, \n                 y = after_stat(lower),\n                 yend = after_stat(ymin))) + \ngeom_segment(aes(x = x, xend = xend, \n                 y = after_stat(upper),\n                 yend = after_stat(ymax)))"
+  },
+  {
+    "objectID": "slides/19-ggplot2.html#statistics-2",
+    "href": "slides/19-ggplot2.html#statistics-2",
+    "title": "1.19 ggplot2",
+    "section": "Statistics",
+    "text": "Statistics\nSometimes, we want to compute statistics based on our data, and map geoms to those computations.\n\n\nbar plots (count up data by category): stat_count()\n\n\ngeom_bar(aes(x = x, y = after_stat(count)))\n# A shortcut for something like this:\ngeom_rect(aes(xmin = x - after_stat(width),\n              xmax = x + after_stat(width),\n              ymin = 0,\n              ymax = after_stat(count)))\n\n\nHistograms (cut into bins, then count): stat_bin()\n\n\ngeom_histogram(aes(x = x, y = after_stat(count)))\n# A shortcut for something like this:\ngeom_rect(aes(xmin = after_stat(xstart),\n              xmax = after_stat(xend),\n              ymin = 0,\n              ymax = after_stat(count)))\n\n\nFrequency Polygons (cut into bins, then count): stat_bin()\n\n\ngeom_freqpoly(aes(x = x, y = after_stat(count)))\n# A shortcut for something like this:\ngeom_line(aes(x = x,\n              y = after_stat(count)))"
+  },
+  {
+    "objectID": "slides/19-ggplot2.html#statistics-3",
+    "href": "slides/19-ggplot2.html#statistics-3",
+    "title": "1.19 ggplot2",
+    "section": "Statistics",
+    "text": "Statistics\nSometimes, we want to compute statistics based on our data, and map geoms to those computations.\n\n\ndensity plots: stat_density()\n\n\ngeom_density(aes(x = x, y = after_stat(density)))\n\n# A shortcut for something like this:\ngeom_line(aes(x = x, y = after_stat(density)))\n\n# Or this (if fill is specified)\ngeom_ribbon(aes(x = x, ymin = 0, ymax = after_stat(density)))\n\n\neCDF (sort, calculate proportion &lt;= each x value): stat_ecdf()\n\n\ngeom_step(aes(x = x, y = after_stat(count)))\n\n# A shortcut for something like this: \n# Vertical piece\ngeom_segment(aes(x = x_prev,\n                 xend = x_prev,\n                 y = after_stat(prop_prev),\n                 yend = after_stat(prop))) + \n# Horizontal piece\ngeom_segment(aes(x = x_prev,\n                 xend = x,\n                 y = after_stat(prop),\n                 yend = after_stat(prop)))"
+  },
+  {
+    "objectID": "slides/19-ggplot2.html#subplots-facets",
+    "href": "slides/19-ggplot2.html#subplots-facets",
+    "title": "1.19 ggplot2",
+    "section": "Subplots (Facets)",
+    "text": "Subplots (Facets)\nWhen there are too many categorical variables, subplots can help!\n\n\nggplot(data = penguins,\n       aes(x = body_mass, \n           y = bill_len, \n           color = sex)) + \n  geom_point() + \n  facet_wrap(~species, \n             ncol = 2) +\n  guides(color = 'none')\n\n\n\n\n\n\n\n\n\n\nfacet_wrap() - no ordering\nfacet_grid(rowvar ~ colvar) - align in a grid"
+  },
+  {
     "objectID": "slides/19-ggplot2.html#scales-1",
     "href": "slides/19-ggplot2.html#scales-1",
     "title": "1.19 ggplot2",
     "section": "Scales",
     "text": "Scales\nBy default, ggplot2 chooses reasonable default scales\n\n\n\n\n\n\n\ngeom_bar uses scale_x_discrete()\n\n\n\n\n\n\n\n\n\ngeom_histogram and geom_density use scale_x_continuous()\n\n\n\n\n\n\n\nscale_{aesthetic}_{type}\n\naesthetic can be x, y, fill, color, shape, etc.,"
+  },
+  {
+    "objectID": "slides/19-ggplot2.html#scale-types",
+    "href": "slides/19-ggplot2.html#scale-types",
+    "title": "1.19 ggplot2",
+    "section": "Scale Types",
+    "text": "Scale Types\n\nmanual - available for almost all scales\nposition (x, y): continuous, discrete, date, datetime\n\ntransforms: scale_*_log10, scale_*_reverse, scale_*_sqrt\n\n\n\n\n\n\n\n\n\n\n\nColor/fill have special scales:\n\ndiscrete: scale_*_brewer, scale_*_grey\n\n\n\n\n\n\n\n\n\n\ntayloRswift has album-themed color palettes. ggsci has palettes from Futurama, Simsons, StarTrek, Tron, Rick and Morty and various news outlets"
+  },
+  {
+    "objectID": "slides/19-ggplot2.html#scale-types-1",
+    "href": "slides/19-ggplot2.html#scale-types-1",
+    "title": "1.19 ggplot2",
+    "section": "Scale Types",
+    "text": "Scale Types\nColor/fill have special scales:\n\ndiscrete: scale_*_brewer, scale_*_grey\ncontinuous: scale_*_distiller (discrete scale interpolated), scale_*_gradient (low to high), scale_*_gradient2 (bidirectional)\n\n“trans” argument to add a transformation (log10 is useful)\n\nPalette choices:\n\nColorBrewer has palettes for maps\nColor Palette Finder applet\n\n\n\n\n\n\n\n\n\n\n\nWe’ll talk more about color next time"
+  },
+  {
+    "objectID": "slides/19-ggplot2.html#coordinate-systems",
+    "href": "slides/19-ggplot2.html#coordinate-systems",
+    "title": "1.19 ggplot2",
+    "section": "Coordinate Systems",
+    "text": "Coordinate Systems\n+ coord_xxx()\n\nCartesian: Standard x and y axis\nFixed: Ensure there is a fixed aspect ratio\nFlip: swap x and y axes\nPolar: specify which variable (x, y) is the angle (theta)\nTrans: specify x or y axis transformations"
   }
 ]
