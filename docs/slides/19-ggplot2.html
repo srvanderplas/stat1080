@@ -6,10 +6,13 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.9.38">
 
-  <title>STAT 1080 - Fall 2026 – 1.17 Visualizing Data Distributions</title>
+  <title>STAT 1080 - Fall 2026 – 1.19 ggplot2</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -30,6 +33,72 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-d2cfaf4017ec6d6e95d384acfb7920a7.css">
   <link rel="stylesheet" href="deps/styles.scss">
@@ -132,25 +201,688 @@
       margin-right: 0;
     }
   </style>
-<meta property="og:title" content="1.17 Visualizing Data Distributions – STAT 1080 - Fall 2026">
+<meta property="og:title" content="1.19 ggplot2 – STAT 1080 - Fall 2026">
 <meta property="og:site_name" content="STAT 1080 - Fall 2026">
 </head>
 <body class="quarto-light">
   <div class="reveal">
     <div class="slides">
 
-<section id="title-slide" data-background-image="images/SimulationTheoryCartoon.png" data-background-image-alt="A density curve and a histogram with faces and arms sit next to each other. The histogram and the density are approximately the same shape." data-background-position="50% 90%" data-background-repeat="no-repeat" data-background-size="30%" class="quarto-title-block center">
-  <h1 class="title">1.17 Visualizing Data Distributions</h1>
+<section id="title-slide" data-background-image="images/ggplot2.png" data-background-image-alt="A hexagonal ggplot2 logo showing a line chart with the points emphasized by circles on a gray grid background." data-background-position="50% 90%" data-background-repeat="no-repeat" data-background-size="20%" class="quarto-title-block center">
+  <h1 class="title">1.19 <code>ggplot2</code></h1>
 
 <div class="quarto-title-authors">
 </div>
 
 </section>
-<section class="slide level2">
-
-
+<section id="categorizing-charts" class="slide level2">
+<h2>Categorizing Charts</h2>
+<div class="quarto-layout-panel" data-layout="[2, 3, 5]">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 20.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="images/categorizing-graphics-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Source"><img data-src="images/categorizing-graphics-1.png" alt="A collection of charts, categorized by what they show: comparisons, correlations, part-to-whole and hierarchical groupings, temporal trends, distributions, and geospatial information"></a></p>
+<figcaption><a href="https://www.datylon.com/blog/types-of-charts-graphs-examples-data-visualization">Source</a></figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 30.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="images/semiology-of-graphics-cover.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Whole Textbooks have been written on the subject"><img data-src="images/semiology-of-graphics-cover.jpg" alt="The cover of *Semiology of Graphics* by Jacques Bertin."></a></p>
+<figcaption>Whole Textbooks have been written on the subject</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="images/data-to-viz-poster.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="Source"><img data-src="images/data-to-viz-poster.png" alt="A poster from data-to-viz.com showing an arrangement of different chart types by the data used to make them."></a></p>
+<figcaption><a href="https://data-to-viz.com">Source</a></figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section>
+<section id="the-grammar-of-graphics" class="title-slide slide level1 center">
+<h1>The Grammar of Graphics</h1>
 
 </section>
+<section id="the-grammar-of-graphics-1" class="slide level2">
+<h2>The Grammar of Graphics</h2>
+<ul>
+<li>A chart is like a single word
+<ul>
+<li>“pie chart”, “bar chart”, “line chart”, “scatter plot”</li>
+<li>specific instance of a more general object</li>
+<li>some charts that look similar are actually very different - e.g.&nbsp;a bar chart and a histogram.</li>
+</ul></li>
+<li>A <strong>graphic</strong> is a specification of the relationship between <em>visual forms</em> and <em>mathematical expressions</em></li>
+</ul>
+</section>
+<section id="the-grammar-of-graphics-2" class="slide level2">
+<h2>The Grammar of Graphics</h2>
+<p>A <strong>grammar</strong> of graphics is</p>
+<ul>
+<li>a set of rules and conventions</li>
+<li>to <span class="emph blue large">describe</span> these <span class="emph sage-dk large">relationships</span></li>
+<li>in a <span class="emph aggie-blue large">structured</span> way</li>
+</ul>
+<p><span class="fragment">We start with the data and the axes.</span></p>
+</section>
+<section id="the-grammar-of-graphics-3" class="slide level2">
+<h2>The Grammar of Graphics</h2>
+<p><a href="images/grammar-1-data-axes.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img data-src="images/grammar-1-data-axes.png" alt="A data table with 6 variables, and a coordinate plane."></a></p>
+</section>
+<section id="the-grammar-of-graphics-4" class="slide level2">
+<h2>The Grammar of Graphics</h2>
+<p><a href="images/grammar-2-aes-mappings.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img data-src="images/grammar-2-aes-mappings.png" alt="A data table with 6 variables, and a coordinate plane. Arrows show the mapping of v1 (the first column in the table) to the x-axis, and v2 (the second column in the table) to the y-axis. "></a></p>
+</section>
+<section id="the-grammar-of-graphics-5" class="slide level2">
+<h2>The Grammar of Graphics</h2>
+<p><a href="images/grammar-3-ggplot-command.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6"><img data-src="images/grammar-3-ggplot-command.png" alt="A data table with 6 variables, and a coordinate plane. Arrows show the mapping of v1 (the first column in the table) to the x-axis, and v2 (the second column in the table) to the y-axis. A ggplot command, `ggplot(data, aes(x = v1, y = v2))` is shown over the arrows."></a></p>
+</section>
+<section id="the-grammar-of-graphics-6" class="slide level2">
+<h2>The Grammar of Graphics</h2>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">data</span>(<span class="st">"penguins"</span>)</span>
+<span id="cb1-2"><a></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb1-3"><a></a></span>
+<span id="cb1-4"><a></a><span class="fu">ggplot</span>(</span>
+<span id="cb1-5"><a></a>  penguins, </span>
+<span id="cb1-6"><a></a>  <span class="fu">aes</span>(<span class="at">x =</span> bill_len, </span>
+<span id="cb1-7"><a></a>      <span class="at">y =</span> flipper_len)</span>
+<span id="cb1-8"><a></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div><div class="column">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><a href="19-ggplot2_files/figure-revealjs/unnamed-chunk-2-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7"><img data-src="19-ggplot2_files/figure-revealjs/unnamed-chunk-2-1.png" alt="A blank canvas showing the x-axis, bill length, and the y-axis, flipper length. Nothing else is shown on the chart." width="480"></a></p>
+</figure>
+</div>
+</div>
+</div></div>
+</section>
+<section id="the-grammar-of-graphics-7" class="slide level2">
+<h2>The Grammar of Graphics</h2>
+<div class="huge">
+<pre><code>ggplot(
+  data = &lt;dataset&gt;,
+  aes(&lt;mappings&gt;)
+) + 
+  geom_function(
+    aes(&lt;additional mappings&gt;), # &lt;- This line is optional
+    stat = &lt;stat&gt;, position = &lt;position&gt;) + 
+  coordinate_function() + 
+  facet_function() + 
+  scale_function() + 
+  theme_function()</code></pre>
+</div>
+<p><span class="fragment">You can layer multiple geoms together to get a more complicated graphic</span></p>
+</section></section>
+<section>
+<section id="adding-things-to-the-plot" class="title-slide slide level1 center">
+<h1>Adding Things to the Plot</h1>
+
+</section>
+<section id="geometric-objects" class="slide level2">
+<h2>Geometric Objects</h2>
+<p>Next, we specify the <strong>geometric object</strong> we want to use to show the data.</p>
+<p>Each <strong>geom</strong> has required <strong>aesthetic mappings</strong> as well as optional mappings.</p>
+<div class="quarto-layout-panel" data-layout="[3, 1]">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 75.0%;justify-content: center;">
+<table class="caption-top">
+<colgroup>
+<col style="width: 8%">
+<col style="width: 40%">
+<col style="width: 51%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">geom</th>
+<th style="text-align: left;">required aesthetics</th>
+<th style="text-align: left;">optional aesthetics</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">point</td>
+<td style="text-align: left;">x, y</td>
+<td style="text-align: left;">color, shape, size, alpha</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">text</td>
+<td style="text-align: left;">x, y, label</td>
+<td style="text-align: left;">color, shape, size, angle, alpha, font family, font face, hjust, vjust</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">line</td>
+<td style="text-align: left;">x, y</td>
+<td style="text-align: left;">color, group, linetype, size</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">rect</td>
+<td style="text-align: left;">xmin, xmax, ymin, ymax</td>
+<td style="text-align: left;">color, fill, alpha, linetype, size</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">abline</td>
+<td style="text-align: left;">intercept, slope</td>
+<td style="text-align: left;">alpha, color, linetype, size</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">segment</td>
+<td style="text-align: left;">x, y, xend, yend</td>
+<td style="text-align: left;">alpha, color, linetype, size</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">bar</td>
+<td style="text-align: left;">x</td>
+<td style="text-align: left;">alpha, color, fill, linetype, size, weight</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="images/ggplot2-cheatsheet-page1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8" title="Consult the ggplot2 reference card to see all the geoms and their required mappings"><img data-src="images/ggplot2-cheatsheet-page1.png" alt="A screenshot of the ggplot2 cheat sheet available at https://opensource.posit.co/resources/cheatsheets/data-visualization/data-visualization.pdf"></a></p>
+<figcaption>Consult the <a href="https://opensource.posit.co/resources/cheatsheets/data-visualization/data-visualization.pdf"><code>ggplot2</code> reference card</a> to see all the geoms and their required mappings</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="geometric-objects-1" class="slide level2">
+<h2>Geometric Objects</h2>
+<div class="quarto-layout-panel" data-layout="[2,2,2]">
+<div class="quarto-layout-row quarto-layout-valign-bottom">
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="images/grammar-5-rect-aes.png" class="lightbox" data-gallery="quarto-lightbox-gallery-9" title="geom_rect"><img data-src="images/grammar-5-rect-aes.png" alt="A rectangle, with the lower left corner highlighted with an orange dot and orange text, (xmin, ymin), and the top right corner highlighted with a blue dot and text (xmax, ymax). There are arrows pointing at the border labeled color: border, linetype: border, size: border, and arrows pointing at the interior labeled alpha: transparency, fill: inside."></a></p>
+<figcaption><code>geom_rect</code></figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="images/grammar-6-text-aes.png" class="lightbox" data-gallery="quarto-lightbox-gallery-10" title="geom_text"><img data-src="images/grammar-6-text-aes.png" alt="In the center of the figure, there is a word, label, sitting on top of a blue dot, with blue coordinates (x,y) underneath. An arrow points left to text: hjust: horizontal justification (alignment), 0=left, 0.5=center, 1=right. An arrow points  up from label, and says: vjust: vertical justification (alignment), 0=bottom, 0.5=center, 1=top. On the right of the figure, there is a horizontal line with a ray coming up from the left side, and on the ray there is text 'angle'. Below the label, there is a box with 'font family' written in several different fonts."></a></p>
+<figcaption><code>geom_text</code></figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="images/grammar-7-line-aes.png" class="lightbox" data-gallery="quarto-lightbox-gallery-11" title="geom_line"><img data-src="images/grammar-7-line-aes.png" alt="geom_line"></a></p>
+<figcaption><code>geom_line</code></figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="geometric-objects-2" class="slide level2">
+<h2>Geometric Objects</h2>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="fu">data</span>(<span class="st">"penguins"</span>)</span>
+<span id="cb3-2"><a></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb3-3"><a></a></span>
+<span id="cb3-4"><a></a><span class="fu">ggplot</span>(</span>
+<span id="cb3-5"><a></a>  penguins, </span>
+<span id="cb3-6"><a></a>  <span class="fu">aes</span>(<span class="at">x =</span> bill_len, </span>
+<span id="cb3-7"><a></a>      <span class="at">y =</span> flipper_len)</span>
+<span id="cb3-8"><a></a>) <span class="sc">+</span> </span>
+<span id="cb3-9"><a></a>  <span class="co"># aes is inherited from </span></span>
+<span id="cb3-10"><a></a>  <span class="co"># ggplot() statement</span></span>
+<span id="cb3-11"><a></a>  <span class="fu">geom_point</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div><div class="column">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><a href="19-ggplot2_files/figure-revealjs/unnamed-chunk-3-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-12"><img data-src="19-ggplot2_files/figure-revealjs/unnamed-chunk-3-1.png" alt="A scatterplot showing the x-axis, bill length, and the y-axis, flipper length." width="480"></a></p>
+</figure>
+</div>
+</div>
+</div></div>
+</section>
+<section id="geometric-objects-3" class="slide level2">
+<h2>Geometric Objects</h2>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="fu">data</span>(<span class="st">"penguins"</span>)</span>
+<span id="cb4-2"><a></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb4-3"><a></a></span>
+<span id="cb4-4"><a></a><span class="fu">ggplot</span>(</span>
+<span id="cb4-5"><a></a>  penguins, </span>
+<span id="cb4-6"><a></a>  <span class="fu">aes</span>(<span class="at">x =</span> bill_len, </span>
+<span id="cb4-7"><a></a>      <span class="at">y =</span> flipper_len, </span>
+<span id="cb4-8"><a></a>      <span class="at">color =</span> species)</span>
+<span id="cb4-9"><a></a>) <span class="sc">+</span> </span>
+<span id="cb4-10"><a></a>  <span class="co"># aes is inherited from </span></span>
+<span id="cb4-11"><a></a>  <span class="co"># ggplot() statement</span></span>
+<span id="cb4-12"><a></a>  <span class="fu">geom_point</span>() </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div><div class="column">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><a href="19-ggplot2_files/figure-revealjs/unnamed-chunk-4-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-13"><img data-src="19-ggplot2_files/figure-revealjs/unnamed-chunk-4-1.png" alt="A scatterplot showing the x-axis, bill length, and the y-axis, flipper length. Points are colored by the species of the penguin." width="480"></a></p>
+</figure>
+</div>
+</div>
+</div></div>
+<ul>
+<li>Choices of colors for each species are made automatically<br>
+(but can be customized w/ more code)</li>
+<li>Legend appears automatically</li>
+<li>One line of code changes</li>
+</ul>
+</section>
+<section id="position-adjustments" class="slide level2">
+<h2>Position Adjustments</h2>
+<p>Arrange geoms that would otherwise use the same space</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> penguins, <span class="fu">aes</span>(<span class="at">x =</span> species, <span class="at">fill =</span> sex)) <span class="sc">+</span></span>
+<span id="cb5-2"><a></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"bottom"</span>)</span>
+<span id="cb5-3"><a></a></span>
+<span id="cb5-4"><a></a>p <span class="sc">+</span> <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">"stack"</span>) <span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="st">"Position: Stack"</span>)</span>
+<span id="cb5-5"><a></a>p <span class="sc">+</span> <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">"dodge"</span>) <span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="st">"Position: Dodge"</span>)</span>
+<span id="cb5-6"><a></a>p <span class="sc">+</span> <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">"fill"</span>) <span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="st">"Position: Fill"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell quarto-layout-panel" data-layout-ncol="3">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><a href="19-ggplot2_files/figure-revealjs/unnamed-chunk-5-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-14"><img data-src="19-ggplot2_files/figure-revealjs/unnamed-chunk-5-1.png" width="288"></a></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><a href="19-ggplot2_files/figure-revealjs/unnamed-chunk-5-2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-15"><img data-src="19-ggplot2_files/figure-revealjs/unnamed-chunk-5-2.png" width="288"></a></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><a href="19-ggplot2_files/figure-revealjs/unnamed-chunk-5-3.png" class="lightbox" data-gallery="quarto-lightbox-gallery-16"><img data-src="19-ggplot2_files/figure-revealjs/unnamed-chunk-5-3.png" width="288"></a></p>
+</div>
+</div>
+</div>
+</section>
+<section id="position-adjustments-1" class="slide level2">
+<h2>Position Adjustments</h2>
+<p>Arrange geoms that would otherwise use the same space</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(penguins, </span>
+<span id="cb6-2"><a></a>            <span class="fu">aes</span>(<span class="at">x =</span> flipper_len, <span class="at">y =</span> bill_dep, </span>
+<span id="cb6-3"><a></a>                <span class="at">color =</span> species)) <span class="sc">+</span> </span>
+<span id="cb6-4"><a></a>  <span class="fu">guides</span>(<span class="at">color =</span> <span class="st">'none'</span>)</span>
+<span id="cb6-5"><a></a></span>
+<span id="cb6-6"><a></a>p <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="at">shape =</span> <span class="dv">16</span>, <span class="at">alpha =</span> .<span class="dv">5</span>)</span>
+<span id="cb6-7"><a></a>p <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="at">shape =</span> <span class="dv">16</span>, <span class="at">alpha =</span> .<span class="dv">5</span>, <span class="at">position =</span> <span class="st">"jitter"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="19-ggplot2_files/figure-revealjs/unnamed-chunk-6-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-17" title="Some points lie exactly on top of other points because data was recorded as integer measurements"><img data-src="19-ggplot2_files/figure-revealjs/unnamed-chunk-6-1.png" width="576" alt="Some points lie exactly on top of other points because data was recorded as integer measurements"></a></p>
+<figcaption>Some points lie exactly on top of other points because data was recorded as integer measurements</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="19-ggplot2_files/figure-revealjs/unnamed-chunk-6-2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-18" title="Jittering the point position allows a visual estimate of how many points overlap."><img data-src="19-ggplot2_files/figure-revealjs/unnamed-chunk-6-2.png" width="576" alt="Jittering the point position allows a visual estimate of how many points overlap."></a></p>
+<figcaption>Jittering the point position allows a visual estimate of how many points overlap.</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section></section>
+<section>
+<section id="statistics" class="title-slide slide level1 center">
+<h1>Statistics</h1>
+<p>Sometimes, we want to compute <span class="cerulean-dk"><strong>statistics</strong></span> based on our data, and map <span class="sage-dk"><strong>geoms</strong></span> to those computations.</p>
+</section>
+<section id="statistics-1" class="slide level2">
+<h2>Statistics</h2>
+<p>Sometimes, we want to compute <span class="cerulean-dk"><strong>statistics</strong></span> based on our data, and map <span class="sage-dk"><strong>geoms</strong></span> to those computations.</p>
+<div class="columns">
+<div class="column" style="width:60%;">
+<p><span class="fragment" data-fragment-index="1"><strong>Smooth</strong> or <strong>Trend</strong> Line:</span> <span class="fragment" data-fragment-index="2"><span class="cerulean-dk">stat_smooth()</span></span></p>
+<div class="fragment" data-fragment-index="3">
+<div class="sage-dk">
+<pre><code>geom_line(aes(x = after_stat(x),     
+              y = after_stat(y))) +    
+geom_ribbon(    
+  aes(x = after_stat(x), 
+      ymin = after_stat(ymin), 
+      ymax = after_stat(ymax)))</code></pre>
+</div>
+</div>
+<p><span class="fragment" data-fragment-index="4"><strong>Boxplots</strong> (5-number summary):</span> <span class="fragment" data-fragment-index="5"><span class="cerulean-dk">stat_boxplot()</span></span></p>
+<div class="fragment" data-fragment-index="6">
+<div class="sage-dk">
+<pre><code>geom_boxplot() 
+# A shortcut for something like this:
+geom_rect(aes(xmin = x - after_stat(width)/2,
+              xmax = x + after_stat(width)/2,
+              ymin = after_stat(lower),
+              ymax = after_stat(upper)) + 
+geom_segment(aes(x = x - after_stat(width)/2,
+                 xend = x + after_stat(width)/2,
+                 y = after_stat(middle),
+                 yend = after_stat(middle))) + 
+geom_segment(aes(x = x, xend = xend, 
+                 y = after_stat(lower),
+                 yend = after_stat(ymin))) + 
+geom_segment(aes(x = x, xend = xend, 
+                 y = after_stat(upper),
+                 yend = after_stat(ymax)))</code></pre>
+</div>
+</div>
+</div><div class="column" style="width:40%;">
+<div class="fragment" data-fragment-index="3">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><a href="19-ggplot2_files/figure-revealjs/unnamed-chunk-7-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-19"><img data-src="19-ggplot2_files/figure-revealjs/unnamed-chunk-7-1.png" width="576"></a></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div class="fragment" data-fragment-index="6">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><a href="19-ggplot2_files/figure-revealjs/unnamed-chunk-8-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-20"><img data-src="19-ggplot2_files/figure-revealjs/unnamed-chunk-8-1.png" width="576"></a></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div></div>
+</section>
+<section id="statistics-2" class="slide level2">
+<h2>Statistics</h2>
+<p>Sometimes, we want to compute <span class="cerulean-dk"><strong>statistics</strong></span> based on our data, and map <span class="sage-dk"><strong>geoms</strong></span> to those computations.</p>
+<div class="columns">
+<div class="column" style="width:60%;">
+<p><span class="fragment" data-fragment-index="1"><strong>bar plots</strong> (count up data by category):</span> <span class="fragment" data-fragment-index="2"><span class="cerulean-dk">stat_count()</span></span></p>
+<div class="fragment" data-fragment-index="3">
+<div class="sage-dk">
+<pre><code>geom_bar(aes(x = x, y = after_stat(count)))
+# A shortcut for something like this:
+geom_rect(aes(xmin = x - after_stat(width),
+              xmax = x + after_stat(width),
+              ymin = 0,
+              ymax = after_stat(count)))</code></pre>
+</div>
+</div>
+<p><span class="fragment" data-fragment-index="4"><strong>Histograms</strong> (cut into bins, then count):</span> <span class="fragment" data-fragment-index="5"><span class="cerulean-dk">stat_bin()</span></span></p>
+<div class="fragment" data-fragment-index="6">
+<div class="sage-dk">
+<pre><code>geom_histogram(aes(x = x, y = after_stat(count)))
+# A shortcut for something like this:
+geom_rect(aes(xmin = after_stat(xstart),
+              xmax = after_stat(xend),
+              ymin = 0,
+              ymax = after_stat(count)))</code></pre>
+</div>
+</div>
+<p><span class="fragment" data-fragment-index="7"><strong>Frequency Polygons</strong> (cut into bins, then count):</span> <span class="fragment" data-fragment-index="8"><span class="cerulean-dk">stat_bin()</span></span></p>
+<div class="fragment" data-fragment-index="9">
+<div class="sage-dk">
+<pre><code>geom_freqpoly(aes(x = x, y = after_stat(count)))
+# A shortcut for something like this:
+geom_line(aes(x = x,
+              y = after_stat(count)))</code></pre>
+</div>
+</div>
+</div><div class="column" style="width:40%;">
+<div class="fragment" data-fragment-index="3">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><a href="19-ggplot2_files/figure-revealjs/unnamed-chunk-9-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-21"><img data-src="19-ggplot2_files/figure-revealjs/unnamed-chunk-9-1.png" width="576"></a></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div class="fragment" data-fragment-index="6">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><a href="19-ggplot2_files/figure-revealjs/unnamed-chunk-10-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-22"><img data-src="19-ggplot2_files/figure-revealjs/unnamed-chunk-10-1.png" width="576"></a></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div class="fragment" data-fragment-index="9">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><a href="19-ggplot2_files/figure-revealjs/unnamed-chunk-11-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-23"><img data-src="19-ggplot2_files/figure-revealjs/unnamed-chunk-11-1.png" width="576"></a></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div></div>
+</section>
+<section id="statistics-3" class="slide level2">
+<h2>Statistics</h2>
+<p>Sometimes, we want to compute <span class="cerulean-dk"><strong>statistics</strong></span> based on our data, and map <span class="sage-dk"><strong>geoms</strong></span> to those computations.</p>
+<div class="columns">
+<div class="column" style="width:60%;">
+<p><span class="fragment" data-fragment-index="1"><strong>density plots</strong>:</span> <span class="fragment" data-fragment-index="2"><span class="cerulean-dk">stat_density()</span></span></p>
+<div class="fragment" data-fragment-index="3">
+<div class="sage-dk">
+<pre><code>geom_density(aes(x = x, y = after_stat(density)))
+
+# A shortcut for something like this:
+geom_line(aes(x = x, y = after_stat(density)))
+
+# Or this (if fill is specified)
+geom_ribbon(aes(x = x, ymin = 0, ymax = after_stat(density)))</code></pre>
+</div>
+</div>
+<p><span class="fragment" data-fragment-index="4"><strong>eCDF</strong> (sort, calculate proportion &lt;= each x value):</span> <span class="fragment" data-fragment-index="5"><span class="cerulean-dk">stat_ecdf()</span></span></p>
+<div class="fragment" data-fragment-index="6">
+<div class="sage-dk">
+<pre><code>geom_step(aes(x = x, y = after_stat(count)))
+
+# A shortcut for something like this: 
+# Vertical piece
+geom_segment(aes(x = x_prev,
+                 xend = x_prev,
+                 y = after_stat(prop_prev),
+                 yend = after_stat(prop))) + 
+# Horizontal piece
+geom_segment(aes(x = x_prev,
+                 xend = x,
+                 y = after_stat(prop),
+                 yend = after_stat(prop)))          </code></pre>
+</div>
+</div>
+</div><div class="column" style="width:40%;">
+<div class="fragment" data-fragment-index="3">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><a href="19-ggplot2_files/figure-revealjs/unnamed-chunk-12-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-24"><img data-src="19-ggplot2_files/figure-revealjs/unnamed-chunk-12-1.png" width="576"></a></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div class="fragment" data-fragment-index="6">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><a href="19-ggplot2_files/figure-revealjs/unnamed-chunk-13-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-25"><img data-src="19-ggplot2_files/figure-revealjs/unnamed-chunk-13-1.png" width="576"></a></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div></div>
+</section></section>
+<section>
+<section id="small-multiples" class="title-slide slide level1 center">
+<h1>Small Multiples</h1>
+
+</section>
+<section id="subplots-facets" class="slide level2">
+<h2>Subplots (Facets)</h2>
+<p>When there are too many categorical variables, subplots can help!</p>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> penguins,</span>
+<span id="cb14-2"><a></a>       <span class="fu">aes</span>(<span class="at">x =</span> body_mass, </span>
+<span id="cb14-3"><a></a>           <span class="at">y =</span> bill_len, </span>
+<span id="cb14-4"><a></a>           <span class="at">color =</span> sex)) <span class="sc">+</span> </span>
+<span id="cb14-5"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb14-6"><a></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>species, </span>
+<span id="cb14-7"><a></a>             <span class="at">ncol =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb14-8"><a></a>  <span class="fu">guides</span>(<span class="at">color =</span> <span class="st">'none'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div><div class="column">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><a href="19-ggplot2_files/figure-revealjs/unnamed-chunk-14-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-26"><img data-src="19-ggplot2_files/figure-revealjs/unnamed-chunk-14-1.png" width="384"></a></p>
+</figure>
+</div>
+</div>
+</div></div>
+<ul>
+<li><code>facet_wrap()</code> - no ordering</li>
+<li><code>facet_grid(rowvar ~ colvar)</code> - align in a grid</li>
+</ul>
+</section></section>
+<section>
+<section id="scales" class="title-slide slide level1 center">
+<h1>Scales</h1>
+
+</section>
+<section id="scales-1" class="slide level2">
+<h2>Scales</h2>
+<p>By default, <code>ggplot2</code> chooses reasonable default scales</p>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="19-ggplot2_files/figure-revealjs/unnamed-chunk-15-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-27" title="geom_bar uses scale_x_discrete()"><img data-src="19-ggplot2_files/figure-revealjs/unnamed-chunk-15-1.png" width="576" alt="geom_bar uses scale_x_discrete()"></a></p>
+<figcaption><code>geom_bar</code> uses <code>scale_x_discrete()</code></figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="19-ggplot2_files/figure-revealjs/unnamed-chunk-16-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-28" title="geom_histogram and geom_density use scale_x_continuous()"><img data-src="19-ggplot2_files/figure-revealjs/unnamed-chunk-16-1.png" width="576" alt="geom_histogram and geom_density use scale_x_continuous()"></a></p>
+<figcaption><code>geom_histogram</code> and <code>geom_density</code> use <code>scale_x_continuous()</code></figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+<ul>
+<li><code>scale_{aesthetic}_{type}</code>
+<ul>
+<li>aesthetic can be x, y, fill, color, shape, etc.,</li>
+</ul></li>
+</ul>
+</section>
+<section id="scale-types" class="slide level2">
+<h2>Scale Types</h2>
+<ul>
+<li><code>manual</code> - available for almost all scales</li>
+<li>position (x, y): <code>continuous</code>, <code>discrete</code>, <code>date</code>, <code>datetime</code>
+<ul>
+<li>transforms: <code>scale_*_log10</code>, <code>scale_*_reverse</code>, <code>scale_*_sqrt</code></li>
+</ul></li>
+</ul>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><a href="19-ggplot2_files/figure-revealjs/unnamed-chunk-17-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-29"><img data-src="19-ggplot2_files/figure-revealjs/unnamed-chunk-17-1.png" width="1152"></a></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Color/fill have special scales:</p>
+<ul>
+<li>discrete: <code>scale_*_brewer</code>, <code>scale_*_grey</code></li>
+</ul>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><a href="19-ggplot2_files/figure-revealjs/unnamed-chunk-18-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-30"><img data-src="19-ggplot2_files/figure-revealjs/unnamed-chunk-18-1.png" width="1152"></a></p>
+</figure>
+</div>
+</div>
+</div>
+<p><span class="fragment emph"><code>tayloRswift</code> has album-themed color palettes. <br><code>ggsci</code> has palettes from Futurama, Simsons, StarTrek, Tron, Rick and Morty and various news outlets</span></p>
+</section>
+<section id="scale-types-1" class="slide level2">
+<h2>Scale Types</h2>
+<p>Color/fill have special scales:</p>
+<ul>
+<li>discrete: <code>scale_*_brewer</code>, <code>scale_*_grey</code></li>
+<li>continuous: <code>scale_*_distiller</code> (discrete scale interpolated), <code>scale_*_gradient</code> (low to high), <code>scale_*_gradient2</code> (bidirectional)
+<ul>
+<li>“trans” argument to add a transformation (<code>log10</code> is useful)</li>
+</ul></li>
+<li>Palette choices:
+<ul>
+<li><a href="https://colorbrewer2.org/">ColorBrewer</a> has palettes for maps</li>
+<li><a href="https://r-graph-gallery.com/color-palette-finder?s=09">Color Palette Finder</a> applet</li>
+</ul></li>
+</ul>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><a href="19-ggplot2_files/figure-revealjs/unnamed-chunk-19-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-31"><img data-src="19-ggplot2_files/figure-revealjs/unnamed-chunk-19-1.png" width="1152"></a></p>
+</figure>
+</div>
+</div>
+</div>
+<p><span class="fragment emph blue">We’ll talk more about color next time</span></p>
+</section>
+<section id="coordinate-systems" class="slide level2">
+<h2>Coordinate Systems</h2>
+<p><code>+ coord_xxx()</code></p>
+<ul>
+<li>Cartesian: Standard x and y axis</li>
+<li>Fixed: Ensure there is a fixed aspect ratio</li>
+<li>Flip: swap x and y axes</li>
+<li>Polar: specify which variable (x, y) is the angle (theta)</li>
+<li>Trans: specify x or y axis transformations</li>
+</ul>
+
+
+</section></section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <p><img src="deps/usu-sq.png" alt="Utah State University Logo" class="slide-logo"></p>
@@ -369,6 +1101,44 @@
         ]
       });
     </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
     <script id="quarto-html-after-body" type="application/javascript">
       window.document.addEventListener("DOMContentLoaded", function (event) {
         const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
@@ -689,6 +1459,38 @@
         }
       });
       </script>
+    <script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+    (function() {
+      let previousOnload = window.onload;
+      window.onload = () => {
+        if (previousOnload) {
+          previousOnload();
+        }
+        lightboxQuarto.on('slide_before_load', (data) => {
+          const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+          const href = trigger.getAttribute('href');
+          if (href !== null) {
+            const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+            if (imgEl !== null) {
+              const srcAttr = imgEl.getAttribute("src");
+              if (srcAttr && srcAttr.startsWith("data:")) {
+                slideConfig.href = srcAttr;
+              }
+            }
+          } 
+        });
+      
+        lightboxQuarto.on('slide_after_load', (data) => {
+          const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(slideNode);
+          }
+        });
+      
+      };
+      
+    })();
+              </script>
     
 
 </body></html>

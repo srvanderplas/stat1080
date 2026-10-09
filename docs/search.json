@@ -3400,5 +3400,229 @@
     "title": "1.17 Visualizing Distributions Example",
     "section": "Violin Plots",
     "text": "Violin Plots\n\n\n\n\n\n\n\n\n\n\n\n\n\nDensity curve plotted vertically, then mirrored\nOften shown with a boxplot (or quantile lines) overlaid on top"
+  },
+  {
+    "objectID": "slides/19-ggplot2.html#categorizing-charts",
+    "href": "slides/19-ggplot2.html#categorizing-charts",
+    "title": "1.19 ggplot2",
+    "section": "Categorizing Charts",
+    "text": "Categorizing Charts\n\n\n\n\n\n\nSource\n\n\n\n\n\n\n\nWhole Textbooks have been written on the subject\n\n\n\n\n\n\n\nSource"
+  },
+  {
+    "objectID": "slides/19-ggplot2.html#a-grammar-of-graphics",
+    "href": "slides/19-ggplot2.html#a-grammar-of-graphics",
+    "title": "1.19 ggplot2",
+    "section": "A grammar of graphics",
+    "text": "A grammar of graphics\nA grammar of graphics is\n\na set of rules and conventions\nto describe these relationships\nin a structured way\n\nWe start with the data and the axes."
+  },
+  {
+    "objectID": "slides/19-ggplot2.html#a-grammar-of-graphics-1",
+    "href": "slides/19-ggplot2.html#a-grammar-of-graphics-1",
+    "title": "1.19 ggplot2",
+    "section": "A grammar of graphics",
+    "text": "A grammar of graphics"
+  },
+  {
+    "objectID": "slides/19-ggplot2.html#a-grammar-of-graphics-2",
+    "href": "slides/19-ggplot2.html#a-grammar-of-graphics-2",
+    "title": "1.19 ggplot2",
+    "section": "A grammar of graphics",
+    "text": "A grammar of graphics"
+  },
+  {
+    "objectID": "slides/19-ggplot2.html#a-grammar-of-graphics-3",
+    "href": "slides/19-ggplot2.html#a-grammar-of-graphics-3",
+    "title": "1.19 ggplot2",
+    "section": "A grammar of graphics",
+    "text": "A grammar of graphics"
+  },
+  {
+    "objectID": "slides/19-ggplot2.html#a-grammar-of-graphics-4",
+    "href": "slides/19-ggplot2.html#a-grammar-of-graphics-4",
+    "title": "1.19 ggplot2",
+    "section": "A grammar of graphics",
+    "text": "A grammar of graphics\n\n\ndata(\"penguins\")\nlibrary(ggplot2)\n\nggplot(\n  penguins, \n  aes(x = bill_len, \n      y = flipper_len)\n)"
+  },
+  {
+    "objectID": "slides/19-ggplot2.html#a-grammar-of-graphics-5",
+    "href": "slides/19-ggplot2.html#a-grammar-of-graphics-5",
+    "title": "1.19 ggplot2",
+    "section": "A grammar of graphics",
+    "text": "A grammar of graphics\n\nggplot(\n  data = &lt;dataset&gt;,\n  aes(&lt;mappings&gt;)\n) + \n  geom_function(\n    aes(&lt;additional mappings&gt;), # &lt;- This line is optional\n    stat = &lt;stat&gt;, position = &lt;position&gt;) + \n  coordinate_function() + \n  facet_function() + \n  scale_function() + \n  theme_function()\n\nYou can layer multiple geoms together to get a more complicated graphic"
+  },
+  {
+    "objectID": "slides/19-ggplot2.html#geometric-objects",
+    "href": "slides/19-ggplot2.html#geometric-objects",
+    "title": "1.19 ggplot2",
+    "section": "Geometric Objects",
+    "text": "Geometric Objects\nNext, we specify the geometric object we want to use to show the data.\nEach geom has required aesthetic mappings as well as optional mappings.\n\n\n\n\n\n\n\n\n\n\n\ngeom\nrequired aesthetics\noptional aesthetics\n\n\n\n\npoint\nx, y\ncolor, shape, size, alpha\n\n\ntext\nx, y, label\ncolor, shape, size, angle, alpha, font family, font face, hjust, vjust\n\n\nline\nx, y\ncolor, group, linetype, size\n\n\nrect\nxmin, xmax, ymin, ymax\ncolor, fill, alpha, linetype, size\n\n\nabline\nintercept, slope\nalpha, color, linetype, size\n\n\nsegment\nx, y, xend, yend\nalpha, color, linetype, size\n\n\nbar\nx\nalpha, color, fill, linetype, size, weight\n\n\n\n\n\n\n\n\nConsult the ggplot2 reference card to see all the geoms and their required mappings"
+  },
+  {
+    "objectID": "slides/19-ggplot2.html#geometric-objects-1",
+    "href": "slides/19-ggplot2.html#geometric-objects-1",
+    "title": "1.19 ggplot2",
+    "section": "Geometric Objects",
+    "text": "Geometric Objects\n\n\n\n\n\n\ngeom_rect\n\n\n\n\n\n\n\ngeom_text\n\n\n\n\n\n\n\ngeom_line"
+  },
+  {
+    "objectID": "slides/19-ggplot2.html#geometric-objects-2",
+    "href": "slides/19-ggplot2.html#geometric-objects-2",
+    "title": "1.19 ggplot2",
+    "section": "Geometric Objects",
+    "text": "Geometric Objects\n\n\ndata(\"penguins\")\nlibrary(ggplot2)\n\nggplot(\n  penguins, \n  aes(x = bill_len, \n      y = flipper_len)\n) + \n  # aes is inherited from \n  # ggplot() statement\n  geom_point()"
+  },
+  {
+    "objectID": "slides/19-ggplot2.html#geometric-objects-3",
+    "href": "slides/19-ggplot2.html#geometric-objects-3",
+    "title": "1.19 ggplot2",
+    "section": "Geometric Objects",
+    "text": "Geometric Objects\n\n\ndata(\"penguins\")\nlibrary(ggplot2)\n\nggplot(\n  penguins, \n  aes(x = bill_len, \n      y = flipper_len, \n      color = species)\n) + \n  # aes is inherited from \n  # ggplot() statement\n  geom_point() \n\n\n\n\n\n\n\n\n\n\nChoices of colors for each species are made automatically\n(but can be customized w/ more code)\nLegend appears automatically\nOne line of code changes"
+  },
+  {
+    "objectID": "slides/19-ggplot2.html#statistics",
+    "href": "slides/19-ggplot2.html#statistics",
+    "title": "1.19 ggplot2",
+    "section": "Statistics",
+    "text": "Statistics\nSometimes, we want to compute statistics based on our data, and map geoms to those computations."
+  },
+  {
+    "objectID": "slides/19-ggplot2.html#statistics-1",
+    "href": "slides/19-ggplot2.html#statistics-1",
+    "title": "1.19 ggplot2",
+    "section": "Statistics",
+    "text": "Statistics\nSometimes, we want to compute statistics based on our data, and map geoms to those computations.\n\n\nSmooth or Trend Line: stat_smooth()\n\n\ngeom_line(aes(x = after_stat(x),     \n              y = after_stat(y))) +    \ngeom_ribbon(    \n  aes(x = after_stat(x), \n      ymin = after_stat(ymin), \n      ymax = after_stat(ymax)))\n\n\nBoxplots (5-number summary): stat_boxplot()\n\n\ngeom_boxplot() \n# A shortcut for something like this:\ngeom_rect(aes(xmin = x - after_stat(width)/2,\n              xmax = x + after_stat(width)/2,\n              ymin = after_stat(lower),\n              ymax = after_stat(upper)) + \ngeom_segment(aes(x = x - after_stat(width)/2,\n                 xend = x + after_stat(width)/2,\n                 y = after_stat(middle),\n                 yend = after_stat(middle))) + \ngeom_segment(aes(x = x, xend = xend, \n                 y = after_stat(lower),\n                 yend = after_stat(ymin))) + \ngeom_segment(aes(x = x, xend = xend, \n                 y = after_stat(upper),\n                 yend = after_stat(ymax)))"
+  },
+  {
+    "objectID": "slides/19-ggplot2.html#statistics-2",
+    "href": "slides/19-ggplot2.html#statistics-2",
+    "title": "1.19 ggplot2",
+    "section": "Statistics",
+    "text": "Statistics\nSometimes, we want to compute statistics based on our data, and map geoms to those computations.\n\n\nbar plots (count up data by category): stat_count()\n\n\ngeom_bar(aes(x = x, y = after_stat(count)))\n# A shortcut for something like this:\ngeom_rect(aes(xmin = x - after_stat(width),\n              xmax = x + after_stat(width),\n              ymin = 0,\n              ymax = after_stat(count)))\n\n\nHistograms (cut into bins, then count): stat_bin()\n\n\ngeom_histogram(aes(x = x, y = after_stat(count)))\n# A shortcut for something like this:\ngeom_rect(aes(xmin = after_stat(xstart),\n              xmax = after_stat(xend),\n              ymin = 0,\n              ymax = after_stat(count)))\n\n\nFrequency Polygons (cut into bins, then count): stat_bin()\n\n\ngeom_freqpoly(aes(x = x, y = after_stat(count)))\n# A shortcut for something like this:\ngeom_line(aes(x = x,\n              y = after_stat(count)))"
+  },
+  {
+    "objectID": "slides/19-ggplot2.html#statistics-3",
+    "href": "slides/19-ggplot2.html#statistics-3",
+    "title": "1.19 ggplot2",
+    "section": "Statistics",
+    "text": "Statistics\nSometimes, we want to compute statistics based on our data, and map geoms to those computations.\n\n\ndensity plots: stat_density()\n\n\ngeom_density(aes(x = x, y = after_stat(density)))\n\n# A shortcut for something like this:\ngeom_line(aes(x = x, y = after_stat(density)))\n\n# Or this (if fill is specified)\ngeom_ribbon(aes(x = x, ymin = 0, ymax = after_stat(density)))\n\n\neCDF (sort, calculate proportion &lt;= each x value): stat_ecdf()\n\n\ngeom_step(aes(x = x, y = after_stat(count)))\n\n# A shortcut for something like this: \n# Vertical piece\ngeom_segment(aes(x = x_prev,\n                 xend = x_prev,\n                 y = after_stat(prop_prev),\n                 yend = after_stat(prop))) + \n# Horizontal piece\ngeom_segment(aes(x = x_prev,\n                 xend = x,\n                 y = after_stat(prop),\n                 yend = after_stat(prop)))"
+  },
+  {
+    "objectID": "slides/19-ggplot2.html#statistics-4",
+    "href": "slides/19-ggplot2.html#statistics-4",
+    "title": "1.19 ggplot2",
+    "section": "Statistics",
+    "text": "Statistics\nSometimes, we want to compute statistics based on our data, and map geoms to those computations.\n\nbest fit line\n\nboxplots\nbar plots\ndensity plots\neCDFs\n\nMany statistics have commonly used geoms to go with the statistic."
+  },
+  {
+    "objectID": "slides/19-ggplot2.html#scales",
+    "href": "slides/19-ggplot2.html#scales",
+    "title": "1.19 ggplot2",
+    "section": "Scales",
+    "text": "Scales\nBy default, ggplot2 chooses reasonable default scales\n\n\n\n\n\n\n\ngeom_bar uses scale_x_discrete()\n\n\n\n\n\n\n\n\n\ngeom_histogram and geom_density use scale_x_continuous()\n\n\n\n\n\n\n\nscale_{aesthetic}_{type}\n\naesthetic can be x, y, fill, color, shape, etc.,"
+  },
+  {
+    "objectID": "slides/19-ggplot2.html#scale-types",
+    "href": "slides/19-ggplot2.html#scale-types",
+    "title": "1.19 ggplot2",
+    "section": "Scale Types",
+    "text": "Scale Types\n\nmanual - available for almost all scales\nposition (x, y): continuous, discrete, date, datetime\n\ntransforms: scale_*_log10, scale_*_reverse, scale_*_sqrt\n\n\n\n\n\n\n\n\n\n\n\nColor/fill have special scales:\n\ndiscrete: scale_*_brewer, scale_*_grey\n\n\n\n\n\n\n\n\n\n\ntayloRswift has album-themed color palettes. ggsci has palettes from Futurama, Simsons, StarTrek, Tron, Rick and Morty and various news outlets"
+  },
+  {
+    "objectID": "slides/19-ggplot2.html#scale-types-1",
+    "href": "slides/19-ggplot2.html#scale-types-1",
+    "title": "1.19 ggplot2",
+    "section": "Scale Types",
+    "text": "Scale Types\nColor/fill have special scales:\n\ndiscrete: scale_*_brewer, scale_*_grey\ncontinuous: scale_*_distiller (discrete scale interpolated), scale_*_gradient (low to high), scale_*_gradient2 (bidirectional)\n\n“trans” argument to add a transformation (log10 is useful)\n\nPalette choices:\n\nColorBrewer has palettes for maps\nColor Palette Finder applet\n\n\n\n\n\n\n\n\n\n\n\nWe’ll talk more about color next time"
+  },
+  {
+    "objectID": "slides/19-ggplot2.html#coordinate-systems",
+    "href": "slides/19-ggplot2.html#coordinate-systems",
+    "title": "1.19 ggplot2",
+    "section": "Coordinate Systems",
+    "text": "Coordinate Systems\n+ coord_xxx()\n\nCartesian: Standard x and y axis\nFixed: Ensure there is a fixed aspect ratio\nFlip: swap x and y axes\nPolar: specify which variable (x, y) is the angle (theta)\nTrans: specify x or y axis transformations"
+  },
+  {
+    "objectID": "slides/19-ggplot2.html#position-adjustments",
+    "href": "slides/19-ggplot2.html#position-adjustments",
+    "title": "1.19 ggplot2",
+    "section": "Position Adjustments",
+    "text": "Position Adjustments\nArrange geoms that would otherwise use the same space\np &lt;- ggplot(data = penguins, aes(x = species, fill = sex)) +\n  theme(legend.position = \"bottom\")\n\np + geom_bar(position = \"stack\") + ggtitle(\"Position: Stack\")\np + geom_bar(position = \"dodge\") + ggtitle(\"Position: Dodge\")\np + geom_bar(position = \"fill\") + ggtitle(\"Position: Fill\")"
+  },
+  {
+    "objectID": "slides/19-ggplot2.html#position-adjustments-1",
+    "href": "slides/19-ggplot2.html#position-adjustments-1",
+    "title": "1.19 ggplot2",
+    "section": "Position Adjustments",
+    "text": "Position Adjustments\nArrange geoms that would otherwise use the same space\np &lt;- ggplot(penguins, \n            aes(x = flipper_len, y = bill_dep, \n                color = species)) + \n  guides(color = 'none')\n\np + geom_point(shape = 16, alpha = .5)\np + geom_point(shape = 16, alpha = .5, position = \"jitter\")\n\n\n\n\n\n\nSome points lie exactly on top of other points because data was recorded as integer measurements\n\n\n\n\n\n\n\nJittering the point position allows a visual estimate of how many points overlap."
+  },
+  {
+    "objectID": "slides/19-ggplot2.html#subplots-facets",
+    "href": "slides/19-ggplot2.html#subplots-facets",
+    "title": "1.19 ggplot2",
+    "section": "Subplots (Facets)",
+    "text": "Subplots (Facets)\nWhen there are too many categorical variables, subplots can help!\n\n\nggplot(data = penguins,\n       aes(x = body_mass, \n           y = bill_len, \n           color = sex)) + \n  geom_point() + \n  facet_wrap(~species, \n             ncol = 2) +\n  guides(color = 'none')\n\n\n\n\n\n\n\n\n\n\nfacet_wrap() - no ordering\nfacet_grid(rowvar ~ colvar) - align in a grid"
+  },
+  {
+    "objectID": "slides/19-ggplot2.html#a-grammar-of-graphics-6",
+    "href": "slides/19-ggplot2.html#a-grammar-of-graphics-6",
+    "title": "1.19 ggplot2",
+    "section": "A grammar of graphics",
+    "text": "A grammar of graphics\n\nggplot(\n  data = &lt;dataset&gt;,\n  aes(&lt;mappings&gt;)\n) + \n  geom_function(\n    aes(&lt;additional mappings&gt;), # &lt;- This line is optional\n    stat = &lt;stat&gt;, position = &lt;position&gt;) + \n  coordinate_function() + \n  facet_function() + \n  scale_function() + \n  theme_function()\n\nYou can layer multiple geoms together to get a more complicated graphic"
+  },
+  {
+    "objectID": "slides/19-ggplot2.html#the-grammar-of-graphics-1",
+    "href": "slides/19-ggplot2.html#the-grammar-of-graphics-1",
+    "title": "1.19 ggplot2",
+    "section": "The Grammar of Graphics",
+    "text": "The Grammar of Graphics\n\nA chart is like a single word\n\n“pie chart”, “bar chart”, “line chart”, “scatter plot”\nspecific instance of a more general object\nsome charts that look similar are actually very different - e.g. a bar chart and a histogram.\n\nA graphic is a specification of the relationship between visual forms and mathematical expressions"
+  },
+  {
+    "objectID": "slides/19-ggplot2.html#the-grammar-of-graphics-2",
+    "href": "slides/19-ggplot2.html#the-grammar-of-graphics-2",
+    "title": "1.19 ggplot2",
+    "section": "The Grammar of Graphics",
+    "text": "The Grammar of Graphics\nA grammar of graphics is\n\na set of rules and conventions\nto describe these relationships\nin a structured way\n\nWe start with the data and the axes."
+  },
+  {
+    "objectID": "slides/19-ggplot2.html#the-grammar-of-graphics-3",
+    "href": "slides/19-ggplot2.html#the-grammar-of-graphics-3",
+    "title": "1.19 ggplot2",
+    "section": "The Grammar of Graphics",
+    "text": "The Grammar of Graphics"
+  },
+  {
+    "objectID": "slides/19-ggplot2.html#the-grammar-of-graphics-4",
+    "href": "slides/19-ggplot2.html#the-grammar-of-graphics-4",
+    "title": "1.19 ggplot2",
+    "section": "The Grammar of Graphics",
+    "text": "The Grammar of Graphics"
+  },
+  {
+    "objectID": "slides/19-ggplot2.html#the-grammar-of-graphics-5",
+    "href": "slides/19-ggplot2.html#the-grammar-of-graphics-5",
+    "title": "1.19 ggplot2",
+    "section": "The Grammar of Graphics",
+    "text": "The Grammar of Graphics"
+  },
+  {
+    "objectID": "slides/19-ggplot2.html#the-grammar-of-graphics-6",
+    "href": "slides/19-ggplot2.html#the-grammar-of-graphics-6",
+    "title": "1.19 ggplot2",
+    "section": "The Grammar of Graphics",
+    "text": "The Grammar of Graphics\n\n\ndata(\"penguins\")\nlibrary(ggplot2)\n\nggplot(\n  penguins, \n  aes(x = bill_len, \n      y = flipper_len)\n)"
+  },
+  {
+    "objectID": "slides/19-ggplot2.html#the-grammar-of-graphics-7",
+    "href": "slides/19-ggplot2.html#the-grammar-of-graphics-7",
+    "title": "1.19 ggplot2",
+    "section": "The Grammar of Graphics",
+    "text": "The Grammar of Graphics\n\nggplot(\n  data = &lt;dataset&gt;,\n  aes(&lt;mappings&gt;)\n) + \n  geom_function(\n    aes(&lt;additional mappings&gt;), # &lt;- This line is optional\n    stat = &lt;stat&gt;, position = &lt;position&gt;) + \n  coordinate_function() + \n  facet_function() + \n  scale_function() + \n  theme_function()\n\nYou can layer multiple geoms together to get a more complicated graphic"
+  },
+  {
+    "objectID": "slides/19-ggplot2.html#scales-1",
+    "href": "slides/19-ggplot2.html#scales-1",
+    "title": "1.19 ggplot2",
+    "section": "Scales",
+    "text": "Scales\nBy default, ggplot2 chooses reasonable default scales\n\n\n\n\n\n\n\ngeom_bar uses scale_x_discrete()\n\n\n\n\n\n\n\n\n\ngeom_histogram and geom_density use scale_x_continuous()\n\n\n\n\n\n\n\nscale_{aesthetic}_{type}\n\naesthetic can be x, y, fill, color, shape, etc.,"
   }
 ]
