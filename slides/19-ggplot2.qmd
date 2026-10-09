@@ -1,0 +1,15 @@
+---
+title: "1.17 Visualizing Data Distributions"
+format: revealjs
+code-annotations: hover
+lightbox:  true
+bibliography: refs.bib
+csl: chicago-syllabus.csl
+title-slide-attributes:
+  data-background-image: "images/SimulationTheoryCartoon.png"
+  data-background-image-alt: A density curve and a histogram with faces and arms sit next to each other. The histogram and the density are approximately the same shape.
+  data-background-size: "30%"
+  data-background-repeat: "no-repeat"
+  data-background-position: "50% 90%"
+---
+

@@ -33,72 +33,6 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
-    /* CSS for syntax highlighting */
-    html { -webkit-text-size-adjust: 100%; }
-    pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-    pre > code.sourceCode > span:empty { height: 1.2em; }
-    .sourceCode { overflow: visible; }
-    code.sourceCode > span { color: inherit; text-decoration: inherit; }
-    div.sourceCode { margin: 1em 0; }
-    pre.sourceCode { margin: 0; }
-    @media screen {
-    div.sourceCode { overflow: auto; }
-    }
-    @media print {
-    pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-    }
-    pre.numberSource code
-      { counter-reset: source-line 0; }
-    pre.numberSource code > span
-      { position: relative; left: -4em; counter-increment: source-line; }
-    pre.numberSource code > span > a:first-child::before
-      { content: counter(source-line);
-        position: relative; left: -1em; text-align: right; vertical-align: baseline;
-        border: none; display: inline-block;
-        -webkit-touch-callout: none; -webkit-user-select: none;
-        -khtml-user-select: none; -moz-user-select: none;
-        -ms-user-select: none; user-select: none;
-        padding: 0 4px; width: 4em;
-        color: #aaaaaa;
-      }
-    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-    div.sourceCode
-      { color: #003b4f; background-color: #f1f3f5; }
-    @media screen {
-    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-    }
-    code span { color: #003b4f; } /* Normal */
-    code span.al { color: #ad0000; } /* Alert */
-    code span.an { color: #5e5e5e; } /* Annotation */
-    code span.at { color: #657422; } /* Attribute */
-    code span.bn { color: #ad0000; } /* BaseN */
-    code span.bu { } /* BuiltIn */
-    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
-    code span.ch { color: #20794d; } /* Char */
-    code span.cn { color: #8f5902; } /* Constant */
-    code span.co { color: #5e5e5e; } /* Comment */
-    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
-    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
-    code span.dt { color: #ad0000; } /* DataType */
-    code span.dv { color: #ad0000; } /* DecVal */
-    code span.er { color: #ad0000; } /* Error */
-    code span.ex { } /* Extension */
-    code span.fl { color: #ad0000; } /* Float */
-    code span.fu { color: #4758ab; } /* Function */
-    code span.im { color: #00769e; } /* Import */
-    code span.in { color: #5e5e5e; } /* Information */
-    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
-    code span.op { color: #5e5e5e; } /* Operator */
-    code span.ot { color: #003b4f; } /* Other */
-    code span.pp { color: #ad0000; } /* Preprocessor */
-    code span.sc { color: #5e5e5e; } /* SpecialChar */
-    code span.ss { color: #20794d; } /* SpecialString */
-    code span.st { color: #20794d; } /* String */
-    code span.va { color: #111111; } /* Variable */
-    code span.vs { color: #20794d; } /* VerbatimString */
-    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-d2cfaf4017ec6d6e95d384acfb7920a7.css">
   <link rel="stylesheet" href="deps/styles.scss">
@@ -202,7 +136,6 @@
     }
   </style>
 <meta property="og:title" content="1.17 Visualizing Distributions Example – STAT 1080 - Fall 2026">
-<meta property="og:description" content="Cappuccino Index">
 <meta property="og:site_name" content="STAT 1080 - Fall 2026">
 </head>
 <body class="quarto-light">
@@ -211,455 +144,158 @@
 
 <section id="title-slide" data-background-image="images/SimulationTheoryCartoon.png" data-background-image-alt="A density curve and a histogram with faces and arms sit next to each other. The histogram and the density are approximately the same shape." data-background-position="50% 90%" data-background-repeat="no-repeat" data-background-size="30%" class="quarto-title-block center">
   <h1 class="title">1.17 Visualizing Distributions Example</h1>
-  <p class="subtitle">Cappuccino Index</p>
 
 <div class="quarto-title-authors">
 </div>
 
 </section>
-<section id="introduction---the-cappuccino-index" class="slide level2">
-<h2>Introduction - The Cappuccino Index</h2>
-<p>James Hoffmann is a YouTuber who explores coffee from many different angles. In a recent <a href="https://www.youtube.com/watch?v=WtlE3BW9Nqs">video</a> he explored how long a barista would need to work to pay for a small cappuccino.</p>
-<blockquote>
-<p>Coffee, as a part of our economy, as an industry, is full of these awkward questions that I do think are worth asking.</p>
-</blockquote>
-<p>In the video, James presents the cappuccino index, which answers this at a country level.</p>
-<p>There are some important caveats, such as tips being excluded.</p>
-<p><a href="https://github.com/rfordatascience/tidytuesday/blob/main/data/2026/2026-09-08/readme.md">Data Source &amp; Description</a></p>
+<section>
+<section id="numeric-distributions" class="title-slide slide level1 center">
+<h1>Numeric Distributions</h1>
+
 </section>
-<section id="data-dictionary---cafe" class="slide level2">
-<h2>Data Dictionary - <code>cafe</code></h2>
-<table class="caption-top">
-<colgroup>
-<col style="width: 27%">
-<col style="width: 15%">
-<col style="width: 57%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">variable</th>
-<th style="text-align: left;">class</th>
-<th style="text-align: left;">description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">country</td>
-<td style="text-align: left;">character</td>
-<td style="text-align: left;">The country of the cafe.</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">city</td>
-<td style="text-align: left;">character</td>
-<td style="text-align: left;">The city of the cafe.</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">urban</td>
-<td style="text-align: left;">logical</td>
-<td style="text-align: left;">Whether the cafe is in an urban area.</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">suburban</td>
-<td style="text-align: left;">logical</td>
-<td style="text-align: left;">Whether the cafe is in a suburban area.</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">rural</td>
-<td style="text-align: left;">logical</td>
-<td style="text-align: left;">Whether the cafe is in a rural area.</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">hourly_wage_gbp</td>
-<td style="text-align: left;">double</td>
-<td style="text-align: left;">The hourly wage of a barista working in the cafe, converted to British pounds.</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">price_gbp</td>
-<td style="text-align: left;">double</td>
-<td style="text-align: left;">The price of a small cappuccino from the cafe, converted to British pounds.</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">original_currency</td>
-<td style="text-align: left;">character</td>
-<td style="text-align: left;">The original currency used by the cafe.</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">price</td>
-<td style="text-align: left;">double</td>
-<td style="text-align: left;">The price of a small cappuccino from the cafe, in the original currency.</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">hourly_wage</td>
-<td style="text-align: left;">double</td>
-<td style="text-align: left;">The hourly wage of a barista working in the cafe, in the original currency.</td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="data-dictionary---cappuccino_index" class="slide level2">
-<h2>Data Dictionary - <code>cappuccino_index</code></h2>
-<table class="caption-top">
-<colgroup>
-<col style="width: 22%">
-<col style="width: 16%">
-<col style="width: 61%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">variable</th>
-<th style="text-align: left;">class</th>
-<th style="text-align: left;">description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">country</td>
-<td style="text-align: left;">character</td>
-<td style="text-align: left;">Name of country for which cappuccino index was calculated.</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">index</td>
-<td style="text-align: left;">double</td>
-<td style="text-align: left;">The cappuccino index: the time in minutes a barista needs to work to afford a small cappuccino in their country.</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">n</td>
-<td style="text-align: left;">integer</td>
-<td style="text-align: left;">Number of cafes that were included in the calculation of the index.</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">minutes</td>
-<td style="text-align: left;">double</td>
-<td style="text-align: left;">The number of whole minutes in index.</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">seconds</td>
-<td style="text-align: left;">double</td>
-<td style="text-align: left;">The remaining number of seconds in index.</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">index_as_time</td>
-<td style="text-align: left;">character</td>
-<td style="text-align: left;">Index formatted as minutes and seconds, i.e., MM:SS.</td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="read-in-the-data" class="slide level2">
-<h2>Read in the Data</h2>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a>cafe <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">'https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2026/2026-09-08/cafe.csv'</span>)</span>
-<span id="cb1-2"><a></a>cappuccino_index <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">'https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2026/2026-09-08/cappuccino_index.csv'</span>)</span>
-<span id="cb1-3"><a></a></span>
-<span id="cb1-4"><a></a><span class="co"># Replace non-breaking space with regular space</span></span>
-<span id="cb1-5"><a></a>cafe<span class="sc">$</span>country <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">"\u00a0"</span>, <span class="st">" "</span>, cafe<span class="sc">$</span>country)</span>
-<span id="cb1-6"><a></a>cappuccino_index<span class="sc">$</span>country <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">"\u00a0"</span>, <span class="st">" "</span>, cappuccino_index<span class="sc">$</span>country)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</section>
-<section id="participating-countries" class="slide level2">
-<h2>Participating Countries</h2>
-<div class="cell columns column-output-location">
-<div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-2"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-2-1"><a href="#annotated-cell-2-1"></a>cafe_plot <span class="ot">&lt;-</span> cafe <span class="sc">|&gt;</span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="1">1</button><span id="annotated-cell-2-2" class="code-annotation-target"><a href="#annotated-cell-2-2"></a>  <span class="fu">count</span>(country) <span class="sc">|&gt;</span></span>
-<span id="annotated-cell-2-3"><a href="#annotated-cell-2-3"></a>  <span class="fu">mutate</span>(</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="2">2</button><span id="annotated-cell-2-4" class="code-annotation-target"><a href="#annotated-cell-2-4"></a>    <span class="at">prop =</span> n<span class="sc">/</span><span class="fu">sum</span>(n),</span>
-<span id="annotated-cell-2-5"><a href="#annotated-cell-2-5"></a>  ) <span class="sc">|&gt;</span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="3">3</button><span id="annotated-cell-2-6" class="code-annotation-target"><a href="#annotated-cell-2-6"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(prop)) <span class="sc">|&gt;</span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="4">4</button><span id="annotated-cell-2-7" class="code-annotation-target"><a href="#annotated-cell-2-7"></a>  <span class="fu">head</span>(<span class="dv">10</span>)</span>
-<span id="annotated-cell-2-8"><a href="#annotated-cell-2-8"></a>cafe_plot <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="5">5</button><span id="annotated-cell-2-9" class="code-annotation-target"><a href="#annotated-cell-2-9"></a>  <span class="fu">tibble</span>(<span class="at">country =</span> <span class="st">"Other"</span>,</span>
-<span id="annotated-cell-2-10"><a href="#annotated-cell-2-10"></a>         <span class="at">n =</span> <span class="dv">2594</span> <span class="sc">-</span> <span class="fu">sum</span>(cafe_plot<span class="sc">$</span>n),</span>
-<span id="annotated-cell-2-11"><a href="#annotated-cell-2-11"></a>         <span class="at">prop =</span> <span class="dv">1</span><span class="sc">-</span><span class="fu">sum</span>(cafe_plot<span class="sc">$</span>prop)),</span>
-<span id="annotated-cell-2-12"><a href="#annotated-cell-2-12"></a>  cafe_plot</span>
-<span id="annotated-cell-2-13"><a href="#annotated-cell-2-13"></a>) <span class="sc">|&gt;</span></span>
-<span id="annotated-cell-2-14"><a href="#annotated-cell-2-14"></a>  <span class="fu">mutate</span>(<span class="at">country =</span> <span class="fu">factor</span>(country, <span class="at">levels =</span> country, </span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="6">6</button><span id="annotated-cell-2-15" class="code-annotation-target"><a href="#annotated-cell-2-15"></a>                          <span class="at">ordered =</span> T))</span>
-<span id="annotated-cell-2-16"><a href="#annotated-cell-2-16"></a>  </span>
-<span id="annotated-cell-2-17"><a href="#annotated-cell-2-17"></a>cafe_plot</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div><div class="column">
-<div class="cell-annotation">
-<dl class="code-annotation-container-hidden code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-2" data-target-annotation="1">1</dt>
-<dd>
-<span data-code-cell="annotated-cell-2" data-code-lines="2" data-code-annotation="1"><code>count(var)</code> is a shortcut for <code>group_by(var) |&gt; summarize(n = n()) |&gt; ungroup()</code> - it counts up the number of rows with each value of var.</span>
-</dd>
-<dt data-target-cell="annotated-cell-2" data-target-annotation="2">2</dt>
-<dd>
-<span data-code-cell="annotated-cell-2" data-code-lines="4" data-code-annotation="2">Calculate the proportion from the number of observations with a specific value and total number of observations</span>
-</dd>
-<dt data-target-cell="annotated-cell-2" data-target-annotation="3">3</dt>
-<dd>
-<span data-code-cell="annotated-cell-2" data-code-lines="6" data-code-annotation="3">Sort the dataset by <code>desc(prop)</code></span>
-</dd>
-<dt data-target-cell="annotated-cell-2" data-target-annotation="4">4</dt>
-<dd>
-<span data-code-cell="annotated-cell-2" data-code-lines="7" data-code-annotation="4">Take the top 10 rows – there are too many countries to show</span>
-</dd>
-<dt data-target-cell="annotated-cell-2" data-target-annotation="5">5</dt>
-<dd>
-<span data-code-cell="annotated-cell-2" data-code-lines="9,10,11" data-code-annotation="5">Create an “Other” row that includes everything else</span>
-</dd>
-<dt data-target-cell="annotated-cell-2" data-target-annotation="6">6</dt>
-<dd>
-<span data-code-cell="annotated-cell-2" data-code-lines="15" data-code-annotation="6">Reorder the levels of country based on decreasing proportion</span>
-</dd>
-</dl>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 11 × 3
-   country         n   prop
-   &lt;ord&gt;       &lt;dbl&gt;  &lt;dbl&gt;
- 1 Other         610 0.235 
- 2 USA           600 0.231 
- 3 UK            595 0.229 
- 4 Australia     171 0.0659
- 5 Germany       167 0.0644
- 6 Canada        130 0.0501
- 7 Poland        100 0.0386
- 8 Netherlands    73 0.0281
- 9 Czechia        67 0.0258
-10 Ireland        45 0.0173
-11 Denmark        36 0.0139</code></pre>
-</div>
-</div></div>
-</section>
-<section id="participating-countries-1" class="slide level2">
-<h2>Participating Countries</h2>
-<div class="cell columns column-output-location">
-<div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-3"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-3-1"><a href="#annotated-cell-3-1"></a><span class="fu">ggplot</span>(</span>
-<span id="annotated-cell-3-2"><a href="#annotated-cell-3-2"></a>  cafe_plot,</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="1">1</button><span id="annotated-cell-3-3" class="code-annotation-target"><a href="#annotated-cell-3-3"></a>  <span class="fu">aes</span>(</span>
-<span id="annotated-cell-3-4"><a href="#annotated-cell-3-4"></a>    <span class="at">x =</span> country,</span>
-<span id="annotated-cell-3-5"><a href="#annotated-cell-3-5"></a>    <span class="at">fill =</span> country,</span>
-<span id="annotated-cell-3-6"><a href="#annotated-cell-3-6"></a>    <span class="at">y =</span> prop)</span>
-<span id="annotated-cell-3-7"><a href="#annotated-cell-3-7"></a>) <span class="sc">+</span> </span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="2">2</button><span id="annotated-cell-3-8" class="code-annotation-target"><a href="#annotated-cell-3-8"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="3">3</button><span id="annotated-cell-3-9" class="code-annotation-target"><a href="#annotated-cell-3-9"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="4">4</button><span id="annotated-cell-3-10" class="code-annotation-target"><a href="#annotated-cell-3-10"></a>  <span class="fu">guides</span>(<span class="at">fill =</span> <span class="st">'none'</span>) <span class="sc">+</span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="5">5</button><span id="annotated-cell-3-11" class="code-annotation-target"><a href="#annotated-cell-3-11"></a>  <span class="fu">ylab</span>(<span class="st">"Proportion of Overall Observations"</span>) <span class="sc">+</span></span>
-<span id="annotated-cell-3-12"><a href="#annotated-cell-3-12"></a>  <span class="fu">xlab</span>(<span class="st">""</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div><div class="column">
-<div class="cell-annotation">
-<dl class="code-annotation-container-hidden code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-3" data-target-annotation="1">1</dt>
-<dd>
-<span data-code-cell="annotated-cell-3" data-code-lines="3,4,5,6" data-code-annotation="1">Show country on the x-axis, fill by country as well, then show prop on the y-axis.</span>
-</dd>
-<dt data-target-cell="annotated-cell-3" data-target-annotation="2">2</dt>
-<dd>
-<span data-code-cell="annotated-cell-3" data-code-lines="8" data-code-annotation="2">Create columns (rectangles)</span>
-</dd>
-<dt data-target-cell="annotated-cell-3" data-target-annotation="3">3</dt>
-<dd>
-<span data-code-cell="annotated-cell-3" data-code-lines="9" data-code-annotation="3">Flip x and y so that labels are horizontal and more easily read</span>
-</dd>
-<dt data-target-cell="annotated-cell-3" data-target-annotation="4">4</dt>
-<dd>
-<span data-code-cell="annotated-cell-3" data-code-lines="10" data-code-annotation="4">Remove the fill legend because it’s equivalent to the x (now y) axis.</span>
-</dd>
-<dt data-target-cell="annotated-cell-3" data-target-annotation="5">5</dt>
-<dd>
-<span data-code-cell="annotated-cell-3" data-code-lines="11,12" data-code-annotation="5">Set axis labels.</span>
-</dd>
-</dl>
-</div>
-<div class="cell-output-display">
-<div>
-<figure>
-<p><a href="17-vis-dist-ex_files/figure-revealjs/unnamed-chunk-4-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img data-src="17-vis-dist-ex_files/figure-revealjs/unnamed-chunk-4-1.png" style="width:100.0%" alt="A bar chart showing number of cappuccino observations taken by country."></a></p>
-</figure>
-</div>
-</div>
-</div></div>
-</section>
-<section id="rural-vs.-urban" class="slide level2">
-<h2>Rural vs.&nbsp;Urban</h2>
-<p>Are the categories mutually exclusive?</p>
-<div class="cell columns column-output-location">
-<div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a>cafe <span class="sc">|&gt;</span></span>
-<span id="cb3-2"><a></a><span class="fu">filter</span>(</span>
-<span id="cb3-3"><a></a>  urban <span class="sc">+</span> rural <span class="sc">+</span> suburban <span class="sc">&gt;</span> <span class="dv">1</span></span>
-<span id="cb3-4"><a></a>) <span class="sc">|&gt;</span></span>
-<span id="cb3-5"><a></a>  <span class="fu">select</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div><div class="column">
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 63 × 5
-   country     city       urban suburban rural
-   &lt;chr&gt;       &lt;chr&gt;      &lt;lgl&gt; &lt;lgl&gt;    &lt;lgl&gt;
- 1 Switzerland Aarau      TRUE  TRUE     FALSE
- 2 Norway      Bergen     TRUE  TRUE     FALSE
- 3 Netherlands Rotterdam  TRUE  TRUE     FALSE
- 4 USA         Branson    TRUE  TRUE     FALSE
- 5 UK          Falmouth   FALSE TRUE     TRUE 
- 6 USA         Merced, CA TRUE  FALSE    TRUE 
- 7 USA         Boston     TRUE  TRUE     FALSE
- 8 UK          Leeds      TRUE  TRUE     FALSE
- 9 UK          Cardiff    TRUE  TRUE     FALSE
-10 USA         Normal, IL TRUE  TRUE     FALSE
-# ℹ 53 more rows</code></pre>
-</div>
-</div></div>
-<p><span class="fragment emph cerulean-dk">Ok, well that’s odd, but let’s just work around it for now</span></p>
-</section>
-<section id="rural-vs.-urban-1" class="slide level2">
-<h2>Rural vs.&nbsp;Urban</h2>
-<p>First, we have to rearrange the data so that density is a single variable.</p>
-<div class="cell columns column-output-location">
-<div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a>cafe_density <span class="ot">&lt;-</span> cafe <span class="sc">|&gt;</span></span>
-<span id="cb5-2"><a></a>  <span class="fu">pivot_longer</span>(<span class="fu">c</span>(<span class="dv">3</span><span class="sc">:</span><span class="dv">5</span>), </span>
-<span id="cb5-3"><a></a>               <span class="at">names_to =</span> <span class="st">"density"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb5-4"><a></a>  <span class="fu">filter</span>(value) <span class="sc">|&gt;</span></span>
-<span id="cb5-5"><a></a>  <span class="fu">select</span>(country, density, <span class="fu">ends_with</span>(<span class="st">"gbp"</span>))</span>
-<span id="cb5-6"><a></a><span class="fu">head</span>(cafe_density)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div><div class="column">
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 4
-  country     density  hourly_wage_gbp price_gbp
-  &lt;chr&gt;       &lt;chr&gt;              &lt;dbl&gt;     &lt;dbl&gt;
-1 Denmark     urban              16.0      10.3 
-2 China       urban               3.29      9.44
-3 USA         suburban           13.2       8.89
-4 Switzerland rural              24.5       8.26
-5 Denmark     urban              16.0       7.45
-6 Singapore   urban              11.2       6.89</code></pre>
-</div>
-</div></div>
-</section>
-<section id="rural-vs.-urban-2" class="slide level2">
-<h2>Rural vs.&nbsp;Urban</h2>
-<div class="cell columns column-output-location">
-<div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-6"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-6-1"><a href="#annotated-cell-6-1"></a><span class="fu">ggplot</span>(</span>
-<span id="annotated-cell-6-2"><a href="#annotated-cell-6-2"></a>  cafe_density,</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="1">1</button><span id="annotated-cell-6-3" class="code-annotation-target"><a href="#annotated-cell-6-3"></a>  <span class="fu">aes</span>(<span class="at">x =</span> <span class="dv">1</span>,</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="2">2</button><span id="annotated-cell-6-4" class="code-annotation-target"><a href="#annotated-cell-6-4"></a>      <span class="at">fill =</span> density)</span>
-<span id="annotated-cell-6-5"><a href="#annotated-cell-6-5"></a>) <span class="sc">+</span> </span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="3">3</button><span id="annotated-cell-6-6" class="code-annotation-target"><a href="#annotated-cell-6-6"></a>  <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">"fill"</span>) <span class="sc">+</span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="4">4</button><span id="annotated-cell-6-7" class="code-annotation-target"><a href="#annotated-cell-6-7"></a>  <span class="fu">xlab</span>(<span class="st">""</span>) <span class="sc">+</span></span>
-<span id="annotated-cell-6-8"><a href="#annotated-cell-6-8"></a>  <span class="fu">ylab</span>(<span class="st">"Proportion"</span>) <span class="sc">+</span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="5">5</button><span id="annotated-cell-6-9" class="code-annotation-target"><a href="#annotated-cell-6-9"></a>  <span class="fu">theme</span>(</span>
-<span id="annotated-cell-6-10"><a href="#annotated-cell-6-10"></a>    <span class="at">axis.text.x =</span></span>
-<span id="annotated-cell-6-11"><a href="#annotated-cell-6-11"></a>      <span class="fu">element_blank</span>(),</span>
-<span id="annotated-cell-6-12"><a href="#annotated-cell-6-12"></a>    <span class="at">axis.ticks.x =</span></span>
-<span id="annotated-cell-6-13"><a href="#annotated-cell-6-13"></a>      <span class="fu">element_blank</span>())</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div><div class="column">
-<div class="cell-annotation">
-<dl class="code-annotation-container-hidden code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-6" data-target-annotation="1">1</dt>
-<dd>
-<span data-code-cell="annotated-cell-6" data-code-lines="3" data-code-annotation="1">put all columns in the same location</span>
-</dd>
-<dt data-target-cell="annotated-cell-6" data-target-annotation="2">2</dt>
-<dd>
-<span data-code-cell="annotated-cell-6" data-code-lines="4" data-code-annotation="2">color by density – urban, suburban, rural</span>
-</dd>
-<dt data-target-cell="annotated-cell-6" data-target-annotation="3">3</dt>
-<dd>
-<span data-code-cell="annotated-cell-6" data-code-lines="6" data-code-annotation="3">plot the bars on top of each other, then scale to 1 so that each bar is sized by the proportion of the data in that bar</span>
-</dd>
-<dt data-target-cell="annotated-cell-6" data-target-annotation="4">4</dt>
-<dd>
-<span data-code-cell="annotated-cell-6" data-code-lines="7,8" data-code-annotation="4">Set axis labels (or lack thereof for x)</span>
-</dd>
-<dt data-target-cell="annotated-cell-6" data-target-annotation="5">5</dt>
-<dd>
-<span data-code-cell="annotated-cell-6" data-code-lines="9,10,11,12,13" data-code-annotation="5">Remove x axis text and ticks because there is nothing on the x-axis.</span>
-</dd>
-</dl>
-</div>
-<div class="cell-output-display">
-<div>
-<figure>
-<p><a href="17-vis-dist-ex_files/figure-revealjs/unnamed-chunk-7-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img data-src="17-vis-dist-ex_files/figure-revealjs/unnamed-chunk-7-1.png" style="width:100.0%" alt="A stacked bar chart showing three categories: urban, suburban, and rural. Urban makes up nearly 70% of the observations, suburban makes up another 24% of the observations, and rural accounts for the remaining 6% of the observations. Some locations fall into two categories."></a></p>
-</figure>
-</div>
-</div>
-</div></div>
-</section>
-<section id="rural-vs.-urban-3" class="slide level2">
-<h2>Rural vs.&nbsp;Urban</h2>
-<div class="cell columns column-output-location">
-<div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-7"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-7-1"><a href="#annotated-cell-7-1"></a><span class="fu">ggplot</span>(</span>
-<span id="annotated-cell-7-2"><a href="#annotated-cell-7-2"></a>  cafe_density,</span>
-<span id="annotated-cell-7-3"><a href="#annotated-cell-7-3"></a>  <span class="fu">aes</span>(<span class="at">x =</span> <span class="dv">1</span>, <span class="at">fill =</span> density)) <span class="sc">+</span> </span>
-<span id="annotated-cell-7-4"><a href="#annotated-cell-7-4"></a>  <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">"fill"</span>) <span class="sc">+</span> </span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="1">1</button><span id="annotated-cell-7-5" class="code-annotation-target"><a href="#annotated-cell-7-5"></a>  <span class="fu">coord_polar</span>(<span class="at">theta =</span> <span class="st">"y"</span>) <span class="sc">+</span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="2">2</button><span id="annotated-cell-7-6" class="code-annotation-target"><a href="#annotated-cell-7-6"></a>  <span class="fu">theme</span>(</span>
-<span id="annotated-cell-7-7"><a href="#annotated-cell-7-7"></a>    <span class="at">axis.text =</span> <span class="fu">element_blank</span>(),</span>
-<span id="annotated-cell-7-8"><a href="#annotated-cell-7-8"></a>    <span class="at">axis.ticks =</span> <span class="fu">element_blank</span>(),</span>
-<span id="annotated-cell-7-9"><a href="#annotated-cell-7-9"></a>    <span class="at">axis.title =</span> <span class="fu">element_blank</span>())</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div><div class="column">
-<div class="cell-annotation">
-<dl class="code-annotation-container-hidden code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-7" data-target-annotation="1">1</dt>
-<dd>
-<span data-code-cell="annotated-cell-7" data-code-lines="5" data-code-annotation="1">Set coordinates to polar and specify which variable is <code>theta</code> (angle). This transforms a stacked bar chart into a pie chart.</span>
-</dd>
-<dt data-target-cell="annotated-cell-7" data-target-annotation="2">2</dt>
-<dd>
-<span data-code-cell="annotated-cell-7" data-code-lines="6,7,8,9" data-code-annotation="2">Remove axis ticks and text and labels entirely.</span>
-</dd>
-</dl>
-</div>
-<div class="cell-output-display">
-<div>
-<figure>
-<p><a href="17-vis-dist-ex_files/figure-revealjs/unnamed-chunk-8-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img data-src="17-vis-dist-ex_files/figure-revealjs/unnamed-chunk-8-1.png" style="width:100.0%" alt="A stacked bar chart showing three categories: urban, suburban, and rural. Urban makes up nearly 70% of the observations, suburban makes up another 24% of the observations, and rural accounts for the remaining 6% of the observations. Some locations fall into two categories. "></a></p>
-</figure>
-</div>
-</div>
-</div></div>
-</section>
-<section id="cost-of-cappuccino" class="slide level2">
-<h2>Cost of Cappuccino</h2>
-<p>The dataset standardizes on GBP (British pounds) as a unit.</p>
+<section id="ecdfs" class="slide level2">
+<h2>ECDFs</h2>
 <div class="cell">
 <div class="cell-output-display">
 <div>
 <figure>
-<p><a href="17-vis-dist-ex_files/figure-revealjs/unnamed-chunk-9-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img data-src="17-vis-dist-ex_files/figure-revealjs/unnamed-chunk-9-1.png" width="960"></a></p>
+<p><a href="17-vis-dist-ex_files/figure-revealjs/unnamed-chunk-3-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img data-src="17-vis-dist-ex_files/figure-revealjs/unnamed-chunk-3-1.png" alt="A set of three empirical CDFs drawn from 300 samples of a gamma(2, 2) distribution, a normal (9, 3) distribution, and a poisson(10) distribution. The gamma and normal eCDFs appear relatively smooth, while the poisson eCDF is jagged." width="864"></a></p>
 </figure>
 </div>
 </div>
 </div>
-<p><span class="fragment emph cerulean-dk">There tend to be fewer low-cost cappuccinos in urban areas, but not by much.</span></p>
+<ul>
+<li>Shows all of the data in the distribution</li>
+<li>Continuous variables will look relatively smooth for large enough <span class="math inline">\(n\)</span> (plots 1, 2)</li>
+<li>Discrete variables will have “steps” (plot 3)</li>
+<li>Hard to see the mean, variability, range</li>
+</ul>
 </section>
-<section id="cost-of-cappuccino-1" class="slide level2">
-<h2>Cost of Cappuccino</h2>
-<p>Let’s look at observations from the 3 countries with the most observations to see how pricing differs</p>
-<div class="cell columns column-output-location">
-<div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-8"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-8-1"><a href="#annotated-cell-8-1"></a>cafe <span class="sc">|&gt;</span></span>
-<span id="annotated-cell-8-2"><a href="#annotated-cell-8-2"></a>  <span class="fu">filter</span>(country <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"USA"</span>, <span class="st">"UK"</span>, <span class="st">"Australia"</span>)) <span class="sc">|&gt;</span></span>
-<span id="annotated-cell-8-3"><a href="#annotated-cell-8-3"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> price_gbp, <span class="at">fill =</span> country)) <span class="sc">+</span> </span>
-<span id="annotated-cell-8-4"><a href="#annotated-cell-8-4"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> .<span class="dv">2</span>) <span class="sc">+</span> </span>
-<span id="annotated-cell-8-5"><a href="#annotated-cell-8-5"></a>  <span class="fu">guides</span>(<span class="at">fill =</span> <span class="st">"none"</span>) <span class="sc">+</span> </span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="1">1</button><span id="annotated-cell-8-6" class="code-annotation-target"><a href="#annotated-cell-8-6"></a>  <span class="fu">facet_grid</span>(country<span class="sc">~</span>., <span class="at">scales =</span> <span class="st">"free_y"</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div><div class="column">
-<div class="cell-annotation">
-<dl class="code-annotation-container-hidden code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-8" data-target-annotation="1">1</dt>
-<dd>
-<span data-code-cell="annotated-cell-8" data-code-lines="6" data-code-annotation="1">Setting <code>scales = "free_y"</code> allows the y-axis scale to vary between the different countries, de-emphasizing the lower amount of data in Australia relative to the other two countries.</span>
-</dd>
-</dl>
-</div>
+<section id="histograms" class="slide level2">
+<h2>Histograms</h2>
+<div class="cell">
 <div class="cell-output-display">
 <div>
 <figure>
-<p><a href="17-vis-dist-ex_files/figure-revealjs/unnamed-chunk-10-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img data-src="17-vis-dist-ex_files/figure-revealjs/unnamed-chunk-10-1.png" alt="Three histograms showing the cost of a small cappuccino in Australia, the UK, and the USA. It is clear that coffee is cheaper in Australia relative to the other two countries." width="960"></a></p>
+<p><a href="17-vis-dist-ex_files/figure-revealjs/unnamed-chunk-4-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img data-src="17-vis-dist-ex_files/figure-revealjs/unnamed-chunk-4-1.png" alt="A set of three histograms drawn from 300 samples of a gamma(2, 2) distribution, a normal (9, 3) distribution, and a poisson(10) distribution. The mean, median, and mode of each distribution are marked with vertical lines and labels. The gamma distribution is skewed, with mode < median < mean. The normal distribution is roughly symmetric, with mode,  median, and mean approximately equal. The poisson distribution has odd gaps, and the mode is slightly lower than the mean and median, which are equal." width="864"></a></p>
 </figure>
 </div>
 </div>
+</div>
+<ul>
+<li>Easy to see distribution center and spread</li>
+<li>Sensitive to bin width/number of bins</li>
+</ul>
+</section>
+<section id="histograms-1" class="slide level2">
+<h2>Histograms</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><a href="17-vis-dist-ex_files/figure-revealjs/unnamed-chunk-5-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img data-src="17-vis-dist-ex_files/figure-revealjs/unnamed-chunk-5-1.png" alt="A set of three histograms drawn from 300 samples of a gamma(2, 2) distribution, a normal (9, 3) distribution, and a poisson(10) distribution. The mean, median, and mode of each distribution are marked with vertical lines and labels. The gamma distribution is skewed, with mode < median < mean. The normal distribution is roughly symmetric, with mode,  median, and mean approximately equal. The poisson distribution has gaps between integer values, and the mode is slightly lower than the mean and median, which are equal." width="864"></a></p>
+</figure>
+</div>
+</div>
+</div>
+<ul>
+<li>Easy to see distribution center and spread</li>
+<li>Sensitive to bin width/number of bins
+<ul>
+<li>Extra-sensitive if data are discrete or rounded</li>
+</ul></li>
+</ul>
+</section>
+<section id="density-plots" class="slide level2">
+<h2>Density Plots</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><a href="17-vis-dist-ex_files/figure-revealjs/unnamed-chunk-6-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img data-src="17-vis-dist-ex_files/figure-revealjs/unnamed-chunk-6-1.png" alt="A set of three density curves drawn from 300 samples of a gamma(2, 2) distribution, a normal (9, 3) distribution, and a poisson(10) distribution. The mean, median, and mode of each distribution are marked with vertical lines and labels. The gamma distribution is skewed, with mode < median < mean. The normal distribution is roughly symmetric, with mode,  median, and mean approximately equal. The poisson distribution has a mode which is slightly lower than the mean and median, which are equal." width="864"></a></p>
+</figure>
+</div>
+</div>
+</div>
+<ul>
+<li>Smoothed out version of a histogram</li>
+<li>Masks rounded/discrete variables</li>
+</ul>
+</section>
+<section id="density-plots-1" class="slide level2">
+<h2>Density Plots</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><a href="17-vis-dist-ex_files/figure-revealjs/unnamed-chunk-7-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img data-src="17-vis-dist-ex_files/figure-revealjs/unnamed-chunk-7-1.png" alt="A set of three density curves drawn from 300 samples of a gamma(2, 2) distribution, a normal (9, 3) distribution, and a poisson(10) distribution. The mean, median, and mode of each distribution are marked with vertical lines and labels. The gamma distribution is skewed, with mode < median < mean. The normal distribution is roughly symmetric, with mode,  median, and mean approximately equal. The poisson distribution has a mode which is slightly lower than the mean and median, which are equal." width="864"></a></p>
+</figure>
+</div>
+</div>
+</div>
+<ul>
+<li>Smoothed out version of a histogram</li>
+<li>Masks rounded/discrete variables</li>
+<li>With smaller bandwidth/adjustment, discrete variables look like zigzags.</li>
+<li>Adjust bandwidth using <code>geom_density(adjust=XXX)</code>
+<ul>
+<li>Try values of XXX of 0.5, 1.5 to start</li>
+</ul></li>
+</ul>
+</section>
+<section id="box-plots" class="slide level2">
+<h2>Box Plots</h2>
+<div class="columns">
+<div class="column">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><a href="17-vis-dist-ex_files/figure-revealjs/unnamed-chunk-8-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6"><img data-src="17-vis-dist-ex_files/figure-revealjs/unnamed-chunk-8-1.png" width="384"></a></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column">
+<ul>
+<li>Box:
+<ul>
+<li>lower: 25th percentile</li>
+<li>upper: 75th percentile</li>
+<li>middle: median, 50th percentile</li>
+</ul></li>
+<li>Whiskers:
+<ul>
+<li>smallest observation that is greater than or equal to (lower hinge - 1.5 * (upper - lower))</li>
+<li>largest observation that is less than or equal to (upper hinge + 1.5 * (upper - lower))</li>
+</ul></li>
+<li>Outliers: anything not covered by the whiskers are shown as individual points</li>
+</ul>
+</div></div>
+</section>
+<section id="violin-plots" class="slide level2">
+<h2>Violin Plots</h2>
+<div class="columns">
+<div class="column">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><a href="17-vis-dist-ex_files/figure-revealjs/unnamed-chunk-9-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7"><img data-src="17-vis-dist-ex_files/figure-revealjs/unnamed-chunk-9-1.png" width="384"></a></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column">
+<ul>
+<li>Density curve plotted vertically, then mirrored</li>
+<li>Often shown with a boxplot (or quantile lines) overlaid on top</li>
+</ul>
 </div></div>
 
 
-</section>
+</section></section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <p><img src="deps/usu-sq.png" alt="Utah State University Logo" class="slide-logo"></p>

@@ -1,6 +1,5 @@
 ---
 title: "1.17 Visualizing Distributions Example"
-subtitle: "Cappuccino Index"
 format: revealjs
 code-annotations: hover
 lightbox:  true
@@ -17,227 +16,226 @@ title-slide-attributes:
 library(tidyverse)
 ```
 
-## Introduction - The Cappuccino Index
+# Numeric Distributions
 
-James Hoffmann is a YouTuber who explores coffee from many different angles. In a recent [video](https://www.youtube.com/watch?v=WtlE3BW9Nqs) he explored how long a barista would need to work to pay for a small cappuccino.
-
-> Coffee, as a part of our economy, as an industry, is full of these awkward questions that I do think are worth asking.
-
-In the video, James presents the cappuccino index, which answers this at a country level. 
-
-There are some important caveats, such as tips being excluded.
-
-[Data Source & Description](https://github.com/rfordatascience/tidytuesday/blob/main/data/2026/2026-09-08/readme.md)
-
-
-## Data Dictionary - `cafe`
-
-|variable          |class     |description                           |
-|:-----------------|:---------|:-------------------------------------|
-|country           |character |The country of the cafe. |
-|city              |character |The city of the cafe. |
-|urban             |logical   |Whether the cafe is in an urban area. |
-|suburban          |logical   |Whether the cafe is in a suburban area. |
-|rural             |logical   |Whether the cafe is in a rural area. |
-|hourly_wage_gbp   |double    |The hourly wage of a barista working in the cafe, converted to British pounds. |
-|price_gbp         |double    |The price of a small cappuccino from the cafe, converted to British pounds. |
-|original_currency |character |The original currency used by the cafe. |
-|price             |double    |The price of a small cappuccino from the cafe, in the original currency. |
-|hourly_wage       |double    |The hourly wage of a barista working in the cafe, in the original currency. |
-
-
-## Data Dictionary - `cappuccino_index`
-
-
-|variable      |class     |description                           |
-|:-------------|:---------|:-------------------------------------|
-|country       |character |Name of country for which cappuccino index was calculated. |
-|index         |double    |The cappuccino index: the time in minutes a barista needs to work to afford a small cappuccino in their country. |
-|n             |integer   |Number of cafes that were included in the calculation of the index. |
-|minutes       |double    |The number of whole minutes in index. |
-|seconds       |double    |The remaining number of seconds in index. |
-|index_as_time |character |Index formatted as minutes and seconds, i.e., MM:SS. |
-
-## Read in the Data
-
+## ECDFs
 
 ```{r}
-#| echo: true
-cafe <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2026/2026-09-08/cafe.csv')
-cappuccino_index <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2026/2026-09-08/cappuccino_index.csv')
-
-# Replace non-breaking space with regular space
-cafe$country <- gsub("\u00a0", " ", cafe$country)
-cappuccino_index$country <- gsub("\u00a0", " ", cappuccino_index$country)
+library(tidyverse)
+theme_set(theme_bw())
+set.seed(20934382)
+sets <- bind_rows(
+    tibble(x = rgamma(300, shape = 2, scale = 2), set = 1, dist = "gamma"),
+    tibble(x = rnorm(300, 9, 3), set = 2, dist = "normal"),
+    tibble(x = rpois(300, 10), set = 3, dist = "poisson")
+  )
 ```
 
-## Participating Countries
+```{r}
+#| fig-width: 9
+#| fig-height: 3
+#| fig-alt: A set of three empirical CDFs drawn from 300 samples of a gamma(2, 2) distribution, a normal (9, 3) distribution, and a poisson(10) distribution. The gamma and normal eCDFs appear relatively smooth, while the poisson eCDF is jagged. 
+ggplot(sets, aes(x = x, group = dist)) + 
+  stat_ecdf(geom = "step") + 
+  facet_wrap(~set)
+```
+
+- Shows all of the data in the distribution
+- Continuous variables will look relatively smooth for large enough $n$ (plots 1, 2)
+- Discrete variables will have "steps" (plot 3)
+- Hard to see the mean, variability, range
+
+## Histograms
 
 ```{r}
-#| echo: true
-#| output-location: column
+#| fig-width: 9
+#| fig-height: 3
+#| fig-alt: A set of three histograms drawn from 300 samples of a gamma(2, 2) distribution, a normal (9, 3) distribution, and a poisson(10) distribution. The mean, median, and mode of each distribution are marked with vertical lines and labels. The gamma distribution is skewed, with mode < median < mean. The normal distribution is roughly symmetric, with mode,  median, and mean approximately equal. The poisson distribution has odd gaps, and the mode is slightly lower than the mean and median, which are equal.
+ 
+find_mode <- function(x) {
+  if (length(unique(x)) < length(x)) {
+    u <- unique(x)
+    tab <- tabulate(match(x, u))
+    u[tab == max(tab)][1]
+  } else {
+    dens <- density(x)
+    dens$x[which.max(dens$y)]
+  }
+}
 
-cafe_plot <- cafe |>
-  count(country) |> # <1>
-  mutate(
-    prop = n/sum(n), # <2>
-  ) |>
-  arrange(desc(prop)) |> # <3>
-  head(10) # <4> 
-cafe_plot <- bind_rows(
-  tibble(country = "Other", # <5>
-         n = 2594 - sum(cafe_plot$n),  # <5>
-         prop = 1-sum(cafe_plot$prop)), # <5>
-  cafe_plot
-) |>
-  mutate(country = factor(country, levels = country, 
-                          ordered = T)) # <6>
+set_summary <- sets |>
+  group_by(set, dist) |>
+  summarize(mean = mean(x), sd = sd(x), median = median(x), mode = find_mode(x), min = min(x), max = max(x), range = max-min) |>
+  pivot_longer(-c(1:2)) |>
+  mutate(y = case_when(name=="mean" ~ 65, name == "median" ~ 70, name == "mode" ~ 75, TRUE ~ NA))
+
+ggplot(sets, aes(x = x, group = dist)) + 
+  geom_histogram(boundary = 0, closed="left") + 
+  facet_wrap(~set) +
+  geom_segment(data = filter(set_summary, name %in% c("mean", "median", "mode")), aes(x = value, xend = value, y = 0, yend = y, color = name)) + 
+  geom_label(data = filter(set_summary, name %in% c("mean", "median", "mode")), aes(x = value, y = y, color = name, label = name)) + 
+  guides(color = 'none')
   
-cafe_plot
-```
-1.  `count(var)` is a shortcut for `group_by(var) |> summarize(n = n()) |> ungroup()` - it counts up the number of rows with each value of var.
-2.  Calculate the proportion from the number of observations with a specific value and total number of observations
-3.  Sort the dataset by `desc(prop)`
-4.  Take the top 10 rows -- there are too many countries to show
-5.  Create an "Other" row that includes everything else
-6.  Reorder the levels of country based on decreasing proportion
-
-## Participating Countries
-
-```{r}
-#| echo: true
-#| output-location: column
-#| fig-alt: "A bar chart showing number of cappuccino observations taken by country."
-#| fig-width: 6 
-#| fig-height: 6
-#| out-width: 100%
-ggplot(
-  cafe_plot,
-  aes( # <1>
-    x = country, # <1>
-    fill = country, # <1>
-    y = prop) # <1>
-) + 
-  geom_col() + # <2>
-  coord_flip() + # <3>
-  guides(fill = 'none') + # <4>
-  ylab("Proportion of Overall Observations") + # <5>
-  xlab("") # <5>
-```
-1.  Show country on the x-axis, fill by country as well, then show prop on the y-axis.
-2.  Create columns (rectangles)
-3.  Flip x and y so that labels are horizontal and more easily read
-4.  Remove the fill legend because it's equivalent to the x (now y) axis.
-5.  Set axis labels.
-
-## Rural vs. Urban
-
-Are the categories mutually exclusive?
-
-```{r}
-#| echo: true
-#| output-location: column
-cafe |>
-filter(
-  urban + rural + suburban > 1
-) |>
-  select(1:5)
 ```
 
-[Ok, well that's odd, but let's just work around it for now]{.fragment .emph .cerulean-dk}
+- Easy to see distribution center and spread
+- Sensitive to bin width/number of bins
 
-## Rural vs. Urban
-
-First, we have to rearrange the data so that density is a single variable.
+## Histograms
 
 ```{r}
-#| echo: true
-#| output-location: column
-cafe_density <- cafe |>
-  pivot_longer(c(3:5), 
-               names_to = "density") |>
-  filter(value) |>
-  select(country, density, ends_with("gbp"))
-head(cafe_density)
+#| fig-width: 9
+#| fig-height: 3
+#| fig-alt: A set of three histograms drawn from 300 samples of a gamma(2, 2) distribution, a normal (9, 3) distribution, and a poisson(10) distribution. The mean, median, and mode of each distribution are marked with vertical lines and labels. The gamma distribution is skewed, with mode < median < mean. The normal distribution is roughly symmetric, with mode,  median, and mean approximately equal. The poisson distribution has gaps between integer values, and the mode is slightly lower than the mean and median, which are equal.
+ 
+find_mode <- function(x) {
+  if (length(unique(x)) < length(x)) {
+    u <- unique(x)
+    tab <- tabulate(match(x, u))
+    u[tab == max(tab)][1]
+  } else {
+    dens <- density(x)
+    dens$x[which.max(dens$y)]
+  }
+}
+
+set_summary <- sets |>
+  group_by(set, dist) |>
+  summarize(mean = mean(x), sd = sd(x), median = median(x), mode = find_mode(x), min = min(x), max = max(x), range = max-min) |>
+  pivot_longer(-c(1:2)) |>
+  mutate(y = case_when(name=="mean" ~ 65, name == "median" ~ 70, name == "mode" ~ 75, TRUE ~ NA))
+
+ggplot(sets, aes(x = x, group = dist)) + 
+  geom_histogram(boundary = 0, closed="left", binwidth = .5) + 
+  facet_wrap(~set) +
+  geom_segment(data = filter(set_summary, name %in% c("mean", "median", "mode")), aes(x = value, xend = value, y = 0, yend = y, color = name)) + 
+  geom_label(data = filter(set_summary, name %in% c("mean", "median", "mode")), aes(x = value, y = y, color = name, label = name)) + 
+  guides(color = 'none')
+  
 ```
 
-## Rural vs. Urban
+- Easy to see distribution center and spread
+- Sensitive to bin width/number of bins
+  - Extra-sensitive if data are discrete or rounded
+
+## Density Plots
 
 ```{r}
-#| echo: true
-#| output-location: column
+#| fig-width: 9
+#| fig-height: 3
+#| fig-alt: A set of three density curves drawn from 300 samples of a gamma(2, 2) distribution, a normal (9, 3) distribution, and a poisson(10) distribution. The mean, median, and mode of each distribution are marked with vertical lines and labels. The gamma distribution is skewed, with mode < median < mean. The normal distribution is roughly symmetric, with mode,  median, and mean approximately equal. The poisson distribution has a mode which is slightly lower than the mean and median, which are equal.
+ 
+find_mode <- function(x) {
+  if (length(unique(x)) < length(x)) {
+    u <- unique(x)
+    tab <- tabulate(match(x, u))
+    u[tab == max(tab)][1]
+  } else {
+    dens <- density(x)
+    dens$x[which.max(dens$y)]
+  }
+}
+
+set_summary <- sets |>
+  group_by(set, dist) |>
+  summarize(mean = mean(x), sd = sd(x), median = median(x), mode = find_mode(x), min = min(x), max = max(x), range = max-min) |>
+  pivot_longer(-c(1:2)) |>
+  mutate(y = case_when(name=="mean" ~ .2, name == "median" ~ .22, name == "mode" ~ .24, TRUE ~ NA))
+
+ggplot(sets, aes(x = x, group = dist)) + 
+  geom_density() + 
+  facet_wrap(~set) +
+  geom_segment(data = filter(set_summary, name %in% c("mean", "median", "mode")), aes(x = value, xend = value, y = 0, yend = y, color = name)) + 
+  geom_label(data = filter(set_summary, name %in% c("mean", "median", "mode")), aes(x = value, y = y, color = name, label = name)) + 
+  guides(color = 'none')
+  
+```
+
+- Smoothed out version of a histogram
+- Masks rounded/discrete variables
+
+## Density Plots
+
+```{r}
+#| fig-width: 9
+#| fig-height: 3
+#| fig-alt: A set of three density curves drawn from 300 samples of a gamma(2, 2) distribution, a normal (9, 3) distribution, and a poisson(10) distribution. The mean, median, and mode of each distribution are marked with vertical lines and labels. The gamma distribution is skewed, with mode < median < mean. The normal distribution is roughly symmetric, with mode,  median, and mean approximately equal. The poisson distribution has a mode which is slightly lower than the mean and median, which are equal.
+ 
+find_mode <- function(x) {
+  if (length(unique(x)) < length(x)) {
+    u <- unique(x)
+    tab <- tabulate(match(x, u))
+    u[tab == max(tab)][1]
+  } else {
+    dens <- density(x)
+    dens$x[which.max(dens$y)]
+  }
+}
+
+set_summary <- sets |>
+  group_by(set, dist) |>
+  summarize(mean = mean(x), sd = sd(x), median = median(x), mode = find_mode(x), min = min(x), max = max(x), range = max-min) |>
+  pivot_longer(-c(1:2)) |>
+  mutate(y = case_when(name=="mean" ~ .2, name == "median" ~ .22, name == "mode" ~ .24, TRUE ~ NA))
+
+ggplot(sets, aes(x = x, group = dist)) + 
+  geom_density(adjust=.25) + 
+  facet_wrap(~set) +
+  geom_segment(data = filter(set_summary, name %in% c("mean", "median", "mode")), aes(x = value, xend = value, y = 0, yend = y, color = name)) + 
+  geom_label(data = filter(set_summary, name %in% c("mean", "median", "mode")), aes(x = value, y = y, color = name, label = name)) + 
+  guides(color = 'none')
+  
+```
+
+- Smoothed out version of a histogram
+- Masks rounded/discrete variables
+- With smaller bandwidth/adjustment, discrete variables look like zigzags.
+- Adjust bandwidth using `geom_density(adjust=XXX)`
+  - Try values of XXX of 0.5, 1.5 to start
+
+## Box Plots
+
+::::: columns
+::: column
+```{r}
 #| fig-width: 4
-#| fig-height: 5
-#| out-width: 100%
-#| fig-alt: "A stacked bar chart showing three categories: urban, suburban, and rural. Urban makes up nearly 70% of the observations, suburban makes up another 24% of the observations, and rural accounts for the remaining 6% of the observations. Some locations fall into two categories." 
-ggplot(
-  cafe_density,
-  aes(x = 1, # <1>
-      fill = density) # <2>
-) + 
-  geom_bar(position = "fill") + # <3>
-  xlab("") + # <4>
-  ylab("Proportion") + # <4>
-  theme(# <5>
-    axis.text.x = # <5>
-      element_blank(), # <5>
-    axis.ticks.x = # <5>
-      element_blank()) # <5>
+#| fig-height: 6
+
+ggplot(sets, aes(x = factor(set), y = x)) + 
+  geom_boxplot()
 ```
-1.  put all columns in the same location
-2.  color by density -- urban, suburban, rural
-3.  plot the bars on top of each other, then scale to 1 so that each bar is sized by the proportion of the data in that bar
-4.  Set axis labels (or lack thereof for x)
-5.  Remove x axis text and ticks because there is nothing on the x-axis.
+:::
 
-## Rural vs. Urban
+::: column
+- Box:
+  - lower: 25th percentile
+  - upper: 75th percentile
+  - middle: median, 50th percentile
+- Whiskers:
+  - smallest observation that is greater than or equal to (lower hinge - 1.5 \* (upper - lower))
+  - largest observation that is less than or equal to (upper hinge + 1.5 \* (upper - lower))
+- Outliers: anything not covered by the whiskers are shown as individual points
+:::
+:::::
 
+## Violin Plots
+
+::::: columns
+::: column
 ```{r}
-#| echo: true
-#| output-location: column
-#| fig-width: 5
-#| fig-height: 4
-#| out-width: 100%
-#| fig-alt: "A stacked bar chart showing three categories: urban, suburban, and rural. Urban makes up nearly 70% of the observations, suburban makes up another 24% of the observations, and rural accounts for the remaining 6% of the observations. Some locations fall into two categories. "
-ggplot(
-  cafe_density,
-  aes(x = 1, fill = density)) + 
-  geom_bar(position = "fill") + 
-  coord_polar(theta = "y") + # <1>
-  theme(# <2>
-    axis.text = element_blank(), # <2>
-    axis.ticks = element_blank(), # <2>
-    axis.title = element_blank()) # <2>
+#| fig-width: 4
+#| fig-height: 6
+
+ggplot(sets, aes(x = factor(set), y = x, fill = factor(set))) + 
+  geom_violin() + 
+  geom_boxplot(width=.2, fill = "white") + 
+  guides(fill = "none")
 ```
-1.  Set coordinates to polar and specify which variable is `theta` (angle). This transforms a stacked bar chart into a pie chart.
-2.  Remove axis ticks and text and labels entirely.
+:::
 
-## Cost of Cappuccino
-
-The dataset standardizes on GBP (British pounds) as a unit.
-
-```{r}
-cafe_density |>
-  ggplot(aes(x = price_gbp, color = density)) +
-  geom_density()
-```
-
-[There tend to be fewer low-cost cappuccinos in urban areas, but not by much.]{.fragment .emph .cerulean-dk}
-
-## Cost of Cappuccino
-Let's look at observations from the 3 countries with the most observations to see how pricing differs
-
-```{r}
-#| echo: true
-#| output-location: column
-#| fig-alt: Three histograms showing the cost of a small cappuccino in Australia, the UK, and the USA. It is clear that coffee is cheaper in Australia relative to the other two countries.
-
-cafe |>
-  filter(country %in% c("USA", "UK", "Australia")) |>
-  ggplot(aes(x = price_gbp, fill = country)) + 
-  geom_histogram(binwidth = .2) + 
-  guides(fill = "none") + 
-  facet_grid(country~., scales = "free_y") # <1>
-```
-1. Setting `scales = "free_y"` allows the y-axis scale to vary between the different countries, de-emphasizing the lower amount of data in Australia relative to the other two countries.
+::: column
+- Density curve plotted vertically, then mirrored
+- Often shown with a boxplot (or quantile lines) overlaid on top
+:::
+:::::
 

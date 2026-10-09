@@ -1,52 +1,136 @@
 [
   {
+    "objectID": "slides/17-vis-dist.html#the-cappuccino-index",
+    "href": "slides/17-vis-dist.html#the-cappuccino-index",
+    "title": "1.17 Visualizing Data Distributions",
+    "section": "The Cappuccino Index",
+    "text": "The Cappuccino Index\nJames Hoffmann is a YouTuber who explores coffee from many different angles. In a recent video he explored how long a barista would need to work to pay for a small cappuccino.\n\nCoffee, as a part of our economy, as an industry, is full of these awkward questions that I do think are worth asking.\n\nIn the video, James presents the cappuccino index, which answers this at a country level.\nThere are some important caveats, such as tips being excluded.\nData Source & Description"
+  },
+  {
+    "objectID": "slides/17-vis-dist.html#data-dictionary---cafe",
+    "href": "slides/17-vis-dist.html#data-dictionary---cafe",
+    "title": "1.17 Visualizing Data Distributions",
+    "section": "Data Dictionary - cafe",
+    "text": "Data Dictionary - cafe\n\n\n\n\n\n\n\n\nvariable\nclass\ndescription\n\n\n\n\ncountry\ncharacter\nThe country of the cafe.\n\n\ncity\ncharacter\nThe city of the cafe.\n\n\nurban\nlogical\nWhether the cafe is in an urban area.\n\n\nsuburban\nlogical\nWhether the cafe is in a suburban area.\n\n\nrural\nlogical\nWhether the cafe is in a rural area.\n\n\nhourly_wage_gbp\ndouble\nThe hourly wage of a barista working in the cafe, converted to British pounds.\n\n\nprice_gbp\ndouble\nThe price of a small cappuccino from the cafe, converted to British pounds.\n\n\noriginal_currency\ncharacter\nThe original currency used by the cafe.\n\n\nprice\ndouble\nThe price of a small cappuccino from the cafe, in the original currency.\n\n\nhourly_wage\ndouble\nThe hourly wage of a barista working in the cafe, in the original currency."
+  },
+  {
+    "objectID": "slides/17-vis-dist.html#data-dictionary---cappuccino_index",
+    "href": "slides/17-vis-dist.html#data-dictionary---cappuccino_index",
+    "title": "1.17 Visualizing Data Distributions",
+    "section": "Data Dictionary - cappuccino_index",
+    "text": "Data Dictionary - cappuccino_index\n\n\n\n\n\n\n\n\nvariable\nclass\ndescription\n\n\n\n\ncountry\ncharacter\nName of country for which cappuccino index was calculated.\n\n\nindex\ndouble\nThe cappuccino index: the time in minutes a barista needs to work to afford a small cappuccino in their country.\n\n\nn\ninteger\nNumber of cafes that were included in the calculation of the index.\n\n\nminutes\ndouble\nThe number of whole minutes in index.\n\n\nseconds\ndouble\nThe remaining number of seconds in index.\n\n\nindex_as_time\ncharacter\nIndex formatted as minutes and seconds, i.e., MM:SS."
+  },
+  {
+    "objectID": "slides/17-vis-dist.html#read-in-the-data",
+    "href": "slides/17-vis-dist.html#read-in-the-data",
+    "title": "1.17 Visualizing Data Distributions",
+    "section": "Read in the Data",
+    "text": "Read in the Data\n\ncafe &lt;- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2026/2026-09-08/cafe.csv')\ncappuccino_index &lt;- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2026/2026-09-08/cappuccino_index.csv')\n\n\n1cafe$country &lt;- gsub(\"\\u00a0\", \" \", cafe$country)\ncappuccino_index$country &lt;- gsub(\"\\u00a0\", \" \", cappuccino_index$country)\n\n\n1\n\nReplace non-breaking spaces with regular spaces"
+  },
+  {
+    "objectID": "slides/17-vis-dist.html#participating-countries",
+    "href": "slides/17-vis-dist.html#participating-countries",
+    "title": "1.17 Visualizing Data Distributions",
+    "section": "Participating Countries",
+    "text": "Participating Countries\n\ncafe_plot &lt;- cafe |&gt;\n1  count(country) |&gt;\n2  mutate(prop = n/sum(n)) |&gt;\n3  arrange(desc(prop)) |&gt;\n4  head(10)\ncafe_plot &lt;- bind_rows(\n5  tibble(country = \"Other\",\n         n = 2594 - sum(cafe_plot$n),\n         prop = 1-sum(cafe_plot$prop)),\n  cafe_plot) |&gt;\n6  mutate(country = factor(country, levels = country, ordered = T))\n  \nhead(cafe_plot)\n\n\n1\n\ncount(var) is a shortcut for group_by(var) |&gt; summarize(n = n()) |&gt; ungroup() - it counts up the number of rows with each value of var.\n\n2\n\nCalculate the proportion from the number of observations with a specific value and total number of observations\n\n3\n\nSort the dataset by desc(prop)\n\n4\n\nTake the top 10 rows – there are too many countries to show\n\n5\n\nCreate an “Other” row that includes everything else\n\n6\n\nReorder the levels of country based on decreasing proportion\n\n\n\n\n# A tibble: 6 × 3\n  country       n   prop\n  &lt;ord&gt;     &lt;dbl&gt;  &lt;dbl&gt;\n1 Other       610 0.235 \n2 USA         600 0.231 \n3 UK          595 0.229 \n4 Australia   171 0.0659\n5 Germany     167 0.0644\n6 Canada      130 0.0501"
+  },
+  {
+    "objectID": "slides/17-vis-dist.html#participating-countries-1",
+    "href": "slides/17-vis-dist.html#participating-countries-1",
+    "title": "1.17 Visualizing Data Distributions",
+    "section": "Participating Countries",
+    "text": "Participating Countries\n\n\nggplot(cafe_plot,\n1       aes(x = country,\n           fill = country,\n           y = prop)) +\n2  geom_col() +\n3  coord_flip() +\n4  guides(fill = 'none') +\n5  ylab(\"Proportion of Observations\") +\n  xlab(\"\") +\n6  ggtitle(\"Cappuccino Index Data by Country\")\n\n\n\n1\n\nShow country on the x-axis, fill by country as well, then show prop on the y-axis.\n\n2\n\nCreate columns (rectangles)\n\n3\n\nFlip x and y so that labels are horizontal and more easily read\n\n4\n\nRemove the fill legend because it’s equivalent to the x (now y) axis.\n\n5\n\nSet axis labels\n\n6\n\nSet plot title."
+  },
+  {
+    "objectID": "slides/17-vis-dist.html#rural-vs.-urban",
+    "href": "slides/17-vis-dist.html#rural-vs.-urban",
+    "title": "1.17 Visualizing Data Distributions",
+    "section": "Rural vs. Urban",
+    "text": "Rural vs. Urban\nAre the categories mutually exclusive?\n\ncafe |&gt;\nfilter(\n  urban + rural + suburban &gt; 1\n) |&gt;\n  select(1:5)\n\n# A tibble: 63 × 5\n   country     city       urban suburban rural\n   &lt;chr&gt;       &lt;chr&gt;      &lt;lgl&gt; &lt;lgl&gt;    &lt;lgl&gt;\n 1 Switzerland Aarau      TRUE  TRUE     FALSE\n 2 Norway      Bergen     TRUE  TRUE     FALSE\n 3 Netherlands Rotterdam  TRUE  TRUE     FALSE\n 4 USA         Branson    TRUE  TRUE     FALSE\n 5 UK          Falmouth   FALSE TRUE     TRUE \n 6 USA         Merced, CA TRUE  FALSE    TRUE \n 7 USA         Boston     TRUE  TRUE     FALSE\n 8 UK          Leeds      TRUE  TRUE     FALSE\n 9 UK          Cardiff    TRUE  TRUE     FALSE\n10 USA         Normal, IL TRUE  TRUE     FALSE\n# ℹ 53 more rows\n\n\nOk, well that’s odd, but let’s just work around it for now"
+  },
+  {
+    "objectID": "slides/17-vis-dist.html#rural-vs.-urban-1",
+    "href": "slides/17-vis-dist.html#rural-vs.-urban-1",
+    "title": "1.17 Visualizing Data Distributions",
+    "section": "Rural vs. Urban",
+    "text": "Rural vs. Urban\nFirst, we have to rearrange the data so that density is a single variable.\n\ncafe_density &lt;- cafe |&gt;\n  pivot_longer(c(3:5), \n               names_to = \"density\") |&gt;\n  filter(value) |&gt;\n  select(country, density, ends_with(\"gbp\"))\ncafe_density\n\n# A tibble: 2,659 × 4\n   country      density  hourly_wage_gbp price_gbp\n   &lt;chr&gt;        &lt;chr&gt;              &lt;dbl&gt;     &lt;dbl&gt;\n 1 Denmark      urban              16.0      10.3 \n 2 China        urban               3.29      9.44\n 3 USA          suburban           13.2       8.89\n 4 Switzerland  rural              24.5       8.26\n 5 Denmark      urban              16.0       7.45\n 6 Singapore    urban              11.2       6.89\n 7 France       urban              12.8       6.85\n 8 Switzerland  suburban           21.1       6.24\n 9 Saudi Arabia urban               4.16      6.33\n10 Denmark      urban              21.7       6.3 \n# ℹ 2,649 more rows"
+  },
+  {
+    "objectID": "slides/17-vis-dist.html#stacked-bar-chart-rural-vs.-urban",
+    "href": "slides/17-vis-dist.html#stacked-bar-chart-rural-vs.-urban",
+    "title": "1.17 Visualizing Data Distributions",
+    "section": "Stacked Bar Chart: Rural vs. Urban",
+    "text": "Stacked Bar Chart: Rural vs. Urban\n\nggplot(cafe_density,\n1       aes(x = 1,\n2           fill = density)) +\n3  geom_bar(position = \"fill\") +\n4  xlab(\"\") + ylab(\"Proportion\") +\n5  coord_flip() +\n6  theme(axis.text.y = element_blank(),\n        axis.ticks.y = element_blank())\n\n\n1\n\nput all columns in the same location\n\n2\n\ncolor by density – urban, suburban, rural\n\n3\n\nplot the bars on top of each other, then scale to 1 so that each bar is sized by the proportion of the data in that bar\n\n4\n\nSet axis labels (or lack thereof for x)\n\n5\n\nFlip the axes (so that the plot fits on the slide – not actually necessary)\n\n6\n\nRemove x axis text and ticks because there is nothing on the x-axis."
+  },
+  {
+    "objectID": "slides/17-vis-dist.html#pie-chart-rural-vs.-urban",
+    "href": "slides/17-vis-dist.html#pie-chart-rural-vs.-urban",
+    "title": "1.17 Visualizing Data Distributions",
+    "section": "Pie Chart: Rural vs. Urban",
+    "text": "Pie Chart: Rural vs. Urban\n\n\nggplot(cafe_density,\n       aes(x = 1, \n           fill = density)) + \n  geom_bar(position = \"fill\") + \n1  coord_polar(theta = \"y\") +\n2  theme_void()\n\n\n\n1\n\nSet coordinates to polar and specify which variable is theta (angle). This transforms a stacked bar chart into a pie chart.\n\n2\n\nRemove grid, axis text, etc."
+  },
+  {
+    "objectID": "slides/17-vis-dist.html#data-wrangling",
+    "href": "slides/17-vis-dist.html#data-wrangling",
+    "title": "1.17 Visualizing Data Distributions",
+    "section": "Data Wrangling",
+    "text": "Data Wrangling\n\ncafe_english &lt;- cafe |&gt;\n1  filter(country %in% c(\"Australia\", \"USA\", \"UK\"))\n\ncafe_summary &lt;- cafe_english |&gt;\n  group_by(country) |&gt;\n2  summarize(mean = mean(price_gbp), median = median(price_gbp)) |&gt;\n3  pivot_longer(-country, names_to=\"summary\") |&gt;\n  mutate(summary = factor(summary))\n\n\n1\n\nGet only the UK, US, and Australia\n\n2\n\nSummarize price_gbp, getting the median and mean\n\n3\n\nPivot longer, so that we have long-form data with the summary name as the column name. This makes plotting easier."
+  },
+  {
     "objectID": "slides/17-vis-dist.html#ecdfs",
     "href": "slides/17-vis-dist.html#ecdfs",
     "title": "1.17 Visualizing Data Distributions",
     "section": "ECDFs",
-    "text": "ECDFs\n\n\n\n\n\n\n\n\n\n\nShows all of the data in the distribution\nContinuous variables will look relatively smooth for large enough \\(n\\) (plots 1, 2)\nDiscrete variables will have “steps” (plot 3)\nHard to see the mean, variability, range"
+    "text": "ECDFs\n\n\n\n\n\n\n\n\n\n\nShows all of the data in the distribution\nContinuous variables will look relatively smooth for large enough \\(n\\)\nDiscrete variables will have “steps”\nHard to see the mean, variability, range"
+  },
+  {
+    "objectID": "slides/17-vis-dist.html#histograms---cost-of-cappuccino",
+    "href": "slides/17-vis-dist.html#histograms---cost-of-cappuccino",
+    "title": "1.17 Visualizing Data Distributions",
+    "section": "Histograms - Cost of Cappuccino",
+    "text": "Histograms - Cost of Cappuccino\n\n\ncafe |&gt;\n  filter(country %in% c(\"USA\", \"UK\", \"Australia\")) |&gt;\n  ggplot(aes(x = price_gbp, fill = country)) + \n  geom_histogram(binwidth = .2) + \n  guides(fill = \"none\") + \n1  facet_grid(country~., scales = \"free_y\")\n\n\n\n1\n\nSetting scales = \"free_y\" allows the y-axis scale to vary between the different countries, de-emphasizing the lower amount of data in Australia relative to the other two countries."
   },
   {
     "objectID": "slides/17-vis-dist.html#histograms",
     "href": "slides/17-vis-dist.html#histograms",
     "title": "1.17 Visualizing Data Distributions",
     "section": "Histograms",
-    "text": "Histograms\n\n\n\n\n\n\n\n\n\n\nEasy to see distribution center and spread\nSensitive to bin width/number of bins"
+    "text": "Histograms\n\n\nggplot(cafe_english, \n       aes(x = price_gbp, \n           fill = country)) + \n  geom_histogram(boundary = 0, closed=\"left\") +\n  geom_segment(\n    data = cafe_summary,\n    aes(x = value, xend = value,\n        y = 0, yend = Inf,\n        linetype = summary), \n    color = \"black\") +\n  facet_grid(country~., scales = \"free_y\") +\n  guides(fill = 'none')\n\n\n\n\n\n\n\n\n\n\nEasy to see distribution center and spread\nSensitive to bin width/number of bins"
   },
   {
     "objectID": "slides/17-vis-dist.html#histograms-1",
     "href": "slides/17-vis-dist.html#histograms-1",
     "title": "1.17 Visualizing Data Distributions",
     "section": "Histograms",
-    "text": "Histograms\n\n\n\n\n\n\n\n\n\n\nEasy to see distribution center and spread\nSensitive to bin width/number of bins\n\nExtra-sensitive if data are discrete or rounded"
+    "text": "Histograms\n\n\nggplot(cafe_english, \n       aes(x = price_gbp, \n           fill = country)) + \n  geom_histogram(boundary = 0, closed=\"left\", binwidth = 0.05) + \n  geom_segment(\n    data = cafe_summary,\n    aes(x = value, xend = value,\n        y = 0, yend = Inf,\n        linetype = summary), color = \"black\") +\n  facet_grid(country~., scales = \"free_y\") +\n  guides(fill = 'none')\n\n\n\n\n\n\n\n\n\n\nEasy to see distribution center and spread\nSensitive to bin width/number of bins\n\nExtra-sensitive if data are discrete or rounded"
   },
   {
     "objectID": "slides/17-vis-dist.html#density-plots",
     "href": "slides/17-vis-dist.html#density-plots",
     "title": "1.17 Visualizing Data Distributions",
     "section": "Density Plots",
-    "text": "Density Plots\n\n\n\n\n\n\n\n\n\n\nSmoothed out version of a histogram\nMasks rounded/discrete variables"
+    "text": "Density Plots\n\n\nggplot(cafe_english, \n       aes(x = price_gbp, \n           color = country)) + \n  geom_density(adjust = 2) \n\n\n\n\n\n\n\n\n\n\nSmoothed out version of a histogram\nMasks rounded/discrete variables"
   },
   {
     "objectID": "slides/17-vis-dist.html#density-plots-1",
     "href": "slides/17-vis-dist.html#density-plots-1",
     "title": "1.17 Visualizing Data Distributions",
     "section": "Density Plots",
-    "text": "Density Plots\n\n\n\n\n\n\n\n\n\n\nSmoothed out version of a histogram\nMasks rounded/discrete variables\nWith smaller bandwidth/adjustment, discrete variables look like zigzags.\nAdjust bandwidth using geom_density(adjust=XXX)\n\nTry values of XXX of 0.5, 1.5 to start"
+    "text": "Density Plots\n\n\nggplot(cafe_english, \n       aes(x = price_gbp, \n           color = country)) + \n  geom_density(adjust = .5) \n\n\n\n\n\n\n\n\n\n\nSmoothed out version of a histogram\nMasks rounded/discrete variables\nWith smaller bandwidth/adjustment, discrete variables look like zigzags.\nAdjust bandwidth using geom_density(adjust=XXX)\n\nTry values of XXX of 0.5, 1.5 to start"
   },
   {
     "objectID": "slides/17-vis-dist.html#box-plots",
     "href": "slides/17-vis-dist.html#box-plots",
     "title": "1.17 Visualizing Data Distributions",
     "section": "Box Plots",
-    "text": "Box Plots\n\n\n\n\n\n\n\n\n\n\n\n\n\nBox:\n\nlower: 25th percentile\nupper: 75th percentile\nmiddle: median, 50th percentile\n\nWhiskers:\n\nsmallest observation that is greater than or equal to (lower hinge - 1.5 * (upper - lower))\nlargest observation that is less than or equal to (upper hinge + 1.5 * (upper - lower))\n\nOutliers: anything not covered by the whiskers are shown as individual points"
+    "text": "Box Plots\n\n\n\nggplot(cafe_english, \n       aes(x = country, \n           y = price_gbp)) + \n  geom_boxplot()\n\n\n\n\n\n\n\n\n\n\nBox:\n\nlower: 25th percentile\nupper: 75th percentile\nmiddle: median, 50th percentile\n\nWhiskers:\n\nsmallest observation that is greater than or equal to (lower hinge - 1.5 * (upper - lower))\nlargest observation that is less than or equal to (upper hinge + 1.5 * (upper - lower))\n\nOutliers: anything not covered by the whiskers are shown as individual points"
   },
   {
     "objectID": "slides/17-vis-dist.html#violin-plots",
     "href": "slides/17-vis-dist.html#violin-plots",
     "title": "1.17 Visualizing Data Distributions",
     "section": "Violin Plots",
-    "text": "Violin Plots\n\n\n\n\n\n\n\n\n\n\n\n\n\nDensity curve plotted vertically, then mirrored\nOften shown with a boxplot (or quantile lines) overlaid on top"
+    "text": "Violin Plots\n\n\nggplot(\n  cafe_english, \n  aes(x = country, \n      y = price_gbp, \n      fill = country)) + \n  geom_violin(adjust = 0.75) + \n  geom_boxplot(\n    width=.1, \n    fill = \"white\",\n    outliers = FALSE) + \n  guides(fill = \"none\")\n\n\n\n\n\n\n\n\n\n\nDensity curve plotted vertically, then mirrored\nOften shown with a boxplot (or quantile lines) overlaid on top"
   },
   {
     "objectID": "slides/16-dates-times.html#physical-phenomena",
@@ -3269,87 +3353,52 @@
     "text": "Example: Gas Prices\nAnd at the end, we get a nice reward!\n\nggplot(gas_prices, aes(x = Date, y = Price.per.gallon)) + geom_line()"
   },
   {
-    "objectID": "slides/17-vis-dist-ex.html#introduction---the-cappuccino-index",
-    "href": "slides/17-vis-dist-ex.html#introduction---the-cappuccino-index",
+    "objectID": "slides/17-vis-dist-ex.html#ecdfs",
+    "href": "slides/17-vis-dist-ex.html#ecdfs",
     "title": "1.17 Visualizing Distributions Example",
-    "section": "Introduction - The Cappuccino Index",
-    "text": "Introduction - The Cappuccino Index\nJames Hoffmann is a YouTuber who explores coffee from many different angles. In a recent video he explored how long a barista would need to work to pay for a small cappuccino.\n\nCoffee, as a part of our economy, as an industry, is full of these awkward questions that I do think are worth asking.\n\nIn the video, James presents the cappuccino index, which answers this at a country level.\nThere are some important caveats, such as tips being excluded.\nData Source & Description"
+    "section": "ECDFs",
+    "text": "ECDFs\n\n\n\n\n\n\n\n\n\n\nShows all of the data in the distribution\nContinuous variables will look relatively smooth for large enough \\(n\\) (plots 1, 2)\nDiscrete variables will have “steps” (plot 3)\nHard to see the mean, variability, range"
   },
   {
-    "objectID": "slides/17-vis-dist-ex.html#data-dictionary---cafe",
-    "href": "slides/17-vis-dist-ex.html#data-dictionary---cafe",
+    "objectID": "slides/17-vis-dist-ex.html#histograms",
+    "href": "slides/17-vis-dist-ex.html#histograms",
     "title": "1.17 Visualizing Distributions Example",
-    "section": "Data Dictionary - cafe",
-    "text": "Data Dictionary - cafe\n\n\n\n\n\n\n\n\nvariable\nclass\ndescription\n\n\n\n\ncountry\ncharacter\nThe country of the cafe.\n\n\ncity\ncharacter\nThe city of the cafe.\n\n\nurban\nlogical\nWhether the cafe is in an urban area.\n\n\nsuburban\nlogical\nWhether the cafe is in a suburban area.\n\n\nrural\nlogical\nWhether the cafe is in a rural area.\n\n\nhourly_wage_gbp\ndouble\nThe hourly wage of a barista working in the cafe, converted to British pounds.\n\n\nprice_gbp\ndouble\nThe price of a small cappuccino from the cafe, converted to British pounds.\n\n\noriginal_currency\ncharacter\nThe original currency used by the cafe.\n\n\nprice\ndouble\nThe price of a small cappuccino from the cafe, in the original currency.\n\n\nhourly_wage\ndouble\nThe hourly wage of a barista working in the cafe, in the original currency."
+    "section": "Histograms",
+    "text": "Histograms\n\n\n\n\n\n\n\n\n\n\nEasy to see distribution center and spread\nSensitive to bin width/number of bins"
   },
   {
-    "objectID": "slides/17-vis-dist-ex.html#data-dictionary---cappuccino_index",
-    "href": "slides/17-vis-dist-ex.html#data-dictionary---cappuccino_index",
+    "objectID": "slides/17-vis-dist-ex.html#histograms-1",
+    "href": "slides/17-vis-dist-ex.html#histograms-1",
     "title": "1.17 Visualizing Distributions Example",
-    "section": "Data Dictionary - cappuccino_index",
-    "text": "Data Dictionary - cappuccino_index\n\n\n\n\n\n\n\n\nvariable\nclass\ndescription\n\n\n\n\ncountry\ncharacter\nName of country for which cappuccino index was calculated.\n\n\nindex\ndouble\nThe cappuccino index: the time in minutes a barista needs to work to afford a small cappuccino in their country.\n\n\nn\ninteger\nNumber of cafes that were included in the calculation of the index.\n\n\nminutes\ndouble\nThe number of whole minutes in index.\n\n\nseconds\ndouble\nThe remaining number of seconds in index.\n\n\nindex_as_time\ncharacter\nIndex formatted as minutes and seconds, i.e., MM:SS."
+    "section": "Histograms",
+    "text": "Histograms\n\n\n\n\n\n\n\n\n\n\nEasy to see distribution center and spread\nSensitive to bin width/number of bins\n\nExtra-sensitive if data are discrete or rounded"
   },
   {
-    "objectID": "slides/17-vis-dist-ex.html#read-in-the-data",
-    "href": "slides/17-vis-dist-ex.html#read-in-the-data",
+    "objectID": "slides/17-vis-dist-ex.html#density-plots",
+    "href": "slides/17-vis-dist-ex.html#density-plots",
     "title": "1.17 Visualizing Distributions Example",
-    "section": "Read in the Data",
-    "text": "Read in the Data\n\ncafe &lt;- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2026/2026-09-08/cafe.csv')\ncappuccino_index &lt;- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2026/2026-09-08/cappuccino_index.csv')\n\n# Replace non-breaking space with regular space\ncafe$country &lt;- gsub(\"\\u00a0\", \" \", cafe$country)\ncappuccino_index$country &lt;- gsub(\"\\u00a0\", \" \", cappuccino_index$country)"
+    "section": "Density Plots",
+    "text": "Density Plots\n\n\n\n\n\n\n\n\n\n\nSmoothed out version of a histogram\nMasks rounded/discrete variables"
   },
   {
-    "objectID": "slides/17-vis-dist-ex.html#participating-countries",
-    "href": "slides/17-vis-dist-ex.html#participating-countries",
+    "objectID": "slides/17-vis-dist-ex.html#density-plots-1",
+    "href": "slides/17-vis-dist-ex.html#density-plots-1",
     "title": "1.17 Visualizing Distributions Example",
-    "section": "Participating Countries",
-    "text": "Participating Countries\n\n\ncafe_plot &lt;- cafe |&gt;\n1  count(country) |&gt;\n  mutate(\n2    prop = n/sum(n),\n  ) |&gt;\n3  arrange(desc(prop)) |&gt;\n4  head(10)\ncafe_plot &lt;- bind_rows(\n5  tibble(country = \"Other\",\n         n = 2594 - sum(cafe_plot$n),\n         prop = 1-sum(cafe_plot$prop)),\n  cafe_plot\n) |&gt;\n  mutate(country = factor(country, levels = country, \n6                          ordered = T))\n  \ncafe_plot\n\n\n\n1\n\ncount(var) is a shortcut for group_by(var) |&gt; summarize(n = n()) |&gt; ungroup() - it counts up the number of rows with each value of var.\n\n2\n\nCalculate the proportion from the number of observations with a specific value and total number of observations\n\n3\n\nSort the dataset by desc(prop)\n\n4\n\nTake the top 10 rows – there are too many countries to show\n\n5\n\nCreate an “Other” row that includes everything else\n\n6\n\nReorder the levels of country based on decreasing proportion\n\n\n\n\n# A tibble: 11 × 3\n   country         n   prop\n   &lt;ord&gt;       &lt;dbl&gt;  &lt;dbl&gt;\n 1 Other         610 0.235 \n 2 USA           600 0.231 \n 3 UK            595 0.229 \n 4 Australia     171 0.0659\n 5 Germany       167 0.0644\n 6 Canada        130 0.0501\n 7 Poland        100 0.0386\n 8 Netherlands    73 0.0281\n 9 Czechia        67 0.0258\n10 Ireland        45 0.0173\n11 Denmark        36 0.0139"
+    "section": "Density Plots",
+    "text": "Density Plots\n\n\n\n\n\n\n\n\n\n\nSmoothed out version of a histogram\nMasks rounded/discrete variables\nWith smaller bandwidth/adjustment, discrete variables look like zigzags.\nAdjust bandwidth using geom_density(adjust=XXX)\n\nTry values of XXX of 0.5, 1.5 to start"
   },
   {
-    "objectID": "slides/17-vis-dist-ex.html#participating-countries-1",
-    "href": "slides/17-vis-dist-ex.html#participating-countries-1",
+    "objectID": "slides/17-vis-dist-ex.html#box-plots",
+    "href": "slides/17-vis-dist-ex.html#box-plots",
     "title": "1.17 Visualizing Distributions Example",
-    "section": "Participating Countries",
-    "text": "Participating Countries\n\n\nggplot(\n  cafe_plot,\n1  aes(\n    x = country,\n    fill = country,\n    y = prop)\n) + \n2  geom_col() +\n3  coord_flip() +\n4  guides(fill = 'none') +\n5  ylab(\"Proportion of Overall Observations\") +\n  xlab(\"\")\n\n\n\n1\n\nShow country on the x-axis, fill by country as well, then show prop on the y-axis.\n\n2\n\nCreate columns (rectangles)\n\n3\n\nFlip x and y so that labels are horizontal and more easily read\n\n4\n\nRemove the fill legend because it’s equivalent to the x (now y) axis.\n\n5\n\nSet axis labels."
+    "section": "Box Plots",
+    "text": "Box Plots\n\n\n\n\n\n\n\n\n\n\n\n\n\nBox:\n\nlower: 25th percentile\nupper: 75th percentile\nmiddle: median, 50th percentile\n\nWhiskers:\n\nsmallest observation that is greater than or equal to (lower hinge - 1.5 * (upper - lower))\nlargest observation that is less than or equal to (upper hinge + 1.5 * (upper - lower))\n\nOutliers: anything not covered by the whiskers are shown as individual points"
   },
   {
-    "objectID": "slides/17-vis-dist-ex.html#rural-vs.-urban",
-    "href": "slides/17-vis-dist-ex.html#rural-vs.-urban",
+    "objectID": "slides/17-vis-dist-ex.html#violin-plots",
+    "href": "slides/17-vis-dist-ex.html#violin-plots",
     "title": "1.17 Visualizing Distributions Example",
-    "section": "Rural vs. Urban",
-    "text": "Rural vs. Urban\nAre the categories mutually exclusive?\n\n\ncafe |&gt;\nfilter(\n  urban + rural + suburban &gt; 1\n) |&gt;\n  select(1:5)\n\n\n# A tibble: 63 × 5\n   country     city       urban suburban rural\n   &lt;chr&gt;       &lt;chr&gt;      &lt;lgl&gt; &lt;lgl&gt;    &lt;lgl&gt;\n 1 Switzerland Aarau      TRUE  TRUE     FALSE\n 2 Norway      Bergen     TRUE  TRUE     FALSE\n 3 Netherlands Rotterdam  TRUE  TRUE     FALSE\n 4 USA         Branson    TRUE  TRUE     FALSE\n 5 UK          Falmouth   FALSE TRUE     TRUE \n 6 USA         Merced, CA TRUE  FALSE    TRUE \n 7 USA         Boston     TRUE  TRUE     FALSE\n 8 UK          Leeds      TRUE  TRUE     FALSE\n 9 UK          Cardiff    TRUE  TRUE     FALSE\n10 USA         Normal, IL TRUE  TRUE     FALSE\n# ℹ 53 more rows\n\n\nOk, well that’s odd, but let’s just work around it for now"
-  },
-  {
-    "objectID": "slides/17-vis-dist-ex.html#rural-vs.-urban-1",
-    "href": "slides/17-vis-dist-ex.html#rural-vs.-urban-1",
-    "title": "1.17 Visualizing Distributions Example",
-    "section": "Rural vs. Urban",
-    "text": "Rural vs. Urban\nFirst, we have to rearrange the data so that density is a single variable.\n\n\ncafe_density &lt;- cafe |&gt;\n  pivot_longer(c(3:5), \n               names_to = \"density\") |&gt;\n  filter(value) |&gt;\n  select(country, density, ends_with(\"gbp\"))\nhead(cafe_density)\n\n\n# A tibble: 6 × 4\n  country     density  hourly_wage_gbp price_gbp\n  &lt;chr&gt;       &lt;chr&gt;              &lt;dbl&gt;     &lt;dbl&gt;\n1 Denmark     urban              16.0      10.3 \n2 China       urban               3.29      9.44\n3 USA         suburban           13.2       8.89\n4 Switzerland rural              24.5       8.26\n5 Denmark     urban              16.0       7.45\n6 Singapore   urban              11.2       6.89"
-  },
-  {
-    "objectID": "slides/17-vis-dist-ex.html#rural-vs.-urban-2",
-    "href": "slides/17-vis-dist-ex.html#rural-vs.-urban-2",
-    "title": "1.17 Visualizing Distributions Example",
-    "section": "Rural vs. Urban",
-    "text": "Rural vs. Urban\n\n\nggplot(\n  cafe_density,\n1  aes(x = 1,\n2      fill = density)\n) + \n3  geom_bar(position = \"fill\") +\n4  xlab(\"\") +\n  ylab(\"Proportion\") +\n5  theme(\n    axis.text.x =\n      element_blank(),\n    axis.ticks.x =\n      element_blank())\n\n\n\n1\n\nput all columns in the same location\n\n2\n\ncolor by density – urban, suburban, rural\n\n3\n\nplot the bars on top of each other, then scale to 1 so that each bar is sized by the proportion of the data in that bar\n\n4\n\nSet axis labels (or lack thereof for x)\n\n5\n\nRemove x axis text and ticks because there is nothing on the x-axis."
-  },
-  {
-    "objectID": "slides/17-vis-dist-ex.html#rural-vs.-urban-3",
-    "href": "slides/17-vis-dist-ex.html#rural-vs.-urban-3",
-    "title": "1.17 Visualizing Distributions Example",
-    "section": "Rural vs. Urban",
-    "text": "Rural vs. Urban\n\n\nggplot(\n  cafe_density,\n  aes(x = 1, fill = density)) + \n  geom_bar(position = \"fill\") + \n1  coord_polar(theta = \"y\") +\n2  theme(\n    axis.text = element_blank(),\n    axis.ticks = element_blank(),\n    axis.title = element_blank())\n\n\n\n1\n\nSet coordinates to polar and specify which variable is theta (angle). This transforms a stacked bar chart into a pie chart.\n\n2\n\nRemove axis ticks and text and labels entirely."
-  },
-  {
-    "objectID": "slides/17-vis-dist-ex.html#cost-of-cappuccino",
-    "href": "slides/17-vis-dist-ex.html#cost-of-cappuccino",
-    "title": "1.17 Visualizing Distributions Example",
-    "section": "Cost of Cappuccino",
-    "text": "Cost of Cappuccino\nThe dataset standardizes on GBP (British pounds) as a unit.\n\n\n\n\n\n\n\n\n\nThere tend to be fewer low-cost cappuccinos in urban areas, but not by much."
-  },
-  {
-    "objectID": "slides/17-vis-dist-ex.html#cost-of-cappuccino-1",
-    "href": "slides/17-vis-dist-ex.html#cost-of-cappuccino-1",
-    "title": "1.17 Visualizing Distributions Example",
-    "section": "Cost of Cappuccino",
-    "text": "Cost of Cappuccino\nLet’s look at observations from the 3 countries with the most observations to see how pricing differs\n\n\ncafe |&gt;\n  filter(country %in% c(\"USA\", \"UK\", \"Australia\")) |&gt;\n  ggplot(aes(x = price_gbp, fill = country)) + \n  geom_histogram(binwidth = .2) + \n  guides(fill = \"none\") + \n1  facet_grid(country~., scales = \"free_y\")\n\n\n\n1\n\nSetting scales = \"free_y\" allows the y-axis scale to vary between the different countries, de-emphasizing the lower amount of data in Australia relative to the other two countries."
+    "section": "Violin Plots",
+    "text": "Violin Plots\n\n\n\n\n\n\n\n\n\n\n\n\n\nDensity curve plotted vertically, then mirrored\nOften shown with a boxplot (or quantile lines) overlaid on top"
   }
 ]
