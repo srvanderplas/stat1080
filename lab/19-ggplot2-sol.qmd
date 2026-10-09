@@ -8,18 +8,52 @@ execute:
   message: false
 ---
 
-This assignment is intended to give you experience using `ggplot2` as well as developing an understanding of quantiles in numeric data. For this assignment, we will be using the `mpg_hawkes` dataset available in the `stat1080r` package. Recall from the homework assignments that this package is installed using the command `install.packages("stat1080r", repos = "https://beanb2.r-universe.dev")`. Remember that you only need to install this package once per semester. However, you still need to use `library(stat1080r)` each time you start R and want to use it. Do not try to run the following block of code until the `stat1080r` package has been installed. 
+This assignment is intended to give you experience using `ggplot2` as well as developing an understanding of quantiles in numeric data.
+For this assignment, we will be using the `mpg_hawkes` dataset available in the `stat1080r` package. 
+
+::: {.callout-note collapse=true}
+# Setup: `stat1080r`
+
+You only need to install this package once per semester, using `install.packages("stat1080r", repos = "https://beanb2.r-universe.dev")`. 
+However, you still need to use `library(stat1080r)` each time you start R. 
+The block of code below will check that `stat1080r` is installed, and if not, it will install it before loading the library. 
+It will also check that essential packages within the tidyverse are installed, and if not, will install those packages.
 
 ```{r}
-library(tidyverse)
+#| echo: false
+#| include: false
+#| label: setup
+if(!"stat1080r" %in% installed.packages()) {
+  install.packages("stat1080r", repos = "https://beanb2.r-universe.dev")
+}
+if(!"dplyr" %in% installed.packages()) {
+  install.packages("dplyr")
+}
+if(!"tidyr" %in% installed.packages()) {
+  install.packages("tidyr")
+}
+if(!"ggplot2" %in% installed.packages()) {
+  install.packages("ggplot2")
+}
+library(dplyr)
+library(tidyr)
+library(ggplot2)
 library(stat1080r)
 ```
+:::
 
 This assignment will focus on the `mpg_hawkes` dataset. For more information about the variables in `mpg_hawkes`, please use the `?mpg_hawkes` command in the console. Note that the dataset will only be available to use after running `library(stat1080r)` in your R session.  
 
-The following code takes `mpg_hawkes` and creates two new variables. The first variable (`decade`) is a factor based on the decade the vehicle was made. The second variable (`v_class_2`) is a factor based on the vehicle type, after using "regular expressions" to group some smaller categories into larger groups. **Note that you must run this provided code in order to answer the rest of the questions in this assignment.**
+The following code takes `mpg_hawkes` and creates two new variables. 
+The first variable, `decade`, is a **factor** variable that provides the decade the vehicle was made. 
+The second variable, `v_class_2`, is a **factor** variable that provides the vehicle type. 
+I have used *regular expressions* to group some smaller categories into larger groups. 
+**Note that you must run this provided code in order to answer the rest of the questions in this assignment.**
 
 ```{r}
+#| echo: false
+#| include: false
+#| label: setup2
 mpg_hawkes <- mpg_hawkes |> 
   mutate(decade = case_when(year >= 1980 & year < 1990 ~ "1980s",
                             year >= 1990 & year < 2000 ~ "1990s",
@@ -34,7 +68,7 @@ mpg_hawkes <- mpg_hawkes |>
   )
 ```
 
-# Problem
+# Problem: Types of Variables
 
 The following code considers a subset of the variables in `mpg_hawkes`
 
@@ -47,9 +81,9 @@ head(mpg_select)
 
 Of these four variables, which are "quantitative" and which are "categorical" (i.e., "qualitative"), **please provide your answer to this question in the associated Canvas quiz.**
 
-*`city` and `year` are quantitative variables because they are numbers that can be ordered, while `fuelType` and `trans` are categorical variables.*
+> *`city` and `year` are quantitative variables because they are numbers that can be ordered, while `fuelType` and `trans` are categorical variables.*
 
-# Problem 
+# Problem: Calculating Quantiles
 
 The following code uses the `quantile` function to determine the 90th percentile of city miles per gallon (mpg). This is the mpg quantity for which 90 percent of the 38,000+ vehicles in our dataset have city mpg ratings less than or equal to this value. 
 
@@ -71,15 +105,22 @@ q90_highway <- mpg_hawkes |>
 q90_highway
 ```
 
-# Problem 
+# Problem: Variable Interpretation
 
 **Discuss briefly (2 min or less) with a partner** Based on what you know about vehicles, why do you think that the highway mpg are larger than city mpg? 
 
-*Vehicles traveling in the city have to stop and accelerate constantly, which is not very efficient. Vehicles on the highway are able to travel more efficiently because they are able to maintain high speeds without having to stop.*
+> *Vehicles traveling in the city have to stop and accelerate constantly, which is not very efficient. Vehicles on the highway are able to travel more efficiently because they are able to maintain high speeds without having to stop.*
 
-# Problem 
+# Problem: City and Highway Mileage
 
-Create a plot that compares city (x-axis) vs highway (y-axis) mileage for "Cars" (as defined in the `v_class_2` variable) from the 1980s. This will require you to first subset the rows of the data and then use `ggplot2` to visualize. The provided code will create the "line of equality" (i.e., the line where x = y) which will help us to visualize how different city and highway mileage are for vehicles in this decade. Points above the line are vehicles for which highway mpg > city mpg, points below are vehicles for which city mpg > highway mpg.
+Create a plot that compares city (x-axis) vs highway (y-axis) mileage for "Cars" (as defined in the `v_class_2` variable) from the 1980s.
+
+HINT: This will require a filter statement with two logical conditions. 
+
+This will require you to first subset the rows of the data and then use `ggplot2` to visualize. 
+The provided code will create the "line of equality" (i.e., the line where x = y) which will help us to visualize how different city and highway mileage are for vehicles in this decade. 
+Points above the line are vehicles for which highway mpg > city mpg, points below are vehicles for which city mpg > highway mpg.
+
 
 ```{r}
 mpg_hawkes |>
@@ -89,29 +130,48 @@ mpg_hawkes |>
   geom_abline(slope = 1, intercept = 0, lty = 2)
 ```
 
-# Problem 
+# Problem: Plot Modifications
 
 The following code makes the following adaptations to the visual you created in the previous problem. 
 
-- Plot vehicles across all decades, rather than just the 1980s, coloring each point based on the decade that the vehicle was produced. 
-- Use the `geom_jitter()` geometry to randomly move the points slightly up/down and left/right to help with "overplotting", which is where we have two observations that have exactly the same x and y coordinates. 
+- Plot vehicles across all decades, rather than just the 1980s, coloring each point based on the decade that the vehicle was produced.     
+HINT: Remember that the `floor()` function rounds down to the nearest whole number. Can you use that, division, and multiplication to make a decade variable? You may want to take the numeric decade (say you've called it `decade`) and use `decade = factor(decade, ordered = T)` to convert it to a factor so that `ggplot2` interprets it as a categorical variable. 
+- Use the `geom_jitter()` geometry to randomly move the points slightly up/down and left/right to help with "overplotting" (multiple observations that have exactly the same x and y coordinates and are plotted on top of each other). 
 - Use the `alpha` argument to make the points semi-transparent, which will further aid with the overplotting issue in the graph with so many observations. 
 - Fit a "linear model" to the points to find the "line of best fit" between city and highway mileage and add it to the plot. This is the solid line. 
 - Provide the "line of equality" as in the previous plot. This is the dashed line. 
 
+
 ```{r}
 mpg_cars <- mpg_hawkes |>
-  filter(v_class_2 == "Cars") 
-
-mpg_lm <- lm(highway ~ city, data = mpg_cars)
+  filter(v_class_2 == "Cars")
 
 ggplot(mpg_cars, aes(x = city, y = highway, color = decade)) +
   geom_jitter(alpha = 0.5) + 
   geom_abline(intercept = 0, slope = 1, lty = 2) + # line of equality
-  geom_abline(intercept = mpg_lm$coefficients[1], # line of regression
-              slope = mpg_lm$coefficients[2])
+  geom_smooth(aes(x = city, y = highway),
+              inherit.aes = F, method = "lm", 
+              color = "black") + # regression line
+  coord_fixed()
 ```
 
-Notice in this plot that there is a lot of purple points that fall well below the line of best fit, which means that the highway mileage was less than expected based on their city mileage. **Discuss briefly (2 min or less) with a partner** what might cause modern vehicles to have much higher city mileage (as compared to highway mileage) than vehicles from previous decades. 
+Another way to do this is to explicitly fit the linear regression (this allows you to actually see what the equation is and/or examine how well it fits), and then plot the regression line directly. 
 
-*Hybrid vehicles, which are a modern invention, use batteries to store power from braking and use it to drastically improve city mileage, which "breaks" the relationship we saw between city and highway mileage in previous decades.*
+```{r}
+mpg_lm <- lm(highway ~ city, data = mpg_cars)
+summary(mpg_lm)
+```
+
+```{r}
+ggplot(mpg_cars, aes(x = city, y = highway, color = decade)) +
+  geom_jitter(alpha = 0.5) +
+  geom_abline(intercept = 0, slope = 1, lty = 2) + # line of equality
+  geom_abline(intercept = mpg_lm$coefficients[1], # line of regression
+              slope = mpg_lm$coefficients[2]) + 
+  coord_fixed()
+```
+
+Notice in these plots that there are a lot of purple points that fall well below the line of best fit, which means that the highway mileage was less than expected based on their city mileage. **Discuss briefly (2 min or less) with a partner** what might cause modern vehicles to have much higher city mileage (as compared to highway mileage) than vehicles from previous decades. 
+
+
+> *Hybrid vehicles, which are a modern invention, use batteries to store power from braking and use it to drastically improve city mileage, which "breaks" the relationship we saw between city and highway mileage in previous decades.*

@@ -113,7 +113,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <meta property="og:title" content="2.2.a - Class Activity – STAT 1080 - Fall 2026">
 <meta property="og:description" content="Homepage for STAT 1080 - Data and the Stories They Tell.">
-<meta property="og:image" content="https://srvanderplas.github.io/stat1080/lab/19-ggplot2-sol_files/figure-html/unnamed-chunk-6-1.png">
+<meta property="og:image" content="https://srvanderplas.github.io/stat1080/lab/19-ggplot2-sol_files/figure-html/unnamed-chunk-4-1.png">
 <meta property="og:site_name" content="STAT 1080 - Fall 2026">
 <meta property="og:image:height" content="960">
 <meta property="og:image:width" content="1344">
@@ -408,11 +408,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#problem" id="toc-problem" class="nav-link active" data-scroll-target="#problem"><span class="header-section-number">1</span> Problem</a></li>
-  <li><a href="#problem-1" id="toc-problem-1" class="nav-link" data-scroll-target="#problem-1"><span class="header-section-number">2</span> Problem</a></li>
-  <li><a href="#problem-2" id="toc-problem-2" class="nav-link" data-scroll-target="#problem-2"><span class="header-section-number">3</span> Problem</a></li>
-  <li><a href="#problem-3" id="toc-problem-3" class="nav-link" data-scroll-target="#problem-3"><span class="header-section-number">4</span> Problem</a></li>
-  <li><a href="#problem-4" id="toc-problem-4" class="nav-link" data-scroll-target="#problem-4"><span class="header-section-number">5</span> Problem</a></li>
+  <li><a href="#problem-types-of-variables" id="toc-problem-types-of-variables" class="nav-link active" data-scroll-target="#problem-types-of-variables"><span class="header-section-number">1</span> Problem: Types of Variables</a></li>
+  <li><a href="#problem-calculating-quantiles" id="toc-problem-calculating-quantiles" class="nav-link" data-scroll-target="#problem-calculating-quantiles"><span class="header-section-number">2</span> Problem: Calculating Quantiles</a></li>
+  <li><a href="#problem-variable-interpretation" id="toc-problem-variable-interpretation" class="nav-link" data-scroll-target="#problem-variable-interpretation"><span class="header-section-number">3</span> Problem: Variable Interpretation</a></li>
+  <li><a href="#problem-city-and-highway-mileage" id="toc-problem-city-and-highway-mileage" class="nav-link" data-scroll-target="#problem-city-and-highway-mileage"><span class="header-section-number">4</span> Problem: City and Highway Mileage</a></li>
+  <li><a href="#problem-plot-modifications" id="toc-problem-plot-modifications" class="nav-link" data-scroll-target="#problem-plot-modifications"><span class="header-section-number">5</span> Problem: Plot Modifications</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://srvanderplas.github.io/stat1080/issues/new" class="toc-action"><i class="bi bi-git"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -439,35 +439,33 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>This assignment is intended to give you experience using <code>ggplot2</code> as well as developing an understanding of quantiles in numeric data. For this assignment, we will be using the <code>mpg_hawkes</code> dataset available in the <code>stat1080r</code> package. Recall from the homework assignments that this package is installed using the command <code>install.packages("stat1080r", repos = "https://beanb2.r-universe.dev")</code>. Remember that you only need to install this package once per semester. However, you still need to use <code>library(stat1080r)</code> each time you start R and want to use it. Do not try to run the following block of code until the <code>stat1080r</code> package has been installed.</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stat1080r)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>This assignment is intended to give you experience using <code>ggplot2</code> as well as developing an understanding of quantiles in numeric data. For this assignment, we will be using the <code>mpg_hawkes</code> dataset available in the <code>stat1080r</code> package.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Setup: <code>stat1080r</code>
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>You only need to install this package once per semester, using <code>install.packages("stat1080r", repos = "https://beanb2.r-universe.dev")</code>. However, you still need to use <code>library(stat1080r)</code> each time you start R. The block of code below will check that <code>stat1080r</code> is installed, and if not, it will install it before loading the library. It will also check that essential packages within the tidyverse are installed, and if not, will install those packages.</p>
+</div>
+</div>
 </div>
 <p>This assignment will focus on the <code>mpg_hawkes</code> dataset. For more information about the variables in <code>mpg_hawkes</code>, please use the <code>?mpg_hawkes</code> command in the console. Note that the dataset will only be available to use after running <code>library(stat1080r)</code> in your R session.</p>
-<p>The following code takes <code>mpg_hawkes</code> and creates two new variables. The first variable (<code>decade</code>) is a factor based on the decade the vehicle was made. The second variable (<code>v_class_2</code>) is a factor based on the vehicle type, after using “regular expressions” to group some smaller categories into larger groups. <strong>Note that you must run this provided code in order to answer the rest of the questions in this assignment.</strong></p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>mpg_hawkes <span class="ot">&lt;-</span> mpg_hawkes <span class="sc">|&gt;</span> </span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">decade =</span> <span class="fu">case_when</span>(year <span class="sc">&gt;=</span> <span class="dv">1980</span> <span class="sc">&amp;</span> year <span class="sc">&lt;</span> <span class="dv">1990</span> <span class="sc">~</span> <span class="st">"1980s"</span>,</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>                            year <span class="sc">&gt;=</span> <span class="dv">1990</span> <span class="sc">&amp;</span> year <span class="sc">&lt;</span> <span class="dv">2000</span> <span class="sc">~</span> <span class="st">"1990s"</span>,</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>                            year <span class="sc">&gt;=</span> <span class="dv">2000</span> <span class="sc">&amp;</span> year <span class="sc">&lt;</span> <span class="dv">2010</span> <span class="sc">~</span> <span class="st">"2000s"</span>,</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>                            year <span class="sc">&gt;=</span> <span class="dv">2010</span> <span class="sc">&amp;</span> year <span class="sc">&lt;</span> <span class="dv">2020</span> <span class="sc">~</span> <span class="st">"2010s"</span>),</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">v_class_2 =</span> <span class="fu">case_when</span>(<span class="fu">regexpr</span>(<span class="st">"Cars"</span>, VClass) <span class="sc">&gt;</span> <span class="dv">0</span> <span class="sc">~</span> <span class="st">"Cars"</span>,</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>                               <span class="fu">regexpr</span>(<span class="st">"Two Seaters"</span>, VClass) <span class="sc">&gt;</span> <span class="dv">0</span> <span class="sc">~</span> <span class="st">"Cars"</span>,</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>                               <span class="fu">regexpr</span>(<span class="st">"Utility"</span>, VClass) <span class="sc">&gt;</span> <span class="dv">0</span> <span class="sc">~</span> <span class="st">"SUV/Van"</span>,</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>                               <span class="fu">regexpr</span>(<span class="st">"[Vv]an"</span>, VClass) <span class="sc">&gt;</span> <span class="dv">0</span> <span class="sc">~</span> <span class="st">"SUV/Van"</span>,</span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>                               <span class="fu">regexpr</span>(<span class="st">"Truck"</span>, VClass) <span class="sc">&gt;</span> <span class="dv">0</span> <span class="sc">~</span> <span class="st">"Trucks"</span>,</span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>                               <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">"Other"</span>)</span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<section id="problem" class="level1" data-number="1">
-<h1 data-number="1"><span class="header-section-number">1</span> Problem</h1>
+<p>The following code takes <code>mpg_hawkes</code> and creates two new variables. The first variable, <code>decade</code>, is a <strong>factor</strong> variable that provides the decade the vehicle was made. The second variable, <code>v_class_2</code>, is a <strong>factor</strong> variable that provides the vehicle type. I have used <em>regular expressions</em> to group some smaller categories into larger groups. <strong>Note that you must run this provided code in order to answer the rest of the questions in this assignment.</strong></p>
+<section id="problem-types-of-variables" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Problem: Types of Variables</h1>
 <p>The following code considers a subset of the variables in <code>mpg_hawkes</code></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>mpg_select <span class="ot">&lt;-</span> mpg_hawkes <span class="sc">|&gt;</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(city, fuelType, trans, year)</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(mpg_select)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>mpg_select <span class="ot">&lt;-</span> mpg_hawkes <span class="sc">|&gt;</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(city, fuelType, trans, year)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(mpg_select)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 4
    city fuelType trans            year
@@ -481,17 +479,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Of these four variables, which are “quantitative” and which are “categorical” (i.e., “qualitative”), <strong>please provide your answer to this question in the associated Canvas quiz.</strong></p>
+<blockquote class="blockquote">
 <p><em><code>city</code> and <code>year</code> are quantitative variables because they are numbers that can be ordered, while <code>fuelType</code> and <code>trans</code> are categorical variables.</em></p>
+</blockquote>
 </section>
-<section id="problem-1" class="level1" data-number="2">
-<h1 data-number="2"><span class="header-section-number">2</span> Problem</h1>
+<section id="problem-calculating-quantiles" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Problem: Calculating Quantiles</h1>
 <p>The following code uses the <code>quantile</code> function to determine the 90th percentile of city miles per gallon (mpg). This is the mpg quantity for which 90 percent of the 38,000+ vehicles in our dataset have city mpg ratings less than or equal to this value.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>q90_city <span class="ot">&lt;-</span> mpg_hawkes <span class="sc">|&gt;</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(city) <span class="sc">|&gt;</span> <span class="co"># extract the city column as a vector</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">quantile</span>(<span class="fl">0.9</span>) <span class="co"># extract the 90th percentile of the city column vector</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>q90_city</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>q90_city <span class="ot">&lt;-</span> mpg_hawkes <span class="sc">|&gt;</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(city) <span class="sc">|&gt;</span> <span class="co"># extract the city column as a vector</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">quantile</span>(<span class="fl">0.9</span>) <span class="co"># extract the 90th percentile of the city column vector</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>q90_city</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>90% 
  24 </code></pre>
@@ -499,61 +499,106 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>Using the above code as reference, find the 90th percentile <strong>highway</strong> mpg rating for the vehicles in our dataset <strong>and then note this amount in your Canvas quiz</strong>.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>q90_highway <span class="ot">&lt;-</span> mpg_hawkes <span class="sc">|&gt;</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(highway) <span class="sc">|&gt;</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">quantile</span>(<span class="fl">0.9</span>)</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>q90_highway</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>q90_highway <span class="ot">&lt;-</span> mpg_hawkes <span class="sc">|&gt;</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(highway) <span class="sc">|&gt;</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">quantile</span>(<span class="fl">0.9</span>)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>q90_highway</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>90% 
  31 </code></pre>
 </div>
 </div>
 </section>
-<section id="problem-2" class="level1" data-number="3">
-<h1 data-number="3"><span class="header-section-number">3</span> Problem</h1>
+<section id="problem-variable-interpretation" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Problem: Variable Interpretation</h1>
 <p><strong>Discuss briefly (2 min or less) with a partner</strong> Based on what you know about vehicles, why do you think that the highway mpg are larger than city mpg?</p>
+<blockquote class="blockquote">
 <p><em>Vehicles traveling in the city have to stop and accelerate constantly, which is not very efficient. Vehicles on the highway are able to travel more efficiently because they are able to maintain high speeds without having to stop.</em></p>
+</blockquote>
 </section>
-<section id="problem-3" class="level1" data-number="4">
-<h1 data-number="4"><span class="header-section-number">4</span> Problem</h1>
-<p>Create a plot that compares city (x-axis) vs highway (y-axis) mileage for “Cars” (as defined in the <code>v_class_2</code> variable) from the 1980s. This will require you to first subset the rows of the data and then use <code>ggplot2</code> to visualize. The provided code will create the “line of equality” (i.e., the line where x = y) which will help us to visualize how different city and highway mileage are for vehicles in this decade. Points above the line are vehicles for which highway mpg &gt; city mpg, points below are vehicles for which city mpg &gt; highway mpg.</p>
+<section id="problem-city-and-highway-mileage" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Problem: City and Highway Mileage</h1>
+<p>Create a plot that compares city (x-axis) vs highway (y-axis) mileage for “Cars” (as defined in the <code>v_class_2</code> variable) from the 1980s.</p>
+<p>HINT: This will require a filter statement with two logical conditions.</p>
+<p>This will require you to first subset the rows of the data and then use <code>ggplot2</code> to visualize. The provided code will create the “line of equality” (i.e., the line where x = y) which will help us to visualize how different city and highway mileage are for vehicles in this decade. Points above the line are vehicles for which highway mpg &gt; city mpg, points below are vehicles for which city mpg &gt; highway mpg.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>mpg_hawkes <span class="sc">|&gt;</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(v_class_2 <span class="sc">==</span> <span class="st">"Cars"</span> <span class="sc">&amp;</span> decade <span class="sc">==</span> <span class="st">"1980s"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> city, <span class="at">y =</span> highway)) <span class="sc">+</span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_abline</span>(<span class="at">slope =</span> <span class="dv">1</span>, <span class="at">intercept =</span> <span class="dv">0</span>, <span class="at">lty =</span> <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>mpg_hawkes <span class="sc">|&gt;</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(v_class_2 <span class="sc">==</span> <span class="st">"Cars"</span> <span class="sc">&amp;</span> decade <span class="sc">==</span> <span class="st">"1980s"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> city, <span class="at">y =</span> highway)) <span class="sc">+</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_abline</span>(<span class="at">slope =</span> <span class="dv">1</span>, <span class="at">intercept =</span> <span class="dv">0</span>, <span class="at">lty =</span> <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="19-ggplot2-sol_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="19-ggplot2-sol_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
 </section>
-<section id="problem-4" class="level1" data-number="5">
-<h1 data-number="5"><span class="header-section-number">5</span> Problem</h1>
+<section id="problem-plot-modifications" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Problem: Plot Modifications</h1>
 <p>The following code makes the following adaptations to the visual you created in the previous problem.</p>
 <ul>
-<li>Plot vehicles across all decades, rather than just the 1980s, coloring each point based on the decade that the vehicle was produced.</li>
-<li>Use the <code>geom_jitter()</code> geometry to randomly move the points slightly up/down and left/right to help with “overplotting”, which is where we have two observations that have exactly the same x and y coordinates.</li>
+<li>Plot vehicles across all decades, rather than just the 1980s, coloring each point based on the decade that the vehicle was produced.<br>
+HINT: Remember that the <code>floor()</code> function rounds down to the nearest whole number. Can you use that, division, and multiplication to make a decade variable? You may want to take the numeric decade (say you’ve called it <code>decade</code>) and use <code>decade = factor(decade, ordered = T)</code> to convert it to a factor so that <code>ggplot2</code> interprets it as a categorical variable.</li>
+<li>Use the <code>geom_jitter()</code> geometry to randomly move the points slightly up/down and left/right to help with “overplotting” (multiple observations that have exactly the same x and y coordinates and are plotted on top of each other).</li>
 <li>Use the <code>alpha</code> argument to make the points semi-transparent, which will further aid with the overplotting issue in the graph with so many observations.</li>
 <li>Fit a “linear model” to the points to find the “line of best fit” between city and highway mileage and add it to the plot. This is the solid line.</li>
 <li>Provide the “line of equality” as in the previous plot. This is the dashed line.</li>
 </ul>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>mpg_cars <span class="ot">&lt;-</span> mpg_hawkes <span class="sc">|&gt;</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(v_class_2 <span class="sc">==</span> <span class="st">"Cars"</span>) </span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>mpg_lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(highway <span class="sc">~</span> city, <span class="at">data =</span> mpg_cars)</span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mpg_cars, <span class="fu">aes</span>(<span class="at">x =</span> city, <span class="at">y =</span> highway, <span class="at">color =</span> decade)) <span class="sc">+</span></span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span> </span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_abline</span>(<span class="at">intercept =</span> <span class="dv">0</span>, <span class="at">slope =</span> <span class="dv">1</span>, <span class="at">lty =</span> <span class="dv">2</span>) <span class="sc">+</span> <span class="co"># line of equality</span></span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_abline</span>(<span class="at">intercept =</span> mpg_lm<span class="sc">$</span>coefficients[<span class="dv">1</span>], <span class="co"># line of regression</span></span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>              <span class="at">slope =</span> mpg_lm<span class="sc">$</span>coefficients[<span class="dv">2</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>mpg_cars <span class="ot">&lt;-</span> mpg_hawkes <span class="sc">|&gt;</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(v_class_2 <span class="sc">==</span> <span class="st">"Cars"</span>)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mpg_cars, <span class="fu">aes</span>(<span class="at">x =</span> city, <span class="at">y =</span> highway, <span class="at">color =</span> decade)) <span class="sc">+</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span> </span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_abline</span>(<span class="at">intercept =</span> <span class="dv">0</span>, <span class="at">slope =</span> <span class="dv">1</span>, <span class="at">lty =</span> <span class="dv">2</span>) <span class="sc">+</span> <span class="co"># line of equality</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="fu">aes</span>(<span class="at">x =</span> city, <span class="at">y =</span> highway),</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>              <span class="at">inherit.aes =</span> F, <span class="at">method =</span> <span class="st">"lm"</span>, </span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>              <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span> <span class="co"># regression line</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_fixed</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="19-ggplot2-sol_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Another way to do this is to explicitly fit the linear regression (this allows you to actually see what the equation is and/or examine how well it fits), and then plot the regression line directly.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>mpg_lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(highway <span class="sc">~</span> city, <span class="at">data =</span> mpg_cars)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mpg_lm)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = highway ~ city, data = mpg_cars)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-14.1886  -1.3680   0.5994   1.6103  14.6864 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept) 7.476697   0.055511   134.7   &lt;2e-16 ***
+city        0.994564   0.002774   358.5   &lt;2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 2.057 on 19858 degrees of freedom
+Multiple R-squared:  0.8662,    Adjusted R-squared:  0.8662 
+F-statistic: 1.285e+05 on 1 and 19858 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mpg_cars, <span class="fu">aes</span>(<span class="at">x =</span> city, <span class="at">y =</span> highway, <span class="at">color =</span> decade)) <span class="sc">+</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_abline</span>(<span class="at">intercept =</span> <span class="dv">0</span>, <span class="at">slope =</span> <span class="dv">1</span>, <span class="at">lty =</span> <span class="dv">2</span>) <span class="sc">+</span> <span class="co"># line of equality</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_abline</span>(<span class="at">intercept =</span> mpg_lm<span class="sc">$</span>coefficients[<span class="dv">1</span>], <span class="co"># line of regression</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>              <span class="at">slope =</span> mpg_lm<span class="sc">$</span>coefficients[<span class="dv">2</span>]) <span class="sc">+</span> </span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_fixed</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -562,8 +607,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<p>Notice in this plot that there is a lot of purple points that fall well below the line of best fit, which means that the highway mileage was less than expected based on their city mileage. <strong>Discuss briefly (2 min or less) with a partner</strong> what might cause modern vehicles to have much higher city mileage (as compared to highway mileage) than vehicles from previous decades.</p>
+<p>Notice in these plots that there are a lot of purple points that fall well below the line of best fit, which means that the highway mileage was less than expected based on their city mileage. <strong>Discuss briefly (2 min or less) with a partner</strong> what might cause modern vehicles to have much higher city mileage (as compared to highway mileage) than vehicles from previous decades.</p>
+<blockquote class="blockquote">
 <p><em>Hybrid vehicles, which are a modern invention, use batteries to store power from braking and use it to drastically improve city mileage, which “breaks” the relationship we saw between city and highway mileage in previous decades.</em></p>
+</blockquote>
 
 
 </section>

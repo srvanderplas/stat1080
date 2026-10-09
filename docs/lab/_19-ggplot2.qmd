@@ -10,6 +10,10 @@ execute:
 
 This assignment is intended to give you experience using `ggplot2` as well as developing an understanding of quantiles in numeric data.
 For this assignment, we will be using the `mpg_hawkes` dataset available in the `stat1080r` package. 
+
+::: {.callout-note collapse=true}
+# Setup: `stat1080r`
+
 You only need to install this package once per semester, using `install.packages("stat1080r", repos = "https://beanb2.r-universe.dev")`. 
 However, you still need to use `library(stat1080r)` each time you start R. 
 The block of code below will check that `stat1080r` is installed, and if not, it will install it before loading the library. 
@@ -36,6 +40,7 @@ library(tidyr)
 library(ggplot2)
 library(stat1080r)
 ```
+:::
 
 This assignment will focus on the `mpg_hawkes` dataset. For more information about the variables in `mpg_hawkes`, please use the `?mpg_hawkes` command in the console. Note that the dataset will only be available to use after running `library(stat1080r)` in your R session.  
 
@@ -76,7 +81,7 @@ head(mpg_select)
 
 Of these four variables, which are "quantitative" and which are "categorical" (i.e., "qualitative"), **please provide your answer to this question in the associated Canvas quiz.**
 
-*Replace this text with your answer. Optional if discussing in a group and required if doing this on your own.*
+> *Replace this text with your answer. Optional if discussing in a group and required if doing this on your own.*
 
 # Problem: Calculating Quantiles
 
@@ -102,7 +107,7 @@ Using the above code as reference, find the 90th percentile **highway** mpg rati
 
 **Discuss briefly (2 min or less) with a partner** Based on what you know about vehicles, why do you think that the highway mpg are larger than city mpg? 
 
-*Replace this text with your answer. Optional if discussing in a group and required if doing this on your own.*
+> *Replace this text with your answer. Optional if discussing in a group and required if doing this on your own.*
 
 # Problem: City and Highway Mileage
 
@@ -150,7 +155,10 @@ Another way to do this is to explicitly fit the linear regression (this allows y
 
 ```{r}
 mpg_lm <- lm(highway ~ city, data = mpg_cars)
+summary(mpg_lm)
+```
 
+```{r}
 ggplot(mpg_cars, aes(x = city, y = highway, color = decade)) +
   geom_jitter(alpha = 0.5) +
   geom_abline(intercept = 0, slope = 1, lty = 2) + # line of equality
@@ -161,4 +169,4 @@ ggplot(mpg_cars, aes(x = city, y = highway, color = decade)) +
 
 Notice in these plots that there are a lot of purple points that fall well below the line of best fit, which means that the highway mileage was less than expected based on their city mileage. **Discuss briefly (2 min or less) with a partner** what might cause modern vehicles to have much higher city mileage (as compared to highway mileage) than vehicles from previous decades. 
 
-*Replace this text with your answer. Optional if discussing in a group and required if doing this on your own.*
+> *Replace this text with your answer. Optional if discussing in a group and required if doing this on your own.*
