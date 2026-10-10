@@ -26,4 +26,7 @@ December 07-13, 2026
 - Project Meetings and Honors presentations
 
 
+## Extra Resources/Reading
+
+- [Homework 4](https://usu.instructure.com/courses/819584/assignments/5290614){target="_blank"}, [qmd template](../homework/_homework04.qmd), [html](../homework/homework04.qmd), [visual solutions](../homework/homework04-visual-sol.qmd)
 

@@ -4355,6 +4355,7 @@ vertical-align: -.125em;
   <li><a href="#part-c-3-points-1" id="toc-part-c-3-points-1" class="nav-link" data-scroll-target="#part-c-3-points-1">Part c (3 points)</a></li>
   </ul></li>
   <li><a href="#submission-style-5-points" id="toc-submission-style-5-points" class="nav-link" data-scroll-target="#submission-style-5-points">Submission Style (5 points)</a></li>
+  <li><a href="#submission-checklist" id="toc-submission-checklist" class="nav-link" data-scroll-target="#submission-checklist">Submission Checklist</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://srvanderplas.github.io/stat1080/issues/new" class="toc-action"><i class="bi bi-git"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -4389,7 +4390,7 @@ vertical-align: -.125em;
 
 <p>This assignment is intended to give you experience with linear regression. You won’t need to bring in your own datasets—everything you need comes from R packages. Homework datasets and solutions are included in the <code>stat1080r</code> course package, so make sure you have the latest version installed before you begin.</p>
 <p>You’ll complete this file by finishing the code and filling in the answer prompts. Replace each <code>#...#</code> with the code needed to answer the question. Sometimes I’ll give you a code “shell” (marked with <code>##</code>) that you’ll need to uncomment and complete.</p>
-<p>When you’re done, submit your <code>.qmd</code> file in Canvas. Be sure it successfully renders to HTML with all your answers showing.</p>
+<p>When you’re done, submit your <code>.qmd</code> file in Canvas. Be sure it successfully renders to HTML with all your answers showing. Also remember to run <code>lintr</code> on your assignment so that you don’t lose points for style.</p>
 <p>There are 3 problems in this assignment (each with several parts), worth a total of 56 points. Don’t forget to check the style guidelines at the end before submitting. Note that you must use the “modern” pipe command <code>|&gt;</code> in your code. Please avoid the use of the old <code>%&gt;%</code> in your code which will result in a loss of points.</p>
 <section id="problem-1-house-price-prediction---data-prep-23-points" class="level1">
 <h1>Problem 1: House price prediction - data prep (23 points)</h1>
@@ -4419,13 +4420,15 @@ vertical-align: -.125em;
 </div>
 <section id="part-a-2-points" class="level2">
 <h2 class="anchored" data-anchor-id="part-a-2-points">Part a (2 points)</h2>
-<p>Before we try creating any regression models, lets first make sure that a linear model is an appropriate way to represent the data. First, remove all rows that have missing values for square footage or price. Second, redo the price variable to be in thousands of dollars (it is currently given in dollars).</p>
+<p>Before we try creating any regression models, lets first make sure that a linear model is an appropriate way to represent the data. First, remove all rows that have missing values for square footage or price. Second, modify the price variable to be in thousands of dollars (it is currently given in dollars).</p>
+<!-- Part 1a answer start -->
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="do">## housing &lt;- housing_hawkes |&gt; #...#</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># BE SURE TO UNCOMMENT THE all.equal() STATEMENTS BEFORE YOU SUBMIT!</span></span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="do">## all.equal(housing, hw4_sol[[&quot;housing_p1a&quot;]])</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
+<!-- Part 1a answer end -->
 </section>
 <section id="part-b-5-points" class="level2">
 <h2 class="anchored" data-anchor-id="part-b-5-points">Part b (5 points)</h2>
@@ -4460,6 +4463,7 @@ vertical-align: -.125em;
 <span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>In addition to using the provided plot themes, you will also need to change the <code>x</code> and <code>y</code> axis labels, titles, and limits to match the provided solution plot (see <code>homework_4_visual_sol.html</code>). You will also need to use the <code>Dark2</code> color pallet using the <code>scale_color_brewer()</code> function.</p>
+<!-- Part 1b answer start -->
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="do">## p1 &lt;- ggplot(#...#) +</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="do">##   geom_#...#(lwd = 1) +</span></span>
@@ -4477,49 +4481,65 @@ vertical-align: -.125em;
 <span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a><span class="do">## gridExtra::grid.arrange(p1, p2, ncol = 2)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
+<!-- Part 1b answer end -->
 </section>
 <section id="part-c-3-points" class="level2">
 <h2 class="anchored" data-anchor-id="part-c-3-points">Part c (3 points)</h2>
 <p>Write a few sentences interpreting the plots. Be sure to address which neighborhoods, if any, seem to have house prices or house square footage that follow a normal distribution. Also address whether or not you think the prices and/or square footage distributions are similar across neighborhoods.</p>
-<p><strong>Answer:</strong></p>
-<p><em>Replace this text with your answer.</em></p>
+<!-- Part 1c answer start -->
+<blockquote class="blockquote">
+<p><strong>Answer:</strong> <em>Replace this text with your answer.</em></p>
+</blockquote>
+<!-- Part 1c answer end -->
 </section>
 <section id="part-d-2-points" class="level2">
 <h2 class="anchored" data-anchor-id="part-d-2-points">Part d (2 points)</h2>
-<p>Linear regression works better when the variables we use in our model are not skewed (though they don’t have to necessarily be normally distributed). Because of this, we are going to see if square footage shares a linear relationship with house price when looking at the natural log-transformation (i.e. <code>log()</code> in R) of both variables. This in mind, create two new variables that represent the log-transformation of house price and square footage and add them to the dataset. Call these variables <code>log_price</code> and <code>log_sqft</code> respectively.</p>
+<p>Linear regression works better when the variables we use in our model are not skewed (though they don’t have to necessarily be normally distributed). Because of this, we are going to see if square footage shares a linear relationship with house price when looking at the natural log-transformation (i.e. <code>log()</code> in R) of both variables. Keeping this in mind, create two new variables that represent the log-transformation of house price and square footage and add them to the dataset. Call these variables <code>log_price</code> and <code>log_sqft</code> respectively.</p>
+<!-- Part 1d answer start -->
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="do">## housing &lt;- housing |&gt; #...#</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="do">## all.equal(housing, hw4_sol[[&quot;housing_p1d&quot;]])</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
+<!-- Part 1d answer end -->
 </section>
 <section id="part-e-3-points" class="level2">
 <h2 class="anchored" data-anchor-id="part-e-3-points">Part e (3 points)</h2>
 <p>Now, use the log-transformed variables to make a scatterplot that relates the log-transformed square footage to the log-transformed prices. Do not distinguish the points by neighborhood in this plot. Use the same format and style considerations outlined in Part b to get your version of this plot to match the solution plot exactly.</p>
+<!-- Part 1e answer start -->
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="do">## ggplot(#...#) +</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="do">##   #...#</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
+<!-- Part 1e answer end -->
 </section>
 <section id="part-f-2-points" class="level2">
 <h2 class="anchored" data-anchor-id="part-f-2-points">Part f (2 points)</h2>
 <p>Based on this plot, do you think it is appropriate to try and create a linear model that uses square footage to predict house price? Explain why or why not.</p>
-<p><strong>Answer:</strong></p>
-<p><em>Replace this text with your answer.</em></p>
+<!-- Part 1f answer start -->
+<blockquote class="blockquote">
+<p><strong>Answer:</strong> <em>Replace this text with your answer.</em></p>
+</blockquote>
+<!-- Part 1f answer end -->
 </section>
 <section id="part-g-3-points" class="level2">
 <h2 class="anchored" data-anchor-id="part-g-3-points">Part g (3 points)</h2>
 <p>Using a similar plot style to Part e and an identical color scheme to Part f, plot the points using color to distinguish subdivisions. Use the <code>geom_smooth(method = &quot;lm&quot;)</code> argument to look at estimated regression lines for each neighborhood.</p>
+<!-- Part 1g answer start -->
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="do">## ggplot(#...#) +</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="do">##   #...#</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
+<!-- Part 1g answer end -->
 </section>
 <section id="part-h-3-points" class="level2">
 <h2 class="anchored" data-anchor-id="part-h-3-points">Part h (3 points)</h2>
 <p>Based on those regression line and their associated confidence intervals (i.e., the gray shaded regions), does it visually appear at the relationship between house price and square footage is the same across all subdivisions? Explain why or why not (using visuals only, no statistical tests at this point).</p>
-<p><strong>Answer:</strong></p>
-<p><em>Replace this text with your answer.</em></p>
+<!-- Part 1h answer start -->
+<blockquote class="blockquote">
+<p><strong>Answer:</strong> <em>Replace this text with your answer.</em></p>
+</blockquote>
+<!-- Part 1h answer end -->
 </section>
 </section>
 <section id="problem-2-house-price-prediction---linear-models-15-points" class="level1">
@@ -4528,15 +4548,18 @@ vertical-align: -.125em;
 <section id="part-a-2-points-1" class="level2">
 <h2 class="anchored" data-anchor-id="part-a-2-points-1">Part a (2 points)</h2>
 <p>Use the housing dataset that removed the missing price and square footage values and includes the log-transformed price and square footage variables. Create a simple linear regression model using the <code>lm()</code> function that uses the log-transformed square footage to predict the log-transformed price.</p>
+<!-- Part 2a answer start -->
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="do">## simple_lm &lt;- #...#</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="do">## all.equal(simple_lm, hw4_sol[[&quot;p2a&quot;]])</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
+<!-- Part 2a answer end -->
 </section>
 <section id="part-b-3-points" class="level2">
 <h2 class="anchored" data-anchor-id="part-b-3-points">Part b (3 points)</h2>
 <p>Use the <code>predict()</code> function with your newly created linear model to predict house prices from 1000 sqft to 3000 sqft in increments of 100. Remember that your predictions will be on the log scale, so you will need to use the <code>exp()</code> function to transform your predictions back to the original scale.</p>
+<!-- Part 2b answer start -->
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The prediction data is provided. You just need to</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="co"># figure out how to obtain the predictions.</span></span>
@@ -4550,34 +4573,42 @@ vertical-align: -.125em;
 <span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a><span class="do">## all.equal(unname(y_final), hw4_sol[[&quot;y_est&quot;]])</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
+<!-- Part 2b answer end -->
 </section>
 <section id="part-c-2-points" class="level2">
 <h2 class="anchored" data-anchor-id="part-c-2-points">Part c (2 points)</h2>
 <p>Lets now consider a model that includes both square footage and lot size (i.e. acres) as predictors. To do this, we will first need to create a log-transformed version of acres, i.e. <code>log(acres + 0.1)</code>. The <code>+ 0.1</code> accommodates the fact that some of the homes have no lot since they are condos, and you cannot take the log of zero.</p>
 <p>Add <code>log_acres</code> to your housing dataset and make sure that the new dataset matches the solution exactly.</p>
+<!-- Part 2c answer start -->
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="do">## housing &lt;- housing |&gt; #...#</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="do">## all.equal(housing, hw4_sol[[&quot;housing_p2c&quot;]])</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
+<!-- Part 2c answer end -->
 </section>
 <section id="part-d-3-points" class="level2">
 <h2 class="anchored" data-anchor-id="part-d-3-points">Part d (3 points)</h2>
 <p>Use the <code>lm()</code> function to create a linear model that uses <code>log_acres</code> and <code>log_sqft</code> to predict <code>log_price</code>. Confirm that your linear model matches the solution exactly.</p>
+<!-- Part 2d answer start -->
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="do">## test_lm_1 &lt;- #...#</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="do">## all.equal(test_lm_1, hw4_sol[[&quot;test_lm_1&quot;]])</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
+<!-- Part 2d answer start -->
 </section>
 <section id="part-e-5-points" class="level2">
 <h2 class="anchored" data-anchor-id="part-e-5-points">Part e (5 points)</h2>
 <p>Use the <code>confint()</code> function to obtain 95% confidence intervals for all of the model coefficients. We wish to use the confidence intervals to determine if, after accounting for the square footage of the home, lot size is still significantly related to house price. Based on your confidence intervals, what do you conclude and why?</p>
+<!-- Part 2e answer start -->
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ...#</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p><strong>Answer:</strong></p>
-<p><em>Replace this text with your answer.</em></p>
+<blockquote class="blockquote">
+<p><strong>Answer:</strong> <em>Replace this text with your answer.</em></p>
+</blockquote>
+<!-- Part 2e answer end -->
 </section>
 </section>
 <section id="problem-3-house-price-prediction---tidy-functions-13-points" class="level1">
@@ -4586,6 +4617,7 @@ vertical-align: -.125em;
 <section id="part-a-5-points" class="level2">
 <h2 class="anchored" data-anchor-id="part-a-5-points">Part a (5 points)</h2>
 <p>Use the <code>tidy()</code> function from the broom package to create a dataframe of coefficients (with associated confidence intervals) for three linear models, one for each subdivision, that use <code>log_sqft</code> and <code>log_acres</code> to predict <code>log_price</code>. Remember to use a <code>group_by()</code> operation on an appropriate variable in order to get the <code>tidy()</code> function to give you coefficients for three models instead of one.</p>
+<!-- Part 3a answer start -->
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># In order to match the solution, put log_sqft in your equation BEFORE</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="co"># log_acres.</span></span>
@@ -4595,10 +4627,12 @@ vertical-align: -.125em;
 <span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="do">## all.equal(lm_summary, hw4_sol[[&quot;lm_summary&quot;]])</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
+<!-- Part 3a answer end -->
 </section>
 <section id="part-b-5-points-1" class="level2">
 <h2 class="anchored" data-anchor-id="part-b-5-points-1">Part b (5 points)</h2>
 <p>Use <code>geom_segment()</code> and <code>facet_wrap()</code> to plot the confidence intervals for the coefficients associated with <code>log_sqft</code> and <code>log_acres</code>. Most of the code is provided, but you need to figure out how to complete the statement for the <code>geom_segment()</code> function. Please consult the function documentation to do this. The result of this code is separate plots for the two variables, with subdivisions provided on the y-axis and the confidence intervals plotted on the x-axis (see the solution plot).</p>
+<!-- Part 3b answer start -->
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="do">## lm_summary |&gt;</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="do">##   filter(term != &quot;(Intercept)&quot;) |&gt; # don&#39;t plot the intercept coefficient</span></span>
@@ -4609,12 +4643,16 @@ vertical-align: -.125em;
 <span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="do">##   ylab(&quot;Subdivision&quot;) +</span></span>
 <span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a><span class="do">##   theme_no_legend</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
+<!-- Part 3b answer end -->
 </section>
 <section id="part-c-3-points-1" class="level2">
 <h2 class="anchored" data-anchor-id="part-c-3-points-1">Part c (3 points)</h2>
 <p>Interpret the results of Part a and b in a few sentences. Do the estimated coefficients appear to be roughly similar to the overall model results? Does your conclusions regarding the statistical significance (or lack thereof) in Problem 2, Part e fail to hold in any of the subdivision-specific models?</p>
-<p><strong>Answer:</strong></p>
-<p><em>Replace this text with your answer.</em></p>
+<!-- Part 3c answer start -->
+<blockquote class="blockquote">
+<p><strong>Answer:</strong> <em>Replace this text with your answer.</em></p>
+</blockquote>
+<!-- Part 3c answer end -->
 </section>
 </section>
 <section id="submission-style-5-points" class="level1">
@@ -4624,6 +4662,29 @@ vertical-align: -.125em;
 <li><p>You should submit the <code>.qmd</code> file (not the <code>HTML</code> rendering) with a file name in the style of <code>&lt;last_name&gt;_&lt;first_name&gt;_homework4.qmd</code>.</p></li>
 <li><p>Your <code>.qmd</code> file should run without errors when the grader attempts to render it to a html.</p></li>
 <li><p>Your code needs to run “clean” on any lintr checks. Please see the brief videos available on the “Style Guides” tabs of the course canvas page that introduce you to <code>lintr</code>, and <code>styler</code>. Note that you can ignore any flags with the tags: <code>trailing_whitespace_linter</code>, <code>trailing_blank_lines_linter</code>, and <code>commented_code_linter</code>.</p></li>
+</ul>
+</section>
+<section id="submission-checklist" class="level1">
+<h1>Submission Checklist</h1>
+<ul class="task-list">
+<li><p><label><input type="checkbox">Check your filename – is it of the form <code>lastname_firstname_homework02.qmd</code>?</label></p></li>
+<li><p><label><input type="checkbox">Check the author (specified around line 3 of this file) – is your name there?</label></p></li>
+<li><p><label><input type="checkbox">Render your file using the blue arrow at the top of the RStudio text editor window.</label></p>
+<ul class="task-list">
+<li><label><input type="checkbox">If your file does not render, address any errors in the code leading to failure.</label></li>
+</ul></li>
+<li><p><label><input type="checkbox">Preview your rendered file in a browser. Do all of your answers show up the way you expected them to?<br>
+If the answers do not show up the way you want them, check your markdown formatting against the cheat sheet in RStudio (Help -&gt; Cheat Sheets -&gt; Rmarkdown cheat sheets)</label></p></li>
+<li><p><label><input type="checkbox">Run the <code>lintr</code> style checks (Canvas -&gt; Course homepage -&gt; Style Guides link under USU picture)</label></p>
+<ul class="task-list">
+<li><label><input type="checkbox">Switch to source mode in RStudio</label></li>
+<li><label><input type="checkbox">Addins -&gt; Style active file</label></li>
+<li><label><input type="checkbox">Addins -&gt; Lint current file</label></li>
+<li><label><input type="checkbox">Address any issues that the lint command raises</label></li>
+</ul></li>
+<li><p><label><input type="checkbox">Render your file again, to check that the <code>styler</code> and <code>lintr</code> addons didn’t mess up any formatting.</label></p></li>
+<li><p><label><input type="checkbox">Upload your <strong>qmd</strong> file (NOT the html file) to Canvas</label></p></li>
+<li><p><label><input type="checkbox">Double-check your submission - is the file you uploaded the one you want to be graded?</label></p></li>
 </ul>
 
 

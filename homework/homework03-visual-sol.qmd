@@ -1,12 +1,11 @@
 ---
-title: "Homework 3 - STAT 1080"
-author: "(Put Name Here)"
+title: "Homework 3 Visual Solutions"
 editor: source
 format: 
   html:
     self-contained: true
 execute:
-  echo: true   # show code by default
+  echo: false
   warning: false
   message: false
 ---
@@ -24,8 +23,7 @@ Be sure it successfully renders to HTML with all your answers showing.
 Also remember to run `lintr` on your assignment so that you don't lose points for style.
 
 There are 3 problems in this assignment (each with several parts), worth a total of 80 points.
-Don’t forget to check the style guidelines at the end before submitting. 
-Note that you must use the "modern" pipe command `|>` in your code. 
+Don’t forget to check the style guidelines at the end before submitting. Note that you must use the "modern" pipe command `|>` in your code. 
 Please avoid the use of the old `%>%` in your code which will result in a loss of points.
 
 # Problem 1 (15 points)
@@ -55,17 +53,28 @@ Be sure to have your summary statistics ignore any missing observations in the d
 <!-- Part 1a Answer -->
 
 ```{r}
-## cereal_sum <- cereal |>
-##   group_by(#...#) |>
-##   summarize(#...#)
+#| include: false
+cereal_sum <- cereal |>
+  group_by(Shelf) |>
+  summarize(
+    mean_sugars = mean(Sugars, na.rm = TRUE),
+    median_sugars = median(Sugars, na.rm = TRUE),
+    sd_sugars = sd(Sugars, na.rm = TRUE),
+    mad_sugars = mad(Sugars, na.rm = TRUE)
+  )
 
-## cereal_infected_sum <- cereal_infected |>
-##   group_by(#...#) |>
-##   summarize(#...#)
+cereal_infected_sum <- cereal_infected |>
+  group_by(Shelf) |>
+  summarize(
+    mean_sugars = mean(Sugars, na.rm = TRUE),
+    median_sugars = median(Sugars, na.rm = TRUE),
+    sd_sugars = sd(Sugars, na.rm = TRUE),
+    mad_sugars = mad(Sugars, na.rm = TRUE)
+  )
 
 # PLEASE REMEMBER TO UNCOMMENT ALL OF THE "##" LINES!
-## all.equal(cereal_sum, hw3_sol[["cereal_sum"]])
-## all.equal(cereal_infected_sum, hw3_sol[["cereal_infected_sum"]])
+all.equal(cereal_sum, hw3_sol[["cereal_sum"]])
+all.equal(cereal_infected_sum, hw3_sol[["cereal_infected_sum"]])
 ```
 
 <!-- End Part 1a Answer -->
@@ -75,11 +84,12 @@ Be sure to have your summary statistics ignore any missing observations in the d
 The following code computes the absolute difference between variables in the two datasets.  
 
 ```{r}
-## cereal_diff <- bind_rows(cereal_sum, cereal_infected_sum) |>
-##  group_by(Shelf) |>
-##  summarize(across(everything(), ~ max(diff(.x))))
+#| include: false
+cereal_diff <- bind_rows(cereal_sum, cereal_infected_sum) |>
+  group_by(Shelf) |>
+  summarize(across(everything(), ~ max(diff(.x))))
 
-## cereal_diff
+cereal_diff
 ```
 
 Based on the observed differences in the `cereal_diff` table, please describe the nature of the "infection" and identify which shelf the issue is occurring on. 
@@ -101,20 +111,21 @@ Based on this definition, create a vector of length two called `bounds` that rep
 <!-- Part 1c Answer -->
 
 ```{r}
+#| include: false
 # You should use the quantile() and IQR() functions to help you create the
 # intermediate values necessary to create the thresholds.
-## sugars <- cereal_infected |> pull(Sugars)
-## q_25 <- quantile(#...#)
-## q_75 <- quantile(#...#)
-## iqr <- IQR(#...#)
+sugars <- cereal_infected |> pull(Sugars)
+q_25 <- quantile(sugars, 0.25, na.rm = TRUE)
+q_75 <- quantile(sugars, 0.75, na.rm = TRUE)
+iqr <- IQR(sugars, na.rm = TRUE)
 
 # Now create the vector of bounds.
-## bounds <- vector("numeric", 2)
-## bounds[1] <- #...#
-## bounds[2] <- #...#
+bounds <- vector("numeric", 2)
+bounds[1] <- q_25 - 3 * iqr
+bounds[2] <- q_75 + 3 * iqr
 
-## bounds
-## all.equal(bounds, hw3_sol[["bounds"]])
+bounds
+all.equal(bounds, hw3_sol[["bounds"]])
 ```
 
 <!-- End Part 1c Answer -->
@@ -138,22 +149,23 @@ Use the `select()` function to make it so your dataset only contains the cereal 
 <!-- Part 1e Answer -->
 
 ```{r}
-## cereal_outliers <- cereal_infected |>
-##   filter(#...#) |>
-##   select(#...#)
+#| include: false
+cereal_outliers <- cereal_infected |>
+  filter(Sugars < bounds[1] | Sugars > bounds[2]) |>
+  select(Name, Shelf, Sugars, Cups)
 
-## cereal_outliers
+cereal_outliers
 
-## all.equal(cereal_outliers, hw3_sol[["cereal_outliers"]])
+all.equal(cereal_outliers, hw3_sol[["cereal_outliers"]])
 ```
 
 <!-- End Part 1e Answer -->
 
 # Problem 2 - Random Variables (26 points)
 
-Suppose that Kellogg cereal is conducting an especially "sweet" promotion for Frosted Flakes: in their next shipment of 50,000 boxes of cereal to Logan, they plan to place \$40 vouchers to Buffalo Wild Wings (i.e., "B-dubs") in 2,500 of them. 
+Suppose that Kellogg cereal is conducting an especially "sweet" promotion for Frosted Flakes: in their next shipment of 50,000 boxes of cereal to Logan, they plan to place \$40 vouchers to Buffalo wild wings in 2,500 of them. 
 
-You love B-dubs but hate Frosted Flakes. 
+You love Buffalo wild wings but hate Frosted Flakes. 
 Thus, buying a cereal box for \$3.50 with no voucher would be considered a total waste, while buying a cereal box with a voucher would be considered a net gain of \$36.50. 
 
 ## Part a (2 points)
@@ -164,13 +176,16 @@ Assume that the number of cereal boxes you might purchase will be so small, rela
 <!-- Part 2a Answer -->
 
 ```{r}
-## k <- sample(#...#,
-##             size = #...#,
-##             replace = #...#,
-##             prob = #...#)
+#| include: false
+k <- sample(c(36.5, -3.5),
+  size = 1,
+  replace = TRUE,
+  prob = c(.05, .95)
+)
 ```
 
 <!-- End Part 2a Answer -->
+
 
 ## Part b (3 points)
 
@@ -178,14 +193,15 @@ What is the expected value and standard error of this random variable?
 Write an equation using R code that correctly calculates the quantities provided in the `all.equal` statements below. 
 
 <!-- Part 2b Answer -->
-```{r}
-# Use the round() function to round your answers to two decimal places.
-## e_x <- #...#
-## se_x <- #...#
 
-# BE SURE TO UNCOMMENT THE all.equal() STATEMENTS!
-## all.equal(e_x, -1.5)
-## all.equal(se_x, 8.72)
+```{r}
+#| include: false
+# Use the round() function to round your answers to two decimal places.
+e_x <- round(0.05 * 36.5 + 0.95 * -3.5, 2)
+se_x <- round((36.5 + 3.5) * sqrt(0.05 * 0.95), 2)
+
+all.equal(e_x, -1.5)
+all.equal(se_x, 8.72)
 ```
 
 <!-- End Part 2b Answer -->
@@ -197,19 +213,21 @@ Use this function in a Monte Carlo simulation of 10,000 replications of randomly
 Your function should take a single variable `n` that represents the size of the sample from which you calculate a sum. 
 
 <!-- Part 2c Answer -->
+
 ```{r}
+#| include: false
 # Function to return the sum of n boxes of cereal based on an argument n
-## get_net <- function(n) {
-##   k <- #...#
-##   sum(k)
-## }
+get_net <- function(n) {
+  k <- sample(c(36.5, -3.5), size = n, replace = TRUE, prob = c(.05, .95))
+  sum(k)
+}
 
 # Your function should be able to run the following code and get the same
 # answer as the provided solution.
-## set.seed(90210)
-## sim_k <- replicate(10000, get_net(100))
+set.seed(90210)
+sim_k <- replicate(10000, get_net(100))
 
-## all.equal(sim_k, hw3_sol[["sim_k"]])
+all.equal(sim_k, hw3_sol[["sim_k"]])
 ```
 
 <!-- End Part 2c Answer -->
@@ -223,13 +241,14 @@ The code for this answer should make use of the `sim_k` vector you created in th
 <!-- Part 2d Answer -->
 
 ```{r}
-## prob_gain <- #...#
-## prob_gain
-## all.equal(prob_gain, hw3_sol[["prob_gain"]])
+#| include: false
+prob_gain <- mean(sim_k > 0)
+prob_gain
+all.equal(prob_gain, hw3_sol[["prob_gain"]])
 
-## prob_big_loss <- #...#
-## prob_big_loss
-## all.equal(prob_big_loss, hw3_sol[["prob_big_loss"]])
+prob_big_loss <- mean(sim_k < -300)
+prob_big_loss
+all.equal(prob_big_loss, hw3_sol[["prob_big_loss"]])
 ```
 
 <!-- End Part 2d Answer -->
@@ -238,7 +257,7 @@ The code for this answer should make use of the `sim_k` vector you created in th
 
 We would like to think that a sample size of 100 is large enough to invoke the central limit theorem. 
 Create a qqplot of the simulated net gains/losses to check if the assumption is reasonably justified. 
-Your plot should exactly match the one provided in the `homework_3_visual_sol`. 
+Your plot should exactly match the one provided in the `hw3_sol`. 
 Note that your plot should make use of the `sim_k` vector from earlier. 
 You should also make use of the `scale()` function to map the `sim_k` values from their original units to the number of standard deviations away from the mean. 
 
@@ -252,13 +271,13 @@ You should also make use of the `scale()` function to map the `sim_k` values fro
 #|  qqplot of Monte Carlo simulations of sum of winnings/losses from
 #|  purchasing 100 boxes of cereal.
 
-# Save your ggplot to a variable called p2
-## p2 <- #...#
+p2 <- ggplot() +
+  stat_qq(aes(sample = scale(sim_k))) +
+  geom_abline() +
+  theme_bw()
 
-# Print your plot by calling p2
-## p2
+p2
 ```
-
 <!-- End Part 2e Answer 1 -->
 
 After making the visual, comment, with appropriate justification, on whether or not you feel that the net winnings/losses from the purchase of 100 boxes of cereal appears to follow a normal distribution. 
@@ -280,40 +299,40 @@ Note that you might want to create some intermediate variables (like the expecte
 <!-- Part 2f Answer -->
 
 ```{r}
-## e_x <- #...#
-## sd_x <- #...#
+#| include: false
+e_x <- 100 * (0.05 * 36.5 + 0.95 * (-3.5))
+sd_x <- sqrt(100) * (36.5 + 3.5) * sqrt(0.05 * 0.95)
 
-## theory_gain <- #...#
-## theory_gain
+theory_gain <- 1 - pnorm(0, e_x, sd_x)
+theory_gain
 
-## theory_big_loss <- #...#
-## theory_big_loss
+theory_big_loss <- pnorm(-300, e_x, sd_x)
+theory_big_loss
 
-## all.equal(theory_gain, hw3_sol[["theory_gain"]])
-## all.equal(theory_big_loss, hw3_sol[["theory_big_loss"]])
+all.equal(theory_gain, hw3_sol[["theory_gain"]])
+all.equal(theory_big_loss, hw3_sol[["theory_big_loss"]])
 ```
 
 <!-- End Part 2f Answer -->
 
 ## Part g (5 points)
 
-Repeat part (e), but now assume that you will buy 1000 boxes of cereal instead of 100.
-Report the change in probability for a net gain and a big loss (losing more than \$300). 
+Repeat part (e), but now assume that you will buy 1000 boxes of cereal instead of 100. Report the change in probability for a net gain and a big loss (losing more than \$300).  
 
 <!-- Part 2g Answer 1 -->
-
 ```{r}
-## e_x <- #...#
-## sd_x <- #...#
+#| include: false
+e_x <- 1000 * (0.05 * 36.5 + 0.95 * (-3.5))
+sd_x <- sqrt(1000) * (36.5 + 3.5) * sqrt(0.05 * 0.95)
 
-## theory_gain_2 <- #...#
-## theory_gain_2
+theory_gain_2 <- 1 - pnorm(0, e_x, sd_x)
+theory_gain_2
 
-## theory_big_loss_2 <- #...#
-## theory_big_loss_2
+theory_big_loss_2 <- pnorm(-300, e_x, sd_x)
+theory_big_loss_2
 
-## all.equal(theory_gain_2, hw3_sol[["theory_gain_2"]])
-## all.equal(theory_big_loss_2, hw3_sol[["theory_big_loss_2"]])
+all.equal(theory_gain_2, hw3_sol[["theory_gain_2"]])
+all.equal(theory_big_loss_2, hw3_sol[["theory_big_loss_2"]])
 ```
 
 <!-- End Part 2g Answer 1 -->
@@ -321,61 +340,56 @@ Report the change in probability for a net gain and a big loss (losing more than
 Write 1-3 sentences to explain why the probability of both events changed the way that it did. 
 
 <!-- Part 2g Answer 2 -->
-
 > (Replace this text with your answer.)
 
 <!-- End Part 2g Answer 2 -->
 
 # Problem 3 - Statistical Inference (29 points)
 
-This problem is adapted from a real clinical trial (see <https://clinicaltrials.gov/ct2/show/study/NCT04452435?recrs=e&cond=Covid19&draw=2>) related to an oral medication used to treat patients hospitalized with COVID-19. 
-One hope of the drug is that it will reduce the likelihood that the patient requires supplementary Oxygen in order to survive.
-Suppose it is known that 45% of patients hospitalized with COVID-19 require supplementary Oxygen (normally, this percentage also needs to be estimated with a Placebo group in a clinical trial, but we will, for now, suppose it is simply known). 
-A random sample of 51 patients hospitalized with COVID-19 are given the experimental drug for a period of seven. 
-**Of the 51 patients who took the drug, only 14 of them required supplemental oxygen.** 
-We now seek to determine if taking the drug results in a significant reduction in the likelihood that a patient will require supplementary oxygen. 
+This problem is adapted from a real clinical trial (see <https://clinicaltrials.gov/ct2/show/study/NCT04452435?recrs=e&cond=Covid19&draw=2>) related to an oral medication used to treat patients hospitalized with COVID-19. One hope of the drug is that it will reduce the likelihood that the patient requires supplementary Oxygen in order to survive. Suppose it is known that 45% of patients hospitalized with COVID-19 require supplementary Oxygen (normally, this percentage also needs to be estimated with a Placebo group in a clinical trial, but we will, for now, suppose it is simply known). A random sample of 51 patients hospitalized with COVID-19 are given the experimental drug for a period of seven. **Of the 51 patients who took the drug, only 14 of them required supplemental oxygen.** We now seek to determine if taking the drug results in a significant reduction in the likelihood that a patient will require supplementary oxygen. 
 
 ## Part a (2 points)
 
-Write code that represents random variable `oxy` that represents the likelihood that a patient hospitalized with COVID-19 will require supplemental oxygen. 
+Write code that represents random variable `oxy` that represents the likelihood that a patient hospitalized with COVID-19 will require supplemental oxygen.
 Assume, for now, that the patient does not have access to the experimental drug. 
 
 <!-- Part 3a Answer -->
-
 ```{r}
-## oxy <- sample(#...#)
+#| include: false
+oxy <- sample(c(1, 0), size = 1, replace = TRUE, prob = c(0.45, 0.55))
 ```
 
 <!-- End Part 3a Answer -->
 
 ## Part b (3 points)
 
-Now conduct a Monte Carlo simulation of the proportion of 51 patients that would require Oxygen, assuming that $p = 0.45$.
+Now conduct a Monte Carlo simulation of the proportion of 51 patients that would require Oxygen, assuming that $p = 0.45$. 
 Make 50,000 replicates using the random seed provided below and check your answer. 
 
 <!-- Part 3b Answer -->
-
 ```{r}
+#| include: false
 # Write a function where n represents your sample size
 # from the random variable.
 sample_prop <- function(n) {
-  # ...#
+  mean(sample(c(1, 0), size = n, replace = TRUE, prob = c(0.45, 0.55)))
 }
 
-## set.seed(707071)
+set.seed(707071)
 # Replicate the results
-## oxy_mc <- replicate(50000, sample_prop(51))
+oxy_mc <- replicate(50000, sample_prop(51))
 
-## all.equal(oxy_mc, hw3_sol[["oxy_mc"]])
+all.equal(oxy_mc, hw3_sol[["oxy_mc"]])
 ```
 
 <!-- End Part 3b Answer -->
 
+
+
 ## Part c (2 points) 
-Plot a histogram of the replicates. Use a bin width of 1/51, as that will fit the data best.
+Plot a histogram of the replicates. Use a bin width of 1/51, as that will fit the data best. 
 
 <!-- Part 3c Answer -->
-
 ```{r}
 #| fig-width: 7
 #| fig-height: 5
@@ -384,11 +398,12 @@ Plot a histogram of the replicates. Use a bin width of 1/51, as that will fit th
 #|   Histogram of Monte Carlo simulations of the sample proportion of
 #|   people requiring supplemental oxygen in a sample of 51 patients.
 
-# Save your ggplot to an object called p1
-## p1 <- #...#
+p1 <- ggplot() +
+  geom_histogram(aes(x = oxy_mc), col = "black", binwidth=1/51) +
+  scale_y_continuous(limits = c(0, 6000)) +
+  theme_bw()
 
-# Print your ggplot to the screen by calling p1
-## p1
+p1
 ```
 
 <!-- End Part 3c Answer -->
@@ -409,12 +424,12 @@ Your plot should visually match the one provided in the commented code chunk bel
 What proportion of your Monte Carlo simulated values are either below .31 OR above 0.79? Please provide your answer using code. 
 
 <!-- Part 3e Answer -->
-
 ```{r}
-## oxy_mc_prop <- #...#
+#| include: false
+oxy_mc_prop <- mean(oxy_mc <= 0.31 | oxy_mc >= 0.79)
 
-## round(oxy_mc_prop, 3)
-## all.equal(round(oxy_mc_prop, 3), 0.016)
+round(oxy_mc_prop, 3)
+all.equal(round(oxy_mc_prop, 3), 0.016)
 ```
 
 <!-- End Part 3e Answer -->
@@ -437,15 +452,16 @@ Using your sample of 51 patients, create a 90\% confidence interval for the true
 <!-- Part 3g Answer -->
 
 ```{r}
-## n <- #...#
-## e_x <- #...#
-## se_x <- #...#
-## mult <- #...#
+#| include: false
+n <- 51
+e_x <- 14 / n
+se_x <- sqrt(e_x * (1 - e_x) / n)
+mult <- qnorm(0.95)
 
-## ci <- c(#...#, #...#)
-## ci
+ci <- c(e_x - mult * se_x, e_x + mult * se_x)
+ci
 
-## all.equal(ci, hw3_sol[["ci"]])
+all.equal(ci, hw3_sol[["ci"]])
 ```
 
 <!-- End Part 3g Answer -->
@@ -468,15 +484,16 @@ Based on this p-value, what can you say about the effectiveness of the drug in r
 <!-- Part 3i Answer -->
 
 ```{r}
-## n <- #...#
-## samp_prop <- #...#
-## se_x <- #...#
-## z <- #...#
+#| include: false
+n <- 51
+samp_prop <- 14 / n
+se_x <- sqrt(0.45 * 0.55 / n)
+z <- (samp_prop - 0.45) / se_x
 
-## p_val <- #...#
+p_val <- 2 * pnorm(z)
 
-## p_val
-## all.equal(p_val, hw3_sol[["p_val"]])
+p_val
+all.equal(p_val, hw3_sol[["p_val"]])
 ```
 
 <!-- Based on this p-value, what can you say about the effectiveness of the drug in reducing the need for supplemental oxygen?  -->
@@ -496,15 +513,16 @@ Show the p-value with code and then comment below.
 <!-- Part 3j Answer -->
 
 ```{r}
-## n <- #...#
-## samp_prop <- #...#
-## se_x <- #...#
-## z <- #...#
+#| include: false
+n <- 5500
+samp_prop <- 2365 / n
+se_x <- sqrt(0.45 * 0.55 / n)
+z <- abs(samp_prop - 0.45) / se_x
 
-## p_val_2 <- #...#
+p_val_2 <- 1 - (pnorm(z) - pnorm(-z))
 
-## p_val_2
-## all.equal(p_val_2, hw3_sol[["p_val_2"]])
+p_val_2
+all.equal(p_val_2, hw3_sol[["p_val_2"]])
 ```
 
 <!-- What does this say about the null hypothesis (i.e. $p = 0.45$)?  -->

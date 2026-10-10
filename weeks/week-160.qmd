@@ -6,11 +6,14 @@ December 14-18, 2026
 
 
 
+## 📐 Prepare for class
+
+- [ ] [Homework 4](https://usu.instructure.com/courses/819584/assignments/5290614){target="_blank"}, [qmd template](../homework/_homework04.qmd), [html](../homework/homework04.qmd), [visual solutions](../homework/homework04-visual-sol.qmd)
 
 
 ## 🥱 Monday 🌛
 
-- Final Project Presentations during Exam Period (Dec 16, 12:30-2:20 pm)
+- Final Project Presentations during Exam Period (Dec 16, 12:30-2:20 pm)    extra: |
 
 
 

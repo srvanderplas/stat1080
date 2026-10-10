@@ -14,6 +14,7 @@ November 02-08, 2026
 
 - [ ] (for Mon) Reading Check 10.1
 - [ ] (for Fri) Reading Check 10.3
+- [ ] [Homework 2](https://usu.instructure.com/courses/819584/assignments/5290612){target="_blank"}, [qmd template](../homework/_homework02.qmd), [html](../homework/homework02.qmd), [visual solutions](../homework/homework02-visual-sol.qmd)
 
 
 ## 🥱 Monday 🌛
@@ -34,4 +35,7 @@ November 02-08, 2026
 - [Lab: Random Variables](../lab/30-rv.qmd){target="_blank"}
 
 
+## Extra Resources/Reading
+
+- [Homework 3](https://usu.instructure.com/courses/819584/assignments/5290613){target="_blank"}, [qmd template](../homework/_homework03.qmd), [html](../homework/homework03.qmd), [visual solutions](../homework/homework03-visual-sol.qmd)
 

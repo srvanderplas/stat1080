@@ -1,0 +1,406 @@
+---
+title: "Homework 4 - STAT 1080"
+author: "(Put Name Here)"
+editor: source
+format: 
+  html:
+    self-contained: true
+execute:
+  echo: true   # show code by default
+  warning: false
+  message: false
+---
+
+This assignment is intended to give you experience with linear regression. 
+You won’t need to bring in your own datasets—everything you need comes from R packages. 
+Homework datasets and solutions are included in the `stat1080r` course package, so make sure you have the latest version installed before you begin. 
+
+You’ll complete this file by finishing the code and filling in the answer prompts. 
+Replace each `#...#` with the code needed to answer the question. 
+Sometimes I’ll give you a code "shell" (marked with `##`) that you’ll need to uncomment and complete.
+
+When you’re done, submit your `.qmd` file in Canvas. 
+Be sure it successfully renders to HTML with all your answers showing.
+Also remember to run `lintr` on your assignment so that you don't lose points for style.
+
+There are 3 problems in this assignment (each with several parts), worth a total of 56 points.
+Don’t forget to check the style guidelines at the end before submitting. 
+Note that you must use the "modern" pipe command `|>` in your code.
+Please avoid the use of the old `%>%` in your code which will result in a loss of points.
+
+# Problem 1: House price prediction - data prep (23 points)
+
+Housing appraisal (having the value of your house formally assessed) is a big business and has huge implications for property taxes and mortgages. 
+There are many online datasets that post real-estate prices with the purpose of trying to develop models that can accurately predict a house price based on things a professional appraiser would use to assess the value of a house. 
+In this problem, we plan to look at ways in which we might use linear regression to try and predict house price and begin to explore how regression could help us determine which features of a house are most important when predicting price. 
+
+We will be using the `housing_hawkes` dataset. 
+You can check out the data documentation using `?housing_hawkes` in R. 
+The dataset includes real estate prices from 270 house/condo listings in Mount Pleasant, South Carolina in the year 2017. 
+
+```{r}
+library(tidyverse)
+library(broom) # for the tidy function
+library(stat1080r)
+
+head(housing_hawkes)
+```
+
+##  Part a (2 points)
+
+Before we try creating any regression models, lets first make sure that a linear model is an appropriate way to represent the data. 
+First, remove all rows that have missing values for square footage or price. 
+Second, modify the price variable to be in thousands of dollars (it is currently given in dollars).
+
+<!-- Part 1a answer start -->
+
+```{r}
+## housing <- housing_hawkes |> #...#
+
+# BE SURE TO UNCOMMENT THE all.equal() STATEMENTS BEFORE YOU SUBMIT!
+## all.equal(housing, hw4_sol[["housing_p1a"]])
+```
+
+<!-- Part 1a answer end -->
+
+## Part b (5 points)
+
+Next, create a density plot that looks at the distribution of house prices and a density plot that looks at the distribution of house square footage. 
+Both plots will include three density curves, one for each subdivision. 
+
+The following code chunk creates three separate plot themes.
+One theme places the legend in the upper right corner, one theme places it in the upper left corner, and one theme removes it entirely. 
+You will need to choose between these themes to help you format your plots to look exactly like the provided solution.
+
+```{r}
+# Use the following theme to get the legend in the upper right corner
+theme_legend_right <- theme_bw() +
+  theme(
+    legend.position = "inside",
+    legend.position.inside = c(1, 1),
+    legend.justification.inside = c(1, 1),
+    legend.background = element_blank(),
+    text = element_text(size = 16)
+  )
+
+# Use the following theme to get the legend in the upper left corner
+theme_legend_left <- theme_bw() +
+  theme(
+    legend.position = "inside",
+    legend.position.inside = c(0, 1),
+    legend.justification.inside = c(0, 1),
+    legend.background = element_blank(),
+    text = element_text(size = 16)
+  )
+
+# Use the following theme to get rid of the legend
+theme_no_legend <- theme_bw() +
+  theme(
+    legend.position = "none",
+    text = element_text(size = 16)
+  )
+```
+
+In addition to using the provided plot themes, you will also need to change the `x` and `y` axis labels, titles, and limits to match the provided solution plot (see `homework_4_visual_sol.html`). 
+You will also need to use the `Dark2` color pallet using the `scale_color_brewer()` function. 
+
+<!-- Part 1b answer start -->
+
+```{r}
+#| fig-width: 8
+#| fig-height: 4
+#| fig-cap: >
+#|   Density plots of house prices and square footage
+#|   in Mount Pleasant, South Carolina.
+
+## p1 <- ggplot(#...#) +
+##   geom_#...#(lwd = 1) +
+##   scale_x_continuous(#...#) +
+##   scale_y_continuous(#...#) +
+##   scale_color_brewer(#...#) +
+##   #...# # (pick your theme)
+
+## p2 <- ggplot(#...#) +
+##   geom_#...#(lwd = 1) +
+##   scale_x_continuous(#...#) +
+##   scale_y_continuous(#...#) +
+##   scale_color_brewer(#...#) +
+##   #...# # (pick your theme)
+
+## gridExtra::grid.arrange(p1, p2, ncol = 2)
+```
+
+<!-- Part 1b answer end -->
+
+## Part c (3 points)
+
+Write a few sentences interpreting the plots. 
+Be sure to address which neighborhoods, if any, seem to have house prices or house square footage that follow a normal distribution. 
+Also address whether or not you think the prices and/or square footage distributions are similar across neighborhoods. 
+
+
+<!-- Part 1c answer start -->
+
+> **Answer:** 
+> *Replace this text with your answer.* 
+
+<!-- Part 1c answer end -->
+
+## Part d (2 points)
+
+Linear regression works better when the variables we use in our model are not skewed (though they don't have to necessarily be normally distributed). 
+Because of this, we are going to see if square footage shares a linear relationship with house price when looking at the natural log-transformation (i.e. `log()` in R) of both variables. 
+Keeping this in mind, create two new variables that represent the log-transformation of house price and square footage and add them to the dataset.
+Call these variables `log_price` and `log_sqft` respectively. 
+
+<!-- Part 1d answer start -->
+
+```{r}
+## housing <- housing |> #...#
+
+## all.equal(housing, hw4_sol[["housing_p1d"]])
+```
+
+<!-- Part 1d answer end -->
+
+## Part e (3 points)
+
+Now, use the log-transformed variables to make a scatterplot that relates the log-transformed square footage to the log-transformed prices. Do not distinguish the points by neighborhood in this plot. Use the same format and style considerations outlined in Part b to get your version of this plot to match the solution plot exactly. 
+
+<!-- Part 1e answer start -->
+
+```{r}
+#| fig-width: 7
+#| fig-height: 5
+#| fig-cap: "Scatterplot relating square footage to house price."
+
+## ggplot(#...#) +
+##   #...#
+```
+
+<!-- Part 1e answer end -->
+
+## Part f (2 points)
+Based on this plot, do you think it is appropriate to try and create a linear model that uses square footage to predict house price? Explain why or why not.
+
+<!-- Part 1f answer start -->
+
+> **Answer:**
+> *Replace this text with your answer.* 
+
+<!-- Part 1f answer end -->
+
+## Part g (3 points)
+
+Using a similar plot style to Part e and an identical color scheme to Part f, plot the points using color to distinguish subdivisions. 
+Use the `geom_smooth(method = "lm")` argument to look at estimated regression lines for each neighborhood. 
+
+<!-- Part 1g answer start -->
+
+```{r}
+#| fig-width: 7
+#| fig-height: 5
+#| fig-cap: "Scatterplot relating square footage to house price by subdivision."
+## ggplot(#...#) +
+##   #...#
+```
+
+<!-- Part 1g answer end -->
+
+## Part h (3 points)
+
+Based on those regression line and their associated confidence intervals (i.e., the gray shaded regions), does it visually appear at the relationship between house price and square footage is the same across all subdivisions? 
+Explain why or why not (using visuals only, no statistical tests at this point). 
+
+<!-- Part 1h answer start -->
+
+> **Answer:** 
+> *Replace this text with your answer.* 
+
+<!-- Part 1h answer end -->
+
+# Problem 2: House price prediction - linear models (15 points)
+
+Regardless of your answer on Problem 1, Part h, we are going to assume that linear regression is an appropriate way to estimate house price using other house or lot features. 
+The following problem parts explore different combinations of variables and methods of prediction. 
+
+## Part a (2 points)
+
+Use the housing dataset that removed the missing price and square footage values and includes the log-transformed price and square footage variables. 
+Create a simple linear regression model using the `lm()` function that uses the log-transformed square footage to predict the log-transformed price. 
+
+<!-- Part 2a answer start -->
+
+```{r}
+## simple_lm <- #...#
+
+## all.equal(simple_lm, hw4_sol[["p2a"]])
+```
+
+<!-- Part 2a answer end -->
+
+## Part b (3 points)
+
+Use the `predict()` function with your newly created linear model to predict house prices from 1000 sqft to 3000 sqft in increments of 100. Remember that your predictions will be on the log scale, so you will need to use the `exp()` function to transform your predictions back to the original scale. 
+
+<!-- Part 2b answer start -->
+
+```{r}
+# The prediction data is provided. You just need to
+# figure out how to obtain the predictions.
+## test_data <- data.frame(log_sqft = log(seq(1000, 3000, 100)))
+
+# Get predictions
+## y_est <- #...#
+
+# Exponentiate predictions
+## y_final <- #...#
+
+## all.equal(unname(y_final), hw4_sol[["y_est"]])
+```
+
+<!-- Part 2b answer end -->
+
+## Part c (2 points)
+
+Lets now consider a model that includes both square footage and lot size (i.e. acres) as predictors. To do this, we will first need to create a log-transformed version of acres, i.e. `log(acres + 0.1)`. The `+ 0.1` accommodates the fact that some of the homes have no lot since they are condos, and you cannot take the log of zero. 
+
+Add `log_acres` to your housing dataset and make sure that the new dataset matches the solution exactly. 
+
+<!-- Part 2c answer start -->
+
+```{r}
+## housing <- housing |> #...#
+
+## all.equal(housing, hw4_sol[["housing_p2c"]])
+```
+
+<!-- Part 2c answer end -->
+
+## Part d (3 points)
+
+Use the `lm()` function to create a linear model that uses `log_acres` and `log_sqft` to predict `log_price`. 
+Confirm that your linear model matches the solution exactly.
+
+<!-- Part 2d answer start -->
+
+```{r}
+## test_lm_1 <- #...#
+
+## all.equal(test_lm_1, hw4_sol[["test_lm_1"]])
+```
+
+<!-- Part 2d answer start -->
+
+## Part e (5 points)
+
+Use the `confint()` function to obtain 95\% confidence intervals for all of the model coefficients. 
+We wish to use the confidence intervals to determine if, after accounting for the square footage of the home, lot size is still significantly related to house price.
+Based on your confidence intervals, what do you conclude and why?    
+
+<!-- Part 2e answer start -->
+
+```{r}
+# ...#
+```
+
+> **Answer:** 
+> *Replace this text with your answer.*  
+
+<!-- Part 2e answer end -->
+
+# Problem 3: House price prediction - tidy functions (13 points)
+
+Recall from Problem 1 that the relationship between square footage and house price seemed to be different in the Carolina Park subdivision as compared to the other subdivisions. 
+We wish to explore this further by fitting linear models specific to each subdivision. 
+
+## Part a  (5 points)
+
+Use the `tidy()` function from the broom package to create a dataframe of coefficients (with associated confidence intervals) for three linear models, one for each subdivision, that use `log_sqft` and `log_acres` to predict `log_price`.
+Remember to use a `group_by()` operation on an appropriate variable in order to get the `tidy()` function to give you coefficients for three models instead of one. 
+
+<!-- Part 3a answer start -->
+
+```{r}
+# In order to match the solution, put log_sqft in your equation BEFORE
+# log_acres.
+## lm_summary <- housing |>
+##   group_by(#...#) |>
+##   reframe(#...#)
+
+## all.equal(lm_summary, hw4_sol[["lm_summary"]])
+```
+
+<!-- Part 3a answer end -->
+
+## Part b (5 points)
+
+Use `geom_segment()` and `facet_wrap()` to plot the confidence intervals for the coefficients associated with `log_sqft` and `log_acres`. 
+Most of the code is provided, but you need to figure out how to complete the statement for the `geom_segment()` function. 
+Please consult the function documentation to do this. 
+The result of this code is separate plots for the two variables, with subdivisions provided on the y-axis and the confidence intervals plotted on the x-axis (see the solution plot). 
+
+<!-- Part 3b answer start -->
+
+```{r}
+#| fig-width: 8
+#| fig-height: 4
+#| fig-cap: >
+#|   Plots of the confidence intervals associated with the
+#|   subdivision-specific linear model coefficient estimates.
+
+## lm_summary |>
+##   filter(term != "(Intercept)") |> # don't plot the intercept coefficient
+##   ggplot() + # no need to put anything inside the ggplot() statement
+##   geom_segment(#...#, lwd = 2) +
+##   facet_wrap(~term, scales = "free_x") +
+##   xlab("Coefficient Estimate") +
+##   ylab("Subdivision") +
+##   theme_no_legend
+```
+
+<!-- Part 3b answer end -->
+
+## Part c (3 points)
+
+Interpret the results of Part a and b in a few sentences. Do the estimated coefficients appear to be roughly similar to the overall model results? Does your conclusions regarding the statistical significance (or lack thereof) in Problem 2, Part e fail to hold in any of the subdivision-specific models? 
+
+<!-- Part 3c answer start -->
+
+> **Answer:** 
+> *Replace this text with your answer.* 
+
+<!-- Part 3c answer end -->
+
+# Submission Style (5 points)
+Each submission should have the following elements: 
+
+- You should submit the `.qmd` file (not the `HTML` rendering) with a file name in the style of `<last_name>_<first_name>_homework4.qmd`.
+
+- Your `.qmd` file should run without errors when the grader attempts to render it to a html.
+
+- Your code needs to run "clean" on any lintr checks. Please see the brief videos available on the "Style Guides" tabs of the course canvas page that introduce you to `lintr`, and `styler`. Note that you can ignore any flags with the tags: `trailing_whitespace_linter`, `trailing_blank_lines_linter`, and `commented_code_linter`.
+
+# Submission Checklist
+
+- [ ] Check your filename -- is it of the form `lastname_firstname_homework02.qmd`?
+
+- [ ] Check the author (specified around line 3 of this file) -- is your name there?
+
+- [ ] Render your file using the blue arrow at the top of the RStudio text editor window.
+    - [ ] If your file does not render, address any errors in the code leading to failure.
+    
+- [ ] Preview your rendered file in a browser. Do all of your answers show up the way you expected them to?    
+If the answers do not show up the way you want them, check your markdown formatting against the cheat sheet in RStudio (Help -> Cheat Sheets -> Rmarkdown cheat sheets)
+
+- [ ] Run the `lintr` style checks (Canvas -> Course homepage -> Style Guides link under USU picture)
+    - [ ] Switch to source mode in RStudio
+    - [ ] Addins -> Style active file
+    - [ ] Addins -> Lint current file
+    - [ ] Address any issues that the lint command raises
+
+- [ ] Render your file again, to check that the `styler` and `lintr` addons didn't mess up any formatting. 
+
+- [ ] Upload your **qmd** file (NOT the html file) to Canvas
+
+- [ ] Double-check your submission - is the file you uploaded the one you want to be graded?

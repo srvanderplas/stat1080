@@ -252,8 +252,8 @@ schedule:
     class3: |
         - [Attendance Quiz 10/23](https://usu.instructure.com/courses/819584/assignments/5293066){target="_blank"}
         - [Continuous Probability](../slides/24-cts-prob.qmd){target="_blank"}
-    # extra: |
-    #     - 
+    extra: |
+        - [Homework 2](https://usu.instructure.com/courses/819584/assignments/5290612){target="_blank"}, [qmd template](../homework/_homework02.qmd), [html](../homework/homework02.qmd), [visual solutions](../homework/homework02-visual-sol.qmd)
         
   - week: 9
     name: Data and Probability
@@ -273,8 +273,8 @@ schedule:
     class3: |
         - [Attendance Quiz 10/30](https://usu.instructure.com/courses/819584/assignments/5293102){target="_blank"}
         - [Lab: Probability](../lab/27-probability.qmd){target="_blank"}
-    # extra: |
-    #     - 
+    extra: |
+        - [Homework 2](https://usu.instructure.com/courses/819584/assignments/5290612){target="_blank"}, [qmd template](../homework/_homework02.qmd), [html](../homework/homework02.qmd), [visual solutions](../homework/homework02-visual-sol.qmd)
         
   - week: 10
     name: Random Variables
@@ -286,6 +286,7 @@ schedule:
     prepare: |
         - [ ] (for Mon) Reading Check 10.1
         - [ ] (for Fri) Reading Check 10.3
+        - [ ] [Homework 2](https://usu.instructure.com/courses/819584/assignments/5290612){target="_blank"}, [qmd template](../homework/_homework02.qmd), [html](../homework/homework02.qmd), [visual solutions](../homework/homework02-visual-sol.qmd)
     class1: |
         - [Attendance Quiz 11/02](https://usu.instructure.com/courses/819584/assignments/5293103){target="_blank"}
         - [Random Variables](../slides/28-rv.qmd){target="_blank"}
@@ -295,8 +296,9 @@ schedule:
     class3: |
         - [Attendance Quiz 11/06](https://usu.instructure.com/courses/819584/assignments/5293125/){target="_blank"}
         - [Lab: Random Variables](../lab/30-rv.qmd){target="_blank"}
-    # extra: |
-    #     - 
+    extra: |
+        - [Homework 3](https://usu.instructure.com/courses/819584/assignments/5290613){target="_blank"}, [qmd template](../homework/_homework03.qmd), [html](../homework/homework03.qmd), [visual solutions](../homework/homework03-visual-sol.qmd)
+        
     
   - week: 11
     name: Parameters and Estimates
@@ -317,9 +319,9 @@ schedule:
     class3: |
         - [Attendance Quiz 11/13](https://usu.instructure.com/courses/819584/assignments/5293128/){target="_blank"}
         - [Lab: CLT](../lab/33-clt.qmd){target="_blank"}
-    # extra: |
-    #     - 
-
+    extra: |
+        - [Homework 3](https://usu.instructure.com/courses/819584/assignments/5290613){target="_blank"}, [qmd template](../homework/_homework03.qmd), [html](../homework/homework03.qmd), [visual solutions](../homework/homework03-visual-sol.qmd)
+        
   - week: 12
     name: Statistical Inference
     start: 2026-11-16
@@ -339,8 +341,8 @@ schedule:
     class3: |
         - [Attendance Quiz 11/20](https://usu.instructure.com/courses/819584/assignments/5293131/){target="_blank"}
         - [Lab: Inference](../lab/36-inference.qmd){target="_blank"}
-    # extra: |
-    #     - 
+    extra: |
+        - [Homework 3](https://usu.instructure.com/courses/819584/assignments/5290613){target="_blank"}, [qmd template](../homework/_homework03.qmd), [html](../homework/homework03.qmd), [visual solutions](../homework/homework03-visual-sol.qmd)
         
   - week: 13
     name: Regression
@@ -349,7 +351,7 @@ schedule:
     reading: |
         - [ ] (for Mon) [IDS 2 Ch 15 - Regression](https://rafalab.dfci.harvard.edu/dsbook-part-2/linear-models/regression.html){target="_blank"}  
     prepare: |
-        - [ ] 
+        - [Homework 3](https://usu.instructure.com/courses/819584/assignments/5290613){target="_blank"}, [qmd template](../homework/_homework03.qmd), [html](../homework/homework03.qmd), [visual solutions](../homework/homework03-visual-sol.qmd)
     class1: |
         - [Attendance Quiz 11/23](https://usu.instructure.com/courses/819584/assignments/5293133/){target="_blank"}
         - [Introduction to Regression](../slides/37-regression-intro.qmd){target="_blank"}
@@ -380,8 +382,9 @@ schedule:
     class3: |
         - [Attendance Quiz 12/04](https://usu.instructure.com/courses/819584/assignments/5293136/){target="_blank"}
         - [Lab: Regression](../lab/42-regression.qmd){target="_blank"}
-    # extra: |
-    #     - 
+    extra: |
+        - [Homework 4](https://usu.instructure.com/courses/819584/assignments/5290614){target="_blank"}, [qmd template](../homework/_homework04.qmd), [html](../homework/homework04.qmd), [visual solutions](../homework/homework04-visual-sol.qmd)
+        
 
   - week: 15
     name: Project Meetings
@@ -396,15 +399,17 @@ schedule:
     class3: |
         - [Attendance Quiz 12/11](https://usu.instructure.com/courses/819584/assignments/5293139/){target="_blank"}
         - Project Meetings and Honors presentations
-    # extra: |
-    #     - 
+    extra: |
+        - [Homework 4](https://usu.instructure.com/courses/819584/assignments/5290614){target="_blank"}, [qmd template](../homework/_homework04.qmd), [html](../homework/homework04.qmd), [visual solutions](../homework/homework04-visual-sol.qmd)
         
   - week: 16
     name: Finals Week
     start: 2026-12-14
     end: 2026-12-18
+    prepare: |
+        - [ ] [Homework 4](https://usu.instructure.com/courses/819584/assignments/5290614){target="_blank"}, [qmd template](../homework/_homework04.qmd), [html](../homework/homework04.qmd), [visual solutions](../homework/homework04-visual-sol.qmd)
     class1: |
-        - Final Project Presentations during Exam Period (Dec 16, 12:30-2:20 pm)
+        - Final Project Presentations during Exam Period (Dec 16, 12:30-2:20 pm)    extra: |
 
 
 important-course-dates:

@@ -33,4 +33,7 @@ October 26-01, 2026
 - [Lab: Probability](../lab/27-probability.qmd){target="_blank"}
 
 
+## Extra Resources/Reading
+
+- [Homework 2](https://usu.instructure.com/courses/819584/assignments/5290612){target="_blank"}, [qmd template](../homework/_homework02.qmd), [html](../homework/homework02.qmd), [visual solutions](../homework/homework02-visual-sol.qmd)
 
