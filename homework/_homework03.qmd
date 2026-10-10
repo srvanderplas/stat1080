@@ -525,7 +525,7 @@ Each submission should have the following elements:
 
 # Submission Checklist
 
-- [ ] Check your filename -- is it of the form `lastname_firstname_homework02.qmd`?
+- [ ] Check your filename -- is it of the form `lastname_firstname_homework03.qmd`?
 
 - [ ] Check the author (specified around line 3 of this file) -- is your name there?
 

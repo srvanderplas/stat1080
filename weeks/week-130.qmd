@@ -11,7 +11,9 @@ November 23-29, 2026
 
 ## 📐 Prepare for class
 
-- [Homework 3](https://usu.instructure.com/courses/819584/assignments/5290613){target="_blank"}, [qmd template](../homework/_homework03.qmd), [html](../homework/homework03.qmd), [visual solutions](../homework/homework03-visual-sol.qmd)
+- [ ] (for Mon) Reading Check 13.1
+- [ ] [Spreadsheet: Data Collection Project](https://usu.instructure.com/courses/819584/assignments/5290630){target="_blank"}
+- [ ] [Homework 3](https://usu.instructure.com/courses/819584/assignments/5290613){target="_blank"}, [qmd template](../homework/_homework03.qmd), [html](../homework/homework03.qmd), [visual solutions](../homework/homework03-visual-sol.qmd)
 
 
 ## 🥱 Monday 🌛

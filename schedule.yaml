@@ -207,9 +207,9 @@ schedule:
         - [ ] (for Wed) [IDS I Ch 10 - Data Visualization in Practice](https://rafalab.dfci.harvard.edu/dsbook-part-1/dataviz/dataviz-in-practice.html){target="_blank"}
         - [ ] (for Fri) [IDS I Ch 9 - Data Visualization Principles](https://rafalab.dfci.harvard.edu/dsbook-part-1/dataviz/dataviz-principles.html){target="_blank"}
     prepare: |
-        - [ ] (for Mon) Reading Check 7.1
-        - [ ] (for Wed) Reading Check 7.2
-        - [ ] (for Fri) Reading Check 7.3
+        - [ ] (for Mon) [Reading Check 7.1](https://usu.instructure.com/courses/819584/quizzes/1502604){target="_blank"}
+        - [ ] (for Wed) [Reading Check 7.2](https://usu.instructure.com/courses/819584/quizzes/1502606){target="_blank"}
+        - [ ] (for Fri) [Reading Check 7.3](https://usu.instructure.com/courses/819584/quizzes/1502605){target="_blank"}
     class1: |
         - [Attendance Quiz 10/12](https://usu.instructure.com/courses/819584/assignments/5292946){target="_blank"}
         - [Data Visualization with `ggplot2`](../slides/19-ggplot2.qmd){target="_blank"}
@@ -217,12 +217,14 @@ schedule:
     class2: |
         - [Attendance Quiz 10/14](https://usu.instructure.com/courses/819584/assignments/5292947){target="_blank"}
         - [Data Visualization in Practice/Advanced `ggplot2`](../slides/20-adv-ggplot2.qmd){target="_blank"}
+        - [Activity 7.2.p - Advanced `ggplot2`](https://usu.instructure.com/courses/819584/quizzes/1462843) [qmd template](../lab/_20-ggplot2-adv.qmd), [html](../lab/20-ggplot2-adv.qmd), [solutions](../lab/20-ggplot2-adv-sol.qmd)
     class3: |
         - [Attendance Quiz 10/16](https://usu.instructure.com/courses/819584/assignments/5292962){target="_blank"}
         - [Data Visualization Principles](../slides/21-data-vis-principles.qmd){target="_blank"}
         - [Lab: Effective Data Visualization](../lab/21-effective-data-vis.qmd){target="_blank"}
     extra: |
-      This is my research area, so here's an info-dump from my textbook. I'm also happy to discuss data visualization at any point in office hours! 
+      This is my research area, so here's an info-dump from my textbook. 
+      I'm happy to discuss data visualization at any point in office hours! 
       
         - [SC Ch 18 - Data Visualization Basics](https://srvanderplas.github.io/stat-computing-r-python/part-wrangling/02-basic-data-vis.html){target="_blank"}
         - [SC Ch 19 - Exploratory Data Analysis](https://srvanderplas.github.io/stat-computing-r-python/part-wrangling/02a-eda.html){target="_blank"}
@@ -241,6 +243,7 @@ schedule:
         - [ ] (for Fri) [IDS 2, Ch 6 - Continuous Probability](https://rafalab.dfci.harvard.edu/dsbook-part-2/prob/continuous-probability.html){target="_blank"}
     prepare: |
         - [ ] (for Mon) Reading Check 8.1
+        - [ ] [Project Visualizations](https://usu.instructure.com/courses/819584/assignments/5290607). You will need the [template zip file](../homework/project-template.zip) to complete the assignment. 
         - [ ] (for Wed) Reading Check 8.2
         - [ ] (for Fri) Reading Check 8.3
     class1: |
@@ -350,8 +353,10 @@ schedule:
     end: 2026-11-29
     reading: |
         - [ ] (for Mon) [IDS 2 Ch 15 - Regression](https://rafalab.dfci.harvard.edu/dsbook-part-2/linear-models/regression.html){target="_blank"}  
-    prepare: |
-        - [Homework 3](https://usu.instructure.com/courses/819584/assignments/5290613){target="_blank"}, [qmd template](../homework/_homework03.qmd), [html](../homework/homework03.qmd), [visual solutions](../homework/homework03-visual-sol.qmd)
+    prepare: |        
+        - [ ] (for Mon) Reading Check 13.1
+        - [ ] [Spreadsheet: Data Collection Project](https://usu.instructure.com/courses/819584/assignments/5290630){target="_blank"}
+        - [ ] [Homework 3](https://usu.instructure.com/courses/819584/assignments/5290613){target="_blank"}, [qmd template](../homework/_homework03.qmd), [html](../homework/homework03.qmd), [visual solutions](../homework/homework03-visual-sol.qmd)
     class1: |
         - [Attendance Quiz 11/23](https://usu.instructure.com/courses/819584/assignments/5293133/){target="_blank"}
         - [Introduction to Regression](../slides/37-regression-intro.qmd){target="_blank"}
@@ -427,7 +432,7 @@ important-course-dates:
     time: "11:59 pm"
   - name: Homework 4 due
     id: hwk4
-    date: "2026-12-17"
+    date: "2026-12-16"
     time: "11:59 pm"
     
   - name: Project Proposal
@@ -444,19 +449,19 @@ important-course-dates:
     time: "11:59 pm"
   - name: Project Spreadsheet
     id: project-spreadsheet
-    date: "2026-11-21"
+    date: "2026-11-24"
     time: "11:59 pm"
   - name: Project Submission 1
     id: project-submit1
-    date: "2026-12-09"
-    time: "11:59 pm"
-  - name: Project Submission 2
-    id: project-submit2
-    date: "2026-12-17"
+    date: "2026-12-06"
     time: "11:59 pm"
   - name: Project Code Review
     id: project-code-review
     date: "2026-12-07"
+  - name: Project Submission 2
+    id: project-submit2
+    date: "2026-12-14"
+    time: "11:59 pm"
   - name: Project Presentations
     id: project-present
     date: "2026-12-16"

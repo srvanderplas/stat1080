@@ -30,6 +30,7 @@ October 12-18, 2026
 
 - [Attendance Quiz 10/14](https://usu.instructure.com/courses/819584/assignments/5292947){target="_blank"}
 - [Data Visualization in Practice/Advanced `ggplot2`](../slides/20-adv-ggplot2.qmd){target="_blank"}
+- [Activity 7.2.p - Advanced `ggplot2`](https://usu.instructure.com/courses/819584/quizzes/1462843) [qmd template](../lab/_20-ggplot2-adv.qmd), [html](../lab/20-ggplot2-adv.qmd), [solutions](../lab/20-ggplot2-adv-sol.qmd)
 
 
 ## 🎉 Friday 🥳
@@ -41,7 +42,8 @@ October 12-18, 2026
 
 ## Extra Resources/Reading
 
-This is my research area, so here's an info-dump from my textbook. I'm also happy to discuss data visualization at any point in office hours! 
+This is my research area, so here's an info-dump from my textbook. 
+I'm happy to discuss data visualization at any point in office hours! 
 
   - [SC Ch 18 - Data Visualization Basics](https://srvanderplas.github.io/stat-computing-r-python/part-wrangling/02-basic-data-vis.html){target="_blank"}
   - [SC Ch 19 - Exploratory Data Analysis](https://srvanderplas.github.io/stat-computing-r-python/part-wrangling/02a-eda.html){target="_blank"}
