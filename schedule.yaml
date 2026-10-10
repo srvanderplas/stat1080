@@ -202,7 +202,8 @@ schedule:
     start: 2026-10-12
     end: 2026-10-18
     reading: |
-        - [ ] (for Mon) [IDS I Ch 8 - ggplot2](https://rafalab.dfci.harvard.edu/dsbook-part-1/dataviz/ggplot2.html){target="_blank"}
+        - [ ] (for Mon) [IDS I Ch 8 - ggplot2](https://rafalab.dfci.harvard.edu/dsbook-part-1/dataviz/ggplot2.html){target="_blank"}    
+        [Explanation of ggplot2 syntax and structure](../demos/19-ggplot2.qmd)
         - [ ] (for Wed) [IDS I Ch 10 - Data Visualization in Practice](https://rafalab.dfci.harvard.edu/dsbook-part-1/dataviz/dataviz-in-practice.html){target="_blank"}
         - [ ] (for Fri) [IDS I Ch 9 - Data Visualization Principles](https://rafalab.dfci.harvard.edu/dsbook-part-1/dataviz/dataviz-principles.html){target="_blank"}
     prepare: |

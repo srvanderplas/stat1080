@@ -1,0 +1,347 @@
+---
+title: "ggplot2 Overview"
+format: 
+  html:
+    page-layout: full
+    margin-width: 100px
+    sidebar-width: 100px
+code-annotations: hover
+---
+
+
+
+```{r}
+#| label: setup
+#| eval: true
+
+library(dslabs) # <1>
+data(murders) # <2>
+library(ggplot2) # <3>
+```
+1. Load the `dslabs` package, as it contains the `murders` data
+2. Load the `murders` data explicitly so we can see it in the environment tab
+3. Load the `ggplot2` library
+
+
+# ggplot2
+
+`ggplot2` is a library that uses the *grammar of graphics* (`gg` for short) to specify plots.
+
+::: columns
+::: column
+
+```{r}
+#| echo: true
+#| label: fig-ggplot-blank
+#| fig-show: hide
+ggplot(data = murders) # <1>
+```
+1. Create a ggplot using the `murders` data
+
+:::
+::: column
+```{r}
+#| fig-width: 4
+#| fig-height: 4
+#| label: fig-ggplot-blank
+#| include: true
+#| echo: false
+#| fig-cap: A blank plot, with no axes, data points, labels, or other annotations.
+```
+
+:::
+:::
+
+## Adding geometry
+
+The first thing we specify in `ggplot2` is the **geometry** - the type of objects which are drawn on the plot. 
+
+Here, we can start with a nice scatterplot, which has points drawn on what is usually a Cartesian coordinate system (the x-y axes you're familiar with). 
+
+When we specify a geometric object (geom for short), we have to tell `ggplot2` how to draw it. 
+Each geom has **required aesthetics** that are mapped to variables in our dataset.
+
+`geom_point` requires `x` and `y` aesthetics -- it needs both values to know where the points should go.
+
+**aesthetic mappings** are connections between our plot and columns in our data. 
+We create these mappings using the `aes()` function, which goes inside either `ggplot(aes(...), ...)` or inside a `geom_xxx(aes(...), ...)` function. `aes()` is never found on its own.
+
+::: columns
+::: column
+
+```{r}
+#| echo: true
+#| label: fig-ggplot-point
+#| fig-show: hide
+ggplot(data = murders) + 
+  geom_point(
+    aes(
+      x = population/1e6, # <1>
+      y = total # <2>
+    )
+  ) 
+```
+1. Map `population/1e6` to the x-axis
+2. Map `total` to the y-axis
+
+:::
+::: column
+```{r}
+#| fig-width: 4
+#| fig-height: 4
+#| label: fig-ggplot-point
+#| include: true
+#| echo: false
+#| fig-cap: A scatterplot, with `population/1e6` mapped to the x-axis and `total` (number of murders) mapped to the y-axis
+```
+
+:::
+:::
+
+When we map variables to aesthetics, `ggplot2` goes to work. 
+
+- It lays out the axes, considering the range of the variables mapped to x and y. It even adds a little bit of space to the top and bottom of each axis scale, so that the points are not right up against the border of the plot. 
+- It picks sensible breaks for each axis, adds tick marks for each break, labels each tick mark, and adds grid lines (major and minor, along each axis). 
+- It also creates the axis titles using the variable mappings. We can make these nicer if we want, using `xlab()` and `ylab()`, or more generally, `labs(x="My x-axis label", y="My y-axis label",` `title = "Plot title", subtitle = "Plot subtitle")`. 
+- Finally, it adds one point for each row in the data frame that has both an `x` and `y` value (it will give a warning when it drops points that have an NA in either variable). 
+
+One advantage of the grammar of graphics approach is that because we specify the variable mappings, `ggplot2` has enough information to make all of these decisions intelligently without us having to specify how it should do each of these things. 
+This makes programming with `ggplot2` much easier, as long as you start with tidy data.
+
+
+## Adding Additional Mappings
+
+We often want to have color as an indicator of something. The `murders` data includes `region` as a column, and it is possible that some regions might have higher murder rates, due to demographics, heat waves, population density, and other factors. 
+
+
+::: columns
+::: column
+
+```{r}
+#| echo: true
+#| label: fig-ggplot-point-color
+#| fig-show: hide
+ggplot(data = murders) + 
+  geom_point(
+    aes(
+      x = population/1e6,
+      y = total,
+      color = region # <1>
+    )
+  ) +
+  theme(legend.position = "bottom") # <2>
+```
+1. Map `region` to the point color.
+2. Set the legend position to be at the bottom of the plot. 
+
+:::
+::: column
+```{r}
+#| fig-width: 4.5
+#| fig-height: 4.5
+#| label: fig-ggplot-point-color
+#| include: true
+#| echo: false
+#| fig-cap: A scatterplot, with `population/1e6` mapped to the x-axis and `total` (number of murders) mapped to the y-axis. `region` is mapped to color. 
+```
+
+:::
+:::
+
+By default, ggplot2 will pick a color scheme that is decent (but perhaps not optimal). We can set different color schemes using scales - in this case, because we have a categorical (discrete) variable, we would use `scale_color_discrete()`, `scale_color_manual()` (if we have specific colors we want to use), `scale_color_brewer()` (to use some common color scales), or a number of other scales in add-on packages like `ggsci`, `tayloRswift`, [and many, many more](https://github.com/EmilHvitfeldt/r-color-palettes)
+
+## Layers
+
+`ggplot2` allows you to specify multiple layers on a chart, by adding them to the previous layers.
+
+When adding layers that are based off of the same data, it is sometimes easier to specify the mappings inside the `ggplot2()` statement, so that every other layer *inherits* those mappings, by default. 
+This is referred to as the **global** aesthetic mapping. 
+You can, of course, override them by specifying a new mapping inside the specific geom, with some caveats:
+
+- If you want the whole layer not to inherit the aesthetic mappings, you will need to pass `aes.inherit = F` outside of the `aes()` function but inside of the `geom`, like this: `geom_point(aes(x = x, y = y), inherit.aes = FALSE)`.
+- If the mapping you specify isn't on the same scale as the other mappings to that aesthetic, things can get weird. `ggplot2` makes it difficult to create dual-axis plots (and for good reason - they're hard to read). 
+
+
+
+::: columns
+::: column
+
+```{r}
+#| echo: true
+#| label: fig-ggplot-point-text
+#| fig-show: hide
+ggplot(data = murders,
+       aes(x = population/1e6, # <1>
+           y = total)) + # <1>
+  geom_point(aes(color = region)) + # <2>
+  geom_text(
+    aes(label = abb), # <3>
+    position = position_nudge(x = 2) # <4>
+  ) + 
+  theme(legend.position = "bottom") 
+```
+1. including x and y mappings in the `ggplot2` statement is a global mapping, and this ensures that every layer will use these mappings for x and y.
+2. region will be mapped to color for the points, but this will not carry over to the text layer.
+3. abbreviation will be mapped to label for the text layer -- this provides the text which is shown on the plot.
+4. the position of the text is specified to be slightly to the right of the point, so that it is readable. 
+
+:::
+::: column
+```{r}
+#| fig-width: 4.5
+#| fig-height: 4.5
+#| label: fig-ggplot-point-text
+#| include: true
+#| echo: false
+#| fig-cap: A scatterplot, with `population/1e6` mapped to the x-axis and `total` (number of murders) mapped to the y-axis. We have added state labels for each point as well.
+```
+
+:::
+:::
+
+As it is inconvenient to have the text directly on top of the point, we set the **position** adjustment to "nudge" each label by `x=2`. 
+This ensures that the label will be right next to (but not on top of) each point. 
+Different amounts of "nudge" are necessary for different plot sizes, so this often has to be customized based on the actual size of the rendered figure. 
+Setting the quarto chunk options to specify the figure size helps with not re-adjusting this every time something changes slightly. 
+
+## Customizing geom appearance
+
+**Aesthetics** are mappings between the data and the geometric objects on the chart. 
+Often, however, we want to customize aspects of the chart without mapping them to a variable. 
+We might want to change the point size, shape, or color, but without making any of those quantities vary with the data. 
+
+
+::: columns
+::: column
+
+```{r}
+#| echo: true
+#| label: fig-ggplot-point-text-custom
+#| fig-show: hide
+
+ggplot(data = murders,
+       aes(x = population/1e6, 
+           y = total)) +
+  geom_point(aes(color = region),
+             shape = 5, size = 2) + 
+  geom_text(
+    aes(label = abb), 
+    size = 3,
+    position = position_nudge(x = 2) 
+  ) + 
+  theme(legend.position = "bottom") 
+```
+
+:::
+::: column
+```{r}
+#| fig-width: 4
+#| fig-height: 4
+#| label: fig-ggplot-point-text-custom
+#| include: true
+#| echo: false
+#| fig-cap: A scatterplot, with `population/1e6` mapped to the x-axis and `total` (number of murders) mapped to the y-axis. Points are colored by region and now are open diamonds, with smaller text labels. 
+```
+
+:::
+:::
+
+Notice that in @fig-ggplot-point-text-custom, the `shape=5, size=2` is passed to `geom_point()`, but it is not wrapped in the `aes()` function. 
+Similarly, `size=3` is passed to `geom_text()` without being wrapped in the `aes()` function. 
+This tells `ggplot2` that we want to change the shape and size of the points and the size of the text, but we don't want to do so based on the value of any of the variables in our data.
+
+
+## Plot Titles and Scale Labels
+
+
+::: columns
+::: column
+
+```{r}
+#| echo: true
+#| label: fig-ggplot-labels
+#| fig-show: hide
+ggplot(data = murders,
+       aes(x = population/1e6, 
+           y = total)) + 
+  geom_point(aes(color = region)) + 
+  geom_text(
+    aes(label = abb), 
+    size = 2,
+    position = position_nudge(x = 2) 
+  ) + 
+  theme(legend.position = "bottom") +
+  labs(
+    title = "US Gun Murders in 2010",
+    x = "Population in Millions",
+    y = "Total Number of Murders",
+    color = "Region"
+  )
+```
+
+
+:::
+::: column
+```{r}
+#| fig-width: 4.5
+#| fig-height: 4.5
+#| label: fig-ggplot-labels
+#| include: true
+#| echo: false
+#| fig-cap: A scatterplot, with `population/1e6` mapped to the x-axis and `total` (number of murders) mapped to the y-axis. The x-axis is labeled "Population in millions" and the y-axis is labeled "Total number of murders". The plot is titled "US Gun Murders in 2010", and the legend is titled "Region". 
+```
+
+:::
+:::
+
+## Scales
+
+The population of states in the US varies by more than one order of magnitude -- Wyoming has just over 500k people, while California has over 37 million. In such situations, it is often useful to use a log scale, so that 1, 10, and 100 are placed at equal intervals on the plot. This spaces out the tightly clustered points at the bottom left of the plot, allowing us to see lower-population states more clearly. 
+
+As murders are likely a function of population, it makes some sense to use a log scale on both the x and y axis. 
+
+::: columns
+::: column
+
+```{r}
+#| echo: true
+#| label: fig-ggplot-logscale
+#| fig-show: hide
+ggplot(data = murders,
+       aes(x = population/1e6, 
+           y = total)) + 
+  geom_point(aes(color = region)) + 
+  geom_text(
+    aes(label = abb), 
+    size = 2,
+    position = 
+      position_nudge(
+        x =.05) # <1>
+  ) + 
+  scale_x_log10() + # <2>
+  scale_y_log10() + # <3>
+  theme(legend.position = "bottom") +
+  labs(
+    title = "US Gun Murders in 2010",
+    x = "Population in Millions",
+    y = "Total Number of Murders",
+    color = "Region"
+  )
+```
+1. The nudge value has to change because it's affected by the log transformation
+2. scale the x-axis using a log transform
+3. scale the y-axis using a log transform
+
+:::
+::: column
+```{r}
+#| fig-width: 4.5
+#| fig-height: 4.5
+#| label: fig-ggplot-logscale
+#| include: true
+#| echo: false
+#| fig-cap: A scatterplot, titled "US Gun Murders in 2010". The x-axis is labeled "Population in millions" and the y-axis is labeled "Total number of murders". Both the x and y axis are shown on a log scale. 
+```
+
+:::
+:::

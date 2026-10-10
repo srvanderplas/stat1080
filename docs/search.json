@@ -1302,389 +1302,417 @@
     "text": "Explanation of Connection\nPlease replace this text with a description of how the above stat/visual supports your value statement. Please see the humorous example below.\nThe table shows a consistent decline of Pokemon Go users through Joe Biden’s presidency. This suggests that other, more meaningful, social institutions must have been strengthened through the Joe Biden presidency, since the only reason someone would play Pokemon go is if they had no better alternative. This evidence of stronger social systems is evidence that our country is better off as a result of Joe Biden’s presidency."
   },
   {
-    "objectID": "weeks/week-160.html",
-    "href": "weeks/week-160.html",
-    "title": "Week 16: Finals Week",
+    "objectID": "demos/17-visualizing-distributions.html",
+    "href": "demos/17-visualizing-distributions.html",
+    "title": "Visualizing Distributions",
     "section": "",
-    "text": "December 14-18, 2026\n\n\n\nFinal Project Presentations during Exam Period (Dec 16, 12:30-2:20 pm)"
+    "text": "# Set up - load libraries\nlibrary(tidyverse)\nlibrary(dslabs)\n\n# Set a ggplot2 theme - get rid of grey bkgd\nset_theme(theme_bw())"
   },
   {
-    "objectID": "weeks/week-160.html#monday",
-    "href": "weeks/week-160.html#monday",
-    "title": "Week 16: Finals Week",
-    "section": "",
-    "text": "Final Project Presentations during Exam Period (Dec 16, 12:30-2:20 pm)"
+    "objectID": "demos/17-visualizing-distributions.html#barcolumn-chart",
+    "href": "demos/17-visualizing-distributions.html#barcolumn-chart",
+    "title": "Visualizing Distributions",
+    "section": "Bar/Column Chart",
+    "text": "Bar/Column Chart\nLet’s start with the simple version: We want to count the number of states in each region.\n\nmurders |&gt;\n1  ggplot(aes(x = region)) +\n2  geom_bar()\n\n\n1\n\nShow region on the x-axis\n\n2\n\nCreate a bar chart by counting up the number of points in each x-category. The bar’s height will be the number of points.\n\n\n\n\n\n\n\n\n\n\n\nThis is nice enough, but often we want to show the proportion of points in each category, and we may want to color the bars by category as well. We might also want to reorder the x-axis so that the bars are in increasing order.\n\nmurders |&gt;\n  ggplot(aes(x = region)) + \n1  geom_bar(aes(y = after_stat(prop),\n2               group = 1))\n\n\n1\n\nThis computes the proportion of points in each group of plotted objects (in this case, each bar)\n\n2\n\nSpecifying group = 1 says that the proportion should be computed over all bars, not just each region’s bar (leaving this out gets 4 bars with height 1).\n\n\n\n\n\n\n\n\n\n\n\nUnfortunately, it’s a bit harder to reorder and color the bars in by region, for reasons that get a bit too deep into ggplot2 theory to worry about. Sometimes, it’s far easier just to do the calculations we want ahead of time, and then tell ggplot2 to make the chart we want without asking it to do the calculations at the same time.\n\nstate_regions &lt;- murders |&gt;\n1  count(region) |&gt;\n  mutate(\n2    prop = n/sum(n),\n3    region = fct_reorder(region, prop)\n  )\n\n\n1\n\nCount the number of rows in each region\n\n2\n\nCompute proportions\n\n3\n\nRearrange bars in increasing order\n\n\n\n\nIn these cases, we have to switch from using geom_bar to geom_col (col is for column). geom_bar does the calculations for us, geom_col expects us to have done the calculations ahead of time.\n\nstate_regions |&gt;\n  ggplot(\n    aes(\n1      x = region,\n2      y = prop,\n3      fill = region\n    )) + \n4  geom_col() +\n5  ylab(\"Proportion\") + xlab(\"\") +\n6  guides(fill = \"none\")\n\n\n1\n\nShow region on x-axis\n\n2\n\nShow proportion on y-axis\n\n3\n\nColor objects by region (redundant to x-axis, but pretty)\n\n4\n\nUse columns (bars) to show x and y. geom_col is used when you pre-compute proportions, geom_bar is used when you want to compute these on the fly – in this case, you don’t provide a y aesthetic.\n\n5\n\nAxis labels\n\n6\n\nDon’t show a legend, as it’s redundant to the x-axis labels, and thus a waste of space."
   },
   {
-    "objectID": "weeks/week-140.html",
-    "href": "weeks/week-140.html",
-    "title": "Week 14: Regression",
-    "section": "",
-    "text": "November 30-06, 2026\n\n\n\n(for Mon) IDS 2 Ch 16 - The Linear Model Framework\n(for Wed) IDS 2 Ch 20 - Multivariable Regression\n\n\n\n\n\n(for Mon) Reading Check 14.1\n(for Wed) Reading Check 14.2\n\n\n\n\n\nAttendance Quiz 11/30\nLinear Models\n\n\n\n\n\nAttendance Quiz 12/02\nMultivariate Regression\n\n\n\n\n\nAttendance Quiz 12/04\nLab: Regression"
+    "objectID": "demos/17-visualizing-distributions.html#histograms",
+    "href": "demos/17-visualizing-distributions.html#histograms",
+    "title": "Visualizing Distributions",
+    "section": "Histograms",
+    "text": "Histograms\n\nheights &lt;- heights |&gt;\n1  mutate(height_ft = height/12)\n\n\n1\n\nCreate a height variable in feet, rather than inches\n\n\n\n\n\nheights |&gt;\n1  ggplot(aes(x = height_ft)) +\n2  geom_histogram() +\n3  facet_grid(sex~.)\n\n\n1\n\nShow height_ft on the x-axis\n\n2\n\nCreate a histogram. Implicitly, this is going to bin the data, then count up how many rows are in each bin.\n\n3\n\nCreate separate plots for each value of sex. facets use rows ~ cols syntax, so here we say arrange the plots in rows, with nothing in columns.\n\n\n\n\n`stat_bin()` using `bins = 30`. Pick better value `binwidth`.\n\n\n\n\n\n\n\n\n\nHistograms are very sensitive to how the bins are aligned and calculated. By default, ggplot2 uses 30 bins, which is not always optimal. It is often useful to think about how the data is collected and what its range is, and to pick a bin width value based on that. Here, I’ve set the bin width to 1/12 (1 inch) and forced the bins to start at 0, including the left side and not including the right.\n\nheights |&gt;\n  ggplot(aes(x = height_ft)) + \n  geom_histogram( \n    fill = \"grey\", color = \"black\",\n1    binwidth = 1/12,\n2    boundary = 0,\n3    closed = \"left\"\n  ) + \n  facet_grid(sex~.) \n\n\n1\n\nSet bin width to 1 inch or 1/12 foot\n\n2\n\nStart bins with a left boundary of 0. Choosing this value can change the appearance of the histogram, and as a result, can change what you see in the data. I’ve chosen 0 here so that we can see how many men “round up” to 6’.\n\n3\n\n“left” here indicates which part of the interval is “closed” (e.g. is &lt;= rather than &lt;). So counts will be calculated as left &lt;= x &lt; right, starting at a left boundary of 0. So, we would expect to see [5.0, 5 + 1/12), [5 + 1/12, 5 + 1/6), … as bins."
   },
   {
-    "objectID": "weeks/week-140.html#reading",
-    "href": "weeks/week-140.html#reading",
-    "title": "Week 14: Regression",
-    "section": "",
-    "text": "(for Mon) IDS 2 Ch 16 - The Linear Model Framework\n(for Wed) IDS 2 Ch 20 - Multivariable Regression"
+    "objectID": "demos/17-visualizing-distributions.html#density",
+    "href": "demos/17-visualizing-distributions.html#density",
+    "title": "Visualizing Distributions",
+    "section": "Density",
+    "text": "Density\nA density plot is essentially a smoothed version of a histogram. The area under a density curve should be approximately equal to 1 (this is important for probability calculations), and so the curve’s y-values are scaled to enforce this constraint.\n\nheights |&gt;\n1  ggplot(aes(x = height_ft, color = sex)) +\n2  geom_density()\n\n\n1\n\nShow height_ft on the x-axis, and plot different values for each sex.\n\n2\n\nUse a kernel density estimate, which creates a smoothed version of a histogram. By default, ggplot estimates the best ‘bandwidth’ (similar to the bin width) for you.\n\n\n\n\n\n\n\n\n\n\n\nAs with histograms, density curves are sensitive to the bin width, but because they are continuous and not actual bins, we talk about the ‘bandwidth’ of a density rather than the bin width. You can adjust the bandwidth of a density curve using the adjust parameter in geom_density\n\nheights |&gt;\n  ggplot(aes(x = height_ft, color = sex)) + \n1  geom_density(adjust = .5)\n\n\n1\n\nYou can tweak the bandwidth used by passing in an adjustment factor. Here, I’ve halved the bandwidth, and the result is a much more spiky density.\n\n\n\n\n\n\n\n\n\n\n\nAs with histograms, you should try a couple of different values of adjust to ensure you understand the distribution of your data.\n\nheights |&gt;\n  ggplot(aes(x = height_ft, color = sex)) + \n1  geom_density(adjust = 1.2)\n\n\n1\n\nYou should try multiple values for adjust, just like you should try multiple values for the bin width in a histogram.\n\n\n\n\n\n\n\n\n\n\n\nDensity curves make it easy to see where the mode (most occurring, most frequent) value of a distribution is – it’s at the top.\nWhen a distribution is symmetric (it has roughly the same shape on the right and left side of the mode), the mode is fairly close to the median - the middle of the distribution. When a distribution is skewed, however, the median can be quite a ways away from the mode.\nThe mean, or numerical average value, is generally almost the same as the median when a distribution is symmetric, but it can be quite different when there is a skewed distribution. One example of this is income - the median US household income in 2025 was $83,730, and the census primarily reports medians because they are not swayed by extreme values (billionaires), where the mean will increase with the presence of those extreme values in a way that doesn’t really describe the middle of the distribution. You can see some estimates of the average (mean) household income compared to the median1 if you’re curious."
   },
   {
-    "objectID": "weeks/week-140.html#prepare-for-class",
-    "href": "weeks/week-140.html#prepare-for-class",
-    "title": "Week 14: Regression",
-    "section": "",
-    "text": "(for Mon) Reading Check 14.1\n(for Wed) Reading Check 14.2"
+    "objectID": "demos/17-visualizing-distributions.html#empirical-cumulative-distribution-function-ecdf",
+    "href": "demos/17-visualizing-distributions.html#empirical-cumulative-distribution-function-ecdf",
+    "title": "Visualizing Distributions",
+    "section": "Empirical Cumulative Distribution Function (ECDF)",
+    "text": "Empirical Cumulative Distribution Function (ECDF)\nIn an ECDF, we essentially take the bins of a histogram and stack them cumulatively (we scale by # observations so that we get a proportion, but the idea is the same). ECDFs are used to compare distributions, but they are hard to read (and thus they don’t get used very often).\n\nheights |&gt;\n1  ggplot(aes(x = height_ft, color = sex)) +\n2  stat_ecdf(geom = \"step\") +\n3  ylab(\"Cumulative proportion\") + xlab(\"Height (ft)\")\n\n\n1\n\nPut height in feet on the x-axis, and use color to show data from each sex.\n\n2\n\nCalculate (stat) the ECDF for each group (e.g. each color/sex), and plot using the step function (this creates horizontal and vertical lines in a staircase pattern to connect adjacent points)\n\n3\n\nSet axis labels.\n\n\n\n\n\n\n\n\n\n\n\nWe can see what the ECDF statistic actually calculates if we use the point geom:\n\nheights |&gt;\n1  ggplot(aes(x = height_ft, color = sex)) +\n2  stat_ecdf(geom = \"point\") +\n3  ylab(\"Cumulative proportion\") + xlab(\"Height (ft)\")\n\n\n1\n\nPut height in feet on the x-axis, and use color to show data from each sex.\n\n2\n\nCalculate (stat) the ECDF for each group (e.g. each color/sex), and plot using the raw points.\n\n3\n\nSet axis labels."
   },
   {
-    "objectID": "weeks/week-140.html#monday",
-    "href": "weeks/week-140.html#monday",
-    "title": "Week 14: Regression",
-    "section": "",
-    "text": "Attendance Quiz 11/30\nLinear Models"
+    "objectID": "demos/17-visualizing-distributions.html#footnotes",
+    "href": "demos/17-visualizing-distributions.html#footnotes",
+    "title": "Visualizing Distributions",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nArchive link: https://web.archive.org/web/20260919054400/https://dqydj.com/household-income-by-year/↩︎"
   },
   {
-    "objectID": "weeks/week-140.html#wednesday",
-    "href": "weeks/week-140.html#wednesday",
-    "title": "Week 14: Regression",
+    "objectID": "weeks/week-150.html",
+    "href": "weeks/week-150.html",
+    "title": "Week 15: Project Meetings",
     "section": "",
-    "text": "Attendance Quiz 12/02\nMultivariate Regression"
+    "text": "December 07-13, 2026\n\n\n\nAttendance Quiz 12/07\nProject Meetings\n\n\n\n\n\nAttendance Quiz 12/09\nProject Meetings\n\n\n\n\n\nAttendance Quiz 12/11\nProject Meetings and Honors presentations"
   },
   {
-    "objectID": "weeks/week-140.html#friday",
-    "href": "weeks/week-140.html#friday",
-    "title": "Week 14: Regression",
+    "objectID": "weeks/week-150.html#monday",
+    "href": "weeks/week-150.html#monday",
+    "title": "Week 15: Project Meetings",
     "section": "",
-    "text": "Attendance Quiz 12/04\nLab: Regression"
+    "text": "Attendance Quiz 12/07\nProject Meetings"
   },
   {
-    "objectID": "weeks/week-120.html",
-    "href": "weeks/week-120.html",
-    "title": "Week 12: Statistical Inference",
+    "objectID": "weeks/week-150.html#wednesday",
+    "href": "weeks/week-150.html#wednesday",
+    "title": "Week 15: Project Meetings",
     "section": "",
-    "text": "November 16-22, 2026\n\n\n\n(for Mon) IDS 2 Ch 13 - Hypothesis Testing\n(for Wed) IDS 2 Ch 9.4 - Confidence Intervals\n\n\n\n\n\n(for Mon) Reading Check 12.1\n(for Wed) Reading Check 12.2\n\n\n\n\n\nAttendance Quiz 11/16\nHypothesis Testing\n\n\n\n\n\nAttendance Quiz 11/18\nConfidence Intervals\n\n\n\n\n\nAttendance Quiz 11/20\nLab: Inference"
+    "text": "Attendance Quiz 12/09\nProject Meetings"
   },
   {
-    "objectID": "weeks/week-120.html#reading",
-    "href": "weeks/week-120.html#reading",
-    "title": "Week 12: Statistical Inference",
+    "objectID": "weeks/week-150.html#friday",
+    "href": "weeks/week-150.html#friday",
+    "title": "Week 15: Project Meetings",
     "section": "",
-    "text": "(for Mon) IDS 2 Ch 13 - Hypothesis Testing\n(for Wed) IDS 2 Ch 9.4 - Confidence Intervals"
+    "text": "Attendance Quiz 12/11\nProject Meetings and Honors presentations"
   },
   {
-    "objectID": "weeks/week-120.html#prepare-for-class",
-    "href": "weeks/week-120.html#prepare-for-class",
-    "title": "Week 12: Statistical Inference",
+    "objectID": "weeks/week-130.html",
+    "href": "weeks/week-130.html",
+    "title": "Week 13: Regression",
     "section": "",
-    "text": "(for Mon) Reading Check 12.1\n(for Wed) Reading Check 12.2"
+    "text": "November 23-29, 2026\n\n\n\n(for Mon) IDS 2 Ch 15 - Regression\n\n\n\n\n\n[ ]\n\n\n\n\n\nAttendance Quiz 11/23\nIntroduction to Regression\nActivity: Regression By Hand\n\n\n\n\n\n🦃 Thanksgiving Break\n\n\n\n\n\n🦃 Thanksgiving Break"
   },
   {
-    "objectID": "weeks/week-120.html#monday",
-    "href": "weeks/week-120.html#monday",
-    "title": "Week 12: Statistical Inference",
+    "objectID": "weeks/week-130.html#reading",
+    "href": "weeks/week-130.html#reading",
+    "title": "Week 13: Regression",
     "section": "",
-    "text": "Attendance Quiz 11/16\nHypothesis Testing"
+    "text": "(for Mon) IDS 2 Ch 15 - Regression"
   },
   {
-    "objectID": "weeks/week-120.html#wednesday",
-    "href": "weeks/week-120.html#wednesday",
-    "title": "Week 12: Statistical Inference",
+    "objectID": "weeks/week-130.html#prepare-for-class",
+    "href": "weeks/week-130.html#prepare-for-class",
+    "title": "Week 13: Regression",
     "section": "",
-    "text": "Attendance Quiz 11/18\nConfidence Intervals"
+    "text": "[ ]"
   },
   {
-    "objectID": "weeks/week-120.html#friday",
-    "href": "weeks/week-120.html#friday",
-    "title": "Week 12: Statistical Inference",
+    "objectID": "weeks/week-130.html#monday",
+    "href": "weeks/week-130.html#monday",
+    "title": "Week 13: Regression",
     "section": "",
-    "text": "Attendance Quiz 11/20\nLab: Inference"
+    "text": "Attendance Quiz 11/23\nIntroduction to Regression\nActivity: Regression By Hand"
   },
   {
-    "objectID": "weeks/week-100.html",
-    "href": "weeks/week-100.html",
-    "title": "Week 10: Random Variables",
+    "objectID": "weeks/week-130.html#wednesday",
+    "href": "weeks/week-130.html#wednesday",
+    "title": "Week 13: Regression",
     "section": "",
-    "text": "November 02-08, 2026\n\n\n\n(for Mon) IDS 2 Ch 7 - Random Variables\n(for Fri) IDS 2 Intro to Statistical Inference\n\n\n\n\n\n(for Mon) Reading Check 10.1\n(for Fri) Reading Check 10.3\n\n\n\n\n\nAttendance Quiz 11/02\nRandom Variables\n\n\n\n\n\nAttendance Quiz 11/04\nRandom Variables\n\n\n\n\n\nAttendance Quiz 11/06\nLab: Random Variables"
+    "text": "🦃 Thanksgiving Break"
   },
   {
-    "objectID": "weeks/week-100.html#reading",
-    "href": "weeks/week-100.html#reading",
-    "title": "Week 10: Random Variables",
+    "objectID": "weeks/week-130.html#friday",
+    "href": "weeks/week-130.html#friday",
+    "title": "Week 13: Regression",
     "section": "",
-    "text": "(for Mon) IDS 2 Ch 7 - Random Variables\n(for Fri) IDS 2 Intro to Statistical Inference"
+    "text": "🦃 Thanksgiving Break"
   },
   {
-    "objectID": "weeks/week-100.html#prepare-for-class",
-    "href": "weeks/week-100.html#prepare-for-class",
-    "title": "Week 10: Random Variables",
+    "objectID": "weeks/week-110.html",
+    "href": "weeks/week-110.html",
+    "title": "Week 11: Parameters and Estimates",
     "section": "",
-    "text": "(for Mon) Reading Check 10.1\n(for Fri) Reading Check 10.3"
+    "text": "November 09-15, 2026\n\n\n\n(for Mon) IDS 2 Ch 9.1-9.3 - Estimates\n(for Wed) IDS 2 Ch 8 - Sampling Models and the Central Limit Theorem\n\n\n\n\n\n(for Mon) Reading Check 11.1\n(for Wed) Reading Check 11.2\n\n\n\n\n\nAttendance Quiz 11/09\nParameters and Estimates\n\n\n\n\n\nAttendance Quiz 11/11\nCentral Limit Theorem\n\n\n\n\n\nAttendance Quiz 11/13\nLab: CLT"
   },
   {
-    "objectID": "weeks/week-100.html#monday",
-    "href": "weeks/week-100.html#monday",
-    "title": "Week 10: Random Variables",
+    "objectID": "weeks/week-110.html#reading",
+    "href": "weeks/week-110.html#reading",
+    "title": "Week 11: Parameters and Estimates",
     "section": "",
-    "text": "Attendance Quiz 11/02\nRandom Variables"
+    "text": "(for Mon) IDS 2 Ch 9.1-9.3 - Estimates\n(for Wed) IDS 2 Ch 8 - Sampling Models and the Central Limit Theorem"
   },
   {
-    "objectID": "weeks/week-100.html#wednesday",
-    "href": "weeks/week-100.html#wednesday",
-    "title": "Week 10: Random Variables",
+    "objectID": "weeks/week-110.html#prepare-for-class",
+    "href": "weeks/week-110.html#prepare-for-class",
+    "title": "Week 11: Parameters and Estimates",
     "section": "",
-    "text": "Attendance Quiz 11/04\nRandom Variables"
+    "text": "(for Mon) Reading Check 11.1\n(for Wed) Reading Check 11.2"
   },
   {
-    "objectID": "weeks/week-100.html#friday",
-    "href": "weeks/week-100.html#friday",
-    "title": "Week 10: Random Variables",
+    "objectID": "weeks/week-110.html#monday",
+    "href": "weeks/week-110.html#monday",
+    "title": "Week 11: Parameters and Estimates",
     "section": "",
-    "text": "Attendance Quiz 11/06\nLab: Random Variables"
+    "text": "Attendance Quiz 11/09\nParameters and Estimates"
   },
   {
-    "objectID": "weeks/week-090.html",
-    "href": "weeks/week-090.html",
-    "title": "Week 9: Data and Probability",
+    "objectID": "weeks/week-110.html#wednesday",
+    "href": "weeks/week-110.html#wednesday",
+    "title": "Week 11: Parameters and Estimates",
     "section": "",
-    "text": "October 26-01, 2026\n\n\n\n(for Mon) IDS 2 Ch 4 - Connecting Data and Probability\n\n\n\n\n\n(for Mon) Reading Check 9.1\nHomework 2 qmd template html\n\n\n\n\n\nAttendance Quiz 10/26\nData and Probability\n\n\n\n\n\nAttendance Quiz 10/28\nTBD probability\n\n\n\n\n\nAttendance Quiz 10/30\nLab: Probability"
+    "text": "Attendance Quiz 11/11\nCentral Limit Theorem"
   },
   {
-    "objectID": "weeks/week-090.html#reading",
-    "href": "weeks/week-090.html#reading",
-    "title": "Week 9: Data and Probability",
+    "objectID": "weeks/week-110.html#friday",
+    "href": "weeks/week-110.html#friday",
+    "title": "Week 11: Parameters and Estimates",
     "section": "",
-    "text": "(for Mon) IDS 2 Ch 4 - Connecting Data and Probability"
+    "text": "Attendance Quiz 11/13\nLab: CLT"
   },
   {
-    "objectID": "weeks/week-090.html#prepare-for-class",
-    "href": "weeks/week-090.html#prepare-for-class",
-    "title": "Week 9: Data and Probability",
+    "objectID": "weeks/week-095.html",
+    "href": "weeks/week-095.html",
+    "title": "Week 9.5: Spring Break",
     "section": "",
-    "text": "(for Mon) Reading Check 9.1\nHomework 2 qmd template html"
+    "text": "Week 9.5: Spring Break\nMarch 16-22, 2026"
   },
   {
-    "objectID": "weeks/week-090.html#monday",
-    "href": "weeks/week-090.html#monday",
-    "title": "Week 9: Data and Probability",
+    "objectID": "weeks/week-080.html",
+    "href": "weeks/week-080.html",
+    "title": "Week 8: Statistics and Probability",
     "section": "",
-    "text": "Attendance Quiz 10/26\nData and Probability"
+    "text": "October 19-25, 2026\n\n\n\n(for Mon) IDS 2, Ch 2 - Numerical Summaries\n(for Mon) IDS 2, Ch 3.3 - Comparing Groups with Stratification\n(for Wed) IDS 2, Ch 5 - Discrete Probability\n(for Fri) IDS 2, Ch 6 - Continuous Probability\n\n\n\n\n\n(for Mon) Reading Check 8.1\n(for Wed) Reading Check 8.2\n(for Fri) Reading Check 8.3\n\n\n\n\n\nAttendance Quiz 10/19\nSummary Statistics\n\n\n\n\n\nAttendance Quiz 10/21\nDiscrete Probability\n\n\n\n\n\nAttendance Quiz 10/23\nContinuous Probability"
   },
   {
-    "objectID": "weeks/week-090.html#wednesday",
-    "href": "weeks/week-090.html#wednesday",
-    "title": "Week 9: Data and Probability",
+    "objectID": "weeks/week-080.html#reading",
+    "href": "weeks/week-080.html#reading",
+    "title": "Week 8: Statistics and Probability",
     "section": "",
-    "text": "Attendance Quiz 10/28\nTBD probability"
+    "text": "(for Mon) IDS 2, Ch 2 - Numerical Summaries\n(for Mon) IDS 2, Ch 3.3 - Comparing Groups with Stratification\n(for Wed) IDS 2, Ch 5 - Discrete Probability\n(for Fri) IDS 2, Ch 6 - Continuous Probability"
   },
   {
-    "objectID": "weeks/week-090.html#friday",
-    "href": "weeks/week-090.html#friday",
-    "title": "Week 9: Data and Probability",
+    "objectID": "weeks/week-080.html#prepare-for-class",
+    "href": "weeks/week-080.html#prepare-for-class",
+    "title": "Week 8: Statistics and Probability",
     "section": "",
-    "text": "Attendance Quiz 10/30\nLab: Probability"
+    "text": "(for Mon) Reading Check 8.1\n(for Wed) Reading Check 8.2\n(for Fri) Reading Check 8.3"
   },
   {
-    "objectID": "weeks/week-070.html",
-    "href": "weeks/week-070.html",
-    "title": "Week 7: Data Visualization",
+    "objectID": "weeks/week-080.html#monday",
+    "href": "weeks/week-080.html#monday",
+    "title": "Week 8: Statistics and Probability",
     "section": "",
-    "text": "October 12-18, 2026\n\n\n\n(for Mon) IDS I Ch 8 - ggplot2\n(for Wed) IDS I Ch 10 - Data Visualization in Practice\n(for Fri) IDS I Ch 9 - Data Visualization Principles\n\n\n\n\n\n(for Mon) Reading Check 7.1\n(for Wed) Reading Check 7.2\n(for Fri) Reading Check 7.3\n\n\n\n\n\nAttendance Quiz 10/12\nData Visualization with ggplot2\nActivity 7.1.p - Introduction to ggplot2 qmd template html\n\n\n\n\n\nAttendance Quiz 10/14\nData Visualization in Practice/Advanced ggplot2\n\n\n\n\n\nAttendance Quiz 10/16\nData Visualization Principles\nLab: Effective Data Visualization\n\n\n\n\nThis is my research area, so here’s an info-dump from my textbook. I’m also happy to discuss data visualization at any point in office hours!\n\nSC Ch 18 - Data Visualization Basics\nSC Ch 19 - Exploratory Data Analysis\nSC Ch 20 - A Grammar of Graphics\nSC Ch 21 - Creating Good Charts"
+    "text": "Attendance Quiz 10/19\nSummary Statistics"
   },
   {
-    "objectID": "weeks/week-070.html#reading",
-    "href": "weeks/week-070.html#reading",
-    "title": "Week 7: Data Visualization",
+    "objectID": "weeks/week-080.html#wednesday",
+    "href": "weeks/week-080.html#wednesday",
+    "title": "Week 8: Statistics and Probability",
     "section": "",
-    "text": "(for Mon) IDS I Ch 8 - ggplot2\n(for Wed) IDS I Ch 10 - Data Visualization in Practice\n(for Fri) IDS I Ch 9 - Data Visualization Principles"
+    "text": "Attendance Quiz 10/21\nDiscrete Probability"
   },
   {
-    "objectID": "weeks/week-070.html#prepare-for-class",
-    "href": "weeks/week-070.html#prepare-for-class",
-    "title": "Week 7: Data Visualization",
+    "objectID": "weeks/week-080.html#friday",
+    "href": "weeks/week-080.html#friday",
+    "title": "Week 8: Statistics and Probability",
     "section": "",
-    "text": "(for Mon) Reading Check 7.1\n(for Wed) Reading Check 7.2\n(for Fri) Reading Check 7.3"
+    "text": "Attendance Quiz 10/23\nContinuous Probability"
   },
   {
-    "objectID": "weeks/week-070.html#monday",
-    "href": "weeks/week-070.html#monday",
-    "title": "Week 7: Data Visualization",
+    "objectID": "weeks/week-060.html",
+    "href": "weeks/week-060.html",
+    "title": "Week 6: Dates, Times, and Distributions",
     "section": "",
-    "text": "Attendance Quiz 10/12\nData Visualization with ggplot2\nActivity 7.1.p - Introduction to ggplot2 qmd template html"
+    "text": "October 05-11, 2026\n\n\n\n(for Mon) IDS I Ch 13 - Dates and Times\n(for Wed) IDS I Ch 7 - Visualizing Data Distributions\n\n\n\n\n\n(for Mon) Reading Check 6.1.p - Dates and Times\n\n(for Wed) Reading Check 6.2.p - Visualizing Distributions\nHomework 1 qmd template html\n\n\n\n\n\nAttendance Quiz 10/05\nDates and Times\nActivity: Dates and Times quarto html\nExtra Practice: Covid Time Series quarto html solutions\n\n\n\n\n\nAttendance Quiz 10/07\nVisualizing Data Distributions\nDemo: Visualizing Data Distributions\nAdditional Distribution Visualizations: World Cappuccino Index\nActivity: Datasaurus html quarto template\n\n\n\n\n\nFall Break\n\n\n\n\n\nSC Ch 27 - Dates and Times\nIDS I Ch 14 - Locales"
   },
   {
-    "objectID": "weeks/week-070.html#wednesday",
-    "href": "weeks/week-070.html#wednesday",
-    "title": "Week 7: Data Visualization",
+    "objectID": "weeks/week-060.html#reading",
+    "href": "weeks/week-060.html#reading",
+    "title": "Week 6: Dates, Times, and Distributions",
     "section": "",
-    "text": "Attendance Quiz 10/14\nData Visualization in Practice/Advanced ggplot2"
+    "text": "(for Mon) IDS I Ch 13 - Dates and Times\n(for Wed) IDS I Ch 7 - Visualizing Data Distributions"
   },
   {
-    "objectID": "weeks/week-070.html#friday",
-    "href": "weeks/week-070.html#friday",
-    "title": "Week 7: Data Visualization",
+    "objectID": "weeks/week-060.html#prepare-for-class",
+    "href": "weeks/week-060.html#prepare-for-class",
+    "title": "Week 6: Dates, Times, and Distributions",
     "section": "",
-    "text": "Attendance Quiz 10/16\nData Visualization Principles\nLab: Effective Data Visualization"
+    "text": "(for Mon) Reading Check 6.1.p - Dates and Times\n\n(for Wed) Reading Check 6.2.p - Visualizing Distributions\nHomework 1 qmd template html"
   },
   {
-    "objectID": "weeks/week-070.html#extra-resourcesreading",
-    "href": "weeks/week-070.html#extra-resourcesreading",
-    "title": "Week 7: Data Visualization",
+    "objectID": "weeks/week-060.html#monday",
+    "href": "weeks/week-060.html#monday",
+    "title": "Week 6: Dates, Times, and Distributions",
     "section": "",
-    "text": "This is my research area, so here’s an info-dump from my textbook. I’m also happy to discuss data visualization at any point in office hours!\n\nSC Ch 18 - Data Visualization Basics\nSC Ch 19 - Exploratory Data Analysis\nSC Ch 20 - A Grammar of Graphics\nSC Ch 21 - Creating Good Charts"
+    "text": "Attendance Quiz 10/05\nDates and Times\nActivity: Dates and Times quarto html\nExtra Practice: Covid Time Series quarto html solutions"
   },
   {
-    "objectID": "weeks/week-050.html",
-    "href": "weeks/week-050.html",
-    "title": "Week 5: The Tidyverse",
+    "objectID": "weeks/week-060.html#wednesday",
+    "href": "weeks/week-060.html#wednesday",
+    "title": "Week 6: Dates, Times, and Distributions",
     "section": "",
-    "text": "September 28-04, 2026\n\n\n\n(for Mon) IDS I Ch 4 - The Tidyverse\n(for Mon) SC Ch 22 - Data Cleaning - Focus on the (R) examples of any dplyr verb you don’t quite get.\n(for Wed) SC Ch 24 - Reshaping Data - Be able to identify wide and long data.\n(for Fri) Watch I Found the Dumbest Time Zone (@vlogbrothers) and The Problem with Time & Timezones (@computerphile) to get ready for next week.\n\n\n\n\n\n(for Mon) Reading Check 5.1 - The Tidyverse, Pipes, and dplyr\n(for Wed) Reading Check 5.2 - Wide, Long, and Tidy data with tidyr\n(for Fri) “Reading” Check 5.3 - Dates and Times\n(During October) Get what you pay for! qmd template\n\n\n\n\n\nAttendance Quiz 09/28\nTidyverse Programming Basics: Tibbles and dplyr\n5.1.i Covid Case Exploration (Canvas) qmd template html file\nExtra Practice: dplyr verbs. qmd template html version solutions\n\n\n\n\n\nAttendance Quiz 09/30\nTidyverse Programming Basics: Reshaping Data\nTidyverse Practice II - Covid qmd template solutions\n\n\n\n\n\nAttendance Quiz 10/02\nLab: Tidyverse Programming (Canvas) html file qmd template\n\n\n\n\n\nSC Ch 10 - Functions, section 4: Pipes\nSC Ch 16 - Programming with Data - data explorations worked out with R/tidyverse code. You don’t know how to do graphics yet, but hopefully the data operations make sense.\nAllison Horst’s Tidyverse Illustrations - mostly illustrates tidyverse functions.\nTidyverse Style Guide - Pipes\nTidy Tuesday Screencasts (YouTube, David Robinson). These show example data analyses in real time, with commentary, using a new dataset each week. These were primarily recorded during the pandemic, but are still an incredibly valuable resource for learing how to work with data."
+    "text": "Attendance Quiz 10/07\nVisualizing Data Distributions\nDemo: Visualizing Data Distributions\nAdditional Distribution Visualizations: World Cappuccino Index\nActivity: Datasaurus html quarto template"
   },
   {
-    "objectID": "weeks/week-050.html#reading",
-    "href": "weeks/week-050.html#reading",
-    "title": "Week 5: The Tidyverse",
+    "objectID": "weeks/week-060.html#friday",
+    "href": "weeks/week-060.html#friday",
+    "title": "Week 6: Dates, Times, and Distributions",
     "section": "",
-    "text": "(for Mon) IDS I Ch 4 - The Tidyverse\n(for Mon) SC Ch 22 - Data Cleaning - Focus on the (R) examples of any dplyr verb you don’t quite get.\n(for Wed) SC Ch 24 - Reshaping Data - Be able to identify wide and long data.\n(for Fri) Watch I Found the Dumbest Time Zone (@vlogbrothers) and The Problem with Time & Timezones (@computerphile) to get ready for next week."
+    "text": "Fall Break"
   },
   {
-    "objectID": "weeks/week-050.html#prepare-for-class",
-    "href": "weeks/week-050.html#prepare-for-class",
-    "title": "Week 5: The Tidyverse",
+    "objectID": "weeks/week-060.html#extra-resourcesreading",
+    "href": "weeks/week-060.html#extra-resourcesreading",
+    "title": "Week 6: Dates, Times, and Distributions",
     "section": "",
-    "text": "(for Mon) Reading Check 5.1 - The Tidyverse, Pipes, and dplyr\n(for Wed) Reading Check 5.2 - Wide, Long, and Tidy data with tidyr\n(for Fri) “Reading” Check 5.3 - Dates and Times\n(During October) Get what you pay for! qmd template"
+    "text": "SC Ch 27 - Dates and Times\nIDS I Ch 14 - Locales"
   },
   {
-    "objectID": "weeks/week-050.html#monday",
-    "href": "weeks/week-050.html#monday",
-    "title": "Week 5: The Tidyverse",
+    "objectID": "weeks/week-040.html",
+    "href": "weeks/week-040.html",
+    "title": "Week 4: Programming in R",
     "section": "",
-    "text": "Attendance Quiz 09/28\nTidyverse Programming Basics: Tibbles and dplyr\n5.1.i Covid Case Exploration (Canvas) qmd template html file\nExtra Practice: dplyr verbs. qmd template html version solutions"
+    "text": "September 21-27, 2026\n\n\n\n(for Mon) SC Ch 11 - Data Structures - Sections 11.1, 11.2, 11.6 - Ignore the python parts, focus on understanding how you access pieces of data in a vector and a data frame, and how to differentiate between the two.\n(for Wed) SC Ch 13 - Control Structures\n\n\n\n\n\n(for Mon) Reading Check 4.1 - Data Structures\n(for Wed) Reading Check 4.2 - R programming and Control Structures\n\n\n\n\n\nAttendance Quiz 09/21\nR programming basics\n\n\n\n\n\nAttendance Quiz 09/23\nLab: R Programming Puzzles (Canvas) HTML version quarto template\n\n\n\n\n\nAttendance Quiz 09/25\nLab: R Programming Puzzles (Canvas) HTML version quarto template\n\n\n\n\n\nTidyverse vs. Base R (YouTube, Susan B.)\nData Rectangling (YouTube, Jenny Bryan, Plotcon 2016) - The importance of getting data into the right format.\nTidy Data, Illustrated - Handy illustrations explaining the idea of tidy data"
   },
   {
-    "objectID": "weeks/week-050.html#wednesday",
-    "href": "weeks/week-050.html#wednesday",
-    "title": "Week 5: The Tidyverse",
+    "objectID": "weeks/week-040.html#reading",
+    "href": "weeks/week-040.html#reading",
+    "title": "Week 4: Programming in R",
     "section": "",
-    "text": "Attendance Quiz 09/30\nTidyverse Programming Basics: Reshaping Data\nTidyverse Practice II - Covid qmd template solutions"
+    "text": "(for Mon) SC Ch 11 - Data Structures - Sections 11.1, 11.2, 11.6 - Ignore the python parts, focus on understanding how you access pieces of data in a vector and a data frame, and how to differentiate between the two.\n(for Wed) SC Ch 13 - Control Structures"
   },
   {
-    "objectID": "weeks/week-050.html#friday",
-    "href": "weeks/week-050.html#friday",
-    "title": "Week 5: The Tidyverse",
+    "objectID": "weeks/week-040.html#prepare-for-class",
+    "href": "weeks/week-040.html#prepare-for-class",
+    "title": "Week 4: Programming in R",
     "section": "",
-    "text": "Attendance Quiz 10/02\nLab: Tidyverse Programming (Canvas) html file qmd template"
+    "text": "(for Mon) Reading Check 4.1 - Data Structures\n(for Wed) Reading Check 4.2 - R programming and Control Structures"
   },
   {
-    "objectID": "weeks/week-050.html#extra-resourcesreading",
-    "href": "weeks/week-050.html#extra-resourcesreading",
-    "title": "Week 5: The Tidyverse",
+    "objectID": "weeks/week-040.html#monday",
+    "href": "weeks/week-040.html#monday",
+    "title": "Week 4: Programming in R",
     "section": "",
-    "text": "SC Ch 10 - Functions, section 4: Pipes\nSC Ch 16 - Programming with Data - data explorations worked out with R/tidyverse code. You don’t know how to do graphics yet, but hopefully the data operations make sense.\nAllison Horst’s Tidyverse Illustrations - mostly illustrates tidyverse functions.\nTidyverse Style Guide - Pipes\nTidy Tuesday Screencasts (YouTube, David Robinson). These show example data analyses in real time, with commentary, using a new dataset each week. These were primarily recorded during the pandemic, but are still an incredibly valuable resource for learing how to work with data."
+    "text": "Attendance Quiz 09/21\nR programming basics"
   },
   {
-    "objectID": "weeks/week-030.html",
-    "href": "weeks/week-030.html",
-    "title": "Week 3: Correlation is not Causation",
+    "objectID": "weeks/week-040.html#wednesday",
+    "href": "weeks/week-040.html#wednesday",
+    "title": "Week 4: Programming in R",
     "section": "",
-    "text": "September 14-20, 2026\n\n\n\n(for Mon) IDS 2 Ch 19 - Association is Not Causation\n(for Wed) Bias and Ethics Readings\n(for Fri) Watch How Ice Cream Kills (&lt;6 mins) and Calling BS 3.3: Spurious Correlations (&lt;8 mins, UW Information School course on calling BS)\n\n\n\n\n\n(for Mon) 3.1.p Reading Check: Association is Not Causation (IDS Ch 19)\n(for Wed) 3.2.p Bias and Ethics\n(for Fri) 3.3.p “Reading” Check: How Ice Cream Kills and Calling BS: Spurious Correlations\n(for Fri) 3.3.p Presidency Associations Canvas Example (html) Template (qmd)\n\n\n\n\n\nAttendance Quiz 09/14\nSlides: Correlation and Causation\n3.1.i Spurious Correlation Activity (Canvas)\n\n\n\n\n\nAttendance Quiz 09/16\n\nSlides: Bias and Ethics\n\n\n\n\n\nAttendance Quiz 09/18\n3.3.i - Bias and Ethics Activity (submit in Canvas). qmd template, html file\n\n\n\n\n\nIt’s Not About the Bias per se - Kaiser Fung\nCausal Inference (YouTube, Dr. David Sontag, MIT OpenCourseWare) - The alternative to correlation – how to show causality\nCrash Course Statistics: Henrietta Lacks, the Tuskegee Experiment, and Ethical Data Collection: Crash Course Statistics #12 (YouTube, CrashCourse)\nExploring Data Ethics (YouTube, Dr. Wendy Martinez, Washington Statistical Society Seminar)"
+    "text": "Attendance Quiz 09/23\nLab: R Programming Puzzles (Canvas) HTML version quarto template"
   },
   {
-    "objectID": "weeks/week-030.html#reading",
-    "href": "weeks/week-030.html#reading",
-    "title": "Week 3: Correlation is not Causation",
+    "objectID": "weeks/week-040.html#friday",
+    "href": "weeks/week-040.html#friday",
+    "title": "Week 4: Programming in R",
     "section": "",
-    "text": "(for Mon) IDS 2 Ch 19 - Association is Not Causation\n(for Wed) Bias and Ethics Readings\n(for Fri) Watch How Ice Cream Kills (&lt;6 mins) and Calling BS 3.3: Spurious Correlations (&lt;8 mins, UW Information School course on calling BS)"
+    "text": "Attendance Quiz 09/25\nLab: R Programming Puzzles (Canvas) HTML version quarto template"
   },
   {
-    "objectID": "weeks/week-030.html#prepare-for-class",
-    "href": "weeks/week-030.html#prepare-for-class",
-    "title": "Week 3: Correlation is not Causation",
+    "objectID": "weeks/week-040.html#extra-resourcesreading",
+    "href": "weeks/week-040.html#extra-resourcesreading",
+    "title": "Week 4: Programming in R",
     "section": "",
-    "text": "(for Mon) 3.1.p Reading Check: Association is Not Causation (IDS Ch 19)\n(for Wed) 3.2.p Bias and Ethics\n(for Fri) 3.3.p “Reading” Check: How Ice Cream Kills and Calling BS: Spurious Correlations\n(for Fri) 3.3.p Presidency Associations Canvas Example (html) Template (qmd)"
+    "text": "Tidyverse vs. Base R (YouTube, Susan B.)\nData Rectangling (YouTube, Jenny Bryan, Plotcon 2016) - The importance of getting data into the right format.\nTidy Data, Illustrated - Handy illustrations explaining the idea of tidy data"
   },
   {
-    "objectID": "weeks/week-030.html#monday",
-    "href": "weeks/week-030.html#monday",
-    "title": "Week 3: Correlation is not Causation",
+    "objectID": "weeks/week-020.html",
+    "href": "weeks/week-020.html",
+    "title": "Week 2: Programming and RStudio",
     "section": "",
-    "text": "Attendance Quiz 09/14\nSlides: Correlation and Causation\n3.1.i Spurious Correlation Activity (Canvas)"
+    "text": "September 07-13, 2026\n\n\n\n(for Wed) Read Proposal: Data Collection\n(for Wed) Skim IDS 1 Ch 3 - Programming Basics so that you know where to look up different programming concepts\n(for Fri) Read SC Ch 3 - RStudio\n(for Fri) Project Proposal Template\n(for Fri) Project Proposal Demo (qmd) html\n\n\n\n\n\n\n\nNoteCorresponding SC Chapters\n\n\n\n\n\nFor reference/clarification, here are the chapters in SC that correspond to Chapters 2-3 in IDS1\n\nSC Ch 8 - Variables and Data Types\nSC Ch 9 - Mathematical and Logical Operators\nSC Ch 10 - Functions, Packages, and Environments\nSC Ch 11 - Data Structures - Sections 11.1, 11.2, 11.6 - Ignore the python parts, focus on understanding how you access pieces of data in a vector and a data frame, and how to differentiate between the two.\nSC Ch 13 - Control Structures\n\n\n\n\n\n\n\n\n(for Wed) 2.2.p Reading Check: Proposal: Data Collection\n(for Fri) 2.3.p Reading Check: Introduction to R and RStudio\n\n\n\n\n\nLabor Day\n\n\n\n\n\nAttendance Quiz 09/09\nIntro to Programming\n2.2.i - Swirl Tutorial\n\n\n\n\n\nAttendance Quiz 09/11\nIntro to RStudio\n2.3.i - Swirl Tutorial II\nSubmit Project Proposal\n\n\n\n\n\nHow to Name Files (YouTube, Jenny Bryan, NormConf) - How to name things so that they are machine readable, human readable, and sorted usefully.\nTeach Me How to Google: Debugging in R (YouTube, Jasmine Lai, R-Ladies Vancouver)\nRStudio Themes List - Make RStudio look the way you want it!\nFira Code is a free font with ligatures. Ligatures combine adjacent characters into symbols, so -&gt; becomes ➡️ (but without the background). Some people find this annoying, others find it much easier to read. Once you install the font, you should be able to start RStudio and then select Fira Code as the font in Tools -&gt; Global Options -&gt; Appearance."
   },
   {
-    "objectID": "weeks/week-030.html#wednesday",
-    "href": "weeks/week-030.html#wednesday",
-    "title": "Week 3: Correlation is not Causation",
+    "objectID": "weeks/week-020.html#reading",
+    "href": "weeks/week-020.html#reading",
+    "title": "Week 2: Programming and RStudio",
     "section": "",
-    "text": "Attendance Quiz 09/16\n\nSlides: Bias and Ethics"
+    "text": "(for Wed) Read Proposal: Data Collection\n(for Wed) Skim IDS 1 Ch 3 - Programming Basics so that you know where to look up different programming concepts\n(for Fri) Read SC Ch 3 - RStudio\n(for Fri) Project Proposal Template\n(for Fri) Project Proposal Demo (qmd) html\n\n\n\n\n\n\n\nNoteCorresponding SC Chapters\n\n\n\n\n\nFor reference/clarification, here are the chapters in SC that correspond to Chapters 2-3 in IDS1\n\nSC Ch 8 - Variables and Data Types\nSC Ch 9 - Mathematical and Logical Operators\nSC Ch 10 - Functions, Packages, and Environments\nSC Ch 11 - Data Structures - Sections 11.1, 11.2, 11.6 - Ignore the python parts, focus on understanding how you access pieces of data in a vector and a data frame, and how to differentiate between the two.\nSC Ch 13 - Control Structures"
   },
   {
-    "objectID": "weeks/week-030.html#friday",
-    "href": "weeks/week-030.html#friday",
-    "title": "Week 3: Correlation is not Causation",
+    "objectID": "weeks/week-020.html#prepare-for-class",
+    "href": "weeks/week-020.html#prepare-for-class",
+    "title": "Week 2: Programming and RStudio",
     "section": "",
-    "text": "Attendance Quiz 09/18\n3.3.i - Bias and Ethics Activity (submit in Canvas). qmd template, html file"
+    "text": "(for Wed) 2.2.p Reading Check: Proposal: Data Collection\n(for Fri) 2.3.p Reading Check: Introduction to R and RStudio"
   },
   {
-    "objectID": "weeks/week-030.html#extra-resourcesreading",
-    "href": "weeks/week-030.html#extra-resourcesreading",
-    "title": "Week 3: Correlation is not Causation",
+    "objectID": "weeks/week-020.html#monday",
+    "href": "weeks/week-020.html#monday",
+    "title": "Week 2: Programming and RStudio",
     "section": "",
-    "text": "It’s Not About the Bias per se - Kaiser Fung\nCausal Inference (YouTube, Dr. David Sontag, MIT OpenCourseWare) - The alternative to correlation – how to show causality\nCrash Course Statistics: Henrietta Lacks, the Tuskegee Experiment, and Ethical Data Collection: Crash Course Statistics #12 (YouTube, CrashCourse)\nExploring Data Ethics (YouTube, Dr. Wendy Martinez, Washington Statistical Society Seminar)"
+    "text": "Labor Day"
   },
   {
-    "objectID": "weeks/week-010.html",
-    "href": "weeks/week-010.html",
-    "title": "Week 1: Introduction",
+    "objectID": "weeks/week-020.html#wednesday",
+    "href": "weeks/week-020.html#wednesday",
+    "title": "Week 2: Programming and RStudio",
     "section": "",
-    "text": "August 31-06, 2026\n\n\n\n(for Mon) Syllabus\n(for Wed) IDS 1 Ch 6 - Importing Data\n(for Fri) IDS 1 Ch 2 - R Basics\nAdditional reading: SC Ch 7 - Introduction to Programming (this is just designed to help you get into the mindset)\n\n\n\n\n\nPrint out and bring cheat sheets for R\n(for Mon) 1.1.p Syllabus Overview\n(for Wed) 1.2.p Reading Check: Importing Data (IDS Ch 6)\n(for Wed) 1.2.p Install R\n(for Fri) 1.3.p Reading Check: R Basics (IDS Ch 2)\n\n\n\n\n\nAttendence Quiz 08/31\nDiscussion: Syllabus\nCourse Introduction and Motivation\nSyllabus Quiz\n\n\n\n\n\nAttendence Quiz 09/2\nOrganizing Data\n1.2.p Introduction to Data Science (Individual + In Class)\n\n\n\n\n\nAttendence Quiz 09/4\nIntro to Programming\nProgramming a Sandwich. html, qmd template\nGetting to Know You Assignment\n\n\n\n\n\nR cheat sheets - handout from class, but you can reprint them if you lose yours, or keep a digital copy on a tablet if you prefer.\nHadley Wickham: Spreadsheets, bikes, and the accidental empire of R packages (YouTube, The Test Set) - Hadley Wickham developed many of the R packages we’ll use in this course. Hear the back-story as to how he got started!\nThe Jevons Paradox (YouTube, Hank Green) - Why AI (and statistics) do not generate new information."
+    "text": "Attendance Quiz 09/09\nIntro to Programming\n2.2.i - Swirl Tutorial"
   },
   {
-    "objectID": "weeks/week-010.html#reading",
-    "href": "weeks/week-010.html#reading",
-    "title": "Week 1: Introduction",
+    "objectID": "weeks/week-020.html#friday",
+    "href": "weeks/week-020.html#friday",
+    "title": "Week 2: Programming and RStudio",
     "section": "",
-    "text": "(for Mon) Syllabus\n(for Wed) IDS 1 Ch 6 - Importing Data\n(for Fri) IDS 1 Ch 2 - R Basics\nAdditional reading: SC Ch 7 - Introduction to Programming (this is just designed to help you get into the mindset)"
+    "text": "Attendance Quiz 09/11\nIntro to RStudio\n2.3.i - Swirl Tutorial II\nSubmit Project Proposal"
   },
   {
-    "objectID": "weeks/week-010.html#prepare-for-class",
-    "href": "weeks/week-010.html#prepare-for-class",
-    "title": "Week 1: Introduction",
+    "objectID": "weeks/week-020.html#extra-resourcesreading",
+    "href": "weeks/week-020.html#extra-resourcesreading",
+    "title": "Week 2: Programming and RStudio",
     "section": "",
-    "text": "Print out and bring cheat sheets for R\n(for Mon) 1.1.p Syllabus Overview\n(for Wed) 1.2.p Reading Check: Importing Data (IDS Ch 6)\n(for Wed) 1.2.p Install R\n(for Fri) 1.3.p Reading Check: R Basics (IDS Ch 2)"
+    "text": "How to Name Files (YouTube, Jenny Bryan, NormConf) - How to name things so that they are machine readable, human readable, and sorted usefully.\nTeach Me How to Google: Debugging in R (YouTube, Jasmine Lai, R-Ladies Vancouver)\nRStudio Themes List - Make RStudio look the way you want it!\nFira Code is a free font with ligatures. Ligatures combine adjacent characters into symbols, so -&gt; becomes ➡️ (but without the background). Some people find this annoying, others find it much easier to read. Once you install the font, you should be able to start RStudio and then select Fira Code as the font in Tools -&gt; Global Options -&gt; Appearance."
   },
   {
-    "objectID": "weeks/week-010.html#monday",
-    "href": "weeks/week-010.html#monday",
-    "title": "Week 1: Introduction",
+    "objectID": "course-support.html",
+    "href": "course-support.html",
+    "title": "Course support",
     "section": "",
-    "text": "Attendence Quiz 08/31\nDiscussion: Syllabus\nCourse Introduction and Motivation\nSyllabus Quiz"
+    "text": "If you have a question during lecture or lab, feel free to ask it! There are likely other students with the same question, so by asking you will create a learning opportunity for everyone."
   },
   {
-    "objectID": "weeks/week-010.html#wednesday",
-    "href": "weeks/week-010.html#wednesday",
-    "title": "Week 1: Introduction",
+    "objectID": "course-support.html#lectures-and-labs",
+    "href": "course-support.html#lectures-and-labs",
+    "title": "Course support",
     "section": "",
-    "text": "Attendence Quiz 09/2\nOrganizing Data\n1.2.p Introduction to Data Science (Individual + In Class)"
+    "text": "If you have a question during lecture or lab, feel free to ask it! There are likely other students with the same question, so by asking you will create a learning opportunity for everyone."
   },
   {
-    "objectID": "weeks/week-010.html#friday",
-    "href": "weeks/week-010.html#friday",
-    "title": "Week 1: Introduction",
-    "section": "",
-    "text": "Attendence Quiz 09/4\nIntro to Programming\nProgramming a Sandwich. html, qmd template\nGetting to Know You Assignment"
+    "objectID": "course-support.html#office-hours",
+    "href": "course-support.html#office-hours",
+    "title": "Course support",
+    "section": "Office hours",
+    "text": "Office hours\nOffice hours are available by appointment at this link. In general, office hours will be via Zoom - this allows me to offer more availability, and doesn’t require you to come to East campus to visit my office.\nIf you’d prefer to meet in person, try to schedule your appointment on Monday or Wednesday, and mention in the request that you want an in-person meeting. I will let you know if that’s feasible given my schedule for the day."
   },
   {
-    "objectID": "weeks/week-010.html#extra-resourcesreading",
-    "href": "weeks/week-010.html#extra-resourcesreading",
-    "title": "Week 1: Introduction",
-    "section": "",
-    "text": "R cheat sheets - handout from class, but you can reprint them if you lose yours, or keep a digital copy on a tablet if you prefer.\nHadley Wickham: Spreadsheets, bikes, and the accidental empire of R packages (YouTube, The Test Set) - Hadley Wickham developed many of the R packages we’ll use in this course. Hear the back-story as to how he got started!\nThe Jevons Paradox (YouTube, Hank Green) - Why AI (and statistics) do not generate new information."
+    "objectID": "course-support.html#email",
+    "href": "course-support.html#email",
+    "title": "Course support",
+    "section": "Email",
+    "text": "Email\nPlease only use email for questions about personal matters that may not be appropriate for the public course forum (e.g., illness, grades, accommodations, etc.). In these cases, please add “STAT349” to the subject line, so that I can prioritize your email.\nAssignment and content related questions should be asked in the relevant discussion board on Canvas."
   },
   {
-    "objectID": "course-overview.html",
-    "href": "course-overview.html",
-    "title": "Stat 349: Technical Skills for Statisticians",
+    "objectID": "course-support.html#academic-support",
+    "href": "course-support.html#academic-support",
+    "title": "Course support",
+    "section": "Academic support",
+    "text": "Academic support\nThere are times you may need help with the class that is beyond what can be provided by the teaching team. In those instances, I encourage you to visit the Center for Academic Success and Transition (CAST). CAST offers free services to all students.\nStudents have access to peer tutoring, academic coaching, and academic success workshops."
+  },
+  {
+    "objectID": "course-support.html#mental-health-and-wellness",
+    "href": "course-support.html#mental-health-and-wellness",
+    "title": "Course support",
+    "section": "Mental health and wellness",
+    "text": "Mental health and wellness\nYour mental health and wellness extremely important, and the university offers resources to support students in managing daily stress and self-care. UNL offers several resources for students to manage stress, seek help with well-being, and access crisis and long-term care.\n\nCounseling and Psychological Services (CAPS), 402-472-7450\nCenter for Advocacy, Response, & Education (CARE), 402-472-3553 – resources for victims/survivors of interpersonal violence.\nServices for Students with Disabilities (SSD), ssd@unl.edu or 402-472-3787 – resources for students experiencing short or long-term disabilities that affect the campus or educational experience."
+  },
+  {
+    "objectID": "course-support.html#technology",
+    "href": "course-support.html#technology",
+    "title": "Course support",
+    "section": "Technology",
+    "text": "Technology\nStudents who do not have a working computer can check out a loaner laptop from HuskerTech on city campus (Love South, Adele Hall) and east campus (Dinsdale).\nIf you are unable to get a loaner laptop set up with the software required for parts of this course, please try to let me know ahead of time - it is possible that I will be able to assist you with browser-based solutions."
+  },
+  {
+    "objectID": "course-support.html#course-materials",
+    "href": "course-support.html#course-materials",
+    "title": "Course support",
+    "section": "Course materials",
+    "text": "Course materials\nThere are no costs associated with this course beyond the requirement that you have access to a laptop computer. All readings will come from freely available, open resources (open-source textbooks, journal articles, etc.) or library course reserves."
+  },
+  {
+    "objectID": "course-links.html",
+    "href": "course-links.html",
+    "title": "Useful links",
     "section": "",
-    "text": "Creation of research reports, business reports, and executive summaries. Presentation strategies, consequences of statistical modeling for real-world decision making, and countering common misconceptions and errors in statistical reasoning. Focus on real-world applications in research, business, and public service."
+    "text": "Canvas\nAssignment Submissions, Reading Quizzes, Gradebook\n\n\nIntroduction to Data Science 1, by Rafael A. Irizarry\nTextbook (IDS 1)\n\n\nIntroduction to Data Science 2, by Rafael A. Irizarry\nTextbook (IDS 2)\n\n\nStatistical Computing in R and Python\nSC"
   },
   {
     "objectID": "syllabus.html",
@@ -1827,417 +1855,438 @@
     "text": "4.3 Students Who are Pregnant or Have a Pregnancy-Related Condition\nIf you need academic accommodations related to pregnancy, childbirth, false pregnancy, termination of pregnancy, recovery, or other pregnancy related conditions, please contact the Civil Rights & Title IX Office as early as possible. All accommodations related to pregnancy must be approved by the Civil Rights & Title IX Office. The Civil Rights & Title IX Office will then coordinate with instructors to provide accommodations. The University will not exclude a student from participating in any part of an educational program based on the student’s pregnancy or pregnancy related conditions.\nCivil Rights & Title IX Office: Distance Education, Room 400, Logan Campus, 435-797-1266, Civil Rights & Title IX Office: Pregnancy and Pregnancy Related Conditions."
   },
   {
-    "objectID": "course-links.html",
-    "href": "course-links.html",
-    "title": "Useful links",
+    "objectID": "course-overview.html",
+    "href": "course-overview.html",
+    "title": "Stat 349: Technical Skills for Statisticians",
     "section": "",
-    "text": "Canvas\nAssignment Submissions, Reading Quizzes, Gradebook\n\n\nIntroduction to Data Science 1, by Rafael A. Irizarry\nTextbook (IDS 1)\n\n\nIntroduction to Data Science 2, by Rafael A. Irizarry\nTextbook (IDS 2)\n\n\nStatistical Computing in R and Python\nSC"
+    "text": "Creation of research reports, business reports, and executive summaries. Presentation strategies, consequences of statistical modeling for real-world decision making, and countering common misconceptions and errors in statistical reasoning. Focus on real-world applications in research, business, and public service."
   },
   {
-    "objectID": "course-support.html",
-    "href": "course-support.html",
-    "title": "Course support",
+    "objectID": "weeks/week-010.html",
+    "href": "weeks/week-010.html",
+    "title": "Week 1: Introduction",
     "section": "",
-    "text": "If you have a question during lecture or lab, feel free to ask it! There are likely other students with the same question, so by asking you will create a learning opportunity for everyone."
+    "text": "August 31-06, 2026\n\n\n\n(for Mon) Syllabus\n(for Wed) IDS 1 Ch 6 - Importing Data\n(for Fri) IDS 1 Ch 2 - R Basics\nAdditional reading: SC Ch 7 - Introduction to Programming (this is just designed to help you get into the mindset)\n\n\n\n\n\nPrint out and bring cheat sheets for R\n(for Mon) 1.1.p Syllabus Overview\n(for Wed) 1.2.p Reading Check: Importing Data (IDS Ch 6)\n(for Wed) 1.2.p Install R\n(for Fri) 1.3.p Reading Check: R Basics (IDS Ch 2)\n\n\n\n\n\nAttendence Quiz 08/31\nDiscussion: Syllabus\nCourse Introduction and Motivation\nSyllabus Quiz\n\n\n\n\n\nAttendence Quiz 09/2\nOrganizing Data\n1.2.p Introduction to Data Science (Individual + In Class)\n\n\n\n\n\nAttendence Quiz 09/4\nIntro to Programming\nProgramming a Sandwich. html, qmd template\nGetting to Know You Assignment\n\n\n\n\n\nR cheat sheets - handout from class, but you can reprint them if you lose yours, or keep a digital copy on a tablet if you prefer.\nHadley Wickham: Spreadsheets, bikes, and the accidental empire of R packages (YouTube, The Test Set) - Hadley Wickham developed many of the R packages we’ll use in this course. Hear the back-story as to how he got started!\nThe Jevons Paradox (YouTube, Hank Green) - Why AI (and statistics) do not generate new information."
   },
   {
-    "objectID": "course-support.html#lectures-and-labs",
-    "href": "course-support.html#lectures-and-labs",
-    "title": "Course support",
+    "objectID": "weeks/week-010.html#reading",
+    "href": "weeks/week-010.html#reading",
+    "title": "Week 1: Introduction",
     "section": "",
-    "text": "If you have a question during lecture or lab, feel free to ask it! There are likely other students with the same question, so by asking you will create a learning opportunity for everyone."
+    "text": "(for Mon) Syllabus\n(for Wed) IDS 1 Ch 6 - Importing Data\n(for Fri) IDS 1 Ch 2 - R Basics\nAdditional reading: SC Ch 7 - Introduction to Programming (this is just designed to help you get into the mindset)"
   },
   {
-    "objectID": "course-support.html#office-hours",
-    "href": "course-support.html#office-hours",
-    "title": "Course support",
-    "section": "Office hours",
-    "text": "Office hours\nOffice hours are available by appointment at this link. In general, office hours will be via Zoom - this allows me to offer more availability, and doesn’t require you to come to East campus to visit my office.\nIf you’d prefer to meet in person, try to schedule your appointment on Monday or Wednesday, and mention in the request that you want an in-person meeting. I will let you know if that’s feasible given my schedule for the day."
-  },
-  {
-    "objectID": "course-support.html#email",
-    "href": "course-support.html#email",
-    "title": "Course support",
-    "section": "Email",
-    "text": "Email\nPlease only use email for questions about personal matters that may not be appropriate for the public course forum (e.g., illness, grades, accommodations, etc.). In these cases, please add “STAT349” to the subject line, so that I can prioritize your email.\nAssignment and content related questions should be asked in the relevant discussion board on Canvas."
-  },
-  {
-    "objectID": "course-support.html#academic-support",
-    "href": "course-support.html#academic-support",
-    "title": "Course support",
-    "section": "Academic support",
-    "text": "Academic support\nThere are times you may need help with the class that is beyond what can be provided by the teaching team. In those instances, I encourage you to visit the Center for Academic Success and Transition (CAST). CAST offers free services to all students.\nStudents have access to peer tutoring, academic coaching, and academic success workshops."
-  },
-  {
-    "objectID": "course-support.html#mental-health-and-wellness",
-    "href": "course-support.html#mental-health-and-wellness",
-    "title": "Course support",
-    "section": "Mental health and wellness",
-    "text": "Mental health and wellness\nYour mental health and wellness extremely important, and the university offers resources to support students in managing daily stress and self-care. UNL offers several resources for students to manage stress, seek help with well-being, and access crisis and long-term care.\n\nCounseling and Psychological Services (CAPS), 402-472-7450\nCenter for Advocacy, Response, & Education (CARE), 402-472-3553 – resources for victims/survivors of interpersonal violence.\nServices for Students with Disabilities (SSD), ssd@unl.edu or 402-472-3787 – resources for students experiencing short or long-term disabilities that affect the campus or educational experience."
-  },
-  {
-    "objectID": "course-support.html#technology",
-    "href": "course-support.html#technology",
-    "title": "Course support",
-    "section": "Technology",
-    "text": "Technology\nStudents who do not have a working computer can check out a loaner laptop from HuskerTech on city campus (Love South, Adele Hall) and east campus (Dinsdale).\nIf you are unable to get a loaner laptop set up with the software required for parts of this course, please try to let me know ahead of time - it is possible that I will be able to assist you with browser-based solutions."
-  },
-  {
-    "objectID": "course-support.html#course-materials",
-    "href": "course-support.html#course-materials",
-    "title": "Course support",
-    "section": "Course materials",
-    "text": "Course materials\nThere are no costs associated with this course beyond the requirement that you have access to a laptop computer. All readings will come from freely available, open resources (open-source textbooks, journal articles, etc.) or library course reserves."
-  },
-  {
-    "objectID": "weeks/week-020.html",
-    "href": "weeks/week-020.html",
-    "title": "Week 2: Programming and RStudio",
+    "objectID": "weeks/week-010.html#prepare-for-class",
+    "href": "weeks/week-010.html#prepare-for-class",
+    "title": "Week 1: Introduction",
     "section": "",
-    "text": "September 07-13, 2026\n\n\n\n(for Wed) Read Proposal: Data Collection\n(for Wed) Skim IDS 1 Ch 3 - Programming Basics so that you know where to look up different programming concepts\n(for Fri) Read SC Ch 3 - RStudio\n(for Fri) Project Proposal Template\n(for Fri) Project Proposal Demo (qmd) html\n\n\n\n\n\n\n\nNoteCorresponding SC Chapters\n\n\n\n\n\nFor reference/clarification, here are the chapters in SC that correspond to Chapters 2-3 in IDS1\n\nSC Ch 8 - Variables and Data Types\nSC Ch 9 - Mathematical and Logical Operators\nSC Ch 10 - Functions, Packages, and Environments\nSC Ch 11 - Data Structures - Sections 11.1, 11.2, 11.6 - Ignore the python parts, focus on understanding how you access pieces of data in a vector and a data frame, and how to differentiate between the two.\nSC Ch 13 - Control Structures\n\n\n\n\n\n\n\n\n(for Wed) 2.2.p Reading Check: Proposal: Data Collection\n(for Fri) 2.3.p Reading Check: Introduction to R and RStudio\n\n\n\n\n\nLabor Day\n\n\n\n\n\nAttendance Quiz 09/09\nIntro to Programming\n2.2.i - Swirl Tutorial\n\n\n\n\n\nAttendance Quiz 09/11\nIntro to RStudio\n2.3.i - Swirl Tutorial II\nSubmit Project Proposal\n\n\n\n\n\nHow to Name Files (YouTube, Jenny Bryan, NormConf) - How to name things so that they are machine readable, human readable, and sorted usefully.\nTeach Me How to Google: Debugging in R (YouTube, Jasmine Lai, R-Ladies Vancouver)\nRStudio Themes List - Make RStudio look the way you want it!\nFira Code is a free font with ligatures. Ligatures combine adjacent characters into symbols, so -&gt; becomes ➡️ (but without the background). Some people find this annoying, others find it much easier to read. Once you install the font, you should be able to start RStudio and then select Fira Code as the font in Tools -&gt; Global Options -&gt; Appearance."
+    "text": "Print out and bring cheat sheets for R\n(for Mon) 1.1.p Syllabus Overview\n(for Wed) 1.2.p Reading Check: Importing Data (IDS Ch 6)\n(for Wed) 1.2.p Install R\n(for Fri) 1.3.p Reading Check: R Basics (IDS Ch 2)"
   },
   {
-    "objectID": "weeks/week-020.html#reading",
-    "href": "weeks/week-020.html#reading",
-    "title": "Week 2: Programming and RStudio",
+    "objectID": "weeks/week-010.html#monday",
+    "href": "weeks/week-010.html#monday",
+    "title": "Week 1: Introduction",
     "section": "",
-    "text": "(for Wed) Read Proposal: Data Collection\n(for Wed) Skim IDS 1 Ch 3 - Programming Basics so that you know where to look up different programming concepts\n(for Fri) Read SC Ch 3 - RStudio\n(for Fri) Project Proposal Template\n(for Fri) Project Proposal Demo (qmd) html\n\n\n\n\n\n\n\nNoteCorresponding SC Chapters\n\n\n\n\n\nFor reference/clarification, here are the chapters in SC that correspond to Chapters 2-3 in IDS1\n\nSC Ch 8 - Variables and Data Types\nSC Ch 9 - Mathematical and Logical Operators\nSC Ch 10 - Functions, Packages, and Environments\nSC Ch 11 - Data Structures - Sections 11.1, 11.2, 11.6 - Ignore the python parts, focus on understanding how you access pieces of data in a vector and a data frame, and how to differentiate between the two.\nSC Ch 13 - Control Structures"
+    "text": "Attendence Quiz 08/31\nDiscussion: Syllabus\nCourse Introduction and Motivation\nSyllabus Quiz"
   },
   {
-    "objectID": "weeks/week-020.html#prepare-for-class",
-    "href": "weeks/week-020.html#prepare-for-class",
-    "title": "Week 2: Programming and RStudio",
+    "objectID": "weeks/week-010.html#wednesday",
+    "href": "weeks/week-010.html#wednesday",
+    "title": "Week 1: Introduction",
     "section": "",
-    "text": "(for Wed) 2.2.p Reading Check: Proposal: Data Collection\n(for Fri) 2.3.p Reading Check: Introduction to R and RStudio"
+    "text": "Attendence Quiz 09/2\nOrganizing Data\n1.2.p Introduction to Data Science (Individual + In Class)"
   },
   {
-    "objectID": "weeks/week-020.html#monday",
-    "href": "weeks/week-020.html#monday",
-    "title": "Week 2: Programming and RStudio",
+    "objectID": "weeks/week-010.html#friday",
+    "href": "weeks/week-010.html#friday",
+    "title": "Week 1: Introduction",
     "section": "",
-    "text": "Labor Day"
+    "text": "Attendence Quiz 09/4\nIntro to Programming\nProgramming a Sandwich. html, qmd template\nGetting to Know You Assignment"
   },
   {
-    "objectID": "weeks/week-020.html#wednesday",
-    "href": "weeks/week-020.html#wednesday",
-    "title": "Week 2: Programming and RStudio",
+    "objectID": "weeks/week-010.html#extra-resourcesreading",
+    "href": "weeks/week-010.html#extra-resourcesreading",
+    "title": "Week 1: Introduction",
     "section": "",
-    "text": "Attendance Quiz 09/09\nIntro to Programming\n2.2.i - Swirl Tutorial"
+    "text": "R cheat sheets - handout from class, but you can reprint them if you lose yours, or keep a digital copy on a tablet if you prefer.\nHadley Wickham: Spreadsheets, bikes, and the accidental empire of R packages (YouTube, The Test Set) - Hadley Wickham developed many of the R packages we’ll use in this course. Hear the back-story as to how he got started!\nThe Jevons Paradox (YouTube, Hank Green) - Why AI (and statistics) do not generate new information."
   },
   {
-    "objectID": "weeks/week-020.html#friday",
-    "href": "weeks/week-020.html#friday",
-    "title": "Week 2: Programming and RStudio",
+    "objectID": "weeks/week-030.html",
+    "href": "weeks/week-030.html",
+    "title": "Week 3: Correlation is not Causation",
     "section": "",
-    "text": "Attendance Quiz 09/11\nIntro to RStudio\n2.3.i - Swirl Tutorial II\nSubmit Project Proposal"
+    "text": "September 14-20, 2026\n\n\n\n(for Mon) IDS 2 Ch 19 - Association is Not Causation\n(for Wed) Bias and Ethics Readings\n(for Fri) Watch How Ice Cream Kills (&lt;6 mins) and Calling BS 3.3: Spurious Correlations (&lt;8 mins, UW Information School course on calling BS)\n\n\n\n\n\n(for Mon) 3.1.p Reading Check: Association is Not Causation (IDS Ch 19)\n(for Wed) 3.2.p Bias and Ethics\n(for Fri) 3.3.p “Reading” Check: How Ice Cream Kills and Calling BS: Spurious Correlations\n(for Fri) 3.3.p Presidency Associations Canvas Example (html) Template (qmd)\n\n\n\n\n\nAttendance Quiz 09/14\nSlides: Correlation and Causation\n3.1.i Spurious Correlation Activity (Canvas)\n\n\n\n\n\nAttendance Quiz 09/16\n\nSlides: Bias and Ethics\n\n\n\n\n\nAttendance Quiz 09/18\n3.3.i - Bias and Ethics Activity (submit in Canvas). qmd template, html file\n\n\n\n\n\nIt’s Not About the Bias per se - Kaiser Fung\nCausal Inference (YouTube, Dr. David Sontag, MIT OpenCourseWare) - The alternative to correlation – how to show causality\nCrash Course Statistics: Henrietta Lacks, the Tuskegee Experiment, and Ethical Data Collection: Crash Course Statistics #12 (YouTube, CrashCourse)\nExploring Data Ethics (YouTube, Dr. Wendy Martinez, Washington Statistical Society Seminar)"
   },
   {
-    "objectID": "weeks/week-020.html#extra-resourcesreading",
-    "href": "weeks/week-020.html#extra-resourcesreading",
-    "title": "Week 2: Programming and RStudio",
+    "objectID": "weeks/week-030.html#reading",
+    "href": "weeks/week-030.html#reading",
+    "title": "Week 3: Correlation is not Causation",
     "section": "",
-    "text": "How to Name Files (YouTube, Jenny Bryan, NormConf) - How to name things so that they are machine readable, human readable, and sorted usefully.\nTeach Me How to Google: Debugging in R (YouTube, Jasmine Lai, R-Ladies Vancouver)\nRStudio Themes List - Make RStudio look the way you want it!\nFira Code is a free font with ligatures. Ligatures combine adjacent characters into symbols, so -&gt; becomes ➡️ (but without the background). Some people find this annoying, others find it much easier to read. Once you install the font, you should be able to start RStudio and then select Fira Code as the font in Tools -&gt; Global Options -&gt; Appearance."
+    "text": "(for Mon) IDS 2 Ch 19 - Association is Not Causation\n(for Wed) Bias and Ethics Readings\n(for Fri) Watch How Ice Cream Kills (&lt;6 mins) and Calling BS 3.3: Spurious Correlations (&lt;8 mins, UW Information School course on calling BS)"
   },
   {
-    "objectID": "weeks/week-040.html",
-    "href": "weeks/week-040.html",
-    "title": "Week 4: Programming in R",
+    "objectID": "weeks/week-030.html#prepare-for-class",
+    "href": "weeks/week-030.html#prepare-for-class",
+    "title": "Week 3: Correlation is not Causation",
     "section": "",
-    "text": "September 21-27, 2026\n\n\n\n(for Mon) SC Ch 11 - Data Structures - Sections 11.1, 11.2, 11.6 - Ignore the python parts, focus on understanding how you access pieces of data in a vector and a data frame, and how to differentiate between the two.\n(for Wed) SC Ch 13 - Control Structures\n\n\n\n\n\n(for Mon) Reading Check 4.1 - Data Structures\n(for Wed) Reading Check 4.2 - R programming and Control Structures\n\n\n\n\n\nAttendance Quiz 09/21\nR programming basics\n\n\n\n\n\nAttendance Quiz 09/23\nLab: R Programming Puzzles (Canvas) HTML version quarto template\n\n\n\n\n\nAttendance Quiz 09/25\nLab: R Programming Puzzles (Canvas) HTML version quarto template\n\n\n\n\n\nTidyverse vs. Base R (YouTube, Susan B.)\nData Rectangling (YouTube, Jenny Bryan, Plotcon 2016) - The importance of getting data into the right format.\nTidy Data, Illustrated - Handy illustrations explaining the idea of tidy data"
+    "text": "(for Mon) 3.1.p Reading Check: Association is Not Causation (IDS Ch 19)\n(for Wed) 3.2.p Bias and Ethics\n(for Fri) 3.3.p “Reading” Check: How Ice Cream Kills and Calling BS: Spurious Correlations\n(for Fri) 3.3.p Presidency Associations Canvas Example (html) Template (qmd)"
   },
   {
-    "objectID": "weeks/week-040.html#reading",
-    "href": "weeks/week-040.html#reading",
-    "title": "Week 4: Programming in R",
+    "objectID": "weeks/week-030.html#monday",
+    "href": "weeks/week-030.html#monday",
+    "title": "Week 3: Correlation is not Causation",
     "section": "",
-    "text": "(for Mon) SC Ch 11 - Data Structures - Sections 11.1, 11.2, 11.6 - Ignore the python parts, focus on understanding how you access pieces of data in a vector and a data frame, and how to differentiate between the two.\n(for Wed) SC Ch 13 - Control Structures"
+    "text": "Attendance Quiz 09/14\nSlides: Correlation and Causation\n3.1.i Spurious Correlation Activity (Canvas)"
   },
   {
-    "objectID": "weeks/week-040.html#prepare-for-class",
-    "href": "weeks/week-040.html#prepare-for-class",
-    "title": "Week 4: Programming in R",
+    "objectID": "weeks/week-030.html#wednesday",
+    "href": "weeks/week-030.html#wednesday",
+    "title": "Week 3: Correlation is not Causation",
     "section": "",
-    "text": "(for Mon) Reading Check 4.1 - Data Structures\n(for Wed) Reading Check 4.2 - R programming and Control Structures"
+    "text": "Attendance Quiz 09/16\n\nSlides: Bias and Ethics"
   },
   {
-    "objectID": "weeks/week-040.html#monday",
-    "href": "weeks/week-040.html#monday",
-    "title": "Week 4: Programming in R",
+    "objectID": "weeks/week-030.html#friday",
+    "href": "weeks/week-030.html#friday",
+    "title": "Week 3: Correlation is not Causation",
     "section": "",
-    "text": "Attendance Quiz 09/21\nR programming basics"
+    "text": "Attendance Quiz 09/18\n3.3.i - Bias and Ethics Activity (submit in Canvas). qmd template, html file"
   },
   {
-    "objectID": "weeks/week-040.html#wednesday",
-    "href": "weeks/week-040.html#wednesday",
-    "title": "Week 4: Programming in R",
+    "objectID": "weeks/week-030.html#extra-resourcesreading",
+    "href": "weeks/week-030.html#extra-resourcesreading",
+    "title": "Week 3: Correlation is not Causation",
     "section": "",
-    "text": "Attendance Quiz 09/23\nLab: R Programming Puzzles (Canvas) HTML version quarto template"
+    "text": "It’s Not About the Bias per se - Kaiser Fung\nCausal Inference (YouTube, Dr. David Sontag, MIT OpenCourseWare) - The alternative to correlation – how to show causality\nCrash Course Statistics: Henrietta Lacks, the Tuskegee Experiment, and Ethical Data Collection: Crash Course Statistics #12 (YouTube, CrashCourse)\nExploring Data Ethics (YouTube, Dr. Wendy Martinez, Washington Statistical Society Seminar)"
   },
   {
-    "objectID": "weeks/week-040.html#friday",
-    "href": "weeks/week-040.html#friday",
-    "title": "Week 4: Programming in R",
+    "objectID": "weeks/week-050.html",
+    "href": "weeks/week-050.html",
+    "title": "Week 5: The Tidyverse",
     "section": "",
-    "text": "Attendance Quiz 09/25\nLab: R Programming Puzzles (Canvas) HTML version quarto template"
+    "text": "September 28-04, 2026\n\n\n\n(for Mon) IDS I Ch 4 - The Tidyverse\n(for Mon) SC Ch 22 - Data Cleaning - Focus on the (R) examples of any dplyr verb you don’t quite get.\n(for Wed) SC Ch 24 - Reshaping Data - Be able to identify wide and long data.\n(for Fri) Watch I Found the Dumbest Time Zone (@vlogbrothers) and The Problem with Time & Timezones (@computerphile) to get ready for next week.\n\n\n\n\n\n(for Mon) Reading Check 5.1 - The Tidyverse, Pipes, and dplyr\n(for Wed) Reading Check 5.2 - Wide, Long, and Tidy data with tidyr\n(for Fri) “Reading” Check 5.3 - Dates and Times\n(During October) Get what you pay for! qmd template\n\n\n\n\n\nAttendance Quiz 09/28\nTidyverse Programming Basics: Tibbles and dplyr\n5.1.i Covid Case Exploration (Canvas) qmd template html file\nExtra Practice: dplyr verbs. qmd template html version solutions\n\n\n\n\n\nAttendance Quiz 09/30\nTidyverse Programming Basics: Reshaping Data\nTidyverse Practice II - Covid qmd template solutions\n\n\n\n\n\nAttendance Quiz 10/02\nLab: Tidyverse Programming (Canvas) html file qmd template\n\n\n\n\n\nSC Ch 10 - Functions, section 4: Pipes\nSC Ch 16 - Programming with Data - data explorations worked out with R/tidyverse code. You don’t know how to do graphics yet, but hopefully the data operations make sense.\nAllison Horst’s Tidyverse Illustrations - mostly illustrates tidyverse functions.\nTidyverse Style Guide - Pipes\nTidy Tuesday Screencasts (YouTube, David Robinson). These show example data analyses in real time, with commentary, using a new dataset each week. These were primarily recorded during the pandemic, but are still an incredibly valuable resource for learing how to work with data."
   },
   {
-    "objectID": "weeks/week-040.html#extra-resourcesreading",
-    "href": "weeks/week-040.html#extra-resourcesreading",
-    "title": "Week 4: Programming in R",
+    "objectID": "weeks/week-050.html#reading",
+    "href": "weeks/week-050.html#reading",
+    "title": "Week 5: The Tidyverse",
     "section": "",
-    "text": "Tidyverse vs. Base R (YouTube, Susan B.)\nData Rectangling (YouTube, Jenny Bryan, Plotcon 2016) - The importance of getting data into the right format.\nTidy Data, Illustrated - Handy illustrations explaining the idea of tidy data"
+    "text": "(for Mon) IDS I Ch 4 - The Tidyverse\n(for Mon) SC Ch 22 - Data Cleaning - Focus on the (R) examples of any dplyr verb you don’t quite get.\n(for Wed) SC Ch 24 - Reshaping Data - Be able to identify wide and long data.\n(for Fri) Watch I Found the Dumbest Time Zone (@vlogbrothers) and The Problem with Time & Timezones (@computerphile) to get ready for next week."
   },
   {
-    "objectID": "weeks/week-060.html",
-    "href": "weeks/week-060.html",
-    "title": "Week 6: Dates, Times, and Distributions",
+    "objectID": "weeks/week-050.html#prepare-for-class",
+    "href": "weeks/week-050.html#prepare-for-class",
+    "title": "Week 5: The Tidyverse",
     "section": "",
-    "text": "October 05-11, 2026\n\n\n\n(for Mon) IDS I Ch 13 - Dates and Times\n(for Wed) IDS I Ch 7 - Visualizing Data Distributions\n\n\n\n\n\n(for Mon) Reading Check 6.1.p - Dates and Times\n\n(for Wed) Reading Check 6.2.p - Visualizing Distributions\nHomework 1 qmd template html\n\n\n\n\n\nAttendance Quiz 10/05\nDates and Times\nActivity: Dates and Times quarto html\nExtra Practice: Covid Time Series quarto html solutions\n\n\n\n\n\nAttendance Quiz 10/07\nVisualizing Data Distributions\nDemo: Visualizing Data Distributions\nAdditional Distribution Visualizations: World Cappuccino Index\nActivity: Datasaurus html quarto template\n\n\n\n\n\nFall Break\n\n\n\n\n\nSC Ch 27 - Dates and Times\nIDS I Ch 14 - Locales"
+    "text": "(for Mon) Reading Check 5.1 - The Tidyverse, Pipes, and dplyr\n(for Wed) Reading Check 5.2 - Wide, Long, and Tidy data with tidyr\n(for Fri) “Reading” Check 5.3 - Dates and Times\n(During October) Get what you pay for! qmd template"
   },
   {
-    "objectID": "weeks/week-060.html#reading",
-    "href": "weeks/week-060.html#reading",
-    "title": "Week 6: Dates, Times, and Distributions",
+    "objectID": "weeks/week-050.html#monday",
+    "href": "weeks/week-050.html#monday",
+    "title": "Week 5: The Tidyverse",
     "section": "",
-    "text": "(for Mon) IDS I Ch 13 - Dates and Times\n(for Wed) IDS I Ch 7 - Visualizing Data Distributions"
+    "text": "Attendance Quiz 09/28\nTidyverse Programming Basics: Tibbles and dplyr\n5.1.i Covid Case Exploration (Canvas) qmd template html file\nExtra Practice: dplyr verbs. qmd template html version solutions"
   },
   {
-    "objectID": "weeks/week-060.html#prepare-for-class",
-    "href": "weeks/week-060.html#prepare-for-class",
-    "title": "Week 6: Dates, Times, and Distributions",
+    "objectID": "weeks/week-050.html#wednesday",
+    "href": "weeks/week-050.html#wednesday",
+    "title": "Week 5: The Tidyverse",
     "section": "",
-    "text": "(for Mon) Reading Check 6.1.p - Dates and Times\n\n(for Wed) Reading Check 6.2.p - Visualizing Distributions\nHomework 1 qmd template html"
+    "text": "Attendance Quiz 09/30\nTidyverse Programming Basics: Reshaping Data\nTidyverse Practice II - Covid qmd template solutions"
   },
   {
-    "objectID": "weeks/week-060.html#monday",
-    "href": "weeks/week-060.html#monday",
-    "title": "Week 6: Dates, Times, and Distributions",
+    "objectID": "weeks/week-050.html#friday",
+    "href": "weeks/week-050.html#friday",
+    "title": "Week 5: The Tidyverse",
     "section": "",
-    "text": "Attendance Quiz 10/05\nDates and Times\nActivity: Dates and Times quarto html\nExtra Practice: Covid Time Series quarto html solutions"
+    "text": "Attendance Quiz 10/02\nLab: Tidyverse Programming (Canvas) html file qmd template"
   },
   {
-    "objectID": "weeks/week-060.html#wednesday",
-    "href": "weeks/week-060.html#wednesday",
-    "title": "Week 6: Dates, Times, and Distributions",
+    "objectID": "weeks/week-050.html#extra-resourcesreading",
+    "href": "weeks/week-050.html#extra-resourcesreading",
+    "title": "Week 5: The Tidyverse",
     "section": "",
-    "text": "Attendance Quiz 10/07\nVisualizing Data Distributions\nDemo: Visualizing Data Distributions\nAdditional Distribution Visualizations: World Cappuccino Index\nActivity: Datasaurus html quarto template"
+    "text": "SC Ch 10 - Functions, section 4: Pipes\nSC Ch 16 - Programming with Data - data explorations worked out with R/tidyverse code. You don’t know how to do graphics yet, but hopefully the data operations make sense.\nAllison Horst’s Tidyverse Illustrations - mostly illustrates tidyverse functions.\nTidyverse Style Guide - Pipes\nTidy Tuesday Screencasts (YouTube, David Robinson). These show example data analyses in real time, with commentary, using a new dataset each week. These were primarily recorded during the pandemic, but are still an incredibly valuable resource for learing how to work with data."
   },
   {
-    "objectID": "weeks/week-060.html#friday",
-    "href": "weeks/week-060.html#friday",
-    "title": "Week 6: Dates, Times, and Distributions",
+    "objectID": "weeks/week-070.html",
+    "href": "weeks/week-070.html",
+    "title": "Week 7: Data Visualization",
     "section": "",
-    "text": "Fall Break"
+    "text": "October 12-18, 2026\n\n\n\n(for Mon) IDS I Ch 8 - ggplot2\nExplanation of ggplot2 syntax and structure\n(for Wed) IDS I Ch 10 - Data Visualization in Practice\n(for Fri) IDS I Ch 9 - Data Visualization Principles\n\n\n\n\n\n(for Mon) Reading Check 7.1\n(for Wed) Reading Check 7.2\n(for Fri) Reading Check 7.3\n\n\n\n\n\nAttendance Quiz 10/12\nData Visualization with ggplot2\nActivity 7.1.p - Introduction to ggplot2 qmd template html\n\n\n\n\n\nAttendance Quiz 10/14\nData Visualization in Practice/Advanced ggplot2\n\n\n\n\n\nAttendance Quiz 10/16\nData Visualization Principles\nLab: Effective Data Visualization\n\n\n\n\nThis is my research area, so here’s an info-dump from my textbook. I’m also happy to discuss data visualization at any point in office hours!\n\nSC Ch 18 - Data Visualization Basics\nSC Ch 19 - Exploratory Data Analysis\nSC Ch 20 - A Grammar of Graphics\nSC Ch 21 - Creating Good Charts"
   },
   {
-    "objectID": "weeks/week-060.html#extra-resourcesreading",
-    "href": "weeks/week-060.html#extra-resourcesreading",
-    "title": "Week 6: Dates, Times, and Distributions",
+    "objectID": "weeks/week-070.html#reading",
+    "href": "weeks/week-070.html#reading",
+    "title": "Week 7: Data Visualization",
     "section": "",
-    "text": "SC Ch 27 - Dates and Times\nIDS I Ch 14 - Locales"
+    "text": "(for Mon) IDS I Ch 8 - ggplot2\nExplanation of ggplot2 syntax and structure\n(for Wed) IDS I Ch 10 - Data Visualization in Practice\n(for Fri) IDS I Ch 9 - Data Visualization Principles"
   },
   {
-    "objectID": "weeks/week-080.html",
-    "href": "weeks/week-080.html",
-    "title": "Week 8: Statistics and Probability",
+    "objectID": "weeks/week-070.html#prepare-for-class",
+    "href": "weeks/week-070.html#prepare-for-class",
+    "title": "Week 7: Data Visualization",
     "section": "",
-    "text": "October 19-25, 2026\n\n\n\n(for Mon) IDS 2, Ch 2 - Numerical Summaries\n(for Mon) IDS 2, Ch 3.3 - Comparing Groups with Stratification\n(for Wed) IDS 2, Ch 5 - Discrete Probability\n(for Fri) IDS 2, Ch 6 - Continuous Probability\n\n\n\n\n\n(for Mon) Reading Check 8.1\n(for Wed) Reading Check 8.2\n(for Fri) Reading Check 8.3\n\n\n\n\n\nAttendance Quiz 10/19\nSummary Statistics\n\n\n\n\n\nAttendance Quiz 10/21\nDiscrete Probability\n\n\n\n\n\nAttendance Quiz 10/23\nContinuous Probability"
+    "text": "(for Mon) Reading Check 7.1\n(for Wed) Reading Check 7.2\n(for Fri) Reading Check 7.3"
   },
   {
-    "objectID": "weeks/week-080.html#reading",
-    "href": "weeks/week-080.html#reading",
-    "title": "Week 8: Statistics and Probability",
+    "objectID": "weeks/week-070.html#monday",
+    "href": "weeks/week-070.html#monday",
+    "title": "Week 7: Data Visualization",
     "section": "",
-    "text": "(for Mon) IDS 2, Ch 2 - Numerical Summaries\n(for Mon) IDS 2, Ch 3.3 - Comparing Groups with Stratification\n(for Wed) IDS 2, Ch 5 - Discrete Probability\n(for Fri) IDS 2, Ch 6 - Continuous Probability"
+    "text": "Attendance Quiz 10/12\nData Visualization with ggplot2\nActivity 7.1.p - Introduction to ggplot2 qmd template html"
   },
   {
-    "objectID": "weeks/week-080.html#prepare-for-class",
-    "href": "weeks/week-080.html#prepare-for-class",
-    "title": "Week 8: Statistics and Probability",
+    "objectID": "weeks/week-070.html#wednesday",
+    "href": "weeks/week-070.html#wednesday",
+    "title": "Week 7: Data Visualization",
     "section": "",
-    "text": "(for Mon) Reading Check 8.1\n(for Wed) Reading Check 8.2\n(for Fri) Reading Check 8.3"
+    "text": "Attendance Quiz 10/14\nData Visualization in Practice/Advanced ggplot2"
   },
   {
-    "objectID": "weeks/week-080.html#monday",
-    "href": "weeks/week-080.html#monday",
-    "title": "Week 8: Statistics and Probability",
+    "objectID": "weeks/week-070.html#friday",
+    "href": "weeks/week-070.html#friday",
+    "title": "Week 7: Data Visualization",
     "section": "",
-    "text": "Attendance Quiz 10/19\nSummary Statistics"
+    "text": "Attendance Quiz 10/16\nData Visualization Principles\nLab: Effective Data Visualization"
   },
   {
-    "objectID": "weeks/week-080.html#wednesday",
-    "href": "weeks/week-080.html#wednesday",
-    "title": "Week 8: Statistics and Probability",
+    "objectID": "weeks/week-070.html#extra-resourcesreading",
+    "href": "weeks/week-070.html#extra-resourcesreading",
+    "title": "Week 7: Data Visualization",
     "section": "",
-    "text": "Attendance Quiz 10/21\nDiscrete Probability"
+    "text": "This is my research area, so here’s an info-dump from my textbook. I’m also happy to discuss data visualization at any point in office hours!\n\nSC Ch 18 - Data Visualization Basics\nSC Ch 19 - Exploratory Data Analysis\nSC Ch 20 - A Grammar of Graphics\nSC Ch 21 - Creating Good Charts"
   },
   {
-    "objectID": "weeks/week-080.html#friday",
-    "href": "weeks/week-080.html#friday",
-    "title": "Week 8: Statistics and Probability",
+    "objectID": "weeks/week-090.html",
+    "href": "weeks/week-090.html",
+    "title": "Week 9: Data and Probability",
     "section": "",
-    "text": "Attendance Quiz 10/23\nContinuous Probability"
+    "text": "October 26-01, 2026\n\n\n\n(for Mon) IDS 2 Ch 4 - Connecting Data and Probability\n\n\n\n\n\n(for Mon) Reading Check 9.1\nHomework 2 qmd template html\n\n\n\n\n\nAttendance Quiz 10/26\nData and Probability\n\n\n\n\n\nAttendance Quiz 10/28\nTBD probability\n\n\n\n\n\nAttendance Quiz 10/30\nLab: Probability"
   },
   {
-    "objectID": "weeks/week-095.html",
-    "href": "weeks/week-095.html",
-    "title": "Week 9.5: Spring Break",
+    "objectID": "weeks/week-090.html#reading",
+    "href": "weeks/week-090.html#reading",
+    "title": "Week 9: Data and Probability",
     "section": "",
-    "text": "Week 9.5: Spring Break\nMarch 16-22, 2026"
+    "text": "(for Mon) IDS 2 Ch 4 - Connecting Data and Probability"
   },
   {
-    "objectID": "weeks/week-110.html",
-    "href": "weeks/week-110.html",
-    "title": "Week 11: Parameters and Estimates",
+    "objectID": "weeks/week-090.html#prepare-for-class",
+    "href": "weeks/week-090.html#prepare-for-class",
+    "title": "Week 9: Data and Probability",
     "section": "",
-    "text": "November 09-15, 2026\n\n\n\n(for Mon) IDS 2 Ch 9.1-9.3 - Estimates\n(for Wed) IDS 2 Ch 8 - Sampling Models and the Central Limit Theorem\n\n\n\n\n\n(for Mon) Reading Check 11.1\n(for Wed) Reading Check 11.2\n\n\n\n\n\nAttendance Quiz 11/09\nParameters and Estimates\n\n\n\n\n\nAttendance Quiz 11/11\nCentral Limit Theorem\n\n\n\n\n\nAttendance Quiz 11/13\nLab: CLT"
+    "text": "(for Mon) Reading Check 9.1\nHomework 2 qmd template html"
   },
   {
-    "objectID": "weeks/week-110.html#reading",
-    "href": "weeks/week-110.html#reading",
-    "title": "Week 11: Parameters and Estimates",
+    "objectID": "weeks/week-090.html#monday",
+    "href": "weeks/week-090.html#monday",
+    "title": "Week 9: Data and Probability",
     "section": "",
-    "text": "(for Mon) IDS 2 Ch 9.1-9.3 - Estimates\n(for Wed) IDS 2 Ch 8 - Sampling Models and the Central Limit Theorem"
+    "text": "Attendance Quiz 10/26\nData and Probability"
   },
   {
-    "objectID": "weeks/week-110.html#prepare-for-class",
-    "href": "weeks/week-110.html#prepare-for-class",
-    "title": "Week 11: Parameters and Estimates",
+    "objectID": "weeks/week-090.html#wednesday",
+    "href": "weeks/week-090.html#wednesday",
+    "title": "Week 9: Data and Probability",
     "section": "",
-    "text": "(for Mon) Reading Check 11.1\n(for Wed) Reading Check 11.2"
+    "text": "Attendance Quiz 10/28\nTBD probability"
   },
   {
-    "objectID": "weeks/week-110.html#monday",
-    "href": "weeks/week-110.html#monday",
-    "title": "Week 11: Parameters and Estimates",
+    "objectID": "weeks/week-090.html#friday",
+    "href": "weeks/week-090.html#friday",
+    "title": "Week 9: Data and Probability",
     "section": "",
-    "text": "Attendance Quiz 11/09\nParameters and Estimates"
+    "text": "Attendance Quiz 10/30\nLab: Probability"
   },
   {
-    "objectID": "weeks/week-110.html#wednesday",
-    "href": "weeks/week-110.html#wednesday",
-    "title": "Week 11: Parameters and Estimates",
+    "objectID": "weeks/week-100.html",
+    "href": "weeks/week-100.html",
+    "title": "Week 10: Random Variables",
     "section": "",
-    "text": "Attendance Quiz 11/11\nCentral Limit Theorem"
+    "text": "November 02-08, 2026\n\n\n\n(for Mon) IDS 2 Ch 7 - Random Variables\n(for Fri) IDS 2 Intro to Statistical Inference\n\n\n\n\n\n(for Mon) Reading Check 10.1\n(for Fri) Reading Check 10.3\n\n\n\n\n\nAttendance Quiz 11/02\nRandom Variables\n\n\n\n\n\nAttendance Quiz 11/04\nRandom Variables\n\n\n\n\n\nAttendance Quiz 11/06\nLab: Random Variables"
   },
   {
-    "objectID": "weeks/week-110.html#friday",
-    "href": "weeks/week-110.html#friday",
-    "title": "Week 11: Parameters and Estimates",
+    "objectID": "weeks/week-100.html#reading",
+    "href": "weeks/week-100.html#reading",
+    "title": "Week 10: Random Variables",
     "section": "",
-    "text": "Attendance Quiz 11/13\nLab: CLT"
+    "text": "(for Mon) IDS 2 Ch 7 - Random Variables\n(for Fri) IDS 2 Intro to Statistical Inference"
   },
   {
-    "objectID": "weeks/week-130.html",
-    "href": "weeks/week-130.html",
-    "title": "Week 13: Regression",
+    "objectID": "weeks/week-100.html#prepare-for-class",
+    "href": "weeks/week-100.html#prepare-for-class",
+    "title": "Week 10: Random Variables",
     "section": "",
-    "text": "November 23-29, 2026\n\n\n\n(for Mon) IDS 2 Ch 15 - Regression\n\n\n\n\n\n[ ]\n\n\n\n\n\nAttendance Quiz 11/23\nIntroduction to Regression\nActivity: Regression By Hand\n\n\n\n\n\n🦃 Thanksgiving Break\n\n\n\n\n\n🦃 Thanksgiving Break"
+    "text": "(for Mon) Reading Check 10.1\n(for Fri) Reading Check 10.3"
   },
   {
-    "objectID": "weeks/week-130.html#reading",
-    "href": "weeks/week-130.html#reading",
-    "title": "Week 13: Regression",
+    "objectID": "weeks/week-100.html#monday",
+    "href": "weeks/week-100.html#monday",
+    "title": "Week 10: Random Variables",
     "section": "",
-    "text": "(for Mon) IDS 2 Ch 15 - Regression"
+    "text": "Attendance Quiz 11/02\nRandom Variables"
   },
   {
-    "objectID": "weeks/week-130.html#prepare-for-class",
-    "href": "weeks/week-130.html#prepare-for-class",
-    "title": "Week 13: Regression",
+    "objectID": "weeks/week-100.html#wednesday",
+    "href": "weeks/week-100.html#wednesday",
+    "title": "Week 10: Random Variables",
     "section": "",
-    "text": "[ ]"
+    "text": "Attendance Quiz 11/04\nRandom Variables"
   },
   {
-    "objectID": "weeks/week-130.html#monday",
-    "href": "weeks/week-130.html#monday",
-    "title": "Week 13: Regression",
+    "objectID": "weeks/week-100.html#friday",
+    "href": "weeks/week-100.html#friday",
+    "title": "Week 10: Random Variables",
     "section": "",
-    "text": "Attendance Quiz 11/23\nIntroduction to Regression\nActivity: Regression By Hand"
+    "text": "Attendance Quiz 11/06\nLab: Random Variables"
   },
   {
-    "objectID": "weeks/week-130.html#wednesday",
-    "href": "weeks/week-130.html#wednesday",
-    "title": "Week 13: Regression",
+    "objectID": "weeks/week-120.html",
+    "href": "weeks/week-120.html",
+    "title": "Week 12: Statistical Inference",
     "section": "",
-    "text": "🦃 Thanksgiving Break"
+    "text": "November 16-22, 2026\n\n\n\n(for Mon) IDS 2 Ch 13 - Hypothesis Testing\n(for Wed) IDS 2 Ch 9.4 - Confidence Intervals\n\n\n\n\n\n(for Mon) Reading Check 12.1\n(for Wed) Reading Check 12.2\n\n\n\n\n\nAttendance Quiz 11/16\nHypothesis Testing\n\n\n\n\n\nAttendance Quiz 11/18\nConfidence Intervals\n\n\n\n\n\nAttendance Quiz 11/20\nLab: Inference"
   },
   {
-    "objectID": "weeks/week-130.html#friday",
-    "href": "weeks/week-130.html#friday",
-    "title": "Week 13: Regression",
+    "objectID": "weeks/week-120.html#reading",
+    "href": "weeks/week-120.html#reading",
+    "title": "Week 12: Statistical Inference",
     "section": "",
-    "text": "🦃 Thanksgiving Break"
+    "text": "(for Mon) IDS 2 Ch 13 - Hypothesis Testing\n(for Wed) IDS 2 Ch 9.4 - Confidence Intervals"
   },
   {
-    "objectID": "weeks/week-150.html",
-    "href": "weeks/week-150.html",
-    "title": "Week 15: Project Meetings",
+    "objectID": "weeks/week-120.html#prepare-for-class",
+    "href": "weeks/week-120.html#prepare-for-class",
+    "title": "Week 12: Statistical Inference",
     "section": "",
-    "text": "December 07-13, 2026\n\n\n\nAttendance Quiz 12/07\nProject Meetings\n\n\n\n\n\nAttendance Quiz 12/09\nProject Meetings\n\n\n\n\n\nAttendance Quiz 12/11\nProject Meetings and Honors presentations"
+    "text": "(for Mon) Reading Check 12.1\n(for Wed) Reading Check 12.2"
   },
   {
-    "objectID": "weeks/week-150.html#monday",
-    "href": "weeks/week-150.html#monday",
-    "title": "Week 15: Project Meetings",
+    "objectID": "weeks/week-120.html#monday",
+    "href": "weeks/week-120.html#monday",
+    "title": "Week 12: Statistical Inference",
     "section": "",
-    "text": "Attendance Quiz 12/07\nProject Meetings"
+    "text": "Attendance Quiz 11/16\nHypothesis Testing"
   },
   {
-    "objectID": "weeks/week-150.html#wednesday",
-    "href": "weeks/week-150.html#wednesday",
-    "title": "Week 15: Project Meetings",
+    "objectID": "weeks/week-120.html#wednesday",
+    "href": "weeks/week-120.html#wednesday",
+    "title": "Week 12: Statistical Inference",
     "section": "",
-    "text": "Attendance Quiz 12/09\nProject Meetings"
+    "text": "Attendance Quiz 11/18\nConfidence Intervals"
   },
   {
-    "objectID": "weeks/week-150.html#friday",
-    "href": "weeks/week-150.html#friday",
-    "title": "Week 15: Project Meetings",
+    "objectID": "weeks/week-120.html#friday",
+    "href": "weeks/week-120.html#friday",
+    "title": "Week 12: Statistical Inference",
     "section": "",
-    "text": "Attendance Quiz 12/11\nProject Meetings and Honors presentations"
+    "text": "Attendance Quiz 11/20\nLab: Inference"
   },
   {
-    "objectID": "demos/17-visualizing-distributions.html",
-    "href": "demos/17-visualizing-distributions.html",
-    "title": "Visualizing Distributions",
+    "objectID": "weeks/week-140.html",
+    "href": "weeks/week-140.html",
+    "title": "Week 14: Regression",
     "section": "",
-    "text": "# Set up - load libraries\nlibrary(tidyverse)\nlibrary(dslabs)\n\n# Set a ggplot2 theme - get rid of grey bkgd\nset_theme(theme_bw())"
+    "text": "November 30-06, 2026\n\n\n\n(for Mon) IDS 2 Ch 16 - The Linear Model Framework\n(for Wed) IDS 2 Ch 20 - Multivariable Regression\n\n\n\n\n\n(for Mon) Reading Check 14.1\n(for Wed) Reading Check 14.2\n\n\n\n\n\nAttendance Quiz 11/30\nLinear Models\n\n\n\n\n\nAttendance Quiz 12/02\nMultivariate Regression\n\n\n\n\n\nAttendance Quiz 12/04\nLab: Regression"
   },
   {
-    "objectID": "demos/17-visualizing-distributions.html#barcolumn-chart",
-    "href": "demos/17-visualizing-distributions.html#barcolumn-chart",
-    "title": "Visualizing Distributions",
-    "section": "Bar/Column Chart",
-    "text": "Bar/Column Chart\nLet’s start with the simple version: We want to count the number of states in each region.\n\nmurders |&gt;\n1  ggplot(aes(x = region)) +\n2  geom_bar()\n\n\n1\n\nShow region on the x-axis\n\n2\n\nCreate a bar chart by counting up the number of points in each x-category. The bar’s height will be the number of points.\n\n\n\n\n\n\n\n\n\n\n\nThis is nice enough, but often we want to show the proportion of points in each category, and we may want to color the bars by category as well. We might also want to reorder the x-axis so that the bars are in increasing order.\n\nmurders |&gt;\n  ggplot(aes(x = region)) + \n1  geom_bar(aes(y = after_stat(prop),\n2               group = 1))\n\n\n1\n\nThis computes the proportion of points in each group of plotted objects (in this case, each bar)\n\n2\n\nSpecifying group = 1 says that the proportion should be computed over all bars, not just each region’s bar (leaving this out gets 4 bars with height 1).\n\n\n\n\n\n\n\n\n\n\n\nUnfortunately, it’s a bit harder to reorder and color the bars in by region, for reasons that get a bit too deep into ggplot2 theory to worry about. Sometimes, it’s far easier just to do the calculations we want ahead of time, and then tell ggplot2 to make the chart we want without asking it to do the calculations at the same time.\n\nstate_regions &lt;- murders |&gt;\n1  count(region) |&gt;\n  mutate(\n2    prop = n/sum(n),\n3    region = fct_reorder(region, prop)\n  )\n\n\n1\n\nCount the number of rows in each region\n\n2\n\nCompute proportions\n\n3\n\nRearrange bars in increasing order\n\n\n\n\nIn these cases, we have to switch from using geom_bar to geom_col (col is for column). geom_bar does the calculations for us, geom_col expects us to have done the calculations ahead of time.\n\nstate_regions |&gt;\n  ggplot(\n    aes(\n1      x = region,\n2      y = prop,\n3      fill = region\n    )) + \n4  geom_col() +\n5  ylab(\"Proportion\") + xlab(\"\") +\n6  guides(fill = \"none\")\n\n\n1\n\nShow region on x-axis\n\n2\n\nShow proportion on y-axis\n\n3\n\nColor objects by region (redundant to x-axis, but pretty)\n\n4\n\nUse columns (bars) to show x and y. geom_col is used when you pre-compute proportions, geom_bar is used when you want to compute these on the fly – in this case, you don’t provide a y aesthetic.\n\n5\n\nAxis labels\n\n6\n\nDon’t show a legend, as it’s redundant to the x-axis labels, and thus a waste of space."
+    "objectID": "weeks/week-140.html#reading",
+    "href": "weeks/week-140.html#reading",
+    "title": "Week 14: Regression",
+    "section": "",
+    "text": "(for Mon) IDS 2 Ch 16 - The Linear Model Framework\n(for Wed) IDS 2 Ch 20 - Multivariable Regression"
   },
   {
-    "objectID": "demos/17-visualizing-distributions.html#histograms",
-    "href": "demos/17-visualizing-distributions.html#histograms",
-    "title": "Visualizing Distributions",
-    "section": "Histograms",
-    "text": "Histograms\n\nheights &lt;- heights |&gt;\n1  mutate(height_ft = height/12)\n\n\n1\n\nCreate a height variable in feet, rather than inches\n\n\n\n\n\nheights |&gt;\n1  ggplot(aes(x = height_ft)) +\n2  geom_histogram() +\n3  facet_grid(sex~.)\n\n\n1\n\nShow height_ft on the x-axis\n\n2\n\nCreate a histogram. Implicitly, this is going to bin the data, then count up how many rows are in each bin.\n\n3\n\nCreate separate plots for each value of sex. facets use rows ~ cols syntax, so here we say arrange the plots in rows, with nothing in columns.\n\n\n\n\n`stat_bin()` using `bins = 30`. Pick better value `binwidth`.\n\n\n\n\n\n\n\n\n\nHistograms are very sensitive to how the bins are aligned and calculated. By default, ggplot2 uses 30 bins, which is not always optimal. It is often useful to think about how the data is collected and what its range is, and to pick a bin width value based on that. Here, I’ve set the bin width to 1/12 (1 inch) and forced the bins to start at 0, including the left side and not including the right.\n\nheights |&gt;\n  ggplot(aes(x = height_ft)) + \n  geom_histogram( \n    fill = \"grey\", color = \"black\",\n1    binwidth = 1/12,\n2    boundary = 0,\n3    closed = \"left\"\n  ) + \n  facet_grid(sex~.) \n\n\n1\n\nSet bin width to 1 inch or 1/12 foot\n\n2\n\nStart bins with a left boundary of 0. Choosing this value can change the appearance of the histogram, and as a result, can change what you see in the data. I’ve chosen 0 here so that we can see how many men “round up” to 6’.\n\n3\n\n“left” here indicates which part of the interval is “closed” (e.g. is &lt;= rather than &lt;). So counts will be calculated as left &lt;= x &lt; right, starting at a left boundary of 0. So, we would expect to see [5.0, 5 + 1/12), [5 + 1/12, 5 + 1/6), … as bins."
+    "objectID": "weeks/week-140.html#prepare-for-class",
+    "href": "weeks/week-140.html#prepare-for-class",
+    "title": "Week 14: Regression",
+    "section": "",
+    "text": "(for Mon) Reading Check 14.1\n(for Wed) Reading Check 14.2"
   },
   {
-    "objectID": "demos/17-visualizing-distributions.html#density",
-    "href": "demos/17-visualizing-distributions.html#density",
-    "title": "Visualizing Distributions",
-    "section": "Density",
-    "text": "Density\nA density plot is essentially a smoothed version of a histogram. The area under a density curve should be approximately equal to 1 (this is important for probability calculations), and so the curve’s y-values are scaled to enforce this constraint.\n\nheights |&gt;\n1  ggplot(aes(x = height_ft, color = sex)) +\n2  geom_density()\n\n\n1\n\nShow height_ft on the x-axis, and plot different values for each sex.\n\n2\n\nUse a kernel density estimate, which creates a smoothed version of a histogram. By default, ggplot estimates the best ‘bandwidth’ (similar to the bin width) for you.\n\n\n\n\n\n\n\n\n\n\n\nAs with histograms, density curves are sensitive to the bin width, but because they are continuous and not actual bins, we talk about the ‘bandwidth’ of a density rather than the bin width. You can adjust the bandwidth of a density curve using the adjust parameter in geom_density\n\nheights |&gt;\n  ggplot(aes(x = height_ft, color = sex)) + \n1  geom_density(adjust = .5)\n\n\n1\n\nYou can tweak the bandwidth used by passing in an adjustment factor. Here, I’ve halved the bandwidth, and the result is a much more spiky density.\n\n\n\n\n\n\n\n\n\n\n\nAs with histograms, you should try a couple of different values of adjust to ensure you understand the distribution of your data.\n\nheights |&gt;\n  ggplot(aes(x = height_ft, color = sex)) + \n1  geom_density(adjust = 1.2)\n\n\n1\n\nYou should try multiple values for adjust, just like you should try multiple values for the bin width in a histogram.\n\n\n\n\n\n\n\n\n\n\n\nDensity curves make it easy to see where the mode (most occurring, most frequent) value of a distribution is – it’s at the top.\nWhen a distribution is symmetric (it has roughly the same shape on the right and left side of the mode), the mode is fairly close to the median - the middle of the distribution. When a distribution is skewed, however, the median can be quite a ways away from the mode.\nThe mean, or numerical average value, is generally almost the same as the median when a distribution is symmetric, but it can be quite different when there is a skewed distribution. One example of this is income - the median US household income in 2025 was $83,730, and the census primarily reports medians because they are not swayed by extreme values (billionaires), where the mean will increase with the presence of those extreme values in a way that doesn’t really describe the middle of the distribution. You can see some estimates of the average (mean) household income compared to the median1 if you’re curious."
+    "objectID": "weeks/week-140.html#monday",
+    "href": "weeks/week-140.html#monday",
+    "title": "Week 14: Regression",
+    "section": "",
+    "text": "Attendance Quiz 11/30\nLinear Models"
   },
   {
-    "objectID": "demos/17-visualizing-distributions.html#empirical-cumulative-distribution-function-ecdf",
-    "href": "demos/17-visualizing-distributions.html#empirical-cumulative-distribution-function-ecdf",
-    "title": "Visualizing Distributions",
-    "section": "Empirical Cumulative Distribution Function (ECDF)",
-    "text": "Empirical Cumulative Distribution Function (ECDF)\nIn an ECDF, we essentially take the bins of a histogram and stack them cumulatively (we scale by # observations so that we get a proportion, but the idea is the same). ECDFs are used to compare distributions, but they are hard to read (and thus they don’t get used very often).\n\nheights |&gt;\n1  ggplot(aes(x = height_ft, color = sex)) +\n2  stat_ecdf(geom = \"step\") +\n3  ylab(\"Cumulative proportion\") + xlab(\"Height (ft)\")\n\n\n1\n\nPut height in feet on the x-axis, and use color to show data from each sex.\n\n2\n\nCalculate (stat) the ECDF for each group (e.g. each color/sex), and plot using the step function (this creates horizontal and vertical lines in a staircase pattern to connect adjacent points)\n\n3\n\nSet axis labels.\n\n\n\n\n\n\n\n\n\n\n\nWe can see what the ECDF statistic actually calculates if we use the point geom:\n\nheights |&gt;\n1  ggplot(aes(x = height_ft, color = sex)) +\n2  stat_ecdf(geom = \"point\") +\n3  ylab(\"Cumulative proportion\") + xlab(\"Height (ft)\")\n\n\n1\n\nPut height in feet on the x-axis, and use color to show data from each sex.\n\n2\n\nCalculate (stat) the ECDF for each group (e.g. each color/sex), and plot using the raw points.\n\n3\n\nSet axis labels."
+    "objectID": "weeks/week-140.html#wednesday",
+    "href": "weeks/week-140.html#wednesday",
+    "title": "Week 14: Regression",
+    "section": "",
+    "text": "Attendance Quiz 12/02\nMultivariate Regression"
   },
   {
-    "objectID": "demos/17-visualizing-distributions.html#footnotes",
-    "href": "demos/17-visualizing-distributions.html#footnotes",
-    "title": "Visualizing Distributions",
-    "section": "Footnotes",
-    "text": "Footnotes\n\n\nArchive link: https://web.archive.org/web/20260919054400/https://dqydj.com/household-income-by-year/↩︎"
+    "objectID": "weeks/week-140.html#friday",
+    "href": "weeks/week-140.html#friday",
+    "title": "Week 14: Regression",
+    "section": "",
+    "text": "Attendance Quiz 12/04\nLab: Regression"
+  },
+  {
+    "objectID": "weeks/week-160.html",
+    "href": "weeks/week-160.html",
+    "title": "Week 16: Finals Week",
+    "section": "",
+    "text": "December 14-18, 2026\n\n\n\nFinal Project Presentations during Exam Period (Dec 16, 12:30-2:20 pm)"
+  },
+  {
+    "objectID": "weeks/week-160.html#monday",
+    "href": "weeks/week-160.html#monday",
+    "title": "Week 16: Finals Week",
+    "section": "",
+    "text": "Final Project Presentations during Exam Period (Dec 16, 12:30-2:20 pm)"
+  },
+  {
+    "objectID": "demos/19-ggplot2.html",
+    "href": "demos/19-ggplot2.html",
+    "title": "ggplot2 Overview",
+    "section": "",
+    "text": "1library(dslabs)\n2data(murders)\n3library(ggplot2)\n\n\n1\n\nLoad the dslabs package, as it contains the murders data\n\n2\n\nLoad the murders data explicitly so we can see it in the environment tab\n\n3\n\nLoad the ggplot2 library"
+  },
+  {
+    "objectID": "demos/19-ggplot2.html#adding-geometry",
+    "href": "demos/19-ggplot2.html#adding-geometry",
+    "title": "ggplot2 Overview",
+    "section": "Adding geometry",
+    "text": "Adding geometry\nThe first thing we specify in ggplot2 is the geometry - the type of objects which are drawn on the plot.\nHere, we can start with a nice scatterplot, which has points drawn on what is usually a Cartesian coordinate system (the x-y axes you’re familiar with).\nWhen we specify a geometric object (geom for short), we have to tell ggplot2 how to draw it. Each geom has required aesthetics that are mapped to variables in our dataset.\ngeom_point requires x and y aesthetics – it needs both values to know where the points should go.\naesthetic mappings are connections between our plot and columns in our data. We create these mappings using the aes() function, which goes inside either ggplot(aes(...), ...) or inside a geom_xxx(aes(...), ...) function. aes() is never found on its own.\n\n\n\nggplot(data = murders) + \n  geom_point(\n    aes(\n1      x = population/1e6,\n2      y = total\n    )\n  ) \n\n\n1\n\nMap population/1e6 to the x-axis\n\n2\n\nMap total to the y-axis\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 2: A scatterplot, with population/1e6 mapped to the x-axis and total (number of murders) mapped to the y-axis\n\n\n\n\n\n\n\nWhen we map variables to aesthetics, ggplot2 goes to work.\n\nIt lays out the axes, considering the range of the variables mapped to x and y. It even adds a little bit of space to the top and bottom of each axis scale, so that the points are not right up against the border of the plot.\nIt picks sensible breaks for each axis, adds tick marks for each break, labels each tick mark, and adds grid lines (major and minor, along each axis).\nIt also creates the axis titles using the variable mappings. We can make these nicer if we want, using xlab() and ylab(), or more generally, labs(x=\"My x-axis label\", y=\"My y-axis label\", title = \"Plot title\", subtitle = \"Plot subtitle\").\nFinally, it adds one point for each row in the data frame that has both an x and y value (it will give a warning when it drops points that have an NA in either variable).\n\nOne advantage of the grammar of graphics approach is that because we specify the variable mappings, ggplot2 has enough information to make all of these decisions intelligently without us having to specify how it should do each of these things. This makes programming with ggplot2 much easier, as long as you start with tidy data."
+  },
+  {
+    "objectID": "demos/19-ggplot2.html#adding-additional-mappings",
+    "href": "demos/19-ggplot2.html#adding-additional-mappings",
+    "title": "ggplot2 Overview",
+    "section": "Adding Additional Mappings",
+    "text": "Adding Additional Mappings\nWe often want to have color as an indicator of something. The murders data includes region as a column, and it is possible that some regions might have higher murder rates, due to demographics, heat waves, population density, and other factors.\n\n\n\nggplot(data = murders) + \n  geom_point(\n    aes(\n      x = population/1e6,\n      y = total,\n1      color = region\n    )\n  ) +\n2  theme(legend.position = \"bottom\")\n\n\n1\n\nMap region to the point color.\n\n2\n\nSet the legend position to be at the bottom of the plot.\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 3: A scatterplot, with population/1e6 mapped to the x-axis and total (number of murders) mapped to the y-axis. region is mapped to color.\n\n\n\n\n\n\n\nBy default, ggplot2 will pick a color scheme that is decent (but perhaps not optimal). We can set different color schemes using scales - in this case, because we have a categorical (discrete) variable, we would use scale_color_discrete(), scale_color_manual() (if we have specific colors we want to use), scale_color_brewer() (to use some common color scales), or a number of other scales in add-on packages like ggsci, tayloRswift, and many, many more"
+  },
+  {
+    "objectID": "demos/19-ggplot2.html#layers",
+    "href": "demos/19-ggplot2.html#layers",
+    "title": "ggplot2 Overview",
+    "section": "Layers",
+    "text": "Layers\nggplot2 allows you to specify multiple layers on a chart, by adding them to the previous layers.\nWhen adding layers that are based off of the same data, it is sometimes easier to specify the mappings inside the ggplot2() statement, so that every other layer inherits those mappings, by default. This is referred to as the global aesthetic mapping. You can, of course, override them by specifying a new mapping inside the specific geom, with some caveats:\n\nIf you want the whole layer not to inherit the aesthetic mappings, you will need to pass aes.inherit = F outside of the aes() function but inside of the geom, like this: geom_point(aes(x = x, y = y), inherit.aes = FALSE).\nIf the mapping you specify isn’t on the same scale as the other mappings to that aesthetic, things can get weird. ggplot2 makes it difficult to create dual-axis plots (and for good reason - they’re hard to read).\n\n\n\n\nggplot(data = murders,\n1       aes(x = population/1e6,\n           y = total)) +\n2  geom_point(aes(color = region)) +\n  geom_text(\n3    aes(label = abb),\n4    position = position_nudge(x = 2)\n  ) + \n  theme(legend.position = \"bottom\") \n\n\n1\n\nincluding x and y mappings in the ggplot2 statement is a global mapping, and this ensures that every layer will use these mappings for x and y.\n\n2\n\nregion will be mapped to color for the points, but this will not carry over to the text layer.\n\n3\n\nabbreviation will be mapped to label for the text layer – this provides the text which is shown on the plot.\n\n4\n\nthe position of the text is specified to be slightly to the right of the point, so that it is readable.\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 4: A scatterplot, with population/1e6 mapped to the x-axis and total (number of murders) mapped to the y-axis. We have added state labels for each point as well.\n\n\n\n\n\n\n\nAs it is inconvenient to have the text directly on top of the point, we set the position adjustment to “nudge” each label by x=2. This ensures that the label will be right next to (but not on top of) each point. Different amounts of “nudge” are necessary for different plot sizes, so this often has to be customized based on the actual size of the rendered figure. Setting the quarto chunk options to specify the figure size helps with not re-adjusting this every time something changes slightly."
+  },
+  {
+    "objectID": "demos/19-ggplot2.html#customizing-geom-appearance",
+    "href": "demos/19-ggplot2.html#customizing-geom-appearance",
+    "title": "ggplot2 Overview",
+    "section": "Customizing geom appearance",
+    "text": "Customizing geom appearance\nAesthetics are mappings between the data and the geometric objects on the chart. Often, however, we want to customize aspects of the chart without mapping them to a variable. We might want to change the point size, shape, or color, but without making any of those quantities vary with the data.\n\n\n\nggplot(data = murders,\n       aes(x = population/1e6, \n           y = total)) +\n  geom_point(aes(color = region),\n             shape = 5, size = 2) + \n  geom_text(\n    aes(label = abb), \n    size = 3,\n    position = position_nudge(x = 2) \n  ) + \n  theme(legend.position = \"bottom\") \n\n\n\n\n\n\n\n\n\n\nFigure 5: A scatterplot, with population/1e6 mapped to the x-axis and total (number of murders) mapped to the y-axis. Points are colored by region and now are open diamonds, with smaller text labels.\n\n\n\n\n\n\n\nNotice that in Figure 5, the shape=5, size=2 is passed to geom_point(), but it is not wrapped in the aes() function. Similarly, size=3 is passed to geom_text() without being wrapped in the aes() function. This tells ggplot2 that we want to change the shape and size of the points and the size of the text, but we don’t want to do so based on the value of any of the variables in our data."
+  },
+  {
+    "objectID": "demos/19-ggplot2.html#plot-titles-and-scale-labels",
+    "href": "demos/19-ggplot2.html#plot-titles-and-scale-labels",
+    "title": "ggplot2 Overview",
+    "section": "Plot Titles and Scale Labels",
+    "text": "Plot Titles and Scale Labels\n\n\n\nggplot(data = murders,\n       aes(x = population/1e6, \n           y = total)) + \n  geom_point(aes(color = region)) + \n  geom_text(\n    aes(label = abb), \n    size = 2,\n    position = position_nudge(x = 2) \n  ) + \n  theme(legend.position = \"bottom\") +\n  labs(\n    title = \"US Gun Murders in 2010\",\n    x = \"Population in Millions\",\n    y = \"Total Number of Murders\",\n    color = \"Region\"\n  )\n\n\n\n\n\n\n\n\n\n\nFigure 6: A scatterplot, with population/1e6 mapped to the x-axis and total (number of murders) mapped to the y-axis. The x-axis is labeled “Population in millions” and the y-axis is labeled “Total number of murders”. The plot is titled “US Gun Murders in 2010”, and the legend is titled “Region”."
+  },
+  {
+    "objectID": "demos/19-ggplot2.html#scales",
+    "href": "demos/19-ggplot2.html#scales",
+    "title": "ggplot2 Overview",
+    "section": "Scales",
+    "text": "Scales\nThe population of states in the US varies by more than one order of magnitude – Wyoming has just over 500k people, while California has over 37 million. In such situations, it is often useful to use a log scale, so that 1, 10, and 100 are placed at equal intervals on the plot. This spaces out the tightly clustered points at the bottom left of the plot, allowing us to see lower-population states more clearly.\nAs murders are likely a function of population, it makes some sense to use a log scale on both the x and y axis.\n\n\n\nggplot(data = murders,\n       aes(x = population/1e6, \n           y = total)) + \n  geom_point(aes(color = region)) + \n  geom_text(\n    aes(label = abb), \n    size = 2,\n    position = \n      position_nudge(\n1        x =.05)\n  ) + \n2  scale_x_log10() +\n3  scale_y_log10() +\n  theme(legend.position = \"bottom\") +\n  labs(\n    title = \"US Gun Murders in 2010\",\n    x = \"Population in Millions\",\n    y = \"Total Number of Murders\",\n    color = \"Region\"\n  )\n\n\n1\n\nThe nudge value has to change because it’s affected by the log transformation\n\n2\n\nscale the x-axis using a log transform\n\n3\n\nscale the y-axis using a log transform\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 7: A scatterplot, titled “US Gun Murders in 2010”. The x-axis is labeled “Population in millions” and the y-axis is labeled “Total number of murders”. Both the x and y axis are shown on a log scale."
   },
   {
     "objectID": "demos/styler-lintr-test.html",
