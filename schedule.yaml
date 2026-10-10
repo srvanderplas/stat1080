@@ -216,11 +216,11 @@ schedule:
         - [Activity 7.1.p - Introduction to `ggplot2`](https://usu.instructure.com/courses/819584/quizzes/1462912){target="_blank"} [qmd template](../lab/_19-ggplot2.qmd) [html](../lab/19-ggplot2.qmd)
     class2: |
         - [Attendance Quiz 10/14](https://usu.instructure.com/courses/819584/assignments/5292947){target="_blank"}
-        - [Data Visualization in Practice/Advanced `ggplot2`](../slides/20-adv-ggplot2.qmd){target="_blank"}
+        - [Advanced `ggplot2`](../slides/20-adv-ggplot2.qmd){target="_blank"}
+        - [Data Visualization Principles](../slides/21-data-vis-principles.qmd){target="_blank"}
         - [Activity 7.2.p - Advanced `ggplot2`](https://usu.instructure.com/courses/819584/quizzes/1462843) [qmd template](../lab/_20-ggplot2-adv.qmd), [html](../lab/20-ggplot2-adv.qmd), [solutions](../lab/20-ggplot2-adv-sol.qmd)
     class3: |
         - [Attendance Quiz 10/16](https://usu.instructure.com/courses/819584/assignments/5292962){target="_blank"}
-        - [Data Visualization Principles](../slides/21-data-vis-principles.qmd){target="_blank"}
         - [Lab: Effective Data Visualization](../lab/21-effective-data-vis.qmd){target="_blank"}
     extra: |
       This is my research area, so here's an info-dump from my textbook. 
@@ -242,10 +242,10 @@ schedule:
         - [ ] (for Wed) [IDS 2, Ch 5 - Discrete Probability](https://rafalab.dfci.harvard.edu/dsbook-part-2/prob/discrete-probability.html){target="_blank"}
         - [ ] (for Fri) [IDS 2, Ch 6 - Continuous Probability](https://rafalab.dfci.harvard.edu/dsbook-part-2/prob/continuous-probability.html){target="_blank"}
     prepare: |
-        - [ ] (for Mon) Reading Check 8.1
-        - [ ] [Project Visualizations](https://usu.instructure.com/courses/819584/assignments/5290607). You will need the [template zip file](../homework/project-template.zip) to complete the assignment. 
-        - [ ] (for Wed) Reading Check 8.2
-        - [ ] (for Fri) Reading Check 8.3
+        - [ ] (for Mon) [Reading Check 8.1](https://usu.instructure.com/courses/819584/quizzes/1502607){target="_blank"}
+        - [ ] [Project Visualizations](https://usu.instructure.com/courses/819584/assignments/5290607){target="_blank"}. You will need the [template zip file](../homework/project-template.zip) to complete the assignment. 
+        - [ ] (for Wed) [Reading Check 8.2](https://usu.instructure.com/courses/819584/quizzes/1502608){target="_blank"}
+        - [ ] (for Fri) [Reading Check 8.3](https://usu.instructure.com/courses/819584/quizzes/1502609){target="_blank"}
     class1: |
         - [Attendance Quiz 10/19](https://usu.instructure.com/courses/819584/assignments/5292963){target="_blank"}
         - [Summary Statistics](../slides/22-summary-stats.qmd){target="_blank"}
