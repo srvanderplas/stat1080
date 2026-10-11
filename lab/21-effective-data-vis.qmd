@@ -1,0 +1,1 @@
+{{< include _21-effective-data-vis.qmd >}}

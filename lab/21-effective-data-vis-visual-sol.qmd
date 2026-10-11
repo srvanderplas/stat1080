@@ -1,0 +1,268 @@
+---
+title: "Stat 1080 Lab: Data Visualization"
+author: Your Name Here
+execute:
+  error: true
+  echo: false
+format:
+  html:
+    embed-resources: true
+---
+
+## Swiss Banknotes
+
+The R package `mclust` contains a data set called `banknote`, consisting of (physical) measurements on 200 Swiss bank notes, 100 of which are genuine, while the other half is counterfeit. 
+
+The following code will check to see if `mclust` is installed, and if it is not, it will install the package before loading the `banknote` data. 
+
+```{r}
+#| echo: false
+#| include: false
+#| label: setup
+if (!"mclust" %in% installed.packages()) {
+  install.packages("mclust")
+}
+library(mclust)
+data("banknote")
+library(ggplot2)
+
+options(digits = 3)
+set_theme(theme_bw())
+```
+
+
+### Understanding The Data
+
+The following chunks use object-inspection functions to get a sense of the data. 
+Answer the questions below. 
+
+```{r}
+str(banknote) # Structure of the dataset
+```
+
+```{r}
+summary(banknote) # 6-number summaries of numeric vars, frequency distributions for categorical vars
+```
+
+Hint: You can read the documentation about the dataset by typing `?banknote` in the console. This will provide additional context in the Help window. 
+
+
+<!-- Understanding The Data answers here -->
+
+How many observations are there which are counterfeit? How many are genuine?
+
+> *Replace this with your answer*
+
+What units are the measurements in?
+
+> *Replace this with your answer*
+
+Which measurements have the most variability, measured by the range of observations?
+
+> *Replace this with your answer*
+
+<!-- End Understanding The Data answers -->
+
+### Examining Status
+
+Draw a barchart of Status. 
+In addition to showing status on the x or y axis (your choice), map status to the fill color of the bars. 
+(Yes, this plot is a bit simplistic, but what does it show? Does it confirm your answer in the previous question?)
+In the chunk below, edit the `fig-cap` chunk option (replacing Your description goes here with your answer) to provide a meaningful 3-sentence caption that addresses the following:
+
+1. What type of plot is this?
+2. Which variables are mapped to `x`, `y`, and `fill`?
+3. What is the main finding from the plot?
+
+<!-- Examining Status answer here -->
+
+```{r}
+#| fig-width: 6
+#| fig-height: 5
+
+# Uncomment the lines below. Compare your solution to the visual solutions posted for this lab.
+ggplot(data = banknote, aes(x = Status, fill = Status)) +
+  geom_bar() +
+  labs(title = "Swiss Banknotes: Counterfeit or Genuine?",
+       y = "Number of Banknotes", 
+       x = "Status")
+```
+
+<!-- End Examining Status answer -->
+
+### Detecting Counterfeits
+
+Draw a histogram of one of the variables in the dataset that shows a distinction between genuine and counterfeit banknotes. Use fill color to show this difference. 
+Choose the binwidth such that there are no gaps in the middle range of the histogram.
+In the chunk below, edit the `fig-cap` chunk option (replacing Your description goes here with your answer) to provide a meaningful 3-sentence caption that addresses the following:
+
+1. What type of plot is this?
+2. Which variables are mapped to `x`, `y`, and `fill`?
+3. What is the main finding from the plot?
+
+<!-- Detecting Counterfeits answer here -->
+
+```{r}
+#| fig-width: 6
+#| fig-height: 4
+#| fig-cap: "Your description goes here"
+
+# Uncomment the lines below. Compare your solution to the visual solutions posted for this lab.
+ggplot(banknote, aes(x = Bottom, fill = Status)) +
+  geom_histogram(binwidth = .2) +
+  labs(title = "Bottom Margin of Swiss Banknotes", 
+       x = "Bottom Margin Length (mm)", 
+       y = "# Observations")
+```
+
+<!-- End Detecting Counterfeits answer -->
+
+### Detecting Counterfeits, Part II
+
+The code below draws a scatterplot of two (continuous) measurements.
+Modify the code to color points by whether the banknote is genuine or fake. 
+What can you conclude from the plot about how these two measurements can be used to detect counterfeit bills?
+
+In the chunk below, edit the `fig-cap` chunk option (replacing Your description goes here with your answer) to provide a meaningful 3-sentence caption that addresses the following:
+
+1. What type of plot is this?
+2. Which variables are mapped to `x`, `y`, and `fill`?
+3. What is the main finding from the plot?
+
+
+<!-- Detecting Counterfeits II answer here -->
+
+```{r}
+#| fig-width: 7
+#| fig-height: 5
+#| fig-cap: "Your description goes here"
+
+### Uncomment the lines below. Compare your solution to the visual solutions posted for this lab.
+ggplot(data = banknote,
+       aes(x = Diagonal,
+           y = Bottom,
+           color = Status,
+           )) +
+  geom_jitter(alpha = .6) +
+## Uncomment this line if you need extra help with what the plot shows
+  # geom_abline(slope = 1.1, intercept = 7-138.5*1.1, linetype = "dotted") +
+  labs(title = "Swiss Banknotes",
+       subtitle = "Genuine and counterfeit bill dimensions",
+       x = "Diagonal length (mm)",
+       y = "Bottom margin width (mm)",
+       color = "Bill Status")
+```
+
+<!-- End Detecting Counterfeits II answer -->
+
+## Take everything you know, and use it for evil
+
+We spent some time discussing principles of good graphics in class, but we spent less time showing you all of the different ways you could customize graphics in `ggplot2`. Here, I want you to create the *ugliest* graphs (e.g. least useful, violating the most principles of good graphics) you can, and then **explain why**, exactly, the graphs are ugly, and which principles of good graphics you've intentionally violated. Note that it is not enough for your chart to be aesthetically displeasing - you should strive to make the chart functionally ineffective by violating principles of good graphics.
+
+Of course, ugliness is subjective. 
+One goal of this assignment is for you to explore the different ways you can customize the finer details of a plot: color schemes, theme elements, shape mappings, and so on. 
+
+Requirements:
+- Your finished masterpiece must have **appropriate axis labels and a title** (after all, even ugly plots need to be correctly labeled!). 
+- Your ugliness **should not depend solely on color choices** - there are many other ways to make things ugly!
+
+You are free to add additional variables and layers, modify the aesthetics used, and leverage other packages. 
+If you use packages I haven't used in the book, please provide (commented out) installation code in your code chunks, modeled on the code which installs `mclust` at the start of this assignment.
+
+[If you need inspiration, look here.](https://web.archive.org/web/20220730230323/https://www.allisonhorst.com/post/do-your-worst/)
+
+Use the `penguins` data, which is loaded in the chunk below.
+
+```{r}
+data(penguins)
+head(penguins)
+# ?penguins # Uncomment and run this to pull up the penguins help file
+```
+
+Create the ugliest graph you can manage. 
+You can pick which variables to plot, what type of chart to make, and what aesthetic mappings to use.
+
+When you are finished, edit the `fig-cap` chunk option (replacing Your description goes here with your answer) to provide a meaningful 3-sentence caption that addresses the following:
+
+1. What type of plot is this?
+2. Which variables are mapped to which aesthetics?
+3. What is the main finding from the plot?
+
+<!-- Evil answer here -->
+
+::: callout-note
+### Answers may vary
+
+Note that I fully expect your answer to this to be different, as I do not want you going to find the `scatterpie` package (it's actually pretty badly written) and using it. You're welcome to use other packages in the `ggplot2` universe, but it is 100% possible to create a horrible chart with just base ggplot2. 
+
+:::
+
+```{r}
+#| fig-width: 7
+#| fig-height: 4
+#| out-width: "100%"
+#| fig-cap: "This is a scatter-pie chart with a line graph underneath. Average body mass in kg is mapped to the y-axis, and year is mapped to the x-axis. The proportion of males, females, and unknown sex penguins is mapped to angle, with the sex mapped to fill, and the number of observations mapped to radius to specify the pie chart. The main finding from this plot is that pie charts are terrible, line charts with pie charts as points are even worse, and somehow we can make this still worse by messing with the plot theme options to lower visual contrast and using a color scheme that is not accessible to people who are colorblind. "
+#| message: false
+#| warning: false
+
+if(!"scatterpie" %in% installed.packages()) {
+  install.packages("scatterpie")
+}
+suppressPackageStartupMessages(library(scatterpie))
+data(penguins)
+suppressPackageStartupMessages(library(dplyr))
+suppressPackageStartupMessages(library(stringr))
+suppressPackageStartupMessages(library(tidyr))
+
+my_pengs <- penguins |>
+  mutate(
+    sex = str_replace_all(sex, c("female" = "F", "male" = "M")) |>
+      str_replace_na(replacement = "Unk"),
+    group = interaction(species, sex, sep = " ")) 
+cols <- unique(my_pengs$group)
+
+pie_sum <- my_pengs |>
+  group_by(year, species) |>
+  summarize(avg = mean(body_mass, na.rm = T)/1000,
+         n = n(),
+         pctF = mean(sex=="F"),
+         pctM = mean(sex=="M")) |>
+  ungroup() |>
+  mutate(pctUnk = 1-pctF-pctM) |>
+  pivot_longer(-c(year:n), names_to =  "Sex", values_to = "pct") |>
+  mutate(Sex = str_remove(Sex, "pct")) |>
+  pivot_wider(names_from = Sex, values_from = pct) 
+pie_sum |>
+  ggplot(aes(x = year, y = avg, fill = species, size = n)) + 
+  geom_line(aes(x = year, y = avg), inherit.aes = F) + 
+  geom_scatterpie(aes(x = year, y = avg, group = interaction(species, year), r = n/120), cols = c("F", "M", "Unk"), color = NA) + 
+  facet_wrap(~species) + 
+  coord_fixed() + 
+  scale_y_continuous("Average Body Mass (kg)", limits = c(-1, 6)) + 
+  scale_x_continuous("Year", breaks = 2007:2009, limits = c(2006, 2010)) + 
+  ggtitle("Penguin Sex and Species Distribution") + 
+  scale_fill_manual("Sex", values = c("M" = "#568D4B", "F" = "#A41D1A", "Unk" = "#D5BB56")) +
+  geom_scatterpie_legend(radius = (seq(15, 55, by = 20))/120, 
+                         labeller = function(x) (120*x),
+                         x = 2007, y = 0, n = 3,
+                         size = 3) + 
+  annotate("text", x = 2007, y = 1, label = "# Penguins") + 
+  theme(strip.background = element_rect(fill = "black"),
+        strip.text = element_text(color = "grey30"),
+        panel.grid = element_line(color = "#FFF0F5", linewidth = .25, linetype = "dotted"))
+```
+
+> In this plot, I have used pie charts (which are less easily read than bar charts, because angles are less accurately perceived than lengths) in an inappropriate way, by plotting them as points in a line chart of average body mass by year. In addition, I have used a red-green-yellow fill mapping for sex, with yellow corresponding to unknown, red corresponding to male (leveraging gendered color schemes that aren't universal), and green corresponding to female. In addition, I have mapped the radius of the pie chart to the number of data points, but this results in the area of the circle being mapped to the square of the number of data points, leading to inaccurate perception of the magnitude of data. I have also extended the range of the y-axis inappropriately below zero, which would correspond to a negative-mass penguin, which is (hopefully) impossible, as it is a violation of the laws of physics. I have adjusted the facet titles to have a black background with very dark grey titles, which does not have sufficient contrast to be readable. For similarly inexplicable reasons, I've changed the grid lines to be a color called "lavenderblush", which has insufficient contrast with the background, and I've made the lines dotted to make them even harder to see. 
+
+<!-- Evil answer -->
+
+
+
+
+## Useful References
+
+- [Customizing ggplot2 graphics](http://r-statistics.co/Complete-Ggplot2-Tutorial-Part2-Customizing-Theme-With-R-Code.html)
+
+- [A group-created slideshow of awful graphics](https://docs.google.com/presentation/d/1ixRsGI8BWgT2zA5AbB61eMLUbJgObvBCZt-OnZDzvX4/edit?usp=sharing)
+
+

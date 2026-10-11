@@ -14,10 +14,10 @@ October 19-25, 2026
 
 ## 📐 Prepare for class
 
-- [ ] (for Mon) Reading Check 8.1
-- [ ] [Project Visualizations](https://usu.instructure.com/courses/819584/assignments/5290607). You will need the [template zip file](../homework/project-template.zip) to complete the assignment. 
-- [ ] (for Wed) Reading Check 8.2
-- [ ] (for Fri) Reading Check 8.3
+- [ ] (for Mon) [Reading Check 8.1](https://usu.instructure.com/courses/819584/quizzes/1502607){target="_blank"}
+- [ ] [Project Visualizations](https://usu.instructure.com/courses/819584/assignments/5290607){target="_blank"}. You will need the [template zip file](../homework/project-template.zip) to complete the assignment. 
+- [ ] (for Wed) [Reading Check 8.2](https://usu.instructure.com/courses/819584/quizzes/1502608){target="_blank"}
+- [ ] (for Fri) [Reading Check 8.3](https://usu.instructure.com/courses/819584/quizzes/1502609){target="_blank"}
 
 
 ## 🥱 Monday 🌛

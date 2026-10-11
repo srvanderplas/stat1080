@@ -1,6 +1,6 @@
 ---
 title: "decodeR:  lubridate"
-output: html_document
+format: html
 ---
 
 ```{r setup, include=FALSE}

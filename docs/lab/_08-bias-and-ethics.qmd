@@ -1,6 +1,8 @@
 ---
 title: "Bias and Ethics"
-format: html
+format: 
+  html:
+    embed-resources: true
 ---
 
 ```{r}

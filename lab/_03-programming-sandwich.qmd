@@ -3,7 +3,7 @@ title: "Activity: Bread Programming"
 editor: source
 format: 
   html:
-    self-contained: true
+    embed-resources: true
 ---
 
 # Introduction

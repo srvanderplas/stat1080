@@ -1,6 +1,8 @@
 ---
 title: "6.2.p - Class Activity"
-format: html
+format: 
+  html:
+    embed-resources: true
 number-sections: true
 execute:
   echo: true   # show code by default

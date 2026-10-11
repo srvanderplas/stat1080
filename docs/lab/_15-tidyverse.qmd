@@ -1,6 +1,8 @@
 ---
 title: "Tidyverse: dplyr puzzles"
-format: html
+format: 
+  html:
+    embed-resources: true
 error: true
 ---
 
