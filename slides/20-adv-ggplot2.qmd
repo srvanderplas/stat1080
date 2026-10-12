@@ -1,0 +1,280 @@
+---
+title: "1.20 Advanced `ggplot2` & Data Visualization Principles"
+format: revealjs
+code-annotations: hover
+lightbox:  true
+bibliography: refs.bib
+csl: chicago-syllabus.csl
+title-slide-attributes:
+  data-background-image: "images/ggplot2.png"
+  data-background-image-alt: A hexagonal ggplot2 logo showing a line chart with the points emphasized by circles on a gray grid background. 
+  data-background-size: "20%"
+  data-background-repeat: "no-repeat"
+  data-background-position: "50% 90%"
+execute:
+  echo: true
+  message: false
+  warning: false
+  error: true
+knitr: 
+  opts_chunk:
+    knitr.graphics.dpi: 300
+---
+
+# Facets
+
+```{r}
+#| fig-width: 8
+#| fig-height: 3
+#| out-width: 90%
+#| fig-alt: A set of two scatter plots of penguin dimensions, one for female penguins and one for male penguins. The x-axis shows flipper length in mm, the y-axis shows bill length in mm. Points are colored by species, and it is clear that across all 3 species (gentoo, adelie, chinstrap), female penguins are smaller than male penguins, though the difference is slight for Adelie penguins.
+data(penguins)
+library(ggplot2)
+library(dplyr)
+theme_set(theme_bw())
+penguins |>
+  filter(!is.na(bill_len) & !is.na(flipper_len) & !is.na(sex)) |>
+ggplot(aes(y = bill_len, x = flipper_len, color = species)) + 
+  geom_point() + facet_wrap(~sex)
+```
+
+## Facets
+
+`facet_xxx(~variable_name, scales = ..., space = ...)`
+
+- xxx: `wrap` or `grid`. 
+    - `grid` allows `var1 ~ var2`, `rows ~ cols`
+    - `wrap` allows `~var1`
+    - With both, you *can* (but probably shouldn't) use `var1 + var2` to get a combination
+    
+- scales = `fixed`, free_x`, `free_y`, or `free` (e.g. x and y)
+    - `free` options work best with `facet_wrap`
+    - free scales allow the range of the subplot to reflect only the data in that facet
+    - comparisons get visually harder to make, but it saves space
+    
+- space = `free_x`, `free_y`, `fixed` -- only one column can be `free` space
+    - This changes the amount of space allocated to each facet (and also changes the range)
+
+## Facets -- demo
+
+```{r}
+#| echo: true
+#| fig-width: 6
+#| fig-height: 3
+#| #| out-width: "100%"
+#| fig-alt: A scatterplot showing measurements of three species of penguin, Chinstrap, Gentoo, and Adelie. The x-axis shows flipper length in mm, the y-axis shows bill length in mm. Points are colored by sex (female, male, NA/unknown). There are 3 rough clusters of points, each with male and female groupings. In each cluster, female penguins are smaller than male penguins, though the difference is slight for Adelie penguins. 
+p <- penguins |>
+  ggplot(aes(x = flipper_len, y = bill_len, color = sex)) +  # <1>
+  geom_point(alpha = .5) +  # <1>
+  theme(legend.position = "bottom") # <2> 
+p
+```
+1. Aesthetic specification and Geom selection. Plot points as 50% transparent to allow seeing the overplotting and make it easier to figure out which points are NA. 
+2. Change the location of the legend using the previously defined theme commands
+
+
+## Facets -- demo
+
+```{r}
+#| echo: true
+#| fig-width: 6
+#| fig-height: 3
+#| out-width: "100%"
+#| fig-alt: A set of three scatter plots of penguin dimensions, one for each species, Chinstrap, Gentoo, and Adelie.  The x-axis shows flipper length in mm, the y-axis shows bill length in mm. Points are colored by sex (female, male, NA/unknown), and it is clear that across all 3 species (gentoo, adelie, chinstrap), female penguins are smaller than male penguins, though the difference is slight for Adelie penguins. Of the 3 species, gentoo penguins have the largest dimensions for both bill and flipper length, Adelie penguins have the smallest dimensions, and Chinstrap penguins have about the same flipper length as Adelie penguins but have longer bills, on average, across both sexes. 
+
+p + 
+  facet_wrap(~species)  # <1>
+```
+1. Facet by species, and allow facets to wrap around into multiple rows.
+
+## Facets -- `free_x` scales
+
+```{r}
+#| echo: true
+#| fig-width: 6
+#| fig-height: 3
+#| out-width: "100%"
+#| fig-alt: A set of three scatter plots of penguin dimensions, one for each species, Chinstrap, Gentoo, and Adelie.  The x-axis shows flipper length in mm, the y-axis shows bill length in mm. Points are colored by sex (female, male, NA/unknown), and it is clear that across all 3 species (gentoo, adelie, chinstrap), female penguins are smaller than male penguins, though the difference is slight for Adelie penguins. Of the 3 species, gentoo penguins have the largest dimensions for both bill and flipper length, Adelie penguins have the smallest dimensions, and Chinstrap penguins have about the same flipper length as Adelie penguins but have longer bills, on average, across both sexes. 
+
+
+p +
+  facet_wrap(~species, scales = "free_x")  # <1>
+```
+1. Wrap facets around. Set facets to have unconstrained x-scales, which adjusts the range of x for the subplots to fit each individual range of data.
+
+
+## Facets -- `free_x` for space and scales
+
+```{r}
+#| echo: true
+#| fig-width: 6
+#| fig-height: 3
+#| out-width: "100%"
+#| fig-alt: A set of three scatter plots of penguin dimensions, one for each species, Chinstrap, Gentoo, and Adelie.  The x-axis shows flipper length in mm, the y-axis shows bill length in mm. Points are colored by sex (female, male, NA/unknown), and it is clear that across all 3 species (gentoo, adelie, chinstrap), female penguins are smaller than male penguins, though the difference is slight for Adelie penguins. Of the 3 species, gentoo penguins have the largest dimensions for both bill and flipper length, Adelie penguins have the smallest dimensions, and Chinstrap penguins have about the same flipper length as Adelie penguins but have longer bills, on average, across both sexes. 
+
+p + 
+  facet_wrap(~species, scales = "free_x", space = "free_x")   # <1>
+```
+1. Facet by species, and allow facets to wrap around into multiple rows. Allow space and scales for each facet to vary.
+
+## Facets -- `free_y` scales
+
+```{r}
+#| echo: true
+#| fig-width: 6
+#| fig-height: 3
+#| out-width: "100%"
+#| fig-alt: A set of three scatter plots of penguin dimensions, one for each species, Chinstrap, Gentoo, and Adelie.  The x-axis shows flipper length in mm, the y-axis shows bill length in mm. Points are colored by sex (female, male, NA/unknown), and it is clear that across all 3 species (gentoo, adelie, chinstrap), female penguins are smaller than male penguins, though the difference is slight for Adelie penguins. Of the 3 species, gentoo penguins have the largest dimensions for both bill and flipper length, Adelie penguins have the smallest dimensions, and Chinstrap penguins have about the same flipper length as Adelie penguins but have longer bills, on average, across both sexes. 
+
+p + 
+  facet_wrap(~species, scales = "free_y")  # <1>
+```
+1. Wrap facets around. Set facets to have unconstrained y-scales, which adjusts the range of x for the subplots to fit each individual range of data.
+
+
+## Facets -- `free_y` for space and scales
+
+```{r}
+#| echo: true
+#| fig-width: 6
+#| fig-height: 6
+#| out-width: "100%"
+#| output-location: column
+#| fig-alt: A set of three scatter plots of penguin dimensions, one for each species, Chinstrap, Gentoo, and Adelie.  The x-axis shows flipper length in mm, the y-axis shows bill length in mm. Points are colored by sex (female, male, NA/unknown), and it is clear that across all 3 species (gentoo, adelie, chinstrap), female penguins are smaller than male penguins, though the difference is slight for Adelie penguins. Of the 3 species, gentoo penguins have the largest dimensions for both bill and flipper length, Adelie penguins have the smallest dimensions, and Chinstrap penguins have about the same flipper length as Adelie penguins but have longer bills, on average, across both sexes. 
+
+p + 
+  facet_wrap(# <1>
+    ~species, # <1>
+    scales = "free_y", # <1>
+    space = "free_y") # <1>
+```
+1. Facet by species, and allow facets to wrap around into multiple rows. Allowing scales and space on the y-axis to vary forces ggplot2 to lay the facets out in rows, rather than columns. 
+
+
+# Theming
+
+## Included in `ggplot2`
+
+![`ggplot2` package themes](images/ggplot2-default-themes.png){fig-alt="Demonstrating the 9 themes which are included in the ggplot2 package: theme_bw (black plot outline, light grey grid lines, minimal other annotations), theme_classic(x and y axis, no grid lines, no top or right plot boundary), theme_dark (dark grey background, even darker grey grid lines, with tick marks and axis labels on white outside the plot boundary), theme_grey, the default, which has light grey plot interior, light/white grid lines, and a white exterior, with no outline, theme_light, which has a light grey outline and light grey grid lines, theme_linedraw, which has a black plot outline and darker grey grid lines, with a white plot background, theme_minimal, which has no plot outline and very light grey gridlines, theme_test, which has a black plot outline and no grid lines, and theme_void, which has no axes, no tick marks, no grid lines, and no plot outline, with geoms plotted on a white background."}
+
+::: {.bottom .small}
+Images from <https://statisticsglobe.com/color-themes-ggplot2-plots-r>
+:::
+
+## `ggthemes` package
+
+
+```{r}
+#| echo: false
+#| eval: false
+## Paste output of this to get the stuff below.
+library(glue)
+tibble(
+  filename = list.files("images", "ggthemes-", full.names = T),
+  basename = gsub("images/ggthemes-(.*)\\.png", "\\1", filename)
+) |>
+  glue_data("![{basename}]({filename}){{fig-alt=\"The `ggthemes` package function `theme_{basename}()`\"}}\\n\\n")
+
+```
+::: {layout="[[1,1,1,1,1,1,1,1],[1,1,1,1,1,1,1,1],[1,1,1,1,1,1,-1,-1]]"}
+
+![base](images/ggthemes-base.png){fig-alt="The `ggthemes` package function `theme_base()`"}
+
+![calc](images/ggthemes-calc.png){fig-alt="The `ggthemes` package function `theme_calc()`"}
+
+![clean](images/ggthemes-clean.png){fig-alt="The `ggthemes` package function `theme_clean()`"}
+
+![economist-white](images/ggthemes-economist-white.png){fig-alt="The `ggthemes` package function `theme_economist-white()`"}
+
+![economist](images/ggthemes-economist.png){fig-alt="The `ggthemes` package function `theme_economist()`"}
+
+![excel-new](images/ggthemes-excel-new.png){fig-alt="The `ggthemes` package function `theme_excel-new()`"}
+
+![excel](images/ggthemes-excel.png){fig-alt="The `ggthemes` package function `theme_excel()`"}
+
+![few](images/ggthemes-few.png){fig-alt="The `ggthemes` package function `theme_few()`"}
+
+![fivethirtyeight](images/ggthemes-fivethirtyeight.png){fig-alt="The `ggthemes` package function `theme_fivethirtyeight()`"}
+
+![foundation](images/ggthemes-foundation.png){fig-alt="The `ggthemes` package function `theme_foundation()`"}
+
+![gdocs](images/ggthemes-gdocs.png){fig-alt="The `ggthemes` package function `theme_gdocs()`"}
+
+![hc](images/ggthemes-hc.png){fig-alt="The `ggthemes` package function `theme_hc()`"}
+
+![igray](images/ggthemes-igray.png){fig-alt="The `ggthemes` package function `theme_igray()`"}
+
+![map](images/ggthemes-map.png){fig-alt="The `ggthemes` package function `theme_map()`"}
+
+![pander](images/ggthemes-pander.png){fig-alt="The `ggthemes` package function `theme_pander()`"}
+
+![par](images/ggthemes-par.png){fig-alt="The `ggthemes` package function `theme_par()`"}
+
+![solarized](images/ggthemes-solarized.png){fig-alt="The `ggthemes` package function `theme_solarized()`"}
+
+![solarized2](images/ggthemes-solarized2.png){fig-alt="The `ggthemes` package function `theme_solarized2()`"}
+
+![solid](images/ggthemes-solid.png){fig-alt="The `ggthemes` package function `theme_solid()`"}
+
+![stata](images/ggthemes-stata.png){fig-alt="The `ggthemes` package function `theme_stata()`"}
+
+![tufte](images/ggthemes-tufte.png){fig-alt="The `ggthemes` package function `theme_tufte()`"}
+
+![wsj](images/ggthemes-wsj.png){fig-alt="The `ggthemes` package function `theme_wsj()`"}
+
+:::
+
+::: {.fragment}
+`library(ggthemes)` and `p + theme_xxx()`
+:::
+
+::: {.bottom .small}
+Images from <https://statisticsglobe.com/color-themes-ggplot2-plots-r>
+:::
+
+## `ggthemr` package
+
+::: {layout="[[1,1,1,1,1,1,1],[1,1,1,1,1,1],[1,1,1,1,1,-1]]]"}
+
+![camoflague](images/ggthemr-camo.png){fig-alt="A demonstration of ggthemr's camouflague theme"}
+
+![chalk](images/ggthemr-chalk.png){fig-alt="A demonstration of ggthemr's chalk theme"}
+
+![copper](images/ggthemr-copper.png){fig-alt="A demonstration of ggthemr's copper theme"}
+
+![dust](images/ggthemr-dust.png){fig-alt="A demonstration of ggthemr's dust theme"}
+
+![earth](images/ggthemr-earth.png){fig-alt="A demonstration of ggthemr's earth theme"}
+
+![flat](images/ggthemr-flat.png){fig-alt="A demonstration of ggthemr's flat theme"}
+
+![flat-dark](images/ggthemr-fresh.png){fig-alt="A demonstration of ggthemr's flat dark theme"}
+
+![fresh](images/ggthemr-fresh.png){fig-alt="A demonstration of ggthemr's fresh theme"}
+
+![grape](images/ggthemr-grape.png){fig-alt="A demonstration of ggthemr's grape theme"}
+
+![grass](images/ggthemr-grass.png){fig-alt="A demonstration of ggthemr's grass theme"}
+
+![greyscale](images/ggthemr-greyscale.png){fig-alt="A demonstration of ggthemr's greyscale theme"}
+
+![light](images/ggthemr-light.png){fig-alt="A demonstration of ggthemr's light theme"}
+
+![lilac](images/ggthemr-lilac.png){fig-alt="A demonstration of ggthemr's lilac theme"}
+
+![pale](images/ggthemr-pale.png){fig-alt="A demonstration of ggthemr's pale theme"}
+
+![sea](images/ggthemr-sea.png){fig-alt="A demonstration of ggthemr's sea theme"}
+
+![sky](images/ggthemr-sky.png){fig-alt="A demonstration of ggthemr's sky theme"}
+
+![solarized](images/ggthemr-solarized.png){fig-alt="A demonstration of ggthemr's solarized theme"}
+:::
+
+::: fragment
+Just because you **can** doesn't mean you **should**
+:::
+
+:::  {.bottom .small}
+Images from <https://statisticsglobe.com/color-themes-ggplot2-plots-r>
+:::

@@ -6,10 +6,13 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.9.38">
 
-  <title>STAT 1080 - Fall 2026 – adv-ggplot2</title>
+  <title>STAT 1080 - Fall 2026 – 1.20 Advanced ggplot2 &amp; Data Visualization Principles</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -30,6 +33,72 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-d2cfaf4017ec6d6e95d384acfb7920a7.css">
   <link rel="stylesheet" href="deps/styles.scss">
@@ -132,19 +201,581 @@
       margin-right: 0;
     }
   </style>
-<meta property="og:title" content="STAT 1080 - Fall 2026">
+<meta property="og:title" content="1.20 Advanced ggplot2 &amp; Data Visualization Principles – STAT 1080 - Fall 2026">
 <meta property="og:site_name" content="STAT 1080 - Fall 2026">
 </head>
 <body class="quarto-light">
   <div class="reveal">
     <div class="slides">
 
+<section id="title-slide" data-background-image="images/ggplot2.png" data-background-image-alt="A hexagonal ggplot2 logo showing a line chart with the points emphasized by circles on a gray grid background." data-background-position="50% 90%" data-background-repeat="no-repeat" data-background-size="20%" class="quarto-title-block center">
+  <h1 class="title">1.20 Advanced <code>ggplot2</code> &amp; Data Visualization Principles</h1>
 
-<section class="slide level2">
-
-
+<div class="quarto-title-authors">
+</div>
 
 </section>
+<section>
+<section id="facets" class="title-slide slide level1 center">
+<h1>Facets</h1>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">data</span>(penguins)</span>
+<span id="cb1-2"><a></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb1-3"><a></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb1-4"><a></a><span class="fu">theme_set</span>(<span class="fu">theme_bw</span>())</span>
+<span id="cb1-5"><a></a>penguins <span class="sc">|&gt;</span></span>
+<span id="cb1-6"><a></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(bill_len) <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(flipper_len) <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(sex)) <span class="sc">|&gt;</span></span>
+<span id="cb1-7"><a></a><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y =</span> bill_len, <span class="at">x =</span> flipper_len, <span class="at">color =</span> species)) <span class="sc">+</span> </span>
+<span id="cb1-8"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">facet_wrap</span>(<span class="sc">~</span>sex)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure>
+<p><a href="20-adv-ggplot2_files/figure-revealjs/unnamed-chunk-1-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img data-src="20-adv-ggplot2_files/figure-revealjs/unnamed-chunk-1-1.png" style="width:90.0%" alt="A set of two scatter plots of penguin dimensions, one for female penguins and one for male penguins. The x-axis shows flipper length in mm, the y-axis shows bill length in mm. Points are colored by species, and it is clear that across all 3 species (gentoo, adelie, chinstrap), female penguins are smaller than male penguins, though the difference is slight for Adelie penguins."></a></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="facets-1" class="slide level2">
+<h2>Facets</h2>
+<p><code>facet_xxx(~variable_name, scales = ..., space = ...)</code></p>
+<ul>
+<li>xxx: <code>wrap</code> or <code>grid</code>.
+<ul>
+<li><code>grid</code> allows <code>var1 ~ var2</code>, <code>rows ~ cols</code></li>
+<li><code>wrap</code> allows <code>~var1</code></li>
+<li>With both, you <em>can</em> (but probably shouldn’t) use <code>var1 + var2</code> to get a combination</li>
+</ul></li>
+<li>scales = <code>fixed</code>, free_x<code>,</code>free_y<code>, or</code>free` (e.g.&nbsp;x and y)
+<ul>
+<li><code>free</code> options work best with <code>facet_wrap</code></li>
+<li>free scales allow the range of the subplot to reflect only the data in that facet</li>
+<li>comparisons get visually harder to make, but it saves space</li>
+</ul></li>
+<li>space = <code>free_x</code>, <code>free_y</code>, <code>fixed</code> – only one column can be <code>free</code> space
+<ul>
+<li>This changes the amount of space allocated to each facet (and also changes the range)</li>
+</ul></li>
+</ul>
+</section>
+<section id="facets-demo" class="slide level2">
+<h2>Facets – demo</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-2"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-2-1"><a href="#annotated-cell-2-1"></a>p <span class="ot">&lt;-</span> penguins <span class="sc">|&gt;</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="1">1</button><span id="annotated-cell-2-2" class="code-annotation-target"><a href="#annotated-cell-2-2"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> flipper_len, <span class="at">y =</span> bill_len, <span class="at">color =</span> sex)) <span class="sc">+</span></span>
+<span id="annotated-cell-2-3"><a href="#annotated-cell-2-3"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> .<span class="dv">5</span>) <span class="sc">+</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="2">2</button><span id="annotated-cell-2-4" class="code-annotation-target"><a href="#annotated-cell-2-4"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"bottom"</span>)</span>
+<span id="annotated-cell-2-5"><a href="#annotated-cell-2-5"></a>p</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-annotation">
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-2" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-2" data-code-lines="2,3" data-code-annotation="1">Aesthetic specification and Geom selection. Plot points as 50% transparent to allow seeing the overplotting and make it easier to figure out which points are NA.</span>
+</dd>
+<dt data-target-cell="annotated-cell-2" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-2" data-code-lines="4" data-code-annotation="2">Change the location of the legend using the previously defined theme commands</span>
+</dd>
+</dl>
+</div>
+<div class="cell-output-display">
+<div>
+<figure>
+<p><a href="20-adv-ggplot2_files/figure-revealjs/unnamed-chunk-2-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img data-src="20-adv-ggplot2_files/figure-revealjs/unnamed-chunk-2-1.png" alt="A scatterplot showing measurements of three species of penguin, Chinstrap, Gentoo, and Adelie. The x-axis shows flipper length in mm, the y-axis shows bill length in mm. Points are colored by sex (female, male, NA/unknown). There are 3 rough clusters of points, each with male and female groupings. In each cluster, female penguins are smaller than male penguins, though the difference is slight for Adelie penguins." width="576"></a></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="facets-demo-1" class="slide level2">
+<h2>Facets – demo</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-3"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-3-1"><a href="#annotated-cell-3-1"></a>p <span class="sc">+</span> </span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="1">1</button><span id="annotated-cell-3-2" class="code-annotation-target"><a href="#annotated-cell-3-2"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>species)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-annotation">
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-3" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-3" data-code-lines="2" data-code-annotation="1">Facet by species, and allow facets to wrap around into multiple rows.</span>
+</dd>
+</dl>
+</div>
+<div class="cell-output-display">
+<div>
+<figure>
+<p><a href="20-adv-ggplot2_files/figure-revealjs/unnamed-chunk-3-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img data-src="20-adv-ggplot2_files/figure-revealjs/unnamed-chunk-3-1.png" style="width:100.0%" alt="A set of three scatter plots of penguin dimensions, one for each species, Chinstrap, Gentoo, and Adelie.  The x-axis shows flipper length in mm, the y-axis shows bill length in mm. Points are colored by sex (female, male, NA/unknown), and it is clear that across all 3 species (gentoo, adelie, chinstrap), female penguins are smaller than male penguins, though the difference is slight for Adelie penguins. Of the 3 species, gentoo penguins have the largest dimensions for both bill and flipper length, Adelie penguins have the smallest dimensions, and Chinstrap penguins have about the same flipper length as Adelie penguins but have longer bills, on average, across both sexes."></a></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="facets-free_x-scales" class="slide level2">
+<h2>Facets – <code>free_x</code> scales</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-4"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-4-1"><a href="#annotated-cell-4-1"></a>p <span class="sc">+</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="1">1</button><span id="annotated-cell-4-2" class="code-annotation-target"><a href="#annotated-cell-4-2"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>species, <span class="at">scales =</span> <span class="st">"free_x"</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-annotation">
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-4" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-4" data-code-lines="2" data-code-annotation="1">Wrap facets around. Set facets to have unconstrained x-scales, which adjusts the range of x for the subplots to fit each individual range of data.</span>
+</dd>
+</dl>
+</div>
+<div class="cell-output-display">
+<div>
+<figure>
+<p><a href="20-adv-ggplot2_files/figure-revealjs/unnamed-chunk-4-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img data-src="20-adv-ggplot2_files/figure-revealjs/unnamed-chunk-4-1.png" style="width:100.0%" alt="A set of three scatter plots of penguin dimensions, one for each species, Chinstrap, Gentoo, and Adelie.  The x-axis shows flipper length in mm, the y-axis shows bill length in mm. Points are colored by sex (female, male, NA/unknown), and it is clear that across all 3 species (gentoo, adelie, chinstrap), female penguins are smaller than male penguins, though the difference is slight for Adelie penguins. Of the 3 species, gentoo penguins have the largest dimensions for both bill and flipper length, Adelie penguins have the smallest dimensions, and Chinstrap penguins have about the same flipper length as Adelie penguins but have longer bills, on average, across both sexes."></a></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="facets-free_x-for-space-and-scales" class="slide level2">
+<h2>Facets – <code>free_x</code> for space and scales</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-5"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-5-1"><a href="#annotated-cell-5-1"></a>p <span class="sc">+</span> </span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-5" data-target-annotation="1">1</button><span id="annotated-cell-5-2" class="code-annotation-target"><a href="#annotated-cell-5-2"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>species, <span class="at">scales =</span> <span class="st">"free_x"</span>, <span class="at">space =</span> <span class="st">"free_x"</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-annotation">
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-5" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-5" data-code-lines="2" data-code-annotation="1">Facet by species, and allow facets to wrap around into multiple rows. Allow space and scales for each facet to vary.</span>
+</dd>
+</dl>
+</div>
+<div class="cell-output-display">
+<div>
+<figure>
+<p><a href="20-adv-ggplot2_files/figure-revealjs/unnamed-chunk-5-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img data-src="20-adv-ggplot2_files/figure-revealjs/unnamed-chunk-5-1.png" style="width:100.0%" alt="A set of three scatter plots of penguin dimensions, one for each species, Chinstrap, Gentoo, and Adelie.  The x-axis shows flipper length in mm, the y-axis shows bill length in mm. Points are colored by sex (female, male, NA/unknown), and it is clear that across all 3 species (gentoo, adelie, chinstrap), female penguins are smaller than male penguins, though the difference is slight for Adelie penguins. Of the 3 species, gentoo penguins have the largest dimensions for both bill and flipper length, Adelie penguins have the smallest dimensions, and Chinstrap penguins have about the same flipper length as Adelie penguins but have longer bills, on average, across both sexes."></a></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="facets-free_y-scales" class="slide level2">
+<h2>Facets – <code>free_y</code> scales</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-6"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-6-1"><a href="#annotated-cell-6-1"></a>p <span class="sc">+</span> </span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="1">1</button><span id="annotated-cell-6-2" class="code-annotation-target"><a href="#annotated-cell-6-2"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>species, <span class="at">scales =</span> <span class="st">"free_y"</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-annotation">
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-6" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-6" data-code-lines="2" data-code-annotation="1">Wrap facets around. Set facets to have unconstrained y-scales, which adjusts the range of x for the subplots to fit each individual range of data.</span>
+</dd>
+</dl>
+</div>
+<div class="cell-output-display">
+<div>
+<figure>
+<p><a href="20-adv-ggplot2_files/figure-revealjs/unnamed-chunk-6-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6"><img data-src="20-adv-ggplot2_files/figure-revealjs/unnamed-chunk-6-1.png" style="width:100.0%" alt="A set of three scatter plots of penguin dimensions, one for each species, Chinstrap, Gentoo, and Adelie.  The x-axis shows flipper length in mm, the y-axis shows bill length in mm. Points are colored by sex (female, male, NA/unknown), and it is clear that across all 3 species (gentoo, adelie, chinstrap), female penguins are smaller than male penguins, though the difference is slight for Adelie penguins. Of the 3 species, gentoo penguins have the largest dimensions for both bill and flipper length, Adelie penguins have the smallest dimensions, and Chinstrap penguins have about the same flipper length as Adelie penguins but have longer bills, on average, across both sexes."></a></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="facets-free_y-for-space-and-scales" class="slide level2">
+<h2>Facets – <code>free_y</code> for space and scales</h2>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-7"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-7-1"><a href="#annotated-cell-7-1"></a>p <span class="sc">+</span> </span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="1">1</button><span id="annotated-cell-7-2" class="code-annotation-target"><a href="#annotated-cell-7-2"></a>  <span class="fu">facet_wrap</span>(</span>
+<span id="annotated-cell-7-3"><a href="#annotated-cell-7-3"></a>    <span class="sc">~</span>species,</span>
+<span id="annotated-cell-7-4"><a href="#annotated-cell-7-4"></a>    <span class="at">scales =</span> <span class="st">"free_y"</span>,</span>
+<span id="annotated-cell-7-5"><a href="#annotated-cell-7-5"></a>    <span class="at">space =</span> <span class="st">"free_y"</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div><div class="column">
+<div class="cell-annotation">
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-7" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-7" data-code-lines="2,3,4,5" data-code-annotation="1">Facet by species, and allow facets to wrap around into multiple rows. Allowing scales and space on the y-axis to vary forces ggplot2 to lay the facets out in rows, rather than columns.</span>
+</dd>
+</dl>
+</div>
+<div class="cell-output-display">
+<div>
+<figure>
+<p><a href="20-adv-ggplot2_files/figure-revealjs/unnamed-chunk-7-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7"><img data-src="20-adv-ggplot2_files/figure-revealjs/unnamed-chunk-7-1.png" style="width:100.0%" alt="A set of three scatter plots of penguin dimensions, one for each species, Chinstrap, Gentoo, and Adelie.  The x-axis shows flipper length in mm, the y-axis shows bill length in mm. Points are colored by sex (female, male, NA/unknown), and it is clear that across all 3 species (gentoo, adelie, chinstrap), female penguins are smaller than male penguins, though the difference is slight for Adelie penguins. Of the 3 species, gentoo penguins have the largest dimensions for both bill and flipper length, Adelie penguins have the smallest dimensions, and Chinstrap penguins have about the same flipper length as Adelie penguins but have longer bills, on average, across both sexes."></a></p>
+</figure>
+</div>
+</div>
+</div></div>
+</section></section>
+<section>
+<section id="theming" class="title-slide slide level1 center">
+<h1>Theming</h1>
+
+</section>
+<section id="included-in-ggplot2" class="slide level2">
+<h2>Included in <code>ggplot2</code></h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="images/ggplot2-default-themes.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8" title="ggplot2 package themes"><img data-src="images/ggplot2-default-themes.png" alt="Demonstrating the 9 themes which are included in the ggplot2 package: theme_bw (black plot outline, light grey grid lines, minimal other annotations), theme_classic(x and y axis, no grid lines, no top or right plot boundary), theme_dark (dark grey background, even darker grey grid lines, with tick marks and axis labels on white outside the plot boundary), theme_grey, the default, which has light grey plot interior, light/white grid lines, and a white exterior, with no outline, theme_light, which has a light grey outline and light grey grid lines, theme_linedraw, which has a black plot outline and darker grey grid lines, with a white plot background, theme_minimal, which has no plot outline and very light grey gridlines, theme_test, which has a black plot outline and no grid lines, and theme_void, which has no axes, no tick marks, no grid lines, and no plot outline, with geoms plotted on a white background."></a></p>
+<figcaption><code>ggplot2</code> package themes</figcaption>
+</figure>
+</div>
+<div class="bottom small">
+<p>Images from <a href="https://statisticsglobe.com/color-themes-ggplot2-plots-r" class="uri">https://statisticsglobe.com/color-themes-ggplot2-plots-r</a></p>
+</div>
+</section>
+<section id="ggthemes-package" class="slide level2">
+<h2><code>ggthemes</code> package</h2>
+<div class="quarto-layout-panel" data-layout="[[1,1,1,1,1,1,1,1],[1,1,1,1,1,1,1,1],[1,1,1,1,1,1,-1,-1]]">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 12.5%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="images/ggthemes-base.png" class="lightbox" data-gallery="quarto-lightbox-gallery-9" title="base"><img data-src="images/ggthemes-base.png" alt="The `ggthemes` package function `theme_base()`"></a></p>
+<figcaption>base</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 12.5%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="images/ggthemes-calc.png" class="lightbox" data-gallery="quarto-lightbox-gallery-10" title="calc"><img data-src="images/ggthemes-calc.png" alt="The `ggthemes` package function `theme_calc()`"></a></p>
+<figcaption>calc</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 12.5%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="images/ggthemes-clean.png" class="lightbox" data-gallery="quarto-lightbox-gallery-11" title="clean"><img data-src="images/ggthemes-clean.png" alt="The `ggthemes` package function `theme_clean()`"></a></p>
+<figcaption>clean</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 12.5%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="images/ggthemes-economist-white.png" class="lightbox" data-gallery="quarto-lightbox-gallery-12" title="economist-white"><img data-src="images/ggthemes-economist-white.png" alt="The `ggthemes` package function `theme_economist-white()`"></a></p>
+<figcaption>economist-white</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 12.5%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="images/ggthemes-economist.png" class="lightbox" data-gallery="quarto-lightbox-gallery-13" title="economist"><img data-src="images/ggthemes-economist.png" alt="The `ggthemes` package function `theme_economist()`"></a></p>
+<figcaption>economist</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 12.5%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="images/ggthemes-excel-new.png" class="lightbox" data-gallery="quarto-lightbox-gallery-14" title="excel-new"><img data-src="images/ggthemes-excel-new.png" alt="The `ggthemes` package function `theme_excel-new()`"></a></p>
+<figcaption>excel-new</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 12.5%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="images/ggthemes-excel.png" class="lightbox" data-gallery="quarto-lightbox-gallery-15" title="excel"><img data-src="images/ggthemes-excel.png" alt="The `ggthemes` package function `theme_excel()`"></a></p>
+<figcaption>excel</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 12.5%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="images/ggthemes-few.png" class="lightbox" data-gallery="quarto-lightbox-gallery-16" title="few"><img data-src="images/ggthemes-few.png" alt="The `ggthemes` package function `theme_few()`"></a></p>
+<figcaption>few</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 12.5%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="images/ggthemes-fivethirtyeight.png" class="lightbox" data-gallery="quarto-lightbox-gallery-17" title="fivethirtyeight"><img data-src="images/ggthemes-fivethirtyeight.png" alt="The `ggthemes` package function `theme_fivethirtyeight()`"></a></p>
+<figcaption>fivethirtyeight</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 12.5%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="images/ggthemes-foundation.png" class="lightbox" data-gallery="quarto-lightbox-gallery-18" title="foundation"><img data-src="images/ggthemes-foundation.png" alt="The `ggthemes` package function `theme_foundation()`"></a></p>
+<figcaption>foundation</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 12.5%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="images/ggthemes-gdocs.png" class="lightbox" data-gallery="quarto-lightbox-gallery-19" title="gdocs"><img data-src="images/ggthemes-gdocs.png" alt="The `ggthemes` package function `theme_gdocs()`"></a></p>
+<figcaption>gdocs</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 12.5%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="images/ggthemes-hc.png" class="lightbox" data-gallery="quarto-lightbox-gallery-20" title="hc"><img data-src="images/ggthemes-hc.png" alt="The `ggthemes` package function `theme_hc()`"></a></p>
+<figcaption>hc</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 12.5%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="images/ggthemes-igray.png" class="lightbox" data-gallery="quarto-lightbox-gallery-21" title="igray"><img data-src="images/ggthemes-igray.png" alt="The `ggthemes` package function `theme_igray()`"></a></p>
+<figcaption>igray</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 12.5%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="images/ggthemes-map.png" class="lightbox" data-gallery="quarto-lightbox-gallery-22" title="map"><img data-src="images/ggthemes-map.png" alt="The `ggthemes` package function `theme_map()`"></a></p>
+<figcaption>map</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 12.5%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="images/ggthemes-pander.png" class="lightbox" data-gallery="quarto-lightbox-gallery-23" title="pander"><img data-src="images/ggthemes-pander.png" alt="The `ggthemes` package function `theme_pander()`"></a></p>
+<figcaption>pander</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 12.5%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="images/ggthemes-par.png" class="lightbox" data-gallery="quarto-lightbox-gallery-24" title="par"><img data-src="images/ggthemes-par.png" alt="The `ggthemes` package function `theme_par()`"></a></p>
+<figcaption>par</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 12.5%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="images/ggthemes-solarized.png" class="lightbox" data-gallery="quarto-lightbox-gallery-25" title="solarized"><img data-src="images/ggthemes-solarized.png" alt="The `ggthemes` package function `theme_solarized()`"></a></p>
+<figcaption>solarized</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 12.5%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="images/ggthemes-solarized2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-26" title="solarized2"><img data-src="images/ggthemes-solarized2.png" alt="The `ggthemes` package function `theme_solarized2()`"></a></p>
+<figcaption>solarized2</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 12.5%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="images/ggthemes-solid.png" class="lightbox" data-gallery="quarto-lightbox-gallery-27" title="solid"><img data-src="images/ggthemes-solid.png" alt="The `ggthemes` package function `theme_solid()`"></a></p>
+<figcaption>solid</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 12.5%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="images/ggthemes-stata.png" class="lightbox" data-gallery="quarto-lightbox-gallery-28" title="stata"><img data-src="images/ggthemes-stata.png" alt="The `ggthemes` package function `theme_stata()`"></a></p>
+<figcaption>stata</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 12.5%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="images/ggthemes-tufte.png" class="lightbox" data-gallery="quarto-lightbox-gallery-29" title="tufte"><img data-src="images/ggthemes-tufte.png" alt="The `ggthemes` package function `theme_tufte()`"></a></p>
+<figcaption>tufte</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 12.5%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="images/ggthemes-wsj.png" class="lightbox" data-gallery="quarto-lightbox-gallery-30" title="wsj"><img data-src="images/ggthemes-wsj.png" alt="The `ggthemes` package function `theme_wsj()`"></a></p>
+<figcaption>wsj</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-figure-spacer quarto-layout-cell" style="flex-basis: 12.5%;justify-content: flex-start;">
+<p>&nbsp;</p>
+</div>
+<div class="quarto-figure-spacer quarto-layout-cell" style="flex-basis: 12.5%;justify-content: flex-start;">
+<p>&nbsp;</p>
+</div>
+</div>
+</div>
+<div class="fragment">
+<p><code>library(ggthemes)</code> and <code>p + theme_xxx()</code></p>
+</div>
+<div class="bottom small">
+<p>Images from <a href="https://statisticsglobe.com/color-themes-ggplot2-plots-r" class="uri">https://statisticsglobe.com/color-themes-ggplot2-plots-r</a></p>
+</div>
+</section>
+<section id="ggthemr-package" class="slide level2">
+<h2><code>ggthemr</code> package</h2>
+<div class="quarto-layout-panel" data-layout="[[1,1,1,1,1,1,1],[1,1,1,1,1,1],[1,1,1,1,1,-1]]]">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 14.3%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="images/ggthemr-camo.png" class="lightbox" data-gallery="quarto-lightbox-gallery-31" title="camoflague"><img data-src="images/ggthemr-camo.png" alt="A demonstration of ggthemr's camouflague theme"></a></p>
+<figcaption>camoflague</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 14.3%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="images/ggthemr-chalk.png" class="lightbox" data-gallery="quarto-lightbox-gallery-32" title="chalk"><img data-src="images/ggthemr-chalk.png" alt="A demonstration of ggthemr's chalk theme"></a></p>
+<figcaption>chalk</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 14.3%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="images/ggthemr-copper.png" class="lightbox" data-gallery="quarto-lightbox-gallery-33" title="copper"><img data-src="images/ggthemr-copper.png" alt="A demonstration of ggthemr's copper theme"></a></p>
+<figcaption>copper</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 14.3%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="images/ggthemr-dust.png" class="lightbox" data-gallery="quarto-lightbox-gallery-34" title="dust"><img data-src="images/ggthemr-dust.png" alt="A demonstration of ggthemr's dust theme"></a></p>
+<figcaption>dust</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 14.3%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="images/ggthemr-earth.png" class="lightbox" data-gallery="quarto-lightbox-gallery-35" title="earth"><img data-src="images/ggthemr-earth.png" alt="A demonstration of ggthemr's earth theme"></a></p>
+<figcaption>earth</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 14.3%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="images/ggthemr-flat.png" class="lightbox" data-gallery="quarto-lightbox-gallery-36" title="flat"><img data-src="images/ggthemr-flat.png" alt="A demonstration of ggthemr's flat theme"></a></p>
+<figcaption>flat</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 14.3%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="images/ggthemr-fresh.png" class="lightbox" data-gallery="quarto-lightbox-gallery-37" title="flat-dark"><img data-src="images/ggthemr-fresh.png" alt="A demonstration of ggthemr's flat dark theme"></a></p>
+<figcaption>flat-dark</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 16.7%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="images/ggthemr-fresh.png" class="lightbox" data-gallery="quarto-lightbox-gallery-38" title="fresh"><img data-src="images/ggthemr-fresh.png" alt="A demonstration of ggthemr's fresh theme"></a></p>
+<figcaption>fresh</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 16.7%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="images/ggthemr-grape.png" class="lightbox" data-gallery="quarto-lightbox-gallery-39" title="grape"><img data-src="images/ggthemr-grape.png" alt="A demonstration of ggthemr's grape theme"></a></p>
+<figcaption>grape</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 16.7%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="images/ggthemr-grass.png" class="lightbox" data-gallery="quarto-lightbox-gallery-40" title="grass"><img data-src="images/ggthemr-grass.png" alt="A demonstration of ggthemr's grass theme"></a></p>
+<figcaption>grass</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 16.7%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="images/ggthemr-greyscale.png" class="lightbox" data-gallery="quarto-lightbox-gallery-41" title="greyscale"><img data-src="images/ggthemr-greyscale.png" alt="A demonstration of ggthemr's greyscale theme"></a></p>
+<figcaption>greyscale</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 16.7%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="images/ggthemr-light.png" class="lightbox" data-gallery="quarto-lightbox-gallery-42" title="light"><img data-src="images/ggthemr-light.png" alt="A demonstration of ggthemr's light theme"></a></p>
+<figcaption>light</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 16.7%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="images/ggthemr-lilac.png" class="lightbox" data-gallery="quarto-lightbox-gallery-43" title="lilac"><img data-src="images/ggthemr-lilac.png" alt="A demonstration of ggthemr's lilac theme"></a></p>
+<figcaption>lilac</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 16.7%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="images/ggthemr-pale.png" class="lightbox" data-gallery="quarto-lightbox-gallery-44" title="pale"><img data-src="images/ggthemr-pale.png" alt="A demonstration of ggthemr's pale theme"></a></p>
+<figcaption>pale</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 16.7%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="images/ggthemr-sea.png" class="lightbox" data-gallery="quarto-lightbox-gallery-45" title="sea"><img data-src="images/ggthemr-sea.png" alt="A demonstration of ggthemr's sea theme"></a></p>
+<figcaption>sea</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 16.7%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="images/ggthemr-sky.png" class="lightbox" data-gallery="quarto-lightbox-gallery-46" title="sky"><img data-src="images/ggthemr-sky.png" alt="A demonstration of ggthemr's sky theme"></a></p>
+<figcaption>sky</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 16.7%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="images/ggthemr-solarized.png" class="lightbox" data-gallery="quarto-lightbox-gallery-47" title="solarized"><img data-src="images/ggthemr-solarized.png" alt="A demonstration of ggthemr's solarized theme"></a></p>
+<figcaption>solarized</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-figure-spacer quarto-layout-cell" style="flex-basis: 16.7%;justify-content: flex-start;">
+<p>&nbsp;</p>
+</div>
+</div>
+</div>
+<div class="fragment">
+<p>Just because you <strong>can</strong> doesn’t mean you <strong>should</strong></p>
+</div>
+<div class="bottom small">
+<p>Images from <a href="https://statisticsglobe.com/color-themes-ggplot2-plots-r" class="uri">https://statisticsglobe.com/color-themes-ggplot2-plots-r</a></p>
+</div>
+
+
+</section></section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <p><img src="deps/usu-sq.png" alt="Utah State University Logo" class="slide-logo"></p>
@@ -363,6 +994,44 @@
         ]
       });
     </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
     <script id="quarto-html-after-body" type="application/javascript">
       window.document.addEventListener("DOMContentLoaded", function (event) {
         const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
@@ -683,6 +1352,38 @@
         }
       });
       </script>
+    <script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+    (function() {
+      let previousOnload = window.onload;
+      window.onload = () => {
+        if (previousOnload) {
+          previousOnload();
+        }
+        lightboxQuarto.on('slide_before_load', (data) => {
+          const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+          const href = trigger.getAttribute('href');
+          if (href !== null) {
+            const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+            if (imgEl !== null) {
+              const srcAttr = imgEl.getAttribute("src");
+              if (srcAttr && srcAttr.startsWith("data:")) {
+                slideConfig.href = srcAttr;
+              }
+            }
+          } 
+        });
+      
+        lightboxQuarto.on('slide_after_load', (data) => {
+          const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(slideNode);
+          }
+        });
+      
+      };
+      
+    })();
+              </script>
     
 
 </body></html>

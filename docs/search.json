@@ -4401,5 +4401,96 @@
     "title": "1.19 ggplot2",
     "section": "Coordinate Systems",
     "text": "Coordinate Systems\n+ coord_xxx()\n\nCartesian: Standard x and y axis\nFixed: Ensure there is a fixed aspect ratio\nFlip: swap x and y axes\nPolar: specify which variable (x, y) is the angle (theta)\nTrans: specify x or y axis transformations"
+  },
+  {
+    "objectID": "slides/20-adv-ggplot2.html#facets-1",
+    "href": "slides/20-adv-ggplot2.html#facets-1",
+    "title": "1.20 Advanced ggplot2 & Data Visualization Principles",
+    "section": "Facets",
+    "text": "Facets\nfacet_xxx(~variable_name, scales = ..., space = ...)\n\nxxx: wrap or grid.\n\ngrid allows var1 ~ var2, rows ~ cols\nwrap allows ~var1\nWith both, you can (but probably shouldn’t) use var1 + var2 to get a combination\n\nscales = fixed, free_x,free_y, orfree` (e.g. x and y)\n\nfree options work best with facet_wrap\nfree scales allow the range of the subplot to reflect only the data in that facet\ncomparisons get visually harder to make, but it saves space\n\nspace = free_x, free_y, fixed – only one column can be free space\n\nThis changes the amount of space allocated to each facet (and also changes the range)"
+  },
+  {
+    "objectID": "slides/20-adv-ggplot2.html#facets-demo",
+    "href": "slides/20-adv-ggplot2.html#facets-demo",
+    "title": "1.20 Advanced ggplot2 & Data Visualization Principles",
+    "section": "Facets – demo",
+    "text": "Facets – demo\n\np &lt;- penguins |&gt;\n1  ggplot(aes(x = flipper_len, y = bill_len, color = sex)) +\n  geom_point(alpha = .5) +\n2  theme(legend.position = \"bottom\")\np\n\n\n1\n\nAesthetic specification and Geom selection. Plot points as 50% transparent to allow seeing the overplotting and make it easier to figure out which points are NA.\n\n2\n\nChange the location of the legend using the previously defined theme commands"
+  },
+  {
+    "objectID": "slides/20-adv-ggplot2.html#facets-setting-up",
+    "href": "slides/20-adv-ggplot2.html#facets-setting-up",
+    "title": "1.20 Advanced ggplot2 & Data Visualization Principles",
+    "section": "Facets – setting up",
+    "text": "Facets – setting up\n\npenguins_facet &lt;- penguins |&gt;\n  mutate(\n1    species = factor(species,\n                     levels = c(\"Chinstrap\",\n                                \"Gentoo\",\n                                \"Adelie\"),\n                     ordered = T))\n\n2legend_facet &lt;- theme(legend.position = \"bottom\")\n\n\n1\n\nReorder facets so that the Adelie plot is placed on the bottom, facilitating comparisons between Adelie and Chinstrap and Adelie and Gentoo penguins. This allows the reader to see that flipper length is comparable for Adelie and Chinstrap penguins, and bill length is comparable for Chinstrap and Gentoo penguins.\n\n2\n\nMove the legend to the bottom to save space for the x-axis"
+  },
+  {
+    "objectID": "slides/20-adv-ggplot2.html#facets-free_x",
+    "href": "slides/20-adv-ggplot2.html#facets-free_x",
+    "title": "1.20 Advanced ggplot2 & Data Visualization Principles",
+    "section": "Facets – free_x",
+    "text": "Facets – free_x\n\npenguins |&gt;\n1  ggplot(aes(x = flipper_len, y = bill_len, color = sex)) +\n  geom_point(alpha = .5) +\n2  facet_wrap(~species, scales = \"free_x\") +\n3  theme(legend.position = \"bottom\")\n\n\n1\n\nAesthetic specification and Geom selection. Plot points as 50% transparent to allow seeing the overplotting and make it easier to figure out which points are NA.\n\n2\n\nWrap facets around. Set facets to have unconstrained x-scales, which adjusts the range of x for the subplots to fit each individual range of data.\n\n3\n\nChange the location of the legend using the previously defined theme commands"
+  },
+  {
+    "objectID": "slides/20-adv-ggplot2.html#facets-space-free_x",
+    "href": "slides/20-adv-ggplot2.html#facets-space-free_x",
+    "title": "1.20 Advanced ggplot2 & Data Visualization Principles",
+    "section": "Facets – space = free_x",
+    "text": "Facets – space = free_x\n\n\npenguins_facet |&gt;\n1  ggplot(\n    aes(x = flipper_len,\n        y = bill_len,\n        color = sex)) +\n  geom_point(alpha = .5) +\n2  facet_wrap(~species,\n             space = \"free_x\") +\n3  legend_facet\n\n\n\n1\n\nAesthetic specification and Geom selection. Plot points as 50% transparent to allow seeing the overplotting and make it easier to figure out which points are NA.\n\n2\n\nWrap facets around and ensure that two columns are shown (this allows the figure to work with the available slide dimensions)\n\n3\n\nChange the location of the legend using the previously defined theme commands"
+  },
+  {
+    "objectID": "slides/20-adv-ggplot2.html#facets-free_x-for-space-and-scales",
+    "href": "slides/20-adv-ggplot2.html#facets-free_x-for-space-and-scales",
+    "title": "1.20 Advanced ggplot2 & Data Visualization Principles",
+    "section": "Facets – free_x for space and scales",
+    "text": "Facets – free_x for space and scales\n\np + \n1  facet_wrap(~species, scales = \"free_x\", space = \"free_x\")\n\n\n1\n\nFacet by species, and allow facets to wrap around into multiple rows. Allow space and scales for each facet to vary."
+  },
+  {
+    "objectID": "slides/20-adv-ggplot2.html#facets-free_x-scales",
+    "href": "slides/20-adv-ggplot2.html#facets-free_x-scales",
+    "title": "1.20 Advanced ggplot2 & Data Visualization Principles",
+    "section": "Facets – free_x scales",
+    "text": "Facets – free_x scales\n\np +\n1  facet_wrap(~species, scales = \"free_x\")\n\n\n1\n\nWrap facets around. Set facets to have unconstrained x-scales, which adjusts the range of x for the subplots to fit each individual range of data."
+  },
+  {
+    "objectID": "slides/20-adv-ggplot2.html#facets-free_y-scales",
+    "href": "slides/20-adv-ggplot2.html#facets-free_y-scales",
+    "title": "1.20 Advanced ggplot2 & Data Visualization Principles",
+    "section": "Facets – free_y scales",
+    "text": "Facets – free_y scales\n\np + \n1  facet_wrap(~species, scales = \"free_y\")\n\n\n1\n\nWrap facets around. Set facets to have unconstrained y-scales, which adjusts the range of x for the subplots to fit each individual range of data."
+  },
+  {
+    "objectID": "slides/20-adv-ggplot2.html#facets-free_y-for-space-and-scales",
+    "href": "slides/20-adv-ggplot2.html#facets-free_y-for-space-and-scales",
+    "title": "1.20 Advanced ggplot2 & Data Visualization Principles",
+    "section": "Facets – free_y for space and scales",
+    "text": "Facets – free_y for space and scales\n\n\np + \n1  facet_wrap(\n    ~species,\n    scales = \"free_y\",\n    space = \"free_y\")\n\n\n\n1\n\nFacet by species, and allow facets to wrap around into multiple rows. Allowing scales and space on the y-axis to vary forces ggplot2 to lay the facets out in rows, rather than columns."
+  },
+  {
+    "objectID": "slides/20-adv-ggplot2.html#facets-demo-1",
+    "href": "slides/20-adv-ggplot2.html#facets-demo-1",
+    "title": "1.20 Advanced ggplot2 & Data Visualization Principles",
+    "section": "Facets – demo",
+    "text": "Facets – demo\n\np + \n1  facet_wrap(~species)\n\n\n1\n\nFacet by species, and allow facets to wrap around into multiple rows."
+  },
+  {
+    "objectID": "slides/20-adv-ggplot2.html#included-in-ggplot2",
+    "href": "slides/20-adv-ggplot2.html#included-in-ggplot2",
+    "title": "1.20 Advanced ggplot2 & Data Visualization Principles",
+    "section": "Included in ggplot2",
+    "text": "Included in ggplot2\n\n\n\nggplot2 package themes\n\n\n\nImages from https://statisticsglobe.com/color-themes-ggplot2-plots-r"
+  },
+  {
+    "objectID": "slides/20-adv-ggplot2.html#ggthemr-package",
+    "href": "slides/20-adv-ggplot2.html#ggthemr-package",
+    "title": "1.20 Advanced ggplot2 & Data Visualization Principles",
+    "section": "ggthemr package",
+    "text": "ggthemr package\n\n\n\n\n\n\ncamoflague\n\n\n\n\n\n\n\nchalk\n\n\n\n\n\n\n\ncopper\n\n\n\n\n\n\n\ndust\n\n\n\n\n\n\n\nearth\n\n\n\n\n\n\n\nflat\n\n\n\n\n\n\n\nflat-dark\n\n\n\n\n\n\n\n\n\nfresh\n\n\n\n\n\n\n\ngrape\n\n\n\n\n\n\n\ngrass\n\n\n\n\n\n\n\ngreyscale\n\n\n\n\n\n\n\nlight\n\n\n\n\n\n\n\nlilac\n\n\n\n\n\n\n\n\n\npale\n\n\n\n\n\n\n\nsea\n\n\n\n\n\n\n\nsky\n\n\n\n\n\n\n\nsolarized\n\n\n\n\n \n\n\n\n\nJust because you can doesn’t mean you should\n\n\nImages from https://statisticsglobe.com/color-themes-ggplot2-plots-r"
+  },
+  {
+    "objectID": "slides/20-adv-ggplot2.html#ggthemes-package",
+    "href": "slides/20-adv-ggplot2.html#ggthemes-package",
+    "title": "1.20 Advanced ggplot2 & Data Visualization Principles",
+    "section": "ggthemes package",
+    "text": "ggthemes package\n\n\n\n\n\n\nbase\n\n\n\n\n\n\n\ncalc\n\n\n\n\n\n\n\nclean\n\n\n\n\n\n\n\neconomist-white\n\n\n\n\n\n\n\neconomist\n\n\n\n\n\n\n\nexcel-new\n\n\n\n\n\n\n\nexcel\n\n\n\n\n\n\n\nfew\n\n\n\n\n\n\n\n\n\nfivethirtyeight\n\n\n\n\n\n\n\nfoundation\n\n\n\n\n\n\n\ngdocs\n\n\n\n\n\n\n\nhc\n\n\n\n\n\n\n\nigray\n\n\n\n\n\n\n\nmap\n\n\n\n\n\n\n\npander\n\n\n\n\n\n\n\npar\n\n\n\n\n\n\n\n\n\nsolarized\n\n\n\n\n\n\n\nsolarized2\n\n\n\n\n\n\n\nsolid\n\n\n\n\n\n\n\nstata\n\n\n\n\n\n\n\ntufte\n\n\n\n\n\n\n\nwsj\n\n\n\n\n \n\n\n \n\n\n\n\nlibrary(ggthemes) and p + theme_xxx()\n\n\nImages from https://statisticsglobe.com/color-themes-ggplot2-plots-r"
   }
 ]

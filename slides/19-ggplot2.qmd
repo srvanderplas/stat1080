@@ -468,29 +468,6 @@ ggplot(data=penguins, aes(x = bill_len, color = species)) + stat_ecdf(geom="step
 :::
 :::
 
-# Small Multiples
-## Subplots (Facets)
-
-When there are too many categorical variables, subplots can help!
-
-```{r}
-#| echo: true
-#| output-location: column
-#| fig-width: 4
-#| fig-height: 4
-ggplot(data = penguins,
-       aes(x = body_mass, 
-           y = bill_len, 
-           color = sex)) + 
-  geom_point() + 
-  facet_wrap(~species, 
-             ncol = 2) +
-  guides(color = 'none')
-```
-
-- `facet_wrap()` - no ordering
-- `facet_grid(rowvar ~ colvar)` - align in a grid
-
 # Scales
 ## Scales
 
@@ -590,3 +567,30 @@ p1+p2+p3
 - Flip: swap x and y axes
 - Polar: specify which variable (x, y) is the angle (theta)
 - Trans: specify x or y axis transformations
+
+
+# Small Multiples
+## Subplots (Facets)
+
+When there are too many categorical variables, subplots can help!
+
+```{r}
+#| echo: true
+#| output-location: column
+#| fig-width: 4
+#| fig-height: 4
+ggplot(data = penguins,
+       aes(x = body_mass, 
+           y = bill_len, 
+           color = sex)) + 
+  geom_point() + 
+  facet_wrap(~species, 
+             ncol = 2) +
+  guides(color = 'none')
+```
+
+- `facet_wrap()` - no ordering
+- `facet_grid(rowvar ~ colvar)` - align in a grid
+
+- More about this next time!
+
