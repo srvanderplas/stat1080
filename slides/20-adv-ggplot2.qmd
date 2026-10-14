@@ -278,3 +278,606 @@ Just because you **can** doesn't mean you **should**
 :::  {.bottom .small}
 Images from <https://statisticsglobe.com/color-themes-ggplot2-plots-r>
 :::
+
+
+# Making Good Graphics
+
+## Charts vs. Tables
+
+Would you rather have a chart, or a data table
+
+::: incremental
+
+- to understand a relationship?
+
+- to estimate a statistic?
+
+- to compute exact quantities?
+
+- to explain something?
+
+:::
+<br/><br/>
+
+::: fragment
+
+Human retinas have a “bandwidth” of 8.75 megabits per second^[https://psychology.stackexchange.com/questions/26748/what-is-the-bandwidth-of-visual-perception]
+:::
+
+::: fragment
+Reading speed is ~ 200 words per minute^[https://howmanywords.app/blog/how-fast-do-humans-read], or ~ 0.0229 megabits per second
+:::
+
+
+## Spot the Difference
+
+```{r}
+#| label: preattentive1
+#| echo: false
+#| include: true
+#| fig-width: 3
+#| fig-height: 3
+#| out-width: 100%
+#| layout-ncol: 2
+#| fig-alt: "Scatterplots with colored points (left) and varying point shape (right). In each plot, it is relatively easy to see one point that stands out from the others."
+set.seed(153253)
+datapts <- data.frame(expand.grid(x=1:6, y=1:6), color=sample(c(1,2), 36, replace=TRUE)) |>
+  mutate(x = x + rnorm(36, 0, .5), y = y + rnorm(36, 0, .5), shape = c(rep(2, 15), 1, rep(2, 20)))
+
+
+set.seed(15325245)
+datapts2 <- data.frame(expand.grid(x=1:6, y=1:6), color=sample(c(1,2), 36, replace=TRUE)) |>
+  mutate(x = x + rnorm(36, 0, .5), y = y + rnorm(36, 0, .5), shape = c(rep(2, 15), 1, rep(2, 20)))
+new_theme_empty <- theme_bw()
+new_theme_empty$line <- element_blank()
+new_theme_empty$strip.text <- element_blank()
+new_theme_empty$axis.text <- element_blank()
+new_theme_empty$plot.title <- element_blank()
+new_theme_empty$axis.title <- element_blank()
+
+library(scales)
+ggplot(data=datapts, aes(x=x, y=y, color=factor(1, levels=c(1,2)), shape=factor(shape)), size=5)+
+  geom_point() + 
+  scale_shape_manual(guide="none", values=c(19, 15)) +
+  scale_color_discrete(guide="none") + new_theme_empty
+
+ggplot(data=datapts2, aes(x=x, y=y, color=factor(shape)), shape=19)+
+  geom_point() + 
+  scale_shape_manual(guide="none", values=c(19, 15)) + 
+  scale_color_discrete(guide="none") + new_theme_empty
+```
+
+
+## Spot the Difference
+
+```{r}
+#| label: preattentive2
+#| echo: false
+#| include: true
+#| fig-width: 3
+#| fig-height: 3
+#| out-width: 100%
+#| layout-ncol: 2
+#| fig-alt: "Scatterplots with colored points (left) and varying point shape (right). In each plot, it is relatively easy to distinguish two sets of points, however, in the right plot, there is one point which is not part of either set but has characteristics of both."
+#| fig-cap: ['Dual encoding - shape and color mapped to the same variable', 'Encoding shape and color separately']
+set.seed(1532251)
+datapts3 <- data.frame(expand.grid(x=1:6, y=1:6), 
+                       color=sample(c(1,2), 36, replace=TRUE)) |>
+  mutate(x = x + rnorm(36, 0, .5), 
+         y = y + rnorm(36, 0, .5), 
+         shape = c(rep(2, 15), 1, rep(2, 20)), 
+         shape2 = color) |>
+  mutate(color2 = c(3-shape2[1], shape2[2:n()]))
+set.seed(153225241)
+datapts4 <- data.frame(expand.grid(x=1:6, y=1:6), 
+                       color=sample(c(1,2), 36, replace=TRUE)) |>
+  mutate(x = x + rnorm(36, 0, .5), 
+         y = y + rnorm(36, 0, .5), 
+         shape = c(rep(2, 15), 1, rep(2, 20)), 
+         shape2 = color) |>
+  mutate(color2 = c(3-shape2[1], shape2[2:n()]))
+ggplot(data=datapts3, aes(x=x, y=y, color=factor(color),shape=factor(color)))+
+  geom_point() + 
+  scale_shape_manual(guide="none", values=c(19, 15)) +
+  scale_color_discrete(guide="none") + new_theme_empty
+
+
+ggplot(data=datapts4, aes(x=x, y=y, color=factor(color2), shape=factor(shape2)))+
+  geom_point() + 
+  scale_shape_manual(guide="none", values=c(19, 15)) +
+  scale_color_discrete(guide="none") + new_theme_empty
+```
+
+
+## Accuracy of Graphical Judgments
+
+::: columns
+::: {.column width="40%" }
+[**Most Accurate**]{.emph}
+
+1. Position along a common scale 
+2. Position along nonaligned scale
+3. Length
+4. Curvature, Angle, Slope
+5. Area
+6. Volume, Density, Color saturation
+7. Color hue 
+
+[**Least Accurate**]{.emph}
+:::
+
+:::: {.column width="60%"}
+::: {layout="[[2, 2, 4], [-.5, 1, -.5, 1, -.5, 1, -.5, 1, -.5],[-1, 3,-1, 3, -1], [-1, 3,-1, 3, -1]]"}
+```{r}
+#| echo: false
+#| fig-width: 4
+#| fig-height: 2
+#| fig-dpi: 300
+#| label: aligned
+#| fig-cap: Position, aligned scale
+#| message: false
+#| warning: false
+library(mvtnorm)
+library(patchwork)
+set.seed(2048)
+scatterp <- rmvnorm(50, sigma = matrix(c(1, .75, .75, 1), nrow = 2, byrow = T)) |>
+  as_tibble(.name_repair="unique") |>
+  rename(c("x" = `...1`, "y" = `...2`)) |>
+ggplot(aes(x = x, y=y)) + geom_point() + coord_cartesian(xlim = c(-3,3), ylim = c(-3,3)) + theme(axis.title = element_blank())
+
+
+set.seed(2048)
+barp <- tibble(cat = letters[24:26], 
+       value = sample(1:10, 3), 
+       color = c("#288dc2", "#1c7052", "#0F2439")) |>
+ggplot(aes(x = cat, y = value, fill = color)) + 
+  geom_col() + scale_fill_identity() + theme(axis.title = element_blank())
+
+scatterp+barp
+
+```
+
+```{r}
+#| echo: false
+#| fig-width: 4
+#| fig-height: 2
+#| fig-dpi: 300
+#| label: nonaligned
+#| fig-cap: "Position, non-aligned scale"
+library(mvtnorm)
+set.seed(2048)
+
+rmvnorm(25, mean = -c(1, 1), sigma = matrix(c(1, .75, .75, 1), nrow = 2, byrow = T)) |>
+  as_tibble(.name_repair="unique") |>
+  rename(c("x" = `...1`, "y" = `...2`)) |>
+  mutate(set = 1) |>
+  bind_rows(
+    rmvnorm(25, mean = c(1, 1), sigma = matrix(c(1, .75, .75, 1), nrow = 2, byrow = T)) |>
+      as_tibble(.name_repair="unique") |>
+      rename(c("x" = `...1`, "y" = `...2`)) |>
+      mutate(set = 2)
+  ) |>
+  mutate(set = factor(set)) |>
+ggplot(aes(x = x, y=y)) + geom_point() + theme(axis.title = element_blank()) + facet_wrap(~set, scales = "free") 
+```
+
+```{r}
+#| echo: false
+#| fig-width: 8
+#| fig-height: 2
+#| fig-dpi: 300
+#| label: length
+#| fig-cap: Length
+set.seed(2048)
+stacked_barp <- tibble(cat = letters[24:26], 
+       value = sample(1:10, 3), 
+       color = c("#288dc2", "#1c7052", "#0F2439")) |>
+ggplot(aes(x = 1, y = value, fill = color)) + 
+  geom_col(position = "stack") + 
+  scale_fill_identity() + 
+  coord_flip() + 
+  theme(axis.title = element_blank(), 
+        axis.text.y = element_blank(),
+        axis.ticks.y = element_blank())
+
+
+
+sine_ill <- tibble(x = seq(0, 2*pi, .2), y = pi/3*sin(x), ymin = y-.5, ymax = y+.5) |>
+  ggplot(aes(x = x, xend = x, y = ymin, yend = ymax)) +
+  geom_segment() +
+  theme(axis.title = element_blank()) + 
+  coord_fixed()
+
+
+stacked_barp + sine_ill
+```
+
+```{r}
+#| echo: false
+#| fig-width: 3
+#| fig-height: 3
+#| fig-dpi: 300
+#| label: curvature
+#| fig-cap: Curvature
+library(tidyr)
+tibble(x = seq(0, 5, .1), y = exp(x), y2 = exp((x/2.2)^2)) |>
+  pivot_longer(-x) |>
+  ggplot(aes(x = x, y = value, color = name)) + geom_line() + 
+  coord_cartesian(xlim = c(0,5), ylim = c(1, 100)) + 
+  guides(color = "none") + theme(axis.title = element_blank()) + 
+  scale_color_manual(values = c("#1c7052", "#f58220"))
+```
+```{r}
+#| echo: false
+#| fig-width: 2
+#| fig-height: 2
+#| fig-dpi: 300
+#| label: angle
+#| fig-cap: Angle
+stacked_barp + coord_polar(theta = "y") + theme_void()
+```
+```{r}
+#| echo: false
+#| fig-width: 3
+#| fig-height: 3
+#| fig-dpi: 300
+#| label: slope
+#| fig-cap: Slope
+
+
+rmvnorm(35, mean = -c(1, 1), sigma = matrix(c(1, .4, .4, 1), nrow = 2, byrow = T)) |>
+  as_tibble(.name_repair="unique") |>
+  rename(c("x" = `...1`, "y" = `...2`)) |>
+  mutate(set = 1) |>
+  bind_rows(
+    rmvnorm(35, mean = c(1, 1), sigma = matrix(c(1, -.6, -.6, 1), nrow = 2, byrow = T)) |>
+      as_tibble(.name_repair="unique") |>
+      rename(c("x" = `...1`, "y" = `...2`)) |>
+      mutate(set = 2)
+  ) |>
+  mutate(set = factor(set)) |>
+ggplot(aes(x = x, y=y, color = set)) + geom_point() + 
+  geom_smooth(method = "lm", se=F) + theme(axis.title = element_blank()) + 
+  guides(color = 'none') + 
+  scale_color_manual(values = c("#1c7052", "#f58220"))
+
+```
+
+```{r}
+#| echo: false
+#| fig-width: 3
+#| fig-height: 3
+#| fig-dpi: 300
+#| label: area
+#| fig-cap: Area
+#| message: false
+#| warning: false
+
+library(ggblend)
+set.seed(2048273)
+bubble <- rmvnorm(35, mean = c(1, 1, 3), sigma = matrix(c(1, .4, 0, .4, 1, -0.2, 0, -0.2, 1), nrow = 3, byrow = T)) |>
+  as_tibble(.name_repair="unique") |>
+  rename(c("x" = `...1`, "y" = `...2`, size = `...3`)) |>
+  mutate(group = sample(1:3, 35, replace = T) |> factor()) |>
+  ggplot(aes(x = x, y = y, size = size, color = group)) + 
+  blend(geom_point(alpha = .5), blend = "multiply") + 
+  scale_size_area(guide = "none") + theme(axis.title = element_blank()) + 
+  scale_color_manual(values = c("#1c7052", "#f58220", "#288dc2")) + 
+  guides(color = "none", size = "none") 
+bubble
+```
+
+```{r}
+#| echo: false
+#| fig-width: 6
+#| fig-height: 3
+#| fig-dpi: 300
+#| label: volume
+#| fig-cap: Volume
+#| message: false
+#| warning: false
+
+library(ggcube)
+
+ggplot(penguins, aes(bill_len, bill_dep, z = after_stat(density))) +
+  geom_density_3d(fill = "#288dc2") + 
+      coord_3d(yaw = 10,  ratio = c(1, 1, 300), scales = "fixed") +
+      scale_z_continuous(expand = c(0, 0)) + 
+  theme(axis.title = element_blank(), axis.text = element_blank())
+```
+
+```{r}
+#| echo: false
+#| fig-width: 6
+#| fig-height: 3
+#| fig-dpi: 300
+#| label: density
+#| fig-cap: Point Density
+#| message: false
+#| warning: false
+
+ggplot(penguins, aes(x = bill_len, y = bill_dep)) +
+  geom_point(alpha = .2, size = 3) +
+  theme(axis.title = element_blank(), axis.text = element_blank()) + 
+  coord_fixed()
+```
+```{r}
+#| echo: false
+#| fig-width: 6
+#| fig-height: 3
+#| fig-dpi: 300
+#| label: color-saturation
+#| fig-cap: Color saturation
+#| message: false
+#| warning: false
+
+ggplot(penguins, aes(x = bill_len, y = bill_dep)) +
+  geom_bin_2d(bins = c(30, 15), color = "#90b6a8") + 
+  theme(axis.title = element_blank(), axis.text = element_blank()) + 
+  guides(fill = "none") + 
+  scale_fill_gradient(low = "#FFFFFF", high = "#3e604c", trans = "log10", ) + 
+  coord_fixed()
+```
+
+
+```{r}
+#| echo: false
+#| fig-width: 6
+#| fig-height: 3
+#| fig-dpi: 300
+#| label: color-hue
+#| fig-cap: Color hue
+#| message: false
+#| warning: false
+
+ggplot(penguins, aes(bill_len, bill_dep)) +
+  geom_density2d_filled() + 
+  theme(axis.title = element_blank(), axis.text = element_blank()) + 
+  guides(fill = "none") + 
+  coord_fixed()
+```
+
+:::
+::::
+:::
+
+## 
+
+Well designed charts make it easy for the viewer to think about the [**data**]{.emph .sage-dk .large}, rather than the [**chart**]{.emph .cerulean-dk .large}
+
+::: fragment
+To design a good graphic, first consider:
+:::
+
+
+::: incremental
+- What is the most important comparison?
+
+- What secondary comparisons do you want to show?
+
+:::
+
+## Example - Penguin Bills {.small}
+
+::: {.columns .small}
+::: column
+
+```{r}
+#| echo: true
+#| eval: true
+#| code-fold: true
+#| code-summary: "Reorder species variable levels"
+
+penguins_reorder <- penguins |>
+  mutate( # <1> 
+    species = factor(  # <1> 
+      species,  # <1> 
+      levels = c("Chinstrap", # <2> 
+                 "Adelie", # <2> 
+                 "Gentoo"), # <2> 
+      ordered = T) # <3> 
+  ) 
+```
+1. Specify mutate on species, creating a factor variable
+2. Level order should be set to this
+3. Specify that the factor is an ordered factor (e.g. don't order alphabetically by default)
+
+```{r}
+#| echo: true
+#| eval: true
+#| fig-show: hide
+#| code-fold: true
+#| code-summary: Scatterplot, colored by sex and facetted by species.
+p1 <- penguins_reorder |> # <1>
+  filter(!is.na(sex)) |> # <2> 
+  ggplot(aes(x = bill_len, # <3>
+             y = bill_dep, # <3>
+             color = sex)) + # <3>
+  geom_point(alpha = 0.5) + # <4>
+  coord_fixed(xlim = c(30, 60), # <5>  
+              ylim = c(12.5, 22.5)) + # <5>  
+  facet_wrap(~species, ncol = 2) + # <6>
+  labs(x = "Bill Length (mm)", # <7>
+       y = "Bill Depth (mm)",  # <7>
+       color = "Sex") +  # <7>
+  theme(legend.position = "bottom") # <8>
+```
+1. Rearrange penguin species order from alphabetical to something that makes it easier to compare chinstrap to both gentoo and adelie. (extra code)
+2. Drop penguins with unknown sex, just to make this a bit easier.
+3. aesthetic mappings
+4. geometry specification - use transparent points to make it easier to see the overlap. 
+5. Fix the aspect ratio so that one unit of the x-axis is the same as one unit of the y-axis. As both are in mm, this makes physical sense. Also set x and y plot limits (helps me size the pictures correctly -- not necessary in general)
+6. Facet by the selected variable
+7. Set x, y, and legend labels
+8. Put legends at the bottom of the plot.
+
+
+:::
+::: column
+&nbsp;
+```{r}
+#| echo: true
+#| eval: true
+#| fig-show: hide
+#| code-fold: true
+#| code-summary: Scatterplot, colored by species and facetted by sex.
+p2 <- penguins |>
+  filter(!is.na(sex)) |> # <2>
+  ggplot(aes(x = bill_len, # <3>
+             y = bill_dep, # <3>
+             color = species)) + # <3>
+  geom_point(alpha = 0.5) + # <4>
+  coord_fixed(xlim = c(30, 60), # <5>  
+              ylim = c(12.5, 22.5)) + # <5>  
+  facet_wrap(~sex, ncol = 1) + # <6>
+  labs(x = "Bill Length (mm)", # <7>
+       y = "Bill Depth (mm)",  # <7>
+       color = "Species") +  # <7>
+  theme(legend.position = "bottom") # <8>
+```
+2. Drop penguins with unknown sex, just to make this a bit easier.
+3. aesthetic mappings
+4. geometry specification - use transparent points to make it easier to see the overlap. 
+5. Fix the aspect ratio so that one unit of the x-axis is the same as one unit of the y-axis. As both are in mm, this makes physical sense. Also set x and y plot limits (helps me size the pictures correctly -- not necessary in general)
+6. Facet by the selected variable
+7. Set x, y, and legend labels
+8. Put legends at the bottom of the plot.
+
+:::
+:::
+
+```{r}
+#| echo: false
+#| fig-width: 10
+#| fig-height: 3.5
+#| layout-valign: "top"
+#| out-width: 100%
+#| output-location: slide
+#| fig-dpi: 300
+#| fig-alt: "Two sets of facetted scatterplots. In the first figure, a scatterplot of penguin bill length (x) by bill depth (y) in mm, with separate subplots for Chinstrap, Adelie, and Gentoo penguins. Points are colored by sex (M, F, NA). Adelie penguins have much smaller bill length than the other species, and Gentoo penguins have much smaller bill depth than the other species. In all species, however, female penguins have smaller bill dimensions than male penguins. In the second figure, a scatterplot of penguin bill length (x) by bill depth (y) in mm, with separate subplots for males and females. Points are colored by species (Adelie, Gentoo, Chinstrap). Adelie penguins have much smaller bill length than the other species, and Gentoo penguins have much smaller bill depth than the other species. In all species, however, female penguins have smaller bill dimensions than male penguins."
+
+library(patchwork)
+library(png)
+dims <- readPNG("images/culmen_depth.png", native = TRUE)
+p2 <- p2 + scale_color_manual(values = c("Gentoo" = "#067476", "Adelie" = "#ff6b01", "Chinstrap" = "#c05dcb"))
+
+p <- p1 + p2 + 
+  plot_layout(axes = "collect", design = "1#2", widths = c(2, .1, 1)) 
+
+p + 
+  inset_element(p = dims, 
+                left = -.8,
+                bottom = 0.25,
+                right = 0,
+                top = 0.55, 
+                align_to="full",
+                on_top = FALSE)
+```
+
+::: fragment
+
+- Which comparisons are easier with each type of plot?
+
+- Does it help to have reordered the species in the left plot so that you can compare bill depth and length?
+
+:::
+
+## Cognitive Limits
+
+### Short Term Memory
+
+```{=html}
+<style>
+span.foliage {
+    background: linear-gradient(to right, #5d5741 0%, #ffffff 30%, #339933 100%)!important;
+}span.snow {
+    background: linear-gradient(to right, #71c071 0%, #cddfd6 25%, #ffffff 40%, #79e0e0 60%, #125293 100%)!important;
+}
+</style>
+```
+
+- Are there colors associated with your variables?
+    - [[cold]{.blue-dk .emph} / [hot]{.emph .pink-dk}, 
+    [{{< fa democrat alt="US Democratic party logo" >}}]{.blue} /
+    [{{< fa republican alt="US Republican party logo" >}}]{.red}]{.large}, [ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;amount of plant cover&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]{.foliage}, [ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;snow depth&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]{.snow}
+    
+  [Using common color associations reduces cognitive load]{.fragment .emph .blue-dk}
+
+- Minimize categories: Keep # legend entries $\leq 7$
+
+  [$7 \pm 2$ is thought to be the limit of short-term memory. ]{.fragment .emph .blue-dk}
+
+### Graphical Conventions
+
+- X-axis: left is smaller, right is larger
+- Y-axis: bottom is smaller, top is larger
+- Color: less saturated (pastel/white) is smaller, more saturated (bold color) is larger
+
+<br/>
+- Use the smallest dimension possible 
+  - don't use area when length will do
+  - fake 3D perspective is misleading
+- Pixel accuracy - the number of pixels should match the magnitude of the data!
+- Infographics, logos, etc. look cute (sometimes?) but are often less accurately perceived.
+
+
+# Hall of Graphical Shame
+
+## Bar Chart Y-Axis should start at zero!
+
+![Fox 8, New Orleans, [Source](https://flowingdata.com/2026/07/10/two-degrees-looks-like-a-lot/)](images/misleading-chart-fox-temperature-baseline.png){fig-alt="A bar chart showing weekly high temperatures where the axis starts at 92 and goes to 94, making a 2 degree Fahrenheit jump look massive." width="90%"}
+
+## Stacked Area Maps aren't a thing
+
+![Nightly News with Brian Williams, 2014 [Source](https://flowingdata.com/2014/04/16/weird-stacked-area-map-thing/)](images/misleading-stacked-area-map-ethnicity.jpg){fig-alt="A US map showing the ethnic composition of the US in 1960 (west coast), 2010 (midwest), and the projected composition in 2060 (east coast). The predicted proportion of white individuals drops from 85% to 64% to 43%; the proportion of the population that is black stays roughly the same at around 10-13%, and the proportion of the population that is hispanic is under 10% in 1960, at 16% in 2010, and up to 31% in 2060. The mpa utterly does not explain the massive drop in population due to the presence of Canada and the great lakes between 2010 and 2060, nor does it explain how to interpret the rise in population in the 2000-2020 era due to the presence of Texas. Alaska and Hawaii are also ... neglected, though they are colored in as if they're representing the white proportion of the population despite not being contiguous with the rest of the country." width="60%"}
+
+- Color scheme is also a problem
+- What do we even do with Alaska/Hawaii?
+
+
+## Adding "Charts**" to pictures is not a good idea
+
+[**Calling this a chart is generous]{.green-dk}
+
+![](images/misleading-chart-neck-stacked-graph.jpg){fig-alt="A screenshot of a promoted social media post from BetMGM that reads 'Mike Glennon has 1 win since 2014. Glennon's earned over 5.3 mil per win in the NFL (6-24)'. A picture is included, titled 'Mike Glennon Career Earnings', with a head and shoulders of a man (presumably mike glennon) and a set of colored bars (not scaled to the amount shown?) with team logos and the amount of money earned with each team. The overall effect is to make the head look something like a rainbow giraffe with a WTF look on its face." width="40%"}
+
+## The Movement: Radial Slices of egg shapes can die in a fire
+
+![](images/misleading-graphics-lump-pie.png){fig-alt="A screenshot of a social media post showing semi-egg shaped chart divided into chunks with vertical lines, labeled 'Agree with NEITHER', 'Agree with ONE', 'Agree with BOTH'. There seems to be no connection between the numbers shown on the chart and the colored area of each section. The chart title says 'What is the Movement', and then says '21 million Americans believe both Biden Illegitimate - Force justified to restore Trump'." width="50%"}
+
+```{r}
+#| echo: false
+#| fig-width: 8
+#| fig-height: 3
+#| fig-alt: "A horizontal stacked bar chart showing that the original chart was highly misleading: in reality, given statements 'Biden Illegitimate' and 'force is justified to restore Trump', 74% of the US agreed with neither statement, 18% agreed with one, and 8% agreed with both. The proportion of the area allocated to each statement in the original chart, respectively, is 45%, 21%, and 33%, as measured using image editing software."
+library(png)
+library(palr)
+library(stringr)
+tmp <- readPNG("images/misleading-graphics-lump-pie-colored-sections.png", native = F)
+tmp_colors <- image_hex(tmp) |> table()
+pct_pixels <- tmp_colors[c(2, 4, 5)]/sum(tmp_colors[c(2,4,5)])
+
+cols <- c(Neither = "#4A7A93FF", Both = "#E94125FF", One = "#FFFFFFFF")
+tibble(belief = c("One", "Both", "Neither"), 
+       pixel = as.numeric(pct_pixels), 
+       actual = c(0.18, .08, .74)) |>
+  mutate(belief = factor(belief, c("Neither", "One", "Both"), ordered = T)) |>
+  pivot_longer(-belief) |>
+  arrange(belief) |>
+  group_by(name) |>
+  mutate(label_prop = cumsum(lag(value, 1, default = 0)) + value/2) |> 
+  ungroup() |>
+  mutate(name = str_replace_all(name, c("pixel" = "Area Shown", "actual" = "Actual Proportion")) |> factor(levels = c("Area Shown", "Actual Proportion"), ordered = T)) |>
+  ggplot(aes(x = name, fill = belief, y = value)) + 
+  geom_col(position = "stack") + 
+  scale_fill_manual("Belief", values = cols) + 
+  coord_flip() +  
+  scale_y_reverse() + 
+  geom_label(aes(x = name, y = 1 - label_prop, label = sprintf("%s\n%0.0f%%", belief, value*100)), fill = "white") + 
+  annotate("text", x = "Area Shown", y = 1, label = " Area in Chart", vjust =-1, hjust = 0, size = 8) +
+  annotate("text", x = "Actual Proportion", y = 1, label = " Actual Pct", vjust =-0.5, hjust = 0, size = 8) +
+  guides(fill='none') +
+  theme_void() + 
+  ggtitle("Proportion of Americans Who Believe Statements", subtitle = "Biden Illegitimate, Force justified to Restore Trump")
+```
+

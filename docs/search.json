@@ -4492,5 +4492,124 @@
     "title": "1.20 Advanced ggplot2 & Data Visualization Principles",
     "section": "ggthemes package",
     "text": "ggthemes package\n\n\n\n\n\n\nbase\n\n\n\n\n\n\n\ncalc\n\n\n\n\n\n\n\nclean\n\n\n\n\n\n\n\neconomist-white\n\n\n\n\n\n\n\neconomist\n\n\n\n\n\n\n\nexcel-new\n\n\n\n\n\n\n\nexcel\n\n\n\n\n\n\n\nfew\n\n\n\n\n\n\n\n\n\nfivethirtyeight\n\n\n\n\n\n\n\nfoundation\n\n\n\n\n\n\n\ngdocs\n\n\n\n\n\n\n\nhc\n\n\n\n\n\n\n\nigray\n\n\n\n\n\n\n\nmap\n\n\n\n\n\n\n\npander\n\n\n\n\n\n\n\npar\n\n\n\n\n\n\n\n\n\nsolarized\n\n\n\n\n\n\n\nsolarized2\n\n\n\n\n\n\n\nsolid\n\n\n\n\n\n\n\nstata\n\n\n\n\n\n\n\ntufte\n\n\n\n\n\n\n\nwsj\n\n\n\n\n \n\n\n \n\n\n\n\nlibrary(ggthemes) and p + theme_xxx()\n\n\nImages from https://statisticsglobe.com/color-themes-ggplot2-plots-r"
+  },
+  {
+    "objectID": "slides/20-adv-ggplot2.html#overview",
+    "href": "slides/20-adv-ggplot2.html#overview",
+    "title": "1.20 Advanced ggplot2 & Data Visualization Principles",
+    "section": "Overview",
+    "text": "Overview\nWell designed charts make it easy for the viewer to think about the data, rather than the chart\n\nTo design a good graphic, first consider:\n\n\nWhat is the most important comparison?\nWhat secondary comparisons do you want to show?"
+  },
+  {
+    "objectID": "slides/20-adv-ggplot2.html#section",
+    "href": "slides/20-adv-ggplot2.html#section",
+    "title": "1.20 Advanced ggplot2 & Data Visualization Principles",
+    "section": "",
+    "text": "Well designed charts make it easy for the viewer to think about the data, rather than the chart\n\nTo design a good graphic, first consider:\n\n\nWhat is the most important comparison?\nWhat secondary comparisons do you want to show?"
+  },
+  {
+    "objectID": "slides/20-adv-ggplot2.html#example---penguin-bills",
+    "href": "slides/20-adv-ggplot2.html#example---penguin-bills",
+    "title": "1.20 Advanced ggplot2 & Data Visualization Principles",
+    "section": "Example - Penguin Bills",
+    "text": "Example - Penguin Bills\n\n\n\n\nReorder species variable levels\npenguins_reorder &lt;- penguins |&gt;\n1  mutate(\n    species = factor(\n      species,\n2      levels = c(\"Chinstrap\",\n                 \"Adelie\",\n                 \"Gentoo\"),\n3      ordered = T)\n  ) \n\n\n\n1\n\nSpecify mutate on species, creating a factor variable\n\n2\n\nLevel order should be set to this\n\n3\n\nSpecify that the factor is an ordered factor (e.g. don’t order alphabetically by default)\n\n\n\n\n\n\nScatterplot, colored by sex and facetted by species.\n1p1 &lt;- penguins_reorder |&gt;\n2  filter(!is.na(sex)) |&gt;\n3  ggplot(aes(x = bill_len,\n             y = bill_dep,\n             color = sex)) +\n4  geom_point(alpha = 0.5) +\n5  coord_fixed(xlim = c(30, 60),\n              ylim = c(12.5, 22.5)) +\n6  facet_wrap(~species, ncol = 2) +\n7  labs(x = \"Bill Length (mm)\",\n       y = \"Bill Depth (mm)\",\n       color = \"Sex\") +\n8  theme(legend.position = \"bottom\")\n\n\n\n1\n\nRearrange penguin species order from alphabetical to something that makes it easier to compare chinstrap to both gentoo and adelie. (extra code)\n\n2\n\nDrop penguins with unknown sex, just to make this a bit easier.\n\n3\n\naesthetic mappings\n\n4\n\ngeometry specification - use transparent points to make it easier to see the overlap.\n\n5\n\nFix the aspect ratio so that one unit of the x-axis is the same as one unit of the y-axis. As both are in mm, this makes physical sense. Also set x and y plot limits (helps me size the pictures correctly – not necessary in general)\n\n6\n\nFacet by the selected variable\n\n7\n\nSet x, y, and legend labels\n\n8\n\nPut legends at the bottom of the plot.\n\n\n\n\n\n \n\n\nScatterplot, colored by species and facetted by sex.\np2 &lt;- penguins |&gt;\n2  filter(!is.na(sex)) |&gt;\n3  ggplot(aes(x = bill_len,\n             y = bill_dep,\n             color = species)) +\n4  geom_point(alpha = 0.5) +\n5  coord_fixed(xlim = c(30, 60),\n              ylim = c(12.5, 22.5)) +\n6  facet_wrap(~sex, ncol = 1) +\n7  labs(x = \"Bill Length (mm)\",\n       y = \"Bill Depth (mm)\",\n       color = \"Species\") +\n8  theme(legend.position = \"bottom\")\n\n\n\n2\n\nDrop penguins with unknown sex, just to make this a bit easier.\n\n3\n\naesthetic mappings\n\n4\n\ngeometry specification - use transparent points to make it easier to see the overlap.\n\n5\n\nFix the aspect ratio so that one unit of the x-axis is the same as one unit of the y-axis. As both are in mm, this makes physical sense. Also set x and y plot limits (helps me size the pictures correctly – not necessary in general)\n\n6\n\nFacet by the selected variable\n\n7\n\nSet x, y, and legend labels\n\n8\n\nPut legends at the bottom of the plot.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWhich comparisons are easier with each type of plot?\nDoes it help to have reordered the species in the left plot so that you can compare bill depth and length?"
+  },
+  {
+    "objectID": "slides/20-adv-ggplot2.html#example---penguin-bills-output",
+    "href": "slides/20-adv-ggplot2.html#example---penguin-bills-output",
+    "title": "1.20 Advanced ggplot2 & Data Visualization Principles",
+    "section": "Example - Penguin Bills",
+    "text": "Example - Penguin Bills"
+  },
+  {
+    "objectID": "slides/20-adv-ggplot2.html#example---penguins",
+    "href": "slides/20-adv-ggplot2.html#example---penguins",
+    "title": "1.20 Advanced ggplot2 & Data Visualization Principles",
+    "section": "Example - Penguins",
+    "text": "Example - Penguins"
+  },
+  {
+    "objectID": "slides/20-adv-ggplot2.html#short-term-memory-limits",
+    "href": "slides/20-adv-ggplot2.html#short-term-memory-limits",
+    "title": "1.20 Advanced ggplot2 & Data Visualization Principles",
+    "section": "Short Term Memory Limits",
+    "text": "Short Term Memory Limits\n\n\nAre there colors associated with your variables?\n\ncold / hot,  / ,        amount of plant cover       ,        snow depth       \n\nUsing common color associations reduces cognitive load\nMinimize categories: Keep # legend entries \\(\\leq 7\\)\n\\(7 \\pm 2\\) is thought to be the limit of short-term memory."
+  },
+  {
+    "objectID": "slides/20-adv-ggplot2.html#charts-vs.-tables",
+    "href": "slides/20-adv-ggplot2.html#charts-vs.-tables",
+    "title": "1.20 Advanced ggplot2 & Data Visualization Principles",
+    "section": "Charts vs. Tables",
+    "text": "Charts vs. Tables\nWould you rather have a chart, or a data table\n\nto understand a relationship?\nto estimate a statistic?\nto compute exact quantities?\nto explain something?\n\n\n\nHuman retinas have a “bandwidth” of 8.75 megabits per second1\n\n\nReading speed is ~ 200 words per minute2, or ~ 0.0229 megabits per second\n\nhttps://psychology.stackexchange.com/questions/26748/what-is-the-bandwidth-of-visual-perceptionhttps://howmanywords.app/blog/how-fast-do-humans-read"
+  },
+  {
+    "objectID": "slides/20-adv-ggplot2.html#accuracy-of-graphical-judgements",
+    "href": "slides/20-adv-ggplot2.html#accuracy-of-graphical-judgements",
+    "title": "1.20 Advanced ggplot2 & Data Visualization Principles",
+    "section": "Accuracy of Graphical Judgements",
+    "text": "Accuracy of Graphical Judgements\n\nPosition along a common scale (most accurate)\n\nscatter plot\n\nPosition along nonaligned scale\n\nmultiple scatter plots\n\nLength\n\nbar chart\n\nAngle, Slope\n\npie chart\n\nArea\n\nbubble chart\n\nVolume, Density, Color saturation\n\nheatmap\n\nColor hue (least accurate)"
+  },
+  {
+    "objectID": "slides/20-adv-ggplot2.html#spot-the-difference",
+    "href": "slides/20-adv-ggplot2.html#spot-the-difference",
+    "title": "1.20 Advanced ggplot2 & Data Visualization Principles",
+    "section": "Spot the Difference",
+    "text": "Spot the Difference"
+  },
+  {
+    "objectID": "slides/20-adv-ggplot2.html#spot-the-difference-1",
+    "href": "slides/20-adv-ggplot2.html#spot-the-difference-1",
+    "title": "1.20 Advanced ggplot2 & Data Visualization Principles",
+    "section": "Spot the Difference",
+    "text": "Spot the Difference\n\n\n\n\n\n\nDual encoding - shape and color mapped to the same variable\n\n\n\n\n\n\n\nEncoding shape and color separately"
+  },
+  {
+    "objectID": "slides/20-adv-ggplot2.html#accuracy-of-graphical-judgments",
+    "href": "slides/20-adv-ggplot2.html#accuracy-of-graphical-judgments",
+    "title": "1.20 Advanced ggplot2 & Data Visualization Principles",
+    "section": "Accuracy of Graphical Judgments",
+    "text": "Accuracy of Graphical Judgments\n\n\nMost Accurate\n\nPosition along a common scale\nPosition along nonaligned scale\nLength\nCurvature, Angle, Slope\nArea\nVolume, Density, Color saturation\nColor hue\n\nLeast Accurate\n\n\n\n\n\n\n\n\nPosition, aligned scale\n\n\n\n\n\n\n\n\n\nPosition, non-aligned scale\n\n\n\n\n\n\n\n\n\nLength\n\n\n\n\n\n\n\n \n\n\n\n\n\n\nCurvature\n\n\n\n\n\n \n\n\n\n\n\n\nAngle\n\n\n\n\n\n \n\n\n\n\n\n\nSlope\n\n\n\n\n\n \n\n\n\n\n\n\nArea\n\n\n\n\n\n \n\n\n\n\n \n\n\n\n\n\n\nVolume\n\n\n\n\n\n \n\n\n\n\n\n\nPoint Density\n\n\n\n\n\n \n\n\n\n\n \n\n\n\n\n\n\nColor saturation\n\n\n\n\n\n \n\n\n\n\n\n\nColor hue"
+  },
+  {
+    "objectID": "slides/20-adv-ggplot2.html#cognitive-limits",
+    "href": "slides/20-adv-ggplot2.html#cognitive-limits",
+    "title": "1.20 Advanced ggplot2 & Data Visualization Principles",
+    "section": "Cognitive Limits",
+    "text": "Cognitive Limits\nShort Term Memory\n\n\nAre there colors associated with your variables?\n\ncold / hot,  / ,        amount of plant cover       ,        snow depth       \n\nUsing common color associations reduces cognitive load\nMinimize categories: Keep # legend entries \\(\\leq 7\\)\n\\(7 \\pm 2\\) is thought to be the limit of short-term memory.\n\nGraphical Conventions\n\nX-axis: left is smaller, right is larger\nY-axis: bottom is smaller, top is larger\nColor: less saturated (pastel/white) is smaller, more saturated (bold color) is larger\n\n - Use the smallest dimension possible - don’t use area when length will do - fake 3D perspective is misleading - Pixel accuracy - the number of pixels should match the magnitude of the data! - Infographics, logos, etc. look cute (sometimes?) but are often less accurately perceived."
+  },
+  {
+    "objectID": "slides/20-adv-ggplot2.html#bar-charts-y-axis-starts-at-zero",
+    "href": "slides/20-adv-ggplot2.html#bar-charts-y-axis-starts-at-zero",
+    "title": "1.20 Advanced ggplot2 & Data Visualization Principles",
+    "section": "Bar Charts: Y-Axis Starts at Zero!!!",
+    "text": "Bar Charts: Y-Axis Starts at Zero!!!\n\n\n\nFox 8, New Orleans, Source"
+  },
+  {
+    "objectID": "slides/20-adv-ggplot2.html#stacked-area-maps-arent-a-thing",
+    "href": "slides/20-adv-ggplot2.html#stacked-area-maps-arent-a-thing",
+    "title": "1.20 Advanced ggplot2 & Data Visualization Principles",
+    "section": "Stacked Area Maps aren’t a thing",
+    "text": "Stacked Area Maps aren’t a thing\n\n\n\nNightly News with Brian Williams, 2014 Source\n\n\n\nColor scheme is also a problem\nWhat do we even do with Alaska/Hawaii?"
+  },
+  {
+    "objectID": "slides/20-adv-ggplot2.html#adding-charts-to-pictures-is-not-a-good-idea",
+    "href": "slides/20-adv-ggplot2.html#adding-charts-to-pictures-is-not-a-good-idea",
+    "title": "1.20 Advanced ggplot2 & Data Visualization Principles",
+    "section": "Adding “Charts**” to pictures is not a good idea",
+    "text": "Adding “Charts**” to pictures is not a good idea\n**Calling this a chart is generous"
+  },
+  {
+    "objectID": "slides/20-adv-ggplot2.html#bar-chart-y-axis-should-start-at-zero",
+    "href": "slides/20-adv-ggplot2.html#bar-chart-y-axis-should-start-at-zero",
+    "title": "1.20 Advanced ggplot2 & Data Visualization Principles",
+    "section": "Bar Chart Y-Axis should start at zero!",
+    "text": "Bar Chart Y-Axis should start at zero!\n\n\n\nFox 8, New Orleans, Source"
+  },
+  {
+    "objectID": "slides/20-adv-ggplot2.html#the-movement-radial-slices-of-egg-shapes-can-die-in-a-fire",
+    "href": "slides/20-adv-ggplot2.html#the-movement-radial-slices-of-egg-shapes-can-die-in-a-fire",
+    "title": "1.20 Advanced ggplot2 & Data Visualization Principles",
+    "section": "The Movement: Radial Slices of egg shapes can die in a fire",
+    "text": "The Movement: Radial Slices of egg shapes can die in a fire"
   }
 ]

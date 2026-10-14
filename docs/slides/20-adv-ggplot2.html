@@ -6,11 +6,13 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-contrib/fontawesome6-6.7.2/all.min.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/fontawesome6-6.7.2/latex-fontsize.css" rel="stylesheet">
 <script src="../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
 <link href="../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
 <link href="../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.9.38">
+  <meta name="generator" content="quarto-1.10.19">
 
   <title>STAT 1080 - Fall 2026 – 1.20 Advanced ggplot2 &amp; Data Visualization Principles</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -22,10 +24,13 @@
     /* Default styles provided by pandoc.
     ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
     */
-    code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
     ul.task-list li input[type="checkbox"] {
@@ -219,14 +224,14 @@
 <section id="facets" class="title-slide slide level1 center">
 <h1>Facets</h1>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">data</span>(penguins)</span>
-<span id="cb1-2"><a></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb1-3"><a></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb1-4"><a></a><span class="fu">theme_set</span>(<span class="fu">theme_bw</span>())</span>
-<span id="cb1-5"><a></a>penguins <span class="sc">|&gt;</span></span>
-<span id="cb1-6"><a></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(bill_len) <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(flipper_len) <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(sex)) <span class="sc">|&gt;</span></span>
-<span id="cb1-7"><a></a><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y =</span> bill_len, <span class="at">x =</span> flipper_len, <span class="at">color =</span> species)) <span class="sc">+</span> </span>
-<span id="cb1-8"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">facet_wrap</span>(<span class="sc">~</span>sex)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a aria-label="1"></a><span class="fu">data</span>(penguins)</span>
+<span id="cb1-2"><a aria-label="2"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb1-3"><a aria-label="3"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb1-4"><a aria-label="4"></a><span class="fu">theme_set</span>(<span class="fu">theme_bw</span>())</span>
+<span id="cb1-5"><a aria-label="5"></a>penguins <span class="sc">|&gt;</span></span>
+<span id="cb1-6"><a aria-label="6"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(bill_len) <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(flipper_len) <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(sex)) <span class="sc">|&gt;</span></span>
+<span id="cb1-7"><a aria-label="7"></a><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y =</span> bill_len, <span class="at">x =</span> flipper_len, <span class="at">color =</span> species)) <span class="sc">+</span> </span>
+<span id="cb1-8"><a aria-label="8"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">facet_wrap</span>(<span class="sc">~</span>sex)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure>
@@ -261,11 +266,11 @@
 <section id="facets-demo" class="slide level2">
 <h2>Facets – demo</h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-2"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-2-1"><a href="#annotated-cell-2-1"></a>p <span class="ot">&lt;-</span> penguins <span class="sc">|&gt;</span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="1">1</button><span id="annotated-cell-2-2" class="code-annotation-target"><a href="#annotated-cell-2-2"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> flipper_len, <span class="at">y =</span> bill_len, <span class="at">color =</span> sex)) <span class="sc">+</span></span>
-<span id="annotated-cell-2-3"><a href="#annotated-cell-2-3"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> .<span class="dv">5</span>) <span class="sc">+</span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="2">2</button><span id="annotated-cell-2-4" class="code-annotation-target"><a href="#annotated-cell-2-4"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"bottom"</span>)</span>
-<span id="annotated-cell-2-5"><a href="#annotated-cell-2-5"></a>p</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-2"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-2-1"><a href="#annotated-cell-2-1" aria-label="1"></a>p <span class="ot">&lt;-</span> penguins <span class="sc">|&gt;</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="1">1</button><span id="annotated-cell-2-2" class="code-annotation-target"><a href="#annotated-cell-2-2" aria-label="2"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> flipper_len, <span class="at">y =</span> bill_len, <span class="at">color =</span> sex)) <span class="sc">+</span></span>
+<span id="annotated-cell-2-3"><a href="#annotated-cell-2-3" aria-label="3"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> .<span class="dv">5</span>) <span class="sc">+</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="2">2</button><span id="annotated-cell-2-4" class="code-annotation-target"><a href="#annotated-cell-2-4" aria-label="4"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"bottom"</span>)</span>
+<span id="annotated-cell-2-5"><a href="#annotated-cell-2-5" aria-label="5"></a>p</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-annotation">
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-2" data-target-annotation="1">1</dt>
@@ -290,8 +295,8 @@
 <section id="facets-demo-1" class="slide level2">
 <h2>Facets – demo</h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-3"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-3-1"><a href="#annotated-cell-3-1"></a>p <span class="sc">+</span> </span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="1">1</button><span id="annotated-cell-3-2" class="code-annotation-target"><a href="#annotated-cell-3-2"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>species)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-3"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-3-1"><a href="#annotated-cell-3-1" aria-label="1"></a>p <span class="sc">+</span> </span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="1">1</button><span id="annotated-cell-3-2" class="code-annotation-target"><a href="#annotated-cell-3-2" aria-label="2"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>species)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-annotation">
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-3" data-target-annotation="1">1</dt>
@@ -312,8 +317,8 @@
 <section id="facets-free_x-scales" class="slide level2">
 <h2>Facets – <code>free_x</code> scales</h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-4"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-4-1"><a href="#annotated-cell-4-1"></a>p <span class="sc">+</span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="1">1</button><span id="annotated-cell-4-2" class="code-annotation-target"><a href="#annotated-cell-4-2"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>species, <span class="at">scales =</span> <span class="st">"free_x"</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-4"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-4-1"><a href="#annotated-cell-4-1" aria-label="1"></a>p <span class="sc">+</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="1">1</button><span id="annotated-cell-4-2" class="code-annotation-target"><a href="#annotated-cell-4-2" aria-label="2"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>species, <span class="at">scales =</span> <span class="st">"free_x"</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-annotation">
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-4" data-target-annotation="1">1</dt>
@@ -334,8 +339,8 @@
 <section id="facets-free_x-for-space-and-scales" class="slide level2">
 <h2>Facets – <code>free_x</code> for space and scales</h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-5"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-5-1"><a href="#annotated-cell-5-1"></a>p <span class="sc">+</span> </span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-5" data-target-annotation="1">1</button><span id="annotated-cell-5-2" class="code-annotation-target"><a href="#annotated-cell-5-2"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>species, <span class="at">scales =</span> <span class="st">"free_x"</span>, <span class="at">space =</span> <span class="st">"free_x"</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-5"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-5-1"><a href="#annotated-cell-5-1" aria-label="1"></a>p <span class="sc">+</span> </span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-5" data-target-annotation="1">1</button><span id="annotated-cell-5-2" class="code-annotation-target"><a href="#annotated-cell-5-2" aria-label="2"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>species, <span class="at">scales =</span> <span class="st">"free_x"</span>, <span class="at">space =</span> <span class="st">"free_x"</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-annotation">
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-5" data-target-annotation="1">1</dt>
@@ -356,8 +361,8 @@
 <section id="facets-free_y-scales" class="slide level2">
 <h2>Facets – <code>free_y</code> scales</h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-6"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-6-1"><a href="#annotated-cell-6-1"></a>p <span class="sc">+</span> </span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="1">1</button><span id="annotated-cell-6-2" class="code-annotation-target"><a href="#annotated-cell-6-2"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>species, <span class="at">scales =</span> <span class="st">"free_y"</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-6"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-6-1"><a href="#annotated-cell-6-1" aria-label="1"></a>p <span class="sc">+</span> </span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="1">1</button><span id="annotated-cell-6-2" class="code-annotation-target"><a href="#annotated-cell-6-2" aria-label="2"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>species, <span class="at">scales =</span> <span class="st">"free_y"</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-annotation">
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-6" data-target-annotation="1">1</dt>
@@ -379,11 +384,11 @@
 <h2>Facets – <code>free_y</code> for space and scales</h2>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-7"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-7-1"><a href="#annotated-cell-7-1"></a>p <span class="sc">+</span> </span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="1">1</button><span id="annotated-cell-7-2" class="code-annotation-target"><a href="#annotated-cell-7-2"></a>  <span class="fu">facet_wrap</span>(</span>
-<span id="annotated-cell-7-3"><a href="#annotated-cell-7-3"></a>    <span class="sc">~</span>species,</span>
-<span id="annotated-cell-7-4"><a href="#annotated-cell-7-4"></a>    <span class="at">scales =</span> <span class="st">"free_y"</span>,</span>
-<span id="annotated-cell-7-5"><a href="#annotated-cell-7-5"></a>    <span class="at">space =</span> <span class="st">"free_y"</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-7"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-7-1"><a href="#annotated-cell-7-1" aria-label="1"></a>p <span class="sc">+</span> </span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="1">1</button><span id="annotated-cell-7-2" class="code-annotation-target"><a href="#annotated-cell-7-2" aria-label="2"></a>  <span class="fu">facet_wrap</span>(</span>
+<span id="annotated-cell-7-3"><a href="#annotated-cell-7-3" aria-label="3"></a>    <span class="sc">~</span>species,</span>
+<span id="annotated-cell-7-4"><a href="#annotated-cell-7-4" aria-label="4"></a>    <span class="at">scales =</span> <span class="st">"free_y"</span>,</span>
+<span id="annotated-cell-7-5"><a href="#annotated-cell-7-5" aria-label="5"></a>    <span class="at">space =</span> <span class="st">"free_y"</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-annotation">
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
@@ -773,9 +778,479 @@
 <div class="bottom small">
 <p>Images from <a href="https://statisticsglobe.com/color-themes-ggplot2-plots-r" class="uri">https://statisticsglobe.com/color-themes-ggplot2-plots-r</a></p>
 </div>
+</section></section>
+<section>
+<section id="making-good-graphics" class="title-slide slide level1 center">
+<h1>Making Good Graphics</h1>
+
+</section>
+<section id="charts-vs.-tables" class="slide level2">
+<h2>Charts vs.&nbsp;Tables</h2>
+<p>Would you rather have a chart, or a data table</p>
+<ul>
+<li class="fragment"><p>to understand a relationship?</p></li>
+<li class="fragment"><p>to estimate a statistic?</p></li>
+<li class="fragment"><p>to compute exact quantities?</p></li>
+<li class="fragment"><p>to explain something?</p></li>
+</ul>
+<p><br><br></p>
+<div class="fragment">
+<p>Human retinas have a “bandwidth” of 8.75 megabits per second<sup>1</sup></p>
+</div>
+<div class="fragment">
+<p>Reading speed is ~ 200 words per minute<sup>2</sup>, or ~ 0.0229 megabits per second</p>
+</div>
+<aside><ol class="aside-footnotes"><li id="fn1"><p>https://psychology.stackexchange.com/questions/26748/what-is-the-bandwidth-of-visual-perception</p></li><li id="fn2"><p>https://howmanywords.app/blog/how-fast-do-humans-read</p></li></ol></aside></section>
+<section id="spot-the-difference" class="slide level2">
+<h2>Spot the Difference</h2>
+<div class="cell quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><a href="20-adv-ggplot2_files/figure-revealjs/preattentive1-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-48"><img data-src="20-adv-ggplot2_files/figure-revealjs/preattentive1-1.png" alt="Scatterplots with colored points (left) and varying point shape (right). In each plot, it is relatively easy to see one point that stands out from the others."></a></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><a href="20-adv-ggplot2_files/figure-revealjs/preattentive1-2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-49"><img data-src="20-adv-ggplot2_files/figure-revealjs/preattentive1-2.png" alt="Scatterplots with colored points (left) and varying point shape (right). In each plot, it is relatively easy to see one point that stands out from the others."></a></p>
+</div>
+</div>
+</div>
+</section>
+<section id="spot-the-difference-1" class="slide level2">
+<h2>Spot the Difference</h2>
+<div class="cell quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="20-adv-ggplot2_files/figure-revealjs/preattentive2-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-50" title="Dual encoding - shape and color mapped to the same variable"><img data-src="20-adv-ggplot2_files/figure-revealjs/preattentive2-1.png" style="width:100.0%" alt="Scatterplots with colored points (left) and varying point shape (right). In each plot, it is relatively easy to distinguish two sets of points, however, in the right plot, there is one point which is not part of either set but has characteristics of both."></a></p>
+<figcaption>Dual encoding - shape and color mapped to the same variable</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="20-adv-ggplot2_files/figure-revealjs/preattentive2-2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-51" title="Encoding shape and color separately"><img data-src="20-adv-ggplot2_files/figure-revealjs/preattentive2-2.png" style="width:100.0%" alt="Scatterplots with colored points (left) and varying point shape (right). In each plot, it is relatively easy to distinguish two sets of points, however, in the right plot, there is one point which is not part of either set but has characteristics of both."></a></p>
+<figcaption>Encoding shape and color separately</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="accuracy-of-graphical-judgments" class="slide level2">
+<h2>Accuracy of Graphical Judgments</h2>
+<div class="columns">
+<div class="column" style="width:40%;">
+<p><span class="emph"><strong>Most Accurate</strong></span></p>
+<ol type="1">
+<li>Position along a common scale</li>
+<li>Position along nonaligned scale</li>
+<li>Length</li>
+<li>Curvature, Angle, Slope</li>
+<li>Area</li>
+<li>Volume, Density, Color saturation</li>
+<li>Color hue</li>
+</ol>
+<p><span class="emph"><strong>Least Accurate</strong></span></p>
+</div><div class="column" style="width:60%;">
+<div class="quarto-layout-panel" data-layout="[[2, 2, 4], [-.5, 1, -.5, 1, -.5, 1, -.5, 1, -.5],[-1, 3,-1, 3, -1], [-1, 3,-1, 3, -1]]">
+<div class="quarto-layout-row">
+<div class="cell quarto-layout-cell" style="flex-basis: 25.0%;justify-content: flex-start;">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="20-adv-ggplot2_files/figure-revealjs/aligned-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-52" title="Position, aligned scale"><img data-src="20-adv-ggplot2_files/figure-revealjs/aligned-1.png" width="1200" alt="Position, aligned scale"></a></p>
+<figcaption>Position, aligned scale</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell quarto-layout-cell" style="flex-basis: 25.0%;justify-content: flex-start;">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="20-adv-ggplot2_files/figure-revealjs/nonaligned-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-53" title="Position, non-aligned scale"><img data-src="20-adv-ggplot2_files/figure-revealjs/nonaligned-1.png" width="1200" alt="Position, non-aligned scale"></a></p>
+<figcaption>Position, non-aligned scale</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="20-adv-ggplot2_files/figure-revealjs/length-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-54" title="Length"><img data-src="20-adv-ggplot2_files/figure-revealjs/length-1.png" width="2400" alt="Length"></a></p>
+<figcaption>Length</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div class="quarto-layout-row">
+<div class="quarto-figure-spacer quarto-layout-cell" style="flex-basis: 7.7%;justify-content: flex-start;">
+<p>&nbsp;</p>
+</div>
+<div class="cell quarto-layout-cell" style="flex-basis: 15.4%;justify-content: flex-start;">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="20-adv-ggplot2_files/figure-revealjs/curvature-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-55" title="Curvature"><img data-src="20-adv-ggplot2_files/figure-revealjs/curvature-1.png" width="900" alt="Curvature"></a></p>
+<figcaption>Curvature</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="quarto-figure-spacer quarto-layout-cell" style="flex-basis: 7.7%;justify-content: flex-start;">
+<p>&nbsp;</p>
+</div>
+<div class="cell quarto-layout-cell" style="flex-basis: 15.4%;justify-content: flex-start;">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="20-adv-ggplot2_files/figure-revealjs/angle-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-56" title="Angle"><img data-src="20-adv-ggplot2_files/figure-revealjs/angle-1.png" width="600" alt="Angle"></a></p>
+<figcaption>Angle</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="quarto-figure-spacer quarto-layout-cell" style="flex-basis: 7.7%;justify-content: flex-start;">
+<p>&nbsp;</p>
+</div>
+<div class="cell quarto-layout-cell" style="flex-basis: 15.4%;justify-content: flex-start;">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="20-adv-ggplot2_files/figure-revealjs/slope-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-57" title="Slope"><img data-src="20-adv-ggplot2_files/figure-revealjs/slope-1.png" width="900" alt="Slope"></a></p>
+<figcaption>Slope</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="quarto-figure-spacer quarto-layout-cell" style="flex-basis: 7.7%;justify-content: flex-start;">
+<p>&nbsp;</p>
+</div>
+<div class="cell quarto-layout-cell" style="flex-basis: 15.4%;justify-content: flex-start;">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="20-adv-ggplot2_files/figure-revealjs/area-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-58" title="Area"><img data-src="20-adv-ggplot2_files/figure-revealjs/area-1.png" width="900" alt="Area"></a></p>
+<figcaption>Area</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="quarto-figure-spacer quarto-layout-cell" style="flex-basis: 7.7%;justify-content: flex-start;">
+<p>&nbsp;</p>
+</div>
+</div>
+<div class="quarto-layout-row">
+<div class="quarto-figure-spacer quarto-layout-cell" style="flex-basis: 11.1%;justify-content: flex-start;">
+<p>&nbsp;</p>
+</div>
+<div class="cell quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="20-adv-ggplot2_files/figure-revealjs/volume-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-59" title="Volume"><img data-src="20-adv-ggplot2_files/figure-revealjs/volume-1.png" width="1800" alt="Volume"></a></p>
+<figcaption>Volume</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="quarto-figure-spacer quarto-layout-cell" style="flex-basis: 11.1%;justify-content: flex-start;">
+<p>&nbsp;</p>
+</div>
+<div class="cell quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="20-adv-ggplot2_files/figure-revealjs/density-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-60" title="Point Density"><img data-src="20-adv-ggplot2_files/figure-revealjs/density-1.png" width="1800" alt="Point Density"></a></p>
+<figcaption>Point Density</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="quarto-figure-spacer quarto-layout-cell" style="flex-basis: 11.1%;justify-content: flex-start;">
+<p>&nbsp;</p>
+</div>
+</div>
+<div class="quarto-layout-row">
+<div class="quarto-figure-spacer quarto-layout-cell" style="flex-basis: 11.1%;justify-content: flex-start;">
+<p>&nbsp;</p>
+</div>
+<div class="cell quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="20-adv-ggplot2_files/figure-revealjs/color-saturation-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-61" title="Color saturation"><img data-src="20-adv-ggplot2_files/figure-revealjs/color-saturation-1.png" width="1800" alt="Color saturation"></a></p>
+<figcaption>Color saturation</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="quarto-figure-spacer quarto-layout-cell" style="flex-basis: 11.1%;justify-content: flex-start;">
+<p>&nbsp;</p>
+</div>
+<div class="cell quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="20-adv-ggplot2_files/figure-revealjs/color-hue-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-62" title="Color hue"><img data-src="20-adv-ggplot2_files/figure-revealjs/color-hue-1.png" width="1800" alt="Color hue"></a></p>
+<figcaption>Color hue</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="quarto-figure-spacer quarto-layout-cell" style="flex-basis: 11.1%;justify-content: flex-start;">
+<p>&nbsp;</p>
+</div>
+</div>
+</div>
+</div></div>
+</section>
+<section id="section" class="slide level2">
+<h2></h2>
+<p>Well designed charts make it easy for the viewer to think about the <span class="emph sage-dk large"><strong>data</strong></span>, rather than the <span class="emph cerulean-dk large"><strong>chart</strong></span></p>
+<div class="fragment">
+<p>To design a good graphic, first consider:</p>
+</div>
+<ul>
+<li class="fragment"><p>What is the most important comparison?</p></li>
+<li class="fragment"><p>What secondary comparisons do you want to show?</p></li>
+</ul>
+</section>
+<section id="example---penguin-bills" class="slide level2 small">
+<h2>Example - Penguin Bills</h2>
+<div class="columns small">
+<div class="column">
+<div class="cell">
+<details class="code-fold">
+<summary>Reorder species variable levels</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-8"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-8-1"><a href="#annotated-cell-8-1" aria-label="1"></a>penguins_reorder <span class="ot">&lt;-</span> penguins <span class="sc">|&gt;</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="1">1</button><span id="annotated-cell-8-2" class="code-annotation-target"><a href="#annotated-cell-8-2" aria-label="2"></a>  <span class="fu">mutate</span>(</span>
+<span id="annotated-cell-8-3"><a href="#annotated-cell-8-3" aria-label="3"></a>    <span class="at">species =</span> <span class="fu">factor</span>(</span>
+<span id="annotated-cell-8-4"><a href="#annotated-cell-8-4" aria-label="4"></a>      species,</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="2">2</button><span id="annotated-cell-8-5" class="code-annotation-target"><a href="#annotated-cell-8-5" aria-label="5"></a>      <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Chinstrap"</span>,</span>
+<span id="annotated-cell-8-6"><a href="#annotated-cell-8-6" aria-label="6"></a>                 <span class="st">"Adelie"</span>,</span>
+<span id="annotated-cell-8-7"><a href="#annotated-cell-8-7" aria-label="7"></a>                 <span class="st">"Gentoo"</span>),</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="3">3</button><span id="annotated-cell-8-8" class="code-annotation-target"><a href="#annotated-cell-8-8" aria-label="8"></a>      <span class="at">ordered =</span> T)</span>
+<span id="annotated-cell-8-9"><a href="#annotated-cell-8-9" aria-label="9"></a>  ) </span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-annotation">
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-8" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-8" data-code-lines="2,3,4" data-code-annotation="1">Specify mutate on species, creating a factor variable</span>
+</dd>
+<dt data-target-cell="annotated-cell-8" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-8" data-code-lines="5,6,7" data-code-annotation="2">Level order should be set to this</span>
+</dd>
+<dt data-target-cell="annotated-cell-8" data-target-annotation="3">3</dt>
+<dd>
+<span data-code-cell="annotated-cell-8" data-code-lines="8" data-code-annotation="3">Specify that the factor is an ordered factor (e.g.&nbsp;don’t order alphabetically by default)</span>
+</dd>
+</dl>
+</div>
+</div>
+<div class="cell">
+<details class="code-fold">
+<summary>Scatterplot, colored by sex and facetted by species.</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-9"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-9" data-target-annotation="1">1</button><span id="annotated-cell-9-1" class="code-annotation-target"><a href="#annotated-cell-9-1" aria-label="1"></a>p1 <span class="ot">&lt;-</span> penguins_reorder <span class="sc">|&gt;</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-9" data-target-annotation="2">2</button><span id="annotated-cell-9-2" class="code-annotation-target"><a href="#annotated-cell-9-2" aria-label="2"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(sex)) <span class="sc">|&gt;</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-9" data-target-annotation="3">3</button><span id="annotated-cell-9-3" class="code-annotation-target"><a href="#annotated-cell-9-3" aria-label="3"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> bill_len,</span>
+<span id="annotated-cell-9-4"><a href="#annotated-cell-9-4" aria-label="4"></a>             <span class="at">y =</span> bill_dep,</span>
+<span id="annotated-cell-9-5"><a href="#annotated-cell-9-5" aria-label="5"></a>             <span class="at">color =</span> sex)) <span class="sc">+</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-9" data-target-annotation="4">4</button><span id="annotated-cell-9-6" class="code-annotation-target"><a href="#annotated-cell-9-6" aria-label="6"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-9" data-target-annotation="5">5</button><span id="annotated-cell-9-7" class="code-annotation-target"><a href="#annotated-cell-9-7" aria-label="7"></a>  <span class="fu">coord_fixed</span>(<span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">30</span>, <span class="dv">60</span>),</span>
+<span id="annotated-cell-9-8"><a href="#annotated-cell-9-8" aria-label="8"></a>              <span class="at">ylim =</span> <span class="fu">c</span>(<span class="fl">12.5</span>, <span class="fl">22.5</span>)) <span class="sc">+</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-9" data-target-annotation="6">6</button><span id="annotated-cell-9-9" class="code-annotation-target"><a href="#annotated-cell-9-9" aria-label="9"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>species, <span class="at">ncol =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-9" data-target-annotation="7">7</button><span id="annotated-cell-9-10" class="code-annotation-target"><a href="#annotated-cell-9-10" aria-label="10"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Bill Length (mm)"</span>,</span>
+<span id="annotated-cell-9-11"><a href="#annotated-cell-9-11" aria-label="11"></a>       <span class="at">y =</span> <span class="st">"Bill Depth (mm)"</span>,</span>
+<span id="annotated-cell-9-12"><a href="#annotated-cell-9-12" aria-label="12"></a>       <span class="at">color =</span> <span class="st">"Sex"</span>) <span class="sc">+</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-9" data-target-annotation="8">8</button><span id="annotated-cell-9-13" class="code-annotation-target"><a href="#annotated-cell-9-13" aria-label="13"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"bottom"</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-annotation">
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-9" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-9" data-code-lines="1" data-code-annotation="1">Rearrange penguin species order from alphabetical to something that makes it easier to compare chinstrap to both gentoo and adelie. (extra code)</span>
+</dd>
+<dt data-target-cell="annotated-cell-9" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-9" data-code-lines="2" data-code-annotation="2">Drop penguins with unknown sex, just to make this a bit easier.</span>
+</dd>
+<dt data-target-cell="annotated-cell-9" data-target-annotation="3">3</dt>
+<dd>
+<span data-code-cell="annotated-cell-9" data-code-lines="3,4,5" data-code-annotation="3">aesthetic mappings</span>
+</dd>
+<dt data-target-cell="annotated-cell-9" data-target-annotation="4">4</dt>
+<dd>
+<span data-code-cell="annotated-cell-9" data-code-lines="6" data-code-annotation="4">geometry specification - use transparent points to make it easier to see the overlap.</span>
+</dd>
+<dt data-target-cell="annotated-cell-9" data-target-annotation="5">5</dt>
+<dd>
+<span data-code-cell="annotated-cell-9" data-code-lines="7,8" data-code-annotation="5">Fix the aspect ratio so that one unit of the x-axis is the same as one unit of the y-axis. As both are in mm, this makes physical sense. Also set x and y plot limits (helps me size the pictures correctly – not necessary in general)</span>
+</dd>
+<dt data-target-cell="annotated-cell-9" data-target-annotation="6">6</dt>
+<dd>
+<span data-code-cell="annotated-cell-9" data-code-lines="9" data-code-annotation="6">Facet by the selected variable</span>
+</dd>
+<dt data-target-cell="annotated-cell-9" data-target-annotation="7">7</dt>
+<dd>
+<span data-code-cell="annotated-cell-9" data-code-lines="10,11,12" data-code-annotation="7">Set x, y, and legend labels</span>
+</dd>
+<dt data-target-cell="annotated-cell-9" data-target-annotation="8">8</dt>
+<dd>
+<span data-code-cell="annotated-cell-9" data-code-lines="13" data-code-annotation="8">Put legends at the bottom of the plot.</span>
+</dd>
+</dl>
+</div>
+</div>
+</div><div class="column">
+<p>&nbsp;</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Scatterplot, colored by species and facetted by sex.</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-10"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-10-1"><a href="#annotated-cell-10-1" aria-label="1"></a>p2 <span class="ot">&lt;-</span> penguins <span class="sc">|&gt;</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-10" data-target-annotation="2">2</button><span id="annotated-cell-10-2" class="code-annotation-target"><a href="#annotated-cell-10-2" aria-label="2"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(sex)) <span class="sc">|&gt;</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-10" data-target-annotation="3">3</button><span id="annotated-cell-10-3" class="code-annotation-target"><a href="#annotated-cell-10-3" aria-label="3"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> bill_len,</span>
+<span id="annotated-cell-10-4"><a href="#annotated-cell-10-4" aria-label="4"></a>             <span class="at">y =</span> bill_dep,</span>
+<span id="annotated-cell-10-5"><a href="#annotated-cell-10-5" aria-label="5"></a>             <span class="at">color =</span> species)) <span class="sc">+</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-10" data-target-annotation="4">4</button><span id="annotated-cell-10-6" class="code-annotation-target"><a href="#annotated-cell-10-6" aria-label="6"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-10" data-target-annotation="5">5</button><span id="annotated-cell-10-7" class="code-annotation-target"><a href="#annotated-cell-10-7" aria-label="7"></a>  <span class="fu">coord_fixed</span>(<span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">30</span>, <span class="dv">60</span>),</span>
+<span id="annotated-cell-10-8"><a href="#annotated-cell-10-8" aria-label="8"></a>              <span class="at">ylim =</span> <span class="fu">c</span>(<span class="fl">12.5</span>, <span class="fl">22.5</span>)) <span class="sc">+</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-10" data-target-annotation="6">6</button><span id="annotated-cell-10-9" class="code-annotation-target"><a href="#annotated-cell-10-9" aria-label="9"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>sex, <span class="at">ncol =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-10" data-target-annotation="7">7</button><span id="annotated-cell-10-10" class="code-annotation-target"><a href="#annotated-cell-10-10" aria-label="10"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Bill Length (mm)"</span>,</span>
+<span id="annotated-cell-10-11"><a href="#annotated-cell-10-11" aria-label="11"></a>       <span class="at">y =</span> <span class="st">"Bill Depth (mm)"</span>,</span>
+<span id="annotated-cell-10-12"><a href="#annotated-cell-10-12" aria-label="12"></a>       <span class="at">color =</span> <span class="st">"Species"</span>) <span class="sc">+</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-10" data-target-annotation="8">8</button><span id="annotated-cell-10-13" class="code-annotation-target"><a href="#annotated-cell-10-13" aria-label="13"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"bottom"</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-annotation">
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-10" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-10" data-code-lines="2" data-code-annotation="2">Drop penguins with unknown sex, just to make this a bit easier.</span>
+</dd>
+<dt data-target-cell="annotated-cell-10" data-target-annotation="3">3</dt>
+<dd>
+<span data-code-cell="annotated-cell-10" data-code-lines="3,4,5" data-code-annotation="3">aesthetic mappings</span>
+</dd>
+<dt data-target-cell="annotated-cell-10" data-target-annotation="4">4</dt>
+<dd>
+<span data-code-cell="annotated-cell-10" data-code-lines="6" data-code-annotation="4">geometry specification - use transparent points to make it easier to see the overlap.</span>
+</dd>
+<dt data-target-cell="annotated-cell-10" data-target-annotation="5">5</dt>
+<dd>
+<span data-code-cell="annotated-cell-10" data-code-lines="7,8" data-code-annotation="5">Fix the aspect ratio so that one unit of the x-axis is the same as one unit of the y-axis. As both are in mm, this makes physical sense. Also set x and y plot limits (helps me size the pictures correctly – not necessary in general)</span>
+</dd>
+<dt data-target-cell="annotated-cell-10" data-target-annotation="6">6</dt>
+<dd>
+<span data-code-cell="annotated-cell-10" data-code-lines="9" data-code-annotation="6">Facet by the selected variable</span>
+</dd>
+<dt data-target-cell="annotated-cell-10" data-target-annotation="7">7</dt>
+<dd>
+<span data-code-cell="annotated-cell-10" data-code-lines="10,11,12" data-code-annotation="7">Set x, y, and legend labels</span>
+</dd>
+<dt data-target-cell="annotated-cell-10" data-target-annotation="8">8</dt>
+<dd>
+<span data-code-cell="annotated-cell-10" data-code-lines="13" data-code-annotation="8">Put legends at the bottom of the plot.</span>
+</dd>
+</dl>
+</div>
+</div>
+</div></div>
+<div class="cell" data-layout-valign="top">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><a href="20-adv-ggplot2_files/figure-revealjs/unnamed-chunk-12-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-63"><img data-src="20-adv-ggplot2_files/figure-revealjs/unnamed-chunk-12-1.png" style="width:100.0%" alt="Two sets of facetted scatterplots. In the first figure, a scatterplot of penguin bill length (x) by bill depth (y) in mm, with separate subplots for Chinstrap, Adelie, and Gentoo penguins. Points are colored by sex (M, F, NA). Adelie penguins have much smaller bill length than the other species, and Gentoo penguins have much smaller bill depth than the other species. In all species, however, female penguins have smaller bill dimensions than male penguins. In the second figure, a scatterplot of penguin bill length (x) by bill depth (y) in mm, with separate subplots for males and females. Points are colored by species (Adelie, Gentoo, Chinstrap). Adelie penguins have much smaller bill length than the other species, and Gentoo penguins have much smaller bill depth than the other species. In all species, however, female penguins have smaller bill dimensions than male penguins."></a></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="fragment">
+<ul>
+<li><p>Which comparisons are easier with each type of plot?</p></li>
+<li><p>Does it help to have reordered the species in the left plot so that you can compare bill depth and length?</p></li>
+</ul>
+</div>
+</section>
+<section id="cognitive-limits" class="slide level2">
+<h2>Cognitive Limits</h2>
+<h3 id="short-term-memory">Short Term Memory</h3>
+<style>
+span.foliage {
+    background: linear-gradient(to right, #5d5741 0%, #ffffff 30%, #339933 100%)!important;
+}span.snow {
+    background: linear-gradient(to right, #71c071 0%, #cddfd6 25%, #ffffff 40%, #79e0e0 60%, #125293 100%)!important;
+}
+</style>
+<ul>
+<li><p>Are there colors associated with your variables?</p>
+<ul>
+<li><span class="large"><span class="blue-dk emph">cold</span> / <span class="emph pink-dk">hot</span>, <span class="blue"><i class="fa-solid fa-democrat" aria-label="democrat"></i></span> / <span class="red"><i class="fa-solid fa-republican" aria-label="republican"></i></span></span>, <span class="foliage">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;amount of plant cover&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>, <span class="snow">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;snow depth&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li>
+</ul>
+<p><span class="fragment emph blue-dk">Using common color associations reduces cognitive load</span></p></li>
+<li><p>Minimize categories: Keep # legend entries <span class="math inline">\(\leq 7\)</span></p>
+<p><span class="fragment emph blue-dk"><span class="math inline">\(7 \pm 2\)</span> is thought to be the limit of short-term memory.</span></p></li>
+</ul>
+<h3 id="graphical-conventions">Graphical Conventions</h3>
+<ul>
+<li>X-axis: left is smaller, right is larger</li>
+<li>Y-axis: bottom is smaller, top is larger</li>
+<li>Color: less saturated (pastel/white) is smaller, more saturated (bold color) is larger</li>
+</ul>
+<p><br> - Use the smallest dimension possible - don’t use area when length will do - fake 3D perspective is misleading - Pixel accuracy - the number of pixels should match the magnitude of the data! - Infographics, logos, etc. look cute (sometimes?) but are often less accurately perceived.</p>
+</section></section>
+<section>
+<section id="hall-of-graphical-shame" class="title-slide slide level1 center">
+<h1>Hall of Graphical Shame</h1>
+
+</section>
+<section id="bar-chart-y-axis-should-start-at-zero" class="slide level2">
+<h2>Bar Chart Y-Axis should start at zero!</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="images/misleading-chart-fox-temperature-baseline.png" class="lightbox" data-gallery="quarto-lightbox-gallery-64" title="Fox 8, New Orleans, Source"><img data-src="images/misleading-chart-fox-temperature-baseline.png" style="width:90.0%" alt="A bar chart showing weekly high temperatures where the axis starts at 92 and goes to 94, making a 2 degree Fahrenheit jump look massive."></a></p>
+<figcaption>Fox 8, New Orleans, <a href="https://flowingdata.com/2026/07/10/two-degrees-looks-like-a-lot/">Source</a></figcaption>
+</figure>
+</div>
+</section>
+<section id="stacked-area-maps-arent-a-thing" class="slide level2">
+<h2>Stacked Area Maps aren’t a thing</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="images/misleading-stacked-area-map-ethnicity.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-65" title="Nightly News with Brian Williams, 2014 Source"><img data-src="images/misleading-stacked-area-map-ethnicity.jpg" style="width:60.0%" alt="A US map showing the ethnic composition of the US in 1960 (west coast), 2010 (midwest), and the projected composition in 2060 (east coast). The predicted proportion of white individuals drops from 85% to 64% to 43%; the proportion of the population that is black stays roughly the same at around 10-13%, and the proportion of the population that is hispanic is under 10% in 1960, at 16% in 2010, and up to 31% in 2060. The mpa utterly does not explain the massive drop in population due to the presence of Canada and the great lakes between 2010 and 2060, nor does it explain how to interpret the rise in population in the 2000-2020 era due to the presence of Texas. Alaska and Hawaii are also ... neglected, though they are colored in as if they're representing the white proportion of the population despite not being contiguous with the rest of the country."></a></p>
+<figcaption>Nightly News with Brian Williams, 2014 <a href="https://flowingdata.com/2014/04/16/weird-stacked-area-map-thing/">Source</a></figcaption>
+</figure>
+</div>
+<ul>
+<li>Color scheme is also a problem</li>
+<li>What do we even do with Alaska/Hawaii?</li>
+</ul>
+</section>
+<section id="adding-charts-to-pictures-is-not-a-good-idea" class="slide level2">
+<h2>Adding “Charts**” to pictures is not a good idea</h2>
+<p><span class="green-dk">**Calling this a chart is generous</span></p>
+<p><a href="images/misleading-chart-neck-stacked-graph.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-66"><img data-src="images/misleading-chart-neck-stacked-graph.jpg" style="width:40.0%" alt="A screenshot of a promoted social media post from BetMGM that reads 'Mike Glennon has 1 win since 2014. Glennon's earned over 5.3 mil per win in the NFL (6-24)'. A picture is included, titled 'Mike Glennon Career Earnings', with a head and shoulders of a man (presumably mike glennon) and a set of colored bars (not scaled to the amount shown?) with team logos and the amount of money earned with each team. The overall effect is to make the head look something like a rainbow giraffe with a WTF look on its face."></a></p>
+</section>
+<section id="the-movement-radial-slices-of-egg-shapes-can-die-in-a-fire" class="slide level2">
+<h2>The Movement: Radial Slices of egg shapes can die in a fire</h2>
+<p><a href="images/misleading-graphics-lump-pie.png" class="lightbox" data-gallery="quarto-lightbox-gallery-67"><img data-src="images/misleading-graphics-lump-pie.png" style="width:50.0%" alt="A screenshot of a social media post showing semi-egg shaped chart divided into chunks with vertical lines, labeled 'Agree with NEITHER', 'Agree with ONE', 'Agree with BOTH'. There seems to be no connection between the numbers shown on the chart and the colored area of each section. The chart title says 'What is the Movement', and then says '21 million Americans believe both Biden Illegitimate - Force justified to restore Trump'."></a></p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><a href="20-adv-ggplot2_files/figure-revealjs/unnamed-chunk-13-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-68"><img data-src="20-adv-ggplot2_files/figure-revealjs/unnamed-chunk-13-1.png" alt="A horizontal stacked bar chart showing that the original chart was highly misleading: in reality, given statements 'Biden Illegitimate' and 'force is justified to restore Trump', 74% of the US agreed with neither statement, 18% agreed with one, and 8% agreed with both. The proportion of the area allocated to each statement in the original chart, respectively, is 45%, 21%, and 33%, as measured using image editing software." width="768"></a></p>
+</figure>
+</div>
+</div>
+</div>
 
 
 </section></section>
+
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <p><img src="deps/usu-sq.png" alt="Utah State University Logo" class="slide-logo"></p>
