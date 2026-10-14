@@ -6,11 +6,11 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
 <link href="../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
 <link href="../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.9.38">
+  <meta name="generator" content="quarto-1.10.19">
 
   <title>STAT 1080 - Fall 2026 – 1.17 Visualizing Data Distributions</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -22,10 +22,13 @@
     /* Default styles provided by pandoc.
     ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
     */
-    code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
     ul.task-list li input[type="checkbox"] {
@@ -353,12 +356,12 @@
 <section id="read-in-the-data" class="slide level2">
 <h2>Read in the Data</h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-1"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-1-1"><a href="#annotated-cell-1-1"></a>cafe <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">'https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2026/2026-09-08/cafe.csv'</span>)</span>
-<span id="annotated-cell-1-2"><a href="#annotated-cell-1-2"></a>cappuccino_index <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">'https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2026/2026-09-08/cappuccino_index.csv'</span>)</span>
-<span id="annotated-cell-1-3"><a href="#annotated-cell-1-3"></a></span>
-<span id="annotated-cell-1-4"><a href="#annotated-cell-1-4"></a></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="1">1</button><span id="annotated-cell-1-5" class="code-annotation-target"><a href="#annotated-cell-1-5"></a>cafe<span class="sc">$</span>country <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">"\u00a0"</span>, <span class="st">" "</span>, cafe<span class="sc">$</span>country)</span>
-<span id="annotated-cell-1-6"><a href="#annotated-cell-1-6"></a>cappuccino_index<span class="sc">$</span>country <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">"\u00a0"</span>, <span class="st">" "</span>, cappuccino_index<span class="sc">$</span>country)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-1"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-1-1"><a href="#annotated-cell-1-1" aria-label="1"></a>cafe <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">'https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2026/2026-09-08/cafe.csv'</span>)</span>
+<span id="annotated-cell-1-2"><a href="#annotated-cell-1-2" aria-label="2"></a>cappuccino_index <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">'https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2026/2026-09-08/cappuccino_index.csv'</span>)</span>
+<span id="annotated-cell-1-3"><a href="#annotated-cell-1-3" aria-label="3"></a></span>
+<span id="annotated-cell-1-4"><a href="#annotated-cell-1-4" aria-label="4"></a></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="1">1</button><span id="annotated-cell-1-5" class="code-annotation-target"><a href="#annotated-cell-1-5" aria-label="5"></a>cafe<span class="sc">$</span>country <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">"\u00a0"</span>, <span class="st">" "</span>, cafe<span class="sc">$</span>country)</span>
+<span id="annotated-cell-1-6"><a href="#annotated-cell-1-6" aria-label="6"></a>cappuccino_index<span class="sc">$</span>country <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">"\u00a0"</span>, <span class="st">" "</span>, cappuccino_index<span class="sc">$</span>country)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-annotation">
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-1" data-target-annotation="1">1</dt>
@@ -377,19 +380,19 @@
 <section id="participating-countries" class="slide level2">
 <h2>Participating Countries</h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-2"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-2-1"><a href="#annotated-cell-2-1"></a>cafe_plot <span class="ot">&lt;-</span> cafe <span class="sc">|&gt;</span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="1">1</button><span id="annotated-cell-2-2" class="code-annotation-target"><a href="#annotated-cell-2-2"></a>  <span class="fu">count</span>(country) <span class="sc">|&gt;</span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="2">2</button><span id="annotated-cell-2-3" class="code-annotation-target"><a href="#annotated-cell-2-3"></a>  <span class="fu">mutate</span>(<span class="at">prop =</span> n<span class="sc">/</span><span class="fu">sum</span>(n)) <span class="sc">|&gt;</span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="3">3</button><span id="annotated-cell-2-4" class="code-annotation-target"><a href="#annotated-cell-2-4"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(prop)) <span class="sc">|&gt;</span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="4">4</button><span id="annotated-cell-2-5" class="code-annotation-target"><a href="#annotated-cell-2-5"></a>  <span class="fu">head</span>(<span class="dv">10</span>)</span>
-<span id="annotated-cell-2-6"><a href="#annotated-cell-2-6"></a>cafe_plot <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="5">5</button><span id="annotated-cell-2-7" class="code-annotation-target"><a href="#annotated-cell-2-7"></a>  <span class="fu">tibble</span>(<span class="at">country =</span> <span class="st">"Other"</span>,</span>
-<span id="annotated-cell-2-8"><a href="#annotated-cell-2-8"></a>         <span class="at">n =</span> <span class="dv">2594</span> <span class="sc">-</span> <span class="fu">sum</span>(cafe_plot<span class="sc">$</span>n),</span>
-<span id="annotated-cell-2-9"><a href="#annotated-cell-2-9"></a>         <span class="at">prop =</span> <span class="dv">1</span><span class="sc">-</span><span class="fu">sum</span>(cafe_plot<span class="sc">$</span>prop)),</span>
-<span id="annotated-cell-2-10"><a href="#annotated-cell-2-10"></a>  cafe_plot) <span class="sc">|&gt;</span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="6">6</button><span id="annotated-cell-2-11" class="code-annotation-target"><a href="#annotated-cell-2-11"></a>  <span class="fu">mutate</span>(<span class="at">country =</span> <span class="fu">factor</span>(country, <span class="at">levels =</span> country, <span class="at">ordered =</span> T))</span>
-<span id="annotated-cell-2-12"><a href="#annotated-cell-2-12"></a>  </span>
-<span id="annotated-cell-2-13"><a href="#annotated-cell-2-13"></a><span class="fu">head</span>(cafe_plot)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-2"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-2-1"><a href="#annotated-cell-2-1" aria-label="1"></a>cafe_plot <span class="ot">&lt;-</span> cafe <span class="sc">|&gt;</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="1">1</button><span id="annotated-cell-2-2" class="code-annotation-target"><a href="#annotated-cell-2-2" aria-label="2"></a>  <span class="fu">count</span>(country) <span class="sc">|&gt;</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="2">2</button><span id="annotated-cell-2-3" class="code-annotation-target"><a href="#annotated-cell-2-3" aria-label="3"></a>  <span class="fu">mutate</span>(<span class="at">prop =</span> n<span class="sc">/</span><span class="fu">sum</span>(n)) <span class="sc">|&gt;</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="3">3</button><span id="annotated-cell-2-4" class="code-annotation-target"><a href="#annotated-cell-2-4" aria-label="4"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(prop)) <span class="sc">|&gt;</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="4">4</button><span id="annotated-cell-2-5" class="code-annotation-target"><a href="#annotated-cell-2-5" aria-label="5"></a>  <span class="fu">head</span>(<span class="dv">10</span>)</span>
+<span id="annotated-cell-2-6"><a href="#annotated-cell-2-6" aria-label="6"></a>cafe_plot <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="5">5</button><span id="annotated-cell-2-7" class="code-annotation-target"><a href="#annotated-cell-2-7" aria-label="7"></a>  <span class="fu">tibble</span>(<span class="at">country =</span> <span class="st">"Other"</span>,</span>
+<span id="annotated-cell-2-8"><a href="#annotated-cell-2-8" aria-label="8"></a>         <span class="at">n =</span> <span class="dv">2594</span> <span class="sc">-</span> <span class="fu">sum</span>(cafe_plot<span class="sc">$</span>n),</span>
+<span id="annotated-cell-2-9"><a href="#annotated-cell-2-9" aria-label="9"></a>         <span class="at">prop =</span> <span class="dv">1</span><span class="sc">-</span><span class="fu">sum</span>(cafe_plot<span class="sc">$</span>prop)),</span>
+<span id="annotated-cell-2-10"><a href="#annotated-cell-2-10" aria-label="10"></a>  cafe_plot) <span class="sc">|&gt;</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="6">6</button><span id="annotated-cell-2-11" class="code-annotation-target"><a href="#annotated-cell-2-11" aria-label="11"></a>  <span class="fu">mutate</span>(<span class="at">country =</span> <span class="fu">factor</span>(country, <span class="at">levels =</span> country, <span class="at">ordered =</span> T))</span>
+<span id="annotated-cell-2-12"><a href="#annotated-cell-2-12" aria-label="12"></a>  </span>
+<span id="annotated-cell-2-13"><a href="#annotated-cell-2-13" aria-label="13"></a><span class="fu">head</span>(cafe_plot)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-annotation">
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-2" data-target-annotation="1">1</dt>
@@ -435,16 +438,16 @@
 <h2>Participating Countries</h2>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-3"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-3-1"><a href="#annotated-cell-3-1"></a><span class="fu">ggplot</span>(cafe_plot,</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="1">1</button><span id="annotated-cell-3-2" class="code-annotation-target"><a href="#annotated-cell-3-2"></a>       <span class="fu">aes</span>(<span class="at">x =</span> country,</span>
-<span id="annotated-cell-3-3"><a href="#annotated-cell-3-3"></a>           <span class="at">fill =</span> country,</span>
-<span id="annotated-cell-3-4"><a href="#annotated-cell-3-4"></a>           <span class="at">y =</span> prop)) <span class="sc">+</span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="2">2</button><span id="annotated-cell-3-5" class="code-annotation-target"><a href="#annotated-cell-3-5"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="3">3</button><span id="annotated-cell-3-6" class="code-annotation-target"><a href="#annotated-cell-3-6"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="4">4</button><span id="annotated-cell-3-7" class="code-annotation-target"><a href="#annotated-cell-3-7"></a>  <span class="fu">guides</span>(<span class="at">fill =</span> <span class="st">'none'</span>) <span class="sc">+</span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="5">5</button><span id="annotated-cell-3-8" class="code-annotation-target"><a href="#annotated-cell-3-8"></a>  <span class="fu">ylab</span>(<span class="st">"Proportion of Observations"</span>) <span class="sc">+</span></span>
-<span id="annotated-cell-3-9"><a href="#annotated-cell-3-9"></a>  <span class="fu">xlab</span>(<span class="st">""</span>) <span class="sc">+</span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="6">6</button><span id="annotated-cell-3-10" class="code-annotation-target"><a href="#annotated-cell-3-10"></a>  <span class="fu">ggtitle</span>(<span class="st">"Cappuccino Index Data by Country"</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-3"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-3-1"><a href="#annotated-cell-3-1" aria-label="1"></a><span class="fu">ggplot</span>(cafe_plot,</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="1">1</button><span id="annotated-cell-3-2" class="code-annotation-target"><a href="#annotated-cell-3-2" aria-label="2"></a>       <span class="fu">aes</span>(<span class="at">x =</span> country,</span>
+<span id="annotated-cell-3-3"><a href="#annotated-cell-3-3" aria-label="3"></a>           <span class="at">fill =</span> country,</span>
+<span id="annotated-cell-3-4"><a href="#annotated-cell-3-4" aria-label="4"></a>           <span class="at">y =</span> prop)) <span class="sc">+</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="2">2</button><span id="annotated-cell-3-5" class="code-annotation-target"><a href="#annotated-cell-3-5" aria-label="5"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="3">3</button><span id="annotated-cell-3-6" class="code-annotation-target"><a href="#annotated-cell-3-6" aria-label="6"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="4">4</button><span id="annotated-cell-3-7" class="code-annotation-target"><a href="#annotated-cell-3-7" aria-label="7"></a>  <span class="fu">guides</span>(<span class="at">fill =</span> <span class="st">'none'</span>) <span class="sc">+</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="5">5</button><span id="annotated-cell-3-8" class="code-annotation-target"><a href="#annotated-cell-3-8" aria-label="8"></a>  <span class="fu">ylab</span>(<span class="st">"Proportion of Observations"</span>) <span class="sc">+</span></span>
+<span id="annotated-cell-3-9"><a href="#annotated-cell-3-9" aria-label="9"></a>  <span class="fu">xlab</span>(<span class="st">""</span>) <span class="sc">+</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="6">6</button><span id="annotated-cell-3-10" class="code-annotation-target"><a href="#annotated-cell-3-10" aria-label="10"></a>  <span class="fu">ggtitle</span>(<span class="st">"Cappuccino Index Data by Country"</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-annotation">
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
@@ -487,11 +490,11 @@
 <h2>Rural vs.&nbsp;Urban</h2>
 <p>Are the categories mutually exclusive?</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a>cafe <span class="sc">|&gt;</span></span>
-<span id="cb2-2"><a></a><span class="fu">filter</span>(</span>
-<span id="cb2-3"><a></a>  urban <span class="sc">+</span> rural <span class="sc">+</span> suburban <span class="sc">&gt;</span> <span class="dv">1</span></span>
-<span id="cb2-4"><a></a>) <span class="sc">|&gt;</span></span>
-<span id="cb2-5"><a></a>  <span class="fu">select</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a aria-label="1"></a>cafe <span class="sc">|&gt;</span></span>
+<span id="cb2-2"><a aria-label="2"></a><span class="fu">filter</span>(</span>
+<span id="cb2-3"><a aria-label="3"></a>  urban <span class="sc">+</span> rural <span class="sc">+</span> suburban <span class="sc">&gt;</span> <span class="dv">1</span></span>
+<span id="cb2-4"><a aria-label="4"></a>) <span class="sc">|&gt;</span></span>
+<span id="cb2-5"><a aria-label="5"></a>  <span class="fu">select</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 63 × 5
    country     city       urban suburban rural
@@ -515,12 +518,12 @@
 <h2>Rural vs.&nbsp;Urban</h2>
 <p>First, we have to rearrange the data so that density is a single variable.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a>cafe_density <span class="ot">&lt;-</span> cafe <span class="sc">|&gt;</span></span>
-<span id="cb4-2"><a></a>  <span class="fu">pivot_longer</span>(<span class="fu">c</span>(<span class="dv">3</span><span class="sc">:</span><span class="dv">5</span>), </span>
-<span id="cb4-3"><a></a>               <span class="at">names_to =</span> <span class="st">"density"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb4-4"><a></a>  <span class="fu">filter</span>(value) <span class="sc">|&gt;</span></span>
-<span id="cb4-5"><a></a>  <span class="fu">select</span>(country, density, <span class="fu">ends_with</span>(<span class="st">"gbp"</span>))</span>
-<span id="cb4-6"><a></a>cafe_density</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a aria-label="1"></a>cafe_density <span class="ot">&lt;-</span> cafe <span class="sc">|&gt;</span></span>
+<span id="cb4-2"><a aria-label="2"></a>  <span class="fu">pivot_longer</span>(<span class="fu">c</span>(<span class="dv">3</span><span class="sc">:</span><span class="dv">5</span>), </span>
+<span id="cb4-3"><a aria-label="3"></a>               <span class="at">names_to =</span> <span class="st">"density"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb4-4"><a aria-label="4"></a>  <span class="fu">filter</span>(value) <span class="sc">|&gt;</span></span>
+<span id="cb4-5"><a aria-label="5"></a>  <span class="fu">select</span>(country, density, <span class="fu">ends_with</span>(<span class="st">"gbp"</span>))</span>
+<span id="cb4-6"><a aria-label="6"></a>cafe_density</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2,659 × 4
    country      density  hourly_wage_gbp price_gbp
@@ -542,14 +545,14 @@
 <section id="stacked-bar-chart-rural-vs.-urban" class="slide level2">
 <h2>Stacked Bar Chart: Rural vs.&nbsp;Urban</h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-6"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-6-1"><a href="#annotated-cell-6-1"></a><span class="fu">ggplot</span>(cafe_density,</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="1">1</button><span id="annotated-cell-6-2" class="code-annotation-target"><a href="#annotated-cell-6-2"></a>       <span class="fu">aes</span>(<span class="at">x =</span> <span class="dv">1</span>,</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="2">2</button><span id="annotated-cell-6-3" class="code-annotation-target"><a href="#annotated-cell-6-3"></a>           <span class="at">fill =</span> density)) <span class="sc">+</span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="3">3</button><span id="annotated-cell-6-4" class="code-annotation-target"><a href="#annotated-cell-6-4"></a>  <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">"fill"</span>) <span class="sc">+</span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="4">4</button><span id="annotated-cell-6-5" class="code-annotation-target"><a href="#annotated-cell-6-5"></a>  <span class="fu">xlab</span>(<span class="st">""</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">"Proportion"</span>) <span class="sc">+</span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="5">5</button><span id="annotated-cell-6-6" class="code-annotation-target"><a href="#annotated-cell-6-6"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="6">6</button><span id="annotated-cell-6-7" class="code-annotation-target"><a href="#annotated-cell-6-7"></a>  <span class="fu">theme</span>(<span class="at">axis.text.y =</span> <span class="fu">element_blank</span>(),</span>
-<span id="annotated-cell-6-8"><a href="#annotated-cell-6-8"></a>        <span class="at">axis.ticks.y =</span> <span class="fu">element_blank</span>())</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-6"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-6-1"><a href="#annotated-cell-6-1" aria-label="1"></a><span class="fu">ggplot</span>(cafe_density,</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="1">1</button><span id="annotated-cell-6-2" class="code-annotation-target"><a href="#annotated-cell-6-2" aria-label="2"></a>       <span class="fu">aes</span>(<span class="at">x =</span> <span class="dv">1</span>,</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="2">2</button><span id="annotated-cell-6-3" class="code-annotation-target"><a href="#annotated-cell-6-3" aria-label="3"></a>           <span class="at">fill =</span> density)) <span class="sc">+</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="3">3</button><span id="annotated-cell-6-4" class="code-annotation-target"><a href="#annotated-cell-6-4" aria-label="4"></a>  <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">"fill"</span>) <span class="sc">+</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="4">4</button><span id="annotated-cell-6-5" class="code-annotation-target"><a href="#annotated-cell-6-5" aria-label="5"></a>  <span class="fu">xlab</span>(<span class="st">""</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">"Proportion"</span>) <span class="sc">+</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="5">5</button><span id="annotated-cell-6-6" class="code-annotation-target"><a href="#annotated-cell-6-6" aria-label="6"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="6">6</button><span id="annotated-cell-6-7" class="code-annotation-target"><a href="#annotated-cell-6-7" aria-label="7"></a>  <span class="fu">theme</span>(<span class="at">axis.text.y =</span> <span class="fu">element_blank</span>(),</span>
+<span id="annotated-cell-6-8"><a href="#annotated-cell-6-8" aria-label="8"></a>        <span class="at">axis.ticks.y =</span> <span class="fu">element_blank</span>())</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-annotation">
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-6" data-target-annotation="1">1</dt>
@@ -591,12 +594,12 @@
 <h2>Pie Chart: Rural vs.&nbsp;Urban</h2>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-7"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-7-1"><a href="#annotated-cell-7-1"></a><span class="fu">ggplot</span>(cafe_density,</span>
-<span id="annotated-cell-7-2"><a href="#annotated-cell-7-2"></a>       <span class="fu">aes</span>(<span class="at">x =</span> <span class="dv">1</span>, </span>
-<span id="annotated-cell-7-3"><a href="#annotated-cell-7-3"></a>           <span class="at">fill =</span> density)) <span class="sc">+</span> </span>
-<span id="annotated-cell-7-4"><a href="#annotated-cell-7-4"></a>  <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">"fill"</span>) <span class="sc">+</span> </span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="1">1</button><span id="annotated-cell-7-5" class="code-annotation-target"><a href="#annotated-cell-7-5"></a>  <span class="fu">coord_polar</span>(<span class="at">theta =</span> <span class="st">"y"</span>) <span class="sc">+</span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="2">2</button><span id="annotated-cell-7-6" class="code-annotation-target"><a href="#annotated-cell-7-6"></a>  <span class="fu">theme_void</span>()</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-7"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-7-1"><a href="#annotated-cell-7-1" aria-label="1"></a><span class="fu">ggplot</span>(cafe_density,</span>
+<span id="annotated-cell-7-2"><a href="#annotated-cell-7-2" aria-label="2"></a>       <span class="fu">aes</span>(<span class="at">x =</span> <span class="dv">1</span>, </span>
+<span id="annotated-cell-7-3"><a href="#annotated-cell-7-3" aria-label="3"></a>           <span class="at">fill =</span> density)) <span class="sc">+</span> </span>
+<span id="annotated-cell-7-4"><a href="#annotated-cell-7-4" aria-label="4"></a>  <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">"fill"</span>) <span class="sc">+</span> </span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="1">1</button><span id="annotated-cell-7-5" class="code-annotation-target"><a href="#annotated-cell-7-5" aria-label="5"></a>  <span class="fu">coord_polar</span>(<span class="at">theta =</span> <span class="st">"y"</span>) <span class="sc">+</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="2">2</button><span id="annotated-cell-7-6" class="code-annotation-target"><a href="#annotated-cell-7-6" aria-label="6"></a>  <span class="fu">theme_void</span>()</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-annotation">
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
@@ -627,14 +630,14 @@
 <section id="data-wrangling" class="slide level2">
 <h2>Data Wrangling</h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-8"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-8-1"><a href="#annotated-cell-8-1"></a>cafe_english <span class="ot">&lt;-</span> cafe <span class="sc">|&gt;</span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="1">1</button><span id="annotated-cell-8-2" class="code-annotation-target"><a href="#annotated-cell-8-2"></a>  <span class="fu">filter</span>(country <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Australia"</span>, <span class="st">"USA"</span>, <span class="st">"UK"</span>))</span>
-<span id="annotated-cell-8-3"><a href="#annotated-cell-8-3"></a></span>
-<span id="annotated-cell-8-4"><a href="#annotated-cell-8-4"></a>cafe_summary <span class="ot">&lt;-</span> cafe_english <span class="sc">|&gt;</span></span>
-<span id="annotated-cell-8-5"><a href="#annotated-cell-8-5"></a>  <span class="fu">group_by</span>(country) <span class="sc">|&gt;</span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="2">2</button><span id="annotated-cell-8-6" class="code-annotation-target"><a href="#annotated-cell-8-6"></a>  <span class="fu">summarize</span>(<span class="at">mean =</span> <span class="fu">mean</span>(price_gbp), <span class="at">median =</span> <span class="fu">median</span>(price_gbp)) <span class="sc">|&gt;</span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="3">3</button><span id="annotated-cell-8-7" class="code-annotation-target"><a href="#annotated-cell-8-7"></a>  <span class="fu">pivot_longer</span>(<span class="sc">-</span>country, <span class="at">names_to=</span><span class="st">"summary"</span>) <span class="sc">|&gt;</span></span>
-<span id="annotated-cell-8-8"><a href="#annotated-cell-8-8"></a>  <span class="fu">mutate</span>(<span class="at">summary =</span> <span class="fu">factor</span>(summary))</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-8"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-8-1"><a href="#annotated-cell-8-1" aria-label="1"></a>cafe_english <span class="ot">&lt;-</span> cafe <span class="sc">|&gt;</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="1">1</button><span id="annotated-cell-8-2" class="code-annotation-target"><a href="#annotated-cell-8-2" aria-label="2"></a>  <span class="fu">filter</span>(country <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Australia"</span>, <span class="st">"USA"</span>, <span class="st">"UK"</span>))</span>
+<span id="annotated-cell-8-3"><a href="#annotated-cell-8-3" aria-label="3"></a></span>
+<span id="annotated-cell-8-4"><a href="#annotated-cell-8-4" aria-label="4"></a>cafe_summary <span class="ot">&lt;-</span> cafe_english <span class="sc">|&gt;</span></span>
+<span id="annotated-cell-8-5"><a href="#annotated-cell-8-5" aria-label="5"></a>  <span class="fu">group_by</span>(country) <span class="sc">|&gt;</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="2">2</button><span id="annotated-cell-8-6" class="code-annotation-target"><a href="#annotated-cell-8-6" aria-label="6"></a>  <span class="fu">summarize</span>(<span class="at">mean =</span> <span class="fu">mean</span>(price_gbp), <span class="at">median =</span> <span class="fu">median</span>(price_gbp)) <span class="sc">|&gt;</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="3">3</button><span id="annotated-cell-8-7" class="code-annotation-target"><a href="#annotated-cell-8-7" aria-label="7"></a>  <span class="fu">pivot_longer</span>(<span class="sc">-</span>country, <span class="at">names_to=</span><span class="st">"summary"</span>) <span class="sc">|&gt;</span></span>
+<span id="annotated-cell-8-8"><a href="#annotated-cell-8-8" aria-label="8"></a>  <span class="fu">mutate</span>(<span class="at">summary =</span> <span class="fu">factor</span>(summary))</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-annotation">
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-8" data-target-annotation="1">1</dt>
@@ -675,12 +678,12 @@
 <h2>Histograms - Cost of Cappuccino</h2>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-9"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-9-1"><a href="#annotated-cell-9-1"></a>cafe <span class="sc">|&gt;</span></span>
-<span id="annotated-cell-9-2"><a href="#annotated-cell-9-2"></a>  <span class="fu">filter</span>(country <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"USA"</span>, <span class="st">"UK"</span>, <span class="st">"Australia"</span>)) <span class="sc">|&gt;</span></span>
-<span id="annotated-cell-9-3"><a href="#annotated-cell-9-3"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> price_gbp, <span class="at">fill =</span> country)) <span class="sc">+</span> </span>
-<span id="annotated-cell-9-4"><a href="#annotated-cell-9-4"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> .<span class="dv">2</span>) <span class="sc">+</span> </span>
-<span id="annotated-cell-9-5"><a href="#annotated-cell-9-5"></a>  <span class="fu">guides</span>(<span class="at">fill =</span> <span class="st">"none"</span>) <span class="sc">+</span> </span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-9" data-target-annotation="1">1</button><span id="annotated-cell-9-6" class="code-annotation-target"><a href="#annotated-cell-9-6"></a>  <span class="fu">facet_grid</span>(country<span class="sc">~</span>., <span class="at">scales =</span> <span class="st">"free_y"</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-9"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-9-1"><a href="#annotated-cell-9-1" aria-label="1"></a>cafe <span class="sc">|&gt;</span></span>
+<span id="annotated-cell-9-2"><a href="#annotated-cell-9-2" aria-label="2"></a>  <span class="fu">filter</span>(country <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"USA"</span>, <span class="st">"UK"</span>, <span class="st">"Australia"</span>)) <span class="sc">|&gt;</span></span>
+<span id="annotated-cell-9-3"><a href="#annotated-cell-9-3" aria-label="3"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> price_gbp, <span class="at">fill =</span> country)) <span class="sc">+</span> </span>
+<span id="annotated-cell-9-4"><a href="#annotated-cell-9-4" aria-label="4"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> .<span class="dv">2</span>) <span class="sc">+</span> </span>
+<span id="annotated-cell-9-5"><a href="#annotated-cell-9-5" aria-label="5"></a>  <span class="fu">guides</span>(<span class="at">fill =</span> <span class="st">"none"</span>) <span class="sc">+</span> </span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-9" data-target-annotation="1">1</button><span id="annotated-cell-9-6" class="code-annotation-target"><a href="#annotated-cell-9-6" aria-label="6"></a>  <span class="fu">facet_grid</span>(country<span class="sc">~</span>., <span class="at">scales =</span> <span class="st">"free_y"</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-annotation">
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
@@ -703,18 +706,18 @@
 <h2>Histograms</h2>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a><span class="fu">ggplot</span>(cafe_english, </span>
-<span id="cb6-2"><a></a>       <span class="fu">aes</span>(<span class="at">x =</span> price_gbp, </span>
-<span id="cb6-3"><a></a>           <span class="at">fill =</span> country)) <span class="sc">+</span> </span>
-<span id="cb6-4"><a></a>  <span class="fu">geom_histogram</span>(<span class="at">boundary =</span> <span class="dv">0</span>, <span class="at">closed=</span><span class="st">"left"</span>) <span class="sc">+</span></span>
-<span id="cb6-5"><a></a>  <span class="fu">geom_segment</span>(</span>
-<span id="cb6-6"><a></a>    <span class="at">data =</span> cafe_summary,</span>
-<span id="cb6-7"><a></a>    <span class="fu">aes</span>(<span class="at">x =</span> value, <span class="at">xend =</span> value,</span>
-<span id="cb6-8"><a></a>        <span class="at">y =</span> <span class="dv">0</span>, <span class="at">yend =</span> <span class="cn">Inf</span>,</span>
-<span id="cb6-9"><a></a>        <span class="at">linetype =</span> summary), </span>
-<span id="cb6-10"><a></a>    <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
-<span id="cb6-11"><a></a>  <span class="fu">facet_grid</span>(country<span class="sc">~</span>., <span class="at">scales =</span> <span class="st">"free_y"</span>) <span class="sc">+</span></span>
-<span id="cb6-12"><a></a>  <span class="fu">guides</span>(<span class="at">fill =</span> <span class="st">'none'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a aria-label="1"></a><span class="fu">ggplot</span>(cafe_english, </span>
+<span id="cb6-2"><a aria-label="2"></a>       <span class="fu">aes</span>(<span class="at">x =</span> price_gbp, </span>
+<span id="cb6-3"><a aria-label="3"></a>           <span class="at">fill =</span> country)) <span class="sc">+</span> </span>
+<span id="cb6-4"><a aria-label="4"></a>  <span class="fu">geom_histogram</span>(<span class="at">boundary =</span> <span class="dv">0</span>, <span class="at">closed=</span><span class="st">"left"</span>) <span class="sc">+</span></span>
+<span id="cb6-5"><a aria-label="5"></a>  <span class="fu">geom_segment</span>(</span>
+<span id="cb6-6"><a aria-label="6"></a>    <span class="at">data =</span> cafe_summary,</span>
+<span id="cb6-7"><a aria-label="7"></a>    <span class="fu">aes</span>(<span class="at">x =</span> value, <span class="at">xend =</span> value,</span>
+<span id="cb6-8"><a aria-label="8"></a>        <span class="at">y =</span> <span class="dv">0</span>, <span class="at">yend =</span> <span class="cn">Inf</span>,</span>
+<span id="cb6-9"><a aria-label="9"></a>        <span class="at">linetype =</span> summary), </span>
+<span id="cb6-10"><a aria-label="10"></a>    <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
+<span id="cb6-11"><a aria-label="11"></a>  <span class="fu">facet_grid</span>(country<span class="sc">~</span>., <span class="at">scales =</span> <span class="st">"free_y"</span>) <span class="sc">+</span></span>
+<span id="cb6-12"><a aria-label="12"></a>  <span class="fu">guides</span>(<span class="at">fill =</span> <span class="st">'none'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div>
@@ -733,17 +736,17 @@
 <h2>Histograms</h2>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="fu">ggplot</span>(cafe_english, </span>
-<span id="cb7-2"><a></a>       <span class="fu">aes</span>(<span class="at">x =</span> price_gbp, </span>
-<span id="cb7-3"><a></a>           <span class="at">fill =</span> country)) <span class="sc">+</span> </span>
-<span id="cb7-4"><a></a>  <span class="fu">geom_histogram</span>(<span class="at">boundary =</span> <span class="dv">0</span>, <span class="at">closed=</span><span class="st">"left"</span>, <span class="at">binwidth =</span> <span class="fl">0.05</span>) <span class="sc">+</span> </span>
-<span id="cb7-5"><a></a>  <span class="fu">geom_segment</span>(</span>
-<span id="cb7-6"><a></a>    <span class="at">data =</span> cafe_summary,</span>
-<span id="cb7-7"><a></a>    <span class="fu">aes</span>(<span class="at">x =</span> value, <span class="at">xend =</span> value,</span>
-<span id="cb7-8"><a></a>        <span class="at">y =</span> <span class="dv">0</span>, <span class="at">yend =</span> <span class="cn">Inf</span>,</span>
-<span id="cb7-9"><a></a>        <span class="at">linetype =</span> summary), <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
-<span id="cb7-10"><a></a>  <span class="fu">facet_grid</span>(country<span class="sc">~</span>., <span class="at">scales =</span> <span class="st">"free_y"</span>) <span class="sc">+</span></span>
-<span id="cb7-11"><a></a>  <span class="fu">guides</span>(<span class="at">fill =</span> <span class="st">'none'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a aria-label="1"></a><span class="fu">ggplot</span>(cafe_english, </span>
+<span id="cb7-2"><a aria-label="2"></a>       <span class="fu">aes</span>(<span class="at">x =</span> price_gbp, </span>
+<span id="cb7-3"><a aria-label="3"></a>           <span class="at">fill =</span> country)) <span class="sc">+</span> </span>
+<span id="cb7-4"><a aria-label="4"></a>  <span class="fu">geom_histogram</span>(<span class="at">boundary =</span> <span class="dv">0</span>, <span class="at">closed=</span><span class="st">"left"</span>, <span class="at">binwidth =</span> <span class="fl">0.05</span>) <span class="sc">+</span> </span>
+<span id="cb7-5"><a aria-label="5"></a>  <span class="fu">geom_segment</span>(</span>
+<span id="cb7-6"><a aria-label="6"></a>    <span class="at">data =</span> cafe_summary,</span>
+<span id="cb7-7"><a aria-label="7"></a>    <span class="fu">aes</span>(<span class="at">x =</span> value, <span class="at">xend =</span> value,</span>
+<span id="cb7-8"><a aria-label="8"></a>        <span class="at">y =</span> <span class="dv">0</span>, <span class="at">yend =</span> <span class="cn">Inf</span>,</span>
+<span id="cb7-9"><a aria-label="9"></a>        <span class="at">linetype =</span> summary), <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
+<span id="cb7-10"><a aria-label="10"></a>  <span class="fu">facet_grid</span>(country<span class="sc">~</span>., <span class="at">scales =</span> <span class="st">"free_y"</span>) <span class="sc">+</span></span>
+<span id="cb7-11"><a aria-label="11"></a>  <span class="fu">guides</span>(<span class="at">fill =</span> <span class="st">'none'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div>
@@ -765,10 +768,10 @@
 <h2>Density Plots</h2>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a><span class="fu">ggplot</span>(cafe_english, </span>
-<span id="cb8-2"><a></a>       <span class="fu">aes</span>(<span class="at">x =</span> price_gbp, </span>
-<span id="cb8-3"><a></a>           <span class="at">color =</span> country)) <span class="sc">+</span> </span>
-<span id="cb8-4"><a></a>  <span class="fu">geom_density</span>(<span class="at">adjust =</span> <span class="dv">2</span>) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a aria-label="1"></a><span class="fu">ggplot</span>(cafe_english, </span>
+<span id="cb8-2"><a aria-label="2"></a>       <span class="fu">aes</span>(<span class="at">x =</span> price_gbp, </span>
+<span id="cb8-3"><a aria-label="3"></a>           <span class="at">color =</span> country)) <span class="sc">+</span> </span>
+<span id="cb8-4"><a aria-label="4"></a>  <span class="fu">geom_density</span>(<span class="at">adjust =</span> <span class="dv">2</span>) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div>
@@ -787,10 +790,10 @@
 <h2>Density Plots</h2>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="fu">ggplot</span>(cafe_english, </span>
-<span id="cb9-2"><a></a>       <span class="fu">aes</span>(<span class="at">x =</span> price_gbp, </span>
-<span id="cb9-3"><a></a>           <span class="at">color =</span> country)) <span class="sc">+</span> </span>
-<span id="cb9-4"><a></a>  <span class="fu">geom_density</span>(<span class="at">adjust =</span> .<span class="dv">5</span>) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a aria-label="1"></a><span class="fu">ggplot</span>(cafe_english, </span>
+<span id="cb9-2"><a aria-label="2"></a>       <span class="fu">aes</span>(<span class="at">x =</span> price_gbp, </span>
+<span id="cb9-3"><a aria-label="3"></a>           <span class="at">color =</span> country)) <span class="sc">+</span> </span>
+<span id="cb9-4"><a aria-label="4"></a>  <span class="fu">geom_density</span>(<span class="at">adjust =</span> .<span class="dv">5</span>) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div>
@@ -815,10 +818,10 @@
 <div class="columns">
 <div class="column">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a><span class="fu">ggplot</span>(cafe_english, </span>
-<span id="cb10-2"><a></a>       <span class="fu">aes</span>(<span class="at">x =</span> country, </span>
-<span id="cb10-3"><a></a>           <span class="at">y =</span> price_gbp)) <span class="sc">+</span> </span>
-<span id="cb10-4"><a></a>  <span class="fu">geom_boxplot</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a aria-label="1"></a><span class="fu">ggplot</span>(cafe_english, </span>
+<span id="cb10-2"><a aria-label="2"></a>       <span class="fu">aes</span>(<span class="at">x =</span> country, </span>
+<span id="cb10-3"><a aria-label="3"></a>           <span class="at">y =</span> price_gbp)) <span class="sc">+</span> </span>
+<span id="cb10-4"><a aria-label="4"></a>  <span class="fu">geom_boxplot</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure>
@@ -848,17 +851,17 @@
 <h2>Violin Plots</h2>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a><span class="fu">ggplot</span>(</span>
-<span id="cb11-2"><a></a>  cafe_english, </span>
-<span id="cb11-3"><a></a>  <span class="fu">aes</span>(<span class="at">x =</span> country, </span>
-<span id="cb11-4"><a></a>      <span class="at">y =</span> price_gbp, </span>
-<span id="cb11-5"><a></a>      <span class="at">fill =</span> country)) <span class="sc">+</span> </span>
-<span id="cb11-6"><a></a>  <span class="fu">geom_violin</span>(<span class="at">adjust =</span> <span class="fl">0.75</span>) <span class="sc">+</span> </span>
-<span id="cb11-7"><a></a>  <span class="fu">geom_boxplot</span>(</span>
-<span id="cb11-8"><a></a>    <span class="at">width=</span>.<span class="dv">1</span>, </span>
-<span id="cb11-9"><a></a>    <span class="at">fill =</span> <span class="st">"white"</span>,</span>
-<span id="cb11-10"><a></a>    <span class="at">outliers =</span> <span class="cn">FALSE</span>) <span class="sc">+</span> </span>
-<span id="cb11-11"><a></a>  <span class="fu">guides</span>(<span class="at">fill =</span> <span class="st">"none"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a aria-label="1"></a><span class="fu">ggplot</span>(</span>
+<span id="cb11-2"><a aria-label="2"></a>  cafe_english, </span>
+<span id="cb11-3"><a aria-label="3"></a>  <span class="fu">aes</span>(<span class="at">x =</span> country, </span>
+<span id="cb11-4"><a aria-label="4"></a>      <span class="at">y =</span> price_gbp, </span>
+<span id="cb11-5"><a aria-label="5"></a>      <span class="at">fill =</span> country)) <span class="sc">+</span> </span>
+<span id="cb11-6"><a aria-label="6"></a>  <span class="fu">geom_violin</span>(<span class="at">adjust =</span> <span class="fl">0.75</span>) <span class="sc">+</span> </span>
+<span id="cb11-7"><a aria-label="7"></a>  <span class="fu">geom_boxplot</span>(</span>
+<span id="cb11-8"><a aria-label="8"></a>    <span class="at">width=</span>.<span class="dv">1</span>, </span>
+<span id="cb11-9"><a aria-label="9"></a>    <span class="at">fill =</span> <span class="st">"white"</span>,</span>
+<span id="cb11-10"><a aria-label="10"></a>    <span class="at">outliers =</span> <span class="cn">FALSE</span>) <span class="sc">+</span> </span>
+<span id="cb11-11"><a aria-label="11"></a>  <span class="fu">guides</span>(<span class="at">fill =</span> <span class="st">"none"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div>

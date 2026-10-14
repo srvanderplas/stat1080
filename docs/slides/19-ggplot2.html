@@ -6,11 +6,11 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
 <link href="../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
 <link href="../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.9.38">
+  <meta name="generator" content="quarto-1.10.19">
 
   <title>STAT 1080 - Fall 2026 – 1.19 ggplot2</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -22,10 +22,13 @@
     /* Default styles provided by pandoc.
     ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
     */
-    code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
     ul.task-list li input[type="checkbox"] {
@@ -289,14 +292,14 @@
 <h2>The Grammar of Graphics</h2>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">data</span>(<span class="st">"penguins"</span>)</span>
-<span id="cb1-2"><a></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb1-3"><a></a></span>
-<span id="cb1-4"><a></a><span class="fu">ggplot</span>(</span>
-<span id="cb1-5"><a></a>  penguins, </span>
-<span id="cb1-6"><a></a>  <span class="fu">aes</span>(<span class="at">x =</span> bill_len, </span>
-<span id="cb1-7"><a></a>      <span class="at">y =</span> flipper_len)</span>
-<span id="cb1-8"><a></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a aria-label="1"></a><span class="fu">data</span>(<span class="st">"penguins"</span>)</span>
+<span id="cb1-2"><a aria-label="2"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb1-3"><a aria-label="3"></a></span>
+<span id="cb1-4"><a aria-label="4"></a><span class="fu">ggplot</span>(</span>
+<span id="cb1-5"><a aria-label="5"></a>  penguins, </span>
+<span id="cb1-6"><a aria-label="6"></a>  <span class="fu">aes</span>(<span class="at">x =</span> bill_len, </span>
+<span id="cb1-7"><a aria-label="7"></a>      <span class="at">y =</span> flipper_len)</span>
+<span id="cb1-8"><a aria-label="8"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div>
@@ -434,17 +437,17 @@
 <h2>Geometric Objects</h2>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="fu">data</span>(<span class="st">"penguins"</span>)</span>
-<span id="cb3-2"><a></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb3-3"><a></a></span>
-<span id="cb3-4"><a></a><span class="fu">ggplot</span>(</span>
-<span id="cb3-5"><a></a>  penguins, </span>
-<span id="cb3-6"><a></a>  <span class="fu">aes</span>(<span class="at">x =</span> bill_len, </span>
-<span id="cb3-7"><a></a>      <span class="at">y =</span> flipper_len)</span>
-<span id="cb3-8"><a></a>) <span class="sc">+</span> </span>
-<span id="cb3-9"><a></a>  <span class="co"># aes is inherited from </span></span>
-<span id="cb3-10"><a></a>  <span class="co"># ggplot() statement</span></span>
-<span id="cb3-11"><a></a>  <span class="fu">geom_point</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a aria-label="1"></a><span class="fu">data</span>(<span class="st">"penguins"</span>)</span>
+<span id="cb3-2"><a aria-label="2"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb3-3"><a aria-label="3"></a></span>
+<span id="cb3-4"><a aria-label="4"></a><span class="fu">ggplot</span>(</span>
+<span id="cb3-5"><a aria-label="5"></a>  penguins, </span>
+<span id="cb3-6"><a aria-label="6"></a>  <span class="fu">aes</span>(<span class="at">x =</span> bill_len, </span>
+<span id="cb3-7"><a aria-label="7"></a>      <span class="at">y =</span> flipper_len)</span>
+<span id="cb3-8"><a aria-label="8"></a>) <span class="sc">+</span> </span>
+<span id="cb3-9"><a aria-label="9"></a>  <span class="co"># aes is inherited from </span></span>
+<span id="cb3-10"><a aria-label="10"></a>  <span class="co"># ggplot() statement</span></span>
+<span id="cb3-11"><a aria-label="11"></a>  <span class="fu">geom_point</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div>
@@ -459,18 +462,18 @@
 <h2>Geometric Objects</h2>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="fu">data</span>(<span class="st">"penguins"</span>)</span>
-<span id="cb4-2"><a></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb4-3"><a></a></span>
-<span id="cb4-4"><a></a><span class="fu">ggplot</span>(</span>
-<span id="cb4-5"><a></a>  penguins, </span>
-<span id="cb4-6"><a></a>  <span class="fu">aes</span>(<span class="at">x =</span> bill_len, </span>
-<span id="cb4-7"><a></a>      <span class="at">y =</span> flipper_len, </span>
-<span id="cb4-8"><a></a>      <span class="at">color =</span> species)</span>
-<span id="cb4-9"><a></a>) <span class="sc">+</span> </span>
-<span id="cb4-10"><a></a>  <span class="co"># aes is inherited from </span></span>
-<span id="cb4-11"><a></a>  <span class="co"># ggplot() statement</span></span>
-<span id="cb4-12"><a></a>  <span class="fu">geom_point</span>() </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a aria-label="1"></a><span class="fu">data</span>(<span class="st">"penguins"</span>)</span>
+<span id="cb4-2"><a aria-label="2"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb4-3"><a aria-label="3"></a></span>
+<span id="cb4-4"><a aria-label="4"></a><span class="fu">ggplot</span>(</span>
+<span id="cb4-5"><a aria-label="5"></a>  penguins, </span>
+<span id="cb4-6"><a aria-label="6"></a>  <span class="fu">aes</span>(<span class="at">x =</span> bill_len, </span>
+<span id="cb4-7"><a aria-label="7"></a>      <span class="at">y =</span> flipper_len, </span>
+<span id="cb4-8"><a aria-label="8"></a>      <span class="at">color =</span> species)</span>
+<span id="cb4-9"><a aria-label="9"></a>) <span class="sc">+</span> </span>
+<span id="cb4-10"><a aria-label="10"></a>  <span class="co"># aes is inherited from </span></span>
+<span id="cb4-11"><a aria-label="11"></a>  <span class="co"># ggplot() statement</span></span>
+<span id="cb4-12"><a aria-label="12"></a>  <span class="fu">geom_point</span>() </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div>
@@ -490,12 +493,12 @@
 <section id="position-adjustments" class="slide level2">
 <h2>Position Adjustments</h2>
 <p>Arrange geoms that would otherwise use the same space</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> penguins, <span class="fu">aes</span>(<span class="at">x =</span> species, <span class="at">fill =</span> sex)) <span class="sc">+</span></span>
-<span id="cb5-2"><a></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"bottom"</span>)</span>
-<span id="cb5-3"><a></a></span>
-<span id="cb5-4"><a></a>p <span class="sc">+</span> <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">"stack"</span>) <span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="st">"Position: Stack"</span>)</span>
-<span id="cb5-5"><a></a>p <span class="sc">+</span> <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">"dodge"</span>) <span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="st">"Position: Dodge"</span>)</span>
-<span id="cb5-6"><a></a>p <span class="sc">+</span> <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">"fill"</span>) <span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="st">"Position: Fill"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a aria-label="1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> penguins, <span class="fu">aes</span>(<span class="at">x =</span> species, <span class="at">fill =</span> sex)) <span class="sc">+</span></span>
+<span id="cb5-2"><a aria-label="2"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"bottom"</span>)</span>
+<span id="cb5-3"><a aria-label="3"></a></span>
+<span id="cb5-4"><a aria-label="4"></a>p <span class="sc">+</span> <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">"stack"</span>) <span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="st">"Position: Stack"</span>)</span>
+<span id="cb5-5"><a aria-label="5"></a>p <span class="sc">+</span> <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">"dodge"</span>) <span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="st">"Position: Dodge"</span>)</span>
+<span id="cb5-6"><a aria-label="6"></a>p <span class="sc">+</span> <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">"fill"</span>) <span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="st">"Position: Fill"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell quarto-layout-panel" data-layout-ncol="3">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
@@ -513,13 +516,13 @@
 <section id="position-adjustments-1" class="slide level2">
 <h2>Position Adjustments</h2>
 <p>Arrange geoms that would otherwise use the same space</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(penguins, </span>
-<span id="cb6-2"><a></a>            <span class="fu">aes</span>(<span class="at">x =</span> flipper_len, <span class="at">y =</span> bill_dep, </span>
-<span id="cb6-3"><a></a>                <span class="at">color =</span> species)) <span class="sc">+</span> </span>
-<span id="cb6-4"><a></a>  <span class="fu">guides</span>(<span class="at">color =</span> <span class="st">'none'</span>)</span>
-<span id="cb6-5"><a></a></span>
-<span id="cb6-6"><a></a>p <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="at">shape =</span> <span class="dv">16</span>, <span class="at">alpha =</span> .<span class="dv">5</span>)</span>
-<span id="cb6-7"><a></a>p <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="at">shape =</span> <span class="dv">16</span>, <span class="at">alpha =</span> .<span class="dv">5</span>, <span class="at">position =</span> <span class="st">"jitter"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a aria-label="1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(penguins, </span>
+<span id="cb6-2"><a aria-label="2"></a>            <span class="fu">aes</span>(<span class="at">x =</span> flipper_len, <span class="at">y =</span> bill_dep, </span>
+<span id="cb6-3"><a aria-label="3"></a>                <span class="at">color =</span> species)) <span class="sc">+</span> </span>
+<span id="cb6-4"><a aria-label="4"></a>  <span class="fu">guides</span>(<span class="at">color =</span> <span class="st">'none'</span>)</span>
+<span id="cb6-5"><a aria-label="5"></a></span>
+<span id="cb6-6"><a aria-label="6"></a>p <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="at">shape =</span> <span class="dv">16</span>, <span class="at">alpha =</span> .<span class="dv">5</span>)</span>
+<span id="cb6-7"><a aria-label="7"></a>p <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="at">shape =</span> <span class="dv">16</span>, <span class="at">alpha =</span> .<span class="dv">5</span>, <span class="at">position =</span> <span class="st">"jitter"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell quarto-layout-panel" data-layout-ncol="2">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
@@ -741,38 +744,6 @@ geom_segment(aes(x = x_prev,
 </div></div>
 </section></section>
 <section>
-<section id="small-multiples" class="title-slide slide level1 center">
-<h1>Small Multiples</h1>
-
-</section>
-<section id="subplots-facets" class="slide level2">
-<h2>Subplots (Facets)</h2>
-<p>When there are too many categorical variables, subplots can help!</p>
-<div class="cell columns column-output-location">
-<div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> penguins,</span>
-<span id="cb14-2"><a></a>       <span class="fu">aes</span>(<span class="at">x =</span> body_mass, </span>
-<span id="cb14-3"><a></a>           <span class="at">y =</span> bill_len, </span>
-<span id="cb14-4"><a></a>           <span class="at">color =</span> sex)) <span class="sc">+</span> </span>
-<span id="cb14-5"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb14-6"><a></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>species, </span>
-<span id="cb14-7"><a></a>             <span class="at">ncol =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
-<span id="cb14-8"><a></a>  <span class="fu">guides</span>(<span class="at">color =</span> <span class="st">'none'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div><div class="column">
-<div class="cell-output-display">
-<div>
-<figure>
-<p><a href="19-ggplot2_files/figure-revealjs/unnamed-chunk-14-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-26"><img data-src="19-ggplot2_files/figure-revealjs/unnamed-chunk-14-1.png" width="384"></a></p>
-</figure>
-</div>
-</div>
-</div></div>
-<ul>
-<li><code>facet_wrap()</code> - no ordering</li>
-<li><code>facet_grid(rowvar ~ colvar)</code> - align in a grid</li>
-</ul>
-</section></section>
-<section>
 <section id="scales" class="title-slide slide level1 center">
 <h1>Scales</h1>
 
@@ -786,7 +757,7 @@ geom_segment(aes(x = x_prev,
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="19-ggplot2_files/figure-revealjs/unnamed-chunk-15-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-27" title="geom_bar uses scale_x_discrete()"><img data-src="19-ggplot2_files/figure-revealjs/unnamed-chunk-15-1.png" width="576" alt="geom_bar uses scale_x_discrete()"></a></p>
+<p><a href="19-ggplot2_files/figure-revealjs/unnamed-chunk-14-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-26" title="geom_bar uses scale_x_discrete()"><img data-src="19-ggplot2_files/figure-revealjs/unnamed-chunk-14-1.png" width="576" alt="geom_bar uses scale_x_discrete()"></a></p>
 <figcaption><code>geom_bar</code> uses <code>scale_x_discrete()</code></figcaption>
 </figure>
 </div>
@@ -796,7 +767,7 @@ geom_segment(aes(x = x_prev,
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="19-ggplot2_files/figure-revealjs/unnamed-chunk-16-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-28" title="geom_histogram and geom_density use scale_x_continuous()"><img data-src="19-ggplot2_files/figure-revealjs/unnamed-chunk-16-1.png" width="576" alt="geom_histogram and geom_density use scale_x_continuous()"></a></p>
+<p><a href="19-ggplot2_files/figure-revealjs/unnamed-chunk-15-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-27" title="geom_histogram and geom_density use scale_x_continuous()"><img data-src="19-ggplot2_files/figure-revealjs/unnamed-chunk-15-1.png" width="576" alt="geom_histogram and geom_density use scale_x_continuous()"></a></p>
 <figcaption><code>geom_histogram</code> and <code>geom_density</code> use <code>scale_x_continuous()</code></figcaption>
 </figure>
 </div>
@@ -824,7 +795,7 @@ geom_segment(aes(x = x_prev,
 <div class="cell-output-display">
 <div>
 <figure>
-<p><a href="19-ggplot2_files/figure-revealjs/unnamed-chunk-17-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-29"><img data-src="19-ggplot2_files/figure-revealjs/unnamed-chunk-17-1.png" width="1152"></a></p>
+<p><a href="19-ggplot2_files/figure-revealjs/unnamed-chunk-16-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-28"><img data-src="19-ggplot2_files/figure-revealjs/unnamed-chunk-16-1.png" width="1152"></a></p>
 </figure>
 </div>
 </div>
@@ -837,7 +808,7 @@ geom_segment(aes(x = x_prev,
 <div class="cell-output-display">
 <div>
 <figure>
-<p><a href="19-ggplot2_files/figure-revealjs/unnamed-chunk-18-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-30"><img data-src="19-ggplot2_files/figure-revealjs/unnamed-chunk-18-1.png" width="1152"></a></p>
+<p><a href="19-ggplot2_files/figure-revealjs/unnamed-chunk-17-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-29"><img data-src="19-ggplot2_files/figure-revealjs/unnamed-chunk-17-1.png" width="1152"></a></p>
 </figure>
 </div>
 </div>
@@ -863,7 +834,7 @@ geom_segment(aes(x = x_prev,
 <div class="cell-output-display">
 <div>
 <figure>
-<p><a href="19-ggplot2_files/figure-revealjs/unnamed-chunk-19-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-31"><img data-src="19-ggplot2_files/figure-revealjs/unnamed-chunk-19-1.png" width="1152"></a></p>
+<p><a href="19-ggplot2_files/figure-revealjs/unnamed-chunk-18-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-30"><img data-src="19-ggplot2_files/figure-revealjs/unnamed-chunk-18-1.png" width="1152"></a></p>
 </figure>
 </div>
 </div>
@@ -879,6 +850,39 @@ geom_segment(aes(x = x_prev,
 <li>Flip: swap x and y axes</li>
 <li>Polar: specify which variable (x, y) is the angle (theta)</li>
 <li>Trans: specify x or y axis transformations</li>
+</ul>
+</section></section>
+<section>
+<section id="small-multiples" class="title-slide slide level1 center">
+<h1>Small Multiples</h1>
+
+</section>
+<section id="subplots-facets" class="slide level2">
+<h2>Subplots (Facets)</h2>
+<p>When there are too many categorical variables, subplots can help!</p>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a aria-label="1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> penguins,</span>
+<span id="cb14-2"><a aria-label="2"></a>       <span class="fu">aes</span>(<span class="at">x =</span> body_mass, </span>
+<span id="cb14-3"><a aria-label="3"></a>           <span class="at">y =</span> bill_len, </span>
+<span id="cb14-4"><a aria-label="4"></a>           <span class="at">color =</span> sex)) <span class="sc">+</span> </span>
+<span id="cb14-5"><a aria-label="5"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb14-6"><a aria-label="6"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>species, </span>
+<span id="cb14-7"><a aria-label="7"></a>             <span class="at">ncol =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb14-8"><a aria-label="8"></a>  <span class="fu">guides</span>(<span class="at">color =</span> <span class="st">'none'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div><div class="column">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><a href="19-ggplot2_files/figure-revealjs/unnamed-chunk-19-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-31"><img data-src="19-ggplot2_files/figure-revealjs/unnamed-chunk-19-1.png" width="384"></a></p>
+</figure>
+</div>
+</div>
+</div></div>
+<ul>
+<li><p><code>facet_wrap()</code> - no ordering</p></li>
+<li><p><code>facet_grid(rowvar ~ colvar)</code> - align in a grid</p></li>
+<li><p>More about this next time!</p></li>
 </ul>
 
 
