@@ -30,13 +30,13 @@ October 12-18, 2026
 
 - [Attendance Quiz 10/14](https://usu.instructure.com/courses/819584/assignments/5292947){target="_blank"}
 - [Advanced `ggplot2`](../slides/20-adv-ggplot2.qmd){target="_blank"}
-- [Data Visualization Principles](../slides/21-data-vis-principles.qmd){target="_blank"}
 - [Activity 7.2.p - Advanced `ggplot2`](https://usu.instructure.com/courses/819584/quizzes/1462843) [qmd template](../lab/_20-ggplot2-adv.qmd), [html](../lab/20-ggplot2-adv.qmd), [solutions](../lab/20-ggplot2-adv-sol.qmd)
 
 
 ## 🎉 Friday 🥳
 
 - [Attendance Quiz 10/16](https://usu.instructure.com/courses/819584/assignments/5292962){target="_blank"}
+- [Data Visualization Principles](../slides/21-data-vis-principles.qmd){target="_blank"}
 - [Lab: Effective Data Visualization](https://usu.instructure.com/courses/819584/modules/items/7952204){target="_blank"} [qmd template](../lab/21-effective-data-vis.qmd){target="_blank"}, [html](../lab/21-effective-data-vis.qmd), [visual solutions](../lab/21-effective-data-vis-visual-sol.qmd)
 
 

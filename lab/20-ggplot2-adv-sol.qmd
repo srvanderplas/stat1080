@@ -1,5 +1,5 @@
 ---
-title: "2.3.a - Class Activity"
+title: "7.2.p - Advanced ggplot2 (Solutions)"
 format: 
   html:
     embed-resources: true
