@@ -4638,6 +4638,6 @@
     "href": "slides/20-adv-ggplot2.html#my-contribution",
     "title": "1.20 Advanced ggplot2 & Data Visualization Principles",
     "section": "My Contribution",
-    "text": "My Contribution"
+    "text": "My Contribution\n\n\n\n\n\npie charts\nused as bubbles in a bubble-line chart hybrid\nfill is not colorblind friendly\nradius of pies mapped to data points, so area (perceived) is mapped to \\(n^2\\), not \\(n\\)\ny-axis range goes below 0 – not possible\nfacet titles do not have enough contrast\ngrid lines are incredibly low contrast and dotted – not really visible."
   }
 ]
