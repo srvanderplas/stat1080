@@ -752,7 +752,6 @@ p2 <- penguins |>
 #| fig-height: 3.5
 #| layout-valign: "top"
 #| out-width: 100%
-#| output-location: slide
 #| fig-dpi: 300
 #| fig-alt: "Two sets of facetted scatterplots. In the first figure, a scatterplot of penguin bill length (x) by bill depth (y) in mm, with separate subplots for Chinstrap, Adelie, and Gentoo penguins. Points are colored by sex (M, F, NA). Adelie penguins have much smaller bill length than the other species, and Gentoo penguins have much smaller bill depth than the other species. In all species, however, female penguins have smaller bill dimensions than male penguins. In the second figure, a scatterplot of penguin bill length (x) by bill depth (y) in mm, with separate subplots for males and females. Points are colored by species (Adelie, Gentoo, Chinstrap). Adelie penguins have much smaller bill length than the other species, and Gentoo penguins have much smaller bill depth than the other species. In all species, however, female penguins have smaller bill dimensions than male penguins."
 
@@ -820,6 +819,9 @@ span.foliage {
 - Pixel accuracy - the number of pixels should match the magnitude of the data!
 - Infographics, logos, etc. look cute (sometimes?) but are often less accurately perceived.
 
+## Color Choices
+
+<iframe width="100%" height="auto" src="https://www.youtube.com/embed/ZOyS8xm6W78" title="Don&#39;t Use the Rainbow Color Map" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 # Hall of Graphical Shame
 
@@ -841,7 +843,7 @@ span.foliage {
 
 ![](images/misleading-chart-neck-stacked-graph.jpg){fig-alt="A screenshot of a promoted social media post from BetMGM that reads 'Mike Glennon has 1 win since 2014. Glennon's earned over 5.3 mil per win in the NFL (6-24)'. A picture is included, titled 'Mike Glennon Career Earnings', with a head and shoulders of a man (presumably mike glennon) and a set of colored bars (not scaled to the amount shown?) with team logos and the amount of money earned with each team. The overall effect is to make the head look something like a rainbow giraffe with a WTF look on its face." width="40%"}
 
-## The Movement: Radial Slices of egg shapes can die in a fire
+## The Movement to end bad charts?
 
 ![](images/misleading-graphics-lump-pie.png){fig-alt="A screenshot of a social media post showing semi-egg shaped chart divided into chunks with vertical lines, labeled 'Agree with NEITHER', 'Agree with ONE', 'Agree with BOTH'. There seems to be no connection between the numbers shown on the chart and the colored area of each section. The chart title says 'What is the Movement', and then says '21 million Americans believe both Biden Illegitimate - Force justified to restore Trump'." width="50%"}
 
@@ -881,3 +883,26 @@ tibble(belief = c("One", "Both", "Neither"),
   ggtitle("Proportion of Americans Who Believe Statements", subtitle = "Biden Illegitimate, Force justified to Restore Trump")
 ```
 
+## The Only Thing Worse than a Pie Chart is...
+
+::: {layout="[[2, 3, 5],[3,-2,3]]"}
+
+![The "Piemaster" [source](https://x.com/infoholic/status/363555757175734273/photo/1)](images/misleading-graphics-piemaster.png){fig-alt="A stack of pie slices with numerical labels. It is not clear what the original survey was asking, but the visual is terrible anyways."}
+
+![[Source](https://www.reddit.com/r/CrappyDesign/comments/9ck7v3/the_worst_bit_is_that_its_from_a_math_book/)](images/misleading-graphics-3d-pie-slices-bars.webp){fig-alt="More 3d pie abominations"}
+
+
+![](images/misleading-graphics-3d-stacked-pie-chart.png){fig-alt="A floating cylinder set with pie charts at the top of each cylinder. Each cylinder hovers in 3d space and has a rainbow of slices."}
+
+![DISQUS, [Source](https://flowingdata.com/2012/01/10/pie-step-comment-bubble-3d-thing/)](images/misleading-chart-pie-step-bubble.png){fig-alt="A pie? step? bubble? bar? chart that has 3D when only one is required."}
+
+![Fox News, circa 2012](images/misleading-graph-Fox-News-pie-chart.png){fig-alt="A pie chart from the 2012 Republican primary where there are 3 slices, showing 63% back Huckabee, 70% back Palin, and 60% back Romney; these proportions label three roughly equal pie slices."}
+:::
+
+
+## My Contribution
+
+::: columns
+::: column
+
+![](images/bad-penguins-graph-example.png){fig-alt="A bad graphics challenge contribution showing pie chart-line hybrids with facets, a bad color scheme that is colorblind unfriendly, a terrible mapping between diameter and number of observations that creates a non-representative area. The facet strips are also incredibly low contrast."}
