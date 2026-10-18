@@ -1,5 +1,61 @@
 [
   {
+    "objectID": "slides/22-summary-stats.html#the-normal-distribution-1",
+    "href": "slides/22-summary-stats.html#the-normal-distribution-1",
+    "title": "1.22 Summary Statistics",
+    "section": "The Normal Distribution",
+    "text": "The Normal Distribution\n\\[ P(a &lt; x \\leq b) = \\int_{a}^b \\frac{1}{\\sqrt{2\\pi}\\sigma}e^{-\\frac{1}{2}\\left(\\frac{x-\\mu}{\\sigma}\\right)^2} dx\\]\n\nWhich means…"
+  },
+  {
+    "objectID": "slides/22-summary-stats.html#the-normal-distribution-2",
+    "href": "slides/22-summary-stats.html#the-normal-distribution-2",
+    "title": "1.22 Summary Statistics",
+    "section": "The Normal Distribution",
+    "text": "The Normal Distribution\n\\[ P(a &lt; x \\leq b) = \\int_{a}^b \\frac{1}{\\sqrt{2\\pi}\\sigma}e^{-\\frac{1}{2}\\left(\\frac{x-\\mu}{\\sigma}\\right)^2} dx\\]\n\nWhich means…"
+  },
+  {
+    "objectID": "slides/22-summary-stats.html#the-normal-distribution-3",
+    "href": "slides/22-summary-stats.html#the-normal-distribution-3",
+    "title": "1.22 Summary Statistics",
+    "section": "The Normal Distribution",
+    "text": "The Normal Distribution\nUsually, we care about:"
+  },
+  {
+    "objectID": "slides/22-summary-stats.html#the-normal-distribution-4",
+    "href": "slides/22-summary-stats.html#the-normal-distribution-4",
+    "title": "1.22 Summary Statistics",
+    "section": "The Normal Distribution",
+    "text": "The Normal Distribution\n\n2 parameters:\n\n\\(\\mu\\), the mean/center/top of the curve\n\\(\\sigma\\), the standard deviation (or \\(\\sigma^2\\), the variance)\n\nSymmetric around \\(\\mu\\)\nPredictable probability based on \\(\\sigma\\)\n\n68.27% of the area is within \\(\\pm \\sigma\\)\n95.45% of the area is within \\(\\pm 2\\sigma\\)\n99.73% of the area is within \\(\\pm 3\\sigma\\)\n\n\n\nThis works for every normal distribution, whatever the values of \\(\\mu\\) and \\(\\sigma\\)"
+  },
+  {
+    "objectID": "slides/22-summary-stats.html#normally-distributed-data",
+    "href": "slides/22-summary-stats.html#normally-distributed-data",
+    "title": "1.22 Summary Statistics",
+    "section": "Normally Distributed Data",
+    "text": "Normally Distributed Data\n\n\n\n\n\n\n\n\n\n\nSample mean \\(\\bar{x} = \\frac{\\sum_{i=1}^n x_i}{n} = \\hat\\mu_x\\)\n(add up all the observations, divide by the number of observations)\nSample standard deviation\nhow far away is each observation from the sample mean?\nSquare it (so that positive and negative things don’t cancel out),\nadd ’em up, divide by \\(n\\), and then take the square root"
+  },
+  {
+    "objectID": "slides/22-summary-stats.html#normally-distributed-data-1",
+    "href": "slides/22-summary-stats.html#normally-distributed-data-1",
+    "title": "1.22 Summary Statistics",
+    "section": "Normally Distributed Data",
+    "text": "Normally Distributed Data\n\n\n\n\n\n\n\n\n\n\nSample mean \\(\\bar{x} = \\frac{\\sum_{i=1}^n x_i}{n} = \\hat\\mu_x\\) (164.17, 179.31)\nmean(x, na.rm = T)\nSample standard deviation \\(\\hat{s} = \\sqrt{\\frac{1}{n}\\sum_{i=1}^n (x_i-\\mu_x)^2} = \\hat\\sigma_x\\), (6.97, 7.08)\nsd(x, na.rm = T)\n\nsd(x) uses \\(\\hat{s} = \\sqrt{\\frac{1}{n-1}\\sum_{i=1}^n (x_i-\\mu_x)^2}\\) (technically more correct)"
+  },
+  {
+    "objectID": "slides/22-summary-stats.html#standard-normal-distribution",
+    "href": "slides/22-summary-stats.html#standard-normal-distribution",
+    "title": "1.22 Summary Statistics",
+    "section": "Standard Normal Distribution",
+    "text": "Standard Normal Distribution\n\\(z = \\frac{x-\\bar{x}}{s}\\) has a \\(N(\\mu = 0, \\sigma = 1)\\) distribution\n\nConverting from \\(x\\) to \\(z\\) is standardizing \\(x\\)\nMakes the Normal distribution easier to write (\\(P(a &lt; z \\leq b) =  \\int_{a}^b \\frac{1}{\\sqrt{2\\pi}}e^{-\\frac{z^2}{2}} dz\\))\nUnit-less distribution"
+  },
+  {
+    "objectID": "slides/22-summary-stats.html#robust-summaries-outliers-1",
+    "href": "slides/22-summary-stats.html#robust-summaries-outliers-1",
+    "title": "1.22 Summary Statistics",
+    "section": "Robust Summaries & Outliers",
+    "text": "Robust Summaries & Outliers\nOther options:\nCenter of the Distribution:\n\nmedian – the middle observation.\n\nVariability in the Distribution:\n\nMedian absolute Deviation (MAD) - \\(\\displaystyle\\text{med}\\left(\\left|x_i - \\text{med} (x_i) \\right|\\right)\\)\nInterquartile Range (IQR) - \\(p_{75}(x_i) - p_{25}(x_i)\\) where \\(p_y(x)\\) is the \\(y\\)th percentile of \\(x\\), \\(0 \\leq y \\leq 100\\)"
+  },
+  {
     "objectID": "slides/20-adv-ggplot2.html#facets-1",
     "href": "slides/20-adv-ggplot2.html#facets-1",
     "title": "1.20 Advanced ggplot2 & Data Visualization Principles",
@@ -1631,6 +1687,13 @@
     "text": "Part e (10 points)\nLooking at the original cereal data, propose a grouped summary of a variable other than Sugars. You are welcome to group by Shelf, Manufacturer, or both Shelf and Manufacturer. In order to ensure reasonable estimates of the min/max/mean, you need to make sure that you only retain groups that have at least 5 non-missing observations of interest. To complete this problem, you must:\n\n(2.5 points) Write a sentence explaining what grouped summary you plan to take and why you chose to summarize that variable. You should select one variable so summarize, and at least one variable to group by.\n(5 points) Create a dataframe that contains the grouped summaries (min/max/mean) of that variable. Print this dataframe as part of your report (which can be done simply by putting the name of the dataframe on the last line of your code chunk).\n(2.5 points) Describe at least one interesting feature of your grouped summary. Also provide a possible explanation for what might be causing the difference (or lack of difference) between the groups?\n\n\n\ncereal_sum_fat &lt;- cereal |&gt; \n  filter(!is.na(Fat)) |&gt;\n  group_by(Shelf) |&gt;\n  summarize(fat_mean = mean(Fat),\n            fat_max = max(Fat),\n            fat_min = min(Fat),\n            count = n()) |&gt;\n  arrange(desc(fat_mean))\n\n\ncereal_sum_fat\n\n# A tibble: 3 × 5\n  Shelf  fat_mean fat_max fat_min count\n  &lt;chr&gt;     &lt;dbl&gt;   &lt;int&gt;   &lt;int&gt; &lt;int&gt;\n1 Top        1.25       5       0    36\n2 Middle     1          3       0    21\n3 Bottom     0.6        2       0    20\n\n\nAnswer:\nI picked to summarize fats by shelf because I hypothesized that, unlike, sugar, there will be no meaningful difference in the fat content on the different cereal shelves since it seems to be sugar that drives cereal popularity.\nThe results show that the average fat content of the bottom shelf cereals is less than half of the top shelf. All shelves have fat-free cereals but the maximum grams of fat per serving increases as shelf height increases. This possibly suggests that, while sugary cereals are placed at a height where children are most likely to see them, that savory cereals are placed at a height where adults are most likely to see them. The biggest takeaway is that if you want low-fat, low-sugar cereals, you better be willing to bend down and explore the bottom shelf!"
   },
   {
+    "objectID": "lab/22-summary-stats-sol.html",
+    "href": "lab/22-summary-stats-sol.html",
+    "title": "3.1.a - Class Activity",
+    "section": "",
+    "text": "1 Problem\nThe code below shows you how to visualize the Empirical Cumulative Distribution Function (ECDF) of heights from the heights dataset from the dslabs package.\n\nlibrary(tidyverse)\nlibrary(dslabs)\n\nheights |&gt; \n  ggplot(aes(height)) + \n  stat_ecdf() +\n  ylab(\"Quantile\") + xlab(\"height (in)\") + \n  theme_bw() + \n  theme(text = element_text(size = 16))\n\n\n\n\n\n\n\n\nUsing the above code, try to adapt it to stratify (i.e., separate) the ecdf into two separate lines, colored by sex.\n\nheights |&gt; \n  ggplot(aes(height, color = sex)) + \n  stat_ecdf() +\n  ylab(\"Quantile\") + xlab(\"height (in)\") + \n  theme_bw() + \n  theme(text = element_text(size = 16))\n\n\n\n\n\n\n\n\n\n\n2 Problem\nBased on the plot you created, approximately what percentage of men have heights between 65 and 70 inches (including men who are exactly 70 inches)? Please answer this question on your Canvas quiz.\nIt looks as though there are about 68% of men who are 70 inches or less and about 11% of men who are 65 inches or less. If you take the difference of these two quantities, the answer would be about 68% - 11% = 57%. In other words, 57% of men have heights between 65 and 70 inches.\n\n\n3 Problem\nNow, assume that men’s heights follow a normal distribution. We can approximate that normal distribution by calculating the mean and the standard deviation of the heights data. Use the code chunk below to calculate these quantities and answer the associated quiz in Canvas.\n\npars &lt;- heights |&gt;\n  filter(sex == \"Male\") |&gt; \n  summarize(mean_x = mean(height, na.rm = TRUE), \n            sd_x = sd(height, na.rm = TRUE))\n\nround(pars, 1)\n\n  mean_x sd_x\n1   69.3  3.6\n\n\nNow, using the normal approximation, calculate the probability of a man’s height being greater than 70 inches using the pnorm() function. Then, please answer the associated quiz question in Canvas.\n\n1 - pnorm(70, mean = 69.3, sd = 3.6)\n\n[1] 0.4229139\n\n\n\n\n4 Problem\nUsing the normal approximation, calculate the probability of a man’s height being between 62 and 66 inches. Then, please answer the associated quiz question in Canvas.\n\npnorm(66, mean = 69.3, sd = 3.6) - pnorm(62, mean = 69.3, sd = 3.6)\n\n[1] 0.1583672\n\n\n\n\n5 Problem\nThe following code creates a QQ plot that compares men’s heights to a normal distribution. Based on this plot, do you believe that men’s heights approximately follow a normal distribution? Please provide your answer to this question in Canvas.\n\nheights |&gt;\n  filter(sex == \"Male\") |&gt; \n  ggplot(aes(sample = height)) + \n  geom_qq() +\n  geom_qq_line() + \n  xlab(\"Theoretical Quantiles\") + \n  ylab(\"Heights\")"
+  },
+  {
     "objectID": "lab/21-effective-data-vis-visual-sol.html",
     "href": "lab/21-effective-data-vis-visual-sol.html",
     "title": "Stat 1080 Lab: Data Visualization",
@@ -2027,7 +2090,7 @@
     "href": "weeks/week-080.html",
     "title": "Week 8: Statistics and Probability",
     "section": "",
-    "text": "October 19-25, 2026\n\n\n\n(for Mon) IDS 2, Ch 2 - Numerical Summaries\n(for Mon) IDS 2, Ch 3.3 - Comparing Groups with Stratification\n(for Wed) IDS 2, Ch 5 - Discrete Probability\n(for Fri) IDS 2, Ch 6 - Continuous Probability\n\n\n\n\n\n(for Mon) Reading Check 8.1\nProject Visualizations. You will need the template zip file to complete the assignment.\n(for Wed) Reading Check 8.2\n(for Fri) Reading Check 8.3\n\n\n\n\n\nAttendance Quiz 10/19\nSummary Statistics\n\n\n\n\n\nAttendance Quiz 10/21\nDiscrete Probability\n\n\n\n\n\nAttendance Quiz 10/23\nContinuous Probability\n\n\n\n\n\nHomework 2, qmd template, html, visual solutions"
+    "text": "October 19-25, 2026\n\n\n\n(for Mon) IDS 2, Ch 2 - Numerical Summaries\n(for Mon) IDS 2, Ch 3.3 - Comparing Groups with Stratification\n(for Wed) IDS 2, Ch 5 - Discrete Probability\n(for Fri) IDS 2, Ch 6 - Continuous Probability\n\n\n\n\n\n(for Mon) Reading Check 8.1\nProject Visualizations. You will need the template zip file to complete the assignment.\n(for Wed) Reading Check 8.2\n(for Fri) Reading Check 8.3\n\n\n\n\n\nAttendance Quiz 10/19\nSummary Statistics\n8.1.p - Summary Statistics Activity, quarto, html\n\n\n\n\n\nAttendance Quiz 10/21\nDiscrete Probability\n\n\n\n\n\nAttendance Quiz 10/23\nContinuous Probability\n\n\n\n\n\nHomework 2, qmd template, html, visual solutions"
   },
   {
     "objectID": "weeks/week-080.html#reading",
@@ -2048,7 +2111,7 @@
     "href": "weeks/week-080.html#monday",
     "title": "Week 8: Statistics and Probability",
     "section": "",
-    "text": "Attendance Quiz 10/19\nSummary Statistics"
+    "text": "Attendance Quiz 10/19\nSummary Statistics\n8.1.p - Summary Statistics Activity, quarto, html"
   },
   {
     "objectID": "weeks/week-080.html#wednesday",
@@ -3071,6 +3134,13 @@
     "title": "Stat 1080 Lab: Data Visualization",
     "section": "Useful References",
     "text": "Useful References\n\nCustomizing ggplot2 graphics\nA group-created slideshow of awful graphics"
+  },
+  {
+    "objectID": "lab/22-summary-stats.html",
+    "href": "lab/22-summary-stats.html",
+    "title": "3.1.a - Class Activity",
+    "section": "",
+    "text": "1 Problem\nThe code below shows you how to visualize the Empirical Cumulative Distribution Function (ECDF) of heights from the heights dataset from the dslabs package.\n\nlibrary(tidyverse)\nlibrary(dslabs)\n\nheights |&gt; \n  ggplot(aes(height)) + \n  stat_ecdf() +\n  ylab(\"Quantile\") + xlab(\"height (in)\") + \n  theme_bw() + \n  theme(text = element_text(size = 16))\n\n\n\n\n\n\n\n\nUsing the above code, try to adapt it to stratify (i.e., separate) the ecdf into two separate lines, colored by sex.\n\n#...#\n\n\n\n2 Problem\nBased on the plot you created, approximately what percentage of men have heights between 65 and 70 inches (including men who are exactly 70 inches)? Please answer this question on your Canvas quiz.\n\n\n3 Problem\nNow, assume that men’s heights follow a normal distribution. We can approximate that normal distribution by calculating the mean and the standard deviation of the heights data. Use the code chunk below to calculate these quantities and answer the associated quiz in Canvas.\n\n## pars &lt;- heights |&gt;\n##   filter(#...#) |&gt; # consider only men's heights\n##   summarize(mean_x = #...#, \n##             sd_x = #...#)\n## round(pars, 1)\n\nNow, using the normal approximation, calculate the probability of a man’s height being greater than 70 inches using the pnorm() function. Then, please answer the associated quiz question in Canvas.\n\n#...#\n\n\n\n4 Problem\nUsing the normal approximation, calculate the probability of a man’s height being between 62 and 66 inches. Then, please answer the associated quiz question in Canvas.\n\n#...#\n\n\n\n5 Problem\nThe following code creates a QQ plot that compares men’s heights to a normal distribution. Based on this plot, do you believe that men’s heights approximately follow a normal distribution? Please provide your answer to this question in Canvas.\n\nheights |&gt;\n  filter(sex == \"Male\") |&gt; \n  ggplot(aes(sample = height)) + \n  geom_qq() +\n  geom_qq_line() + \n  xlab(\"Theoretical Quantiles\") + \n  ylab(\"Heights\")"
   },
   {
     "objectID": "homework/homework01.html",

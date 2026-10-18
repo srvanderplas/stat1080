@@ -15,7 +15,7 @@ October 19-25, 2026
 ## 📐 Prepare for class
 
 - [ ] (for Mon) [Reading Check 8.1](https://usu.instructure.com/courses/819584/quizzes/1502607){target="_blank"}
-- [ ] [Project Visualizations](https://usu.instructure.com/courses/819584/assignments/5290607){target="_blank"}. You will need the [template zip file](../homework/project-template.zip) to complete the assignment. 
+- [ ] [Project Visualizations](https://usu.instructure.com/courses/819584/assignments/5290607){target="_blank"}. You will need the [template zip file](../homework/project-template.zip){target="_blank"} to complete the assignment. 
 - [ ] (for Wed) [Reading Check 8.2](https://usu.instructure.com/courses/819584/quizzes/1502608){target="_blank"}
 - [ ] (for Fri) [Reading Check 8.3](https://usu.instructure.com/courses/819584/quizzes/1502609){target="_blank"}
 
@@ -24,6 +24,7 @@ October 19-25, 2026
 
 - [Attendance Quiz 10/19](https://usu.instructure.com/courses/819584/assignments/5292963){target="_blank"}
 - [Summary Statistics](../slides/22-summary-stats.qmd){target="_blank"}
+- [8.1.p - Summary Statistics Activity](https://usu.instructure.com/courses/819584/quizzes/1462889){target="_blank"}, [quarto](../lab/_22-summary-stats.qmd){target="_blank"}, [html](../lab/22-summary-stats.qmd){target="_blank"}
 
 
 ## 🐪️ Wednesday 🐦‍⬛ 

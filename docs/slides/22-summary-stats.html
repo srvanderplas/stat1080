@@ -6,10 +6,13 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.10.19">
 
-  <title>STAT 1080 - Fall 2026 – summary-stats</title>
+  <title>STAT 1080 - Fall 2026 – 1.22 Summary Statistics</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -135,19 +138,202 @@
       margin-right: 0;
     }
   </style>
-<meta property="og:title" content="STAT 1080 - Fall 2026">
+<meta property="og:title" content="1.22 Summary Statistics – STAT 1080 - Fall 2026">
 <meta property="og:site_name" content="STAT 1080 - Fall 2026">
 </head>
 <body class="quarto-light">
   <div class="reveal">
     <div class="slides">
 
+<section id="title-slide" data-background-image="images/SimulationTheoryCartoon.png" data-background-image-alt="A density curve and a histogram with faces and arms sit next to each other. The histogram and the density are approximately the same shape." data-background-position="50% 90%" data-background-repeat="no-repeat" data-background-size="30%" class="quarto-title-block center">
+  <h1 class="title">1.22 Summary Statistics</h1>
 
-<section class="slide level2">
-
-
+<div class="quarto-title-authors">
+</div>
 
 </section>
+<section>
+<section id="the-normal-distribution" class="title-slide slide level1 center">
+<h1>The Normal Distribution</h1>
+<p><a href="images/normal-distribution.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img data-src="images/normal-distribution.svg" style="width:50.0%" data-align="center" alt="A cartoon normal distribution wearing sunglasses and a bowtie"></a></p>
+</section>
+<section id="the-normal-distribution-1" class="slide level2">
+<h2>The Normal Distribution</h2>
+<p><span class="math display">\[ P(a &lt; x \leq b) = \int_{a}^b \frac{1}{\sqrt{2\pi}\sigma}e^{-\frac{1}{2}\left(\frac{x-\mu}{\sigma}\right)^2} dx\]</span></p>
+<div class="fragment">
+<p>Which means…</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><a href="22-summary-stats_files/figure-revealjs/unnamed-chunk-1-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img data-src="22-summary-stats_files/figure-revealjs/unnamed-chunk-1-1.png" style="width:100.0%" alt="A plot of the standard normal density, with x-axis broken into $\mu-3\sigma, \mu-2\sigma, \mu-1\sigma, \mu, \mu+1\sigma, \mu+2\sigma, \mu+3\sigma$ and the area between $\mu\pm 2\sigma$ shaded. Text at the top of the plot panel says that the shaded area = 0.95, and a = $-2\sigma$, b = $2\sigma$ are labeled."></a></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="the-normal-distribution-2" class="slide level2">
+<h2>The Normal Distribution</h2>
+<p><span class="math display">\[ P(a &lt; x \leq b) = \int_{a}^b \frac{1}{\sqrt{2\pi}\sigma}e^{-\frac{1}{2}\left(\frac{x-\mu}{\sigma}\right)^2} dx\]</span></p>
+<div class="fragment">
+<p>Which means…</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><a href="22-summary-stats_files/figure-revealjs/unnamed-chunk-2-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img data-src="22-summary-stats_files/figure-revealjs/unnamed-chunk-2-1.png" style="width:100.0%" alt="A plot of the standard normal density, with x-axis broken into $\mu-3\sigma, \mu-2\sigma, \mu-1\sigma, \mu, \mu+1\sigma, \mu+2\sigma, \mu+3\sigma$ and the area between $\mu\pm 2\sigma$ shaded. Text at the top of the plot panel says that the shaded area = 0.84, and a = -3, b = 1."></a></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="the-normal-distribution-3" class="slide level2">
+<h2>The Normal Distribution</h2>
+<p>Usually, we care about:</p>
+<div class="cell quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><a href="22-summary-stats_files/figure-revealjs/unnamed-chunk-3-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img data-src="22-summary-stats_files/figure-revealjs/unnamed-chunk-3-1.png" alt="A plot of the standard normal density, with x-axis broken into $\mu-3\sigma, \mu-2\sigma, \mu-1\sigma, \mu, \mu+1\sigma, \mu+2\sigma, \mu+3\sigma$ and the area between $\mu\pm 2\sigma$ shaded. Text at the top of the plot panel provides the area which is shaded, with a and b marked on the plot."></a></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><a href="22-summary-stats_files/figure-revealjs/unnamed-chunk-3-2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img data-src="22-summary-stats_files/figure-revealjs/unnamed-chunk-3-2.png" alt="A plot of the standard normal density, with x-axis broken into $\mu-3\sigma, \mu-2\sigma, \mu-1\sigma, \mu, \mu+1\sigma, \mu+2\sigma, \mu+3\sigma$ and the area between $\mu\pm 2\sigma$ shaded. Text at the top of the plot panel provides the area which is shaded, with a and b marked on the plot."></a></p>
+</div>
+</div>
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><a href="22-summary-stats_files/figure-revealjs/unnamed-chunk-3-3.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6"><img data-src="22-summary-stats_files/figure-revealjs/unnamed-chunk-3-3.png" alt="A plot of the standard normal density, with x-axis broken into $\mu-3\sigma, \mu-2\sigma, \mu-1\sigma, \mu, \mu+1\sigma, \mu+2\sigma, \mu+3\sigma$ and the area between $\mu\pm 2\sigma$ shaded. Text at the top of the plot panel provides the area which is shaded, with a and b marked on the plot."></a></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><a href="22-summary-stats_files/figure-revealjs/unnamed-chunk-3-4.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7"><img data-src="22-summary-stats_files/figure-revealjs/unnamed-chunk-3-4.png" alt="A plot of the standard normal density, with x-axis broken into $\mu-3\sigma, \mu-2\sigma, \mu-1\sigma, \mu, \mu+1\sigma, \mu+2\sigma, \mu+3\sigma$ and the area between $\mu\pm 2\sigma$ shaded. Text at the top of the plot panel provides the area which is shaded, with a and b marked on the plot."></a></p>
+</div>
+</div>
+</div>
+</section>
+<section id="the-normal-distribution-4" class="slide level2">
+<h2>The Normal Distribution</h2>
+<ul>
+<li><p>2 parameters:</p>
+<ul>
+<li><span class="math inline">\(\mu\)</span>, the mean/center/top of the curve</li>
+<li><span class="math inline">\(\sigma\)</span>, the standard deviation (or <span class="math inline">\(\sigma^2\)</span>, the variance)</li>
+</ul></li>
+<li><p>Symmetric around <span class="math inline">\(\mu\)</span></p></li>
+<li><p>Predictable probability based on <span class="math inline">\(\sigma\)</span></p>
+<ul>
+<li>68.27% of the area is within <span class="math inline">\(\pm \sigma\)</span></li>
+<li>95.45% of the area is within <span class="math inline">\(\pm 2\sigma\)</span></li>
+<li>99.73% of the area is within <span class="math inline">\(\pm 3\sigma\)</span></li>
+</ul></li>
+</ul>
+<div class="fragment">
+<p>This works for <em>every</em> normal distribution, whatever the values of <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma\)</span></p>
+</div>
+</section>
+<section id="normally-distributed-data" class="slide level2">
+<h2>Normally Distributed Data</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><a href="22-summary-stats_files/figure-revealjs/unnamed-chunk-5-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8"><img data-src="22-summary-stats_files/figure-revealjs/unnamed-chunk-5-1.png" style="width:100.0%" alt="Density plots of 100 samples of male and female heights, with values taken from https://www.andorville.com.au/AdultHeightDistrib.html."></a></p>
+</figure>
+</div>
+</div>
+</div>
+<ul>
+<li><p>Sample mean <span class="math inline">\(\bar{x} = \frac{\sum_{i=1}^n x_i}{n} = \hat\mu_x\)</span><br>
+<span class="fragment emph sage-dk" data-fragment-index="1">(add up all the observations, divide by the number of observations)</span></p></li>
+<li><p>Sample standard deviation<br>
+<span class="emph fragment sage-dk" data-fragment-index="2">how far away is each observation from the sample mean?<br>
+Square it (so that positive and negative things don’t cancel out),<br>
+add ’em up, divide by <span class="math inline">\(n\)</span>, and then take the square root</span></p></li>
+</ul>
+</section>
+<section id="normally-distributed-data-1" class="slide level2">
+<h2>Normally Distributed Data</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><a href="22-summary-stats_files/figure-revealjs/unnamed-chunk-6-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-9"><img data-src="22-summary-stats_files/figure-revealjs/unnamed-chunk-6-1.png" style="width:100.0%" alt="Density plots of 100 samples of male and female heights, with values taken from https://www.andorville.com.au/AdultHeightDistrib.html."></a></p>
+</figure>
+</div>
+</div>
+</div>
+<ul>
+<li><p>Sample mean <span class="math inline">\(\bar{x} = \frac{\sum_{i=1}^n x_i}{n} = \hat\mu_x\)</span> <span class="fragment" data-fragment-index="1">(<span class="pink-dk">164.17</span>, <span class="blue-dk">179.31</span>)</span><br>
+<span class="fragment emph sage-dk" data-fragment-index="1"><code>mean(x, na.rm = T)</code></span></p></li>
+<li><p>Sample standard deviation <span class="math inline">\(\hat{s} = \sqrt{\frac{1}{n}\sum_{i=1}^n (x_i-\mu_x)^2} = \hat\sigma_x\)</span>, <span class="fragment" data-fragment-index="2">(<span class="pink-dk">6.97</span>, <span class="blue-dk">7.08</span>)</span><br>
+<span class="emph fragment sage-dk" data-fragment-index="2"><code>sd(x, na.rm = T)</code></span></p></li>
+</ul>
+<p><span class="emph fragment sage-dk" data-fragment-index="3"><code>sd(x)</code> uses <span class="math inline">\(\hat{s} = \sqrt{\frac{1}{n-1}\sum_{i=1}^n (x_i-\mu_x)^2}\)</span> (technically more correct)</span></p>
+</section>
+<section id="standard-normal-distribution" class="slide level2">
+<h2>Standard Normal Distribution</h2>
+<p><span class="math inline">\(z = \frac{x-\bar{x}}{s}\)</span> has a <span class="math inline">\(N(\mu = 0, \sigma = 1)\)</span> distribution</p>
+<ul>
+<li><p>Converting from <span class="math inline">\(x\)</span> to <span class="math inline">\(z\)</span> is <strong>standardizing</strong> <span class="math inline">\(x\)</span></p></li>
+<li><p>Makes the Normal distribution easier to write (<span class="math inline">\(P(a &lt; z \leq b) =  \int_{a}^b \frac{1}{\sqrt{2\pi}}e^{-\frac{z^2}{2}} dz\)</span>)</p></li>
+<li><p>Unit-less distribution</p></li>
+</ul>
+</section></section>
+<section>
+<section id="robust-summaries-outliers" class="title-slide slide level1 center">
+<h1>Robust Summaries &amp; Outliers</h1>
+<p>Consider <a href="https://en.wikipedia.org/wiki/Robert_Wadlow">Robert Wadlow</a> and <a href="https://en.wikipedia.org/wiki/Trijntje_Keever">Trijntje Keever</a></p>
+<div id="fig-heights" class="quarto-layout-panel">
+<figure class="quarto-float quarto-float-fig">
+<div aria-describedby="fig-heights-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="quarto-layout-row">
+<div class="cell quarto-layout-cell" style="flex-basis: 66.7%;justify-content: flex-start;">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><a href="22-summary-stats_files/figure-revealjs/unnamed-chunk-7-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-10" title="Figure&nbsp;1: The mean without these outliers is 179.31 cm (males) and 164.17 cm (females).   With the outliers, it is 180.23 cm (males) and 165.12 cm (females).  Including outliers moves the average height by almost 1cm, with 100 other observations!"><img data-src="22-summary-stats_files/figure-revealjs/unnamed-chunk-7-1.png" alt="Density plots for 100 observations sampled from normal distributions of height for males and females, with the tallest person on record in each category added to the distribution as an outlier." width="960"></a></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 16.7%;justify-content: center;">
+<p><a href="https://upload.wikimedia.org/wikipedia/commons/c/ca/Trijntje_Keever.jpg?utm_source=en.wikipedia.org&amp;utm_campaign=parser&amp;utm_content=thumbnail_unscaled" class="lightbox" data-gallery="quarto-lightbox-gallery-11" title="Figure&nbsp;1: The mean without these outliers is 179.31 cm (males) and 164.17 cm (females).   With the outliers, it is 180.23 cm (males) and 165.12 cm (females).  Including outliers moves the average height by almost 1cm, with 100 other observations!"><img data-src="https://upload.wikimedia.org/wikipedia/commons/c/ca/Trijntje_Keever.jpg?utm_source=en.wikipedia.org&amp;utm_campaign=parser&amp;utm_content=thumbnail_unscaled" alt="A painting of Trijntje Keever, circa 1630, height of 2.60 m"></a></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 16.7%;justify-content: center;">
+<p><a href="https://upload.wikimedia.org/wikipedia/commons/f/f7/Robert_Wadlow_postcard.jpg?utm_source=en.wikipedia.org&amp;utm_campaign=index&amp;utm_content=thumbnail_unscaled" class="lightbox" data-gallery="quarto-lightbox-gallery-12" title="Figure&nbsp;1: The mean without these outliers is 179.31 cm (males) and 164.17 cm (females).   With the outliers, it is 180.23 cm (males) and 165.12 cm (females).  Including outliers moves the average height by almost 1cm, with 100 other observations!"><img data-src="https://upload.wikimedia.org/wikipedia/commons/f/f7/Robert_Wadlow_postcard.jpg?utm_source=en.wikipedia.org&amp;utm_campaign=index&amp;utm_content=thumbnail_unscaled" alt="A photo of Robert Wadlow (8' 11.1&quot;) with his father (5' 11.5&quot;)"></a></p>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-heights-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: The mean without these outliers is 179.31 cm (males) and 164.17 cm (females). <br> With the outliers, it is 180.23 cm (males) and 165.12 cm (females). <br>Including outliers moves the average height by almost 1cm, with 100 other observations!
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="robust-summaries-outliers-1" class="slide level2">
+<h2>Robust Summaries &amp; Outliers</h2>
+<p>Other options:</p>
+<p>Center of the Distribution:</p>
+<ul>
+<li>median – the middle observation.</li>
+</ul>
+<p>Variability in the Distribution:</p>
+<ul>
+<li><p>Median absolute Deviation (MAD) - <span class="math inline">\(\displaystyle\text{med}\left(\left|x_i - \text{med} (x_i) \right|\right)\)</span></p></li>
+<li><p>Interquartile Range (IQR) - <span class="math inline">\(p_{75}(x_i) - p_{25}(x_i)\)</span> where <span class="math inline">\(p_y(x)\)</span> is the <span class="math inline">\(y\)</span>th percentile of <span class="math inline">\(x\)</span>, <span class="math inline">\(0 \leq y \leq 100\)</span></p></li>
+</ul>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><a href="22-summary-stats_files/figure-revealjs/unnamed-chunk-8-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-13"><img data-src="22-summary-stats_files/figure-revealjs/unnamed-chunk-8-1.png" width="960"></a></p>
+</figure>
+</div>
+</div>
+</div>
+
+
+</section></section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <p><img src="deps/usu-sq.png" alt="Utah State University Logo" class="slide-logo"></p>
@@ -366,6 +552,44 @@
         ]
       });
     </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
     <script id="quarto-html-after-body" type="application/javascript">
       window.document.addEventListener("DOMContentLoaded", function (event) {
         const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
@@ -686,6 +910,38 @@
         }
       });
       </script>
+    <script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+    (function() {
+      let previousOnload = window.onload;
+      window.onload = () => {
+        if (previousOnload) {
+          previousOnload();
+        }
+        lightboxQuarto.on('slide_before_load', (data) => {
+          const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+          const href = trigger.getAttribute('href');
+          if (href !== null) {
+            const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+            if (imgEl !== null) {
+              const srcAttr = imgEl.getAttribute("src");
+              if (srcAttr && srcAttr.startsWith("data:")) {
+                slideConfig.href = srcAttr;
+              }
+            }
+          } 
+        });
+      
+        lightboxQuarto.on('slide_after_load', (data) => {
+          const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(slideNode);
+          }
+        });
+      
+      };
+      
+    })();
+              </script>
     
 
 </body></html>

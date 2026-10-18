@@ -221,7 +221,7 @@ schedule:
     class3: |
         - [Attendance Quiz 10/16](https://usu.instructure.com/courses/819584/assignments/5292962){target="_blank"}
         - [Data Visualization Principles](../slides/21-data-vis-principles.qmd){target="_blank"}
-        - [Lab: Effective Data Visualization](https://usu.instructure.com/courses/819584/modules/items/7952204){target="_blank"} [qmd template](../lab/21-effective-data-vis.qmd){target="_blank"}, [html](../lab/21-effective-data-vis.qmd), [visual solutions](../lab/21-effective-data-vis-visual-sol.qmd)
+        - [Lab: Effective Data Visualization](https://usu.instructure.com/courses/819584/modules/items/7952204){target="_blank"} [qmd template](../lab/_21-effective-data-vis.qmd){target="_blank"}, [html](../lab/21-effective-data-vis.qmd), [visual solutions](../lab/21-effective-data-vis-visual-sol.qmd)
     extra: |
       This is my research area, so here's an info-dump from my textbook. 
       I'm happy to discuss data visualization at any point in office hours! 
@@ -243,12 +243,13 @@ schedule:
         - [ ] (for Fri) [IDS 2, Ch 6 - Continuous Probability](https://rafalab.dfci.harvard.edu/dsbook-part-2/prob/continuous-probability.html){target="_blank"}
     prepare: |
         - [ ] (for Mon) [Reading Check 8.1](https://usu.instructure.com/courses/819584/quizzes/1502607){target="_blank"}
-        - [ ] [Project Visualizations](https://usu.instructure.com/courses/819584/assignments/5290607){target="_blank"}. You will need the [template zip file](../homework/project-template.zip) to complete the assignment. 
+        - [ ] [Project Visualizations](https://usu.instructure.com/courses/819584/assignments/5290607){target="_blank"}. You will need the [template zip file](../homework/project-template.zip){target="_blank"} to complete the assignment. 
         - [ ] (for Wed) [Reading Check 8.2](https://usu.instructure.com/courses/819584/quizzes/1502608){target="_blank"}
         - [ ] (for Fri) [Reading Check 8.3](https://usu.instructure.com/courses/819584/quizzes/1502609){target="_blank"}
     class1: |
         - [Attendance Quiz 10/19](https://usu.instructure.com/courses/819584/assignments/5292963){target="_blank"}
         - [Summary Statistics](../slides/22-summary-stats.qmd){target="_blank"}
+        - [Activity 8.1.p - Summary Statistics](https://usu.instructure.com/courses/819584/quizzes/1462889){target="_blank"}, [quarto](../lab/_22-summary-stats.qmd){target="_blank"}, [html](../lab/22-summary-stats.qmd){target="_blank"}
     class2: |
         - [Attendance Quiz 10/21](https://usu.instructure.com/courses/819584/assignments/5293065){target="_blank"}
         - [Discrete Probability](../slides/23-discrete-prob.qmd){target="_blank"}

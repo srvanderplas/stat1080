@@ -1,0 +1,82 @@
+---
+title: "3.1.a - Class Activity"
+format: html
+number-sections: true
+execute:
+  echo: true   # show code by default
+  warning: false
+  message: false
+---
+
+# Problem 
+
+The code below shows you how to visualize the Empirical Cumulative Distribution Function (ECDF) of heights from the `heights` dataset from the `dslabs` package. 
+
+```{r}
+library(tidyverse)
+library(dslabs)
+
+heights |> 
+  ggplot(aes(height)) + 
+  stat_ecdf() +
+  ylab("Quantile") + xlab("height (in)") + 
+  theme_bw() + 
+  theme(text = element_text(size = 16))
+```
+Using the above code, try to adapt it to stratify (i.e., separate) the ecdf into two separate lines, colored by sex. 
+
+```{r}
+heights |> 
+  ggplot(aes(height, color = sex)) + 
+  stat_ecdf() +
+  ylab("Quantile") + xlab("height (in)") + 
+  theme_bw() + 
+  theme(text = element_text(size = 16))
+```
+
+# Problem 
+
+Based on the plot you created, approximately what percentage of men have heights between 65 and 70 inches (including men who are exactly 70 inches)? Please answer this question on your Canvas quiz. 
+
+*It looks as though there are about 68% of men who are 70 inches or less and about 11% of men who are 65 inches or less. If you take the difference of these two quantities, the answer would be about 68% - 11% = 57%. In other words, 57% of men have heights between 65 and 70 inches.*
+
+# Problem 
+
+Now, assume that men's heights follow a normal distribution. We can approximate that normal distribution by calculating the mean and the standard deviation of the heights data. Use the code chunk below to calculate these quantities and answer the associated quiz in Canvas.
+
+```{r}
+pars <- heights |>
+  filter(sex == "Male") |> 
+  summarize(mean_x = mean(height, na.rm = TRUE), 
+            sd_x = sd(height, na.rm = TRUE))
+
+round(pars, 1)
+```
+Now, using the normal approximation, calculate the probability of a man's height being greater than 70 inches using the `pnorm()` function. Then, please answer the associated quiz question in Canvas. 
+
+```{r}
+1 - pnorm(70, mean = 69.3, sd = 3.6)
+```
+
+# Problem 
+
+Using the normal approximation, calculate the probability of a man's height being between 62 and 66 inches. Then, please answer the associated quiz question in Canvas. 
+
+```{r}
+pnorm(66, mean = 69.3, sd = 3.6) - pnorm(62, mean = 69.3, sd = 3.6)
+```
+
+# Problem 
+
+The following code creates a QQ plot that compares men's heights to a normal distribution. Based on this plot, do you believe that men's heights approximately follow a normal distribution? Please provide your answer to this question in Canvas. 
+
+```{r}
+heights |>
+  filter(sex == "Male") |> 
+  ggplot(aes(sample = height)) + 
+  geom_qq() +
+  geom_qq_line() + 
+  xlab("Theoretical Quantiles") + 
+  ylab("Heights")
+```
+

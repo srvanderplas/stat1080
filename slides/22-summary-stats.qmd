@@ -1,0 +1,386 @@
+---
+title: "1.22 Summary Statistics"
+format: revealjs
+code-annotations: hover
+lightbox:  true
+bibliography: refs.bib
+csl: chicago-syllabus.csl
+title-slide-attributes:
+  data-background-image: "images/SimulationTheoryCartoon.png"
+  data-background-image-alt: A density curve and a histogram with faces and arms sit next to each other. The histogram and the density are approximately the same shape.
+  data-background-size: "30%"
+  data-background-repeat: "no-repeat"
+  data-background-position: "50% 90%"
+---
+
+```{r}
+#| label: setup
+#| include: false
+#| eval: true
+
+library(ggplot2)
+library(tidyverse)
+library(dslabs)
+```
+
+# The Normal Distribution
+
+![](images/normal-distribution.svg){fig-alt="A cartoon normal distribution wearing sunglasses and a bowtie" width="50%" align="center"}
+
+## The Normal Distribution
+
+
+$$ P(a < x \leq b) = \int_{a}^b \frac{1}{\sqrt{2\pi}\sigma}e^{-\frac{1}{2}\left(\frac{x-\mu}{\sigma}\right)^2} dx$$
+
+
+::: {.fragment}
+Which means... 
+
+```{r}
+#| fig-width: 8
+#| fig-height: 3
+#| out-width: 100%
+#| fig-alt: A plot of the standard normal density, with x-axis broken into $\mu-3\sigma, \mu-2\sigma, \mu-1\sigma, \mu, \mu+1\sigma, \mu+2\sigma, \mu+3\sigma$ and the area between $\mu\pm 2\sigma$ shaded. Text at the top of the plot panel says that the shaded area = 0.95, and a = $-2\sigma$, b = $2\sigma$ are labeled. 
+
+
+library(tidyverse)
+theme_set(theme_bw())
+ndens <- tibble(x = seq(-4, 4, .01), y = dnorm(x)) 
+integral <- filter(ndens, between(x, -2, 2))
+
+labels <- tibble(x = c(-3, -2, -1, 0, 1, 2, 3), label = c(expression(mu -3*sigma), expression(mu -2*sigma), expression(mu -1*sigma), expression(mu), expression(mu + 1 *sigma), expression(mu + 2*sigma), expression(mu +3*sigma))) |>
+  left_join(ndens, by = "x")
+
+ggplot(ndens, aes(x = x, y = y)) + 
+  geom_area(data = integral, fill = "#31c18d", alpha = .5) + 
+  geom_line(data = ndens, color = "#0F2439") +
+  geom_segment(data = labels, aes(x = x, xend = x, y = 0, yend = y)) + 
+  scale_x_continuous(breaks = labels$x, labels = labels$label) + 
+  annotate(x = -3, y = 0.4, label = sprintf("Shaded area = %.2f", pnorm(2) - pnorm(-2)), geom = "text", hjust = 0, vjust = 1) + 
+  theme(axis.title = element_blank()) + 
+  labs(title = "The Normal Distribution, Graphically") + 
+  annotate(geom = "label", x = c(-2, 2), y = dnorm(-2) + .05, label = c("a", "b")) + 
+  coord_cartesian(xlim = c(-3.5, 3.5))
+```
+:::
+
+## The Normal Distribution
+
+
+$$ P(a < x \leq b) = \int_{a}^b \frac{1}{\sqrt{2\pi}\sigma}e^{-\frac{1}{2}\left(\frac{x-\mu}{\sigma}\right)^2} dx$$
+
+
+::: {.fragment}
+Which means... 
+
+```{r}
+#| fig-width: 8
+#| fig-height: 3
+#| out-width: 100%
+#| fig-alt: A plot of the standard normal density, with x-axis broken into $\mu-3\sigma, \mu-2\sigma, \mu-1\sigma, \mu, \mu+1\sigma, \mu+2\sigma, \mu+3\sigma$ and the area between $\mu\pm 2\sigma$ shaded. Text at the top of the plot panel says that the shaded area = 0.84, and a = -3, b = 1. 
+
+
+ndens <- tibble(x = seq(-4, 4, .01), y = dnorm(x)) 
+a <- -3
+b <- 1
+integral <- filter(ndens, between(x, a, b))
+
+labels <- tibble(x = c(-3, -2, -1, 0, 1, 2, 3), label = c(expression(mu -3*sigma), expression(mu -2*sigma), expression(mu -1*sigma), expression(mu), expression(mu + 1 *sigma), expression(mu + 2*sigma), expression(mu +3*sigma))) |>
+  left_join(ndens, by = "x")
+
+ggplot(ndens, aes(x = x, y = y)) + 
+  geom_area(data = integral, fill = "#31c18d", alpha = .5) + 
+  geom_line(data = ndens, color = "#0F2439") +
+  geom_segment(data = labels, aes(x = x, xend = x, y = 0, yend = y)) + 
+  scale_x_continuous(breaks = labels$x, labels = labels$label) + 
+  annotate(x = -3, y = 0.4, label = sprintf("Shaded area = %.2f", pnorm(b) - pnorm(a)), geom = "text", hjust = 0, vjust = 1) + 
+  theme(axis.title = element_blank()) + 
+  labs(title = "The Normal Distribution, Graphically") + 
+  annotate(geom = "label", x = c(a, b), y = c(dnorm(a), dnorm(b)) + .05, label = c("a", "b")) + 
+  coord_cartesian(xlim = c(-3.5, 3.5))
+```
+:::
+
+## The Normal Distribution
+
+Usually, we care about:
+
+```{r}
+#| layout-ncol: 2
+#| fig-width: 8
+#| fig-height: 3
+#| out-width: 100%
+#| fig-alt: A plot of the standard normal density, with x-axis broken into $\mu-3\sigma, \mu-2\sigma, \mu-1\sigma, \mu, \mu+1\sigma, \mu+2\sigma, \mu+3\sigma$ and the area between $\mu\pm 2\sigma$ shaded. Text at the top of the plot panel provides the area which is shaded, with a and b marked on the plot. 
+ndens <- tibble(x = seq(-5, 5, .01), y = dnorm(x)) 
+a <- qnorm(.05)
+b <- qnorm(.95)
+integral <- filter(ndens, between(x, a, b))
+
+labels <- tibble(x = c(-3, -2, -1, 0, 1, 2, 3), label = c(expression(mu -3*sigma), expression(mu -2*sigma), expression(mu -1*sigma), expression(mu), expression(mu + 1 *sigma), expression(mu + 2*sigma), expression(mu +3*sigma))) |>
+  left_join(ndens, by = "x")
+
+ggplot(ndens, aes(x = x, y = y)) + 
+  geom_area(data = integral, fill = "#31c18d", alpha = .5) + 
+  geom_line(data = ndens, color = "#0F2439") +
+  geom_segment(data = labels, aes(x = x, xend = x, y = 0, yend = y)) + 
+  scale_x_continuous(breaks = labels$x, labels = labels$label) + 
+  annotate(x = -3, y = 0.4, label = sprintf("Shaded area = %.2f", pnorm(b) - pnorm(a)), geom = "text", hjust = 0, vjust = 1) + 
+  theme(axis.title = element_blank()) + 
+  labs(title = "The Normal Distribution, Graphically") + 
+  annotate(geom = "label", x = c(a, b), y = c(dnorm(a), dnorm(b)) + .05, label = c(sprintf("a = %.2f", a), sprintf("b = %.2f", b))) + 
+  coord_cartesian(xlim = c(-3.5, 3.5))
+
+ndens <- tibble(x = seq(-5, 5, .01), y = dnorm(x)) 
+a <- -4
+b <- qnorm(.9)
+integral <- filter(ndens, between(x, a, b))
+
+labels <- tibble(x = c(-3, -2, -1, 0, 1, 2, 3), label = c(expression(mu -3*sigma), expression(mu -2*sigma), expression(mu -1*sigma), expression(mu), expression(mu + 1 *sigma), expression(mu + 2*sigma), expression(mu +3*sigma))) |>
+  left_join(ndens, by = "x")
+
+ggplot(ndens, aes(x = x, y = y)) + 
+  geom_area(data = integral, fill = "#31c18d", alpha = .5) + 
+  geom_line(data = ndens, color = "#0F2439") +
+  geom_segment(data = labels, aes(x = x, xend = x, y = 0, yend = y)) + 
+  scale_x_continuous(breaks = labels$x, labels = labels$label) + 
+  annotate(x = -3, y = 0.4, label = sprintf("Shaded area = %.2f", pnorm(b) - pnorm(a)), geom = "text", hjust = 0, vjust = 1) + 
+  theme(axis.title = element_blank()) + 
+  labs(title = "The Normal Distribution, Graphically") + 
+  annotate(geom = "label", x =  c(-3.75, b), y = c(0, dnorm(b)) + .05, label =c(expression(a==-infinity), sprintf("b = %.2f", b)), hjust = 0, vjust = 0) + 
+  coord_cartesian(xlim = c(-3.5, 3.5))
+
+ndens <- tibble(x = seq(-5, 5, .01), y = dnorm(x)) 
+a <- qnorm(.025)
+b <- qnorm(.975)
+integral <- filter(ndens, between(x, a, b))
+
+labels <- tibble(x = c(-3, -2, -1, 0, 1, 2, 3), label = c(expression(mu -3*sigma), expression(mu -2*sigma), expression(mu -1*sigma), expression(mu), expression(mu + 1 *sigma), expression(mu + 2*sigma), expression(mu +3*sigma))) |>
+  left_join(ndens, by = "x")
+
+ggplot(ndens, aes(x = x, y = y)) + 
+  geom_area(data = integral, fill = "#31c18d", alpha = .5) + 
+  geom_line(data = ndens, color = "#0F2439") +
+  geom_segment(data = labels, aes(x = x, xend = x, y = 0, yend = y)) + 
+  scale_x_continuous(breaks = labels$x, labels = labels$label) + 
+  annotate(x = -3, y = 0.4, label = sprintf("Shaded area = %.2f", pnorm(b) - pnorm(a)), geom = "text", hjust = 0, vjust = 1) + 
+  theme(axis.title = element_blank()) + 
+  labs(title = "The Normal Distribution, Graphically") + 
+  annotate(geom = "label", x = c(a, b), y = c(dnorm(a), dnorm(b)) + .05, label = c(sprintf("a = %.2f", a), sprintf("b = %.2f", b))) + 
+  coord_cartesian(xlim = c(-3.5, 3.5))
+
+ndens <- tibble(x = seq(-5, 5, .01), y = dnorm(x)) 
+a <- -4
+b <- qnorm(.95)
+integral <- filter(ndens, between(x, a, b))
+
+labels <- tibble(x = c(-3, -2, -1, 0, 1, 2, 3), label = c(expression(mu -3*sigma), expression(mu -2*sigma), expression(mu -1*sigma), expression(mu), expression(mu + 1 *sigma), expression(mu + 2*sigma), expression(mu +3*sigma))) |>
+  left_join(ndens, by = "x")
+
+ggplot(ndens, aes(x = x, y = y)) + 
+  geom_area(data = integral, fill = "#31c18d", alpha = .5) + 
+  geom_line(data = ndens, color = "#0F2439") +
+  geom_segment(data = labels, aes(x = x, xend = x, y = 0, yend = y)) + 
+  scale_x_continuous(breaks = labels$x, labels = labels$label) + 
+  annotate(x = -3, y = 0.4, label = sprintf("Shaded area = %.2f", pnorm(b) - pnorm(a)), geom = "text", hjust = 0, vjust = 1) + 
+  theme(axis.title = element_blank()) + 
+  labs(title = "The Normal Distribution, Graphically") + 
+  annotate(geom = "label", x =  c(-3.75, b), y = c(0, dnorm(b)) + .05, label =c(expression(a==-infinity), sprintf("b = %.2f", b)), hjust = 0, vjust = 0) + 
+  coord_cartesian(xlim = c(-3.5, 3.5))
+```
+
+## The Normal Distribution
+
+- 2 parameters: 
+  - $\mu$, the mean/center/top of the curve
+  - $\sigma$, the standard deviation (or $\sigma^2$, the variance)
+
+- Symmetric around $\mu$
+
+```{r}
+#| include: false
+options(digits = 2, scipen = 1)
+```
+
+- Predictable probability based on $\sigma$
+
+  - `r 100*(pnorm(1)-pnorm(-1))`% of the area is within $\pm \sigma$
+  - `r 100*(pnorm(2)-pnorm(-2))`% of the area is within $\pm 2\sigma$
+  - `r 100*(pnorm(3)-pnorm(-3))`% of the area is within $\pm 3\sigma$
+
+::: fragment
+This works for *every* normal distribution, whatever the values of $\mu$ and $\sigma$
+:::
+
+
+## Normally Distributed Data
+
+```{r}
+#| fig-width: 8
+#| fig-height: 3
+#| out-width: 100%
+#| fig-alt: Density plots of 100 samples of male and female heights, with values taken from https://www.andorville.com.au/AdultHeightDistrib.html. 
+# https://www.andorville.com.au/AdultHeightDistrib.html
+set.seed(219767245)
+sim_heights <- 
+  tibble(x = c(rnorm(100, mean = 164.7, sd = 7.07),
+               rnorm(100, mean = 178.4, sd = 7.59)),
+         group = rep(c("female", "male"), each = 100)) 
+
+ggplot(sim_heights, aes(x = x, color = group)) + 
+  geom_density() + 
+  scale_color_manual(values = c("#f16278", "#1a5c7f")) + 
+  xlab("Height (cm)") + ylab("Density")
+```
+
+- Sample mean $\bar{x} = \frac{\sum_{i=1}^n x_i}{n} = \hat\mu_x$     
+[(add up all the observations, divide by the number of observations)]{.fragment fragment-index=1 .emph .sage-dk}
+
+- Sample standard deviation      
+[how far away is each observation from the sample mean?    
+Square it (so that positive and negative things don't cancel out),    
+add 'em up, divide by $n$, and then take the square root]{.emph .fragment .sage-dk fragment-index=2}
+
+
+
+## Normally Distributed Data
+
+```{r}
+#| fig-width: 8
+#| fig-height: 3
+#| out-width: 100%
+#| fig-alt: Density plots of 100 samples of male and female heights, with values taken from https://www.andorville.com.au/AdultHeightDistrib.html. 
+# https://www.andorville.com.au/AdultHeightDistrib.html
+set.seed(219767245)
+sim_heights <- 
+  tibble(x = c(rnorm(100, mean = 164.7, sd = 7.07),
+               rnorm(100, mean = 178.4, sd = 7.59)),
+         group = rep(c("female", "male"), each = 100)) 
+
+ggplot(sim_heights, aes(x = x, color = group)) + 
+  geom_density() + 
+  scale_color_manual(values = c("#f16278", "#1a5c7f")) + 
+  xlab("Height (cm)") + ylab("Density")
+```
+
+- Sample mean $\bar{x} = \frac{\sum_{i=1}^n x_i}{n} = \hat\mu_x$ [([`r mean(filter(sim_heights, group == "female")$x)`]{.pink-dk}, [`r mean(filter(sim_heights, group == "male")$x)`]{.blue-dk})]{.fragment fragment-index=1}    
+[`mean(x, na.rm = T)`]{.fragment fragment-index=1 .emph .sage-dk}
+
+- Sample standard deviation $\hat{s} = \sqrt{\frac{1}{n}\sum_{i=1}^n (x_i-\mu_x)^2} = \hat\sigma_x$, [([`r sd(filter(sim_heights, group == "female")$x)`]{.pink-dk}, [`r sd(filter(sim_heights, group == "male")$x)`]{.blue-dk})]{.fragment fragment-index=2}     
+[`sd(x, na.rm = T)`]{.emph .fragment .sage-dk fragment-index=2}
+
+[`sd(x)` uses $\hat{s} = \sqrt{\frac{1}{n-1}\sum_{i=1}^n (x_i-\mu_x)^2}$ (technically more correct)]{.emph .fragment .sage-dk fragment-index=3}
+
+
+## Standard Normal Distribution
+
+$z = \frac{x-\bar{x}}{s}$ has a $N(\mu = 0, \sigma = 1)$ distribution
+
+- Converting from $x$ to $z$ is **standardizing** $x$
+
+- Makes the Normal distribution easier to write ($P(a < z \leq b) =  \int_{a}^b \frac{1}{\sqrt{2\pi}}e^{-\frac{z^2}{2}} dz$)
+
+- Unit-less distribution
+
+# Robust Summaries & Outliers
+
+Consider [Robert Wadlow](https://en.wikipedia.org/wiki/Robert_Wadlow) and [Trijntje Keever](https://en.wikipedia.org/wiki/Trijntje_Keever)
+
+::: {layout="[4,1,1]" #fig-heights}
+
+```{r}
+#| fig-alt: Density plots for 100 observations sampled from normal distributions of height for males and females, with the tallest person on record in each category added to the distribution as an outlier.
+
+
+sim_heights <- bind_rows(
+  sim_heights,
+  tibble(x = 272, group = "male", z = "Robert Wadlow"),
+  tibble(x = 260, group = "female", z = "Trijntje Keever")
+)
+
+ggplot(sim_heights, aes(x = x, color = group)) + 
+  geom_density(trim = F) + 
+  scale_color_manual(values = c("#f16278", "#1a5c7f")) + 
+  xlab("Height (cm)") + ylab("Density") + 
+  geom_rug() + 
+  scale_x_continuous(limits = c(140,280))
+```
+
+![](https://upload.wikimedia.org/wikipedia/commons/c/ca/Trijntje_Keever.jpg?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail_unscaled){fig-alt="A painting of Trijntje Keever, circa 1630, height of 2.60 m" width="10%"} 
+
+![](https://upload.wikimedia.org/wikipedia/commons/f/f7/Robert_Wadlow_postcard.jpg?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=thumbnail_unscaled){fig-alt="A photo of Robert Wadlow (8' 11.1\") with his father (5' 11.5\")" width="10%"}
+
+The mean without these outliers is `r filter(sim_heights, is.na(z), group == "male")$x |> mean()` cm (males) and `r filter(sim_heights, is.na(z), group == "female")$x |> mean()` cm (females). <br/> With the outliers, it is `r filter(sim_heights, group == "male")$x |> mean()` cm (males) and `r filter(sim_heights, group == "female")$x |> mean()` cm (females). <br/>Including outliers moves the average height by almost 1cm, with 100 other observations!
+:::
+
+
+## Robust Summaries & Outliers
+
+Other options:
+
+Center of the Distribution:
+
+- median -- the middle observation.
+
+
+Variability in the Distribution:
+
+- Median absolute Deviation (MAD) - $\displaystyle\text{med}\left(\left|x_i - \text{med} (x_i) \right|\right)$
+
+- Interquartile Range (IQR) - $p_{75}(x_i) - p_{25}(x_i)$ where $p_y(x)$ is the $y$th percentile of $x$, $0 \leq y \leq 100$
+
+
+```{r}
+library(patchwork)
+
+height_summary <- sim_heights |>
+  group_by(group) |>
+  summarize(mean = mean(x),
+            median = median(x),
+            sd = sd(x),
+            mad = median(abs(x - median)),
+            iqr = quantile(x, .75)-quantile(x, .25)) |>
+  ungroup() |>
+  pivot_longer(-group) |>
+  mutate(type = str_replace_all(name, c("mean" = "fragile", "median" = "robust", "sd" = "fragile", "mad" = "robust", "iqr" = "robust")),
+         axis = str_replace_all(name, c("mean" = "x", "median" = "x", "sd" = "xdev", "mad" = "xdev", "iqr" = "xdev")))
+
+get_max_dens <- function(x) {
+  tmp <- density(x)
+  tmp$y[which.max(tmp$y)]
+}
+
+height_y <- sim_heights |>
+  group_by(group) |>
+  summarize(yheight = get_max_dens(x))
+
+height_y <- left_join(height_summary, height_y) |> 
+  filter(axis == "x") |> 
+  rename("center" = "value") |>
+  select(group, type, yheight, center)
+
+height_summary <- left_join(height_summary, height_y)
+
+p1 <- ggplot(sim_heights, aes(x = x, color = group)) + 
+  geom_density(trim = F) + 
+  scale_color_manual(values = c("#f16278", "#1a5c7f")) + 
+  xlab("Height (cm)") + ylab("Density") + 
+  # geom_rug() + 
+  scale_x_continuous(limits = c(140,280)) + 
+  geom_vline(data = filter(height_summary, axis == "x"), aes(xintercept = value, color = group)) + 
+  facet_grid(type + name~.) + 
+  guides(color = 'none')
+
+p2 <- ggplot(sim_heights, aes(x = x, color = group)) + 
+  geom_density(trim = F) + 
+  scale_color_manual(values = c("#f16278", "#1a5c7f")) + 
+  xlab("Height (cm)") + ylab("Density") + 
+  # geom_rug() + 
+  scale_x_continuous(limits = c(140,280)) + 
+  geom_rect(data = filter(height_summary, axis != "x"), aes(ymin = 0, ymax = yheight, xmin = center - value, xmax = center + value, fill = group), inherit.aes=F, alpha = .25) + 
+  facet_grid(type + name~.) + 
+  guides(fill = 'none', color = 'none')
+
+
+p1 + p2 + plot_layout(axes = 'collect')
+```
+
