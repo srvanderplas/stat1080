@@ -1,0 +1,23 @@
+---
+title: "Project Setup Instructions"
+format: html
+---
+
+Easy option: Download the [template zip file](../homework/project-template.zip){target="_blank"} to complete the assignment. 
+
+Harder option: Use if your computer/browser is being irritatingly dense.
+
+1. Create an RStudio project in the location you want to keep your project files -- might I suggest in the Stat1080 folder you keep your course files in?
+
+2. Open the RStudio project in RStudio -- check the top right corner to make sure the name of the project matches the name you gave your folder.
+
+3. Create a data subfolder by using the files pane in the bottom right: Files -> New Folder -> name it `data`.
+
+4. Download the [project final report template](_project-final-report-template.qmd). This is an adaptation of the actual report template you will use for the final report that mostly doesn't have the Submission notes section.
+    - Save it into your project folder.
+    - Rename it as `<lastname>_<firstname>_project.qmd`. 
+
+5. Download the [project submission checklist](_project-submission-checklist.qmd). Save it into your project folder.
+
+This is an adaptation of the actual report template you will use for the final report that mostly doesn't have the Submission notes section.
+

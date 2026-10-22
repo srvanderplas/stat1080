@@ -1,0 +1,9 @@
+---
+title: "1.24 Discrete Probability"
+format: revealjs
+code-annotations: hover
+lightbox:  true
+bibliography: refs.bib
+csl: chicago-syllabus.csl
+---
+
