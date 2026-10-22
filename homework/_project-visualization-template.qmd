@@ -1,0 +1,77 @@
+---
+title: "Personal Data Collection Project"
+author: "(Replace with your name)"
+editor: source
+format:
+  html:
+    embed-resources: true
+execute:
+  echo: true   # show code by default
+  warning: false
+  message: false
+---
+
+
+# Introduction
+
+Please describe in a few short paragraphs why you chose to measure to measure the things you chose to measure. 
+Please also include details about each variable, including the measurement process and the units of measure. 
+You can talk about each of the variables in an itemized list using the following template. 
+
+*Replace the text below with a summary of the variables you collected:*
+
+- *Body weight: Each morning, I stepped on my bathroom scale and measured my weight in pounds without wearing shoes and before I ate anything for the day.* 
+- *Shirt Color: I measured the dominant color (a categorical variable) of the shirt that I wore for the majority of the day.*
+- *Replace and add more list items as needed*
+
+# Variable Summaries
+
+Please report various statistical summaries of your project, this includes things such as:  
+
+- The means and standard deviations of quantitative variables, and the proportions for qualitative variables.
+- The total number of observations for each variable and the proportion of missing values as applicable.
+
+Note that you must use R code to show how these quantities were calculated, though you should write these quantities in rounded form in the text to make them easier to read. 
+
+```{r}
+library(tidyverse)
+
+## tdf <- read_csv("data/...")
+
+# Read in your dataset from the data folder. 
+
+# Code here for statistical summaries: 
+```
+
+*Replace this text with descriptions of why each summary is meaningful for your report.*
+
+# Visuals
+
+You need to include at least two separate visuals of your data, and all variables need to be visualized in some form at least once. 
+This may require more than two visuals, depending on your variables, though you are welcome to plot more than two variables in the same visuals. 
+At least one visual should be a time series plot of at least one of your variables. 
+
+```{r}
+# Make a new R chunk for every visual you need to create. 
+
+
+```
+
+*Replace this text with descriptions of what each table or visual tells you and why they are meaningful to include in your report.* 
+
+# Models or tests
+You need to try to (1) conduct one hypothesis test using either p-values or confidence intervals AND/OR (2) create one linear regression model where you try to predict one variable using another or you check to see if two variables are related to each other. 
+This section can be as simple as checking to see if two of your variables are related over time using a test of correlation, though you are welcome to do something more complex if you wish. 
+
+```{r}
+# You can put the code to evaluate your statistical test or your linear model.
+
+```
+
+*Replace this text with an interpretation of whatever test or model you create.* 
+
+# Additional Items (optional)
+This section is not necessary, but you are welcome to add other elements to this report as you want. Be creative! 
+
+# Conclusions
+Summarize the things you learned from this project. This includes the insight you received from your data, as well as the lessons you learned from measuring data over the last several weeks. 
