@@ -21,3 +21,13 @@ Harder option: Use if your computer/browser is being irritatingly dense.
 
 This is an adaptation of the actual report template you will use for the final report that mostly doesn't have the Submission notes section.
 
+Here are the contents of my folder, as an example. There are some "linux-isms" but hopefully the structure is clear.
+```
+(Stat1080) susan@computer:~/my-project$ ls -l
+ . # This is the folder
+ .. # This is the folder at the next level "up" (Stat1080)
+ data # Data Subfolder
+ vanderplas_susan_project.qmd
+ my-project.Rproj
+ submission-checklist.qmd
+```
