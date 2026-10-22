@@ -8,14 +8,15 @@ October 19-25, 2026
 
 - [ ] (for Mon) [IDS 2, Ch 2 - Numerical Summaries](https://rafalab.dfci.harvard.edu/dsbook-part-2/summaries/numerical-summaries.html){target="_blank"}
 - [ ] (for Mon) [IDS 2, Ch 3.3 - Comparing Groups with Stratification](https://rafalab.dfci.harvard.edu/dsbook-part-2/summaries/comparing-groups.html#sec-stratification){target="_blank"}
-- [ ] (for Wed) [IDS 2, Ch 5 - Discrete Probability](https://rafalab.dfci.harvard.edu/dsbook-part-2/prob/discrete-probability.html){target="_blank"}
-- [ ] (for Fri) [IDS 2, Ch 6 - Continuous Probability](https://rafalab.dfci.harvard.edu/dsbook-part-2/prob/continuous-probability.html){target="_blank"}
+- [ ] (for Wed) Think about how you might visualize your personal data collection using principles of good graphics.
+- [ ] (for Fri) [IDS 2, Ch 5 - Discrete Probability](https://rafalab.dfci.harvard.edu/dsbook-part-2/prob/discrete-probability.html){target="_blank"}
 
 
 ## 📐 Prepare for class
 
 - [ ] (for Mon) [Reading Check 8.1](https://usu.instructure.com/courses/819584/quizzes/1502607){target="_blank"}
-- [ ] [Project Visualizations](https://usu.instructure.com/courses/819584/assignments/5290607){target="_blank"}. You will need the [template zip file](../homework/project-template.zip){target="_blank"} to complete the assignment. 
+- [ ] [Project Visualizations](https://usu.instructure.com/courses/819584/assignments/5290607){target="_blank"}.    
+You will need the [template zip file](../homework/project-template.zip){target="_blank"} to complete the assignment. 
 - [ ] (for Wed) [Reading Check 8.2](https://usu.instructure.com/courses/819584/quizzes/1502608){target="_blank"}
 - [ ] (for Fri) [Reading Check 8.3](https://usu.instructure.com/courses/819584/quizzes/1502609){target="_blank"}
 
@@ -24,19 +25,19 @@ October 19-25, 2026
 
 - [Attendance Quiz 10/19](https://usu.instructure.com/courses/819584/assignments/5292963){target="_blank"}
 - [Summary Statistics](../slides/22-summary-stats.qmd){target="_blank"}
-- [8.1.p - Summary Statistics Activity](https://usu.instructure.com/courses/819584/quizzes/1462889){target="_blank"}, [quarto](../lab/_22-summary-stats.qmd){target="_blank"}, [html](../lab/22-summary-stats.qmd){target="_blank"}
+- [Activity 8.1.p - Summary Statistics](https://usu.instructure.com/courses/819584/quizzes/1462889){target="_blank"}, [quarto](../lab/_22-summary-stats.qmd){target="_blank"}, [html](../lab/22-summary-stats.qmd){target="_blank"}
 
 
 ## 🐪️ Wednesday 🐦‍⬛ 
 
 - [Attendance Quiz 10/21](https://usu.instructure.com/courses/819584/assignments/5293065){target="_blank"}
-- [Discrete Probability](../slides/23-discrete-prob.qmd){target="_blank"}
+- [Visualizing Personal Data](../slides/23-vis-personal-data.qmd){target="_blank"}
 
 
 ## 🎉 Friday 🥳
 
 - [Attendance Quiz 10/23](https://usu.instructure.com/courses/819584/assignments/5293066){target="_blank"}
-- [Continuous Probability](../slides/24-cts-prob.qmd){target="_blank"}
+- [Discrete Probability](../slides/24-discrete-prob.qmd){target="_blank"}
 
 
 ## Extra Resources/Reading

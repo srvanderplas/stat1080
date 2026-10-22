@@ -34,7 +34,7 @@ instructor:
   - email: susan.vanderplas@usu.edu
 semester: Fall 2026
 officehours: | 
-  [calendly.com/vanderplas-stat/office-hours](https://calendly.com/vanderplas-stat/office-hours)
+  <https://calendly.com/vanderplas-stat/office-hours> 
 class:
   room: ELSC 053
   time: MWF 12:30-1:20
@@ -342,15 +342,19 @@ The quiz will be open only during the class period, so you will need to have a d
 Sharing this code with anyone, or receiving a code for a class you were not present for, will be considered a violation of academic integrity. 
 
 Three absences (1 week of class) will be allowed without any reduction in your attendance score - no excuse is necessary! 
-Please *do not email me* when you use your excuse-free absences - Canvas will automatically drop the quizzes associated with the first three missed classes.
+Please *do not email me* when you use your excuse-free absences - Canvas will automatically drop the quizzes associated with the first three missed classes. 
+Excuse-free absences must be used up before illness-related policies kick in - the purpose of this is to reduce the amount of bookkeeping I have to do, and most likely, you will not need to exceed 3 absences. 
+
+Do not ask me to excuse absences for university purposes or illness before the 3 initial absences have been used. 
+These absences are not intended as vacation days, but to account for the myriad number of emergencies and "life happens" situations that pop up during the semester. Use them wisely.
 
 ### Illness {#sec-illness}
 
 If you are feeling ill, please **do not come to class**.
 Instead, review the material and work on the homework assignment, and then schedule an appointment with me to meet virtually.
-In the appointment reason field on [Calendly](https://calendly.com/vanderplas-stats/30min), indicate that this appointment is to substitute for your in-class participation on the date you missed.
+In the appointment reason field on Calendly, indicate that this appointment is to substitute for your in-class participation on the date you missed.
 
-If you need to miss more than 3 classes for illness (6 total, including the 3 excuse-free absences), I will ask you to work with the Disability Resource Center in order to continue using this substitute for attendance.
+If you need to miss more than 3 classes for illness after your 3 excuse free absences, I will ask you to work with the Disability Resource Center in order to continue using this substitute for attendance.
 
 ### Extenuating Circumstances
 

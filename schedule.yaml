@@ -216,11 +216,10 @@ schedule:
         - [Activity 7.1.p - Introduction to `ggplot2`](https://usu.instructure.com/courses/819584/quizzes/1462912){target="_blank"} [qmd template](../lab/_19-ggplot2.qmd) [html](../lab/19-ggplot2.qmd)
     class2: |
         - [Attendance Quiz 10/14](https://usu.instructure.com/courses/819584/assignments/5292947){target="_blank"}
-        - [Advanced `ggplot2`](../slides/20-adv-ggplot2.qmd){target="_blank"}
+        - [Advanced `ggplot2` and Data Vis Principles](../slides/20-adv-ggplot2.qmd){target="_blank"}
         - [Activity 7.2.p - Advanced `ggplot2`](https://usu.instructure.com/courses/819584/quizzes/1462843) [qmd template](../lab/_20-ggplot2-adv.qmd), [html](../lab/20-ggplot2-adv.qmd), [solutions](../lab/20-ggplot2-adv-sol.qmd)
     class3: |
         - [Attendance Quiz 10/16](https://usu.instructure.com/courses/819584/assignments/5292962){target="_blank"}
-        - [Data Visualization Principles](../slides/21-data-vis-principles.qmd){target="_blank"}
         - [Lab: Effective Data Visualization](https://usu.instructure.com/courses/819584/modules/items/7952204){target="_blank"} [qmd template](../lab/_21-effective-data-vis.qmd){target="_blank"}, [html](../lab/21-effective-data-vis.qmd), [visual solutions](../lab/21-effective-data-vis-visual-sol.qmd)
     extra: |
       This is my research area, so here's an info-dump from my textbook. 
@@ -239,11 +238,12 @@ schedule:
     reading: |
         - [ ] (for Mon) [IDS 2, Ch 2 - Numerical Summaries](https://rafalab.dfci.harvard.edu/dsbook-part-2/summaries/numerical-summaries.html){target="_blank"}
         - [ ] (for Mon) [IDS 2, Ch 3.3 - Comparing Groups with Stratification](https://rafalab.dfci.harvard.edu/dsbook-part-2/summaries/comparing-groups.html#sec-stratification){target="_blank"}
-        - [ ] (for Wed) [IDS 2, Ch 5 - Discrete Probability](https://rafalab.dfci.harvard.edu/dsbook-part-2/prob/discrete-probability.html){target="_blank"}
-        - [ ] (for Fri) [IDS 2, Ch 6 - Continuous Probability](https://rafalab.dfci.harvard.edu/dsbook-part-2/prob/continuous-probability.html){target="_blank"}
+        - [ ] (for Wed) Think about how you might visualize your personal data collection using principles of good graphics.
+        - [ ] (for Fri) [IDS 2, Ch 5 - Discrete Probability](https://rafalab.dfci.harvard.edu/dsbook-part-2/prob/discrete-probability.html){target="_blank"}
     prepare: |
         - [ ] (for Mon) [Reading Check 8.1](https://usu.instructure.com/courses/819584/quizzes/1502607){target="_blank"}
-        - [ ] [Project Visualizations](https://usu.instructure.com/courses/819584/assignments/5290607){target="_blank"}. You will need the [template zip file](../homework/project-template.zip){target="_blank"} to complete the assignment. 
+        - [ ] [Project Visualizations](https://usu.instructure.com/courses/819584/assignments/5290607){target="_blank"}.    
+        You will need the [template zip file](../homework/project-template.zip){target="_blank"} to complete the assignment. 
         - [ ] (for Wed) [Reading Check 8.2](https://usu.instructure.com/courses/819584/quizzes/1502608){target="_blank"}
         - [ ] (for Fri) [Reading Check 8.3](https://usu.instructure.com/courses/819584/quizzes/1502609){target="_blank"}
     class1: |
@@ -252,10 +252,10 @@ schedule:
         - [Activity 8.1.p - Summary Statistics](https://usu.instructure.com/courses/819584/quizzes/1462889){target="_blank"}, [quarto](../lab/_22-summary-stats.qmd){target="_blank"}, [html](../lab/22-summary-stats.qmd){target="_blank"}
     class2: |
         - [Attendance Quiz 10/21](https://usu.instructure.com/courses/819584/assignments/5293065){target="_blank"}
-        - [Discrete Probability](../slides/23-discrete-prob.qmd){target="_blank"}
+        - [Visualizing Personal Data](../slides/23-vis-personal-data.qmd){target="_blank"}
     class3: |
         - [Attendance Quiz 10/23](https://usu.instructure.com/courses/819584/assignments/5293066){target="_blank"}
-        - [Continuous Probability](../slides/24-cts-prob.qmd){target="_blank"}
+        - [Discrete Probability](../slides/24-discrete-prob.qmd){target="_blank"}
     extra: |
         - [Homework 2](https://usu.instructure.com/courses/819584/assignments/5290612){target="_blank"}, [qmd template](../homework/_homework02.qmd), [html](../homework/homework02.qmd), [visual solutions](../homework/homework02-visual-sol.qmd)
         
@@ -264,16 +264,17 @@ schedule:
     start: 2026-10-26
     end: 2026-11-01
     reading: |
-        - [ ] (for Mon) [IDS 2 Ch 4 - Connecting Data and Probability](https://rafalab.dfci.harvard.edu/dsbook-part-2/prob/connecting-data-and-probability.html){target="_blank"}
+        - [ ] (for Mon) [IDS 2, Ch 6 - Continuous Probability](https://rafalab.dfci.harvard.edu/dsbook-part-2/prob/continuous-probability.html){target="_blank"}
+        - [ ] (for Wed) [IDS 2, Ch 4 - Connecting Data and Probability](https://rafalab.dfci.harvard.edu/dsbook-part-2/prob/connecting-data-and-probability.html){target="_blank"}
     prepare: |
         - [ ] (for Mon) Reading Check 9.1
         - [ ] [Homework 2](https://usu.instructure.com/courses/819584/assignments/5290612) [qmd template](../homework/_homework02.qmd) [html](../homework/homework02.qmd)
     class1: |
         - [Attendance Quiz 10/26](https://usu.instructure.com/courses/819584/assignments/5293067){target="_blank"}
-        - [Data and Probability](../slides/25-data-prob.qmd){target="_blank"}
+        - [Continuous Probability](../slides/25-cts-prob.qmd){target="_blank"}
     class2: |
         - [Attendance Quiz 10/28](https://usu.instructure.com/courses/819584/assignments/5293068){target="_blank"}
-        - TBD probability
+        - [Connecting Data and Probability](../slides/26-data-prob.qmd){target="_blank"}
     class3: |
         - [Attendance Quiz 10/30](https://usu.instructure.com/courses/819584/assignments/5293102){target="_blank"}
         - [Lab: Probability](../lab/27-probability.qmd){target="_blank"}
