@@ -1,0 +1,105 @@
+---
+title: "8.3.p - Class Activity"
+format: html
+number-sections: true
+execute:
+  echo: true   # show code by default
+  warning: false
+  message: false
+---
+
+```{r}
+library(tidyverse)
+```
+
+Dr. Vanderplas loves playing the **World's Greatest Board Game: The Settlers of Catan** (see <https://www.catan.com/>). 
+Without going into details, success in the game requires the collection of resources that are obtained based on the sum total of two dice rolls. 
+The following code creates a dataframe of all possible combinations of two dice rolls. 
+
+
+```{r}
+library(dplyr)
+library(tidyr)
+# Create a vector of possible dice rolls
+dice <- 1:6
+# Create a dataframe of all possible two dice rolls.
+two_dice <- crossing(dice_1 = dice, dice_2 = dice)
+
+head(two_dice)
+tail(two_dice)
+```
+
+# Problem 
+
+Using the `two_dice` dataframe, create a new variable called `dice_sum` which represents the sum of the two dice rolls. Add this variable to `two_dice`. 
+
+```{r}
+two_dice <- two_dice |>
+  mutate(dice_sum = dice_1 + dice_2)
+```
+
+# Problem 
+
+The following code summarizes the `two_dice` dataframe. The first column represents the total number of dice roll combinations that hit each possible number. The second column represents the proportion of dice roll combinations for each possible number. 
+
+```{r}
+# Uncomment after completing the previous problem part.
+two_dice_sum <- two_dice |>
+  group_by(dice_sum) |>
+  summarize(count = n()) |> # Count number of rows for each number
+  ungroup() |> # Stop doing things by number
+  mutate(prop = count / sum(count)) |> # Divide each count by the total.
+  arrange(dice_sum) # Order rows by dice quantity.
+```
+
+Using `two_dice_sum`, make a ggplot using both `geom_point` and `geom_path()` that shows the probability of each possible roll combination. 
+
+```{r}
+ggplot(two_dice_sum, aes(x = dice_sum, y = prop)) +
+  geom_point() +
+  geom_path() +
+  scale_x_continuous(breaks = seq(2, 12, 1)) +
+  theme(panel.grid.minor.x = element_blank())
+```
+
+You should observe that seven is the most common total, while two and twelve are the least likely.
+
+# Problem 
+
+The following is a custom function that extracts the probability of rolling a single quantity `q` between two and 12, based on our `two_dice_sum` dataset. It also shows an example of its use for finding the probability of rolling a four and a one (with one being an impossible quantity) in the game. 
+
+```{r}
+get_dice_prob <- function(q, t_data = two_dice_sum) {
+  # Probability is zero if the input value is not between 2 and 12
+  if (!(q %in% 2:12)) {
+    return(0)
+  }
+
+  # If between 2 and 12, then grab the value from the dataset.
+  t_data |>
+    filter(dice_sum == q) |>
+    pull(prop)
+}
+
+get_dice_prob(4)
+get_dice_prob(1)
+```
+
+Now suppose that Dr. Vanderplas must roll a 12 in order to obtain a key resource and win the game. She is playing the expansion pack with five other people, which means that she has six chances for a 12 to be rolled on the next turn. What is the probability that AT LEAST ONE 12 is rolled on the next six rolls? Note that the `get_dice_prob()` function should be part of your answer. **This answer will go in your Canvas quiz.** 
+
+```{r}
+# Calculate the probability of rolling NOT a 12.
+prob_no_12 <- 1 - get_dice_prob(12)
+
+# THEN, calculate the probability of rolling at least one 12.
+1 - prob_no_12^6
+```
+# Problem 
+
+Now suppose that Dr. Vanderplas still needs a 12 and rolls the dice one at a time. The first die she rolls is a six. What is the probability that the sum of both dice will be 12, given that the first die is a six? **This answer will go in your Canvas quiz.** 
+
+```{r}
+1 / 6
+```
+
+*If we know a six has already been rolled, then the probability that she rolls a 12 is the same as the probability that the second die she rolls is a six, which is simply 1/6.*

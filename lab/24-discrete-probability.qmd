@@ -1,0 +1,1 @@
+{{< include _24-discrete-probability.qmd >}}

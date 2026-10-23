@@ -1666,6 +1666,20 @@
     "text": "Part e (10 points)\nLooking at the original cereal data, propose a grouped summary of a variable other than Sugars. You are welcome to group by Shelf, Manufacturer, or both Shelf and Manufacturer. In order to ensure reasonable estimates of the min/max/mean, you need to make sure that you only retain groups that have at least 5 non-missing observations of interest. To complete this problem, you must:\n\n(2.5 points) Write a sentence explaining what grouped summary you plan to take and why you chose to summarize that variable. You should select one variable so summarize, and at least one variable to group by.\n(5 points) Create a dataframe that contains the grouped summaries (min/max/mean) of that variable. Print this dataframe as part of your report (which can be done simply by putting the name of the dataframe on the last line of your code chunk).\n(2.5 points) Describe at least one interesting feature of your grouped summary. Also provide a possible explanation for what might be causing the difference (or lack of difference) between the groups?\n\n\n\n#...#\n\nAnswer:\n(Replace this text with your explanation)"
   },
   {
+    "objectID": "lab/25-continuous-probability.html",
+    "href": "lab/25-continuous-probability.html",
+    "title": "3.3.a - Class Activity",
+    "section": "",
+    "text": "Be sure to run the following code chunk before proceeding with your analysis.\n\nlibrary(tidyverse)\nlibrary(stat1080r)\nlibrary(gridExtra) # for making certain side-by-side plots. \n\nThis assignment will use the patient_hawkes dataset from the stat1080r package. As always, you can use head(patient_hawkes) to observe the first six rows of this dataset. If you want the dataset to show up in your global environment (i.e., so it appears in the upper-right corner of your Rstudio), you can run the following chunk of code, which copies the dataset from the package to your global environment.\n\n# Not required for analysis, but may make the exploration of the data \n# more convienent. \npatient_hawkes &lt;- patient_hawkes\n\nRemember also that you can get a sense of what variables exist in this dataset by running ?patient_hawkes in your console. This will open a help page in the lower-right corner of Rstudio.\n\n1 Problem\nWrite tidyverse code that assigns all male cholesterol values to a vector. Do the same for all female cholesterol values. Note that you will need to use the filter() and pull() functions from the tidyverse to create these two vectors, which you should name male_c and female_c.\n\n## male_c &lt;- #...#\n\n## female_c &lt;- #...#\n\nAfter creating these vectors, please report the number of female observations in Canvas.\n\n\n2 Problem\nWe will define “healthy” cholesterol as anyone with a cholesterol value less than or equal to 200, though we should note that actual health is more complicated than any single number. With that in mind, what is the proportion of men in our sample that have healthy cholesterol? How about the proportion of females with healthy cholesterol? You should calculate these proportions using the mean() function.\n\n# Males\n#...#\n# Females\n#...#\n\n\n\n3 Problem\nCreate a density plot (i.e., geom_density()) that shows the distribution of cholesterol, colored by gender. Do not worry about “optimizing” the plot, meaning that you do not need to change any of the axis labels or make anything look “nice”.\nDo men and women’s cholesterol appear to approximately follow a normal distribution. Explain why or why not.\n\n#...#\n\nReplace this text with your answer. Required if working on your own and optional if discussing in groups.\n\n\n4 Problem\nAfter writing your answer, confirm your findings by looking at the qq plots for male and female cholesterol.\n\npatient_hawkes |&gt;\n  ggplot(aes(sample = cholesterol)) +\n  geom_qq() +\n  geom_qq_line() + \n  facet_wrap(~ gender)\n\n\n\n\n\n\n\n\nDo these qqplots confirm or dispute your previous comments about whether the data approximately follow a normal distribution? Please explain below.\nReplace this text with your answer. Required if working on your own and optional if discussing in groups.\n\n\n5 Problem\nWe are now going to look at what we call “the distribution of averages”. To obtain this, we will take random samples of size n from our collection of female observations. We will sample the females with replacement, meaning that it is possible for an observation to appear more than once in our sample. The following code chunk defines a function that takes samples of size n, with replacement, and then returns the average value of that sample.\n\nget_avg &lt;- function(x, n){\n  mean(sample(x, size = n, replace = TRUE))\n}\n\n# Example of calling the function to obtain the average of 5 randomly \n# selected female cholesterol values. (Uncomment once you have successfully\n# created the female_c vector). \n## get_avg(female_c, n = 5)\n\n# Now the same function, but with a sample of 10\n## get_avg(female_c, n = 10)\n\nNote that you will get a different number every time you run your function since you are doing a random simulation. Please create a vector of 10,000 sample averages for n = 10. Please consult the in-class examples that use the replicate() function for guidance.\n\nB &lt;- 10000\n\n## f_avg &lt;- replicate(#...#)\n\n\n\n6 Problem\nWe now want to visualize the distribution of the simulated averages that we created on the previous problem. The following code shows you how to create a density plot of the averages. Note that f_avg is a vector, and not a dataframe. The first line in the code chunk below shows you how to put your vector into a dataframe before trying to use ggplot. This code also makes use of the gridExtra package to place two plots side by side.\n\n# No need to change this code, just uncomment after you have created f_avg. \n\n## tdf &lt;- data.frame(avg_dist = f_avg)\n##\n## p1 &lt;- tdf |&gt; \n##   ggplot(aes(x = avg_dist)) + \n##   geom_density()\n##\n## p2 &lt;- tdf  |&gt; \n##   ggplot(aes(sample = avg_dist)) + \n##   geom_qq() + \n##   geom_qq_line()\n\n## grid.arrange(p1, p2, nrow = 1)\n\nDoes the distribution of averages appear to approximately follow a normal distribution? Does it appear that the distribution of averages are closer to a normal distribution than the original data? Explain why or why not.\nReplace this text with your answer. Required if working on your own and optional if discussing in groups.\nNote that the fact that the averages have a different distribution than the original cholesterol values is due to a very important theorem in statistics (called the Central Limit Theorem) that we will learn about soon.\n\n\n7 Problem\nSuppose that the distribution of averages has a mean of 217.8 and a standard deviation of 8.0. Use the normal approximation to estimate the probability that the average cholesterol from a group of 10 women will be larger than 200. Your answer should make use of the pnorm() function.\n\n#...#"
+  },
+  {
+    "objectID": "lab/24-discrete-probability.html",
+    "href": "lab/24-discrete-probability.html",
+    "title": "3.2.a - Class Activity",
+    "section": "",
+    "text": "library(tidyverse)\n\nDr. Bean gets competitive with just about everything. However, he is perhaps most competitive when playing the World’s Greatest Board Game: The Settlers of Catan (see https://www.catan.com/). Without going into details, success in the game requires the collection of resources that are obtained based on the sum total of two dice rolls. The following code creates a dataframe of all possible combinations of two dice rolls.\n\n# Create a vector of possible dice rolls\ndice &lt;- 1:6\n# Create a dataframe of all possible two dice rolls.\ntwo_dice &lt;- expand.grid(dice_1 = dice, dice_2 = dice)\n\nhead(two_dice)\n\n  dice_1 dice_2\n1      1      1\n2      2      1\n3      3      1\n4      4      1\n5      5      1\n6      6      1\n\ntail(two_dice)\n\n   dice_1 dice_2\n31      1      6\n32      2      6\n33      3      6\n34      4      6\n35      5      6\n36      6      6\n\n\n\n1 Problem\nUsing the two_dice dataframe, create a new variable called dice_sum which represents the sum of the two dice rolls. Add this variable to two_dice.\n\n## two_dice &lt;- #...#\n\n\n\n2 Problem\nThe following code summarizes the two_dice dataframe. The first column represents the total number of dice roll combinations that hit each possible number. The second column represents the proportion of dice roll combinations for each possible number.\n\n## two_dice_sum &lt;- two_dice |&gt;\n##   group_by(dice_sum) |&gt;\n##   summarize(count = n()) |&gt; # Count number of rows for each two roll sum\n##   ungroup() |&gt; # Stop doing things by group\n##   mutate(prop = count / sum(count)) |&gt; # Divide each count by the total.\n##   arrange(dice_sum) # Order rows by dice quantity.\n\nUsing two_dice_sum, make a ggplot using both geom_point and geom_path() that shows the probability of each possible roll combination.\n\n## ggplot(#...#) +\n##   geom_point() +\n##   geom_path() +\n##   scale_x_continuous(breaks = seq(2, 12, 1)) +\n##   theme(panel.grid.minor.x = element_blank())\n\nYou should observe that seven is the most common to roll, while two and 12 are the least likely to be rolled.\n\n\n3 Problem\nThe following is a custom function that extracts the probability of rolling a single quantity q between two and 12, based on our two_dice_sum dataset. It also shows an example of its use for finding the probability of rolling a four and a one (with one being an impossible quantity) in the game.\n\n# Uncomment chunk once you complete the previous section\n## get_dice_prob &lt;- function(q, t_data = two_dice_sum) {\n##   # Probability is zero if the input value is not between 2 and 12\n##   if (!(q %in% 2:12)) {\n##     return(0)\n##   }\n## \n##   # If between 2 and 12, then grab the value from the dataset.\n##   t_data |&gt;\n##     filter(dice_sum == q) |&gt;\n##     pull(prop)\n## }\n## \n## get_dice_prob(4)\n## get_dice_prob(1)\n\nNow suppose that Dr. Bean must roll a 12 in order to obtain a key resource and win the game. He is playing the expansion pack with five other people, which means that he has six chances for a 12 to be rolled on the next turn. What is the probability that AT LEAST ONE 12 is rolled on the next six rolls? Note that the get_dice_prob() function should be part of your answer. This answer will go in your Canvas quiz.\n\n# Calculate the probability of rolling NOT a 12.\n## prob_no_12 &lt;- #...#\n\n# THEN, calculate the probability of rolling at least one 12.\n## #...#\n\n\n\n4 Problem\nNow suppose that Dr. Bean still needs a 12 and rolls the dice one at a time. The first die he rolls is a six. What is the probability that the sum of both dice will be 12, given that the first die is a six? This answer will go in your Canvas quiz.\n\n#...#"
+  },
+  {
     "objectID": "lab/22-summary-stats.html",
     "href": "lab/22-summary-stats.html",
     "title": "3.1.a - Class Activity",
@@ -2027,7 +2041,7 @@
     "href": "weeks/week-100.html",
     "title": "Week 10: Random Variables",
     "section": "",
-    "text": "November 02-08, 2026\n\n\n\n(for Mon) IDS 2 Ch 7 - Random Variables\n(for Fri) IDS 2 Intro to Statistical Inference\n\n\n\n\n\n(for Mon) Reading Check 10.1\n(for Fri) Reading Check 10.3\nHomework 2, qmd template, html, visual solutions\n\n\n\n\n\nAttendance Quiz 11/02\nRandom Variables\n\n\n\n\n\nAttendance Quiz 11/04\nRandom Variables\n\n\n\n\n\nAttendance Quiz 11/06\nLab: Random Variables\n\n\n\n\n\nHomework 3, qmd template, html, visual solutions"
+    "text": "November 02-08, 2026\n\n\n\n(for Mon) IDS 2 Ch 7 - Random Variables\n(for Fri) IDS 2 Intro to Statistical Inference\n\n\n\n\n\n(for Mon) Reading Check 10.1\n(for Fri) Reading Check 10.3\nDue Next Week Homework 2, qmd template, html, visual solutions\n\n\n\n\n\nAttendance Quiz 11/02\nRandom Variables\n\n\n\n\n\nAttendance Quiz 11/04\nRandom Variables\n\n\n\n\n\nAttendance Quiz 11/06\nLab: Random Variables"
   },
   {
     "objectID": "weeks/week-100.html#reading",
@@ -2041,7 +2055,7 @@
     "href": "weeks/week-100.html#prepare-for-class",
     "title": "Week 10: Random Variables",
     "section": "",
-    "text": "(for Mon) Reading Check 10.1\n(for Fri) Reading Check 10.3\nHomework 2, qmd template, html, visual solutions"
+    "text": "(for Mon) Reading Check 10.1\n(for Fri) Reading Check 10.3\nDue Next Week Homework 2, qmd template, html, visual solutions"
   },
   {
     "objectID": "weeks/week-100.html#monday",
@@ -2065,18 +2079,11 @@
     "text": "Attendance Quiz 11/06\nLab: Random Variables"
   },
   {
-    "objectID": "weeks/week-100.html#extra-resourcesreading",
-    "href": "weeks/week-100.html#extra-resourcesreading",
-    "title": "Week 10: Random Variables",
-    "section": "",
-    "text": "Homework 3, qmd template, html, visual solutions"
-  },
-  {
     "objectID": "weeks/week-090.html",
     "href": "weeks/week-090.html",
     "title": "Week 9: Data and Probability",
     "section": "",
-    "text": "October 26-01, 2026\n\n\n\n(for Mon) IDS 2, Ch 6 - Continuous Probability\n(for Wed) IDS 2, Ch 4 - Connecting Data and Probability\n\n\n\n\n\n(for Mon) Reading Check 9.1\nHomework 2 qmd template html\n\n\n\n\n\nAttendance Quiz 10/26\nContinuous Probability\n\n\n\n\n\nAttendance Quiz 10/28\nConnecting Data and Probability\n\n\n\n\n\nAttendance Quiz 10/30\nLab: Probability\n\n\n\n\n\nHomework 2, qmd template, html, visual solutions"
+    "text": "October 26-01, 2026\n\n\n\n(for Mon) IDS 2, Ch 6 - Continuous Probability\n(for Wed) IDS 2, Ch 4 - Connecting Data and Probability\n\n\n\n\n\n(for Mon) Reading Check 9.1\n(for Wed) Reading Check 9.2\nContinue looking at Homework 2 qmd template html\n\n\n\n\n\nAttendance Quiz 10/26\nContinuous Probability\n\n\n\n\n\nAttendance Quiz 10/28\nConnecting Data and Probability\n\n\n\n\n\nAttendance Quiz 10/30\nLab: Probability\n\n\n\n\n\nHomework 2, qmd template, html, visual solutions"
   },
   {
     "objectID": "weeks/week-090.html#reading",
@@ -2090,7 +2097,7 @@
     "href": "weeks/week-090.html#prepare-for-class",
     "title": "Week 9: Data and Probability",
     "section": "",
-    "text": "(for Mon) Reading Check 9.1\nHomework 2 qmd template html"
+    "text": "(for Mon) Reading Check 9.1\n(for Wed) Reading Check 9.2\nContinue looking at Homework 2 qmd template html"
   },
   {
     "objectID": "weeks/week-090.html#monday",
@@ -2678,7 +2685,7 @@
     "href": "weeks/week-080.html",
     "title": "Week 8: Statistics and Probability",
     "section": "",
-    "text": "October 19-25, 2026\n\n\n\n(for Mon) IDS 2, Ch 2 - Numerical Summaries\n(for Mon) IDS 2, Ch 3.3 - Comparing Groups with Stratification\n(for Wed) Think about how you might visualize your personal data collection using principles of good graphics.\n(for Fri) IDS 2, Ch 5 - Discrete Probability\n\n\n\n\n\n(for Mon) Reading Check 8.1\nProject Visualizations. Follow the Project Setup instructions first.\n(for Wed) Reading Check 8.2\n(for Fri) Reading Check 8.3\n\n\n\n\n\nAttendance Quiz 10/19\nSummary Statistics\nActivity 8.1.p - Summary Statistics, quarto, html\n\n\n\n\n\nAttendance Quiz 10/21\nVisualizing Personal Data\n\n\n\n\n\nAttendance Quiz 10/23\nDiscrete Probability\n\n\n\n\n\nHomework 2, qmd template, html, visual solutions"
+    "text": "October 19-25, 2026\n\n\n\n(for Mon) IDS 2, Ch 2 - Numerical Summaries\n(for Mon) IDS 2, Ch 3.3 - Comparing Groups with Stratification\n(for Wed) Think about how you might visualize your personal data collection using principles of good graphics.\n(for Fri) IDS 2, Ch 5 - Discrete Probability\n\n\n\n\n\n(for Mon) Reading Check 8.1\nProject Visualizations. Follow the Project Setup instructions first.\n(for Wed) Reading Check 8.2\n(for Fri) Reading Check 8.3\nStart looking at Homework 2, qmd template, html, visual solutions\n\n\n\n\n\nAttendance Quiz 10/19\nSummary Statistics\nActivity 8.1.p - Summary Statistics, quarto, html\n\n\n\n\n\nAttendance Quiz 10/21\nVisualizing Personal Data\n\n\n\n\n\nAttendance Quiz 10/23\nDiscrete Probability\nActivity 8.3.p - Discrete Probability, quarto, html, visual solutions extra: |"
   },
   {
     "objectID": "weeks/week-080.html#reading",
@@ -2692,7 +2699,7 @@
     "href": "weeks/week-080.html#prepare-for-class",
     "title": "Week 8: Statistics and Probability",
     "section": "",
-    "text": "(for Mon) Reading Check 8.1\nProject Visualizations. Follow the Project Setup instructions first.\n(for Wed) Reading Check 8.2\n(for Fri) Reading Check 8.3"
+    "text": "(for Mon) Reading Check 8.1\nProject Visualizations. Follow the Project Setup instructions first.\n(for Wed) Reading Check 8.2\n(for Fri) Reading Check 8.3\nStart looking at Homework 2, qmd template, html, visual solutions"
   },
   {
     "objectID": "weeks/week-080.html#monday",
@@ -2713,14 +2720,7 @@
     "href": "weeks/week-080.html#friday",
     "title": "Week 8: Statistics and Probability",
     "section": "",
-    "text": "Attendance Quiz 10/23\nDiscrete Probability"
-  },
-  {
-    "objectID": "weeks/week-080.html#extra-resourcesreading",
-    "href": "weeks/week-080.html#extra-resourcesreading",
-    "title": "Week 8: Statistics and Probability",
-    "section": "",
-    "text": "Homework 2, qmd template, html, visual solutions"
+    "text": "Attendance Quiz 10/23\nDiscrete Probability\nActivity 8.3.p - Discrete Probability, quarto, html, visual solutions extra: |"
   },
   {
     "objectID": "weeks/week-095.html",
@@ -2734,7 +2734,7 @@
     "href": "weeks/week-110.html",
     "title": "Week 11: Parameters and Estimates",
     "section": "",
-    "text": "November 09-15, 2026\n\n\n\n(for Mon) IDS 2 Ch 9.1-9.3 - Estimates\n(for Wed) IDS 2 Ch 8 - Sampling Models and the Central Limit Theorem\n\n\n\n\n\n(for Mon) Reading Check 11.1\n(for Wed) Reading Check 11.2\n\n\n\n\n\nAttendance Quiz 11/09\nParameters and Estimates\n\n\n\n\n\nAttendance Quiz 11/11\nCentral Limit Theorem\n\n\n\n\n\nAttendance Quiz 11/13\nLab: CLT\n\n\n\n\n\nHomework 3, qmd template, html, visual solutions"
+    "text": "November 09-15, 2026\n\n\n\n(for Mon) IDS 2 Ch 9.1-9.3 - Estimates\n(for Wed) IDS 2 Ch 8 - Sampling Models and the Central Limit Theorem\n\n\n\n\n\n(for Mon) Reading Check 11.1\n(for Wed) Reading Check 11.2\n\nStart Looking At Homework 3, qmd template, html, visual solutions\n\n\n\n\n\nAttendance Quiz 11/09\nParameters and Estimates\n\n\n\n\n\nAttendance Quiz 11/11\nCentral Limit Theorem\n\n\n\n\n\nAttendance Quiz 11/13\nLab: CLT\n\n\n\n\n\nDue Thursday Homework 2, qmd template, html, visual solutions\nStart Looking at Homework 3, qmd template, html, visual solutions"
   },
   {
     "objectID": "weeks/week-110.html#reading",
@@ -2748,7 +2748,7 @@
     "href": "weeks/week-110.html#prepare-for-class",
     "title": "Week 11: Parameters and Estimates",
     "section": "",
-    "text": "(for Mon) Reading Check 11.1\n(for Wed) Reading Check 11.2"
+    "text": "(for Mon) Reading Check 11.1\n(for Wed) Reading Check 11.2\n\nStart Looking At Homework 3, qmd template, html, visual solutions"
   },
   {
     "objectID": "weeks/week-110.html#monday",
@@ -2776,7 +2776,7 @@
     "href": "weeks/week-110.html#extra-resourcesreading",
     "title": "Week 11: Parameters and Estimates",
     "section": "",
-    "text": "Homework 3, qmd template, html, visual solutions"
+    "text": "Due Thursday Homework 2, qmd template, html, visual solutions\nStart Looking at Homework 3, qmd template, html, visual solutions"
   },
   {
     "objectID": "weeks/week-130.html",
@@ -3120,6 +3120,20 @@
     "title": "3.1.a - Class Activity",
     "section": "",
     "text": "1 Problem\nThe code below shows you how to visualize the Empirical Cumulative Distribution Function (ECDF) of heights from the heights dataset from the dslabs package.\n\nlibrary(tidyverse)\nlibrary(dslabs)\n\nheights |&gt; \n  ggplot(aes(height)) + \n  stat_ecdf() +\n  ylab(\"Quantile\") + xlab(\"height (in)\") + \n  theme_bw() + \n  theme(text = element_text(size = 16))\n\n\n\n\n\n\n\n\nUsing the above code, try to adapt it to stratify (i.e., separate) the ecdf into two separate lines, colored by sex.\n\nheights |&gt; \n  ggplot(aes(height, color = sex)) + \n  stat_ecdf() +\n  ylab(\"Quantile\") + xlab(\"height (in)\") + \n  theme_bw() + \n  theme(text = element_text(size = 16))\n\n\n\n\n\n\n\n\n\n\n2 Problem\nBased on the plot you created, approximately what percentage of men have heights between 65 and 70 inches (including men who are exactly 70 inches)? Please answer this question on your Canvas quiz.\nIt looks as though there are about 68% of men who are 70 inches or less and about 11% of men who are 65 inches or less. If you take the difference of these two quantities, the answer would be about 68% - 11% = 57%. In other words, 57% of men have heights between 65 and 70 inches.\n\n\n3 Problem\nNow, assume that men’s heights follow a normal distribution. We can approximate that normal distribution by calculating the mean and the standard deviation of the heights data. Use the code chunk below to calculate these quantities and answer the associated quiz in Canvas.\n\npars &lt;- heights |&gt;\n  filter(sex == \"Male\") |&gt; \n  summarize(mean_x = mean(height, na.rm = TRUE), \n            sd_x = sd(height, na.rm = TRUE))\n\nround(pars, 1)\n\n  mean_x sd_x\n1   69.3  3.6\n\n\nNow, using the normal approximation, calculate the probability of a man’s height being greater than 70 inches using the pnorm() function. Then, please answer the associated quiz question in Canvas.\n\n1 - pnorm(70, mean = 69.3, sd = 3.6)\n\n[1] 0.4229139\n\n\n\n\n4 Problem\nUsing the normal approximation, calculate the probability of a man’s height being between 62 and 66 inches. Then, please answer the associated quiz question in Canvas.\n\npnorm(66, mean = 69.3, sd = 3.6) - pnorm(62, mean = 69.3, sd = 3.6)\n\n[1] 0.1583672\n\n\n\n\n5 Problem\nThe following code creates a QQ plot that compares men’s heights to a normal distribution. Based on this plot, do you believe that men’s heights approximately follow a normal distribution? Please provide your answer to this question in Canvas.\n\nheights |&gt;\n  filter(sex == \"Male\") |&gt; \n  ggplot(aes(sample = height)) + \n  geom_qq() +\n  geom_qq_line() + \n  xlab(\"Theoretical Quantiles\") + \n  ylab(\"Heights\")"
+  },
+  {
+    "objectID": "lab/24-discrete-probability-sol.html",
+    "href": "lab/24-discrete-probability-sol.html",
+    "title": "8.3.p - Class Activity",
+    "section": "",
+    "text": "library(tidyverse)\n\nDr. Vanderplas loves playing the World’s Greatest Board Game: The Settlers of Catan (see https://www.catan.com/). Without going into details, success in the game requires the collection of resources that are obtained based on the sum total of two dice rolls. The following code creates a dataframe of all possible combinations of two dice rolls.\n\nlibrary(dplyr)\nlibrary(tidyr)\n# Create a vector of possible dice rolls\ndice &lt;- 1:6\n# Create a dataframe of all possible two dice rolls.\ntwo_dice &lt;- crossing(dice_1 = dice, dice_2 = dice)\n\nhead(two_dice)\n\n# A tibble: 6 × 2\n  dice_1 dice_2\n   &lt;int&gt;  &lt;int&gt;\n1      1      1\n2      1      2\n3      1      3\n4      1      4\n5      1      5\n6      1      6\n\ntail(two_dice)\n\n# A tibble: 6 × 2\n  dice_1 dice_2\n   &lt;int&gt;  &lt;int&gt;\n1      6      1\n2      6      2\n3      6      3\n4      6      4\n5      6      5\n6      6      6\n\n\n\n1 Problem\nUsing the two_dice dataframe, create a new variable called dice_sum which represents the sum of the two dice rolls. Add this variable to two_dice.\n\ntwo_dice &lt;- two_dice |&gt;\n  mutate(dice_sum = dice_1 + dice_2)\n\n\n\n2 Problem\nThe following code summarizes the two_dice dataframe. The first column represents the total number of dice roll combinations that hit each possible number. The second column represents the proportion of dice roll combinations for each possible number.\n\n# Uncomment after completing the previous problem part.\ntwo_dice_sum &lt;- two_dice |&gt;\n  group_by(dice_sum) |&gt;\n  summarize(count = n()) |&gt; # Count number of rows for each number\n  ungroup() |&gt; # Stop doing things by number\n  mutate(prop = count / sum(count)) |&gt; # Divide each count by the total.\n  arrange(dice_sum) # Order rows by dice quantity.\n\nUsing two_dice_sum, make a ggplot using both geom_point and geom_path() that shows the probability of each possible roll combination.\n\nggplot(two_dice_sum, aes(x = dice_sum, y = prop)) +\n  geom_point() +\n  geom_path() +\n  scale_x_continuous(breaks = seq(2, 12, 1)) +\n  theme(panel.grid.minor.x = element_blank())\n\n\n\n\n\n\n\n\nYou should observe that seven is the most common total, while two and twelve are the least likely.\n\n\n3 Problem\nThe following is a custom function that extracts the probability of rolling a single quantity q between two and 12, based on our two_dice_sum dataset. It also shows an example of its use for finding the probability of rolling a four and a one (with one being an impossible quantity) in the game.\n\nget_dice_prob &lt;- function(q, t_data = two_dice_sum) {\n  # Probability is zero if the input value is not between 2 and 12\n  if (!(q %in% 2:12)) {\n    return(0)\n  }\n\n  # If between 2 and 12, then grab the value from the dataset.\n  t_data |&gt;\n    filter(dice_sum == q) |&gt;\n    pull(prop)\n}\n\nget_dice_prob(4)\n\n[1] 0.08333333\n\nget_dice_prob(1)\n\n[1] 0\n\n\nNow suppose that Dr. Vanderplas must roll a 12 in order to obtain a key resource and win the game. She is playing the expansion pack with five other people, which means that she has six chances for a 12 to be rolled on the next turn. What is the probability that AT LEAST ONE 12 is rolled on the next six rolls? Note that the get_dice_prob() function should be part of your answer. This answer will go in your Canvas quiz.\n\n# Calculate the probability of rolling NOT a 12.\nprob_no_12 &lt;- 1 - get_dice_prob(12)\n\n# THEN, calculate the probability of rolling at least one 12.\n1 - prob_no_12^6\n\n[1] 0.1555124\n\n\n\n\n4 Problem\nNow suppose that Dr. Vanderplas still needs a 12 and rolls the dice one at a time. The first die she rolls is a six. What is the probability that the sum of both dice will be 12, given that the first die is a six? This answer will go in your Canvas quiz.\n\n1 / 6\n\n[1] 0.1666667\n\n\nIf we know a six has already been rolled, then the probability that she rolls a 12 is the same as the probability that the second die she rolls is a six, which is simply 1/6."
+  },
+  {
+    "objectID": "lab/25-continuous-probability-sol.html",
+    "href": "lab/25-continuous-probability-sol.html",
+    "title": "3.3.a - Class Activity",
+    "section": "",
+    "text": "Be sure to run the following code chunk before proceeding with your analysis.\n\nlibrary(tidyverse)\nlibrary(stat1080r)\nlibrary(gridExtra) # for making certain side-by-side plots.\n\nThis assignment will use the patient_hawkes dataset from the stat1080r package. As always, you can use head(patient_hawkes) to observe the first six rows of this dataset. If you want the dataset to show up in your global environment (i.e., so it appears in the upper-right corner of your Rstudio), you can run the following chunk of code, which copies the dataset from the package to your global environment.\n\n# Not required for analysis, but may make the exploration of the data\n# more convienent.\npatient_hawkes &lt;- patient_hawkes\n\nRemember also that you can get a sense of what variables exist in this dataset by running ?patient_hawkes in your console. This will open a help page in the lower-right corner of Rstudio.\n\n1 Problem\nWrite tidyverse code that assigns all male cholesterol values to a vector. Do the same for all female cholesterol values. Note that you will need to use the filter() and pull() functions from the tidyverse to create these two vectors, which you should name male_c and female_c.\n\nmale_c &lt;- patient_hawkes |&gt;\n  filter(gender == \"M\") |&gt;\n  pull(cholesterol)\n\nfemale_c &lt;- patient_hawkes |&gt;\n  filter(gender == \"F\") |&gt;\n  pull(cholesterol)\n\nAfter creating these vectors, please report the number of female observations in Canvas.\n\n\n2 Problem\nWe will define “healthy” cholesterol as anyone with a cholesterol value less than or equal to 200, though we should note that actual health is more complicated than any single number. With that in mind, what is the proportion of men in our sample that have healthy cholesterol? How about the proportion of females with healthy cholesterol? You should calculate these proportions using the mean() function.\n\n# Males\nmean(male_c &lt;= 200)\n\n[1] 0.24\n\n# Females\nmean(female_c &lt;= 200)\n\n[1] 0.32\n\n\n\n\n3 Problem\nCreate a density plot (i.e., geom_density) that shows the distribution of cholesterol, colored by gender. Do not worry about “optimizing” the plot, meaning that you do not need to change any of the axis labels or make anything look “nice”.\nDo men and women’s cholesterol appear to approximately follow a normal distribution. Explain why or why not.\n\npatient_hawkes |&gt;\n  ggplot(aes(x = cholesterol, color = gender)) +\n  geom_density()\n\n\n\n\n\n\n\n\nIt does not appear that the cholesterol values follow a normal distribution. It seems that there are a few cholesterol observations that are much higher than we would have expected with a normal distribution. We would call these density plots “right skewed”.\n\n\n4 Problem\nAfter writing your answer, confirm your findings by looking at the qq plots for male and female cholesterol.\n\npatient_hawkes |&gt;\n  ggplot(aes(sample = cholesterol)) +\n  geom_qq() +\n  geom_qq_line() +\n  facet_wrap(~gender)\n\n\n\n\n\n\n\n\nDo these qqplots confirm or dispute your previous comments about whether the data approximately follow a normal distribution? Please explain below.\nThese visuals confirm my original finding: Notice how largest and smallest points all fall above the line? This is a classic example of right-skewness in a qqplot.\n\n\n5 Problem\nWe are now going to look at what we call “the distribution of averages”. To obtain this, we will take random samples of size n from our collection of female observations. We will sample the females with replacement, meaning that it is possible for an observation to appear more than once in our sample. The following code chunk defines a function that takes samples of size n, with replacement, and then returns the average value of that sample.\n\nget_avg &lt;- function(x, n) {\n  mean(sample(x, size = n, replace = TRUE))\n}\n\n# Example of calling the function to obtain the average of 5 randomly\n# selected female cholesterol values. (Uncomment once you have successfully\n# created the female_c vector).\nget_avg(female_c, n = 5)\n\n[1] 236.4\n\n# Now the same function, but with a sample of 10\nget_avg(female_c, n = 10)\n\n[1] 219.9\n\n\nNote that you will get a different number every time you run your function since you are doing a random simulation. Please create a vector of 10,000 sample averages for n = 10. Please consult the in-class examples that use the replicate() function for guidance.\n\nreps &lt;- 10000\n\nf_avg &lt;- replicate(reps, get_avg(female_c, n = 10))\n\n\n\n6 Problem\nWe now want to visualize the distribution of the simulated averages that we created on the previous problem. The following code shows you how to create a density plot of the averages. Note that f_avg is a vector, and not a dataframe. The first line in the code chunk below shows you how to put your vector into a dataframe before trying to use ggplot. This code also makes use of the gridExtra package to place two plots side by side.\n\ntdf &lt;- data.frame(avg_dist = f_avg)\n\np1 &lt;- tdf |&gt;\n  ggplot(aes(x = avg_dist)) +\n  geom_density()\n\np2 &lt;- tdf |&gt;\n  ggplot(aes(sample = avg_dist)) +\n  geom_qq() +\n  geom_qq_line()\n\ngrid.arrange(p1, p2, nrow = 1)\n\n\n\n\n\n\n\n\nDoes the distribution of averages appear to approximately follow a normal distribution? Does it appear that the distribution of averages are closer to a normal distribution than the original data? Explain why or why not.\nIt does appear that the averages appear to be closer to following a normal distribution since the curve looks much more symmetric than the original values. The qqplot also seems closer to following the line, which is an indicator that the data approximately follow a normal distribution.\nNote that the fact that the averages have a different distribution than the original cholesterol values is due to a very important theorem in statistics (called the Central Limit Theorem) that we will learn about soon.\n\n\n7 Problem\nSuppose that the distribution of averages has a mean of 217.8 and a standard deviation of 8.0. Use the normal approximation to estimate the probability that the average cholesterol from a group of 10 women will be larger than 200. Your answer should make use of the pnorm() function.\n\n1 - pnorm(200, mean = 217.8, sd = 8.0)\n\n[1] 0.9869594"
   },
   {
     "objectID": "homework/homework01-sol.html",
@@ -4646,5 +4660,54 @@
     "title": "1.22 Summary Statistics",
     "section": "Robust Summaries & Outliers",
     "text": "Robust Summaries & Outliers\nOther options:\nCenter of the Distribution:\n\nmedian – the middle observation.\n\nVariability in the Distribution:\n\nMedian absolute Deviation (MAD) - \\(\\displaystyle\\text{med}\\left(\\left|x_i - \\text{med} (x_i) \\right|\\right)\\)\nInterquartile Range (IQR) - \\(p_{75}(x_i) - p_{25}(x_i)\\) where \\(p_y(x)\\) is the \\(y\\)th percentile of \\(x\\), \\(0 \\leq y \\leq 100\\)"
+  },
+  {
+    "objectID": "slides/24-discrete-prob.html#connecting-probability-models",
+    "href": "slides/24-discrete-prob.html#connecting-probability-models",
+    "title": "1.24 Discrete Probability",
+    "section": "Connecting Probability Models",
+    "text": "Connecting Probability Models\n\nGambling model\nLet’s simplify that, it’s too hard -&gt; Relative Frequency Model\nOk, but what if we have a lot of things? -&gt; Multiverse\n“The long-run proportion of times the event occurs when an experiment is repeated independently and under identical conditions, infinitely many times” (from the book)\nAKA “Frequentist” probability\nFrequentists are nuts. What matters is how much you believe something will happen – “Bayesian” statisticians.\n\nXKCD digression"
+  },
+  {
+    "objectID": "slides/24-discrete-prob.html#steps",
+    "href": "slides/24-discrete-prob.html#steps",
+    "title": "1.24 Discrete Probability",
+    "section": "Steps",
+    "text": "Steps\n\nCreate a vector or tibble of things to sample from\n\n\nlibrary(tidyverse)\n1deck &lt;- crossing(\n2  suit = c(\"Hearts\", \"Spades\", \"Clubs\", \"Diamonds\"),\n3  tibble(\n    face = c(\"02\", \"03\", \"04\", \"05\", \"06\", \"07\",\n             \"08\", \"09\", \"10\", \"Jack\", \"Queen\",\n             \"King\", \"Ace\"),\n    points = c(2:10, 10, 10, 10, 11)\n  )\n)\nhead(deck)\n\n\n1\n\nThe crossing function creates all combinations of the things passed in to it – in this case, the suits, and the tibble with face values and points.\n\n2\n\nDefine the four suits that exist in a deck of cards.\n\n3\n\nDefine the face values and the points. We have to pass these in as a tibble because we don’t want all combinations of face values and points – each face value has a separate meaning. If we were going past the initial deal, we could handle Aces separately.\n\n\n\n\n# A tibble: 6 × 3\n  suit  face  points\n  &lt;chr&gt; &lt;chr&gt;  &lt;dbl&gt;\n1 Clubs 02         2\n2 Clubs 03         3\n3 Clubs 04         4\n4 Clubs 05         5\n5 Clubs 06         6\n6 Clubs 07         7"
+  },
+  {
+    "objectID": "slides/24-discrete-prob.html#steps-1",
+    "href": "slides/24-discrete-prob.html#steps-1",
+    "title": "1.24 Discrete Probability",
+    "section": "Steps",
+    "text": "Steps\n\nUse sample (or slice_sample() for a tibble) to pick objects from your sampling space at random.\n\n\n1set.seed(19900321)\nsingle_sample &lt;- deck |&gt; \n2  slice_sample(n=2)\nsingle_sample\n\n\n1\n\nWhen sampling, always set a seed so you get the same results every time. I use birthdays in yyyymmdd form a lot (this is from a friend).\n\n2\n\nslice_sample allows you to choose a proportion of the rows (with the prop argument) or the raw number (with the n argument), which is more appropriate here. You can also set different probabilities for each row with weight_by.\n\n\n\n\n# A tibble: 2 × 3\n  suit     face  points\n  &lt;chr&gt;    &lt;chr&gt;  &lt;dbl&gt;\n1 Hearts   Jack      10\n2 Diamonds 10        10"
+  },
+  {
+    "objectID": "slides/24-discrete-prob.html#steps-2",
+    "href": "slides/24-discrete-prob.html#steps-2",
+    "title": "1.24 Discrete Probability",
+    "section": "Steps",
+    "text": "Steps\n\nEvaluate your draw in a way that gets you (hopefully) a single number, like an initial blackjack score.\n\n\n1set.seed(19900321)\ndeck |&gt;\n  slice_sample(n=2) |&gt;\n2  summarize(points = sum(points))\n\n\n1\n\nSetting the seed means we get the same results in this chunk\n\n2\n\nWe summarize to one row to get the initial score for blackjack, where you’re dealt two cards initially and have to decide what to do. In this case you probably? want to stay, but we can evaluate that with Monte Carlo Simulation.\n\n\n\n\n# A tibble: 1 × 1\n  points\n   &lt;dbl&gt;\n1     20"
+  },
+  {
+    "objectID": "slides/24-discrete-prob.html#steps-3",
+    "href": "slides/24-discrete-prob.html#steps-3",
+    "title": "1.24 Discrete Probability",
+    "section": "Steps",
+    "text": "Steps\n\nRepeat a LOT of times, but not infinitely many times, because I don’t have that kind of time.\n\n\nlibrary(infer) # Tidyverse library\n1set.seed(19900321)\nresults &lt;- deck |&gt;\n2  rep_slice_sample(n = 2, reps = 1000000) |&gt;\n3  summarize(points = sum(points))\n\nhead(results)\n\n\n1\n\nSet the seed because we’re being good and we want results that stay the same\n\n2\n\nuse rep_slice_sample from the infer package to slice things but also replicate them. It creates a grouped data frame based on the replicate variable that it creates.\n\n3\n\nUse the same summary function we used before to get the point distribution.\n\n\n\n\n# A tibble: 6 × 2\n  replicate points\n      &lt;int&gt;  &lt;dbl&gt;\n1         1     20\n2         2     18\n3         3      8\n4         4     21\n5         5     12\n6         6     12"
+  },
+  {
+    "objectID": "slides/24-discrete-prob.html#steps-4",
+    "href": "slides/24-discrete-prob.html#steps-4",
+    "title": "1.24 Discrete Probability",
+    "section": "Steps",
+    "text": "Steps\n\nUse your results to understand the distribution!\n\n\ntheme_set(theme_bw())\nggplot(results, aes(x = points)) +\n  geom_histogram(\n    fill = \"grey\", color = \"black\",\n    binwidth = 1, center = 1\n1  )\n\n\n1\n\nWith discrete whole-number distributions, it’s usually best to set your bin width to something sensible (1 in this case) and set bin to be centered on the whole numbers so that it’s not ambiguous what is included in each bin. Then, we know for sure that 4 and 22 (two twos and two aces) are both showing up in our sample, occasionally."
+  },
+  {
+    "objectID": "slides/24-discrete-prob.html#some-things-to-consider",
+    "href": "slides/24-discrete-prob.html#some-things-to-consider",
+    "title": "1.24 Discrete Probability",
+    "section": "Some Things to Consider",
+    "text": "Some Things to Consider\n\nDoes the order matter?\n\nno, for blackjack – Combination\nyes, for lots of other things! – Permutation\n\nSampling with or without replacement?\n\nDo you put the thing back before drawing another?\n\n\nSetting up the right programming approach is sometimes hard!\n\n\n\n\n\n\n\nTips\n\n\n\nsketch it out\nphysically do the thing with items, multiple times\nTHEN think about how to write the code"
   }
 ]
