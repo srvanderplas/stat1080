@@ -100,6 +100,11 @@ Now suppose that Dr. Vanderplas still needs a 12 and rolls the dice one at a tim
 
 ```{r}
 1 / 6
+
+# Just to prove it, though...
+filter(two_dice, dice_1==6) |>
+  mutate(dice_sum = dice_1 + dice_2) |>
+  summarize(prob_12 = mean(dice_sum == 12))
 ```
 
 *If we know a six has already been rolled, then the probability that she rolls a 12 is the same as the probability that the second die she rolls is a six, which is simply 1/6.*

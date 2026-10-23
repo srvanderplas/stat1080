@@ -38,7 +38,7 @@ October 19-25, 2026
 
 - [Attendance Quiz 10/23](https://usu.instructure.com/courses/819584/assignments/5293066){target="_blank"}
 - [Discrete Probability](../slides/24-discrete-prob.qmd){target="_blank"}
-- [Activity 8.3.p - Discrete Probability](https://usu.instructure.com/courses/819584/quizzes/1462850){targert="_blank"}, [quarto](../lab/_24-discrete-probability.qmd){target="_blank"}, [html](../lab/24-discrete-probability.qmd){target="_blank"}, [visual solutions](../lab/24-discrete-probability-sol.qmd){target="_blank"}    extra: |
+- [Activity 8.3.p - Discrete Probability](https://usu.instructure.com/courses/819584/quizzes/1462850){targert="_blank"}, [quarto](../lab/_24-discrete-probability.qmd){target="_blank"}, [html](../lab/24-discrete-probability.qmd){target="_blank"}, [visual solutions](../lab/24-discrete-probability-sol.qmd){target="_blank"}
 
 
 
