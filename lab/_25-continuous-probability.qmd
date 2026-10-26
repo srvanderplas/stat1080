@@ -104,7 +104,7 @@ B <- 10000
 
 # Problem 
 
-We now want to visualize the distribution of the simulated averages that we created on the previous problem. The following code shows you how to create a density plot of the averages. Note that `f_avg` is a vector, and not a dataframe. The first line in the code chunk below shows you how to put your vector into a dataframe before trying to use ggplot. This code also makes use of the `gridExtra` package to place two plots side by side.  
+We now want to visualize the distribution of the simulated averages that we created on the previous problem. The following code shows you how to create a density plot of the averages. Note that `f_avg` is a vector, and not a dataframe. The first line in the code chunk below shows you how to put your vector into a dataframe before trying to use ggplot. This code also makes use of the `patchwork` package to place two plots side by side.  
 
 ```{r}
 # No need to change this code, just uncomment after you have created f_avg. 
@@ -120,7 +120,7 @@ We now want to visualize the distribution of the simulated averages that we crea
 ##   geom_qq() + 
 ##   geom_qq_line()
 
-## grid.arrange(p1, p2, nrow = 1)
+## p1 + p2
 ```
 
 Does the distribution of averages appear to approximately follow a normal distribution? Does it appear that the distribution of averages are closer to a normal distribution than the original data? Explain why or why not.  

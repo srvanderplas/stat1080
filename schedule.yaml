@@ -273,6 +273,7 @@ schedule:
     class1: |
         - [Attendance Quiz 10/26](https://usu.instructure.com/courses/819584/assignments/5293067){target="_blank"}
         - [Continuous Probability](../slides/25-cts-prob.qmd){target="_blank"}
+        - [Activity 9.1.a Continuous Probability](https://usu.instructure.com/courses/819584/quizzes/1462841){target="_blank"}, [qmd template](../lab/_25-continuous-probability.qmd), [html](../lab/25-continuous-probability.qmd), [solutions](../lab/25-continuous-probability-sol.qmd)
     class2: |
         - [Attendance Quiz 10/28](https://usu.instructure.com/courses/819584/assignments/5293068){target="_blank"}
         - [Connecting Data and Probability](../slides/26-data-prob.qmd){target="_blank"}

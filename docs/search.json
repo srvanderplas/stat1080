@@ -1,5 +1,47 @@
 [
   {
+    "objectID": "slides/25-cts-prob.html#a-picture-book-overview-continuous-probability",
+    "href": "slides/25-cts-prob.html#a-picture-book-overview-continuous-probability",
+    "title": "1.25 Continuous Probability",
+    "section": "A Picture-Book Overview: Continuous Probability",
+    "text": "A Picture-Book Overview: Continuous Probability\n\n\n\n\n\n\n\nA CDF relates the probability \\(&lt;=\\) a value to the value itself.\n\n\n\n\n\n\n\n\n\nA PDF relates the probability of a single value** to the value itself.\n\n\n\n\n\n\n** Technically, the probability of any single value in a continuous variable is 0. But, we can think of a small neighborhood around each value instead."
+  },
+  {
+    "objectID": "slides/25-cts-prob.html#cumulative-distribution-functions",
+    "href": "slides/25-cts-prob.html#cumulative-distribution-functions",
+    "title": "1.25 Continuous Probability",
+    "section": "Cumulative Distribution Functions",
+    "text": "Cumulative Distribution Functions"
+  },
+  {
+    "objectID": "slides/25-cts-prob.html#probability-density-functions",
+    "href": "slides/25-cts-prob.html#probability-density-functions",
+    "title": "1.25 Continuous Probability",
+    "section": "Probability Density Functions",
+    "text": "Probability Density Functions\nPDFs: Like histograms shrinking binwidth to (very close to) 0… but the math is complicated."
+  },
+  {
+    "objectID": "slides/25-cts-prob.html#theoretical-distributions",
+    "href": "slides/25-cts-prob.html#theoretical-distributions",
+    "title": "1.25 Continuous Probability",
+    "section": "Theoretical Distributions",
+    "text": "Theoretical Distributions\n\nare useful approximations to the behavior of natural things\nand work very well for biological situations with many factors, like height, which is controlled by many different genes + environmental influences\nwere easier to use than samples before computing power \\(\\Rightarrow\\) historically important\nalways result in the same answer (unlike random samples)\n\n\n\n\nImage source"
+  },
+  {
+    "objectID": "slides/25-cts-prob.html#continuous-distributions",
+    "href": "slides/25-cts-prob.html#continuous-distributions",
+    "title": "1.25 Continuous Probability",
+    "section": "Continuous Distributions",
+    "text": "Continuous Distributions\n\n\\(P(x = a) = 0\\) if \\(x\\) is continuously distributed \n\\(P(a &lt;= x &lt; b)\\) is what we work with\n\narea under PDF between \\(a\\) and \\(b\\)"
+  },
+  {
+    "objectID": "slides/25-cts-prob.html#continuous-distributions-in-r",
+    "href": "slides/25-cts-prob.html#continuous-distributions-in-r",
+    "title": "1.25 Continuous Probability",
+    "section": "Continuous Distributions in R",
+    "text": "Continuous Distributions in R\n\n\n\n\n\n\n\nCommand\nWhat it does\n\n\n\n\nrnorm(n, mean = 0, sd = 1)\n\\(n\\) random numbers\n\n\ndnorm(x, mean = 0, sd = 1)\nnormal density at \\(x\\)\n\n\npnorm(q, mean = 0, sd = 1)\n\\(P(x \\leq q)\\) (CDF value)\n\n\nqnorm(p, mean = 0, sd = 1)\n\\(P(x \\leq q) = p\\) (solves for \\(q\\)) This is the quantile function\n\n\n\nOther distribution types exist: Exponential, Gamma, Beta, t, F…\nThey all follow the rXXX, dXXX, pXXX, qXXX pattern (but have different parameters)"
+  },
+  {
     "objectID": "slides/20-adv-ggplot2.html#facets-1",
     "href": "slides/20-adv-ggplot2.html#facets-1",
     "title": "1.20 Advanced ggplot2 & Data Visualization Principles",
@@ -2083,7 +2125,7 @@
     "href": "weeks/week-090.html",
     "title": "Week 9: Data and Probability",
     "section": "",
-    "text": "October 26-01, 2026\n\n\n\n(for Mon) IDS 2, Ch 6 - Continuous Probability\n(for Wed) IDS 2, Ch 4 - Connecting Data and Probability\n\n\n\n\n\n(for Mon) Reading Check 9.1\n(for Wed) Reading Check 9.2\nContinue looking at Homework 2 qmd template html\n\n\n\n\n\nAttendance Quiz 10/26\nContinuous Probability\n\n\n\n\n\nAttendance Quiz 10/28\nConnecting Data and Probability\n\n\n\n\n\nAttendance Quiz 10/30\nLab: Probability\n\n\n\n\n\nHomework 2, qmd template, html, visual solutions"
+    "text": "October 26-01, 2026\n\n\n\n(for Mon) IDS 2, Ch 6 - Continuous Probability\n(for Wed) IDS 2, Ch 4 - Connecting Data and Probability\n\n\n\n\n\n(for Mon) Reading Check 9.1\n(for Wed) Reading Check 9.2\nContinue looking at Homework 2 qmd template html\n\n\n\n\n\nAttendance Quiz 10/26\nContinuous Probability\nActivity 9.1.a Continuous Probability, qmd template, html, solutions\n\n\n\n\n\nAttendance Quiz 10/28\nConnecting Data and Probability\n\n\n\n\n\nAttendance Quiz 10/30\nLab: Probability\n\n\n\n\n\nHomework 2, qmd template, html, visual solutions"
   },
   {
     "objectID": "weeks/week-090.html#reading",
@@ -2104,7 +2146,7 @@
     "href": "weeks/week-090.html#monday",
     "title": "Week 9: Data and Probability",
     "section": "",
-    "text": "Attendance Quiz 10/26\nContinuous Probability"
+    "text": "Attendance Quiz 10/26\nContinuous Probability\nActivity 9.1.a Continuous Probability, qmd template, html, solutions"
   },
   {
     "objectID": "weeks/week-090.html#wednesday",
@@ -3131,9 +3173,9 @@
   {
     "objectID": "lab/25-continuous-probability-sol.html",
     "href": "lab/25-continuous-probability-sol.html",
-    "title": "3.3.a - Class Activity",
+    "title": "9.1.a - Class Activity",
     "section": "",
-    "text": "Be sure to run the following code chunk before proceeding with your analysis.\n\nlibrary(tidyverse)\nlibrary(stat1080r)\nlibrary(gridExtra) # for making certain side-by-side plots.\n\nThis assignment will use the patient_hawkes dataset from the stat1080r package. As always, you can use head(patient_hawkes) to observe the first six rows of this dataset. If you want the dataset to show up in your global environment (i.e., so it appears in the upper-right corner of your Rstudio), you can run the following chunk of code, which copies the dataset from the package to your global environment.\n\n# Not required for analysis, but may make the exploration of the data\n# more convienent.\npatient_hawkes &lt;- patient_hawkes\n\nRemember also that you can get a sense of what variables exist in this dataset by running ?patient_hawkes in your console. This will open a help page in the lower-right corner of Rstudio.\n\n1 Problem\nWrite tidyverse code that assigns all male cholesterol values to a vector. Do the same for all female cholesterol values. Note that you will need to use the filter() and pull() functions from the tidyverse to create these two vectors, which you should name male_c and female_c.\n\nmale_c &lt;- patient_hawkes |&gt;\n  filter(gender == \"M\") |&gt;\n  pull(cholesterol)\n\nfemale_c &lt;- patient_hawkes |&gt;\n  filter(gender == \"F\") |&gt;\n  pull(cholesterol)\n\nAfter creating these vectors, please report the number of female observations in Canvas.\n\n\n2 Problem\nWe will define “healthy” cholesterol as anyone with a cholesterol value less than or equal to 200, though we should note that actual health is more complicated than any single number. With that in mind, what is the proportion of men in our sample that have healthy cholesterol? How about the proportion of females with healthy cholesterol? You should calculate these proportions using the mean() function.\n\n# Males\nmean(male_c &lt;= 200)\n\n[1] 0.24\n\n# Females\nmean(female_c &lt;= 200)\n\n[1] 0.32\n\n\n\n\n3 Problem\nCreate a density plot (i.e., geom_density) that shows the distribution of cholesterol, colored by gender. Do not worry about “optimizing” the plot, meaning that you do not need to change any of the axis labels or make anything look “nice”.\nDo men and women’s cholesterol appear to approximately follow a normal distribution. Explain why or why not.\n\npatient_hawkes |&gt;\n  ggplot(aes(x = cholesterol, color = gender)) +\n  geom_density()\n\n\n\n\n\n\n\n\nIt does not appear that the cholesterol values follow a normal distribution. It seems that there are a few cholesterol observations that are much higher than we would have expected with a normal distribution. We would call these density plots “right skewed”.\n\n\n4 Problem\nAfter writing your answer, confirm your findings by looking at the qq plots for male and female cholesterol.\n\npatient_hawkes |&gt;\n  ggplot(aes(sample = cholesterol)) +\n  geom_qq() +\n  geom_qq_line() +\n  facet_wrap(~gender)\n\n\n\n\n\n\n\n\nDo these qqplots confirm or dispute your previous comments about whether the data approximately follow a normal distribution? Please explain below.\nThese visuals confirm my original finding: Notice how largest and smallest points all fall above the line? This is a classic example of right-skewness in a qqplot.\n\n\n5 Problem\nWe are now going to look at what we call “the distribution of averages”. To obtain this, we will take random samples of size n from our collection of female observations. We will sample the females with replacement, meaning that it is possible for an observation to appear more than once in our sample. The following code chunk defines a function that takes samples of size n, with replacement, and then returns the average value of that sample.\n\nget_avg &lt;- function(x, n) {\n  mean(sample(x, size = n, replace = TRUE))\n}\n\n# Example of calling the function to obtain the average of 5 randomly\n# selected female cholesterol values. (Uncomment once you have successfully\n# created the female_c vector).\nget_avg(female_c, n = 5)\n\n[1] 236.4\n\n# Now the same function, but with a sample of 10\nget_avg(female_c, n = 10)\n\n[1] 219.9\n\n\nNote that you will get a different number every time you run your function since you are doing a random simulation. Please create a vector of 10,000 sample averages for n = 10. Please consult the in-class examples that use the replicate() function for guidance.\n\nreps &lt;- 10000\n\nf_avg &lt;- replicate(reps, get_avg(female_c, n = 10))\n\n\n\n6 Problem\nWe now want to visualize the distribution of the simulated averages that we created on the previous problem. The following code shows you how to create a density plot of the averages. Note that f_avg is a vector, and not a dataframe. The first line in the code chunk below shows you how to put your vector into a dataframe before trying to use ggplot. This code also makes use of the gridExtra package to place two plots side by side.\n\ntdf &lt;- data.frame(avg_dist = f_avg)\n\np1 &lt;- tdf |&gt;\n  ggplot(aes(x = avg_dist)) +\n  geom_density()\n\np2 &lt;- tdf |&gt;\n  ggplot(aes(sample = avg_dist)) +\n  geom_qq() +\n  geom_qq_line()\n\ngrid.arrange(p1, p2, nrow = 1)\n\n\n\n\n\n\n\n\nDoes the distribution of averages appear to approximately follow a normal distribution? Does it appear that the distribution of averages are closer to a normal distribution than the original data? Explain why or why not.\nIt does appear that the averages appear to be closer to following a normal distribution since the curve looks much more symmetric than the original values. The qqplot also seems closer to following the line, which is an indicator that the data approximately follow a normal distribution.\nNote that the fact that the averages have a different distribution than the original cholesterol values is due to a very important theorem in statistics (called the Central Limit Theorem) that we will learn about soon.\n\n\n7 Problem\nSuppose that the distribution of averages has a mean of 217.8 and a standard deviation of 8.0. Use the normal approximation to estimate the probability that the average cholesterol from a group of 10 women will be larger than 200. Your answer should make use of the pnorm() function.\n\n1 - pnorm(200, mean = 217.8, sd = 8.0)\n\n[1] 0.9869594"
+    "text": "Be sure to run the following code chunk before proceeding with your analysis.\n\nlibrary(tidyverse)\nlibrary(stat1080r)\nlibrary(patchwork) # for making certain side-by-side plots.\n\nThis assignment will use the patient_hawkes dataset from the stat1080r package. As always, you can use head(patient_hawkes) to observe the first six rows of this dataset. If you want the dataset to show up in your global environment (i.e., so it appears in the upper-right corner of your Rstudio), you can run the following chunk of code, which copies the dataset from the package to your global environment.\n\n# Not required for analysis, but may make the exploration of the data\n# more convienent.\ndata(patient_hawkes, package=\"stat1080r\")\n\nRemember also that you can get a sense of what variables exist in this dataset by running ?patient_hawkes in your console. This will open a help page in the lower-right corner of Rstudio.\n\n1 Problem\nWrite tidyverse code that assigns all male cholesterol values to a vector. Do the same for all female cholesterol values. Note that you will need to use the filter() and pull() functions from the tidyverse to create these two vectors, which you should name male_c and female_c.\n\nmale_c &lt;- patient_hawkes |&gt;\n  filter(gender == \"M\") |&gt;\n  pull(cholesterol)\n\nfemale_c &lt;- patient_hawkes |&gt;\n  filter(gender == \"F\") |&gt;\n  pull(cholesterol)\n\nAfter creating these vectors, please report the number of female observations in Canvas.\n\n\n2 Problem\nWe will define “healthy” cholesterol as anyone with a cholesterol value less than or equal to 200, though we should note that actual health is more complicated than any single number. With that in mind, what is the proportion of men in our sample that have healthy cholesterol? How about the proportion of females with healthy cholesterol? You should calculate these proportions using the mean() function.\n\n# Males\nmean(male_c &lt;= 200)\n\n[1] 0.24\n\n# Females\nmean(female_c &lt;= 200)\n\n[1] 0.32\n\n\n\n\n3 Problem\nCreate a density plot (i.e., geom_density) that shows the distribution of cholesterol, colored by gender. Do not worry about “optimizing” the plot, meaning that you do not need to change any of the axis labels or make anything look “nice”.\nDo men and women’s cholesterol appear to approximately follow a normal distribution. Explain why or why not.\n\npatient_hawkes |&gt;\n  ggplot(aes(x = cholesterol, color = gender)) +\n  geom_density()\n\n\n\n\n\n\n\n\nIt does not appear that the cholesterol values follow a normal distribution. It seems that there are a few cholesterol observations that are much higher than we would have expected with a normal distribution. We would call these density plots “right skewed”.\n\n\n4 Problem\nAfter writing your answer, confirm your findings by looking at the qq plots for male and female cholesterol.\n\npatient_hawkes |&gt;\n  ggplot(aes(sample = cholesterol)) +\n  geom_qq() +\n  geom_qq_line() +\n  facet_wrap(~gender)\n\n\n\n\n\n\n\n\nDo these qqplots confirm or dispute your previous comments about whether the data approximately follow a normal distribution? Please explain below.\nThese visuals confirm my original finding: Notice how largest and smallest points all fall above the line? This is a classic example of right-skewness in a qqplot.\n\n\n5 Problem\nWe are now going to look at what we call “the distribution of averages”. To obtain this, we will take random samples of size n from our collection of female observations. We will sample the females with replacement, meaning that it is possible for an observation to appear more than once in our sample. The following code chunk defines a function that takes samples of size n, with replacement, and then returns the average value of that sample.\n\nget_avg &lt;- function(x, n) {\n  mean(sample(x, size = n, replace = TRUE))\n}\n\n# Example of calling the function to obtain the average of 5 randomly\n# selected female cholesterol values. (Uncomment once you have successfully\n# created the female_c vector).\nget_avg(female_c, n = 5)\n\n[1] 203.2\n\n# Now the same function, but with a sample of 10\nget_avg(female_c, n = 10)\n\n[1] 214.8\n\n\nNote that you will get a different number every time you run your function since you are doing a random simulation. Please create a vector of 10,000 sample averages for n = 10. Please consult the in-class examples that use the replicate() function for guidance.\n\nreps &lt;- 10000\n\nf_avg &lt;- replicate(reps, get_avg(female_c, n = 10))\n\n\n\n6 Problem\nWe now want to visualize the distribution of the simulated averages that we created on the previous problem. The following code shows you how to create a density plot of the averages. Note that f_avg is a vector, and not a dataframe. The first line in the code chunk below shows you how to put your vector into a dataframe before trying to use ggplot. This code also makes use of the patchwork package to place two plots side by side.\n\ntdf &lt;- data.frame(avg_dist = f_avg)\n\np1 &lt;- tdf |&gt;\n  ggplot(aes(x = avg_dist)) +\n  geom_density()\n\np2 &lt;- tdf |&gt;\n  ggplot(aes(sample = avg_dist)) +\n  geom_qq() +\n  geom_qq_line()\n\np1 + p2\n\n\n\n\n\n\n\n\nDoes the distribution of averages appear to approximately follow a normal distribution? Does it appear that the distribution of averages are closer to a normal distribution than the original data? Explain why or why not.\nIt does appear that the averages appear to be closer to following a normal distribution since the curve looks much more symmetric than the original values. The qqplot also seems closer to following the line, which is an indicator that the data approximately follow a normal distribution.\nNote that the fact that the averages have a different distribution than the original cholesterol values is due to a very important theorem in statistics (called the Central Limit Theorem) that we will learn about soon.\n\n\n7 Problem\nSuppose that the distribution of averages has a mean of 217.8 and a standard deviation of 8.0. Use the normal approximation to estimate the probability that the average cholesterol from a group of 10 women will be larger than 200. Your answer should make use of the pnorm() function.\n\n1 - pnorm(200, mean = 217.8, sd = 8.0)\n\n[1] 0.9869594"
   },
   {
     "objectID": "homework/homework01-sol.html",
@@ -4709,61 +4751,5 @@
     "title": "1.24 Discrete Probability",
     "section": "Some Things to Consider",
     "text": "Some Things to Consider\n\nDoes the order matter?\n\nno, for blackjack – Combination\nyes, for lots of other things! – Permutation\n\nSampling with or without replacement?\n\nDo you put the thing back before drawing another?\n\n\nSetting up the right programming approach is sometimes hard!\n\n\n\n\n\n\n\nTips\n\n\n\nsketch it out\nphysically do the thing with items, multiple times\nTHEN think about how to write the code"
-  },
-  {
-    "objectID": "slides/25-cts-prob.html#a-picture-book-overview",
-    "href": "slides/25-cts-prob.html#a-picture-book-overview",
-    "title": "1.25 Continuous Probability",
-    "section": "A Picture-Book Overview",
-    "text": "A Picture-Book Overview\n\n\n\n\n\n\n\nA CDF relates the probability \\(&lt;=\\) a value to the value itself.\n\n\n\n\n\n\n\n\n\nA PDF relates the probability of a single value** to the value itself.\n\n\n\n\n\n\n** Technically, the probability of any single value in a continuous variable is 0. But, we can think of a small neighborhood around each value instead."
-  },
-  {
-    "objectID": "slides/25-cts-prob.html#a-picture-book-overview-continuous-probability",
-    "href": "slides/25-cts-prob.html#a-picture-book-overview-continuous-probability",
-    "title": "1.25 Continuous Probability",
-    "section": "A Picture-Book Overview: Continuous Probability",
-    "text": "A Picture-Book Overview: Continuous Probability\n\n\n\n\n\n\n\nA CDF relates the probability \\(&lt;=\\) a value to the value itself.\n\n\n\n\n\n\n\n\n\nA PDF relates the probability of a single value** to the value itself.\n\n\n\n\n\n\n** Technically, the probability of any single value in a continuous variable is 0. But, we can think of a small neighborhood around each value instead."
-  },
-  {
-    "objectID": "slides/25-cts-prob.html#cumulative-distribution-functions",
-    "href": "slides/25-cts-prob.html#cumulative-distribution-functions",
-    "title": "1.25 Continuous Probability",
-    "section": "Cumulative Distribution Functions",
-    "text": "Cumulative Distribution Functions"
-  },
-  {
-    "objectID": "slides/25-cts-prob.html#probability-density-functions",
-    "href": "slides/25-cts-prob.html#probability-density-functions",
-    "title": "1.25 Continuous Probability",
-    "section": "Probability Density Functions",
-    "text": "Probability Density Functions\nPDFs: Like histograms shrinking binwidth to (very close to) 0… but the math is complicated."
-  },
-  {
-    "objectID": "slides/25-cts-prob.html#theoretical-distributions",
-    "href": "slides/25-cts-prob.html#theoretical-distributions",
-    "title": "1.25 Continuous Probability",
-    "section": "Theoretical Distributions",
-    "text": "Theoretical Distributions\n\nare useful approximations to the behavior of natural things\nand work very well for biological situations with many factors, like height, which is controlled by many different genes + environmental influences\nwere easier to use than samples before computing power \\(\\Rightarrow\\) historically important\nalways result in the same answer (unlike random samples)\n\n\n\n\nImage source"
-  },
-  {
-    "objectID": "slides/25-cts-prob.html#using-continuous-distributions",
-    "href": "slides/25-cts-prob.html#using-continuous-distributions",
-    "title": "1.25 Continuous Probability",
-    "section": "Using Continuous Distributions",
-    "text": "Using Continuous Distributions\nNormal:\n\n\n\n\n\n\n\nCommand\nWhat it does\n\n\n\n\nrnorm(n, mean = 0, sd = 1)\n\\(n\\) random numbers\n\n\ndnorm(x, mean = 0, sd = 1)\nnormal density at \\(x\\)\n\n\npnorm(q, mean = 0, sd = 1)\n\\(P(x \\leq q)\\) (CDF value)\n\n\nqnorm(p, mean = 0, sd = 1)\n\\(P(x \\leq q) = p\\) (solves for \\(q\\)) This is called the quantile function and it is very useful"
-  },
-  {
-    "objectID": "slides/25-cts-prob.html#continuous-distributions",
-    "href": "slides/25-cts-prob.html#continuous-distributions",
-    "title": "1.25 Continuous Probability",
-    "section": "Continuous Distributions",
-    "text": "Continuous Distributions\n\n\\(P(x = a) = 0\\) if \\(x\\) is continuously distributed \n\\(P(a &lt;= x &lt; b)\\) is what we work with\n\narea under PDF between \\(a\\) and \\(b\\)"
-  },
-  {
-    "objectID": "slides/25-cts-prob.html#continuous-distributions-in-r",
-    "href": "slides/25-cts-prob.html#continuous-distributions-in-r",
-    "title": "1.25 Continuous Probability",
-    "section": "Continuous Distributions in R",
-    "text": "Continuous Distributions in R\n\n\n\n\n\n\n\nCommand\nWhat it does\n\n\n\n\nrnorm(n, mean = 0, sd = 1)\n\\(n\\) random numbers\n\n\ndnorm(x, mean = 0, sd = 1)\nnormal density at \\(x\\)\n\n\npnorm(q, mean = 0, sd = 1)\n\\(P(x \\leq q)\\) (CDF value)\n\n\nqnorm(p, mean = 0, sd = 1)\n\\(P(x \\leq q) = p\\) (solves for \\(q\\)) This is the quantile function\n\n\n\nOther distribution types exist: Exponential, Gamma, Beta, t, F…\nThey all follow the rXXX, dXXX, pXXX, qXXX pattern (but have different parameters)"
   }
 ]

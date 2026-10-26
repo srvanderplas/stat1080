@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>3.3.a - Class Activity – STAT 1080 - Fall 2026</title>
+<title>9.1.a - Class Activity – STAT 1080 - Fall 2026</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -114,7 +114,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 
 
-<meta property="og:title" content="3.3.a - Class Activity – STAT 1080 - Fall 2026">
+<meta property="og:title" content="9.1.a - Class Activity – STAT 1080 - Fall 2026">
 <meta property="og:description" content="Homepage for STAT 1080 - Data and the Stories They Tell.">
 <meta property="og:image" content="https://srvanderplas.github.io/stat1080/lab/25-continuous-probability-sol_files/figure-html/unnamed-chunk-5-1.png">
 <meta property="og:site_name" content="STAT 1080 - Fall 2026">
@@ -427,7 +427,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">3.3.a - Class Activity</h1>
+<h1 class="title">9.1.a - Class Activity</h1>
 </div>
 
 
@@ -448,13 +448,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stat1080r)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gridExtra) <span class="co"># for making certain side-by-side plots.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(patchwork) <span class="co"># for making certain side-by-side plots.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>This assignment will use the <code>patient_hawkes</code> dataset from the <code>stat1080r</code> package. As always, you can use <code>head(patient_hawkes)</code> to observe the first six rows of this dataset. If you want the dataset to show up in your global environment (i.e., so it appears in the upper-right corner of your Rstudio), you can run the following chunk of code, which copies the dataset from the package to your global environment.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Not required for analysis, but may make the exploration of the data</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># more convienent.</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>patient_hawkes <span class="ot">&lt;-</span> patient_hawkes</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(patient_hawkes, <span class="at">package=</span><span class="st">"stat1080r"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Remember also that you can get a sense of what variables exist in this dataset by running <code>?patient_hawkes</code> in your console. This will open a help page in the lower-right corner of Rstudio.</p>
 <section id="problem" class="level1" data-number="1">
@@ -538,12 +538,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="co"># created the female_c vector).</span></span>
 <span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="fu">get_avg</span>(female_c, <span class="at">n =</span> <span class="dv">5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 236.4</code></pre>
+<pre><code>[1] 203.2</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Now the same function, but with a sample of 10</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">get_avg</span>(female_c, <span class="at">n =</span> <span class="dv">10</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 219.9</code></pre>
+<pre><code>[1] 214.8</code></pre>
 </div>
 </div>
 <p>Note that you will get a different number every time you run your function since you are doing a random simulation. Please create a vector of 10,000 sample averages for n = 10. Please consult the in-class examples that use the <code>replicate()</code> function for guidance.</p>
@@ -555,7 +555,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="problem-5" class="level1" data-number="6">
 <h1 data-number="6"><span class="header-section-number">6</span> Problem</h1>
-<p>We now want to visualize the distribution of the simulated averages that we created on the previous problem. The following code shows you how to create a density plot of the averages. Note that <code>f_avg</code> is a vector, and not a dataframe. The first line in the code chunk below shows you how to put your vector into a dataframe before trying to use ggplot. This code also makes use of the <code>gridExtra</code> package to place two plots side by side.</p>
+<p>We now want to visualize the distribution of the simulated averages that we created on the previous problem. The following code shows you how to create a density plot of the averages. Note that <code>f_avg</code> is a vector, and not a dataframe. The first line in the code chunk below shows you how to put your vector into a dataframe before trying to use ggplot. This code also makes use of the <code>patchwork</code> package to place two plots side by side.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>tdf <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">avg_dist =</span> f_avg)</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -568,7 +568,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_qq</span>() <span class="sc">+</span></span>
 <span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_qq_line</span>()</span>
 <span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a><span class="fu">grid.arrange</span>(p1, p2, <span class="at">nrow =</span> <span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>p1 <span class="sc">+</span> p2</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">

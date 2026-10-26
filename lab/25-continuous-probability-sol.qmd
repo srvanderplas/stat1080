@@ -101,7 +101,8 @@ get_avg(female_c, n = 5)
 get_avg(female_c, n = 10)
 ```
 
-Note that you will get a different number every time you run your function since you are doing a random simulation. Please create a vector of 10,000 sample averages for n = 10. Please consult the in-class examples that use the `replicate()` function for guidance. 
+Note that you will get a different number every time you run your function since you are doing a random simulation. Please create a vector of 10,000 sample averages for n = 10. 
+Please consult the in-class examples that use the `replicate()` function for guidance. 
 
 ```{r}
 reps <- 10000
@@ -111,7 +112,7 @@ f_avg <- replicate(reps, get_avg(female_c, n = 10))
 
 # Problem 
 
-We now want to visualize the distribution of the simulated averages that we created on the previous problem. The following code shows you how to create a density plot of the averages. Note that `f_avg` is a vector, and not a dataframe. The first line in the code chunk below shows you how to put your vector into a dataframe before trying to use ggplot. This code also makes use of the `gridExtra` package to place two plots side by side.  
+We now want to visualize the distribution of the simulated averages that we created on the previous problem. The following code shows you how to create a density plot of the averages. Note that `f_avg` is a vector, and not a dataframe. The first line in the code chunk below shows you how to put your vector into a dataframe before trying to use ggplot. This code also makes use of the `patchwork` package to place two plots side by side.  
 
 ```{r}
 tdf <- data.frame(avg_dist = f_avg)
@@ -125,7 +126,7 @@ p2 <- tdf |>
   geom_qq() +
   geom_qq_line()
 
-grid.arrange(p1, p2, nrow = 1)
+p1 + p2
 ```
 
 Does the distribution of averages appear to approximately follow a normal distribution? Does it appear that the distribution of averages are closer to a normal distribution than the original data? Explain why or why not.  

@@ -1,0 +1,144 @@
+---
+title: "9.1.a - Class Activity"
+format: html
+number-sections: true
+execute:
+  echo: true   # show code by default
+  warning: false
+  message: false
+---
+
+Be sure to run the following code chunk before proceeding with your analysis. 
+
+```{r}
+library(tidyverse)
+library(stat1080r)
+library(patchwork) # for making certain side-by-side plots. 
+```
+
+This assignment will use the `patient_hawkes` dataset from the `stat1080r` package. As always, you can use `head(patient_hawkes)` to observe the first six rows of this dataset. If you want the dataset to show up in your global environment (i.e., so it appears in the upper-right corner of your Rstudio), you can run the following chunk of code, which copies the dataset from the package to your global environment.
+
+```{r}
+# Not required for analysis, but may make the exploration of the data 
+# more convienent. 
+data(patient_hawkes, package="stat1080r")
+```
+
+Remember also that you can get a sense of what variables exist in this dataset by running `?patient_hawkes` in your console. This will open a help page in the lower-right corner of Rstudio.  
+
+# Problem 
+
+Write tidyverse code that assigns all male cholesterol values to a vector. Do the same for all female cholesterol values. Note that you will need to use the `filter()` and `pull()` functions from the tidyverse to create these two vectors, which you should name `male_c` and `female_c`. 
+
+```{r}
+## male_c <- #...#
+
+## female_c <- #...#
+```
+
+After creating these vectors, please report the number of female observations in Canvas. 
+
+# Problem 
+
+We will define "healthy" cholesterol as anyone with a cholesterol value less than or equal to 200, though we should note that actual health is more complicated than any single number. With that in mind, what is the proportion of men in our sample that have healthy cholesterol? How about the proportion of females with healthy cholesterol? You should calculate these proportions using the `mean()` function.
+
+```{r}
+# Males
+#...#
+# Females
+#...#
+```
+
+# Problem 
+
+Create a density plot (i.e., `geom_density()`) that shows the distribution of cholesterol, colored by gender. Do not worry about "optimizing" the plot, meaning that you do not need to change any of the axis labels or make anything look "nice".  
+
+Do men and women's cholesterol appear to approximately follow a normal distribution. Explain why or why not. 
+
+```{r}
+#...#
+```
+
+*Replace this text with your answer. Required if working on your own and optional if discussing in groups.*
+
+# Problem
+
+After writing your answer, confirm your findings by looking at the qq plots for male and female cholesterol. 
+
+```{r}
+patient_hawkes |>
+  ggplot(aes(sample = cholesterol)) +
+  geom_qq() +
+  geom_qq_line() + 
+  facet_wrap(~ gender)
+```
+Do these qqplots confirm or dispute your previous comments about whether the data approximately follow a normal distribution? Please explain below. 
+
+*Replace this text with your answer. Required if working on your own and optional if discussing in groups.*
+
+# Problem 
+
+We are now going to look at what we call "the distribution of averages". To obtain this, we will take random samples of size `n` from our collection of female observations. We will sample the females with replacement, meaning that it is possible for an observation to appear more than once in our sample. The following code chunk defines a function that takes samples of size n, with replacement, and then returns the average value of that sample. 
+
+```{r}
+get_avg <- function(x, n){
+  mean(sample(x, size = n, replace = TRUE))
+}
+
+# Example of calling the function to obtain the average of 5 randomly 
+# selected female cholesterol values. (Uncomment once you have successfully
+# created the female_c vector). 
+## get_avg(female_c, n = 5)
+
+# Now the same function, but with a sample of 10
+## get_avg(female_c, n = 10)
+```
+
+Note that you will get a different number every time you run your function since you are doing a random simulation. Please create a vector of 10,000 sample averages for n = 10. Please consult the in-class examples that use the `replicate()` function for guidance. 
+
+```{r}
+B <- 10000
+
+## f_avg <- replicate(#...#)
+```
+
+# Problem 
+
+We now want to visualize the distribution of the simulated averages that we created on the previous problem. The following code shows you how to create a density plot of the averages. Note that `f_avg` is a vector, and not a dataframe. The first line in the code chunk below shows you how to put your vector into a dataframe before trying to use ggplot. This code also makes use of the `patchwork` package to place two plots side by side.  
+
+```{r}
+# No need to change this code, just uncomment after you have created f_avg. 
+
+## tdf <- data.frame(avg_dist = f_avg)
+##
+## p1 <- tdf |> 
+##   ggplot(aes(x = avg_dist)) + 
+##   geom_density()
+##
+## p2 <- tdf  |> 
+##   ggplot(aes(sample = avg_dist)) + 
+##   geom_qq() + 
+##   geom_qq_line()
+
+## p1 + p2
+```
+
+Does the distribution of averages appear to approximately follow a normal distribution? Does it appear that the distribution of averages are closer to a normal distribution than the original data? Explain why or why not.  
+
+*Replace this text with your answer. Required if working on your own and optional if discussing in groups.*
+
+Note that the fact that the averages have a different distribution than the original cholesterol values is due to a very important theorem in statistics (called the Central Limit Theorem) that we will learn about soon.
+
+# Problem 
+
+Suppose that the distribution of averages has a mean of 217.8 and a standard deviation of 8.0. Use the normal approximation to estimate the probability that the average cholesterol from a group of 10 women will be **larger** than 200. Your answer should make use of the `pnorm()` function. 
+
+```{r}
+#...#
+```
+
+
+
+
+
+
