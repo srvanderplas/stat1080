@@ -1,5 +1,5 @@
 ---
-title: "3.3.a - Class Activity"
+title: "9.1.a - Class Activity"
 format: html
 number-sections: true
 execute:
@@ -13,15 +13,16 @@ Be sure to run the following code chunk before proceeding with your analysis.
 ```{r}
 library(tidyverse)
 library(stat1080r)
-library(gridExtra) # for making certain side-by-side plots.
+library(patchwork) # for making certain side-by-side plots.
 ```
 
-This assignment will use the `patient_hawkes` dataset from the `stat1080r` package. As always, you can use `head(patient_hawkes)` to observe the first six rows of this dataset. If you want the dataset to show up in your global environment (i.e., so it appears in the upper-right corner of your Rstudio), you can run the following chunk of code, which copies the dataset from the package to your global environment.
+This assignment will use the `patient_hawkes` dataset from the `stat1080r` package. 
+As always, you can use `head(patient_hawkes)` to observe the first six rows of this dataset. If you want the dataset to show up in your global environment (i.e., so it appears in the upper-right corner of your Rstudio), you can run the following chunk of code, which copies the dataset from the package to your global environment.
 
 ```{r}
 # Not required for analysis, but may make the exploration of the data
 # more convienent.
-patient_hawkes <- patient_hawkes
+data(patient_hawkes, package="stat1080r")
 ```
 
 Remember also that you can get a sense of what variables exist in this dataset by running `?patient_hawkes` in your console. This will open a help page in the lower-right corner of Rstudio.  

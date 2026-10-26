@@ -6,10 +6,13 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.10.19">
 
-  <title>STAT 1080 - Fall 2026 – cts-prob</title>
+  <title>STAT 1080 - Fall 2026 – 1.25 Continuous Probability</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -135,16 +138,133 @@
       margin-right: 0;
     }
   </style>
-<meta property="og:title" content="STAT 1080 - Fall 2026">
+<meta property="og:title" content="1.25 Continuous Probability – STAT 1080 - Fall 2026">
 <meta property="og:site_name" content="STAT 1080 - Fall 2026">
 </head>
 <body class="quarto-light">
   <div class="reveal">
     <div class="slides">
 
+<section id="title-slide" class="quarto-title-block center">
+  <h1 class="title">1.25 Continuous Probability</h1>
 
-<section class="slide level2">
+<div class="quarto-title-authors">
+</div>
 
+</section>
+<section id="a-picture-book-overview-continuous-probability" class="slide level2">
+<h2>A Picture-Book Overview: Continuous Probability</h2>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="25-cts-prob_files/figure-revealjs/unnamed-chunk-1-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="A CDF relates the probability <= a value to the value itself."><img data-src="25-cts-prob_files/figure-revealjs/unnamed-chunk-1-1.png" alt="An empirical CDF of height by sex, which is shown in color." width="576"></a></p>
+<figcaption>A CDF relates the probability <span class="math inline">\(&lt;=\)</span> a value to the value itself.</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="25-cts-prob_files/figure-revealjs/unnamed-chunk-2-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="A PDF relates the probability of a single value** to the value itself."><img data-src="25-cts-prob_files/figure-revealjs/unnamed-chunk-2-1.png" alt="An empirical PDF of height by sex, which is shown in color." width="576"></a></p>
+<figcaption>A PDF relates the probability of a single value** to the value itself.</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p><span class="bottom">** Technically, the probability of any single value in a continuous variable is 0. But, we can think of a small neighborhood around each value instead.</span></p>
+</section>
+<section id="cumulative-distribution-functions" class="slide level2">
+<h2>Cumulative Distribution Functions</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><a href="25-cts-prob_files/figure-revealjs/unnamed-chunk-3-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img data-src="25-cts-prob_files/figure-revealjs/unnamed-chunk-3-1.png" width="960"></a></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="probability-density-functions" class="slide level2">
+<h2>Probability Density Functions</h2>
+<p>PDFs: Like histograms shrinking binwidth to (very close to) 0… but the math is complicated.</p>
+<p><a href="normal-dist-pdf-anim.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img data-src="normal-dist-pdf-anim.gif" alt="A gif showing the basic plot of a normal PDF (line) with a histogram drawn from normal samples underneath. As time increases, the binwidth shrinks until it is hard to see single bins any longer. As this happens, the tops of the bins become a relatively good approximation for the normal PDF curve."></a></p>
+</section>
+<section id="theoretical-distributions" class="slide level2">
+<h2>Theoretical Distributions</h2>
+<ul>
+<li>are useful approximations to the behavior of natural things<br>
+<span class="small">and work very well for biological situations with many factors, like height, which is controlled by many different genes + environmental influences</span></li>
+<li>were easier to use than samples before computing power <span class="emph blue-dk"><span class="math inline">\(\Rightarrow\)</span> historically important</span></li>
+<li>always result in the same answer (unlike random samples)</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="images/z-table.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-5" title="Image source"><img data-src="images/z-table.jpg" style="width:60.0%" alt="An image of a historical z-table, which shows reference information for the cumulative probability of a standard normal distribution. It shows a normal curve with a shaded left tail, and the table below has values in rows of -3.4, -3.3, ..., 0, with column values providing an additional degree of precision, and the table values providing the shaded area under the curve at z=(value)."></a></p>
+<figcaption><a href="https://calvowhadis.weebly.com/printable-standard-normal-distribution-table.html">Image source</a></figcaption>
+</figure>
+</div>
+</section>
+<section id="continuous-distributions" class="slide level2">
+<h2>Continuous Distributions</h2>
+<ul>
+<li><p><span class="math inline">\(P(x = a) = 0\)</span> if <span class="math inline">\(x\)</span> is continuously distributed <br><br></p></li>
+<li><p><span class="math inline">\(P(a &lt;= x &lt; b)\)</span> is what we work with</p>
+<ul>
+<li>area under PDF between <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span></li>
+</ul></li>
+</ul>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><a href="25-cts-prob_files/figure-revealjs/unnamed-chunk-5-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6"><img data-src="25-cts-prob_files/figure-revealjs/unnamed-chunk-5-1.png" width="672"></a></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="continuous-distributions-in-r" class="slide level2">
+<h2>Continuous Distributions in R</h2>
+<table class="caption-top">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Command</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>rnorm(n, mean = 0, sd = 1)</code></td>
+<td><span class="math inline">\(n\)</span> random numbers</td>
+</tr>
+<tr class="even">
+<td><code>dnorm(x, mean = 0, sd = 1)</code></td>
+<td>normal density at <span class="math inline">\(x\)</span></td>
+</tr>
+<tr class="odd">
+<td><code>pnorm(q, mean = 0, sd = 1)</code></td>
+<td><span class="math inline">\(P(x \leq q)\)</span> (CDF value)</td>
+</tr>
+<tr class="even">
+<td><code>qnorm(p, mean = 0, sd = 1)</code></td>
+<td><span class="math inline">\(P(x \leq q) = p\)</span> (solves for <span class="math inline">\(q\)</span>) <br>This is the <em>quantile</em> function</td>
+</tr>
+</tbody>
+</table>
+<p>Other distribution types exist: Exponential, Gamma, Beta, t, F…</p>
+<p>They all follow the <code>rXXX, dXXX, pXXX, qXXX</code> pattern (but have different parameters)</p>
 
 
 </section>
@@ -366,6 +486,44 @@
         ]
       });
     </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
     <script id="quarto-html-after-body" type="application/javascript">
       window.document.addEventListener("DOMContentLoaded", function (event) {
         const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
@@ -686,6 +844,38 @@
         }
       });
       </script>
+    <script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+    (function() {
+      let previousOnload = window.onload;
+      window.onload = () => {
+        if (previousOnload) {
+          previousOnload();
+        }
+        lightboxQuarto.on('slide_before_load', (data) => {
+          const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+          const href = trigger.getAttribute('href');
+          if (href !== null) {
+            const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+            if (imgEl !== null) {
+              const srcAttr = imgEl.getAttribute("src");
+              if (srcAttr && srcAttr.startsWith("data:")) {
+                slideConfig.href = srcAttr;
+              }
+            }
+          } 
+        });
+      
+        lightboxQuarto.on('slide_after_load', (data) => {
+          const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(slideNode);
+          }
+        });
+      
+      };
+      
+    })();
+              </script>
     
 
 </body></html>

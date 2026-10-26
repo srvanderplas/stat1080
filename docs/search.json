@@ -4709,5 +4709,61 @@
     "title": "1.24 Discrete Probability",
     "section": "Some Things to Consider",
     "text": "Some Things to Consider\n\nDoes the order matter?\n\nno, for blackjack – Combination\nyes, for lots of other things! – Permutation\n\nSampling with or without replacement?\n\nDo you put the thing back before drawing another?\n\n\nSetting up the right programming approach is sometimes hard!\n\n\n\n\n\n\n\nTips\n\n\n\nsketch it out\nphysically do the thing with items, multiple times\nTHEN think about how to write the code"
+  },
+  {
+    "objectID": "slides/25-cts-prob.html#a-picture-book-overview",
+    "href": "slides/25-cts-prob.html#a-picture-book-overview",
+    "title": "1.25 Continuous Probability",
+    "section": "A Picture-Book Overview",
+    "text": "A Picture-Book Overview\n\n\n\n\n\n\n\nA CDF relates the probability \\(&lt;=\\) a value to the value itself.\n\n\n\n\n\n\n\n\n\nA PDF relates the probability of a single value** to the value itself.\n\n\n\n\n\n\n** Technically, the probability of any single value in a continuous variable is 0. But, we can think of a small neighborhood around each value instead."
+  },
+  {
+    "objectID": "slides/25-cts-prob.html#a-picture-book-overview-continuous-probability",
+    "href": "slides/25-cts-prob.html#a-picture-book-overview-continuous-probability",
+    "title": "1.25 Continuous Probability",
+    "section": "A Picture-Book Overview: Continuous Probability",
+    "text": "A Picture-Book Overview: Continuous Probability\n\n\n\n\n\n\n\nA CDF relates the probability \\(&lt;=\\) a value to the value itself.\n\n\n\n\n\n\n\n\n\nA PDF relates the probability of a single value** to the value itself.\n\n\n\n\n\n\n** Technically, the probability of any single value in a continuous variable is 0. But, we can think of a small neighborhood around each value instead."
+  },
+  {
+    "objectID": "slides/25-cts-prob.html#cumulative-distribution-functions",
+    "href": "slides/25-cts-prob.html#cumulative-distribution-functions",
+    "title": "1.25 Continuous Probability",
+    "section": "Cumulative Distribution Functions",
+    "text": "Cumulative Distribution Functions"
+  },
+  {
+    "objectID": "slides/25-cts-prob.html#probability-density-functions",
+    "href": "slides/25-cts-prob.html#probability-density-functions",
+    "title": "1.25 Continuous Probability",
+    "section": "Probability Density Functions",
+    "text": "Probability Density Functions\nPDFs: Like histograms shrinking binwidth to (very close to) 0… but the math is complicated."
+  },
+  {
+    "objectID": "slides/25-cts-prob.html#theoretical-distributions",
+    "href": "slides/25-cts-prob.html#theoretical-distributions",
+    "title": "1.25 Continuous Probability",
+    "section": "Theoretical Distributions",
+    "text": "Theoretical Distributions\n\nare useful approximations to the behavior of natural things\nand work very well for biological situations with many factors, like height, which is controlled by many different genes + environmental influences\nwere easier to use than samples before computing power \\(\\Rightarrow\\) historically important\nalways result in the same answer (unlike random samples)\n\n\n\n\nImage source"
+  },
+  {
+    "objectID": "slides/25-cts-prob.html#using-continuous-distributions",
+    "href": "slides/25-cts-prob.html#using-continuous-distributions",
+    "title": "1.25 Continuous Probability",
+    "section": "Using Continuous Distributions",
+    "text": "Using Continuous Distributions\nNormal:\n\n\n\n\n\n\n\nCommand\nWhat it does\n\n\n\n\nrnorm(n, mean = 0, sd = 1)\n\\(n\\) random numbers\n\n\ndnorm(x, mean = 0, sd = 1)\nnormal density at \\(x\\)\n\n\npnorm(q, mean = 0, sd = 1)\n\\(P(x \\leq q)\\) (CDF value)\n\n\nqnorm(p, mean = 0, sd = 1)\n\\(P(x \\leq q) = p\\) (solves for \\(q\\)) This is called the quantile function and it is very useful"
+  },
+  {
+    "objectID": "slides/25-cts-prob.html#continuous-distributions",
+    "href": "slides/25-cts-prob.html#continuous-distributions",
+    "title": "1.25 Continuous Probability",
+    "section": "Continuous Distributions",
+    "text": "Continuous Distributions\n\n\\(P(x = a) = 0\\) if \\(x\\) is continuously distributed \n\\(P(a &lt;= x &lt; b)\\) is what we work with\n\narea under PDF between \\(a\\) and \\(b\\)"
+  },
+  {
+    "objectID": "slides/25-cts-prob.html#continuous-distributions-in-r",
+    "href": "slides/25-cts-prob.html#continuous-distributions-in-r",
+    "title": "1.25 Continuous Probability",
+    "section": "Continuous Distributions in R",
+    "text": "Continuous Distributions in R\n\n\n\n\n\n\n\nCommand\nWhat it does\n\n\n\n\nrnorm(n, mean = 0, sd = 1)\n\\(n\\) random numbers\n\n\ndnorm(x, mean = 0, sd = 1)\nnormal density at \\(x\\)\n\n\npnorm(q, mean = 0, sd = 1)\n\\(P(x \\leq q)\\) (CDF value)\n\n\nqnorm(p, mean = 0, sd = 1)\n\\(P(x \\leq q) = p\\) (solves for \\(q\\)) This is the quantile function\n\n\n\nOther distribution types exist: Exponential, Gamma, Beta, t, F…\nThey all follow the rXXX, dXXX, pXXX, qXXX pattern (but have different parameters)"
   }
 ]
