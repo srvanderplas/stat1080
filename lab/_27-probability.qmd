@@ -140,10 +140,10 @@ It can be helpful to create a data frame that can be directly sampled from. `uta
 We don't have that kind of personal information, but we can make a data frame that has a similar form, assigning each voter an id.
 
 ```{r}
-utah_voters <- utah_sample_party |>
-  select(party, count) |>
-  uncount(count) |>
-  mutate(id = sample(1:n(), size = n(), replace = F))
+# utah_voters <- utah_party_sample |>
+#   select(party, count) |>
+#   uncount(count) |>
+#   mutate(id = sample(1:n(), size = n(), replace = F))
 ```
 
 
@@ -158,24 +158,24 @@ library(infer)
 Using the `utah_party_sample` object, let's construct a sample for a poll that The Onion (America's Finest News Source) wants to conduct in Utah. 
 
 ```{r}
-set.seed(20261103) # Election day 2026
-poll_sample <- utah_voters |>
-  sample_n(size = 3000, replace = F)
+# set.seed(20261103) # Election day 2026
+# poll_sample <- utah_voters |>
+#   sample_n(size = 3000, replace = F)
 ```
 
 We can tabulate the essential information from this poll sample by counting by party:
 
 ```{r}
-poll_summary <- poll_sample |>
-  group_by(party) |>
-  count()
+# poll_summary <- poll_sample |>
+#   group_by(party) |>
+#   count()
 ```
 
 In some cases, it might be easier to look at this in wide form, where each poll replicate is a single row.
 
 ```{r}
-poll_sum_wide <- poll_summary |>
-  pivot_wider(names_from = party, values_from = n)
+# poll_sum_wide <- poll_summary |>
+#   pivot_wider(names_from = party, values_from = n)
 ```
 
 
@@ -185,18 +185,18 @@ poll_sum_wide <- poll_summary |>
 Using the `rep_sample_n()` function in the `infer` package, let's generate 100 possible polls which sample 3000 Utah registered voters. 
 
 ```{r}
-set.seed(20261103) # Election day 2026
-possible_polls <- utah_voters |>
-  rep_sample_n(size = 3000, replace = F, reps = 100)
+# set.seed(20261103) # Election day 2026
+# possible_polls <- utah_voters |>
+#   rep_sample_n(size = 3000, replace = F, reps = 100)
 ```
 
 Then, we can mimic the cleaning code above, grouping by replicate and party, to get a single-row summary of sampled people from every party.
 
 ```{r}
-possible_polls_sum <- possible_polls |>
-  group_by(replicate, party) |> 
-  count() |> 
-  pivot_wider(names_from = party, values_from = n)
+# possible_polls_sum <- possible_polls |>
+#   group_by(replicate, party) |> 
+#   count() |> 
+#   pivot_wider(names_from = party, values_from = n)
 ```
 In samples where no Green party members were included, there is an NA value instead. How many of those samples are there?
 Write code using `possible_polls_sum` to determine how many samples include no Green party members.

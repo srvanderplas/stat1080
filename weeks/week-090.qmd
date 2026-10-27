@@ -34,7 +34,7 @@ October 26-01, 2026
 ## 🎉 Friday 🥳
 
 - [Attendance Quiz 10/30](https://usu.instructure.com/courses/819584/assignments/5293102){target="_blank"}
-- [Lab: Probability](../lab/27-probability.qmd){target="_blank"}
+- [Lab: Probability](https://usu.instructure.com/courses/819584/quizzes/1504998){target="_blank"} [quarto template](../lab/_27-probability.qmd){target="_blank"}, [html](../lab/27-probability.qmd){target="_blank"}
 
 
 ## Extra Resources/Reading
