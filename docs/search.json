@@ -4919,5 +4919,54 @@
     "title": "1.24 Discrete Probability",
     "section": "Some Things to Consider",
     "text": "Some Things to Consider\n\nDoes the order matter?\n\nno, for blackjack – Combination\nyes, for lots of other things! – Permutation\n\nSampling with or without replacement?\n\nDo you put the thing back before drawing another?\n\n\nSetting up the right programming approach is sometimes hard!\n\n\n\n\n\n\n\nTips\n\n\n\nsketch it out\nphysically do the thing with items, multiple times\nTHEN think about how to write the code"
+  },
+  {
+    "objectID": "slides/26-data-prob.html#variables",
+    "href": "slides/26-data-prob.html#variables",
+    "title": "1.26 Connecting Data and Probability",
+    "section": "Variables",
+    "text": "Variables\n\nExplanatory or Independent Variable(s):\nvariable(s) that may explain the change in the variable of interest\nResponse or Dependent Variable(s)\n\nvariable(s) of interest we measure on observational units\n\nobservational unit - what is measured.\ne.g. individuals for height, polls, etc., lifetime for mechanical parts, …\n\n\n\nGoal: Show changes in the explanatory variable affect the response variable\ncause-and-effect relationship"
+  },
+  {
+    "objectID": "slides/26-data-prob.html#review-associations-vs.-cause-and-effect",
+    "href": "slides/26-data-prob.html#review-associations-vs.-cause-and-effect",
+    "title": "1.26 Connecting Data and Probability",
+    "section": "Review: Associations vs. Cause and Effect",
+    "text": "Review: Associations vs. Cause and Effect\n\nConfounding variables affect both the explanatory and response variables\n\nThings that aren’t measured\nThings you can’t control"
+  },
+  {
+    "objectID": "slides/26-data-prob.html#study-design-populations",
+    "href": "slides/26-data-prob.html#study-design-populations",
+    "title": "1.26 Connecting Data and Probability",
+    "section": "Study Design – Populations",
+    "text": "Study Design – Populations\n\n\n\n\n\n\n\n\n\nFigure 1: The population is the group we want to make statements about\n\n\n\n\n\n\n\n\n\n\n\nFigure 2: The sample is the group we measure/test/experiment on\n\n\n\n\n\n\nTo generalize, we need to argue that the sample is representative of the population"
+  },
+  {
+    "objectID": "slides/26-data-prob.html#study-design-populations-1",
+    "href": "slides/26-data-prob.html#study-design-populations-1",
+    "title": "1.26 Connecting Data and Probability",
+    "section": "Study Design – Populations",
+    "text": "Study Design – Populations\n\n\nIn a random sample,\nevery item in the population has an\nequal chance to be selected.\n\nProbability \\(\\Rightarrow\\) this is representative.\n\n\n\n\nRandom sample of 20 balls\n\n\n\nIn a convenience sample,\nwe measure the most convenient items.\n\n\nMay be representative (or not) – details matter.\n\n\n\n\nConvenience sample of 20 balls (top layer + a few from the next layer)\n\n\n\nA random sample means that the sample is representative of the population\nWe can generalize results to the population."
+  },
+  {
+    "objectID": "slides/26-data-prob.html#study-design-experiments",
+    "href": "slides/26-data-prob.html#study-design-experiments",
+    "title": "1.26 Connecting Data and Probability",
+    "section": "Study Design – Experiments",
+    "text": "Study Design – Experiments\nIn an experiment, the researcher assigns participants to conditions.\n\n\n\n\n\n\nPeople in the sample\n\n\n\n\n \n\n\n\n\n\nExperiment Group A\n\n\n\n\n\n\n\nExperiment Group B\n\n\n\n\n\n\nWith random assignment, any pre-existing difference in the groups is due to chance.\nThis allows us to detect cause-and-effect relationships"
+  },
+  {
+    "objectID": "slides/26-data-prob.html#additional-assumptions",
+    "href": "slides/26-data-prob.html#additional-assumptions",
+    "title": "1.26 Connecting Data and Probability",
+    "section": "Additional Assumptions",
+    "text": "Additional Assumptions\n\nSurveys, convenience samples, etc. are common\n\nIt’s not always possible (or ethical) to do controlled experiments\n\nStatistical models assume that the samples behave like random samples, but\n\nWe have to mention the assumptions we are making\nWe have to be careful about the conclusions\n\n\nAll models are wrong, but some are useful. – George Box"
+  },
+  {
+    "objectID": "slides/26-data-prob.html#sources-of-variability",
+    "href": "slides/26-data-prob.html#sources-of-variability",
+    "title": "1.26 Connecting Data and Probability",
+    "section": "Sources of Variability",
+    "text": "Sources of Variability\n\n\n\nSampling – which items were in the sample?\nMeasurement error\nNatural variation\n\nProbability is a useful way to handle all of these different types of variability\nBut, that doesn’t mean they’re the same!"
   }
 ]

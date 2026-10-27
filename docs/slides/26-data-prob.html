@@ -6,10 +6,13 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.10.19">
 
-  <title>STAT 1080 - Fall 2026 – data-prob</title>
+  <title>STAT 1080 - Fall 2026 – 1.26 Connecting Data and Probability</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -135,16 +138,209 @@
       margin-right: 0;
     }
   </style>
-<meta property="og:title" content="STAT 1080 - Fall 2026">
+<meta property="og:title" content="1.26 Connecting Data and Probability – STAT 1080 - Fall 2026">
 <meta property="og:site_name" content="STAT 1080 - Fall 2026">
 </head>
 <body class="quarto-light">
   <div class="reveal">
     <div class="slides">
 
+<section id="title-slide" class="quarto-title-block center">
+  <h1 class="title">1.26 Connecting Data and Probability</h1>
 
-<section class="slide level2">
+<div class="quarto-title-authors">
+</div>
 
+</section>
+<section id="variables" class="slide level2">
+<h2>Variables</h2>
+<ul>
+<li><p><strong>Explanatory</strong> or <strong>Independent</strong> Variable(s):<br>
+variable(s) that may explain the change in the variable of interest</p></li>
+<li><p><strong>Response</strong> or <strong>Dependent</strong> Variable(s)</p>
+<ul>
+<li>variable(s) of interest we measure on observational units</li>
+</ul></li>
+<li><p><strong>observational unit</strong> - what is measured.<br>
+<span class="emph blue-dk">e.g.&nbsp;individuals for height, polls, etc., lifetime for mechanical parts, …</span></p></li>
+</ul>
+<div class="fragment">
+<ul>
+<li>Goal: Show changes in the explanatory variable affect the response variable<br>
+<span class="fragment emph green"><strong>cause-and-effect</strong> relationship</span></li>
+</ul>
+</div>
+</section>
+<section id="review-associations-vs.-cause-and-effect" class="slide level2">
+<h2>Review: Associations vs.&nbsp;Cause and Effect</h2>
+<ul>
+<li><p><strong>Confounding variables</strong> affect both the explanatory and response variables</p>
+<ul>
+<li>Things that aren’t measured</li>
+<li>Things you can’t control</li>
+</ul></li>
+</ul>
+<p><a href="images/simba-pouncing.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img data-src="images/simba-pouncing.gif" style="width:50.0%" alt="Simba, flying in from the left to hit zazu, who was sitting on a rock"></a></p>
+</section>
+<section id="study-design-populations" class="slide level2">
+<h2>Study Design – Populations</h2>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row quarto-layout-valign-bottom">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-population-urn" class="quarto-float quarto-figure quarto-figure-center" alt="An urn shape containing 29 pink balls, 31 orange balls, 187 yellow balls, 26 green balls, 46 teal balls, 51 cyan balls, and 46 purple balls.">
+<figure class="quarto-float quarto-float-fig">
+<div aria-describedby="fig-population-urn-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="images/big-urn-solo.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Figure&nbsp;1: The population is the group we want to make statements about"><img data-src="images/big-urn-solo.svg" alt="An urn shape containing 29 pink balls, 31 orange balls, 187 yellow balls, 26 green balls, 46 teal balls, 51 cyan balls, and 46 purple balls."></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-population-urn-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: The <strong>population</strong> is the group we want to make statements about
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-sample-urn" class="quarto-float quarto-figure quarto-figure-center" alt="A sample of 20 balls from the urn, containing 3 pink, 1 orange, 8 yellow, 2 green, 2 teal, 3 cyan, and one purple ball.">
+<figure class="quarto-float quarto-float-fig">
+<div aria-describedby="fig-sample-urn-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="images/sample-ball-urn.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="Figure&nbsp;2: The sample is the group we measure/test/experiment on"><img data-src="images/sample-ball-urn.png" alt="A sample of 20 balls from the urn, containing 3 pink, 1 orange, 8 yellow, 2 green, 2 teal, 3 cyan, and one purple ball."></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-sample-urn-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2: The <strong>sample</strong> is the group we measure/test/experiment on
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<p>To generalize, <span class="emph blue-dk large">we need to <strong>argue</strong></span> that the sample is <span class="emph large green-dk"><strong>representative</strong></span> of the population</p>
+</section>
+<section id="study-design-populations-1" class="slide level2">
+<h2>Study Design – Populations</h2>
+<div class="columns">
+<div class="column">
+<p>In a <strong>random</strong> sample,<br>
+<span class="emph cerulean-dk"><strong>every item</strong> in the population has an<br>
+<strong>equal chance</strong> to be selected.</span></p>
+<ul>
+<li>Probability <span class="math inline">\(\Rightarrow\)</span> this is representative.</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="images/sample-ball-urn.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="Random sample of 20 balls"><img data-src="images/sample-ball-urn.png" alt="A random sample of 20 balls from the urn, containing 3 pink, 1 orange, 8 yellow, 2 green, 2 teal, 3 cyan, and one purple ball."></a></p>
+<figcaption>Random sample of 20 balls</figcaption>
+</figure>
+</div>
+</div><div class="column">
+<p>In a <strong>convenience</strong> sample,<br>
+we measure the <span class="emph green"><strong>most convenient</strong></span> items.<br>
+<br></p>
+<ul>
+<li>May be representative (or not) – details matter.</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="images/sample-ball-urn-convenience.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5" title="Convenience sample of 20 balls (top layer + a few from the next layer)"><img data-src="images/sample-ball-urn-convenience.png" alt="A convenience sample of 20 balls from the urn, containing 3 pink, 0 orange, 8 yellow, 1 green, 1 teal, 4 cyan, and 3 purple balls."></a></p>
+<figcaption>Convenience sample of 20 balls (top layer + a few from the next layer)</figcaption>
+</figure>
+</div>
+</div></div>
+<p>A <strong>random sample</strong> means that the sample is <span class="emph orange-dk large"><strong>representative</strong></span> of the population<br>
+<span class="emph large fragment">We can generalize results to the population.</span></p>
+</section>
+<section id="study-design-experiments" class="slide level2">
+<h2>Study Design – Experiments</h2>
+<p>In an <strong>experiment</strong>, the researcher assigns participants to conditions.</p>
+<div class="quarto-layout-panel" data-layout="[1,-1, 2,2]">
+<div class="quarto-layout-row quarto-layout-valign-bottom">
+<div class="quarto-layout-cell" style="flex-basis: 16.7%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="images/sample-people.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6" title="People in the sample"><img data-src="images/sample-people.png" alt="A group of 8 stick figures with different hairstyles. For each basic hairstyle (hat, short hair, ponytail, spikes) there are two individuals with slight variations on the theme."></a></p>
+<figcaption>People in the sample</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-figure-spacer quarto-layout-cell" style="flex-basis: 16.7%;justify-content: flex-start;">
+<p>&nbsp;</p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="images/sample-people-group1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7" title="Experiment Group A"><img data-src="images/sample-people-group1.png" alt="Four individuals, each with a different hairstyle."></a></p>
+<figcaption>Experiment Group A</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="images/sample-people-group2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8" title="Experiment Group B"><img data-src="images/sample-people-group2.png" alt="Four individuals, each with a different hairstyle."></a></p>
+<figcaption>Experiment Group B</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<ul>
+<li><p>With <strong>random assignment</strong>, any pre-existing difference in the groups is <span class="emph large cerulean-dk">due to <strong>chance</strong></span>.</p></li>
+<li><p>This allows us to detect <span class="emph large pink-dk"><strong>cause-and-effect</strong></span> relationships</p></li>
+</ul>
+</section>
+<section id="additional-assumptions" class="slide level2">
+<h2>Additional Assumptions</h2>
+<ul>
+<li><p>Surveys, convenience samples, etc. are common<br>
+<br></p></li>
+<li><p>It’s not always possible (or ethical) to do controlled experiments<br>
+<br></p></li>
+<li><p><span class="emph green">Statistical <strong>models</strong></span> assume that the samples <span class="emph pink-dk"><strong>behave</strong></span> like random samples, <span class="emph orange-dk"><strong>but</strong></span></p>
+<ul>
+<li>We have to mention the assumptions we are making</li>
+<li>We have to be careful about the conclusions</li>
+</ul></li>
+</ul>
+<p><span class="fragment large"><span class="emph blue-dk">All models are wrong, but some are useful.</span> – George Box</span></p>
+</section>
+<section id="sources-of-variability" class="slide level2">
+<h2>Sources of Variability</h2>
+<div class="columns">
+<div class="column">
+<ul>
+<li><p>Sampling – which items were in the sample?</p></li>
+<li><p>Measurement error</p></li>
+<li><p>Natural variation</p></li>
+</ul>
+<p>Probability is a useful way to handle <em>all</em> of these different types of variability<br>
+<span class="fragment emph blue-dk"><br>But, that doesn’t mean they’re the same!</span></p>
+</div><div class="column">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><a href="26-data-prob_files/figure-revealjs/unnamed-chunk-2-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-9"><img data-src="26-data-prob_files/figure-revealjs/unnamed-chunk-2-1.png" alt="A spaghetti plot of density functions that roughly follow a normal curve centered at 98 degrees. The x-axis shows Temperature (deg F) and the y axis shows density." width="384"></a></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><a href="26-data-prob_files/figure-revealjs/unnamed-chunk-3-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-10"><img data-src="26-data-prob_files/figure-revealjs/unnamed-chunk-3-1.png" alt="A histogram of Stat 1080 attendance, with most days having between 20 and 30 students. The overall range lies between 12 and 36 students." width="384"></a></p>
+</figure>
+</div>
+</div>
+</div>
+</div></div>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><a href="26-data-prob_files/figure-revealjs/unnamed-chunk-4-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-11"><img data-src="26-data-prob_files/figure-revealjs/unnamed-chunk-4-1.png" style="width:100.0%" alt="100 samples from the urn of marbles demonstrating that some variability is due to sampling error."></a></p>
+</figure>
+</div>
+</div>
+</div>
 
 
 </section>
@@ -366,6 +562,44 @@
         ]
       });
     </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
     <script id="quarto-html-after-body" type="application/javascript">
       window.document.addEventListener("DOMContentLoaded", function (event) {
         const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
@@ -686,6 +920,38 @@
         }
       });
       </script>
+    <script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+    (function() {
+      let previousOnload = window.onload;
+      window.onload = () => {
+        if (previousOnload) {
+          previousOnload();
+        }
+        lightboxQuarto.on('slide_before_load', (data) => {
+          const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+          const href = trigger.getAttribute('href');
+          if (href !== null) {
+            const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+            if (imgEl !== null) {
+              const srcAttr = imgEl.getAttribute("src");
+              if (srcAttr && srcAttr.startsWith("data:")) {
+                slideConfig.href = srcAttr;
+              }
+            }
+          } 
+        });
+      
+        lightboxQuarto.on('slide_after_load', (data) => {
+          const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(slideNode);
+          }
+        });
+      
+      };
+      
+    })();
+              </script>
     
 
 </body></html>
