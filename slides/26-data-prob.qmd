@@ -169,8 +169,8 @@ density_data <- tibble(
   ungroup()
 
 density_data |>
-  ggplot(aes(x = xdist)) + geom_line(stat="density_sample", times = 100, alpha = .5) + 
-  ggtitle("Thermometer Estimate: Normal Human Body Temperature") + 
+  ggplot(aes(x = xdist)) + geom_line(stat="density_sample", times = 100, alpha = .25) + 
+  ggtitle("Thermometer Estimate", subtitle = "Normal Human Body Temperature") + 
   xlab("Temperature  (deg F)") + 
   ylab("Density") + theme_bw()
 

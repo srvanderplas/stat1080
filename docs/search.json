@@ -4967,6 +4967,6 @@
     "href": "slides/26-data-prob.html#sources-of-variability",
     "title": "1.26 Connecting Data and Probability",
     "section": "Sources of Variability",
-    "text": "Sources of Variability\n\n\n\nSampling – which items were in the sample?\nMeasurement error\nNatural variation\n\nProbability is a useful way to handle all of these different types of variability\nBut, that doesn’t mean they’re the same!"
+    "text": "Sources of Variability\n\n\n\nMeasurement error\nNatural variation\nSampling – which items were in the sample?\n\nProbability is a useful way to handle all of these different types of variability\nBut, that doesn’t mean they’re the same!"
   }
 ]
