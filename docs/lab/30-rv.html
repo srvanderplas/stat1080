@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>rv – STAT 1080 - Fall 2026</title>
+<title>10.3.L Lab: Random Variables – STAT 1080 - Fall 2026</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -25,6 +25,41 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -79,7 +114,8 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<meta property="og:title" content="STAT 1080 - Fall 2026">
+<meta property="og:title" content="10.3.L Lab: Random Variables – STAT 1080 - Fall 2026">
+<meta property="og:description" content="Homepage for STAT 1080 - Data and the Stories They Tell.">
 <meta property="og:site_name" content="STAT 1080 - Fall 2026">
 </head>
 
@@ -367,18 +403,116 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#warmup" id="toc-warmup" class="nav-link active" data-scroll-target="#warmup">Warmup</a></li>
+  <li><a href="#catching-a-con" id="toc-catching-a-con" class="nav-link" data-scroll-target="#catching-a-con">Catching a con</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://srvanderplas.github.io/stat1080/issues/new" class="toc-action"><i class="bi bi-git"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content column-page" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+<main class="content column-page-left" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">10.3.L Lab: Random Variables</h1>
+</div>
 
 
 
+<div class="quarto-title-meta column-page-left">
+
+    
+  
+    
+  </div>
+  
 
 
+</header>
 
 
+<p>A man named Professor Harold Hill wanders into your small town.<br>
+He claims to be selling top-quality instruments for a marching band.<br>
+He begins selling his instruments to all the children in town.</p>
+<p>You are suspicious of Professor Hill, and think that perhaps he is selling instruments made of subpar materials, to scam the townsfolk.</p>
+<p>You do some research on the weights of properly crafted brass instruments, and you learn the following facts:</p>
+<ul>
+<li><p>Trombones weights are normally distributed, with a mean weight of 4.6 pounds and a standard deviation of 0.8 pounds. (Use <code>rnorm</code>, <code>pnorm</code>, <code>dnorm</code>, <code>qnorm</code>, with <code>mean=4.6</code> and <code>sd=0.8</code>)</p></li>
+<li><p>Trumpet weights are Uniformly distributed between 1.5 and 3.5 pounds. (Use <code>runif</code>, <code>punif</code>, <code>dunif</code>, <code>qunif</code> with <code>min=1.5</code> and <code>max=3.5</code>)</p></li>
+<li><p>Reed instruments (like clarinets, bassoons, and saxophones) have weights that are Chi-Square distributed with 4 degrees of freedom. (Use <code>rchisq</code>, <code>pchisq</code>, <code>dchisq</code>, <code>qchisq</code> with <code>df=4</code>)</p></li>
+</ul>
+<section id="warmup" class="level2">
+<h2 class="anchored" data-anchor-id="warmup">Warmup</h2>
+<ul>
+<li>What is the 95th percentile for trumpet weight?</li>
+</ul>
+<ul>
+<li>What is the 10th percentile for trombone weight?</li>
+</ul>
+<ul>
+<li>About what percent of trombones do you expect to be more than 5 pounds?</li>
+</ul>
+<ul>
+<li>About what percent of reed instruments do you expect to be more than 5 pounds?</li>
+</ul>
+<ul>
+<li>Simulate 100 random trombone weights. How many of them were below 4 pounds?</li>
+</ul>
+</section>
+<section id="catching-a-con" class="level2">
+<h2 class="anchored" data-anchor-id="catching-a-con">Catching a con</h2>
+<p>You manage to intercept a shipping notice for delivery to Professor Hill. It says the following:</p>
+<pre><code>Wells Fargo Shipment 1957
+
+To:  Harold Hill, Mason City, Iowa
+From:  Music Factory, Gary, Indiana
+
+Items included:
+    Trombones: 76
+    Cornets: 110
+    Saxophones: 542
+    Clarinets: 318
+    Bassoons: 175
+    
+Total Shipped Weight: 4532 lbs.
+</code></pre>
+<p>This is your chance to catch Professor Hill in his lie!</p>
+<p>First, write a function that samples the correct number of weights of trombones, cornets (trumpets), and reed instruments, and then returns the total weight.</p>
+<p>Then, use that function to create 1000 random samples of total weight.</p>
+<p>(Some code is provided for you below. Do not change the seed!)</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>music_man <span class="ot">&lt;-</span> <span class="cf">function</span>(n_tromb, n_cor, n_reed){</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  trombones <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n_tromb, ...)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  cornets <span class="ot">&lt;-</span> ...</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  reeds <span class="ot">&lt;-</span> ...</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  total_weight <span class="ot">&lt;-</span> <span class="fu">sum</span>(trombones) <span class="sc">+</span> <span class="fu">sum</span>(cornets) <span class="sc">+</span> <span class="fu">sum</span>(reeds)</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(total_weight)</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1957</span>)</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>my_weights <span class="ot">&lt;-</span> <span class="fu">replicate</span>(<span class="dv">1000</span>, <span class="fu">music_man</span>(<span class="dv">76</span>, ...))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<ol type="1">
+<li>How many of these samples had a weight less than Prof.&nbsp;Hill’s shipment?</li>
+</ol>
+<ol start="2" type="1">
+<li>Create a histogram of the weights of your samples, and use <code>geom_vline(xintercept=4532, color = "red")</code> to add a vertical line to the histogram showing the weight of the shipment. Is the shipment’s weight unreasonable given your simulation?</li>
+</ol>
+<ol start="3" type="1">
+<li>Based on this, do you believe Professor Hill is dealing in low-quality instruments, or not? Explain your answer.</li>
+</ol>
+
+
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -802,7 +936,7 @@ ul.task-list li input[type="checkbox"] {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions"><ul><li><a href="https://srvanderplas.github.io/stat1080/issues/new" class="toc-action"><i class="bi bi-git"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://srvanderplas.github.io/stat1080/issues/new" class="toc-action"><i class="bi bi-git"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
       &nbsp;
     </div>

@@ -1,0 +1,8 @@
+---
+title: "1.28 Random Variables"
+format: revealjs
+code-annotations: hover
+lightbox:  true
+bibliography: refs.bib
+csl: chicago-syllabus.csl
+---

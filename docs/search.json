@@ -1708,6 +1708,27 @@
     "text": "Part e (10 points)\nLooking at the original cereal data, propose a grouped summary of a variable other than Sugars. You are welcome to group by Shelf, Manufacturer, or both Shelf and Manufacturer. In order to ensure reasonable estimates of the min/max/mean, you need to make sure that you only retain groups that have at least 5 non-missing observations of interest. To complete this problem, you must:\n\n(2.5 points) Write a sentence explaining what grouped summary you plan to take and why you chose to summarize that variable. You should select one variable so summarize, and at least one variable to group by.\n(5 points) Create a dataframe that contains the grouped summaries (min/max/mean) of that variable. Print this dataframe as part of your report (which can be done simply by putting the name of the dataframe on the last line of your code chunk).\n(2.5 points) Describe at least one interesting feature of your grouped summary. Also provide a possible explanation for what might be causing the difference (or lack of difference) between the groups?\n\n\n\n#...#\n\nAnswer:\n(Replace this text with your explanation)"
   },
   {
+    "objectID": "lab/30-rv.html",
+    "href": "lab/30-rv.html",
+    "title": "10.3.L Lab: Random Variables",
+    "section": "",
+    "text": "A man named Professor Harold Hill wanders into your small town.\nHe claims to be selling top-quality instruments for a marching band.\nHe begins selling his instruments to all the children in town.\nYou are suspicious of Professor Hill, and think that perhaps he is selling instruments made of subpar materials, to scam the townsfolk.\nYou do some research on the weights of properly crafted brass instruments, and you learn the following facts:"
+  },
+  {
+    "objectID": "lab/30-rv.html#warmup",
+    "href": "lab/30-rv.html#warmup",
+    "title": "10.3.L Lab: Random Variables",
+    "section": "Warmup",
+    "text": "Warmup\n\nWhat is the 95th percentile for trumpet weight?\n\n\nWhat is the 10th percentile for trombone weight?\n\n\nAbout what percent of trombones do you expect to be more than 5 pounds?\n\n\nAbout what percent of reed instruments do you expect to be more than 5 pounds?\n\n\nSimulate 100 random trombone weights. How many of them were below 4 pounds?"
+  },
+  {
+    "objectID": "lab/30-rv.html#catching-a-con",
+    "href": "lab/30-rv.html#catching-a-con",
+    "title": "10.3.L Lab: Random Variables",
+    "section": "Catching a con",
+    "text": "Catching a con\nYou manage to intercept a shipping notice for delivery to Professor Hill. It says the following:\nWells Fargo Shipment 1957\n\nTo:  Harold Hill, Mason City, Iowa\nFrom:  Music Factory, Gary, Indiana\n\nItems included:\n    Trombones: 76\n    Cornets: 110\n    Saxophones: 542\n    Clarinets: 318\n    Bassoons: 175\n    \nTotal Shipped Weight: 4532 lbs.\n\nThis is your chance to catch Professor Hill in his lie!\nFirst, write a function that samples the correct number of weights of trombones, cornets (trumpets), and reed instruments, and then returns the total weight.\nThen, use that function to create 1000 random samples of total weight.\n(Some code is provided for you below. Do not change the seed!)\n\nmusic_man &lt;- function(n_tromb, n_cor, n_reed){\n  \n  trombones &lt;- rnorm(n_tromb, ...)\n  cornets &lt;- ...\n  reeds &lt;- ...\n  \n  total_weight &lt;- sum(trombones) + sum(cornets) + sum(reeds)\n  return(total_weight)\n  \n}\n\nset.seed(1957)\n\nmy_weights &lt;- replicate(1000, music_man(76, ...))\n\n\nHow many of these samples had a weight less than Prof. Hill’s shipment?\n\n\nCreate a histogram of the weights of your samples, and use geom_vline(xintercept=4532, color = \"red\") to add a vertical line to the histogram showing the weight of the shipment. Is the shipment’s weight unreasonable given your simulation?\n\n\nBased on this, do you believe Professor Hill is dealing in low-quality instruments, or not? Explain your answer."
+  },
+  {
     "objectID": "lab/27-probability-sol.html",
     "href": "lab/27-probability-sol.html",
     "title": "Lab: Probability Distributions and Simulation",
@@ -2153,7 +2174,7 @@
     "href": "weeks/week-110.html",
     "title": "Week 11: Parameters and Estimates",
     "section": "",
-    "text": "November 09-15, 2026\n\n\n\n(for Mon) IDS 2 Ch 9.1-9.3 - Estimates\n(for Wed) IDS 2 Ch 8 - Sampling Models and the Central Limit Theorem\n\n\n\n\n\n(for Mon) Reading Check 11.1\n(for Wed) Reading Check 11.2\n\nStart Looking At Homework 3, qmd template, html, visual solutions\n\n\n\n\n\nAttendance Quiz 11/09\nParameters and Estimates\n\n\n\n\n\nAttendance Quiz 11/11\nCentral Limit Theorem\n\n\n\n\n\nAttendance Quiz 11/13\nLab: CLT\n\n\n\n\n\nDue Thursday Homework 2, qmd template, html, visual solutions\nStart Looking at Homework 3, qmd template, html, visual solutions"
+    "text": "November 09-15, 2026\n\n\n\n(for Mon) IDS 2 Ch 9.1-9.3 - Estimates\n(for Wed) IDS 2 Ch 8 - Sampling Models and the Central Limit Theorem\n\n\n\n\n\n(for Mon) Reading Check 11.1\n(for Wed) Reading Check 11.2\n\nStart Looking At Homework 3, qmd template, html, visual solutions\n\n\n\n\n\nAttendance Quiz 11/09\nParameters and Estimates\n\n\n\n\n\nAttendance Quiz 11/11\nCentral Limit Theorem\n\n\n\n\n\nAttendance Quiz 11/13\nLab: CLT\n\n\n\n\n\nStart Looking at Homework 3, qmd template, html, visual solutions"
   },
   {
     "objectID": "weeks/week-110.html#reading",
@@ -2195,7 +2216,7 @@
     "href": "weeks/week-110.html#extra-resourcesreading",
     "title": "Week 11: Parameters and Estimates",
     "section": "",
-    "text": "Due Thursday Homework 2, qmd template, html, visual solutions\nStart Looking at Homework 3, qmd template, html, visual solutions"
+    "text": "Start Looking at Homework 3, qmd template, html, visual solutions"
   },
   {
     "objectID": "weeks/week-095.html",
@@ -2209,7 +2230,7 @@
     "href": "weeks/week-080.html",
     "title": "Week 8: Statistics and Probability",
     "section": "",
-    "text": "October 19-25, 2026\n\n\n\n(for Mon) IDS 2, Ch 2 - Numerical Summaries\n(for Mon) IDS 2, Ch 3.3 - Comparing Groups with Stratification\n(for Wed) Think about how you might visualize your personal data collection using principles of good graphics.\n(for Fri) IDS 2, Ch 5 - Discrete Probability\n\n\n\n\n\n(for Mon) Reading Check 8.1\nProject Visualizations. Follow the Project Setup instructions first.\n(for Wed) Reading Check 8.2\n(for Fri) Reading Check 8.3\nStart looking at Homework 2, qmd template, html, visual solutions\n\n\n\n\n\nAttendance Quiz 10/19\nSummary Statistics\nActivity 8.1.p - Summary Statistics, quarto, html\n\n\n\n\n\nAttendance Quiz 10/21\nVisualizing Personal Data\n\n\n\n\n\nAttendance Quiz 10/23\nDiscrete Probability\nActivity 8.3.p - Discrete Probability, quarto, html, visual solutions"
+    "text": "October 19-25, 2026\n\n\n\n(for Mon) IDS 2, Ch 2 - Numerical Summaries\n(for Mon) IDS 2, Ch 3.3 - Comparing Groups with Stratification\n(for Wed) Think about how you might visualize your personal data collection using principles of good graphics.\n(for Fri) IDS 2, Ch 5 - Discrete Probability\n\n\n\n\n\n(for Mon) Reading Check 8.1\nProject Visualizations. Follow the Project Setup instructions first.\n(for Fri) Reading Check 8.3\nStart looking at Homework 2, qmd template, html, visual solutions\n\n\n\n\n\nAttendance Quiz 10/19\nSummary Statistics\nActivity 8.1.p - Summary Statistics, quarto, html\n\n\n\n\n\nAttendance Quiz 10/21\nVisualizing Personal Data\n\n\n\n\n\nAttendance Quiz 10/23\nDiscrete Probability\nActivity 8.3.p - Discrete Probability, quarto, html, visual solutions"
   },
   {
     "objectID": "weeks/week-080.html#reading",
@@ -2223,7 +2244,7 @@
     "href": "weeks/week-080.html#prepare-for-class",
     "title": "Week 8: Statistics and Probability",
     "section": "",
-    "text": "(for Mon) Reading Check 8.1\nProject Visualizations. Follow the Project Setup instructions first.\n(for Wed) Reading Check 8.2\n(for Fri) Reading Check 8.3\nStart looking at Homework 2, qmd template, html, visual solutions"
+    "text": "(for Mon) Reading Check 8.1\nProject Visualizations. Follow the Project Setup instructions first.\n(for Fri) Reading Check 8.3\nStart looking at Homework 2, qmd template, html, visual solutions"
   },
   {
     "objectID": "weeks/week-080.html#monday",
@@ -2853,7 +2874,7 @@
     "href": "weeks/week-100.html",
     "title": "Week 10: Random Variables",
     "section": "",
-    "text": "November 02-08, 2026\n\n\n\n(for Mon) IDS 2 Ch 7 - Random Variables\n(for Fri) IDS 2 Intro to Statistical Inference\n\n\n\n\n\n(for Mon) Reading Check 10.1\n(for Fri) Reading Check 10.3\nDue Next Week Homework 2, qmd template, html, visual solutions\n\n\n\n\n\nAttendance Quiz 11/02\nRandom Variables\n\n\n\n\n\nAttendance Quiz 11/04\nRandom Variables\n\n\n\n\n\nAttendance Quiz 11/06\nLab: Random Variables"
+    "text": "November 02-08, 2026\n\n\n\n(for Mon) IDS 2 Ch 7 - Random Variables\n(for Fri) IDS 2 Intro to Statistical Inference\n\n\n\n\n\n(for Mon) Reading Check 10.1\n(for Fri) Reading Check 10.3\nHomework 2, qmd template, html, visual solutions\n\n\n\n\n\nAttendance Quiz 11/02\nRandom Variables\n\n\n\n\n\nAttendance Quiz 11/04\nRandom Variables\n\n\n\n\n\nAttendance Quiz 11/06\nLab: Random Variables quarto template, HTML"
   },
   {
     "objectID": "weeks/week-100.html#reading",
@@ -2867,7 +2888,7 @@
     "href": "weeks/week-100.html#prepare-for-class",
     "title": "Week 10: Random Variables",
     "section": "",
-    "text": "(for Mon) Reading Check 10.1\n(for Fri) Reading Check 10.3\nDue Next Week Homework 2, qmd template, html, visual solutions"
+    "text": "(for Mon) Reading Check 10.1\n(for Fri) Reading Check 10.3\nHomework 2, qmd template, html, visual solutions"
   },
   {
     "objectID": "weeks/week-100.html#monday",
@@ -2888,7 +2909,7 @@
     "href": "weeks/week-100.html#friday",
     "title": "Week 10: Random Variables",
     "section": "",
-    "text": "Attendance Quiz 11/06\nLab: Random Variables"
+    "text": "Attendance Quiz 11/06\nLab: Random Variables quarto template, HTML"
   },
   {
     "objectID": "weeks/week-120.html",

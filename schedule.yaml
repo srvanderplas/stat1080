@@ -243,8 +243,7 @@ schedule:
     prepare: |
         - [ ] (for Mon) [Reading Check 8.1](https://usu.instructure.com/courses/819584/quizzes/1502607){target="_blank"}
         - [ ] [Project Visualizations](https://usu.instructure.com/courses/819584/assignments/5290607){target="_blank"}. Follow the [Project Setup instructions](../homework/project-setup.qmd) first.
-        - [ ] (for Wed) [Reading Check 8.2](https://usu.instructure.com/courses/819584/quizzes/1502608){target="_blank"}
-        - [ ] (for Fri) [Reading Check 8.3](https://usu.instructure.com/courses/819584/quizzes/1502609){target="_blank"}
+        - [ ] (for Fri) [Reading Check 8.3](https://usu.instructure.com/courses/819584/quizzes/1502608){target="_blank"}
         - Start looking at [Homework 2](https://usu.instructure.com/courses/819584/assignments/5290612){target="_blank"}, [qmd template](../homework/_homework02.qmd), [html](../homework/homework02.qmd), [visual solutions](../homework/homework02-visual-sol.qmd)
     class1: |
         - [Attendance Quiz 10/19](https://usu.instructure.com/courses/819584/assignments/5292963){target="_blank"}
@@ -267,7 +266,7 @@ schedule:
         - [ ] (for Mon) [IDS 2, Ch 6 - Continuous Probability](https://rafalab.dfci.harvard.edu/dsbook-part-2/prob/continuous-probability.html){target="_blank"}
         - [ ] (for Wed) [IDS 2, Ch 4 - Connecting Data and Probability](https://rafalab.dfci.harvard.edu/dsbook-part-2/prob/connecting-data-and-probability.html){target="_blank"}
     prepare: |
-        - [ ] (for Mon) Reading Check 9.1
+        - [ ] (for Mon) [Reading Check 9.1](https://usu.instructure.com/courses/819584/quizzes/1502609){target="_blank"}
         - [ ] (for Wed) [Reading Check 9.2](https://usu.instructure.com/courses/819584/quizzes/1504916){target="_blank"}
         - [ ] Continue looking at [Homework 2](https://usu.instructure.com/courses/819584/assignments/5290612) [qmd template](../homework/_homework02.qmd) [html](../homework/homework02.qmd)
     class1: |
@@ -292,9 +291,9 @@ schedule:
         - [ ] (for Mon) [IDS 2 Ch 7 - Random Variables](https://rafalab.dfci.harvard.edu/dsbook-part-2/prob/random-variables.html){target="_blank"}
         - [ ] (for Fri) [IDS 2 Intro to Statistical Inference](https://rafalab.dfci.harvard.edu/dsbook-part-2/inference/intro-inference.html){target="_blank"}
     prepare: |
-        - [ ] (for Mon) Reading Check 10.1
-        - [ ] (for Fri) Reading Check 10.3
-        - [ ] **Due Next Week** [Homework 2](https://usu.instructure.com/courses/819584/assignments/5290612){target="_blank"}, [qmd template](../homework/_homework02.qmd), [html](../homework/homework02.qmd), [visual solutions](../homework/homework02-visual-sol.qmd)
+        - [ ] (for Mon) [Reading Check 10.1](https://usu.instructure.com/courses/819584/quizzes/1505508){target="_blank"}
+        - [ ] (for Fri) [Reading Check 10.3](https://usu.instructure.com/courses/819584/quizzes/1505546){target="_blank"}
+        - [ ] [Homework 2](https://usu.instructure.com/courses/819584/assignments/5290612){target="_blank"}, [qmd template](../homework/_homework02.qmd), [html](../homework/homework02.qmd), [visual solutions](../homework/homework02-visual-sol.qmd)
     class1: |
         - [Attendance Quiz 11/02](https://usu.instructure.com/courses/819584/assignments/5293103){target="_blank"}
         - [Random Variables](../slides/28-rv.qmd){target="_blank"}
@@ -303,7 +302,7 @@ schedule:
         - [Random Variables](../slides/29-rv.qmd){target="_blank"}
     class3: |
         - [Attendance Quiz 11/06](https://usu.instructure.com/courses/819584/assignments/5293125/){target="_blank"}
-        - [Lab: Random Variables](../lab/30-rv.qmd){target="_blank"}
+        - [Lab: Random Variables](https://usu.instructure.com/courses/819584/quizzes/1505545) [quarto template](../lab/_30-rv.qmd){target="_blank"}, [HTML](../lab/30-rv.qmd){target="_blank"}
     
   - week: 11
     name: Parameters and Estimates
@@ -326,7 +325,6 @@ schedule:
         - [Attendance Quiz 11/13](https://usu.instructure.com/courses/819584/assignments/5293128/){target="_blank"}
         - [Lab: CLT](../lab/33-clt.qmd){target="_blank"}
     extra: |
-        - [ ] **Due Thursday** [Homework 2](https://usu.instructure.com/courses/819584/assignments/5290612){target="_blank"}, [qmd template](../homework/_homework02.qmd), [html](../homework/homework02.qmd), [visual solutions](../homework/homework02-visual-sol.qmd)
         - Start Looking at [Homework 3](https://usu.instructure.com/courses/819584/assignments/5290613){target="_blank"}, [qmd template](../homework/_homework03.qmd), [html](../homework/homework03.qmd), [visual solutions](../homework/homework03-visual-sol.qmd)
         
   - week: 12
@@ -432,7 +430,7 @@ important-course-dates:
     time: "11:59 pm"
   - name: Homework 3 due
     id: hwk3
-    date: "2026-11-26"
+    date: "2026-11-30"
     time: "11:59 pm"
   - name: Homework 4 due
     id: hwk4
