@@ -419,4 +419,8 @@ figure {
       
   }
 }
-figure 
+.v-center-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

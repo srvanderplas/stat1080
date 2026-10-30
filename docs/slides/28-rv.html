@@ -6,7 +6,10 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.10.19">
 
   <title>STAT 1080 - Fall 2026 – 1.28 Random Variables</title>
@@ -33,6 +36,72 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-d2cfaf4017ec6d6e95d384acfb7920a7.css">
   <link rel="stylesheet" href="deps/styles.scss">
@@ -149,8 +218,241 @@
 </div>
 
 </section>
-<section class="slide level2">
-
+<section id="variables" class="slide level2">
+<h2>Variables</h2>
+<p>A <strong>variable</strong> is a placeholder for a quantity<br>
+<span class="math inline">\(x = 3,\ \  y=5, \ \ z=x^2+y^2\)</span></p>
+<ul>
+<li>We can change the values of <span class="math inline">\(x, y, z\)</span></li>
+<li>At any given time, the value of <span class="math inline">\(x\)</span> is known and fixed</li>
+</ul>
+</section>
+<section id="random-variables" class="slide level2">
+<h2>Random Variables</h2>
+<p>A <strong>random variable</strong> is, well, random - its value is the outcome of a <strong>random process</strong></p>
+<p><a href="images/rv-normal.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img data-src="images/rv-normal.png" alt="A normal density pdf, with text x=, as if the value of x were the whole normal density."></a></p>
+<ul>
+<li>At any given time, <span class="math inline">\(X\)</span> has a <strong>probabilistic</strong> value – we know the probability that <span class="math inline">\(X=x\)</span></li>
+<li>We can use <span class="math inline">\(X\)</span> as a regular variable for calculations</li>
+</ul>
+</section>
+<section id="ex-random-variables---dice" class="slide level2">
+<h2>Ex: Random Variables - Dice</h2>
+<div class="columns">
+<div class="column" style="width:20%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="images/single-die.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Image: Steaphan Greene, CC-SA-3.0"><img data-src="images/single-die.png" alt="A single 6-sided die"></a></p>
+<figcaption><span class="small"><a href="https://commons.wikimedia.org/wiki/File:2-Dice-Icon.svg">Image: Steaphan Greene, CC-SA-3.0</a></span></figcaption>
+</figure>
+</div>
+</div><div class="column" style="width:80%;">
+<p><span class="math display">\[\displaystyle D = \begin{cases}1 &amp; 1/6\\2 &amp; 1/6\\3&amp;1/6\\4&amp;1/6\\5&amp;1/6\\6&amp;1/6\end{cases}\ \ \ \text{or} \ \ \ \ \ \text{Pr}(D=d) = 1/6 \ \ \ \ \text{for} \ \ d=1, 2, ..., 6\]</span></p>
+</div></div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a aria-label="1"></a><span class="co"># Simulate rolls of a 6-sided die</span></span>
+<span id="cb1-2"><a aria-label="2"></a><span class="fu">set.seed</span>(<span class="dv">271828182</span>)</span>
+<span id="cb1-3"><a aria-label="3"></a>x <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="at">size =</span> <span class="dv">1000</span>, <span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="at">replace =</span> T)</span>
+<span id="cb1-4"><a aria-label="4"></a><span class="fu">head</span>(x, <span class="dv">10</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] 4 1 4 3 4 6 6 5 6 5</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a aria-label="1"></a><span class="fu">mean</span>(x)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3.427</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a aria-label="1"></a><span class="fu">sd</span>(x)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1.714529</code></pre>
+</div>
+</div>
+</section>
+<section id="ex-random-variables---coins" class="slide level2">
+<h2>Ex: Random Variables - Coins</h2>
+<div class="columns v-center-container">
+<div class="column" style="width:20%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="images/coin-flip.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="Image: ICMA, CC-SA-2.0"><img data-src="images/coin-flip.png" style="width:50.0%" alt="A hand flipping a coin"></a></p>
+<figcaption><span class="small"><a href="https://www.flickr.com/photos/icma/3635981474">Image: ICMA, CC-SA-2.0</a></span></figcaption>
+</figure>
+</div>
+</div><div class="column" data-vertical-align="center" style="width:80%;">
+<p><span class="math display">\[\begin{align}\displaystyle C = \begin{cases}1 &amp; \text{if heads}\\0 &amp; \text{if tails}\end{cases}\ \ \ \text{or} \ \ \ \ \ &amp;\text{Pr}(C=c) = 1/2 \ \ \ \ \text{for} \ \ c=0,1\\
+&amp;C\sim\text{Bernoulli}(1/2)\end{align}\]</span></p>
+</div></div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a aria-label="1"></a><span class="co"># Simulate flips of a fair coin (H=1)</span></span>
+<span id="cb7-2"><a aria-label="2"></a><span class="fu">set.seed</span>(<span class="dv">98728365</span>)</span>
+<span id="cb7-3"><a aria-label="3"></a>x <span class="ot">&lt;-</span> <span class="fu">rbinom</span>(<span class="dv">1000</span>, <span class="at">size =</span> <span class="dv">1</span>, <span class="at">prob =</span> <span class="fl">0.5</span>)</span>
+<span id="cb7-4"><a aria-label="4"></a><span class="fu">head</span>(x, <span class="dv">10</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] 1 1 0 0 0 0 0 1 1 1</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a aria-label="1"></a><span class="fu">mean</span>(x)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.516</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a aria-label="1"></a><span class="fu">sd</span>(x)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.499994</code></pre>
+</div>
+</div>
+</section>
+<section id="ex-random-variables---number-of-events" class="slide level2">
+<h2>Ex: Random Variables - Number of Events</h2>
+<div class="columns v-center-container">
+<div class="column" style="width:20%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="images/AggieBus1_ust.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="Image Source"><img data-src="images/AggieBus1_ust.jpg" alt="A USU bus"></a></p>
+<figcaption><span class="small"><a href="https://usustatesman.com/catch-a-ride-on-the-newest-aggie-shuttles/">Image Source</a></span></figcaption>
+</figure>
+</div>
+</div><div class="column" data-vertical-align="center" style="width:80%;">
+<p><span class="math display">\[\begin{align}\displaystyle X \sim \text{Poisson}(10)\end{align}\]</span></p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><a href="28-rv_files/figure-revealjs/unnamed-chunk-4-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img data-src="28-rv_files/figure-revealjs/unnamed-chunk-4-1.png" alt="The PMF of a Poisson(10) random variable, with x-axis # Riders and y-axis Probability" width="768"></a></p>
+</figure>
+</div>
+</div>
+</div>
+</div></div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a aria-label="1"></a><span class="co"># Simulate number of riders waiting for the bus</span></span>
+<span id="cb13-2"><a aria-label="2"></a><span class="fu">set.seed</span>(<span class="dv">80581035</span>)</span>
+<span id="cb13-3"><a aria-label="3"></a>x <span class="ot">&lt;-</span> <span class="fu">rpois</span>(<span class="dv">1000</span>, <span class="at">lambda =</span> <span class="dv">10</span>)</span>
+<span id="cb13-4"><a aria-label="4"></a><span class="fu">head</span>(x, <span class="dv">10</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] 16 13 15 14 12  8  9  9 13 12</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a aria-label="1"></a><span class="fu">mean</span>(x)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 9.939</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a aria-label="1"></a><span class="fu">sd</span>(x)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3.306087</code></pre>
+</div>
+</div>
+</section>
+<section id="random-variables-distribution-functions" class="slide level2">
+<h2>Random Variables: Distribution Functions</h2>
+<p>The CDF of a random variable contains all of the information about the outcomes of that RV.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><a href="28-rv_files/figure-revealjs/unnamed-chunk-6-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6"><img data-src="28-rv_files/figure-revealjs/unnamed-chunk-6-1.png" style="width:100.0%" alt="Three CDFs, one for a coin flip, one for rolling a 6-sided dice, and one for the number of riders waiting at a bus stop (Poisson(10))."></a></p>
+</figure>
+</div>
+</div>
+</div>
+<p>We can approximate distribution functions through Monte Carlo simulation, if one is not already pre-defined.</p>
+</section>
+<section id="monte-carlo-simulation-answering-probability-questions" class="slide level2">
+<h2>Monte Carlo Simulation – Answering Probability Questions</h2>
+<p>Suppose we want to know the probability of getting at least 3 heads when flipping a coin 4x.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a aria-label="1"></a>N <span class="ot">&lt;-</span> <span class="dv">1000</span> <span class="co"># Number of simulations</span></span>
+<span id="cb19-2"><a aria-label="2"></a>X <span class="ot">&lt;-</span> <span class="fu">rbinom</span>(N, <span class="at">size =</span> <span class="dv">4</span>, <span class="at">prob =</span> <span class="fl">0.5</span>)</span>
+<span id="cb19-3"><a aria-label="3"></a><span class="fu">head</span>(X, <span class="dv">10</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] 1 3 2 3 2 1 2 2 2 3</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a aria-label="1"></a><span class="co"># How many times did we simulate the outcome?</span></span>
+<span id="cb21-2"><a aria-label="2"></a>n_times <span class="ot">&lt;-</span> <span class="fu">sum</span>(X<span class="sc">&gt;=</span><span class="dv">3</span>)</span>
+<span id="cb21-3"><a aria-label="3"></a><span class="co"># Divide by total # simulations</span></span>
+<span id="cb21-4"><a aria-label="4"></a>n_times<span class="sc">/</span>N</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.322</code></pre>
+</div>
+</div>
+<ul>
+<li>Larger <span class="math inline">\(N\)</span> = more precision</li>
+<li><code>size</code> and <code>prob</code> are set based on the problem – 4 coin flips, fair coin</li>
+</ul>
+</section>
+<section id="monte-carlo-simulation-answering-probability-questions-1" class="slide level2">
+<h2>Monte Carlo Simulation – Answering Probability Questions</h2>
+<div class="quarto-layout-panel" data-layout-ncol="3">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><a href="images/killer-bunnies-graphic.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7"><img data-src="images/killer-bunnies-graphic.png" alt="An image of the Killer Bunnies card game logo"></a></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><a href="images/killer-bunnies-whisk.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8"><img data-src="images/killer-bunnies-whisk.png" alt="A card that says Kitchen Whisk (with a menacing looking kitchen wisk on it), with instructions 'May be played on any bunny which must roll higher than 01 to survive'. The card indicates a d-12 (twelve-sided die) should be rolled."></a></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><a href="images/killer-bunnies-whisk-7.png" class="lightbox" data-gallery="quarto-lightbox-gallery-9"><img data-src="images/killer-bunnies-whisk-7.png" alt="A card that says 7th Whisk (with seven flying kitchen wisks on it), with instructions 'May be played on any bunny which must roll higher than 01 on all seven dice to survive'. The card indicates seven d-12s (twelve-sided die) should be rolled."></a></p>
+</div>
+</div>
+</div>
+<ul>
+<li>This game primarily uses D12s (12 sided dice)</li>
+</ul>
+</section>
+<section id="monte-carlo-simulation-answering-probability-questions-2" class="slide level2">
+<h2>Monte Carlo Simulation – Answering Probability Questions</h2>
+<p><span class="math display">\[X\ =\ \begin{cases}1 &amp; \text{bunny dies}\\2, ..., 12 &amp; \text{bunny survives}\end{cases}\]</span> <span class="math display">\[Y\ =\ \begin{cases}1\  \text{on any die} &amp; \text{bunny dies}\\2, ..., 12 \ \text{on every die} &amp; \text{bunny survives}\end{cases}\]</span></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a aria-label="1"></a><span class="fu">set.seed</span>(<span class="dv">2048789234</span>)</span>
+<span id="cb23-2"><a aria-label="2"></a>N <span class="ot">&lt;-</span> <span class="dv">100000</span></span>
+<span id="cb23-3"><a aria-label="3"></a>one_roll <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">12</span>, <span class="at">size =</span> N, <span class="at">replace =</span> T)</span>
+<span id="cb23-4"><a aria-label="4"></a>seven_rolls <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">12</span>, <span class="at">size =</span> N<span class="sc">*</span><span class="dv">7</span>, <span class="at">replace =</span> T) <span class="sc">|&gt;</span> <span class="fu">matrix</span>(<span class="at">ncol =</span> <span class="dv">7</span>)</span>
+<span id="cb23-5"><a aria-label="5"></a></span>
+<span id="cb23-6"><a aria-label="6"></a><span class="fu">head</span>(one_roll)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1]  5  6  9 11  2 12</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a aria-label="1"></a><span class="fu">head</span>(seven_rolls)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     [,1] [,2] [,3] [,4] [,5] [,6] [,7]
+[1,]    2    4   10    4    6   12    1
+[2,]    3    3    7    4    5    6    5
+[3,]    7    5    2    6    1    7    4
+[4,]    8    9    3    4    9    7    3
+[5,]    2   12    1    2    6    5    3
+[6,]    2    4    2    7    3    7    4</code></pre>
+</div>
+</div>
+</section>
+<section id="monte-carlo-simulation-answering-probability-questions-3" class="slide level2">
+<h2>Monte Carlo Simulation – Answering Probability Questions</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a aria-label="1"></a><span class="fu">head</span>(<span class="fu">rowSums</span>(seven_rolls <span class="sc">==</span> <span class="dv">1</span>), <span class="dv">20</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] 1 0 1 0 1 0 0 0 1 1 1 1 0 0 1 0 1 2 0 2</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a aria-label="1"></a><span class="fu">mean</span>(one_roll <span class="sc">==</span> <span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.08288</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a aria-label="1"></a><span class="fu">mean</span>(<span class="fu">rowSums</span>(seven_rolls <span class="sc">==</span> <span class="dv">1</span>) <span class="sc">&gt;</span> <span class="dv">0</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.45386</code></pre>
+</div>
+</div>
+<p>So, while there’s an 8% chance that the single whisk takes out a bunny, there’s a 45% chance that 7 whisks working together take out a bunny.</p>
+</section>
+<section id="expected-value-and-standard-deviation" class="slide level2">
+<h2>Expected Value and Standard Deviation</h2>
+<p>One of the most useful summaries of a random variable is the <strong>expected value</strong></p>
+<ul>
+<li>Long-run typical value
+<ul>
+<li>Coin Flip: 0.5 is the expected value if 1=Heads and 0=Tails</li>
+<li>Dice Roll: 3.5 is the expected value if six-sided fair dice</li>
+</ul></li>
+<li>Calculate with simulation using <code>mean(x)</code></li>
+</ul>
+<p>The <strong>standard deviation</strong> describes how far, on average, a value is from the expected value.</p>
+<ul>
+<li>Calculate with simulation using <code>sd(x)</code></li>
+</ul>
 
 
 </section>
@@ -372,6 +674,44 @@
         ]
       });
     </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
     <script id="quarto-html-after-body" type="application/javascript">
       window.document.addEventListener("DOMContentLoaded", function (event) {
         const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
@@ -692,6 +1032,38 @@
         }
       });
       </script>
+    <script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+    (function() {
+      let previousOnload = window.onload;
+      window.onload = () => {
+        if (previousOnload) {
+          previousOnload();
+        }
+        lightboxQuarto.on('slide_before_load', (data) => {
+          const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+          const href = trigger.getAttribute('href');
+          if (href !== null) {
+            const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+            if (imgEl !== null) {
+              const srcAttr = imgEl.getAttribute("src");
+              if (srcAttr && srcAttr.startsWith("data:")) {
+                slideConfig.href = srcAttr;
+              }
+            }
+          } 
+        });
+      
+        lightboxQuarto.on('slide_after_load', (data) => {
+          const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(slideNode);
+          }
+        });
+      
+      };
+      
+    })();
+              </script>
     
 
 </body></html>

@@ -1,0 +1,158 @@
+---
+title: "10.2.p - Random Variables Solutions"
+format: html
+number-sections: true
+execute:
+  echo: true   # show code by default
+  warning: false
+  message: false
+---
+
+Be sure to run the following code before continuing with the assignment.  
+
+```{r}
+library(tidyverse)
+```
+
+# Introduction
+
+As a review, suppose we define the following random variable. 
+
+```{r}
+y <- sum(sample(c(3, -1), size = 50, replace = TRUE, prob = c(1 / 3, 2 / 3)))
+```
+
+Note that this random variable represents the sum total of a sample size of 50. 
+This is different than a random variable representing a single observation.
+In this case, we would calculate the expected value and standard error of the expected value as follows: 
+
+```{r}
+# Expected value
+e_y <- 50 * ((3 * (1 / 3)) + (-1 * (2 / 3)))
+
+# Standard error
+s_y <- sqrt(50) * (3 + 1) * sqrt((1 / 3) * (2 / 3))
+```
+
+We could then use the normal approximation to calculate the probability of obtaining a value greater than 20 as follows. 
+
+```{r}
+1 - pnorm(20, mean = e_y, sd = s_y)
+```
+
+# Casino Night
+
+That example in mind, suppose that your friend invites you to a local "Casino Night" in the student center to raise money for a student organization. 
+You do not really care about the organization, but you *do* care about trying to make as much money as possible. 
+There are two variations of a dice roll game you are interested in. The two games you can play are described below.
+
+- **Game 1** - You make 5 dollars every time an odd-numbered dice (i.e., 1, 3, or 5) is rolled. You lose 5 dollars otherwise.  
+
+- **Game 2** - You make 28 dollars every time you roll the number one. You lose 5 dollars otherwise. 
+
+# Game 1
+
+## Create a Random Variable
+
+Create a random variable called `d_x` that represents the sum total of your winnings if you play the first game 100 times. 
+
+```{r}
+# There are 3 odd and 3 even sides on a die, so both outcomes are equally likely
+d_x <- sum(sample(c(-5, 5), size = 100, replace = TRUE, prob = c(0.5, 0.5)))
+```
+
+
+## Calculate Expected Value & Standard Error 
+Using the equations referenced above, what is the expected value and standard error of the random variable you created? Remember that you are calculating the expected value and standard error for your sum total winnings with 100 dice rolls. 
+
+```{r}
+e_d_x <- 100 * (-5 * 0.5 + 5 * 0.5)
+e_d_x
+
+s_d_x <- sqrt(100) * (5 + 5) * sqrt(0.5 * 0.5) 
+s_d_x
+```
+
+
+## Normal Approximation 
+ 
+Using the normal approximation, calculate two different probabilities. The first is the probability of "losing", defined as not winning any money. The second probability is the probability of "winning big", defined as the probability of winning at least $100 on 100 dice rolls. 
+
+```{r}
+# Probability of "losing"
+pnorm(0, mean = e_d_x, sd = s_d_x)
+
+# Probability of "winning big"
+1 - pnorm(100, mean = e_d_x, sd = s_d_x)
+```
+
+
+# Game 2
+
+## Create a Random Variable
+
+Now create a random variable called `p_x` that represents the sum total of your winnings if you play 100 rounds of Game 2. 
+
+```{r}
+p_x <- sum(sample(c(-5, 28), size = 100, replace = TRUE, prob = c(5 / 6, 1 / 6)))
+```
+
+## Calculate Expected Value & Standard Error 
+
+What is the expected value and standard error of this variable? 
+
+```{r}
+e_p_x <- (-5 * (5 / 6) + 28 * (1 / 6)) * 100
+e_p_x
+
+s_p_x <- (28 + 5) * sqrt((1 / 6) * (5 / 6)) * sqrt(100)
+s_p_x
+```
+
+## Normal Approximation
+
+Using the normal approximation, what is the probability that you end up "losing" and "winning big" with Game 2? 
+
+```{r}
+# Probability of "losing"
+pnorm(0, mean = e_p_x, sd = s_p_x)
+
+# Probability of "winning big"
+1 - pnorm(100, mean = e_p_x, sd = s_p_x)
+```
+
+# Simulation 
+
+
+The following code shows you how to do ten-thousand Monte Carlo simulations of both Game 1 and Game 2 and plot the distribution of simulated winnings side by side. 
+
+```{r}
+get_game_1 <- function() {
+  sum(sample(c(-5, 5), size = 100, replace = TRUE, prob = c(0.5, 0.5)))
+}
+
+get_game_2 <- function() {
+  sum(sample(c(-5, 28), size = 100, replace = TRUE, prob = c(5 / 6, 1 / 6)))
+}
+
+# Set a random number seed for reproducibility
+set.seed(90210)
+
+games <- 10000
+play_game_1 <- replicate(games, get_game_1())
+play_game_2 <- replicate(games, get_game_2())
+
+t_data <- data.frame(
+  x = c(play_game_1, play_game_2),
+  game = rep(c(1, 2), each = games)
+)
+
+t_data |>
+  ggplot(aes(x = x, color = factor(game))) +
+  geom_density() +
+  geom_vline(xintercept = 0, lty = 2)
+```
+
+Based on this plot, as well as the answers from the previous problem, which game should you play if you want to maximize your chances of making money? Explain why you made your choice below. 
+
+*I would pick Game 2 because a larger portion of the area under the blue density curve is above zero. Further, our previous answers showed me that my probability of losing money was less in Game 2 than in Game 1. At the same time, the probability of "winning big" was larger in Game 2 than in Game 1. It is interesting, however, that Game 2 does have a larger probability of "losing big" (i.e., losing more than 100 dollars) than Game 1. That fact does not change my choice about picking Game 2.*
