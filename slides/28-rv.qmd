@@ -6,3 +6,216 @@ lightbox:  true
 bibliography: refs.bib
 csl: chicago-syllabus.csl
 ---
+
+## Variables
+
+A **variable** is a placeholder for a quantity    
+$x = 3,\ \  y=5, \ \ z=x^2+y^2$
+```{r}
+x <- 3
+y <- 5
+z <- x^2 + y^2
+```
+
+- We can change the values of $x, y, z$
+- At any given time, the value of $x$ is known and fixed
+
+## Random Variables 
+
+A **random variable** is, well, random - its value is the outcome of a **random process**
+
+![](images/rv-normal.png){fig-alt="A normal density pdf, with text x=, as if the value of x were the whole normal density."}
+
+- At any given time, $X$ has a **probabilistic** value -- we know the probability that $X=x$
+- We can use $X$ as a regular variable for calculations
+
+## Ex: Random Variables - Dice
+
+::: columns
+::: {.column width="20%"}
+![[[Image: Steaphan Greene, CC-SA-3.0](https://commons.wikimedia.org/wiki/File:2-Dice-Icon.svg)]{.small}](images/single-die.png){fig-alt="A single 6-sided die"}
+:::
+::: {.column width="80%"}
+$$\displaystyle D = \begin{cases}1 & 1/6\\2 & 1/6\\3&1/6\\4&1/6\\5&1/6\\6&1/6\end{cases}\ \ \ \text{or} \ \ \ \ \ \text{Pr}(D=d) = 1/6 \ \ \ \ \text{for} \ \ d=1, 2, ..., 6$$
+:::
+:::
+
+```{r}
+#| echo: true
+# Simulate rolls of a 6-sided die
+set.seed(271828182)
+x <- sample(size = 1000, x = 1:6, replace = T)
+head(x, 10)
+mean(x)
+sd(x)
+```
+
+
+## Ex: Random Variables - Coins
+
+::: {.columns  .v-center-container}
+::: {.column width="20%"}
+![[[Image: ICMA, CC-SA-2.0](https://www.flickr.com/photos/icma/3635981474)]{.small}](images/coin-flip.png){fig-alt="A hand flipping a coin" width="50%"}
+:::
+::: {.column width="80%" vertical-align="center"}
+$$\begin{align}\displaystyle C = \begin{cases}1 & \text{if heads}\\0 & \text{if tails}\end{cases}\ \ \ \text{or} \ \ \ \ \ &\text{Pr}(C=c) = 1/2 \ \ \ \ \text{for} \ \ c=0,1\\
+&C\sim\text{Bernoulli}(1/2)\end{align}$$
+
+:::
+:::
+
+```{r}
+#| echo: true
+# Simulate flips of a fair coin (H=1)
+set.seed(98728365)
+x <- rbinom(1000, size = 1, prob = 0.5)
+head(x, 10)
+mean(x)
+sd(x)
+```
+
+## Ex: Random Variables - Number of Events
+
+::: {.columns  .v-center-container}
+::: {.column width="20%"}
+![[[Image Source](https://usustatesman.com/catch-a-ride-on-the-newest-aggie-shuttles/)]{.small}](images/AggieBus1_ust.jpg){fig-alt="A USU bus"}
+:::
+::: {.column width="80%" vertical-align="center"}
+$$\begin{align}\displaystyle X \sim \text{Poisson}(10)\end{align}$$
+```{r}
+#| fig-alt: "The PMF of a Poisson(10) random variable, with x-axis # Riders and y-axis Probability"
+#| fig-width: 8
+#| fig-height: 2
+#| echo: false
+library(ggplot2)
+library(tidyverse)
+theme_set(theme_bw())
+tibble(x = 0:25, y = dpois(x, 10)) |>
+  ggplot(aes(x = x, y = y)) + geom_col() + ylab("Probability") + xlab("# Riders") + ggtitle("Distribution of Bus Riders: Poisson(10)")
+```
+
+:::
+:::
+
+
+```{r}
+#| echo: true
+# Simulate number of riders waiting for the bus
+set.seed(80581035)
+x <- rpois(1000, lambda = 10)
+head(x, 10)
+mean(x)
+sd(x)
+```
+
+
+## Random Variables: Distribution Functions
+
+The CDF of a random variable contains all of the information about the outcomes of that RV. 
+
+```{r}
+#| echo: false
+#| fig-width: 10
+#| fig-height: 2
+#| fig-alt: Three CDFs, one for a coin flip, one for rolling a 6-sided dice, and one for the number of riders waiting at a bus stop (Poisson(10)). 
+#| out-width: "100%"
+library(patchwork)
+dicecdf <- function(x) {
+  ((x >= 1) + (x >= 2) + (x >= 3) + (x >= 4) + (x >= 5) + (x >= 6))/6
+}
+
+coincdf <- function(x) {
+  ((x >= 0) + (x >= 1))/2
+}
+
+bind_rows(
+  tibble(x = seq(0.25, 6.25, .25), y = dicecdf(x), dist = "Dice"),
+  tibble(x = seq(-0.25, 1.25, .25), y = coincdf(x), dist = "Coin"),
+  tibble(x = seq(0, 20, .25), y = ppois(x, lambda = 10), dist = "N Riders Waiting")
+) |>
+  mutate(dist = factor(dist, levels = c("Coin", "Dice", "N Riders Waiting"), ordered = T)) |>
+  ggplot(aes(x = x, y = y)) + geom_step() + facet_grid(~dist, scales = "free_x") + theme(axis.text.y = element_blank())
+```
+
+We can approximate distribution functions through Monte Carlo simulation, if one is not already pre-defined.
+
+
+## Monte Carlo Simulation -- Answering Probability Questions
+
+Suppose we want to know the probability of getting at least 3 heads when flipping a coin 4x.
+
+```{r}
+#| echo: true
+N <- 1000 # Number of simulations
+X <- rbinom(N, size = 4, prob = 0.5)
+head(X, 10)
+# How many times did we simulate the outcome?
+n_times <- sum(X>=3)
+# Divide by total # simulations
+n_times/N
+```
+
+- Larger $N$ = more precision
+- `size` and `prob` are set based on the problem -- 4 coin flips, fair coin
+
+
+## Monte Carlo Simulation -- Answering Probability Questions
+
+::: {layout-ncol=3}
+![](images/killer-bunnies-graphic.png){fig-alt="An image of the Killer Bunnies card game logo"}
+
+![](images/killer-bunnies-whisk.png){fig-alt="A card that says Kitchen Whisk (with a menacing looking kitchen wisk on it), with instructions 'May be played on any bunny which must roll higher than 01 to survive'. The card indicates a d-12 (twelve-sided die) should be rolled."}
+
+
+![](images/killer-bunnies-whisk-7.png){fig-alt="A card that says 7th Whisk (with seven flying kitchen wisks on it), with instructions 'May be played on any bunny which must roll higher than 01 on all seven dice to survive'. The card indicates seven d-12s (twelve-sided die) should be rolled."}
+
+:::
+
+- This game primarily uses D12s (12 sided dice)
+
+
+## Monte Carlo Simulation -- Answering Probability Questions
+
+$$X\ =\ \begin{cases}1 & \text{bunny dies}\\2, ..., 12 & \text{bunny survives}\end{cases}$$
+$$Y\ =\ \begin{cases}1\  \text{on any die} & \text{bunny dies}\\2, ..., 12 \ \text{on every die} & \text{bunny survives}\end{cases}$$
+
+```{r}
+#| echo: true
+set.seed(2048789234)
+N <- 100000
+one_roll <- sample(1:12, size = N, replace = T)
+seven_rolls <- sample(1:12, size = N*7, replace = T) |> matrix(ncol = 7)
+
+head(one_roll)
+head(seven_rolls)
+
+```
+
+## Monte Carlo Simulation -- Answering Probability Questions
+
+```{r}
+#| echo: true
+head(rowSums(seven_rolls == 1), 20)
+
+
+mean(one_roll == 1)
+mean(rowSums(seven_rolls == 1) > 0)
+```
+
+So, while there's an 8% chance that the single whisk takes out a bunny, there's a 45% chance that 7 whisks working together take out a bunny.
+
+## Expected Value and Standard Deviation
+
+One of the most useful summaries of a random variable is the **expected value** 
+
+- Long-run typical value
+  - Coin Flip: 0.5 is the expected value if 1=Heads and 0=Tails
+  - Dice Roll: 3.5 is the expected value if six-sided fair dice
+
+- Calculate with simulation using `mean(x)`
+
+The **standard deviation** describes how far, on average, a value is from the expected value.
+
+- Calculate with simulation using `sd(x)`
+
+
