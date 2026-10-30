@@ -374,7 +374,10 @@ crossing(n = c(10, 20, 30, 50, 100, 300), rep = 1:1000) |>
 A **data set** is a **sample** from the population.
 
 - It has mean $\overline X$ and standard deviation $s$
-- $\overline X$ and $s$ are **sample statistics**
+- $\overline X$ and $s$ are **sample statistics** 
+
+![](images/sample-distribution.png){fig-alt="A histogram that is relatively symmetric with a smile that is waving its hands."}
+
 :::
 :::
 ::: column
@@ -384,6 +387,8 @@ The population has a **probability distribution** (that is unknown)
 
 - It has mean $\mu$ and standard deviation $\sigma$
 - $\mu$ and $\sigma$ are **parameters** 
+
+![](images/population-distribution.png){fig-alt="A smooth normal curve with a smile and bow-tie giving a thumbs up sign."}
 
 :::
 :::

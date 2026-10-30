@@ -33,7 +33,7 @@ November 02-08, 2026
 ## 🎉 Friday 🥳
 
 - [Attendance Quiz 11/06](https://usu.instructure.com/courses/819584/assignments/5293125/){target="_blank"}
-- [Lab: Random Variables](https://usu.instructure.com/courses/819584/quizzes/1505545) [quarto template](../lab/_30-rv.qmd){target="_blank"}, [HTML](../lab/30-rv.qmd){target="_blank"}
+- [Lab 10.3.L: Random Variables](https://usu.instructure.com/courses/819584/quizzes/1505545) [quarto template](../lab/_30-rv.qmd){target="_blank"}, [HTML](../lab/30-rv.qmd){target="_blank"}
 
 
 

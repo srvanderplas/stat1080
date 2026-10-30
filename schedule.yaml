@@ -303,7 +303,7 @@ schedule:
         - [Activity 10.2.a Random Variables](https://usu.instructure.com/courses/819584/quizzes/1462908){target="_blank"} [quarto template](../lab/_29-rv.qmd){target="_blank"}, [html](../lab/29-rv.qmd){target="_blank"}
     class3: |
         - [Attendance Quiz 11/06](https://usu.instructure.com/courses/819584/assignments/5293125/){target="_blank"}
-        - [Lab: Random Variables](https://usu.instructure.com/courses/819584/quizzes/1505545) [quarto template](../lab/_30-rv.qmd){target="_blank"}, [HTML](../lab/30-rv.qmd){target="_blank"}
+        - [Lab 10.3.L: Random Variables](https://usu.instructure.com/courses/819584/quizzes/1505545) [quarto template](../lab/_30-rv.qmd){target="_blank"}, [HTML](../lab/30-rv.qmd){target="_blank"}
     
   - week: 11
     name: Parameters and Estimates
