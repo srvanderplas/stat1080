@@ -5185,5 +5185,33 @@
     "title": "1.26 Connecting Data and Probability",
     "section": "Sources of Variability",
     "text": "Sources of Variability\n\n\n\nMeasurement error\nNatural variation\nSampling – which items were in the sample?\n\nProbability is a useful way to handle all of these different types of variability\nBut, that doesn’t mean they’re the same!"
+  },
+  {
+    "objectID": "slides/28-rv.html#expected-value-and-standard-error",
+    "href": "slides/28-rv.html#expected-value-and-standard-error",
+    "title": "1.28 Random Variables",
+    "section": "Expected Value and Standard Error",
+    "text": "Expected Value and Standard Error\nThe standard error is the variability of an estimate. We might calculate the standard error of\n\nThe expected value of 10 observations of a random variable\nThe expected value of the sum of 10 observations of a random variable\n\n\\(\\sigma\\) is the standard deviation of \\(X\\)\n\\(\\sigma/\\sqrt{n}\\) is the standard error of \\(\\overline X\\)"
+  },
+  {
+    "objectID": "slides/28-rv.html#tricks-for-expected-values-and-standard-deviations",
+    "href": "slides/28-rv.html#tricks-for-expected-values-and-standard-deviations",
+    "title": "1.28 Random Variables",
+    "section": "Tricks for Expected Values and Standard Deviations",
+    "text": "Tricks for Expected Values and Standard Deviations\n\\[E\\left[\\sum_{i=1}^n X_i \\right] = \\sum_{i=1}^n E\\left[X_i\\right]\\]\nIf the \\(X_i\\) have the same distribution, then \\(\\displaystyle\\sum_{i=1}^n E\\left[X_i\\right] = n E\\left[X_i\\right]\\)\n\nset.seed(204387)\nx &lt;- rnorm(1000, mean = 5, sd = 1)\nx10 &lt;- replicate(1000, sum(rnorm(10, mean = 5, sd = 1)))\n\n\n\n\n\n\n\n\n\n\n\\[\\begin{array}{rlrl}\nE[x]&= 5.028 &SD[x]&= 0.968\\\\\nE[\\sum_{i=1}^{10} x_i]&= 5.000& SD[\\sum_{i=1}^{10} x_i]&= NA\\end{array}\\]"
+  },
+  {
+    "objectID": "slides/28-rv.html#tricks-for-expected-values-and-standard-deviations-1",
+    "href": "slides/28-rv.html#tricks-for-expected-values-and-standard-deviations-1",
+    "title": "1.28 Random Variables",
+    "section": "Tricks for Expected Values and Standard Deviations",
+    "text": "Tricks for Expected Values and Standard Deviations\nScaling \\(X_i\\) works as expected:\n\\[E\\left[a X_i + b\\right] = a E\\left[X_i\\right]+b\\]\nand when \\(X_i\\) is scaled,\n\\[SD[aX_i + b] = |a| SD[X_i]\\]\nShifting \\(X_i\\) by \\(b\\) does not change the variance, but multiplying by \\(a\\) does.\n\nx &lt;- rgamma(1000, 2, 1)\ny &lt;- 5*x+3\n\n\\[\\begin{array}{rlrl}\nE[x]&= 1.854 &SD[x]&= 1.307\\\\\nE[5 x + 3]&= 12.269& SD[5 x + 3]&= 6.534\\\\\n5\\cdot E[x] + 3&= 12.269&     5\\cdot SD[x]&= 6.534\\end{array}\\]"
+  },
+  {
+    "objectID": "slides/28-rv.html#tricks-for-expected-values-and-standard-deviations-2",
+    "href": "slides/28-rv.html#tricks-for-expected-values-and-standard-deviations-2",
+    "title": "1.28 Random Variables",
+    "section": "Tricks for Expected Values and Standard Deviations",
+    "text": "Tricks for Expected Values and Standard Deviations\nIf \\(X_i\\) are independent (not related), then\n\\[\\text{Var}\\left[X_1 + ... + X_n\\right] = \\text{Var}\\left[X_1\\right] + ... + \\text{Var}\\left[X_n\\right]\\]\nand so\n\\[\\text{SD}\\left[X_1 + ... + X_n\\right] = \\sqrt{\\text{SD}\\left[X_1\\right]^2 + ... + \\text{SD}\\left[X_n\\right]^2}\\]\nIf \\(X_i\\) are also identically distributed then\n\\[\\text{Var}\\left[X_1 + ... + X_n\\right] = n \\text{Var}\\left[X\\right] \\ \\ \\ \\text{and}\\ \\ \\ \\ \\text{SD}\\left[X_1 + ... + X_n\\right] = \\sqrt{n} \\text{SD}\\left[X\\right]\\]"
   }
 ]

@@ -191,6 +191,8 @@ head(seven_rolls)
 
 ```
 
+![](images/killer-bunny-timid.svg){fig-alt="A yellow timid-looking bunny" width="20%"}
+
 ## Monte Carlo Simulation -- Answering Probability Questions
 
 ```{r}
@@ -219,3 +221,104 @@ The **standard deviation** describes how far, on average, a value is from the ex
 - Calculate with simulation using `sd(x)`
 
 
+## Expected Value and Standard Error
+
+The **standard error** is the variability of an **estimate**. We might calculate the standard error of
+
+- The expected value of 10 observations of a random variable
+- The expected value of the sum of 10 observations of a random variable
+
+$\sigma$ is the standard deviation of $X$
+
+$\sigma/\sqrt{n}$ is the standard error of $\overline X$
+
+## Tricks for Expected Values and Standard Deviations
+
+$$E\left[\sum_{i=1}^n X_i \right] = \sum_{i=1}^n E\left[X_i\right]$$
+
+If the $X_i$ have the same distribution, then $\displaystyle\sum_{i=1}^n E\left[X_i\right] = n E\left[X_i\right]$
+
+```{r}
+#| include: false
+library(glue)
+sprintf_transformer <- function(text, envir) {
+  m <- regexpr(":.+$", text)
+  if (m != -1) {
+    format <- substring(regmatches(text, m), 2)
+    regmatches(text, m) <- ""
+    res <- identity_transformer(text, envir)
+    do.call(sprintf, list(glue("%{format}"), res))
+  } else {
+    identity_transformer(text, envir)
+  }
+}
+
+glue_fmt <- function(..., .envir = parent.frame()) {
+  glue(..., .transformer = sprintf_transformer, .envir = .envir)
+}
+```
+
+```{r}
+#| echo: true
+set.seed(204387)
+x <- rnorm(1000, mean = 5, sd = 1)
+x10 <- replicate(1000, sum(rnorm(10, mean = 5, sd = 1)))
+```
+
+```{r}
+#| echo: false
+#| fig-width: 8
+#| fig-height: 2
+#| fig-alt: Density curves from 1000 samples of x (Normal, mean 5, sd 1) and the sum of 10 x samples. The density of the sum is broader (higher sd) and centered around 50. 
+data.frame(x10 = x10, x = x) |> 
+  pivot_longer(1:2) |>
+ggplot(aes(x = value, color = name)) + geom_density()
+```
+```{r}
+#| output: 'asis'
+glue_fmt("$$\\begin{{array}}{{rlrl}}
+           E[x]&= {mean(x):2.3f} &SD[x]&= {sd(x):2.3f}\\\\ 
+           E[\\sum_{{i=1}}^{{10}} x_i]&= {mean(y):2.3f}& SD[\\sum_{{i=1}}^{{10}} x_i]&= {sd(y):2.3f}\\end{{array}}$$")
+```
+
+
+## Tricks for Expected Values and Standard Deviations
+
+Scaling $X_i$ works as expected: 
+
+$$E\left[a X_i + b\right] = a E\left[X_i\right]+b$$
+
+and when $X_i$ is scaled,
+
+$$SD[aX_i + b] = |a| SD[X_i]$$
+
+Shifting $X_i$ by $b$ does not change the variance, but multiplying by $a$ does. 
+
+```{r}
+#| echo: true
+x <- rgamma(1000, 2, 1)
+y <- 5*x+3
+```
+```{r}
+#| output: 'asis'
+
+glue_fmt("$$\\begin{{array}}{{rlrl}}
+           E[x]&= {mean(x):2.3f} &SD[x]&= {sd(x):2.3f}\\\\ 
+           E[5 x + 3]&= {mean(y):2.3f}& SD[5 x + 3]&= {sd(y):2.3f}\\\\ 
+           5\\cdot E[x] + 3&= {5*mean(x)+3:2.3f}&     5\\cdot SD[x]&= {5*sd(x):2.3f}\\end{{array}}$$")
+```
+
+
+##  Tricks for Expected Values and Standard Deviations
+
+If $X_i$ are independent (not related), then
+
+$$\text{Var}\left[X_1 + ... + X_n\right] = \text{Var}\left[X_1\right] + ... + \text{Var}\left[X_n\right]$$
+
+and so 
+
+$$\text{SD}\left[X_1 + ... + X_n\right] = \sqrt{\text{SD}\left[X_1\right]^2 + ... + \text{SD}\left[X_n\right]^2}$$
+
+If $X_i$ are also **identically distributed** then 
+
+$$\text{Var}\left[X_1 + ... + X_n\right] = n \text{Var}\left[X\right] \ \ \ \text{and}\ \ \ \ \text{SD}\left[X_1 + ... + X_n\right] = \sqrt{n} \text{SD}\left[X\right]$$

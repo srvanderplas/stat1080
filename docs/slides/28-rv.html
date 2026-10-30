@@ -419,6 +419,7 @@
 [6,]    2    4    2    7    3    7    4</code></pre>
 </div>
 </div>
+<p><a href="images/killer-bunny-timid.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-10"><img data-src="images/killer-bunny-timid.svg" style="width:20.0%" alt="A yellow timid-looking bunny"></a></p>
 </section>
 <section id="monte-carlo-simulation-answering-probability-questions-3" class="slide level2">
 <h2>Monte Carlo Simulation – Answering Probability Questions</h2>
@@ -453,6 +454,63 @@
 <ul>
 <li>Calculate with simulation using <code>sd(x)</code></li>
 </ul>
+</section>
+<section id="expected-value-and-standard-error" class="slide level2">
+<h2>Expected Value and Standard Error</h2>
+<p>The <strong>standard error</strong> is the variability of an <strong>estimate</strong>. We might calculate the standard error of</p>
+<ul>
+<li>The expected value of 10 observations of a random variable</li>
+<li>The expected value of the sum of 10 observations of a random variable</li>
+</ul>
+<p><span class="math inline">\(\sigma\)</span> is the standard deviation of <span class="math inline">\(X\)</span></p>
+<p><span class="math inline">\(\sigma/\sqrt{n}\)</span> is the standard error of <span class="math inline">\(\overline X\)</span></p>
+</section>
+<section id="tricks-for-expected-values-and-standard-deviations" class="slide level2">
+<h2>Tricks for Expected Values and Standard Deviations</h2>
+<p><span class="math display">\[E\left[\sum_{i=1}^n X_i \right] = \sum_{i=1}^n E\left[X_i\right]\]</span></p>
+<p>If the <span class="math inline">\(X_i\)</span> have the same distribution, then <span class="math inline">\(\displaystyle\sum_{i=1}^n E\left[X_i\right] = n E\left[X_i\right]\)</span></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a aria-label="1"></a><span class="fu">set.seed</span>(<span class="dv">204387</span>)</span>
+<span id="cb33-2"><a aria-label="2"></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>, <span class="at">mean =</span> <span class="dv">5</span>, <span class="at">sd =</span> <span class="dv">1</span>)</span>
+<span id="cb33-3"><a aria-label="3"></a>x10 <span class="ot">&lt;-</span> <span class="fu">replicate</span>(<span class="dv">1000</span>, <span class="fu">sum</span>(<span class="fu">rnorm</span>(<span class="dv">10</span>, <span class="at">mean =</span> <span class="dv">5</span>, <span class="at">sd =</span> <span class="dv">1</span>)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><a href="28-rv_files/figure-revealjs/unnamed-chunk-12-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-11"><img data-src="28-rv_files/figure-revealjs/unnamed-chunk-12-1.png" alt="Density curves from 1000 samples of x (Normal, mean 5, sd 1) and the sum of 10 x samples. The density of the sum is broader (higher sd) and centered around 50." width="768"></a></p>
+</figure>
+</div>
+</div>
+</div>
+<p><span class="math display">\[\begin{array}{rlrl}
+E[x]&amp;= 5.028 &amp;SD[x]&amp;= 0.968\\
+E[\sum_{i=1}^{10} x_i]&amp;= 5.000&amp; SD[\sum_{i=1}^{10} x_i]&amp;= NA\end{array}\]</span></p>
+</section>
+<section id="tricks-for-expected-values-and-standard-deviations-1" class="slide level2">
+<h2>Tricks for Expected Values and Standard Deviations</h2>
+<p>Scaling <span class="math inline">\(X_i\)</span> works as expected:</p>
+<p><span class="math display">\[E\left[a X_i + b\right] = a E\left[X_i\right]+b\]</span></p>
+<p>and when <span class="math inline">\(X_i\)</span> is scaled,</p>
+<p><span class="math display">\[SD[aX_i + b] = |a| SD[X_i]\]</span></p>
+<p>Shifting <span class="math inline">\(X_i\)</span> by <span class="math inline">\(b\)</span> does not change the variance, but multiplying by <span class="math inline">\(a\)</span> does.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a aria-label="1"></a>x <span class="ot">&lt;-</span> <span class="fu">rgamma</span>(<span class="dv">1000</span>, <span class="dv">2</span>, <span class="dv">1</span>)</span>
+<span id="cb34-2"><a aria-label="2"></a>y <span class="ot">&lt;-</span> <span class="dv">5</span><span class="sc">*</span>x<span class="sc">+</span><span class="dv">3</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><span class="math display">\[\begin{array}{rlrl}
+E[x]&amp;= 1.854 &amp;SD[x]&amp;= 1.307\\
+E[5 x + 3]&amp;= 12.269&amp; SD[5 x + 3]&amp;= 6.534\\
+5\cdot E[x] + 3&amp;= 12.269&amp;     5\cdot SD[x]&amp;= 6.534\end{array}\]</span></p>
+</section>
+<section id="tricks-for-expected-values-and-standard-deviations-2" class="slide level2">
+<h2>Tricks for Expected Values and Standard Deviations</h2>
+<p>If <span class="math inline">\(X_i\)</span> are independent (not related), then</p>
+<p><span class="math display">\[\text{Var}\left[X_1 + ... + X_n\right] = \text{Var}\left[X_1\right] + ... + \text{Var}\left[X_n\right]\]</span></p>
+<p>and so</p>
+<p><span class="math display">\[\text{SD}\left[X_1 + ... + X_n\right] = \sqrt{\text{SD}\left[X_1\right]^2 + ... + \text{SD}\left[X_n\right]^2}\]</span></p>
+<p>If <span class="math inline">\(X_i\)</span> are also <strong>identically distributed</strong> then</p>
+<p><span class="math display">\[\text{Var}\left[X_1 + ... + X_n\right] = n \text{Var}\left[X\right] \ \ \ \text{and}\ \ \ \ \text{SD}\left[X_1 + ... + X_n\right] = \sqrt{n} \text{SD}\left[X\right]\]</span></p>
 
 
 </section>
