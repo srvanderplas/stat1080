@@ -5212,6 +5212,27 @@
     "href": "slides/28-rv.html#tricks-for-expected-values-and-standard-deviations-2",
     "title": "1.28 Random Variables",
     "section": "Tricks for Expected Values and Standard Deviations",
+    "text": "Tricks for Expected Values and Standard Deviations\nIf \\(X\\sim\\text{Normal}(\\mu,\\sigma)\\), then \\(aX + b\\sim\\text{Normal}(a\\mu+b, a\\sigma)\\)\n\nThis is specific to normal distributions\nMost distributions don’t stay the same when variables are scaled"
+  },
+  {
+    "objectID": "slides/28-rv.html#tricks-for-expected-values-and-standard-deviations-3",
+    "href": "slides/28-rv.html#tricks-for-expected-values-and-standard-deviations-3",
+    "title": "1.28 Random Variables",
+    "section": "Tricks for Expected Values and Standard Deviations",
     "text": "Tricks for Expected Values and Standard Deviations\nIf \\(X_i\\) are independent (not related), then\n\\[\\text{Var}\\left[X_1 + ... + X_n\\right] = \\text{Var}\\left[X_1\\right] + ... + \\text{Var}\\left[X_n\\right]\\]\nand so\n\\[\\text{SD}\\left[X_1 + ... + X_n\\right] = \\sqrt{\\text{SD}\\left[X_1\\right]^2 + ... + \\text{SD}\\left[X_n\\right]^2}\\]\nIf \\(X_i\\) are also identically distributed then\n\\[\\text{Var}\\left[X_1 + ... + X_n\\right] = n \\text{Var}\\left[X\\right] \\ \\ \\ \\text{and}\\ \\ \\ \\ \\text{SD}\\left[X_1 + ... + X_n\\right] = \\sqrt{n} \\text{SD}\\left[X\\right]\\]"
+  },
+  {
+    "objectID": "slides/28-rv.html#law-of-large-numbers",
+    "href": "slides/28-rv.html#law-of-large-numbers",
+    "title": "1.28 Random Variables",
+    "section": "Law of Large Numbers",
+    "text": "Law of Large Numbers\n\nConsider \\(\\displaystyle\\frac{1}{n} \\sum_{i=1}^n X_i\\) (the sample mean)\n\\[\\displaystyle E\\left[\\frac{1}{n} \\sum_{i=1}^n X_i\\right] = \\frac{1}{n}E\\left[\\sum_{i=1}^n X_i\\right] = \\frac{n}{n} E\\left[X\\right] =  E\\left[X\\right]\\]\n\\[\\displaystyle \\text{SD}\\left[\\frac{1}{n} \\sum_{i=1}^n X_i\\right] = \\frac{1}{n} SD\\left[\\sum_{i=1}^n X_i\\right] = \\frac{\\sqrt{n}\\cdot\\text{SD}\\left[X\\right]}{n} = \\frac{\\text{SD}\\left[X\\right]}{\\sqrt{n}}\\]\n\nSo, as \\(n\\) increases, the variability of sample mean decreases!"
+  },
+  {
+    "objectID": "slides/28-rv.html#datasets-and-probability-distributions",
+    "href": "slides/28-rv.html#datasets-and-probability-distributions",
+    "title": "1.28 Random Variables",
+    "section": "Datasets and Probability Distributions",
+    "text": "Datasets and Probability Distributions\n\n\n\n\n\n\n\n\nSamples have Statistics\n\n\nA data set is a sample from the population.\n\nIt has mean \\(\\overline X\\) and standard deviation \\(s\\)\n\\(\\overline X\\) and \\(s\\) are sample statistics\n\n\n\n\n\n\n\n\n\n\n\nPopulations have Parameters\n\n\nThe population has a probability distribution (that is unknown)\n\nIt has mean \\(\\mu\\) and standard deviation \\(\\sigma\\)\n\\(\\mu\\) and \\(\\sigma\\) are parameters\n\n\n\n\n\nWe may model the population with a chosen theoretical probability distribution that uses the population parameters\n\nFor instance, we may model \\(X \\sim \\text{Normal}(\\mu, \\sigma)\\)\nOur best estimates for \\(\\mu, \\sigma\\) are often \\(\\overline X, s\\)"
   }
 ]

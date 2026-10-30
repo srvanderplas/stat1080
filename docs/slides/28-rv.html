@@ -505,12 +505,84 @@ E[5 x + 3]&amp;= 12.269&amp; SD[5 x + 3]&amp;= 6.534\\
 </section>
 <section id="tricks-for-expected-values-and-standard-deviations-2" class="slide level2">
 <h2>Tricks for Expected Values and Standard Deviations</h2>
+<p>If <span class="math inline">\(X\sim\text{Normal}(\mu,\sigma)\)</span>, then <span class="math inline">\(aX + b\sim\text{Normal}(a\mu+b, a\sigma)\)</span></p>
+<ul>
+<li>This is specific to normal distributions</li>
+<li>Most distributions don’t stay the same when variables are scaled</li>
+</ul>
+</section>
+<section id="tricks-for-expected-values-and-standard-deviations-3" class="slide level2">
+<h2>Tricks for Expected Values and Standard Deviations</h2>
 <p>If <span class="math inline">\(X_i\)</span> are independent (not related), then</p>
 <p><span class="math display">\[\text{Var}\left[X_1 + ... + X_n\right] = \text{Var}\left[X_1\right] + ... + \text{Var}\left[X_n\right]\]</span></p>
 <p>and so</p>
 <p><span class="math display">\[\text{SD}\left[X_1 + ... + X_n\right] = \sqrt{\text{SD}\left[X_1\right]^2 + ... + \text{SD}\left[X_n\right]^2}\]</span></p>
 <p>If <span class="math inline">\(X_i\)</span> are also <strong>identically distributed</strong> then</p>
 <p><span class="math display">\[\text{Var}\left[X_1 + ... + X_n\right] = n \text{Var}\left[X\right] \ \ \ \text{and}\ \ \ \ \text{SD}\left[X_1 + ... + X_n\right] = \sqrt{n} \text{SD}\left[X\right]\]</span></p>
+</section>
+<section id="law-of-large-numbers" class="slide level2">
+<h2>Law of Large Numbers</h2>
+<div class="small">
+<p>Consider <span class="math inline">\(\displaystyle\frac{1}{n} \sum_{i=1}^n X_i\)</span> (the sample mean)</p>
+<p><span class="math display">\[\displaystyle E\left[\frac{1}{n} \sum_{i=1}^n X_i\right] = \frac{1}{n}E\left[\sum_{i=1}^n X_i\right] = \frac{n}{n} E\left[X\right] =  E\left[X\right]\]</span></p>
+<p><span class="math display">\[\displaystyle \text{SD}\left[\frac{1}{n} \sum_{i=1}^n X_i\right] = \frac{1}{n} SD\left[\sum_{i=1}^n X_i\right] = \frac{\sqrt{n}\cdot\text{SD}\left[X\right]}{n} = \frac{\text{SD}\left[X\right]}{\sqrt{n}}\]</span></p>
+</div>
+<p>So, as <span class="math inline">\(n\)</span> increases, the variability of sample mean decreases!</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><a href="28-rv_files/figure-revealjs/unnamed-chunk-16-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-12"><img data-src="28-rv_files/figure-revealjs/unnamed-chunk-16-1.png" style="width:100.0%" alt="Density curves drawn from 1000 samples of the average of each of $n=$ 10, 20, 30, 50, 100, and 300 normal random variables with mean 5 and standard deviation 3. As $n$ increases, the distributions have lower variance and the density is more concentrated around the common mean of 5."></a></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="datasets-and-probability-distributions" class="slide level2">
+<h2>Datasets and Probability Distributions</h2>
+<div class="columns">
+<div class="column">
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Samples have Statistics</strong></p>
+</div>
+<div class="callout-content">
+<p>A <strong>data set</strong> is a <strong>sample</strong> from the population.</p>
+<ul>
+<li>It has mean <span class="math inline">\(\overline X\)</span> and standard deviation <span class="math inline">\(s\)</span></li>
+<li><span class="math inline">\(\overline X\)</span> and <span class="math inline">\(s\)</span> are <strong>sample statistics</strong></li>
+</ul>
+</div>
+</div>
+</div>
+</div><div class="column">
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Populations have Parameters</strong></p>
+</div>
+<div class="callout-content">
+<p>The population has a <strong>probability distribution</strong> (that is unknown)</p>
+<ul>
+<li>It has mean <span class="math inline">\(\mu\)</span> and standard deviation <span class="math inline">\(\sigma\)</span></li>
+<li><span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma\)</span> are <strong>parameters</strong></li>
+</ul>
+</div>
+</div>
+</div>
+</div></div>
+<p>We may model the population with a chosen <strong>theoretical probability distribution</strong> that uses the population parameters</p>
+<ul>
+<li>For instance, we may model <span class="math inline">\(X \sim \text{Normal}(\mu, \sigma)\)</span></li>
+<li>Our best estimates for <span class="math inline">\(\mu, \sigma\)</span> are often <span class="math inline">\(\overline X, s\)</span></li>
+</ul>
 
 
 </section>

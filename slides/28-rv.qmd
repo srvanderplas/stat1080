@@ -6,6 +6,14 @@ lightbox:  true
 bibliography: refs.bib
 csl: chicago-syllabus.csl
 ---
+```{r}
+#| include: false
+#| label: setup
+library(ggplot2)
+library(tidyverse)
+theme_set(theme_bw())
+library(viridis)
+```
 
 ## Variables
 
@@ -87,9 +95,6 @@ $$\begin{align}\displaystyle X \sim \text{Poisson}(10)\end{align}$$
 #| fig-width: 8
 #| fig-height: 2
 #| echo: false
-library(ggplot2)
-library(tidyverse)
-theme_set(theme_bw())
 tibble(x = 0:25, y = dpois(x, 10)) |>
   ggplot(aes(x = x, y = y)) + geom_col() + ylab("Probability") + xlab("# Riders") + ggtitle("Distribution of Bus Riders: Poisson(10)")
 ```
@@ -311,6 +316,14 @@ glue_fmt("$$\\begin{{array}}{{rlrl}}
 
 ##  Tricks for Expected Values and Standard Deviations
 
+If $X\sim\text{Normal}(\mu,\sigma)$, then $aX + b\sim\text{Normal}(a\mu+b, a\sigma)$
+
+- This is specific to normal distributions
+- Most distributions don't stay the same when variables are scaled
+
+
+##  Tricks for Expected Values and Standard Deviations
+
 If $X_i$ are independent (not related), then
 
 $$\text{Var}\left[X_1 + ... + X_n\right] = \text{Var}\left[X_1\right] + ... + \text{Var}\left[X_n\right]$$
@@ -322,3 +335,66 @@ $$\text{SD}\left[X_1 + ... + X_n\right] = \sqrt{\text{SD}\left[X_1\right]^2 + ..
 If $X_i$ are also **identically distributed** then 
 
 $$\text{Var}\left[X_1 + ... + X_n\right] = n \text{Var}\left[X\right] \ \ \ \text{and}\ \ \ \ \text{SD}\left[X_1 + ... + X_n\right] = \sqrt{n} \text{SD}\left[X\right]$$
+
+## Law of Large Numbers
+::: {.small}
+Consider $\displaystyle\frac{1}{n} \sum_{i=1}^n X_i$ (the sample mean)
+
+$$\displaystyle E\left[\frac{1}{n} \sum_{i=1}^n X_i\right] = \frac{1}{n}E\left[\sum_{i=1}^n X_i\right] = \frac{n}{n} E\left[X\right] =  E\left[X\right]$$
+
+$$\displaystyle \text{SD}\left[\frac{1}{n} \sum_{i=1}^n X_i\right] = \frac{1}{n} SD\left[\sum_{i=1}^n X_i\right] = \frac{\sqrt{n}\cdot\text{SD}\left[X\right]}{n} = \frac{\text{SD}\left[X\right]}{\sqrt{n}}$$
+:::
+
+So, as $n$ increases, the variability of sample mean decreases!
+
+```{r}
+#| echo: false
+#| fig-width: 8
+#| fig-height: 2.5
+#| out-width: 100%
+#| fig-alt: Density curves drawn from 1000 samples of the average of each of $n=$ 10, 20, 30, 50, 100, and 300 normal random variables with mean 5 and standard deviation 3. As $n$ increases, the distributions have lower variance and the density is more concentrated around the common mean of 5. 
+
+crossing(n = c(10, 20, 30, 50, 100, 300), rep = 1:1000) |>
+  mutate(x = map_dbl(n, ~mean(rnorm(., mean = 5, sd = 3))),
+         n = factor(n)) |>
+  ggplot(aes(x = x, color = n, group = n)) + geom_density() + 
+  scale_color_viridis("Average over n", end = .8, discrete = T, option = "C") + 
+  guides(color = guide_legend(nrow = 1)) + 
+  theme(legend.position = "bottom")
+```
+
+
+## Datasets and Probability Distributions
+
+::: columns
+::: column
+::: callout-note
+## Samples have Statistics
+
+A **data set** is a **sample** from the population.
+
+- It has mean $\overline X$ and standard deviation $s$
+- $\overline X$ and $s$ are **sample statistics**
+:::
+:::
+::: column
+::: callout-note
+## Populations have Parameters
+The population has a **probability distribution** (that is unknown)
+
+- It has mean $\mu$ and standard deviation $\sigma$
+- $\mu$ and $\sigma$ are **parameters** 
+
+:::
+:::
+:::
+
+We may model the population with a chosen **theoretical probability distribution** that uses the population parameters
+
+- For instance, we may model $X \sim \text{Normal}(\mu, \sigma)$ 
+- Our best estimates for $\mu, \sigma$ are often $\overline X, s$
+
+
+
+
+
