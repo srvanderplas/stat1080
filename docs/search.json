@@ -2314,7 +2314,7 @@
     "href": "weeks/week-100.html",
     "title": "Week 10: Random Variables",
     "section": "",
-    "text": "November 02-08, 2026\n\n\n\n(for Mon) IDS 2 Ch 7 - Random Variables\n(for Fri) IDS 2 Intro to Statistical Inference\n\n\n\n\n\n(for Mon) Reading Check 10.1\n(for Fri) Reading Check 10.3\nHomework 2, qmd template, html, visual solutions\n\n\n\n\n\nAttendance Quiz 11/02\nRandom Variables\n\n\n\n\n\nAttendance Quiz 11/04\nRandom Variables\nActivity 10.2.a Random Variables quarto template, html\n\n\n\n\n\nAttendance Quiz 11/06\nLab: Random Variables quarto template, HTML"
+    "text": "November 02-08, 2026\n\n\n\n(for Mon) IDS 2 Ch 7 - Random Variables\n(for Fri) IDS 2 Intro to Statistical Inference\n\n\n\n\n\n(for Mon) Reading Check 10.1\n(for Fri) Reading Check 10.3\nHomework 2, qmd template, html, visual solutions\n\n\n\n\n\nAttendance Quiz 11/02\nRandom Variables\n\n\n\n\n\nAttendance Quiz 11/04\nRandom Variables\nActivity 10.2.a Random Variables quarto template, html\n\n\n\n\n\nAttendance Quiz 11/06\nLab 10.3.L: Random Variables quarto template, HTML"
   },
   {
     "objectID": "weeks/week-100.html#reading",
@@ -2349,7 +2349,7 @@
     "href": "weeks/week-100.html#friday",
     "title": "Week 10: Random Variables",
     "section": "",
-    "text": "Attendance Quiz 11/06\nLab: Random Variables quarto template, HTML"
+    "text": "Attendance Quiz 11/06\nLab 10.3.L: Random Variables quarto template, HTML"
   },
   {
     "objectID": "weeks/week-090.html",
@@ -5234,5 +5234,82 @@
     "title": "1.28 Random Variables",
     "section": "Datasets and Probability Distributions",
     "text": "Datasets and Probability Distributions\n\n\n\n\n\n\n\n\nSamples have Statistics\n\n\nA data set is a sample from the population.\n\nIt has mean \\(\\overline X\\) and standard deviation \\(s\\)\n\\(\\overline X\\) and \\(s\\) are sample statistics\n\n\n\n\n\n\n\n\n\n\n\n\nPopulations have Parameters\n\n\nThe population has a probability distribution (that is unknown)\n\nIt has mean \\(\\mu\\) and standard deviation \\(\\sigma\\)\n\\(\\mu\\) and \\(\\sigma\\) are parameters\n\n\n\n\n\n\nWe may model the population with a chosen theoretical probability distribution that uses the population parameters\n\nFor instance, we may model \\(X \\sim \\text{Normal}(\\mu, \\sigma)\\)\nOur best estimates for \\(\\mu, \\sigma\\) are often \\(\\overline X, s\\)"
+  },
+  {
+    "objectID": "demos/28-random-variables.html",
+    "href": "demos/28-random-variables.html",
+    "title": "Random Variables",
+    "section": "",
+    "text": "beads &lt;- c(\"blue\", \"blue\", \"blue\", \"red\", \"red\")\nx &lt;- if_else(sample(beads, 1) == \"blue\", 1, 0)\n\nxs &lt;- replicate(10, if_else(sample(beads, 1) == \"blue\", 1, 0))\nxs\n\n [1] 0 0 0 0 1 1 1 0 1 1"
+  },
+  {
+    "objectID": "demos/28-random-variables.html#math-notation",
+    "href": "demos/28-random-variables.html#math-notation",
+    "title": "Random Variables",
+    "section": "Math Notation",
+    "text": "Math Notation\n\\(X = \\begin{cases} 1 & \\text{green or black}\\\\-1 & \\text{red}\\end{cases}\\)\n\\(P(X = 1) = \\frac{20}{38} = \\frac{10}{19}\\)\n\\(P(X = -1) = \\frac{18}{38} = \\frac{9}{19}\\)"
+  },
+  {
+    "objectID": "demos/28-random-variables.html#bead-model",
+    "href": "demos/28-random-variables.html#bead-model",
+    "title": "Random Variables",
+    "section": "Bead Model",
+    "text": "Bead Model\n\nbeads &lt;- c(\"blue\", \"blue\", \"blue\", \"red\", \"red\")\nx &lt;- if_else(sample(beads, 1) == \"blue\", 1, 0)\n\nxs &lt;- replicate(10, if_else(sample(beads, 1) == \"blue\", 1, 0))\nxs\n\n [1] 0 0 1 1 0 1 1 0 1 0"
+  },
+  {
+    "objectID": "demos/28-random-variables.html#roulette",
+    "href": "demos/28-random-variables.html#roulette",
+    "title": "Random Variables",
+    "section": "Roulette",
+    "text": "Roulette"
+  },
+  {
+    "objectID": "demos/28-random-variables.html#roulette-1",
+    "href": "demos/28-random-variables.html#roulette-1",
+    "title": "Random Variables",
+    "section": "Roulette",
+    "text": "Roulette\n\nlibrary(tidyverse)\nroulette &lt;- tibble(\n  pocket_no = c(\"00\", 0:36),\n  color = c(\"green\", \"green\", \n            \"red\", \"black\", \"red\", \"black\", \"red\", \"black\", \n            \"red\", \"black\", \"black\", \"black\", \"black\", \"red\", \n            \"black\", \"red\", \"black\", \"red\", \"black\", \"red\", \n            \"red\", \"black\", \"red\", \"black\", \"red\", \"black\", \n            \"red\", \"red\", \"red\", \"black\", \"black\", \"red\",\n            \"black\", \"red\", \"black\", \"red\", \"black\", \"red\")\n)"
+  },
+  {
+    "objectID": "demos/28-random-variables.html#roulette-2",
+    "href": "demos/28-random-variables.html#roulette-2",
+    "title": "Random Variables",
+    "section": "Roulette",
+    "text": "Roulette\nWe can write a function to create a random variable by mapping the sampled pocket to a numerical outcome – how much money the casino wins or loses.\n\ncasino_rv &lt;- function(x) {\n  if_else(x != \"red\", 1, -1)\n}"
+  },
+  {
+    "objectID": "demos/28-random-variables.html#roulette-3",
+    "href": "demos/28-random-variables.html#roulette-3",
+    "title": "Random Variables",
+    "section": "Roulette",
+    "text": "Roulette\n\nset.seed(2034987234)\nroulette |&gt; slice_sample(n = 10, replace = T) |&gt;\n  mutate(outcome = casino_rv(color))\n\n# A tibble: 10 × 3\n   pocket_no color outcome\n   &lt;chr&gt;     &lt;chr&gt;   &lt;dbl&gt;\n 1 32        red        -1\n 2 34        red        -1\n 3 9         black       1\n 4 11        black       1\n 5 28        black       1\n 6 9         black       1\n 7 14        red        -1\n 8 22        black       1\n 9 1         red        -1\n10 18        red        -1"
+  },
+  {
+    "objectID": "demos/28-random-variables.html#roulette-4",
+    "href": "demos/28-random-variables.html#roulette-4",
+    "title": "Random Variables",
+    "section": "Roulette",
+    "text": "Roulette\nThen, we can summarize to see what the long-run outcome is:\n\nset.seed(223486234)\nroulette |&gt; slice_sample(n = 1000, replace = T) |&gt;\n  mutate(outcome = casino_rv(color)) |&gt;\n  summarize(expectation = mean(outcome))\n\n# A tibble: 1 × 1\n  expectation\n        &lt;dbl&gt;\n1       0.082"
+  },
+  {
+    "objectID": "demos/28-random-variables.html#roulette-5",
+    "href": "demos/28-random-variables.html#roulette-5",
+    "title": "Random Variables",
+    "section": "Roulette",
+    "text": "Roulette\n\nset.seed(223486234)\nroulette |&gt; slice_sample(n = 1000000, replace = T) |&gt;\n  mutate(outcome = casino_rv(color)) |&gt;\n  summarize(expectation = mean(outcome))\n\n# A tibble: 1 × 1\n  expectation\n        &lt;dbl&gt;\n1      0.0513"
+  },
+  {
+    "objectID": "demos/28-random-variables.html#math-notation-1",
+    "href": "demos/28-random-variables.html#math-notation-1",
+    "title": "Random Variables",
+    "section": "Math Notation",
+    "text": "Math Notation\nThe expected value for the casino is \\[E(X) = 1\\cdot P(X=1) + (-1)\\cdot P(X=-1) = \\frac{10}{19}-\\frac{9}{19} = \\frac{1}{19}\\]"
+  },
+  {
+    "objectID": "demos/28-random-variables.html#math-notation-2",
+    "href": "demos/28-random-variables.html#math-notation-2",
+    "title": "Random Variables",
+    "section": "Math Notation",
+    "text": "Math Notation\nAnd the standard deviation is\n\\[\\begin{align}SD(X) &= P(X=1)\\left[1-\\frac{1}{19}\\right]^2 + P(X=-1)\\left[-1-\\frac{1}{19}\\right]^2 \\\\&= \\frac{10}{19}\\frac{18^2}{19^2} +  \\frac{9}{19}\\frac{20^2}{19^2} = \\frac{6840}{6859} \\\\&\\approx 0.9972 \\end{align}\\]"
   }
 ]
