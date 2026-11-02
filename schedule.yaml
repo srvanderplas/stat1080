@@ -310,10 +310,10 @@ schedule:
     start: 2026-11-09
     end: 2026-11-15
     reading: |
-        - [ ] (for Mon) [IDS 2 Ch 9.1-9.3 - Estimates](https://rafalab.dfci.harvard.edu/dsbook-part-2/inference/estimates-confidence-intervals.html){target="_blank"}
+        - [ ] (for Mon) [IDS 2 Ch 9.1 - 9.3 - Estimates](https://rafalab.dfci.harvard.edu/dsbook-part-2/inference/estimates-confidence-intervals.html){target="_blank"}
         - [ ] (for Wed) [IDS 2 Ch 8 - Sampling Models and the Central Limit Theorem](https://rafalab.dfci.harvard.edu/dsbook-part-2/prob/sampling-models-and-clt.html){target="_blank"}
     prepare: |
-        - [ ] (for Mon) Reading Check 11.1
+        - [ ] (for Mon) [Reading Check 11.1](https://usu.instructure.com/courses/819584/quizzes/1506119){target="_blank"}
         - [ ] (for Wed) Reading Check 11.2        
         - Start Looking At [Homework 3](https://usu.instructure.com/courses/819584/assignments/5290613){target="_blank"}, [qmd template](../homework/_homework03.qmd), [html](../homework/homework03.qmd), [visual solutions](../homework/homework03-visual-sol.qmd)
     class1: |

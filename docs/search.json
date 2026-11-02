@@ -5311,5 +5311,47 @@
     "title": "Random Variables",
     "section": "Math Notation",
     "text": "Math Notation\nAnd the standard deviation is\n\\[\\begin{align}SD(X) &= P(X=1)\\left[1-\\frac{1}{19}\\right]^2 + P(X=-1)\\left[-1-\\frac{1}{19}\\right]^2 \\\\&= \\frac{10}{19}\\frac{18^2}{19^2} +  \\frac{9}{19}\\frac{20^2}{19^2} = \\frac{6840}{6859} \\\\&\\approx 0.9972 \\end{align}\\]"
+  },
+  {
+    "objectID": "demos/30-parameters-estimates.html#population",
+    "href": "demos/30-parameters-estimates.html#population",
+    "title": "Parameters and Estimates",
+    "section": "Population",
+    "text": "Population\n\n\\(P = \\frac{214}{415} = .515\\) (we don’t usually know this)"
+  },
+  {
+    "objectID": "demos/30-parameters-estimates.html#samples",
+    "href": "demos/30-parameters-estimates.html#samples",
+    "title": "Parameters and Estimates",
+    "section": "Samples",
+    "text": "Samples"
+  },
+  {
+    "objectID": "demos/30-parameters-estimates.html#samples-1",
+    "href": "demos/30-parameters-estimates.html#samples-1",
+    "title": "Parameters and Estimates",
+    "section": "Samples",
+    "text": "Samples\n\n\\(\\overline X = \\frac{\\text{# blue balls}}{20}\\)\n\nc(5, 8, 9, 10, 10, 10, 12, 12, 12)/20\n\n[1] 0.25 0.40 0.45 0.50 0.50 0.50 0.60 0.60 0.60"
+  },
+  {
+    "objectID": "demos/30-parameters-estimates.html#polls",
+    "href": "demos/30-parameters-estimates.html#polls",
+    "title": "Parameters and Estimates",
+    "section": "Polls",
+    "text": "Polls"
+  },
+  {
+    "objectID": "demos/30-parameters-estimates.html#samples-2",
+    "href": "demos/30-parameters-estimates.html#samples-2",
+    "title": "Parameters and Estimates",
+    "section": "Samples",
+    "text": "Samples\n\n\\(\\overline X = \\frac{\\text{# blue balls}}{40}\\)\n\nc(15, 16, 19, 20, 20, 20, 21, 22, 24)/40\n\n[1] 0.375 0.400 0.475 0.500 0.500 0.500 0.525 0.550 0.600"
+  },
+  {
+    "objectID": "demos/30-parameters-estimates.html#sample-variability",
+    "href": "demos/30-parameters-estimates.html#sample-variability",
+    "title": "Parameters and Estimates",
+    "section": "Sample Variability",
+    "text": "Sample Variability\n\\[\\sigma^2_{\\overline X} = \\frac{p(1-p)}{N}\\]\nOur best estimate of \\(\\sigma^2\\) is \\[\\frac{\\overline X (1-\\overline X)}{N}\\]"
   }
 ]
