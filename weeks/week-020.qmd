@@ -39,14 +39,14 @@ For reference/clarification, here are the chapters in SC that correspond to Chap
 
 - [Attendance Quiz 09/09](https://usu.instructure.com/courses/819584/quizzes/1463710){target="_blank"}
 - [Intro to Programming](../slides/05-prog-intro.qmd){target="_blank"}
-- [2.2.i - Swirl Tutorial](https://usu.instructure.com/courses/819584/quizzes/1462913){target="_blank"}
+- [Activity 2.2.i - Swirl Tutorial](https://usu.instructure.com/courses/819584/quizzes/1462913){target="_blank"}
 
 
 ## 🎉 Friday 🥳
 
 - [Attendance Quiz 09/11](https://usu.instructure.com/courses/819584/quizzes/1463721){target="_blank"}
 - [Intro to RStudio](../slides/06-rstudio.qmd){target="_blank"}
-- [2.3.i - Swirl Tutorial II](https://usu.instructure.com/courses/819584/quizzes/1462915){target="_blank"}
+- [Activity 2.3.i - Swirl Tutorial II](https://usu.instructure.com/courses/819584/quizzes/1462915){target="_blank"}
 - [ ] Submit [Project Proposal](https://usu.instructure.com/courses/819584/assignments/5290622){target="_blank"}
 
 

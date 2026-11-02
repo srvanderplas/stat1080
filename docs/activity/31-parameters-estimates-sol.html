@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>8.3.p - Class Activity – STAT 1080 - Fall 2026</title>
+<title>11.1.p Activity - Parameters and Estimates – STAT 1080 - Fall 2026</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -113,10 +113,39 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
 
-<meta property="og:title" content="8.3.p - Class Activity – STAT 1080 - Fall 2026">
-<meta property="og:description" content="Homepage for STAT 1080 - Data and the Stories They Tell.">
-<meta property="og:image" content="https://srvanderplas.github.io/stat1080/lab/24-discrete-probability-sol_files/figure-html/unnamed-chunk-5-1.png">
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<meta property="og:title" content="11.1.p Activity - Parameters and Estimates – STAT 1080 - Fall 2026">
+<meta property="og:description" content="Solutions">
+<meta property="og:image" content="https://srvanderplas.github.io/stat1080/activity/31-parameters-estimates-sol_files/figure-html/unnamed-chunk-5-1.png">
 <meta property="og:site_name" content="STAT 1080 - Fall 2026">
 <meta property="og:image:height" content="960">
 <meta property="og:image:width" content="1344">
@@ -411,10 +440,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#problem" id="toc-problem" class="nav-link active" data-scroll-target="#problem"><span class="header-section-number">1</span> Problem</a></li>
-  <li><a href="#problem-1" id="toc-problem-1" class="nav-link" data-scroll-target="#problem-1"><span class="header-section-number">2</span> Problem</a></li>
-  <li><a href="#problem-2" id="toc-problem-2" class="nav-link" data-scroll-target="#problem-2"><span class="header-section-number">3</span> Problem</a></li>
-  <li><a href="#problem-3" id="toc-problem-3" class="nav-link" data-scroll-target="#problem-3"><span class="header-section-number">4</span> Problem</a></li>
+  <li><a href="#calculate-the-population-proportion" id="toc-calculate-the-population-proportion" class="nav-link active" data-scroll-target="#calculate-the-population-proportion"><span class="header-section-number">1</span> Calculate the Population Proportion</a></li>
+  <li><a href="#problem" id="toc-problem" class="nav-link" data-scroll-target="#problem"><span class="header-section-number">2</span> Problem</a></li>
+  <li><a href="#problem-1" id="toc-problem-1" class="nav-link" data-scroll-target="#problem-1"><span class="header-section-number">3</span> Problem</a></li>
+  <li><a href="#problem-2" id="toc-problem-2" class="nav-link" data-scroll-target="#problem-2"><span class="header-section-number">4</span> Problem</a></li>
+  <li><a href="#problem-3" id="toc-problem-3" class="nav-link" data-scroll-target="#problem-3"><span class="header-section-number">5</span> Problem</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://srvanderplas.github.io/stat1080/issues/new" class="toc-action"><i class="bi bi-git"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -424,7 +454,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">8.3.p - Class Activity</h1>
+<h1 class="title">11.1.p Activity - Parameters and Estimates</h1>
+<p class="subtitle lead">Solutions</p>
 </div>
 
 
@@ -441,137 +472,110 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
+<p>Be sure to run the following code chunk before continuing with the assignment.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stat1080r)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>Dr.&nbsp;Vanderplas loves playing the <strong>World’s Greatest Board Game: The Settlers of Catan</strong> (see <a href="https://www.catan.com/" class="uri">https://www.catan.com/</a>). Without going into details, success in the game requires the collection of resources that are obtained based on the sum total of two dice rolls. The following code creates a dataframe of all possible combinations of two dice rolls.</p>
+<p>We are going to use the <code>colleges</code> dataset from the <code>stat1080r</code> package for this assignment. Run the following code to make that dataset available in your environment.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a vector of possible dice rolls</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>dice <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a dataframe of all possible two dice rolls.</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>two_dice <span class="ot">&lt;-</span> <span class="fu">crossing</span>(<span class="at">dice_1 =</span> dice, <span class="at">dice_2 =</span> dice)</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(two_dice)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>colleges <span class="ot">&lt;-</span> stat1080r<span class="sc">::</span>colleges</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>This dataset contains 831 American colleges that:</p>
+<ul>
+<li>Offer four-year degree programs</li>
+<li>Have more than 2,000 students</li>
+<li>Have endowments larger than $10 million</li>
+</ul>
+<p>We are going to call this group the population of “large four-year schools”. Note that this population does NOT represent ALL schools of higher education in the United States, but rather the “population of interest”. We wish to explore the proportion of “public” schools within this population.</p>
+<section id="calculate-the-population-proportion" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Calculate the Population Proportion</h1>
+<p>Rarely do we have access to all the observations in our population. Normally, we must take a much smaller sample of observations to get insight into our population. However, in this case, we are able to calculate the population parameter of interest (which we will call <span class="math inline">\(p\)</span>) by calculating the proportion of public schools in the dataset. Please use a tidyverse <code>summarize()</code> statement to calculate the population proportion of public schools.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>pop_p <span class="ot">&lt;-</span> colleges <span class="sc">|&gt;</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">mean_public =</span> <span class="fu">mean</span>(public)) <span class="sc">|&gt;</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(mean_public) <span class="sc">|&gt;</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">round</span>(<span class="dv">2</span>)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>pop_p</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 2
-  dice_1 dice_2
-   &lt;int&gt;  &lt;int&gt;
-1      1      1
-2      1      2
-3      1      3
-4      1      4
-5      1      5
-6      1      6</code></pre>
+<pre><code>[1] 0.62</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span>(two_dice)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 2
-  dice_1 dice_2
-   &lt;int&gt;  &lt;int&gt;
-1      6      1
-2      6      2
-3      6      3
-4      6      4
-5      6      5
-6      6      6</code></pre>
-</div>
-</div>
-<section id="problem" class="level1" data-number="1">
-<h1 data-number="1"><span class="header-section-number">1</span> Problem</h1>
-<p>Using the <code>two_dice</code> dataframe, create a new variable called <code>dice_sum</code> which represents the sum of the two dice rolls. Add this variable to <code>two_dice</code>.</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>two_dice <span class="ot">&lt;-</span> two_dice <span class="sc">|&gt;</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">dice_sum =</span> dice_1 <span class="sc">+</span> dice_2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
-<section id="problem-1" class="level1" data-number="2">
+<section id="problem" class="level1" data-number="2">
 <h1 data-number="2"><span class="header-section-number">2</span> Problem</h1>
-<p>The following code summarizes the <code>two_dice</code> dataframe. The first column represents the total number of dice roll combinations that hit each possible number. The second column represents the proportion of dice roll combinations for each possible number.</p>
+<p>Now suppose that we did not know this population parameter and we needed to estimate it by taking a sample of 50 large four-year schools and determining the proportion of those schools that are public institutions. We will call this sample proportion <span class="math inline">\(\bar{X}\)</span>.</p>
+<p>Using the population proportion, please calculate the expected value and standard error of <span class="math inline">\(\bar{X}\)</span>. Note that your answer should be a function of <code>pop_p</code> as calculated in the previous problem.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Uncomment after completing the previous problem part.</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>two_dice_sum <span class="ot">&lt;-</span> two_dice <span class="sc">|&gt;</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(dice_sum) <span class="sc">|&gt;</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">count =</span> <span class="fu">n</span>()) <span class="sc">|&gt;</span> <span class="co"># Count number of rows for each number</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">|&gt;</span> <span class="co"># Stop doing things by number</span></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">prop =</span> count <span class="sc">/</span> <span class="fu">sum</span>(count)) <span class="sc">|&gt;</span> <span class="co"># Divide each count by the total.</span></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(dice_sum) <span class="co"># Order rows by dice quantity.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>e_x <span class="ot">&lt;-</span> pop_p</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>s_x <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(pop_p <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> pop_p) <span class="sc">/</span> <span class="dv">50</span>)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>e_x</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.62</code></pre>
 </div>
-<p>Using <code>two_dice_sum</code>, make a ggplot using both <code>geom_point</code> and <code>geom_path()</code> that shows the probability of each possible roll combination.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>s_x</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.06864401</code></pre>
+</div>
+</div>
+</section>
+<section id="problem-1" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Problem</h1>
+<p>The provided function takes a sample of 50 colleges without replacement from the <code>colleges</code> dataset and calculates a sample proportion. Using that function, please use the <code>replicate()</code> function to simulate 1,000 sample proportions. Then make a histogram (think <code>geom_histogram</code>) and decide based on the shape of the histogram whether the simulated proportions appear to follow a normal distribution. If the answer is “yes”, then that means that a sample size of 50 was enough for the central limit theorem to work in this case.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(two_dice_sum, <span class="fu">aes</span>(<span class="at">x =</span> dice_sum, <span class="at">y =</span> prop)) <span class="sc">+</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_path</span>() <span class="sc">+</span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">2</span>, <span class="dv">12</span>, <span class="dv">1</span>)) <span class="sc">+</span></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">panel.grid.minor.x =</span> <span class="fu">element_blank</span>())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The argument n determines the number of colleges to sample. </span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>get_public_college <span class="ot">&lt;-</span> <span class="cf">function</span>(n){</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  colleges <span class="sc">|&gt;</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">slice_sample</span>(<span class="at">n =</span> n) <span class="sc">|&gt;</span> </span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">mean_public =</span> <span class="fu">mean</span>(public)) <span class="sc">|&gt;</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">pull</span>(mean_public)</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>sample_prop <span class="ot">&lt;-</span> <span class="fu">replicate</span>(<span class="dv">1000</span>, <span class="fu">get_public_college</span>(<span class="dv">50</span>))</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a><span class="fu">data.frame</span>(<span class="at">x =</span> sample_prop) <span class="sc">|&gt;</span></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> x)) <span class="sc">+</span> </span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="fl">0.02</span>), <span class="at">col =</span> <span class="st">"black"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="24-discrete-probability-sol_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="31-parameters-estimates-sol_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
-<p>You should observe that seven is the most common total, while two and twelve are the least likely.</p>
+<p><em>This does appear to follow a normal distribution. It looks as though our sample size is large enough for the central limit theorem to apply.</em></p>
 </section>
-<section id="problem-2" class="level1" data-number="3">
-<h1 data-number="3"><span class="header-section-number">3</span> Problem</h1>
-<p>The following is a custom function that extracts the probability of rolling a single quantity <code>q</code> between two and 12, based on our <code>two_dice_sum</code> dataset. It also shows an example of its use for finding the probability of rolling a four and a one (with one being an impossible quantity) in the game.</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>get_dice_prob <span class="ot">&lt;-</span> <span class="cf">function</span>(q, <span class="at">t_data =</span> two_dice_sum) {</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Probability is zero if the input value is not between 2 and 12</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="sc">!</span>(q <span class="sc">%in%</span> <span class="dv">2</span><span class="sc">:</span><span class="dv">12</span>)) {</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="dv">0</span>)</span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># If between 2 and 12, then grab the value from the dataset.</span></span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>  t_data <span class="sc">|&gt;</span></span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(dice_sum <span class="sc">==</span> q) <span class="sc">|&gt;</span></span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">pull</span>(prop)</span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a><span class="fu">get_dice_prob</span>(<span class="dv">4</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.08333333</code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">get_dice_prob</span>(<span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0</code></pre>
-</div>
-</div>
-<p>Now suppose that Dr.&nbsp;Vanderplas must roll a 12 in order to obtain a key resource and win the game. She is playing the expansion pack with five other people, which means that she has six chances for a 12 to be rolled on the next turn. What is the probability that AT LEAST ONE 12 is rolled on the next six rolls? Note that the <code>get_dice_prob()</code> function should be part of your answer. <strong>This answer will go in your Canvas quiz.</strong></p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the probability of rolling NOT a 12.</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>prob_no_12 <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">-</span> <span class="fu">get_dice_prob</span>(<span class="dv">12</span>)</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="co"># THEN, calculate the probability of rolling at least one 12.</span></span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">-</span> prob_no_12<span class="sc">^</span><span class="dv">6</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.1555124</code></pre>
-</div>
-</div>
-</section>
-<section id="problem-3" class="level1" data-number="4">
+<section id="problem-2" class="level1" data-number="4">
 <h1 data-number="4"><span class="header-section-number">4</span> Problem</h1>
-<p>Now suppose that Dr.&nbsp;Vanderplas still needs a 12 and rolls the dice one at a time. The first die she rolls is a six. What is the probability that the sum of both dice will be 12, given that the first die is a six? <strong>This answer will go in your Canvas quiz.</strong></p>
+<p>We know that our “population” contains more public universities than private universities. Using the normal approximation, what is the probability that a sample of 50 would lead us to the opposite conclusion? In other words, what is the probability that your sample will have a proportion of less than 0.5? Answer this using the simulated values from the previous problem.</p>
+<p>Please calculate your answer twice: once where you INCLUDE values that are exactly equal to 0.5, and once where you EXCLUDE values that are exactly equal to 0.5</p>
+<p>Remember that your answer will only match the Canvas quiz if you use the <code>set.seed()</code> function that was provided in the previous code chunk.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">/</span> <span class="dv">6</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(sample_prop <span class="sc">&lt;</span> <span class="fl">0.5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.1666667</code></pre>
+<pre><code>[1] 0.029</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Just to prove it, though...</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(two_dice, dice_1<span class="sc">==</span><span class="dv">6</span>) <span class="sc">|&gt;</span></span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">dice_sum =</span> dice_1 <span class="sc">+</span> dice_2) <span class="sc">|&gt;</span></span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">prob_12 =</span> <span class="fu">mean</span>(dice_sum <span class="sc">==</span> <span class="dv">12</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(sample_prop <span class="sc">&lt;=</span> <span class="fl">0.5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 1 × 1
-  prob_12
-    &lt;dbl&gt;
-1   0.167</code></pre>
+<pre><code>[1] 0.053</code></pre>
 </div>
 </div>
-<p><em>If we know a six has already been rolled, then the probability that she rolls a 12 is the same as the probability that the second die she rolls is a six, which is simply 1/6.</em></p>
+</section>
+<section id="problem-3" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Problem</h1>
+<p>Now use the normal approximation to calculate the same probability. Your answer should make use of the <code>pnorm()</code> function, as well as the expected value and standard error we calculated earlier in the assignment. Your answer should be only one line of code.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="fl">0.5</span>, e_x, s_x)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.04021906</code></pre>
+</div>
+</div>
+<p>Note that your normal approximation answer should fall between the two simulated proportions you calculated earlier.</p>
 
 
 </section>

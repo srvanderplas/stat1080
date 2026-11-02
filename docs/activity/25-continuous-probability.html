@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>10.2.p - Random Variables – STAT 1080 - Fall 2026</title>
+<title>9.1.a - Class Activity – STAT 1080 - Fall 2026</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -114,9 +114,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 
 
-<meta property="og:title" content="10.2.p - Random Variables – STAT 1080 - Fall 2026">
+<meta property="og:title" content="9.1.a - Class Activity – STAT 1080 - Fall 2026">
 <meta property="og:description" content="Homepage for STAT 1080 - Data and the Stories They Tell.">
-<meta property="og:image" content="https://srvanderplas.github.io/stat1080/lab/29-rv_files/figure-html/unnamed-chunk-11-1.png">
+<meta property="og:image" content="https://srvanderplas.github.io/stat1080/activity/25-continuous-probability_files/figure-html/unnamed-chunk-6-1.png">
 <meta property="og:site_name" content="STAT 1080 - Fall 2026">
 <meta property="og:image:height" content="960">
 <meta property="og:image:width" content="1344">
@@ -411,21 +411,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="header-section-number">1</span> Introduction</a></li>
-  <li><a href="#casino-night" id="toc-casino-night" class="nav-link" data-scroll-target="#casino-night"><span class="header-section-number">2</span> Casino Night</a></li>
-  <li><a href="#game-1" id="toc-game-1" class="nav-link" data-scroll-target="#game-1"><span class="header-section-number">3</span> Game 1</a>
-  <ul class="collapse">
-  <li><a href="#create-a-random-variable" id="toc-create-a-random-variable" class="nav-link" data-scroll-target="#create-a-random-variable"><span class="header-section-number">3.1</span> Create a Random Variable</a></li>
-  <li><a href="#calculate-expected-value-standard-error" id="toc-calculate-expected-value-standard-error" class="nav-link" data-scroll-target="#calculate-expected-value-standard-error"><span class="header-section-number">3.2</span> Calculate Expected Value &amp; Standard Error</a></li>
-  <li><a href="#normal-approximation" id="toc-normal-approximation" class="nav-link" data-scroll-target="#normal-approximation"><span class="header-section-number">3.3</span> Normal Approximation</a></li>
-  </ul></li>
-  <li><a href="#game-2" id="toc-game-2" class="nav-link" data-scroll-target="#game-2"><span class="header-section-number">4</span> Game 2</a>
-  <ul class="collapse">
-  <li><a href="#create-a-random-variable-1" id="toc-create-a-random-variable-1" class="nav-link" data-scroll-target="#create-a-random-variable-1"><span class="header-section-number">4.1</span> Create a Random Variable</a></li>
-  <li><a href="#calculate-expected-value-standard-error-1" id="toc-calculate-expected-value-standard-error-1" class="nav-link" data-scroll-target="#calculate-expected-value-standard-error-1"><span class="header-section-number">4.2</span> Calculate Expected Value &amp; Standard Error</a></li>
-  <li><a href="#normal-approximation-1" id="toc-normal-approximation-1" class="nav-link" data-scroll-target="#normal-approximation-1"><span class="header-section-number">4.3</span> Normal Approximation</a></li>
-  </ul></li>
-  <li><a href="#simulation" id="toc-simulation" class="nav-link" data-scroll-target="#simulation"><span class="header-section-number">5</span> Simulation</a></li>
+  <li><a href="#problem" id="toc-problem" class="nav-link active" data-scroll-target="#problem"><span class="header-section-number">1</span> Problem</a></li>
+  <li><a href="#problem-1" id="toc-problem-1" class="nav-link" data-scroll-target="#problem-1"><span class="header-section-number">2</span> Problem</a></li>
+  <li><a href="#problem-2" id="toc-problem-2" class="nav-link" data-scroll-target="#problem-2"><span class="header-section-number">3</span> Problem</a></li>
+  <li><a href="#problem-3" id="toc-problem-3" class="nav-link" data-scroll-target="#problem-3"><span class="header-section-number">4</span> Problem</a></li>
+  <li><a href="#problem-4" id="toc-problem-4" class="nav-link" data-scroll-target="#problem-4"><span class="header-section-number">5</span> Problem</a></li>
+  <li><a href="#problem-5" id="toc-problem-5" class="nav-link" data-scroll-target="#problem-5"><span class="header-section-number">6</span> Problem</a></li>
+  <li><a href="#problem-6" id="toc-problem-6" class="nav-link" data-scroll-target="#problem-6"><span class="header-section-number">7</span> Problem</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://srvanderplas.github.io/stat1080/issues/new" class="toc-action"><i class="bi bi-git"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -435,7 +427,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">10.2.p - Random Variables</h1>
+<h1 class="title">9.1.a - Class Activity</h1>
 </div>
 
 
@@ -452,145 +444,120 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>Be sure to run the following code before continuing with the assignment.</p>
+<p>Be sure to run the following code chunk before proceeding with your analysis.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stat1080r)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(patchwork) <span class="co"># for making certain side-by-side plots. </span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<section id="introduction" class="level1" data-number="1">
-<h1 data-number="1"><span class="header-section-number">1</span> Introduction</h1>
-<p>As a review, suppose we define the following random variable.</p>
+<p>This assignment will use the <code>patient_hawkes</code> dataset from the <code>stat1080r</code> package. As always, you can use <code>head(patient_hawkes)</code> to observe the first six rows of this dataset. If you want the dataset to show up in your global environment (i.e., so it appears in the upper-right corner of your Rstudio), you can run the following chunk of code, which copies the dataset from the package to your global environment.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">sum</span>(<span class="fu">sample</span>(<span class="fu">c</span>(<span class="dv">3</span>, <span class="sc">-</span><span class="dv">1</span>), <span class="at">size =</span> <span class="dv">50</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>, <span class="at">prob =</span> <span class="fu">c</span>(<span class="dv">1</span> <span class="sc">/</span> <span class="dv">3</span>, <span class="dv">2</span> <span class="sc">/</span> <span class="dv">3</span>)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Not required for analysis, but may make the exploration of the data </span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># more convienent. </span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(patient_hawkes, <span class="at">package=</span><span class="st">"stat1080r"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>Note that this random variable represents the sum total of a sample size of 50. This is different than a random variable representing a single observation. In this case, we would calculate the expected value and standard error of the expected value as follows:</p>
+<p>Remember also that you can get a sense of what variables exist in this dataset by running <code>?patient_hawkes</code> in your console. This will open a help page in the lower-right corner of Rstudio.</p>
+<section id="problem" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Problem</h1>
+<p>Write tidyverse code that assigns all male cholesterol values to a vector. Do the same for all female cholesterol values. Note that you will need to use the <code>filter()</code> and <code>pull()</code> functions from the tidyverse to create these two vectors, which you should name <code>male_c</code> and <code>female_c</code>.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Expected value</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>e_y <span class="ot">&lt;-</span> <span class="dv">50</span> <span class="sc">*</span> ((<span class="dv">3</span> <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">/</span> <span class="dv">3</span>)) <span class="sc">+</span> (<span class="sc">-</span><span class="dv">1</span> <span class="sc">*</span> (<span class="dv">2</span> <span class="sc">/</span> <span class="dv">3</span>)))</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Standard error</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>s_y <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="dv">50</span>) <span class="sc">*</span> (<span class="dv">3</span> <span class="sc">+</span> <span class="dv">1</span>) <span class="sc">*</span> <span class="fu">sqrt</span>((<span class="dv">1</span> <span class="sc">/</span> <span class="dv">3</span>) <span class="sc">*</span> (<span class="dv">2</span> <span class="sc">/</span> <span class="dv">3</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="do">## male_c &lt;- #...#</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="do">## female_c &lt;- #...#</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>We could then use the normal approximation to calculate the probability of obtaining a value greater than 20 as follows.</p>
+<p>After creating these vectors, please report the number of female observations in Canvas.</p>
+</section>
+<section id="problem-1" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Problem</h1>
+<p>We will define “healthy” cholesterol as anyone with a cholesterol value less than or equal to 200, though we should note that actual health is more complicated than any single number. With that in mind, what is the proportion of men in our sample that have healthy cholesterol? How about the proportion of females with healthy cholesterol? You should calculate these proportions using the <code>mean()</code> function.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">-</span> <span class="fu">pnorm</span>(<span class="dv">20</span>, <span class="at">mean =</span> e_y, <span class="at">sd =</span> s_y)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.4012937</code></pre>
-</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Males</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co">#...#</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Females</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co">#...#</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
-<section id="casino-night" class="level1" data-number="2">
-<h1 data-number="2"><span class="header-section-number">2</span> Casino Night</h1>
-<p>That example in mind, suppose that your friend invites you to a local “Casino Night” in the student center to raise money for a student organization. You do not really care about the organization, but you <em>do</em> care about trying to make as much money as possible. There are two variations of a dice roll game you are interested in. The two games you can play are described below.</p>
-<ul>
-<li><p><strong>Game 1</strong> - You make 5 dollars every time an odd-numbered dice (i.e., 1, 3, or 5) is rolled. You lose 5 dollars otherwise.</p></li>
-<li><p><strong>Game 2</strong> - You make 28 dollars every time you roll the number one. You lose 5 dollars otherwise.</p></li>
-</ul>
-</section>
-<section id="game-1" class="level1" data-number="3">
-<h1 data-number="3"><span class="header-section-number">3</span> Game 1</h1>
-<section id="create-a-random-variable" class="level2" data-number="3.1">
-<h2 data-number="3.1" class="anchored" data-anchor-id="create-a-random-variable"><span class="header-section-number">3.1</span> Create a Random Variable</h2>
-<p>Create a random variable called <code>d_x</code> that represents the sum total of your winnings if you play the first game 100 times.</p>
+<section id="problem-2" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Problem</h1>
+<p>Create a density plot (i.e., <code>geom_density()</code>) that shows the distribution of cholesterol, colored by gender. Do not worry about “optimizing” the plot, meaning that you do not need to change any of the axis labels or make anything look “nice”.</p>
+<p>Do men and women’s cholesterol appear to approximately follow a normal distribution. Explain why or why not.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># There are 3 odd and 3 even sides on a die, so both outcomes are equally likely</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="do">## d_x &lt;- #...#</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#...#</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
+<p><em>Replace this text with your answer. Required if working on your own and optional if discussing in groups.</em></p>
 </section>
-<section id="calculate-expected-value-standard-error" class="level2" data-number="3.2">
-<h2 data-number="3.2" class="anchored" data-anchor-id="calculate-expected-value-standard-error"><span class="header-section-number">3.2</span> Calculate Expected Value &amp; Standard Error</h2>
-<p>Using the equations referenced above, what is the expected value and standard error of the random variable you created? Remember that you are calculating the expected value and standard error for your sum total winnings with 100 dice rolls.</p>
+<section id="problem-3" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Problem</h1>
+<p>After writing your answer, confirm your findings by looking at the qq plots for male and female cholesterol.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="do">## e_d_x &lt;- #...#</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="do">## e_d_x</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="do">##</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="do">## s_d_x &lt;- #...#</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="do">## s_d_x</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</section>
-<section id="normal-approximation" class="level2" data-number="3.3">
-<h2 data-number="3.3" class="anchored" data-anchor-id="normal-approximation"><span class="header-section-number">3.3</span> Normal Approximation</h2>
-<p>Using the normal approximation (HINT: use the <code>pnorm()</code> function.), calculate two different probabilities. The first is the probability of “losing”, defined as not winning any money. The second probability is the probability of “winning big”, defined as the probability of winning at least $100 on 100 dice rolls.</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Probability of "losing"</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co">#...#</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Probability of "winning big"</span></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="co">#...#</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</section>
-</section>
-<section id="game-2" class="level1" data-number="4">
-<h1 data-number="4"><span class="header-section-number">4</span> Game 2</h1>
-<section id="create-a-random-variable-1" class="level2" data-number="4.1">
-<h2 data-number="4.1" class="anchored" data-anchor-id="create-a-random-variable-1"><span class="header-section-number">4.1</span> Create a Random Variable</h2>
-<p>Now create a random variable called <code>p_x</code> that represents the sum total of your winnings if you play 100 rounds of Game 2.</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="do">## p_x &lt;- #...#</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</section>
-<section id="calculate-expected-value-standard-error-1" class="level2" data-number="4.2">
-<h2 data-number="4.2" class="anchored" data-anchor-id="calculate-expected-value-standard-error-1"><span class="header-section-number">4.2</span> Calculate Expected Value &amp; Standard Error</h2>
-<p>What is the expected value and standard error of this variable?</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="do">## e_p_x &lt;- #...#</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="do">## e_p_x</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="do">##</span></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="do">## s_p_x &lt;- #...#</span></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="do">## s_p_x</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</section>
-<section id="normal-approximation-1" class="level2" data-number="4.3">
-<h2 data-number="4.3" class="anchored" data-anchor-id="normal-approximation-1"><span class="header-section-number">4.3</span> Normal Approximation</h2>
-<p>Using the normal approximation, what is the probability that you end up “losing” and “winning big” with Game 2?</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Probability of "losing"</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="co">#...#</span></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Probability of "winning big"</span></span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="co">#...#</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</section>
-</section>
-<section id="simulation" class="level1" data-number="5">
-<h1 data-number="5"><span class="header-section-number">5</span> Simulation</h1>
-<p>The following code shows you how to do ten-thousand Monte Carlo simulations of both Game 1 and Game 2 and plot the distribution of simulated winnings side by side.</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>get_game_1 <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sum</span>(<span class="fu">sample</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="dv">5</span>, <span class="dv">5</span>), <span class="at">size =</span> <span class="dv">100</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>, <span class="at">prob =</span> <span class="fu">c</span>(<span class="fl">0.5</span>, <span class="fl">0.5</span>)))</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>get_game_2 <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sum</span>(<span class="fu">sample</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="dv">5</span>, <span class="dv">28</span>), <span class="at">size =</span> <span class="dv">100</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>, <span class="at">prob =</span> <span class="fu">c</span>(<span class="dv">5</span> <span class="sc">/</span> <span class="dv">6</span>, <span class="dv">1</span> <span class="sc">/</span> <span class="dv">6</span>)))</span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Set a random number seed for reproducibility</span></span>
-<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">90210</span>)</span>
-<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>games <span class="ot">&lt;-</span> <span class="dv">10000</span></span>
-<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>play_game_1 <span class="ot">&lt;-</span> <span class="fu">replicate</span>(games, <span class="fu">get_game_1</span>())</span>
-<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>play_game_2 <span class="ot">&lt;-</span> <span class="fu">replicate</span>(games, <span class="fu">get_game_2</span>())</span>
-<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>t_data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="fu">c</span>(play_game_1, play_game_2),</span>
-<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a>  <span class="at">game =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>), <span class="at">each =</span> games)</span>
-<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Note the use of factor(game) ensures that game, which is a number is </span></span>
-<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a><span class="co"># interpreted as group numbers rather than continuous quantities. </span></span>
-<span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a>t_data <span class="sc">|&gt;</span></span>
-<span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">color =</span> <span class="fu">factor</span>(game))) <span class="sc">+</span></span>
-<span id="cb12-25"><a href="#cb12-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>() <span class="sc">+</span></span>
-<span id="cb12-26"><a href="#cb12-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">0</span>, <span class="at">lty =</span> <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>patient_hawkes <span class="sc">|&gt;</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">sample =</span> cholesterol)) <span class="sc">+</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_qq</span>() <span class="sc">+</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_qq_line</span>() <span class="sc">+</span> </span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> gender)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="29-rv_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="25-continuous-probability_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
-<p>Based on this plot, as well as the answers from the previous problem, which game should you play if you want to maximize your chances of making money? Explain why you made your choice below.</p>
-<p><em>Replace this text with your answer. Optional if discussing in groups and required if working on your own.</em></p>
+<p>Do these qqplots confirm or dispute your previous comments about whether the data approximately follow a normal distribution? Please explain below.</p>
+<p><em>Replace this text with your answer. Required if working on your own and optional if discussing in groups.</em></p>
+</section>
+<section id="problem-4" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Problem</h1>
+<p>We are now going to look at what we call “the distribution of averages”. To obtain this, we will take random samples of size <code>n</code> from our collection of female observations. We will sample the females with replacement, meaning that it is possible for an observation to appear more than once in our sample. The following code chunk defines a function that takes samples of size n, with replacement, and then returns the average value of that sample.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>get_avg <span class="ot">&lt;-</span> <span class="cf">function</span>(x, n){</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mean</span>(<span class="fu">sample</span>(x, <span class="at">size =</span> n, <span class="at">replace =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Example of calling the function to obtain the average of 5 randomly </span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="co"># selected female cholesterol values. (Uncomment once you have successfully</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="co"># created the female_c vector). </span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="do">## get_avg(female_c, n = 5)</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Now the same function, but with a sample of 10</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="do">## get_avg(female_c, n = 10)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Note that you will get a different number every time you run your function since you are doing a random simulation. Please create a vector of 10,000 sample averages for n = 10. Please consult the in-class examples that use the <code>replicate()</code> function for guidance.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>B <span class="ot">&lt;-</span> <span class="dv">10000</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="do">## f_avg &lt;- replicate(#...#)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="problem-5" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> Problem</h1>
+<p>We now want to visualize the distribution of the simulated averages that we created on the previous problem. The following code shows you how to create a density plot of the averages. Note that <code>f_avg</code> is a vector, and not a dataframe. The first line in the code chunk below shows you how to put your vector into a dataframe before trying to use ggplot. This code also makes use of the <code>patchwork</code> package to place two plots side by side.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># No need to change this code, just uncomment after you have created f_avg. </span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="do">## tdf &lt;- data.frame(avg_dist = f_avg)</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="do">##</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="do">## p1 &lt;- tdf |&gt; </span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="do">##   ggplot(aes(x = avg_dist)) + </span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="do">##   geom_density()</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="do">##</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="do">## p2 &lt;- tdf  |&gt; </span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="do">##   ggplot(aes(sample = avg_dist)) + </span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="do">##   geom_qq() + </span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a><span class="do">##   geom_qq_line()</span></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a><span class="do">## p1 + p2</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Does the distribution of averages appear to approximately follow a normal distribution? Does it appear that the distribution of averages are closer to a normal distribution than the original data? Explain why or why not.</p>
+<p><em>Replace this text with your answer. Required if working on your own and optional if discussing in groups.</em></p>
+<p>Note that the fact that the averages have a different distribution than the original cholesterol values is due to a very important theorem in statistics (called the Central Limit Theorem) that we will learn about soon.</p>
+</section>
+<section id="problem-6" class="level1" data-number="7">
+<h1 data-number="7"><span class="header-section-number">7</span> Problem</h1>
+<p>Suppose that the distribution of averages has a mean of 217.8 and a standard deviation of 8.0. Use the normal approximation to estimate the probability that the average cholesterol from a group of 10 women will be <strong>larger</strong> than 200. Your answer should make use of the <code>pnorm()</code> function.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co">#...#</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
 
 
 </section>

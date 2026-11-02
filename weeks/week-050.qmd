@@ -24,7 +24,7 @@ September 28-04, 2026
 
 - [Attendance Quiz 09/28](https://usu.instructure.com/courses/819584/assignments/5292941){target="_blank"}
 - [Tidyverse Programming Basics: Tibbles and `dplyr`](../slides/13-tidyverse-dplyr.qmd){target="_blank"}
-- [5.1.i Covid Case Exploration](https://usu.instructure.com/courses/819584/quizzes/1462923){target="_blank"} (Canvas) [qmd template](../activity/_13-covid-tidyverse.qmd) [html file](../activity/13-covid-tidyverse.qmd)
+- [Activity 5.1.i Covid Case Exploration](https://usu.instructure.com/courses/819584/quizzes/1462923){target="_blank"} (Canvas) [qmd template](../activity/_13-covid-tidyverse.qmd) [html file](../activity/13-covid-tidyverse.qmd)
 - Extra Practice: `dplyr` verbs. [qmd template](../lab/_13-dplyr-practice.qmd) [html version](../activity/13-dplyr-practice.qmd) [solutions](../activity/13-dplyr-solutions.qmd)
 
 
@@ -32,13 +32,13 @@ September 28-04, 2026
 
 - [Attendance Quiz 09/30](https://usu.instructure.com/courses/819584/assignments/5292942){target="_blank"}
 - [Tidyverse Programming Basics: Reshaping Data](../slides/14-tidyverse-tidyr.qmd){target="_blank"}
-- [Tidyverse Practice II - Covid](../activity/14-covid-tidyverse2.qmd) [qmd template](../activity/_14-covid-tidyverse2.qmd) [solutions](../activity/14-covid-tidyverse2-solutions.qmd)
+- [Activity 5.2.i - Tidyverse Practice II - Covid](../activity/14-covid-tidyverse2.qmd) [qmd template](../activity/_14-covid-tidyverse2.qmd) [solutions](../activity/14-covid-tidyverse2-solutions.qmd)
 
 
 ## 🎉 Friday 🥳
 
 - [Attendance Quiz 10/02](https://usu.instructure.com/courses/819584/assignments/5292943){target="_blank"}
-- [Lab: Tidyverse Programming](https://usu.instructure.com/courses/819584/modules/items/7928133){target="_blank"} (Canvas) [html file](../lab/15-tidyverse.qmd){target="_blank"} [qmd template](../lab/_15-tidyverse.qmd){target="_blank"}
+- [Lab 5.3.L - Tidyverse Programming](https://usu.instructure.com/courses/819584/modules/items/7928133){target="_blank"} (Canvas) [html file](../lab/15-tidyverse.qmd){target="_blank"} [qmd template](../lab/_15-tidyverse.qmd){target="_blank"}
 
 
 ## Extra Resources/Reading

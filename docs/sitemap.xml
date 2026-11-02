@@ -101,48 +101,16 @@
     <lastmod>2026-07-14T19:58:13.784Z</lastmod>
   </url>
   <url>
-    <loc>https://srvanderplas.github.io/stat1080/lab/31-parameters-estimates.html</loc>
-    <lastmod>2026-11-02T21:18:30.109Z</lastmod>
-  </url>
-  <url>
     <loc>https://srvanderplas.github.io/stat1080/lab/30-rv.html</loc>
     <lastmod>2026-10-28T22:30:38.696Z</lastmod>
-  </url>
-  <url>
-    <loc>https://srvanderplas.github.io/stat1080/lab/29-rv.html</loc>
-    <lastmod>2026-10-30T14:52:44.224Z</lastmod>
   </url>
   <url>
     <loc>https://srvanderplas.github.io/stat1080/lab/27-probability.html</loc>
     <lastmod>2026-10-27T01:20:58.172Z</lastmod>
   </url>
   <url>
-    <loc>https://srvanderplas.github.io/stat1080/lab/26-experimental-design.html</loc>
-    <lastmod>2026-10-26T20:26:20.582Z</lastmod>
-  </url>
-  <url>
-    <loc>https://srvanderplas.github.io/stat1080/lab/25-continuous-probability.html</loc>
-    <lastmod>2026-10-23T01:59:45.679Z</lastmod>
-  </url>
-  <url>
-    <loc>https://srvanderplas.github.io/stat1080/lab/24-discrete-probability.html</loc>
-    <lastmod>2026-10-23T01:59:35.219Z</lastmod>
-  </url>
-  <url>
-    <loc>https://srvanderplas.github.io/stat1080/lab/22-summary-stats.html</loc>
-    <lastmod>2026-10-18T21:36:16.451Z</lastmod>
-  </url>
-  <url>
     <loc>https://srvanderplas.github.io/stat1080/lab/21-effective-data-vis.html</loc>
     <lastmod>2026-10-11T00:56:34.876Z</lastmod>
-  </url>
-  <url>
-    <loc>https://srvanderplas.github.io/stat1080/lab/20-ggplot2-adv.html</loc>
-    <lastmod>2026-10-10T17:55:33.307Z</lastmod>
-  </url>
-  <url>
-    <loc>https://srvanderplas.github.io/stat1080/lab/19-ggplot2.html</loc>
-    <lastmod>2026-10-09T22:45:51.789Z</lastmod>
   </url>
   <url>
     <loc>https://srvanderplas.github.io/stat1080/lab/15-tidyverse.html</loc>
@@ -162,39 +130,75 @@
   </url>
   <url>
     <loc>https://srvanderplas.github.io/stat1080/weeks/week-160.html</loc>
-    <lastmod>2026-11-02T21:33:59.966Z</lastmod>
+    <lastmod>2026-11-02T23:39:20.882Z</lastmod>
   </url>
   <url>
     <loc>https://srvanderplas.github.io/stat1080/weeks/week-140.html</loc>
-    <lastmod>2026-11-02T21:33:59.966Z</lastmod>
+    <lastmod>2026-11-02T23:39:20.882Z</lastmod>
   </url>
   <url>
     <loc>https://srvanderplas.github.io/stat1080/weeks/week-120.html</loc>
-    <lastmod>2026-11-02T21:33:59.966Z</lastmod>
+    <lastmod>2026-11-02T23:39:20.882Z</lastmod>
   </url>
   <url>
     <loc>https://srvanderplas.github.io/stat1080/weeks/week-100.html</loc>
-    <lastmod>2026-11-02T21:33:59.966Z</lastmod>
+    <lastmod>2026-11-02T23:39:20.882Z</lastmod>
   </url>
   <url>
     <loc>https://srvanderplas.github.io/stat1080/weeks/week-090.html</loc>
-    <lastmod>2026-11-02T21:33:59.966Z</lastmod>
+    <lastmod>2026-11-02T23:39:20.882Z</lastmod>
   </url>
   <url>
     <loc>https://srvanderplas.github.io/stat1080/weeks/week-070.html</loc>
-    <lastmod>2026-11-02T21:33:59.966Z</lastmod>
+    <lastmod>2026-11-02T23:39:20.882Z</lastmod>
   </url>
   <url>
     <loc>https://srvanderplas.github.io/stat1080/weeks/week-050.html</loc>
-    <lastmod>2026-11-02T21:33:59.966Z</lastmod>
+    <lastmod>2026-11-02T23:39:20.882Z</lastmod>
   </url>
   <url>
     <loc>https://srvanderplas.github.io/stat1080/weeks/week-030.html</loc>
-    <lastmod>2026-11-02T21:33:59.966Z</lastmod>
+    <lastmod>2026-11-02T23:39:20.882Z</lastmod>
   </url>
   <url>
     <loc>https://srvanderplas.github.io/stat1080/weeks/week-010.html</loc>
-    <lastmod>2026-11-02T21:33:59.966Z</lastmod>
+    <lastmod>2026-11-02T23:39:20.878Z</lastmod>
+  </url>
+  <url>
+    <loc>https://srvanderplas.github.io/stat1080/activity/32-clt.html</loc>
+    <lastmod>2026-11-02T22:48:26.106Z</lastmod>
+  </url>
+  <url>
+    <loc>https://srvanderplas.github.io/stat1080/activity/31-parameters-estimates.html</loc>
+    <lastmod>2026-11-02T21:18:30.109Z</lastmod>
+  </url>
+  <url>
+    <loc>https://srvanderplas.github.io/stat1080/activity/29-rv.html</loc>
+    <lastmod>2026-10-30T14:52:44.224Z</lastmod>
+  </url>
+  <url>
+    <loc>https://srvanderplas.github.io/stat1080/activity/26-experimental-design.html</loc>
+    <lastmod>2026-10-26T20:26:20.582Z</lastmod>
+  </url>
+  <url>
+    <loc>https://srvanderplas.github.io/stat1080/activity/25-continuous-probability.html</loc>
+    <lastmod>2026-10-23T01:59:45.679Z</lastmod>
+  </url>
+  <url>
+    <loc>https://srvanderplas.github.io/stat1080/activity/24-discrete-probability.html</loc>
+    <lastmod>2026-10-23T01:59:35.219Z</lastmod>
+  </url>
+  <url>
+    <loc>https://srvanderplas.github.io/stat1080/activity/22-summary-stats.html</loc>
+    <lastmod>2026-10-18T21:36:16.451Z</lastmod>
+  </url>
+  <url>
+    <loc>https://srvanderplas.github.io/stat1080/activity/20-ggplot2-adv.html</loc>
+    <lastmod>2026-10-10T17:55:33.307Z</lastmod>
+  </url>
+  <url>
+    <loc>https://srvanderplas.github.io/stat1080/activity/19-ggplot2.html</loc>
+    <lastmod>2026-10-09T22:45:51.789Z</lastmod>
   </url>
   <url>
     <loc>https://srvanderplas.github.io/stat1080/activity/17-datasaurus.html</loc>
@@ -269,24 +273,60 @@
     <lastmod>2026-10-11T00:55:18.257Z</lastmod>
   </url>
   <url>
+    <loc>https://srvanderplas.github.io/stat1080/activity/19-ggplot2-sol.html</loc>
+    <lastmod>2026-10-11T00:55:22.573Z</lastmod>
+  </url>
+  <url>
+    <loc>https://srvanderplas.github.io/stat1080/activity/20-ggplot2-adv-sol.html</loc>
+    <lastmod>2026-10-14T18:06:40.598Z</lastmod>
+  </url>
+  <url>
+    <loc>https://srvanderplas.github.io/stat1080/activity/22-summary-stats-sol.html</loc>
+    <lastmod>2026-10-18T21:35:02.995Z</lastmod>
+  </url>
+  <url>
+    <loc>https://srvanderplas.github.io/stat1080/activity/24-discrete-probability-sol.html</loc>
+    <lastmod>2026-10-23T06:08:07.215Z</lastmod>
+  </url>
+  <url>
+    <loc>https://srvanderplas.github.io/stat1080/activity/25-continuous-probability-sol.html</loc>
+    <lastmod>2026-10-26T02:36:20.529Z</lastmod>
+  </url>
+  <url>
+    <loc>https://srvanderplas.github.io/stat1080/activity/26-experimental-design-sol.html</loc>
+    <lastmod>2026-10-26T20:26:20.582Z</lastmod>
+  </url>
+  <url>
+    <loc>https://srvanderplas.github.io/stat1080/activity/29-rv-sol.html</loc>
+    <lastmod>2026-10-30T14:54:45.487Z</lastmod>
+  </url>
+  <url>
+    <loc>https://srvanderplas.github.io/stat1080/activity/31-parameters-estimates-sol.html</loc>
+    <lastmod>2026-11-02T21:13:53.253Z</lastmod>
+  </url>
+  <url>
+    <loc>https://srvanderplas.github.io/stat1080/activity/32-clt-sol.html</loc>
+    <lastmod>2026-11-02T22:49:06.878Z</lastmod>
+  </url>
+  <url>
     <loc>https://srvanderplas.github.io/stat1080/activity/presidency_template.html</loc>
     <lastmod>2026-09-07T19:21:54.227Z</lastmod>
   </url>
   <url>
     <loc>https://srvanderplas.github.io/stat1080/weeks/week-020.html</loc>
-    <lastmod>2026-11-02T21:33:59.966Z</lastmod>
+    <lastmod>2026-11-02T23:39:20.882Z</lastmod>
   </url>
   <url>
     <loc>https://srvanderplas.github.io/stat1080/weeks/week-040.html</loc>
-    <lastmod>2026-11-02T21:33:59.966Z</lastmod>
+    <lastmod>2026-11-02T23:39:20.882Z</lastmod>
   </url>
   <url>
     <loc>https://srvanderplas.github.io/stat1080/weeks/week-060.html</loc>
-    <lastmod>2026-11-02T21:33:59.966Z</lastmod>
+    <lastmod>2026-11-02T23:39:20.882Z</lastmod>
   </url>
   <url>
     <loc>https://srvanderplas.github.io/stat1080/weeks/week-080.html</loc>
-    <lastmod>2026-11-02T21:33:59.966Z</lastmod>
+    <lastmod>2026-11-02T23:39:20.882Z</lastmod>
   </url>
   <url>
     <loc>https://srvanderplas.github.io/stat1080/weeks/week-095.html</loc>
@@ -294,15 +334,15 @@
   </url>
   <url>
     <loc>https://srvanderplas.github.io/stat1080/weeks/week-110.html</loc>
-    <lastmod>2026-11-02T21:33:59.966Z</lastmod>
+    <lastmod>2026-11-02T23:39:20.882Z</lastmod>
   </url>
   <url>
     <loc>https://srvanderplas.github.io/stat1080/weeks/week-130.html</loc>
-    <lastmod>2026-11-02T21:33:59.966Z</lastmod>
+    <lastmod>2026-11-02T23:39:20.882Z</lastmod>
   </url>
   <url>
     <loc>https://srvanderplas.github.io/stat1080/weeks/week-150.html</loc>
-    <lastmod>2026-11-02T21:33:59.966Z</lastmod>
+    <lastmod>2026-11-02T23:39:20.882Z</lastmod>
   </url>
   <url>
     <loc>https://srvanderplas.github.io/stat1080/video-materials/17-visualizing-distributions.html</loc>
@@ -321,48 +361,16 @@
     <lastmod>2026-09-03T20:19:50.529Z</lastmod>
   </url>
   <url>
-    <loc>https://srvanderplas.github.io/stat1080/lab/19-ggplot2-sol.html</loc>
-    <lastmod>2026-10-11T00:55:22.573Z</lastmod>
-  </url>
-  <url>
-    <loc>https://srvanderplas.github.io/stat1080/lab/20-ggplot2-adv-sol.html</loc>
-    <lastmod>2026-10-14T18:06:40.598Z</lastmod>
-  </url>
-  <url>
     <loc>https://srvanderplas.github.io/stat1080/lab/21-effective-data-vis-visual-sol.html</loc>
     <lastmod>2026-10-11T02:32:13.604Z</lastmod>
-  </url>
-  <url>
-    <loc>https://srvanderplas.github.io/stat1080/lab/22-summary-stats-sol.html</loc>
-    <lastmod>2026-10-18T21:35:02.995Z</lastmod>
-  </url>
-  <url>
-    <loc>https://srvanderplas.github.io/stat1080/lab/24-discrete-probability-sol.html</loc>
-    <lastmod>2026-10-23T06:08:07.215Z</lastmod>
-  </url>
-  <url>
-    <loc>https://srvanderplas.github.io/stat1080/lab/25-continuous-probability-sol.html</loc>
-    <lastmod>2026-10-26T02:36:20.529Z</lastmod>
-  </url>
-  <url>
-    <loc>https://srvanderplas.github.io/stat1080/lab/26-experimental-design-sol.html</loc>
-    <lastmod>2026-10-26T20:26:20.582Z</lastmod>
   </url>
   <url>
     <loc>https://srvanderplas.github.io/stat1080/lab/27-probability-sol.html</loc>
     <lastmod>2026-10-27T01:51:22.412Z</lastmod>
   </url>
   <url>
-    <loc>https://srvanderplas.github.io/stat1080/lab/29-rv-sol.html</loc>
-    <lastmod>2026-10-30T14:54:45.487Z</lastmod>
-  </url>
-  <url>
     <loc>https://srvanderplas.github.io/stat1080/lab/30-rv-sol.html</loc>
     <lastmod>2026-10-28T23:12:38.575Z</lastmod>
-  </url>
-  <url>
-    <loc>https://srvanderplas.github.io/stat1080/lab/31-parameters-estimates-sol.html</loc>
-    <lastmod>2026-11-02T21:13:53.253Z</lastmod>
   </url>
   <url>
     <loc>https://srvanderplas.github.io/stat1080/lab/33-clt.html</loc>

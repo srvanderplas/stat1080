@@ -33,14 +33,14 @@ August 31-06, 2026
 
 - [ ] [Attendence Quiz 09/2](https://usu.instructure.com/courses/819584/quizzes/1463708){target="_blank"}
 - [Organizing Data](../slides/02-data.qmd)
-- [ ] [1.2.p Introduction to Data Science](https://usu.instructure.com/courses/819584/assignments/5290558){target="_blank"} (Individual + In Class)
+- [ ] [Activity 1.2.i Introduction to Data Science](https://usu.instructure.com/courses/819584/assignments/5290558){target="_blank"} (Individual + In Class)
 
 
 ## 🎉 Friday 🥳
 
 - [ ] [Attendence Quiz 09/4](https://usu.instructure.com/courses/819584/quizzes/1463709){target="_blank"}
 - [Intro to Programming](../slides/03-prog-intro.qmd){target="_blank"}
-- Programming a Sandwich. [html](../lab/03-programming-sandwich.qmd){target="_blank"},  [qmd template](../lab/_03-programming-sandwich.qmd){target="_blank"} 
+- [Lab 1.3.L - Programming a Sandwich](https://usu.instructure.com/courses/819584/modules/items/7666764){target="_blank"} [qmd template](../lab/_03-programming-sandwich.qmd){target="_blank"}, [html](../lab/03-programming-sandwich.qmd){target="_blank"}
 - [ ] [Getting to Know You Assignment](https://usu.instructure.com/courses/819584/quizzes/1462883){target="_blank"}
 
 

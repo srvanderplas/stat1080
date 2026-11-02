@@ -23,7 +23,7 @@ September 14-20, 2026
 
 - [ ] [Attendance Quiz 09/14](https://usu.instructure.com/courses/819584/assignments/5292838){target="_blank"}
 - Slides: [Correlation and Causation](../slides/07-correlation.qmd)
-- [ ] [3.1.i Spurious Correlation Activity](https://usu.instructure.com/courses/819584/quizzes/1462920){target="_blank"} (Canvas)
+- [ ] [Activity 3.1.i Spurious Correlation Activity](https://usu.instructure.com/courses/819584/quizzes/1462920){target="_blank"} (Canvas)
 
 
 ## 🐪️ Wednesday 🐦‍⬛ 
@@ -35,7 +35,7 @@ September 14-20, 2026
 ## 🎉 Friday 🥳
 
 - [Attendance Quiz 09/18](https://usu.instructure.com/courses/819584/assignments/5292843){target="_blank"}
-- [ ] [3.3.i - Bias and Ethics Activity](https://usu.instructure.com/courses/819584/quizzes/1462857){target="_blank"} (submit in Canvas). [qmd template](../activity/_08-bias-and-ethics.qmd){target="_blank"}, [html file](../activity/08-bias-and-ethics.qmd){target="_blank"}
+- [ ] [Activity 3.3.i - Bias and Ethics Activity](https://usu.instructure.com/courses/819584/quizzes/1462857){target="_blank"} (submit in Canvas). [qmd template](../activity/_08-bias-and-ethics.qmd){target="_blank"}, [html file](../activity/08-bias-and-ethics.qmd){target="_blank"}
 
 
 ## Extra Resources/Reading

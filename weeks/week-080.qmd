@@ -24,7 +24,7 @@ October 19-25, 2026
 
 - [Attendance Quiz 10/19](https://usu.instructure.com/courses/819584/assignments/5292963){target="_blank"}
 - [Summary Statistics](../slides/22-summary-stats.qmd){target="_blank"}
-- [Activity 8.1.p - Summary Statistics](https://usu.instructure.com/courses/819584/quizzes/1462889){target="_blank"}, [quarto](../lab/_22-summary-stats.qmd){target="_blank"}, [html](../lab/22-summary-stats.qmd){target="_blank"}
+- [Activity 8.1.i - Summary Statistics](https://usu.instructure.com/courses/819584/quizzes/1462889){target="_blank"}, [quarto](../activity/_22-summary-stats.qmd){target="_blank"}, [html](../activity/22-summary-stats.qmd){target="_blank"}
 
 
 ## 🐪️ Wednesday 🐦‍⬛ 
@@ -37,7 +37,7 @@ October 19-25, 2026
 
 - [Attendance Quiz 10/23](https://usu.instructure.com/courses/819584/assignments/5293066){target="_blank"}
 - [Discrete Probability](../slides/24-discrete-prob.qmd){target="_blank"}
-- [Activity 8.3.p - Discrete Probability](https://usu.instructure.com/courses/819584/quizzes/1462850){targert="_blank"}, [quarto](../lab/_24-discrete-probability.qmd){target="_blank"}, [html](../lab/24-discrete-probability.qmd){target="_blank"}, [visual solutions](../lab/24-discrete-probability-sol.qmd){target="_blank"}
+- [Activity 8.3.i - Discrete Probability](https://usu.instructure.com/courses/819584/quizzes/1462850){targert="_blank"}, [quarto](../activity/_24-discrete-probability.qmd){target="_blank"}, [html](../activity/24-discrete-probability.qmd){target="_blank"}, [visual solutions](../activity/24-discrete-probability-sol.qmd){target="_blank"}
 
 
 

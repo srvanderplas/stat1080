@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>10.2.p - Random Variables Solutions – STAT 1080 - Fall 2026</title>
+<title>11.2.i Activity - Central Limit Theorem – STAT 1080 - Fall 2026</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -113,13 +113,39 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
 
-<meta property="og:title" content="10.2.p - Random Variables Solutions – STAT 1080 - Fall 2026">
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<meta property="og:title" content="11.2.i Activity - Central Limit Theorem – STAT 1080 - Fall 2026">
 <meta property="og:description" content="Homepage for STAT 1080 - Data and the Stories They Tell.">
-<meta property="og:image" content="https://srvanderplas.github.io/stat1080/lab/29-rv-sol_files/figure-html/unnamed-chunk-11-1.png">
 <meta property="og:site_name" content="STAT 1080 - Fall 2026">
-<meta property="og:image:height" content="960">
-<meta property="og:image:width" content="1344">
 </head>
 
 <body class="nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
@@ -411,21 +437,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="header-section-number">1</span> Introduction</a></li>
-  <li><a href="#casino-night" id="toc-casino-night" class="nav-link" data-scroll-target="#casino-night"><span class="header-section-number">2</span> Casino Night</a></li>
-  <li><a href="#game-1" id="toc-game-1" class="nav-link" data-scroll-target="#game-1"><span class="header-section-number">3</span> Game 1</a>
-  <ul class="collapse">
-  <li><a href="#create-a-random-variable" id="toc-create-a-random-variable" class="nav-link" data-scroll-target="#create-a-random-variable"><span class="header-section-number">3.1</span> Create a Random Variable</a></li>
-  <li><a href="#calculate-expected-value-standard-error" id="toc-calculate-expected-value-standard-error" class="nav-link" data-scroll-target="#calculate-expected-value-standard-error"><span class="header-section-number">3.2</span> Calculate Expected Value &amp; Standard Error</a></li>
-  <li><a href="#normal-approximation" id="toc-normal-approximation" class="nav-link" data-scroll-target="#normal-approximation"><span class="header-section-number">3.3</span> Normal Approximation</a></li>
-  </ul></li>
-  <li><a href="#game-2" id="toc-game-2" class="nav-link" data-scroll-target="#game-2"><span class="header-section-number">4</span> Game 2</a>
-  <ul class="collapse">
-  <li><a href="#create-a-random-variable-1" id="toc-create-a-random-variable-1" class="nav-link" data-scroll-target="#create-a-random-variable-1"><span class="header-section-number">4.1</span> Create a Random Variable</a></li>
-  <li><a href="#calculate-expected-value-standard-error-1" id="toc-calculate-expected-value-standard-error-1" class="nav-link" data-scroll-target="#calculate-expected-value-standard-error-1"><span class="header-section-number">4.2</span> Calculate Expected Value &amp; Standard Error</a></li>
-  <li><a href="#normal-approximation-1" id="toc-normal-approximation-1" class="nav-link" data-scroll-target="#normal-approximation-1"><span class="header-section-number">4.3</span> Normal Approximation</a></li>
-  </ul></li>
-  <li><a href="#simulation" id="toc-simulation" class="nav-link" data-scroll-target="#simulation"><span class="header-section-number">5</span> Simulation</a></li>
+  <li><a href="#problem" id="toc-problem" class="nav-link active" data-scroll-target="#problem"><span class="header-section-number">1</span> Problem</a></li>
+  <li><a href="#problem-1" id="toc-problem-1" class="nav-link" data-scroll-target="#problem-1"><span class="header-section-number">2</span> Problem</a></li>
+  <li><a href="#problem-2" id="toc-problem-2" class="nav-link" data-scroll-target="#problem-2"><span class="header-section-number">3</span> Problem</a></li>
+  <li><a href="#problem-3" id="toc-problem-3" class="nav-link" data-scroll-target="#problem-3"><span class="header-section-number">4</span> Problem</a></li>
+  <li><a href="#problem-4" id="toc-problem-4" class="nav-link" data-scroll-target="#problem-4"><span class="header-section-number">5</span> Problem</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://srvanderplas.github.io/stat1080/issues/new" class="toc-action"><i class="bi bi-git"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -435,7 +451,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">10.2.p - Random Variables Solutions</h1>
+<h1 class="title">11.2.i Activity - Central Limit Theorem</h1>
 </div>
 
 
@@ -452,163 +468,122 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>Be sure to run the following code before continuing with the assignment.</p>
+<p>Be sure to run the following code chunk before continuing with the assignment.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stat1080r)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<section id="introduction" class="level1" data-number="1">
-<h1 data-number="1"><span class="header-section-number">1</span> Introduction</h1>
-<p>As a review, suppose we define the following random variable.</p>
+<p>We are going to use the <code>colleges</code> dataset from the <code>stat1080r</code> package for this assignment. Run the following code to make that dataset available in your environment.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">sum</span>(<span class="fu">sample</span>(<span class="fu">c</span>(<span class="dv">3</span>, <span class="sc">-</span><span class="dv">1</span>), <span class="at">size =</span> <span class="dv">50</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>, <span class="at">prob =</span> <span class="fu">c</span>(<span class="dv">1</span> <span class="sc">/</span> <span class="dv">3</span>, <span class="dv">2</span> <span class="sc">/</span> <span class="dv">3</span>)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>colleges <span class="ot">&lt;-</span> stat1080r<span class="sc">::</span>colleges</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>Note that this random variable represents the sum total of a sample size of 50. This is different than a random variable representing a single observation. In this case, we would calculate the expected value and standard error of the expected value as follows:</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Expected value</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>e_y <span class="ot">&lt;-</span> <span class="dv">50</span> <span class="sc">*</span> ((<span class="dv">3</span> <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">/</span> <span class="dv">3</span>)) <span class="sc">+</span> (<span class="sc">-</span><span class="dv">1</span> <span class="sc">*</span> (<span class="dv">2</span> <span class="sc">/</span> <span class="dv">3</span>)))</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Standard error</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>s_y <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="dv">50</span>) <span class="sc">*</span> (<span class="dv">3</span> <span class="sc">+</span> <span class="dv">1</span>) <span class="sc">*</span> <span class="fu">sqrt</span>((<span class="dv">1</span> <span class="sc">/</span> <span class="dv">3</span>) <span class="sc">*</span> (<span class="dv">2</span> <span class="sc">/</span> <span class="dv">3</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<p>We could then use the normal approximation to calculate the probability of obtaining a value greater than 20 as follows.</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">-</span> <span class="fu">pnorm</span>(<span class="dv">20</span>, <span class="at">mean =</span> e_y, <span class="at">sd =</span> s_y)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.4012937</code></pre>
-</div>
-</div>
-</section>
-<section id="casino-night" class="level1" data-number="2">
-<h1 data-number="2"><span class="header-section-number">2</span> Casino Night</h1>
-<p>That example in mind, suppose that your friend invites you to a local “Casino Night” in the student center to raise money for a student organization. You do not really care about the organization, but you <em>do</em> care about trying to make as much money as possible. There are two variations of a dice roll game you are interested in. The two games you can play are described below.</p>
+<p>This dataset contains 831 American colleges that:</p>
 <ul>
-<li><p><strong>Game 1</strong> - You make 5 dollars every time an odd-numbered dice (i.e., 1, 3, or 5) is rolled. You lose 5 dollars otherwise.</p></li>
-<li><p><strong>Game 2</strong> - You make 28 dollars every time you roll the number one. You lose 5 dollars otherwise.</p></li>
+<li>Offer four-year degree programs</li>
+<li>Have more than 2,000 students</li>
+<li>Have endowments larger than $10 million</li>
 </ul>
-</section>
-<section id="game-1" class="level1" data-number="3">
-<h1 data-number="3"><span class="header-section-number">3</span> Game 1</h1>
-<section id="create-a-random-variable" class="level2" data-number="3.1">
-<h2 data-number="3.1" class="anchored" data-anchor-id="create-a-random-variable"><span class="header-section-number">3.1</span> Create a Random Variable</h2>
-<p>Create a random variable called <code>d_x</code> that represents the sum total of your winnings if you play the first game 100 times.</p>
+<p>We are going to call this group the population of “large four-year schools”. Note that this population does NOT represent ALL schools of higher education in the United States, but rather the “population of interest”. We wish to explore the average endowment size of schools within this population.</p>
+<section id="problem" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Problem</h1>
+<p>Rarely do we have access to all the observations in our population. Normally, we must take a much smaller sample of observations to get insight into our population. However, in this case, we are able to calculate the population parameter of interest (which we will call <span class="math inline">\(\mu\)</span>), which is the average size of a university endowment. Please use a tidyverse <code>summarize()</code> statement to calculate the population average endowment size. Use the endowment size at the end of the fiscal year for this calculation.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># There are 3 odd and 3 even sides on a die, so both outcomes are equally likely</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>d_x <span class="ot">&lt;-</span> <span class="fu">sum</span>(<span class="fu">sample</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="dv">5</span>, <span class="dv">5</span>), <span class="at">size =</span> <span class="dv">100</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>, <span class="at">prob =</span> <span class="fu">c</span>(<span class="fl">0.5</span>, <span class="fl">0.5</span>)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="do">## pop_mu &lt;- colleges |&gt;</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="do">##   summarize(#...#) |&gt;</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="do">##   pull(#...#)</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="do">##</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="do">## pop_mu</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
+<p>Note that the result is less than one, but it is NOT a proportion — it represents billions of dollars. Thus, a value of 0.5 in this context does not mean a 50% chance of “yes”, but rather means an endowment size of $500 million.</p>
 </section>
-<section id="calculate-expected-value-standard-error" class="level2" data-number="3.2">
-<h2 data-number="3.2" class="anchored" data-anchor-id="calculate-expected-value-standard-error"><span class="header-section-number">3.2</span> Calculate Expected Value &amp; Standard Error</h2>
-<p>Using the equations referenced above, what is the expected value and standard error of the random variable you created? Remember that you are calculating the expected value and standard error for your sum total winnings with 100 dice rolls.</p>
+<section id="problem-1" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Problem</h1>
+<p>Remember that the expected value of a sample average is equal to the population average. This means that the expected value of a sample size of <code>n</code> schools will be equal to <code>pop_mu</code>, regardless of the value of <code>n</code>.</p>
+<p>Unlike with proportions, where the standard error relies on the calculation <span class="math inline">\(\sqrt{p*(1-p)/n}\)</span>, the standard error of a sample average (when the population standard deviation (<span class="math inline">\(\sigma\)</span>) is known) is <span class="math inline">\(\frac{\sigma}{\sqrt{n}}\)</span>. In other words, the standard error for our samples can be written in R as:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>e_d_x <span class="ot">&lt;-</span> <span class="dv">100</span> <span class="sc">*</span> (<span class="sc">-</span><span class="dv">5</span> <span class="sc">*</span> <span class="fl">0.5</span> <span class="sc">+</span> <span class="dv">5</span> <span class="sc">*</span> <span class="fl">0.5</span>)</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>e_d_x</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>pop_sd <span class="ot">&lt;-</span> colleges <span class="sc">|&gt;</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">sd_endow =</span> <span class="fu">sd</span>(endowment_end)) <span class="sc">|&gt;</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(sd_endow)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">10</span> <span class="co"># replace with your sample size.</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>s_x <span class="ot">&lt;-</span> pop_sd <span class="sc">/</span> <span class="fu">sqrt</span>(n) </span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>s_x</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0</code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>s_d_x <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="dv">100</span>) <span class="sc">*</span> (<span class="dv">5</span> <span class="sc">+</span> <span class="dv">5</span>) <span class="sc">*</span> <span class="fu">sqrt</span>(<span class="fl">0.5</span> <span class="sc">*</span> <span class="fl">0.5</span>) </span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>s_d_x</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 50</code></pre>
+<pre><code>[1] 1.098603</code></pre>
 </div>
 </div>
-</section>
-<section id="normal-approximation" class="level2" data-number="3.3">
-<h2 data-number="3.3" class="anchored" data-anchor-id="normal-approximation"><span class="header-section-number">3.3</span> Normal Approximation</h2>
-<p>Using the normal approximation, calculate two different probabilities. The first is the probability of “losing”, defined as not winning any money. The second probability is the probability of “winning big”, defined as the probability of winning at least $100 on 100 dice rolls.</p>
+<p>This in mind, please calculate the standard error of the average endowment size when the sample size is 100. How large is the standard error of a sample size of 100 relative to a sample size of 10? Calculate this as a percentage. Note that sample code is provided for this calculation, assuming you assign the standard error for a sample size of 100 to the variable <code>s_x_100</code>.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Probability of "losing"</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="dv">0</span>, <span class="at">mean =</span> e_d_x, <span class="at">sd =</span> s_d_x)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.5</code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Probability of "winning big"</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">-</span> <span class="fu">pnorm</span>(<span class="dv">100</span>, <span class="at">mean =</span> e_d_x, <span class="at">sd =</span> s_d_x)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.02275013</code></pre>
-</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">#...#</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Code to calculate the relative difference between the two standard errors. </span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="do">## (s_x_100 / s_x) * 100</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
-</section>
-<section id="game-2" class="level1" data-number="4">
-<h1 data-number="4"><span class="header-section-number">4</span> Game 2</h1>
-<section id="create-a-random-variable-1" class="level2" data-number="4.1">
-<h2 data-number="4.1" class="anchored" data-anchor-id="create-a-random-variable-1"><span class="header-section-number">4.1</span> Create a Random Variable</h2>
-<p>Now create a random variable called <code>p_x</code> that represents the sum total of your winnings if you play 100 rounds of Game 2.</p>
+<section id="problem-2" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Problem</h1>
+<p>The provided function takes a sample of 50 colleges without replacement from the <code>colleges</code> dataset and calculates a sample average endowment. Using that function, please use the <code>replicate()</code> function to simulate 1,000 sample averages for sample sizes of 10, 100, and 200 respectively. The provided code will then let you compare histograms for the original observation and each of the sample averages.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>p_x <span class="ot">&lt;-</span> <span class="fu">sum</span>(<span class="fu">sample</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="dv">5</span>, <span class="dv">28</span>), <span class="at">size =</span> <span class="dv">100</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>, <span class="at">prob =</span> <span class="fu">c</span>(<span class="dv">5</span> <span class="sc">/</span> <span class="dv">6</span>, <span class="dv">1</span> <span class="sc">/</span> <span class="dv">6</span>)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The argument n determines the number of colleges to sample. </span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>get_public_college <span class="ot">&lt;-</span> <span class="cf">function</span>(n){</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  colleges <span class="sc">|&gt;</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">slice_sample</span>(<span class="at">n =</span> n) <span class="sc">|&gt;</span> </span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">mean_endow =</span> <span class="fu">mean</span>(endowment_end)) <span class="sc">|&gt;</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">pull</span>(mean_endow)</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>) <span class="co"># set seed for reproducibility</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="do">## sample_avg_10 &lt;- #...#</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="do">## sample_avg_100 &lt;- #...#</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="do">## sample_avg_200 &lt;- #...#</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Uncomment this code once you have completed lines 94-96. </span></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a><span class="do">## data.frame(value = c(colleges |&gt; pull(endowment_end), </span></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a><span class="do">##                      sample_avg_10, </span></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a><span class="do">##                      sample_avg_100,</span></span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a><span class="do">##                      sample_avg_200),</span></span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a><span class="do">##            name = c(rep("original", nrow(colleges)),</span></span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a><span class="do">##                     rep("n = 10", length(sample_avg_10)),</span></span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a><span class="do">##                     rep("n = 100", length(sample_avg_100)),</span></span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a><span class="do">##                     rep("n = 200", length(sample_avg_200)))) |&gt;</span></span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a><span class="do">##   mutate(name = factor(name, levels = c("original", "n = 10", </span></span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a><span class="do">##                                         "n = 100", "n = 200"))) |&gt;</span></span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a><span class="do">##   ggplot(aes(x = value)) + </span></span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a><span class="do">##   geom_histogram(breaks = seq(0, 100, 0.1), color = "black") + </span></span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a><span class="do">##   coord_cartesian(xlim = c(0, 10)) + </span></span>
+<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a><span class="do">##   facet_wrap(~name, ncol = 1, scales = "free_y") </span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
+<p>Note that the x-axis scale has been restricted to omit some of the largest original values. For example, there are 15 colleges with endowments larger than 10 billion dollars that are not reflected in these histograms, with the largest endowment being $50.75 billion.</p>
+<p>What do you notice about the shape of the histograms as the sample size increases? Please discuss this with a partner and/or write your answer below.</p>
+<p><em>Replace this text with your answer. Optional if discussing in groups and required if working on your own.</em></p>
 </section>
-<section id="calculate-expected-value-standard-error-1" class="level2" data-number="4.2">
-<h2 data-number="4.2" class="anchored" data-anchor-id="calculate-expected-value-standard-error-1"><span class="header-section-number">4.2</span> Calculate Expected Value &amp; Standard Error</h2>
-<p>What is the expected value and standard error of this variable?</p>
+<section id="problem-3" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Problem</h1>
+<p>The following code calculates the 90th percentile endowment size for schools.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>e_p_x <span class="ot">&lt;-</span> (<span class="sc">-</span><span class="dv">5</span> <span class="sc">*</span> (<span class="dv">5</span> <span class="sc">/</span> <span class="dv">6</span>) <span class="sc">+</span> <span class="dv">28</span> <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">/</span> <span class="dv">6</span>)) <span class="sc">*</span> <span class="dv">100</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>e_p_x</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>pop_q90 <span class="ot">&lt;-</span> colleges <span class="sc">|&gt;</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">q90_endow =</span> <span class="fu">quantile</span>(endowment_end, <span class="fl">0.9</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(q90_endow) <span class="sc">|&gt;</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unname</span>()</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>pop_q90</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 50</code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>s_p_x <span class="ot">&lt;-</span> (<span class="dv">28</span> <span class="sc">+</span> <span class="dv">5</span>) <span class="sc">*</span> <span class="fu">sqrt</span>((<span class="dv">1</span> <span class="sc">/</span> <span class="dv">6</span>) <span class="sc">*</span> (<span class="dv">5</span> <span class="sc">/</span> <span class="dv">6</span>)) <span class="sc">*</span> <span class="fu">sqrt</span>(<span class="dv">100</span>)</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>s_p_x</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 122.9837</code></pre>
+<pre><code>[1] 1.45</code></pre>
 </div>
 </div>
-</section>
-<section id="normal-approximation-1" class="level2" data-number="4.3">
-<h2 data-number="4.3" class="anchored" data-anchor-id="normal-approximation-1"><span class="header-section-number">4.3</span> Normal Approximation</h2>
-<p>Using the normal approximation, what is the probability that you end up “losing” and “winning big” with Game 2?</p>
+<p>Calculate the proportion of sample averages from a sample size of 100 that exceed this 90th percentile (HINT: You should be using the variable <code>sample_avg_100</code> and the <code>mean()</code> function to answer this question).</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Probability of "losing"</span></span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="dv">0</span>, <span class="at">mean =</span> e_p_x, <span class="at">sd =</span> s_p_x)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.3421664</code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Probability of "winning big"</span></span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">-</span> <span class="fu">pnorm</span>(<span class="dv">100</span>, <span class="at">mean =</span> e_p_x, <span class="at">sd =</span> s_p_x)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.3421664</code></pre>
-</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co">#...#</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
-</section>
-<section id="simulation" class="level1" data-number="5">
-<h1 data-number="5"><span class="header-section-number">5</span> Simulation</h1>
-<p>The following code shows you how to do ten-thousand Monte Carlo simulations of both Game 1 and Game 2 and plot the distribution of simulated winnings side by side.</p>
+<section id="problem-4" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Problem</h1>
+<p>Now repeat the probability calculation using the normal approximation. You should be using the expected value and standard error of a sample size of 100, along with <code>pnorm()</code> to answer this question.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>get_game_1 <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sum</span>(<span class="fu">sample</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="dv">5</span>, <span class="dv">5</span>), <span class="at">size =</span> <span class="dv">100</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>, <span class="at">prob =</span> <span class="fu">c</span>(<span class="fl">0.5</span>, <span class="fl">0.5</span>)))</span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>get_game_2 <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
-<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sum</span>(<span class="fu">sample</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="dv">5</span>, <span class="dv">28</span>), <span class="at">size =</span> <span class="dv">100</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>, <span class="at">prob =</span> <span class="fu">c</span>(<span class="dv">5</span> <span class="sc">/</span> <span class="dv">6</span>, <span class="dv">1</span> <span class="sc">/</span> <span class="dv">6</span>)))</span>
-<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Set a random number seed for reproducibility</span></span>
-<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">90210</span>)</span>
-<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a>games <span class="ot">&lt;-</span> <span class="dv">10000</span></span>
-<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a>play_game_1 <span class="ot">&lt;-</span> <span class="fu">replicate</span>(games, <span class="fu">get_game_1</span>())</span>
-<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a>play_game_2 <span class="ot">&lt;-</span> <span class="fu">replicate</span>(games, <span class="fu">get_game_2</span>())</span>
-<span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-16"><a href="#cb24-16" aria-hidden="true" tabindex="-1"></a>t_data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb24-17"><a href="#cb24-17" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="fu">c</span>(play_game_1, play_game_2),</span>
-<span id="cb24-18"><a href="#cb24-18" aria-hidden="true" tabindex="-1"></a>  <span class="at">game =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>), <span class="at">each =</span> games)</span>
-<span id="cb24-19"><a href="#cb24-19" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb24-20"><a href="#cb24-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-21"><a href="#cb24-21" aria-hidden="true" tabindex="-1"></a>t_data <span class="sc">|&gt;</span></span>
-<span id="cb24-22"><a href="#cb24-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">color =</span> <span class="fu">factor</span>(game))) <span class="sc">+</span></span>
-<span id="cb24-23"><a href="#cb24-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>() <span class="sc">+</span></span>
-<span id="cb24-24"><a href="#cb24-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">0</span>, <span class="at">lty =</span> <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="29-rv-sol_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co">#...#</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-</div>
-</div>
-<p>Based on this plot, as well as the answers from the previous problem, which game should you play if you want to maximize your chances of making money? Explain why you made your choice below.</p>
-<p><em>I would pick Game 2 because a larger portion of the area under the blue density curve is above zero. Further, our previous answers showed me that my probability of losing money was less in Game 2 than in Game 1. At the same time, the probability of “winning big” was larger in Game 2 than in Game 1. It is interesting, however, that Game 2 does have a larger probability of “losing big” (i.e., losing more than 100 dollars) than Game 1. That fact does not change my choice about picking Game 2.</em></p>
+<p>Note that your answer highlights one of the issues with averages: when data are highly right-skewed, meaning that when you have a few observations with substantially higher values than the typical observation, the average value is not representative of the “typical” value. In this case, there is a fairly good chance that our sample average will be larger than 90% of the observed values in our dataset! Averages work best for data that are not so skewed.</p>
 
 
 </section>

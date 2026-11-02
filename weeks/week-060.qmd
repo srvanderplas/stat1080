@@ -21,7 +21,7 @@ October 05-11, 2026
 
 - [Attendance Quiz 10/05](https://usu.instructure.com/courses/819584/assignments/5292944){target="_blank"}
 - [Dates and Times](../slides/16-dates-times.qmd){target="_blank"}
-- [Activity: Dates and Times](https://usu.instructure.com/courses/819584/quizzes/1502123){target="_blank"} [quarto](../activity/_16-lubridate.qmd) [html](../activity/16-lubridate.qmd){target="_blank"}
+- [Activity 6.1.i - Dates and Times](https://usu.instructure.com/courses/819584/quizzes/1502123){target="_blank"} [quarto](../activity/_16-lubridate.qmd) [html](../activity/16-lubridate.qmd){target="_blank"}
 - Extra Practice: Covid Time Series [quarto](../activity/_16-covid-time-series.qmd){target="_blank"} [html](../activity/16-covid-time-series.qmd) [solutions](../activity/16-covid-time-series-sol.qmd){target="_blank"}
 
 
@@ -31,7 +31,7 @@ October 05-11, 2026
 - [Visualizing Data Distributions](../slides/17-vis-dist.qmd){target="_blank"}
 - [Demo: Visualizing Data Distributions](../video-materials/17-visualizing-distributions.qmd){target="_blank"}
 - [Additional Distribution Visualizations: World Cappuccino Index](../slides/17-vis-dist-ex.qmd){target="_blank"}
-- [Activity: Datasaurus](https://usu.instructure.com/courses/819584/quizzes/1462899){target="_blank"} [html](../lab/17-datasaurus.qmd){target="_blank"} [quarto template](../lab/_17-datasaurus.qmd){target="_blank"}
+- [Activity 6.2.i - Datasaurus](https://usu.instructure.com/courses/819584/quizzes/1462899){target="_blank"} [html](../activity/17-datasaurus.qmd){target="_blank"} [quarto template](../activity/_17-datasaurus.qmd){target="_blank"}
 
 
 ## 🎉 Friday 🥳

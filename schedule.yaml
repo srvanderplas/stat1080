@@ -32,11 +32,11 @@ schedule:
     class2: |
         - [ ] [Attendence Quiz 09/2](https://usu.instructure.com/courses/819584/quizzes/1463708){target="_blank"}
         - [Organizing Data](../slides/02-data.qmd)
-        - [ ] [1.2.p Introduction to Data Science](https://usu.instructure.com/courses/819584/assignments/5290558){target="_blank"} (Individual + In Class)
+        - [ ] [Activity 1.2.i Introduction to Data Science](https://usu.instructure.com/courses/819584/assignments/5290558){target="_blank"} (Individual + In Class)
     class3: |
         - [ ] [Attendence Quiz 09/4](https://usu.instructure.com/courses/819584/quizzes/1463709){target="_blank"}
         - [Intro to Programming](../slides/03-prog-intro.qmd){target="_blank"}
-        - Programming a Sandwich. [html](../lab/03-programming-sandwich.qmd){target="_blank"},  [qmd template](../lab/_03-programming-sandwich.qmd){target="_blank"} 
+        - [Lab 1.3.L - Programming a Sandwich](https://usu.instructure.com/courses/819584/modules/items/7666764){target="_blank"} [qmd template](../lab/_03-programming-sandwich.qmd){target="_blank"}, [html](../lab/03-programming-sandwich.qmd){target="_blank"}
         - [ ] [Getting to Know You Assignment](https://usu.instructure.com/courses/819584/quizzes/1462883){target="_blank"}
     extra: |
         - [R cheat sheets](../demos/r-cheat-sheets.pdf){target="_blank"} - handout from class, but you can reprint them if you lose yours, or keep a digital copy on a tablet if you prefer.
@@ -72,11 +72,11 @@ schedule:
     class2: |
         - [Attendance Quiz 09/09](https://usu.instructure.com/courses/819584/quizzes/1463710){target="_blank"}
         - [Intro to Programming](../slides/05-prog-intro.qmd){target="_blank"}
-        - [2.2.i - Swirl Tutorial](https://usu.instructure.com/courses/819584/quizzes/1462913){target="_blank"}
+        - [Activity 2.2.i - Swirl Tutorial](https://usu.instructure.com/courses/819584/quizzes/1462913){target="_blank"}
     class3: |
         - [Attendance Quiz 09/11](https://usu.instructure.com/courses/819584/quizzes/1463721){target="_blank"}
         - [Intro to RStudio](../slides/06-rstudio.qmd){target="_blank"}
-        - [2.3.i - Swirl Tutorial II](https://usu.instructure.com/courses/819584/quizzes/1462915){target="_blank"}
+        - [Activity 2.3.i - Swirl Tutorial II](https://usu.instructure.com/courses/819584/quizzes/1462915){target="_blank"}
         - [ ] Submit [Project Proposal](https://usu.instructure.com/courses/819584/assignments/5290622){target="_blank"}
     extra: |
       - [How to Name Files](https://www.youtube.com/watch?v=ES1LTlnpLMk&pp=ygUYamVubnkgYnJ5YW4gc3ByZWFkc2hlZXRz){target="_blank"} (YouTube, Jenny Bryan, NormConf) - How to name things so that they are machine readable, human readable, and sorted usefully.
@@ -100,13 +100,13 @@ schedule:
     class1: |
         - [ ] [Attendance Quiz 09/14](https://usu.instructure.com/courses/819584/assignments/5292838){target="_blank"}
         - Slides: [Correlation and Causation](../slides/07-correlation.qmd)
-        - [ ] [3.1.i Spurious Correlation Activity](https://usu.instructure.com/courses/819584/quizzes/1462920){target="_blank"} (Canvas)
+        - [ ] [Activity 3.1.i Spurious Correlation Activity](https://usu.instructure.com/courses/819584/quizzes/1462920){target="_blank"} (Canvas)
     class2: |
         - [Attendance Quiz 09/16](https://usu.instructure.com/courses/819584/assignments/5292841){target="_blank"}        
         - Slides: [Bias and Ethics](../slides/08-bias-ethics.qmd){target="_blank"}
     class3: |
         - [Attendance Quiz 09/18](https://usu.instructure.com/courses/819584/assignments/5292843){target="_blank"}
-        - [ ] [3.3.i - Bias and Ethics Activity](https://usu.instructure.com/courses/819584/quizzes/1462857){target="_blank"} (submit in Canvas). [qmd template](../activity/_08-bias-and-ethics.qmd){target="_blank"}, [html file](../activity/08-bias-and-ethics.qmd){target="_blank"}
+        - [ ] [Activity 3.3.i - Bias and Ethics Activity](https://usu.instructure.com/courses/819584/quizzes/1462857){target="_blank"} (submit in Canvas). [qmd template](../activity/_08-bias-and-ethics.qmd){target="_blank"}, [html file](../activity/08-bias-and-ethics.qmd){target="_blank"}
     extra: |
         - [It's Not About the Bias per se - Kaiser Fung](https://www.junkcharts.com/its-not-about-the-bias-per-se/){target="_blank"}
         - [Causal Inference](https://www.youtube.com/watch?v=gRkUhg9Wb-I){target="_blank"} (YouTube, Dr. David Sontag, MIT OpenCourseWare) - The alternative to correlation -- how to show causality
@@ -127,10 +127,10 @@ schedule:
         - [R programming basics](../slides/10-r-prog.qmd)
     class2: |
         - [Attendance Quiz 09/23](https://usu.instructure.com/courses/819584/assignments/5292935){target="_blank"}
-        - [Lab: R Programming Puzzles](https://usu.instructure.com/courses/819584/modules/items/7928132) (Canvas) [HTML version](../lab/11-r-prog.qmd){target="_blank"} [quarto template](../lab/_11-r-prog.qmd){target="_blank"}
+        - [Lab 4.3.L - R Programming Puzzles](https://usu.instructure.com/courses/819584/modules/items/7928132) (Canvas) [HTML version](../lab/11-r-prog.qmd){target="_blank"} [quarto template](../lab/_11-r-prog.qmd){target="_blank"}
     class3: | 
         - [Attendance Quiz 09/25](https://usu.instructure.com/courses/819584/assignments/5292940){target="_blank"}
-        - [Lab: R Programming Puzzles](https://usu.instructure.com/courses/819584/modules/items/7928132) (Canvas) [HTML version](../lab/11-r-prog.qmd){target="_blank"} [quarto template](../lab/_11-r-prog.qmd){target="_blank"}
+        - [Lab 4.3.L - R Programming Puzzles](https://usu.instructure.com/courses/819584/modules/items/7928132) (Canvas) [HTML version](../lab/11-r-prog.qmd){target="_blank"} [quarto template](../lab/_11-r-prog.qmd){target="_blank"}
     extra: |
         - [Tidyverse vs. Base R](https://www.youtube.com/watch?v=cYu-JKP6fhA){target="_blank"} (YouTube, Susan B.)
         - [Data Rectangling](https://www.youtube.com/watch?v=4MfUCX_KpdE){target="_blank"} (YouTube, Jenny Bryan, Plotcon 2016) - The importance of getting data into the right format.
@@ -153,15 +153,15 @@ schedule:
     class1: |
         - [Attendance Quiz 09/28](https://usu.instructure.com/courses/819584/assignments/5292941){target="_blank"}
         - [Tidyverse Programming Basics: Tibbles and `dplyr`](../slides/13-tidyverse-dplyr.qmd){target="_blank"}
-        - [5.1.i Covid Case Exploration](https://usu.instructure.com/courses/819584/quizzes/1462923){target="_blank"} (Canvas) [qmd template](../activity/_13-covid-tidyverse.qmd) [html file](../activity/13-covid-tidyverse.qmd)
+        - [Activity 5.1.i Covid Case Exploration](https://usu.instructure.com/courses/819584/quizzes/1462923){target="_blank"} (Canvas) [qmd template](../activity/_13-covid-tidyverse.qmd) [html file](../activity/13-covid-tidyverse.qmd)
         - Extra Practice: `dplyr` verbs. [qmd template](../lab/_13-dplyr-practice.qmd) [html version](../activity/13-dplyr-practice.qmd) [solutions](../activity/13-dplyr-solutions.qmd)
     class2: |
         - [Attendance Quiz 09/30](https://usu.instructure.com/courses/819584/assignments/5292942){target="_blank"}
         - [Tidyverse Programming Basics: Reshaping Data](../slides/14-tidyverse-tidyr.qmd){target="_blank"}
-        - [Tidyverse Practice II - Covid](../activity/14-covid-tidyverse2.qmd) [qmd template](../activity/_14-covid-tidyverse2.qmd) [solutions](../activity/14-covid-tidyverse2-solutions.qmd)
+        - [Activity 5.2.i - Tidyverse Practice II - Covid](../activity/14-covid-tidyverse2.qmd) [qmd template](../activity/_14-covid-tidyverse2.qmd) [solutions](../activity/14-covid-tidyverse2-solutions.qmd)
     class3: |
         - [Attendance Quiz 10/02](https://usu.instructure.com/courses/819584/assignments/5292943){target="_blank"}
-        - [Lab: Tidyverse Programming](https://usu.instructure.com/courses/819584/modules/items/7928133){target="_blank"} (Canvas) [html file](../lab/15-tidyverse.qmd){target="_blank"} [qmd template](../lab/_15-tidyverse.qmd){target="_blank"}
+        - [Lab 5.3.L - Tidyverse Programming](https://usu.instructure.com/courses/819584/modules/items/7928133){target="_blank"} (Canvas) [html file](../lab/15-tidyverse.qmd){target="_blank"} [qmd template](../lab/_15-tidyverse.qmd){target="_blank"}
     extra: |
         - [SC Ch 10 - Functions, section 4: Pipes](https://srvanderplas.github.io/stat-computing-r-python/part-gen-prog/02-prog-functions.html#pipes){target="_blank"}
         - [SC Ch 16 - Programming with Data](https://srvanderplas.github.io/stat-computing-r-python/part-gen-prog/07-prog-data.html){target="_blank"} - data explorations worked out with R/tidyverse code. You don't know how to do graphics yet, but hopefully the data operations make sense.
@@ -183,14 +183,14 @@ schedule:
     class1: |
         - [Attendance Quiz 10/05](https://usu.instructure.com/courses/819584/assignments/5292944){target="_blank"}
         - [Dates and Times](../slides/16-dates-times.qmd){target="_blank"}
-        - [Activity: Dates and Times](https://usu.instructure.com/courses/819584/quizzes/1502123){target="_blank"} [quarto](../activity/_16-lubridate.qmd) [html](../activity/16-lubridate.qmd){target="_blank"}
+        - [Activity 6.1.i - Dates and Times](https://usu.instructure.com/courses/819584/quizzes/1502123){target="_blank"} [quarto](../activity/_16-lubridate.qmd) [html](../activity/16-lubridate.qmd){target="_blank"}
         - Extra Practice: Covid Time Series [quarto](../activity/_16-covid-time-series.qmd){target="_blank"} [html](../activity/16-covid-time-series.qmd) [solutions](../activity/16-covid-time-series-sol.qmd){target="_blank"}
     class2: |
         - [Attendance Quiz 10/07](https://usu.instructure.com/courses/819584/assignments/5292945){target="_blank"}
         - [Visualizing Data Distributions](../slides/17-vis-dist.qmd){target="_blank"}
         - [Demo: Visualizing Data Distributions](../video-materials/17-visualizing-distributions.qmd){target="_blank"}
         - [Additional Distribution Visualizations: World Cappuccino Index](../slides/17-vis-dist-ex.qmd){target="_blank"}
-        - [Activity: Datasaurus](https://usu.instructure.com/courses/819584/quizzes/1462899){target="_blank"} [html](../lab/17-datasaurus.qmd){target="_blank"} [quarto template](../lab/_17-datasaurus.qmd){target="_blank"}
+        - [Activity 6.2.i - Datasaurus](https://usu.instructure.com/courses/819584/quizzes/1462899){target="_blank"} [html](../activity/17-datasaurus.qmd){target="_blank"} [quarto template](../activity/_17-datasaurus.qmd){target="_blank"}
     class3: |
         - Fall Break
     extra: |
@@ -213,11 +213,11 @@ schedule:
     class1: |
         - [Attendance Quiz 10/12](https://usu.instructure.com/courses/819584/assignments/5292946){target="_blank"}
         - [Data Visualization with `ggplot2`](../slides/19-ggplot2.qmd){target="_blank"}
-        - [Activity 7.1.p - Introduction to `ggplot2`](https://usu.instructure.com/courses/819584/quizzes/1462912){target="_blank"} [qmd template](../lab/_19-ggplot2.qmd) [html](../lab/19-ggplot2.qmd)
+        - [Activity 7.1.i - Introduction to `ggplot2`](https://usu.instructure.com/courses/819584/quizzes/1462912){target="_blank"} [qmd template](../activity/_19-ggplot2.qmd) [html](../activity/19-ggplot2.qmd)
     class2: |
         - [Attendance Quiz 10/14](https://usu.instructure.com/courses/819584/assignments/5292947){target="_blank"}
         - [Advanced `ggplot2` and Data Vis Principles](../slides/20-adv-ggplot2.qmd){target="_blank"}
-        - [Activity 7.2.p - Advanced `ggplot2`](https://usu.instructure.com/courses/819584/quizzes/1462843) [qmd template](../lab/_20-ggplot2-adv.qmd), [html](../lab/20-ggplot2-adv.qmd), [solutions](../lab/20-ggplot2-adv-sol.qmd)
+        - [Activity 7.2.i - Advanced `ggplot2`](https://usu.instructure.com/courses/819584/quizzes/1462843) [qmd template](../activity/_20-ggplot2-adv.qmd), [html](../activity/20-ggplot2-adv.qmd), [solutions](../activity/20-ggplot2-adv-sol.qmd)
     class3: |
         - [Attendance Quiz 10/16](https://usu.instructure.com/courses/819584/assignments/5292962){target="_blank"}
         - [Lab: Effective Data Visualization](https://usu.instructure.com/courses/819584/modules/items/7952204){target="_blank"} [qmd template](../lab/_21-effective-data-vis.qmd){target="_blank"}, [html](../lab/21-effective-data-vis.qmd), [visual solutions](../lab/21-effective-data-vis-visual-sol.qmd)
@@ -248,14 +248,14 @@ schedule:
     class1: |
         - [Attendance Quiz 10/19](https://usu.instructure.com/courses/819584/assignments/5292963){target="_blank"}
         - [Summary Statistics](../slides/22-summary-stats.qmd){target="_blank"}
-        - [Activity 8.1.p - Summary Statistics](https://usu.instructure.com/courses/819584/quizzes/1462889){target="_blank"}, [quarto](../lab/_22-summary-stats.qmd){target="_blank"}, [html](../lab/22-summary-stats.qmd){target="_blank"}
+        - [Activity 8.1.i - Summary Statistics](https://usu.instructure.com/courses/819584/quizzes/1462889){target="_blank"}, [quarto](../activity/_22-summary-stats.qmd){target="_blank"}, [html](../activity/22-summary-stats.qmd){target="_blank"}
     class2: |
         - [Attendance Quiz 10/21](https://usu.instructure.com/courses/819584/assignments/5293065){target="_blank"}
         - [Visualizing Personal Data](../slides/23-vis-personal-data.qmd){target="_blank"}
     class3: |
         - [Attendance Quiz 10/23](https://usu.instructure.com/courses/819584/assignments/5293066){target="_blank"}
         - [Discrete Probability](../slides/24-discrete-prob.qmd){target="_blank"}
-        - [Activity 8.3.p - Discrete Probability](https://usu.instructure.com/courses/819584/quizzes/1462850){targert="_blank"}, [quarto](../lab/_24-discrete-probability.qmd){target="_blank"}, [html](../lab/24-discrete-probability.qmd){target="_blank"}, [visual solutions](../lab/24-discrete-probability-sol.qmd){target="_blank"}
+        - [Activity 8.3.i - Discrete Probability](https://usu.instructure.com/courses/819584/quizzes/1462850){targert="_blank"}, [quarto](../activity/_24-discrete-probability.qmd){target="_blank"}, [html](../activity/24-discrete-probability.qmd){target="_blank"}, [visual solutions](../activity/24-discrete-probability-sol.qmd){target="_blank"}
 
         
   - week: 9
@@ -272,11 +272,11 @@ schedule:
     class1: |
         - [Attendance Quiz 10/26](https://usu.instructure.com/courses/819584/assignments/5293067){target="_blank"}
         - [Continuous Probability](../slides/25-cts-prob.qmd){target="_blank"}
-        - [Activity 9.1.a Continuous Probability](https://usu.instructure.com/courses/819584/quizzes/1462841){target="_blank"}, [qmd template](../lab/_25-continuous-probability.qmd){target="_blank"}, [html](../lab/25-continuous-probability.qmd){target="_blank"}, [solutions](../lab/25-continuous-probability-sol.qmd){target="_blank"}
+        - [Activity 9.1.i Continuous Probability](https://usu.instructure.com/courses/819584/quizzes/1462841){target="_blank"}, [qmd template](../activity/_25-continuous-probability.qmd){target="_blank"}, [html](../activity/25-continuous-probability.qmd){target="_blank"}
     class2: |
         - [Attendance Quiz 10/28](https://usu.instructure.com/courses/819584/assignments/5293068){target="_blank"}
         - [Connecting Data and Probability](../slides/26-data-prob.qmd){target="_blank"}
-        - [Activity 9.2.a Experimental Design](https://usu.instructure.com/courses/819584/quizzes/1504937/){target="_blank"} [quarto](../lab/_26-experimental-design.qmd){target="_blank"}, [html](../lab/26-experimental-design.qmd){target="_blank"}
+        - [Activity 9.2.i Experimental Design](https://usu.instructure.com/courses/819584/quizzes/1504937/){target="_blank"} [quarto](../activity/_26-experimental-design.qmd){target="_blank"}, [html](../activity/26-experimental-design.qmd){target="_blank"}
     class3: |
         - [Attendance Quiz 10/30](https://usu.instructure.com/courses/819584/assignments/5293102){target="_blank"}
         - [Lab: Probability](https://usu.instructure.com/courses/819584/quizzes/1504998){target="_blank"} [quarto template](../lab/_27-probability.qmd){target="_blank"}, [html](../lab/27-probability.qmd){target="_blank"}
@@ -300,7 +300,7 @@ schedule:
     class2: |
         - [Attendance Quiz 11/04](https://usu.instructure.com/courses/819584/assignments/5293124/){target="_blank"}
         - [Random Variables](../slides/28-rv.qmd){target="_blank"}
-        - [Activity 10.2.a Random Variables](https://usu.instructure.com/courses/819584/quizzes/1462908){target="_blank"} [quarto template](../lab/_29-rv.qmd){target="_blank"}, [html](../lab/29-rv.qmd){target="_blank"}
+        - [Activity 10.2.i Random Variables](https://usu.instructure.com/courses/819584/quizzes/1462908){target="_blank"} [quarto template](../activity/_29-rv.qmd){target="_blank"}, [html](../activity/29-rv.qmd){target="_blank"}
     class3: |
         - [Attendance Quiz 11/06](https://usu.instructure.com/courses/819584/assignments/5293125/){target="_blank"}
         - [Lab 10.3.L: Random Variables](https://usu.instructure.com/courses/819584/quizzes/1505545) [quarto template](../lab/_30-rv.qmd){target="_blank"}, [HTML](../lab/30-rv.qmd){target="_blank"}
@@ -319,13 +319,13 @@ schedule:
     class1: |
         - [Attendance Quiz 11/09](https://usu.instructure.com/courses/819584/assignments/5293126/){target="_blank"}
         - [Parameters and Estimates](../slides/31-param-est.qmd){target="_blank"}
-        - [11.1.p Activity - Parameters and Estimates](https://usu.instructure.com/courses/819584/quizzes/1462862){target="_blank"} [quarto template](../lab/_31-parameters-estimates.qmd){target="_blank"}, [html](../lab/31-parameters-estimates.qmd){target="_blank"}
+        - [11.1.i Activity - Parameters and Estimates](https://usu.instructure.com/courses/819584/quizzes/1462862){target="_blank"} [quarto template](../activity/_31-parameters-estimates.qmd){target="_blank"}, [html](../activity/31-parameters-estimates.qmd){target="_blank"}
     class2: |
         - [Attendance Quiz 11/11](https://usu.instructure.com/courses/819584/assignments/5293127/){target="_blank"}
         - [Central Limit Theorem](../slides/32-clt.qmd){target="_blank"}
     class3: |
         - [Attendance Quiz 11/13](https://usu.instructure.com/courses/819584/assignments/5293128/){target="_blank"}
-        - [Lab: CLT](../lab/33-clt.qmd){target="_blank"}
+        - [Lab: CLT](../lab/_33-clt.qmd){target="_blank"}
     extra: |
         - Start Looking at [Homework 3](https://usu.instructure.com/courses/819584/assignments/5290613){target="_blank"}, [qmd template](../homework/_homework03.qmd), [html](../homework/homework03.qmd), [visual solutions](../homework/homework03-visual-sol.qmd)
         - [Population and Estimated Parameters, Clearly Explained](https://www.youtube.com/watch?v=vikkiwjQqfU){target="_blank"} - Josh Starmer
@@ -349,7 +349,7 @@ schedule:
         - [Confidence Intervals](../slides/35-ci.qmd){target="_blank"}
     class3: |
         - [Attendance Quiz 11/20](https://usu.instructure.com/courses/819584/assignments/5293131/){target="_blank"}
-        - [Lab: Inference](../lab/36-inference.qmd){target="_blank"}
+        - [Lab: Inference](../lab/_36-inference.qmd){target="_blank"}
     extra: |
         - [Homework 3](https://usu.instructure.com/courses/819584/assignments/5290613){target="_blank"}, [qmd template](../homework/_homework03.qmd), [html](../homework/homework03.qmd), [visual solutions](../homework/homework03-visual-sol.qmd)
         
