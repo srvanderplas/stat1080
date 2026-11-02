@@ -1,0 +1,107 @@
+---
+title: "11.1.p Activity - Parameters and Estimates"
+subtitle: Solutions
+format: html
+number-sections: true
+execute:
+  echo: true   # show code by default
+  warning: false
+  message: false
+---
+
+Be sure to run the following code chunk before continuing with the assignment.  
+
+```{r}
+library(tidyverse)
+library(stat1080r)
+```
+
+We are going to use the `colleges` dataset from the `stat1080r` package for this assignment. Run the following code to make that dataset available in your environment. 
+
+```{r}
+colleges <- stat1080r::colleges
+```
+
+This dataset contains 831 American colleges that: 
+
+- Offer four-year degree programs
+- Have more than 2,000 students
+- Have endowments larger than \$10 million
+
+We are going to call this group the population of "large four-year schools". Note that this population does NOT represent ALL schools of higher education in the United States, but rather the "population of interest". We wish to explore the proportion of "public" schools within this population.  
+
+
+# Calculate the Population Proportion 
+
+Rarely do we have access to all the observations in our population. Normally, we must take a much smaller sample of observations to get insight into our population. However, in this case, we are able to calculate the population parameter of interest (which we will call $p$) by calculating the proportion of public schools in the dataset. Please use a tidyverse `summarize()` statement to calculate the population proportion of public schools. 
+
+```{r}
+pop_p <- colleges |>
+  summarize(mean_public = mean(public)) |>
+  pull(mean_public) |>
+  round(2)
+
+pop_p
+```
+
+# Problem 
+
+Now suppose that we did not know this population parameter and we needed to estimate it by taking a sample of 50 large four-year schools and determining the proportion of those schools that are public institutions. We will call this sample proportion $\bar{X}$. 
+
+Using the population proportion, please calculate the expected value and standard error of $\bar{X}$. Note that your answer should be a function of `pop_p` as calculated in the previous problem. 
+
+```{r}
+e_x <- pop_p
+
+s_x <- sqrt(pop_p * (1 - pop_p) / 50)
+
+e_x
+s_x
+```
+
+# Problem 
+
+The provided function takes a sample of 50 colleges without replacement from the `colleges` dataset and calculates a sample proportion. Using that function, please use the `replicate()` function to simulate 1,000 sample proportions. Then make a histogram (think `geom_histogram`) and decide based on the shape of the histogram whether the simulated proportions appear to follow a normal distribution. If the answer is "yes", then that means that a sample size of 50 was enough for the central limit theorem to work in this case. 
+
+```{r}
+# The argument n determines the number of colleges to sample. 
+get_public_college <- function(n){
+  colleges |>
+    slice_sample(n = n) |> 
+    summarize(mean_public = mean(public)) |>
+    pull(mean_public)
+}
+
+set.seed(123)
+sample_prop <- replicate(1000, get_public_college(50))
+
+data.frame(x = sample_prop) |>
+  ggplot(aes(x = x)) + 
+  geom_histogram(breaks = seq(0, 1, 0.02), col = "black")
+```
+
+*This does appear to follow a normal distribution. It looks as though our sample size is large enough for the central limit theorem to apply.*
+
+# Problem 
+
+We know that our "population" contains more public universities than private universities. Using the normal approximation, what is the probability that a sample of 50 would lead us to the opposite conclusion? In other words, what is the probability that your sample will have a proportion of less than 0.5? Answer this using the simulated values from the previous problem. 
+
+Please calculate your answer twice: once where you INCLUDE values that are exactly equal to 0.5, and once where you EXCLUDE values that are exactly equal to 0.5
+
+Remember that your answer will only match the Canvas quiz if you use the `set.seed()` function that was provided in the previous code chunk. 
+
+```{r}
+mean(sample_prop < 0.5)
+mean(sample_prop <= 0.5)
+```
+
+# Problem 
+
+Now use the normal approximation to calculate the same probability. Your answer should make use of the `pnorm()` function, as well as the expected value and standard error we calculated earlier in the assignment. Your answer should be only one line of code. 
+
+```{r}
+pnorm(0.5, e_x, s_x)
+```
+
+Note that your normal approximation answer should fall between the two simulated proportions you calculated earlier. 
+

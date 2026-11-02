@@ -106,7 +106,7 @@ schedule:
         - Slides: [Bias and Ethics](../slides/08-bias-ethics.qmd){target="_blank"}
     class3: |
         - [Attendance Quiz 09/18](https://usu.instructure.com/courses/819584/assignments/5292843){target="_blank"}
-        - [ ] [3.3.i - Bias and Ethics Activity](https://usu.instructure.com/courses/819584/quizzes/1462857){target="_blank"} (submit in Canvas). [qmd template](../lab/_08-bias-and-ethics.qmd){target="_blank"}, [html file](../lab/08-bias-and-ethics.qmd){target="_blank"}
+        - [ ] [3.3.i - Bias and Ethics Activity](https://usu.instructure.com/courses/819584/quizzes/1462857){target="_blank"} (submit in Canvas). [qmd template](../activity/_08-bias-and-ethics.qmd){target="_blank"}, [html file](../activity/08-bias-and-ethics.qmd){target="_blank"}
     extra: |
         - [It's Not About the Bias per se - Kaiser Fung](https://www.junkcharts.com/its-not-about-the-bias-per-se/){target="_blank"}
         - [Causal Inference](https://www.youtube.com/watch?v=gRkUhg9Wb-I){target="_blank"} (YouTube, Dr. David Sontag, MIT OpenCourseWare) - The alternative to correlation -- how to show causality
@@ -153,12 +153,12 @@ schedule:
     class1: |
         - [Attendance Quiz 09/28](https://usu.instructure.com/courses/819584/assignments/5292941){target="_blank"}
         - [Tidyverse Programming Basics: Tibbles and `dplyr`](../slides/13-tidyverse-dplyr.qmd){target="_blank"}
-        - [5.1.i Covid Case Exploration](https://usu.instructure.com/courses/819584/quizzes/1462923){target="_blank"} (Canvas) [qmd template](../lab/_13-covid-tidyverse.qmd) [html file](../lab/13-covid-tidyverse.qmd)
-        - Extra Practice: `dplyr` verbs. [qmd template](../lab/_13-dplyr-practice.qmd) [html version](../lab/13-dplyr-practice.qmd) [solutions](../lab/13-dplyr-solutions.qmd)
+        - [5.1.i Covid Case Exploration](https://usu.instructure.com/courses/819584/quizzes/1462923){target="_blank"} (Canvas) [qmd template](../activity/_13-covid-tidyverse.qmd) [html file](../activity/13-covid-tidyverse.qmd)
+        - Extra Practice: `dplyr` verbs. [qmd template](../lab/_13-dplyr-practice.qmd) [html version](../activity/13-dplyr-practice.qmd) [solutions](../activity/13-dplyr-solutions.qmd)
     class2: |
         - [Attendance Quiz 09/30](https://usu.instructure.com/courses/819584/assignments/5292942){target="_blank"}
         - [Tidyverse Programming Basics: Reshaping Data](../slides/14-tidyverse-tidyr.qmd){target="_blank"}
-        - [Tidyverse Practice II - Covid](../lab/14-covid-tidyverse2.qmd) [qmd template](../lab/_14-covid-tidyverse2.qmd) [solutions](../lab/14-covid-tidyverse2-solutions.qmd)
+        - [Tidyverse Practice II - Covid](../activity/14-covid-tidyverse2.qmd) [qmd template](../activity/_14-covid-tidyverse2.qmd) [solutions](../activity/14-covid-tidyverse2-solutions.qmd)
     class3: |
         - [Attendance Quiz 10/02](https://usu.instructure.com/courses/819584/assignments/5292943){target="_blank"}
         - [Lab: Tidyverse Programming](https://usu.instructure.com/courses/819584/modules/items/7928133){target="_blank"} (Canvas) [html file](../lab/15-tidyverse.qmd){target="_blank"} [qmd template](../lab/_15-tidyverse.qmd){target="_blank"}
@@ -183,12 +183,12 @@ schedule:
     class1: |
         - [Attendance Quiz 10/05](https://usu.instructure.com/courses/819584/assignments/5292944){target="_blank"}
         - [Dates and Times](../slides/16-dates-times.qmd){target="_blank"}
-        - [Activity: Dates and Times](https://usu.instructure.com/courses/819584/quizzes/1502123){target="_blank"} [quarto](../lab/_16-lubridate.qmd) [html](../lab/16-lubridate.qmd){target="_blank"}
-        - Extra Practice: Covid Time Series [quarto](../lab/_16-covid-time-series.qmd){target="_blank"} [html](../lab/16-covid-time-series.qmd) [solutions](../lab/16-covid-time-series-sol.qmd){target="_blank"}
+        - [Activity: Dates and Times](https://usu.instructure.com/courses/819584/quizzes/1502123){target="_blank"} [quarto](../activity/_16-lubridate.qmd) [html](../activity/16-lubridate.qmd){target="_blank"}
+        - Extra Practice: Covid Time Series [quarto](../activity/_16-covid-time-series.qmd){target="_blank"} [html](../activity/16-covid-time-series.qmd) [solutions](../activity/16-covid-time-series-sol.qmd){target="_blank"}
     class2: |
         - [Attendance Quiz 10/07](https://usu.instructure.com/courses/819584/assignments/5292945){target="_blank"}
         - [Visualizing Data Distributions](../slides/17-vis-dist.qmd){target="_blank"}
-        - [Demo: Visualizing Data Distributions](../demos/17-visualizing-distributions.qmd){target="_blank"}
+        - [Demo: Visualizing Data Distributions](../video-materials/17-visualizing-distributions.qmd){target="_blank"}
         - [Additional Distribution Visualizations: World Cappuccino Index](../slides/17-vis-dist-ex.qmd){target="_blank"}
         - [Activity: Datasaurus](https://usu.instructure.com/courses/819584/quizzes/1462899){target="_blank"} [html](../lab/17-datasaurus.qmd){target="_blank"} [quarto template](../lab/_17-datasaurus.qmd){target="_blank"}
     class3: |
@@ -203,7 +203,7 @@ schedule:
     end: 2026-10-18
     reading: |
         - [ ] (for Mon) [IDS I Ch 8 - ggplot2](https://rafalab.dfci.harvard.edu/dsbook-part-1/dataviz/ggplot2.html){target="_blank"}    
-        [Explanation of ggplot2 syntax and structure](../demos/19-ggplot2.qmd)
+        [Explanation of ggplot2 syntax and structure](../video-materials/19-ggplot2.qmd)
         - [ ] (for Wed) [IDS I Ch 10 - Data Visualization in Practice](https://rafalab.dfci.harvard.edu/dsbook-part-1/dataviz/dataviz-in-practice.html){target="_blank"}
         - [ ] (for Fri) [IDS I Ch 9 - Data Visualization Principles](https://rafalab.dfci.harvard.edu/dsbook-part-1/dataviz/dataviz-principles.html){target="_blank"}
     prepare: |
@@ -313,12 +313,13 @@ schedule:
         - [ ] (for Mon) [IDS 2 Ch 9.1 - 9.3 - Estimates](https://rafalab.dfci.harvard.edu/dsbook-part-2/inference/estimates-confidence-intervals.html){target="_blank"}
         - [ ] (for Wed) [IDS 2 Ch 8 - Sampling Models and the Central Limit Theorem](https://rafalab.dfci.harvard.edu/dsbook-part-2/prob/sampling-models-and-clt.html){target="_blank"}
     prepare: |
-        - [ ] (for Mon) [Reading Check 11.1](https://usu.instructure.com/courses/819584/quizzes/1506119){target="_blank"}
+        - [ ] (for Mon) [Reading Check 11.1 - Parameters and Estimates](https://usu.instructure.com/courses/819584/quizzes/1506119){target="_blank"}
         - [ ] (for Wed) Reading Check 11.2        
         - Start Looking At [Homework 3](https://usu.instructure.com/courses/819584/assignments/5290613){target="_blank"}, [qmd template](../homework/_homework03.qmd), [html](../homework/homework03.qmd), [visual solutions](../homework/homework03-visual-sol.qmd)
     class1: |
         - [Attendance Quiz 11/09](https://usu.instructure.com/courses/819584/assignments/5293126/){target="_blank"}
         - [Parameters and Estimates](../slides/31-param-est.qmd){target="_blank"}
+        - [11.1.p Activity - Parameters and Estimates](https://usu.instructure.com/courses/819584/quizzes/1462862){target="_blank"} [quarto template](../lab/_31-parameters-estimates.qmd){target="_blank"}, [html](../lab/31-parameters-estimates.qmd){target="_blank"}
     class2: |
         - [Attendance Quiz 11/11](https://usu.instructure.com/courses/819584/assignments/5293127/){target="_blank"}
         - [Central Limit Theorem](../slides/32-clt.qmd){target="_blank"}
@@ -327,6 +328,8 @@ schedule:
         - [Lab: CLT](../lab/33-clt.qmd){target="_blank"}
     extra: |
         - Start Looking at [Homework 3](https://usu.instructure.com/courses/819584/assignments/5290613){target="_blank"}, [qmd template](../homework/_homework03.qmd), [html](../homework/homework03.qmd), [visual solutions](../homework/homework03-visual-sol.qmd)
+        - [Population and Estimated Parameters, Clearly Explained](https://www.youtube.com/watch?v=vikkiwjQqfU){target="_blank"} - Josh Starmer
+        - [Parameter Estimation and Fitting Distributions](https://www.youtube.com/watch?v=7XVA2JRzYoE){target="_blank"} - Steve Brunton
         
   - week: 12
     name: Statistical Inference

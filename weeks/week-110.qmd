@@ -12,7 +12,7 @@ November 09-15, 2026
 
 ## 📐 Prepare for class
 
-- [ ] (for Mon) [Reading Check 11.1](https://usu.instructure.com/courses/819584/quizzes/1506119){target="_blank"}
+- [ ] (for Mon) [Reading Check 11.1 - Parameters and Estimates](https://usu.instructure.com/courses/819584/quizzes/1506119){target="_blank"}
 - [ ] (for Wed) Reading Check 11.2        
 - Start Looking At [Homework 3](https://usu.instructure.com/courses/819584/assignments/5290613){target="_blank"}, [qmd template](../homework/_homework03.qmd), [html](../homework/homework03.qmd), [visual solutions](../homework/homework03-visual-sol.qmd)
 
@@ -21,6 +21,7 @@ November 09-15, 2026
 
 - [Attendance Quiz 11/09](https://usu.instructure.com/courses/819584/assignments/5293126/){target="_blank"}
 - [Parameters and Estimates](../slides/31-param-est.qmd){target="_blank"}
+- [11.1.p Activity - Parameters and Estimates](https://usu.instructure.com/courses/819584/quizzes/1462862){target="_blank"} [quarto template](../lab/_31-parameters-estimates.qmd){target="_blank"}, [html](../lab/31-parameters-estimates.qmd){target="_blank"}
 
 
 ## 🐪️ Wednesday 🐦‍⬛ 
@@ -38,4 +39,6 @@ November 09-15, 2026
 ## Extra Resources/Reading
 
 - Start Looking at [Homework 3](https://usu.instructure.com/courses/819584/assignments/5290613){target="_blank"}, [qmd template](../homework/_homework03.qmd), [html](../homework/homework03.qmd), [visual solutions](../homework/homework03-visual-sol.qmd)
+- [Population and Estimated Parameters, Clearly Explained](https://www.youtube.com/watch?v=vikkiwjQqfU){target="_blank"} - Josh Starmer
+- [Parameter Estimation and Fitting Distributions](https://www.youtube.com/watch?v=7XVA2JRzYoE){target="_blank"} - Steve Brunton
 
