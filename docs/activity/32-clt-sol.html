@@ -440,11 +440,12 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#problem" id="toc-problem" class="nav-link active" data-scroll-target="#problem"><span class="header-section-number">1</span> Problem</a></li>
-  <li><a href="#problem-1" id="toc-problem-1" class="nav-link" data-scroll-target="#problem-1"><span class="header-section-number">2</span> Problem</a></li>
-  <li><a href="#problem-2" id="toc-problem-2" class="nav-link" data-scroll-target="#problem-2"><span class="header-section-number">3</span> Problem</a></li>
-  <li><a href="#problem-3" id="toc-problem-3" class="nav-link" data-scroll-target="#problem-3"><span class="header-section-number">4</span> Problem</a></li>
-  <li><a href="#problem-4" id="toc-problem-4" class="nav-link" data-scroll-target="#problem-4"><span class="header-section-number">5</span> Problem</a></li>
+  <li><a href="#calculating-the-population-parameter" id="toc-calculating-the-population-parameter" class="nav-link active" data-scroll-target="#calculating-the-population-parameter"><span class="header-section-number">1</span> Calculating the Population Parameter</a></li>
+  <li><a href="#calculating-the-standard-error" id="toc-calculating-the-standard-error" class="nav-link" data-scroll-target="#calculating-the-standard-error"><span class="header-section-number">2</span> Calculating the Standard Error</a></li>
+  <li><a href="#sampling-distribution-of-the-sample-average-endowment" id="toc-sampling-distribution-of-the-sample-average-endowment" class="nav-link" data-scroll-target="#sampling-distribution-of-the-sample-average-endowment"><span class="header-section-number">3</span> Sampling Distribution of the Sample Average Endowment</a></li>
+  <li><a href="#problem" id="toc-problem" class="nav-link" data-scroll-target="#problem"><span class="header-section-number">4</span> Problem</a></li>
+  <li><a href="#endowment-sample-percentiles" id="toc-endowment-sample-percentiles" class="nav-link" data-scroll-target="#endowment-sample-percentiles"><span class="header-section-number">5</span> Endowment Sample Percentiles</a></li>
+  <li><a href="#normal-approximations" id="toc-normal-approximations" class="nav-link" data-scroll-target="#normal-approximations"><span class="header-section-number">6</span> Normal Approximations</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://srvanderplas.github.io/stat1080/issues/new" class="toc-action"><i class="bi bi-git"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -488,8 +489,8 @@ window.Quarto = {
 <li>Have endowments larger than $10 million</li>
 </ul>
 <p>We are going to call this group the population of “large four-year schools”. Note that this population does NOT represent ALL schools of higher education in the United States, but rather the “population of interest”. We wish to explore the average endowment size of schools within this population.</p>
-<section id="problem" class="level1" data-number="1">
-<h1 data-number="1"><span class="header-section-number">1</span> Problem</h1>
+<section id="calculating-the-population-parameter" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Calculating the Population Parameter</h1>
 <p>Rarely do we have access to all the observations in our population. Normally, we must take a much smaller sample of observations to get insight into our population. However, in this case, we are able to calculate the population parameter of interest (which we will call <span class="math inline">\(\mu\)</span>), which is the average size of a university endowment. Please use a tidyverse <code>summarize()</code> statement to calculate the population average endowment size. Use the endowment size at the end of the fiscal year for this calculation.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>pop_mu <span class="ot">&lt;-</span> colleges <span class="sc">|&gt;</span></span>
@@ -503,8 +504,8 @@ window.Quarto = {
 </div>
 <p>Note that the result is less than one, but it is NOT a proportion — it represents billions of dollars. Thus, a value of 0.5 in this context does not mean a 50% chance of “yes”, but rather means an endowment size of $500 million.</p>
 </section>
-<section id="problem-1" class="level1" data-number="2">
-<h1 data-number="2"><span class="header-section-number">2</span> Problem</h1>
+<section id="calculating-the-standard-error" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Calculating the Standard Error</h1>
 <p>Remember that the expected value of a sample average is equal to the population average. This means that the expected value of a sample size of <code>n</code> schools will be equal to <code>pop_mu</code>, regardless of the value of <code>n</code>.</p>
 <p>Unlike with proportions, where the standard error relies on the calculation <span class="math inline">\(\sqrt{p*(1-p)/n}\)</span>, the standard error of a sample average (when the population standard deviation (<span class="math inline">\(\sigma\)</span>) is known) is <span class="math inline">\(\frac{\sigma}{\sqrt{n}}\)</span>. In other words, the standard error for our samples can be written in R as:</p>
 <div class="cell">
@@ -541,8 +542,8 @@ window.Quarto = {
 </div>
 <p><em>The standard error of a sample size of 100 is only 31.6% of the standard error of a sample size of 10.</em></p>
 </section>
-<section id="problem-2" class="level1" data-number="3">
-<h1 data-number="3"><span class="header-section-number">3</span> Problem</h1>
+<section id="sampling-distribution-of-the-sample-average-endowment" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Sampling Distribution of the Sample Average Endowment</h1>
 <p>The provided function takes a sample of 50 colleges without replacement from the <code>colleges</code> dataset and calculates a sample average endowment. Using that function, please use the <code>replicate()</code> function to simulate 1,000 sample averages for sample sizes of 10, 100, and 200 respectively. The provided code will then let you compare histograms for the original observation and each of the sample averages.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The argument n determines the number of colleges to sample.</span></span>
@@ -594,8 +595,11 @@ window.Quarto = {
 <p>What do you notice about the shape of the histograms as the sample size increases? Please discuss this with a partner and/or write your answer below.</p>
 <p><em>I notice that the histograms start to look more than more like a normal distribution as the sample size increases. I also notice that the variability in the histograms gets smaller and smaller as the sample size increases.</em></p>
 </section>
-<section id="problem-3" class="level1" data-number="4">
+<section id="problem" class="level1" data-number="4">
 <h1 data-number="4"><span class="header-section-number">4</span> Problem</h1>
+</section>
+<section id="endowment-sample-percentiles" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Endowment Sample Percentiles</h1>
 <p>The following code calculates the 90th percentile endowment size for schools.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>pop_q90 <span class="ot">&lt;-</span> colleges <span class="sc">|&gt;</span></span>
@@ -608,7 +612,7 @@ window.Quarto = {
 <pre><code>[1] 1.45</code></pre>
 </div>
 </div>
-<p>Calculate the proportion of sample averages from a sample size of 100 that exceed this 90th percentile (HINT: You should be using the variable <code>sample_avg_100</code> to answer this question).</p>
+<p>Calculate the proportion of sample averages from a sample size of 100 that exceed this 90th percentile (HINT: You should be using the variable <code>sample_avg_100</code> and the <code>mean()</code> function to answer this question).</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(sample_avg_100 <span class="sc">&gt;</span> pop_q90)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -616,8 +620,8 @@ window.Quarto = {
 </div>
 </div>
 </section>
-<section id="problem-4" class="level1" data-number="5">
-<h1 data-number="5"><span class="header-section-number">5</span> Problem</h1>
+<section id="normal-approximations" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> Normal Approximations</h1>
 <p>Now repeat the probability calculation using the normal approximation. You should be using the expected value and standard error of a sample size of 100, along with <code>pnorm()</code> to answer this question.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">-</span> <span class="fu">pnorm</span>(pop_q90, <span class="at">mean =</span> pop_mu, <span class="at">sd =</span> s_x_100)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>

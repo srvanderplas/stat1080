@@ -29,9 +29,13 @@ This dataset contains 831 American colleges that:
 
 We are going to call this group the population of "large four-year schools". Note that this population does NOT represent ALL schools of higher education in the United States, but rather the "population of interest". We wish to explore the average endowment size of schools within this population. 
 
-# Problem 
+# Calculating the Population Parameter 
 
-Rarely do we have access to all the observations in our population. Normally, we must take a much smaller sample of observations to get insight into our population. However, in this case, we are able to calculate the population parameter of interest (which we will call $\mu$), which is the average size of a university endowment. Please use a tidyverse `summarize()` statement to calculate the population average endowment size. Use the endowment size at the end of the fiscal year for this calculation.
+Rarely do we have access to all the observations in our population. 
+Normally, we must take a much smaller sample of observations to get insight into our population. 
+However, in this case, we are able to calculate the population parameter of interest (which we will call $\mu$), which is the average size of a university endowment. 
+Please use a tidyverse `summarize()` statement to calculate the population average endowment size. 
+Use the endowment size at the end of the fiscal year for this calculation.
 
 ```{r}
 ## pop_mu <- colleges |>
@@ -40,13 +44,17 @@ Rarely do we have access to all the observations in our population. Normally, we
 ##
 ## pop_mu
 ```
-Note that the result is less than one, but it is NOT a proportion — it represents billions of dollars. Thus, a value of 0.5 in this context does not mean a 50% chance of "yes", but rather means an endowment size of \$500 million. 
 
-# Problem 
+Note that the result is less than one, but it is NOT a proportion — it represents billions of dollars.
+Thus, a value of 0.5 in this context does not mean a 50% chance of "yes", but rather means an endowment size of \$500 million. 
 
-Remember that the expected value of a sample average is equal to the population average. This means that the expected value of a sample size of `n` schools will be equal to `pop_mu`, regardless of the value of `n`. 
+# Calculating the Standard Error 
 
-Unlike with proportions, where the standard error relies on the calculation $\sqrt{p*(1-p)/n}$, the standard error of a sample average (when the population standard deviation ($\sigma$) is known) is $\frac{\sigma}{\sqrt{n}}$. In other words, the standard error for our samples can be written in R as: 
+Remember that the expected value of a sample average is equal to the population average. 
+This means that the expected value of a sample size of `n` schools will be equal to `pop_mu`, regardless of the value of `n`. 
+
+Unlike with proportions, where the standard error relies on the calculation $\sqrt{p*(1-p)/n}$, the standard error of a sample average (when the population standard deviation ($\sigma$) is known) is $\frac{\sigma}{\sqrt{n}}$. 
+In other words, the standard error for our samples can be written in R as: 
 
 ```{r}
 pop_sd <- colleges |>
@@ -59,7 +67,10 @@ s_x <- pop_sd / sqrt(n)
 s_x
 ```
 
-This in mind, please calculate the standard error of the average endowment size when the sample size is 100. How large is the standard error of a sample size of 100 relative to a sample size of 10? Calculate this as a percentage. Note that sample code is provided for this calculation, assuming you assign the standard error for a sample size of 100 to the variable `s_x_100`. 
+This in mind, please calculate the standard error of the average endowment size when the sample size is 100. 
+How large is the standard error of a sample size of 100 relative to a sample size of 10? 
+Calculate this as a percentage. 
+Note that sample code is provided for this calculation, assuming you assign the standard error for a sample size of 100 to the variable `s_x_100`. 
 
 ```{r}
 #...#
@@ -69,9 +80,11 @@ This in mind, please calculate the standard error of the average endowment size 
 ```
 
 
-# Problem 
+# Sampling Distribution of the Sample Average Endowment 
 
-The provided function takes a sample of 50 colleges without replacement from the `colleges` dataset and calculates a sample average endowment. Using that function, please use the `replicate()` function to simulate 1,000 sample averages for sample sizes of 10, 100, and 200 respectively. The provided code will then let you compare histograms for the original observation and each of the sample averages. 
+The provided function takes a sample of 50 colleges without replacement from the `colleges` dataset and calculates a sample average endowment.
+Using that function, please use the `replicate()` function to simulate 1,000 sample averages for sample sizes of 10, 100, and 200 respectively. 
+The provided code will then let you compare histograms for the original observation and each of the sample averages. 
 
 ```{r}
 # The argument n determines the number of colleges to sample. 
@@ -110,7 +123,7 @@ What do you notice about the shape of the histograms as the sample size increase
 
 *Replace this text with your answer. Optional if discussing in groups and required if working on your own.* 
 
-# Problem 
+# Endowment Sample Percentiles 
 
 The following code calculates the 90th percentile endowment size for schools. 
 
@@ -129,12 +142,15 @@ Calculate the proportion of sample averages from a sample size of 100 that excee
 #...#
 ```
 
-# Problem 
+# Normal Approximations 
 
-Now repeat the probability calculation using the normal approximation. You should be using the expected value and standard error of a sample size of 100, along with `pnorm()` to answer this question. 
+Now repeat the probability calculation using the normal approximation. 
+You should be using the expected value and standard error of a sample size of 100, along with `pnorm()` to answer this question. 
 
 ```{r}
 #...#
 ```
 
-Note that your answer highlights one of the issues with averages: when data are highly right-skewed, meaning that when you have a few observations with substantially higher values than the typical observation, the average value is not representative of the "typical" value. In this case, there is a fairly good chance that our sample average will be larger than 90% of the observed values in our dataset! Averages work best for data that are not so skewed. 
+Note that your answer highlights one of the issues with averages: when data are highly right-skewed, meaning that when you have a few observations with substantially higher values than the typical observation, the average value is not representative of the "typical" value. 
+In this case, there is a fairly good chance that our sample average will be larger than 90% of the observed values in our dataset! 
+Averages work best for data that are not so skewed. 

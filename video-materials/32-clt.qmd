@@ -1,0 +1,221 @@
+---
+title: "Central Limit Theorem"
+format: revealjs
+lightbox: true
+---
+
+## Central Limit Theorem
+
+$X$ is a random variable.
+
+If the number of samples $N$ is large enough, then 
+$$\overline X \sim \text{Normal}\left(E[X], \frac{SD[X]}{\sqrt{N}}\right)$$
+
+## How Large is Large Enough?
+
+$$X = \begin{cases}0 & 1-p\\1 & p\end{cases}$$
+
+```{r}
+#| output-location: slide
+library(tidyverse)
+library(ggplot2)
+library(patchwork)
+theme_set(theme_bw())
+set.seed(203497)
+cltdemo <- 
+  crossing(n = c(5, 15, 30, 100),
+           p = c(.05, .25, .5)) |>
+  mutate(sample = pmap(list(n=1000, prob=p, size=n), 
+                       .f = rbinom)) 
+
+density_to_df <- function(...){
+  tmp <- density(...)
+  data.frame(x = tmp$x, y = tmp$y, bw = tmp$bw)
+}
+
+cltdens <- cltdemo |>
+  mutate(n = n, p = p, density = map2(sample, n, ~density_to_df(.x/.y, adjust = 1.5, from = 0, to = 1))) 
+
+
+
+n5 <- cltdens |>
+  filter(n ==5) |>
+  unnest(density) |>
+ggplot(aes(x = x, y = y, color = factor(p))) + 
+  geom_line() + 
+  # facet_wrap(~n, scales = "free_x", ncol = 4) +
+  scale_color_discrete("P(Success)") + 
+  theme(legend.position = "bottom", 
+        axis.title = element_blank()) + 
+  ggtitle("5 samples")
+
+n15 <- cltdens |>
+  filter(n ==15) |>
+  unnest(density) |>
+ggplot(aes(x = x, y = y, color = factor(p))) + 
+  geom_line() + 
+  # facet_wrap(~n, scales = "free_x", ncol = 4) +
+  scale_color_discrete("P(Success)") + 
+  theme(legend.position = "bottom", 
+        axis.title = element_blank())+ 
+  ggtitle("15 samples")
+
+n30 <- cltdens |>
+  filter(n ==30) |>
+  unnest(density) |>
+ggplot(aes(x = x, y = y, color = factor(p))) + 
+  geom_line() + 
+  # facet_wrap(~n, scales = "free_x", ncol = 4) +
+  scale_color_discrete("P(Success)") + 
+  theme(legend.position = "bottom", 
+        axis.title = element_blank())+ 
+  ggtitle("30 samples")
+
+n100 <- cltdens |>
+  filter(n ==100) |>
+  unnest(density) |>
+ggplot(aes(x = x, y = y, color = factor(p))) + 
+  geom_line() + 
+  # facet_wrap(~n, scales = "free_x", ncol = 4) +
+  scale_color_discrete("P(Success)") + 
+  theme(legend.position = "bottom", 
+        axis.title = element_blank())+ 
+  ggtitle("100 samples")
+
+n5
+```
+
+## How Large is Large Enough?
+
+$$X = \begin{cases}0 & 1-p\\1 & p\end{cases}$$
+
+```{r}
+#| output-location: slide
+n15
+```
+
+## How Large is Large Enough?
+
+$$X = \begin{cases}0 & 1-p\\1 & p\end{cases}$$
+
+```{r}
+#| output-location: slide
+n30
+```
+
+
+## How Large is Large Enough?
+
+$$X = \begin{cases}0 & 1-p\\1 & p\end{cases}$$
+
+```{r}
+#| output-location: slide
+n100
+```
+
+## Polling
+
+![[RealClear Polling](https://www.realclearpolling.com/polls/senate/general/2026/texas/talarico-vs-paxton)](../slides/images/2026-texas-senate-talarico.png){fig-alt="A screenshot of Real Clear Polling's report of polls from the 2026 Texas Senate race, which featured James Talarico (D) vs. Ken Paxton (R). It shows both the results of the election (Talarico + 12.1) and polls leading up to the election, featuring Talarico +2.6, Talarico +2, Tie, Talarico +6, Talarico +7, ..."}
+
+## Polling
+
+```{r}
+x <- seq(-0.5, 0.5, .005)
+tibble(
+  pollster = c("Poll Vault/Emerson", "Trafalgar", "Atlas Intel", "NYT/Siena"),
+  mean = c(.50-.48, .48-.48, .52-.46, .50-.43),
+  se = c(.044, .029, .028, .033)
+) |>
+  mutate(dens = map2(mean, 2*se, ~dnorm(x, mean = .x, sd = .y))) |>
+  unnest(dens) |> 
+  mutate(x = rep(x, times = 4)) |>
+  ggplot(aes(x = x, y = dens, color = pollster)) + 
+  geom_line() + 
+  xlab("Talarico - Paxton Support") + 
+  geom_vline(xintercept = 0) + 
+  annotate("text", x = c(-.25, .25), y = 10, label = c("Paxton wins", "Talarico wins")) + 
+  annotate("segment", x = .551-.43, y = 0, xend = .551-.43, yend = 8, linetype = "dashed") + 
+  annotate("text", x = .551-.43, y = 8, label = "Election Results", hjust = .05, vjust = 0) + 
+  theme(axis.title.y = element_blank(),
+        legend.position = "bottom") + 
+  ggtitle("Polls Ending 11/1/2026 - Texas Senate Race")
+```
+
+## Polling
+
+$X = \begin{cases}1 & \text{Talarico}\\0 & \text{Otherwise}\end{cases}$
+
+$\overline X = 0.5$ (NY Times/Siena Poll)
+
+$$E[\overline X] = p$$
+$$SE[\overline X] = \sqrt{\frac{p (1-p)}{N}} \approx \sqrt{\frac{\overline X (1-\overline X)}{N}} = \sqrt{\frac{0.5(0.5)}{1215}} = 0.0143$$
+
+::: incremental
+$$\text{Pr}\left(\left|\overline X - p\right|<0.033\right) = \text{Pr}\left(\overline X < p + 0.033\right) - \text{Pr}\left(\overline X < p - 0.033\right)$$
+:::
+
+## Polling
+::: callout-note
+#### Start With
+
+$$\text{Pr}\left(\left|\overline X - p\right|<0.033\right) = \text{Pr}\left(\overline X < p + 0.033\right) - \text{Pr}\left(\overline X < p - 0.033\right)$$
+:::
+
+
+::: columns
+::: column
+$$\begin{align}\phantom{=}&\text{Pr}\left(\overline X - p < 0.033\right)\\
+= &\text{Pr}\left(\frac{\overline X - p}{SE[\overline X]} < \frac{0.033}{SE[\overline X]}\right)\\
+=&\text{Pr}\left(Z < \frac{0.033}{SE[\overline X]}\right)\\
+\approx&\text{Pr}\left(Z < \frac{0.033}{0.0143}\right)\\
+=&\text{Pr}\left(Z < 2.3\right)\end{align}$$
+::: 
+::: column
+
+$$\begin{align}\phantom{=}&\text{Pr}\left(\overline X - p < -0.033\right) \\= &
+\text{Pr}\left(\frac{\overline X - p}{SE[\overline X]} < -\frac{0.033}{SE[\overline X]}\right)\\
+=&\text{Pr}\left(Z < -\frac{0.033}{SE[\overline X]}\right)\\
+\approx&\text{Pr}\left(Z < -\frac{0.033}{0.0143}\right)\\
+=&\text{Pr}\left(Z < -2.3\right)\end{align}$$
+:::
+:::
+
+## Polling
+
+::: {.callout-note}
+#### End With
+
+$$ \text{Pr}\left(\left|\overline X - p\right|<0.033\right) = 
+\text{Pr}\left(Z < 2.3\right) - \text{Pr}\left(Z < -2.3\right)$$
+
+:::
+
+```{r}
+#| echo: true
+
+pnorm(2.3)-pnorm(-2.3)
+```
+
+
+
+```{r}
+df <- tibble(x = seq(-3.5, 3.5, .01), dnorm = dnorm(x), pnorm = pnorm(x))
+normal_annotations <- tibble(
+  x = seq(-3, 3, 1), 
+  dnorm = dnorm(x), 
+  label = sprintf("%d*sigma", x) |> 
+    str_replace(pattern = "0\\*sigma", replacement = "0") |>
+    lapply(FUN = \(x) parse(text = x)) |>
+    unlist())
+
+df |> ggplot(aes(x = x, y = dnorm)) + 
+  geom_ribbon(data = filter(df, between(x, -2.3, 2.3)), aes(ymin = 0, ymax = dnorm), fill = "#1a5c7f", alpha = .5) + 
+  geom_line() + 
+  geom_segment(data = normal_annotations, 
+               aes(x = x, xend = x, y = 0, yend = dnorm)) + 
+  scale_x_continuous(breaks = normal_annotations$x, 
+                     labels = normal_annotations$label) + 
+  geom_vline(xintercept = c(-2.3, 2.3), color = "#0F2439") + 
+  theme(axis.title = element_blank())
+```
+
