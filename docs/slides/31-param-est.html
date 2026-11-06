@@ -6,10 +6,13 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.10.19">
 
-  <title>STAT 1080 - Fall 2026 – param-est</title>
+  <title>STAT 1080 - Fall 2026 – 1.31 Parameter Estimation</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -135,16 +138,109 @@
       margin-right: 0;
     }
   </style>
-<meta property="og:title" content="STAT 1080 - Fall 2026">
+<meta property="og:title" content="1.31 Parameter Estimation – STAT 1080 - Fall 2026">
 <meta property="og:site_name" content="STAT 1080 - Fall 2026">
 </head>
 <body class="quarto-light">
   <div class="reveal">
     <div class="slides">
 
+<section id="title-slide" class="quarto-title-block center">
+  <h1 class="title">1.31 Parameter Estimation</h1>
 
-<section class="slide level2">
+<div class="quarto-title-authors">
+</div>
 
+</section>
+<section id="review" class="slide level2">
+<h2>Review</h2>
+<ul>
+<li><p><strong>population</strong> - The entire collection of observational units we are interested in<br>
+<span class="large emph fragment blue-dk">population <span class="math inline">\(\rightarrow\)</span> <strong>parameter</strong></span></p></li>
+<li><p><strong>sample</strong> - The subset of the population on which we record data<br>
+<span class="large emph fragment blue-dk">sample <span class="math inline">\(\rightarrow\)</span> <strong>statistic</strong></span></p></li>
+</ul>
+</section>
+<section id="polling-and-sampling" class="slide level2">
+<h2>Polling and Sampling</h2>
+<div class="columns">
+<div class="column">
+<p><a href="images/big-urn-red-blue.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img data-src="images/big-urn-red-blue.svg" style="width:50.0%" alt="A large container filled with 201 red and 214 blue balls"></a></p>
+</div><div class="column">
+<p>We want to predict:</p>
+<ul>
+<li><span class="math inline">\(p\)</span> - proportion of blue beads</li>
+<li><span class="math inline">\(1-p\)</span> - proportion of red beads</li>
+<li><span class="math inline">\(p - (1-p) = 2p - 1\)</span> - the <strong>spread</strong>, or difference between blue and red proportions</li>
+</ul>
+<p>We sample <span class="math inline">\(N\)</span> balls randomly.</p>
+</div></div>
+</section>
+<section id="polling-and-sampling-1" class="slide level2">
+<h2>Polling and Sampling</h2>
+<p>Let <span class="math inline">\(N=25\)</span>. We sample 8 red and 17 blue balls.</p>
+<p><a href="images/ball-sample-s25.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img data-src="images/ball-sample-s25.svg" style="width:80.0%" alt="25 balls, 8 red, 17 blue"></a></p>
+<p><span class="math display">\[
+\begin{align}
+\hat p\text{ (or }\overline X\text{)} &amp; = 17/25 &amp; = 0.68\\
+1-\hat p &amp; = 8/25 &amp;= 0.32\\
+2\hat p - 1&amp; = 34/25 - 1 &amp;= 0.36\\
+\text{SE}[\hat p] = \sqrt{\frac{\hat p (1-\hat p)}{N}} &amp; = \sqrt{\frac{\frac{17}{25}\cdot\frac{8}{25}}{25}} &amp;= 0.0933
+\end{align}\]</span></p>
+</section>
+<section id="sample-size-and-standard-error" class="slide level2">
+<h2>Sample Size and Standard Error</h2>
+<p>Let <span class="math inline">\(N=50\)</span>. We sample 25 red and 25 blue balls.</p>
+<p><a href="images/ball-sample-s50.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img data-src="images/ball-sample-s50.svg" style="width:80.0%" alt="50 balls, 25 red, 25 blue"></a></p>
+<p><span class="math display">\[
+\begin{align}
+\hat p\text{ (or }\overline X\text{)} &amp; = 25/50 &amp; = 0.5\\
+1-\hat p &amp; = 25/50 &amp;= 0.5\\
+2\hat p - 1&amp; = 50/50 - 1 &amp;= 0\\
+\text{SE}[\hat p] = \sqrt{\frac{\hat p (1-\hat p)}{N}} &amp; = \sqrt{\frac{\frac{25}{50}\cdot\frac{25}{50}}{50}} &amp;= 0.0707
+\end{align}\]</span></p>
+</section>
+<section id="estimating-standard-error" class="slide level2">
+<h2>Estimating Standard Error</h2>
+<div class="cell quarto-layout-panel" data-layout-nrow="1">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><a href="31-param-est_files/figure-revealjs/unnamed-chunk-4-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img data-src="31-param-est_files/figure-revealjs/unnamed-chunk-4-1.png" alt="A plot of the sample standard error against the actual standard error using the population value of p. The variability around the standard error is higher when n is small, and the approximate SE is never higher than the actual SE." width="384"></a></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><a href="31-param-est_files/figure-revealjs/unnamed-chunk-4-2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img data-src="31-param-est_files/figure-revealjs/unnamed-chunk-4-2.png" alt="A plot of the proportion of the actual standard error that the sample se is off from the true value. The proportion of error in the estimate decreases rapidly as n increases." width="384"></a></p>
+</div>
+</div>
+</div>
+<ul>
+<li>Using <span class="math inline">\(\text{SE}[\overline X]\)</span> instead of <span class="math inline">\(\text{SE}[p]\)</span> adds in a little bit of error but is usually fairly close.</li>
+<li>The other option?<br>
+Use <span class="math inline">\(p=0.5\)</span>, which is the worst-case scenario for the SE, as <span class="math inline">\(p(1-p)\)</span> is maximized at <span class="math inline">\(p=0.5\)</span></li>
+</ul>
+</section>
+<section id="central-limit-theorem" class="slide level2">
+<h2>Central Limit Theorem</h2>
+<ul>
+<li><p>When <span class="math inline">\(N\)</span> is large enough, <span class="math inline">\(\overline X\)</span> is approximately normally distributed</p></li>
+<li><p>Mean:</p>
+<ul>
+<li><span class="math inline">\(\text{E}[\overline X] = p\)</span> (for proportions)</li>
+<li><span class="math inline">\(\text{E}[\overline X] = \mu\)</span> (for continuous variables)</li>
+</ul></li>
+<li><p>Standard Deviation:</p>
+<ul>
+<li><span class="math inline">\(\text{SE}[\overline X] = \sqrt{\frac{p(1-p)}{N}} \approx \sqrt{\frac{\overline X(1-\overline X)}{N}}\)</span> (proportions)</li>
+<li><span class="math inline">\(\text{SE}[\overline X] = \text{SD}[X]/\sqrt{N}\)</span> (continuous variables)</li>
+</ul></li>
+</ul>
+</section>
+<section id="confidence-intervals" class="slide level2">
+<h2>Confidence Intervals</h2>
+<p>When <span class="math inline">\(N\)</span> is large enough, we can describe the precision of our estimate <span class="math inline">\(\overline X\)</span> with an interval</p>
+<p>There is a 95% probability that the true value <span class="math inline">\(p\)</span> (or <span class="math inline">\(\mu\)</span>) falls within <span class="math inline">\(1.96\cdot \hat{\text{SE}}[\overline X]\)</span> of <span class="math inline">\(\overline X\)</span>.</p>
+<p><span class="math display">\[P\left(\overline X - 1.96\cdot \hat{\text{SE}}[\overline X] \leq p \leq \overline X + 1.96\cdot \hat{\text{SE}}[\overline X]\right) = 0.95\]</span></p>
+<p>We interpret the interval <span class="math inline">\(\left[a = \overline X - 1.96\cdot \hat{\text{SE}}[\overline X], b = \overline X + 1.96\cdot \hat{\text{SE}}[\overline X]\right]\)</span> as:</p>
+<p>We are 95% confident that the true value (<span class="math inline">\(p\)</span>/<span class="math inline">\(\mu\)</span>) lies between <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span>, [add specific contextual information about what a and b mean here].</p>
 
 
 </section>
@@ -366,6 +462,44 @@
         ]
       });
     </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
     <script id="quarto-html-after-body" type="application/javascript">
       window.document.addEventListener("DOMContentLoaded", function (event) {
         const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
@@ -686,6 +820,38 @@
         }
       });
       </script>
+    <script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+    (function() {
+      let previousOnload = window.onload;
+      window.onload = () => {
+        if (previousOnload) {
+          previousOnload();
+        }
+        lightboxQuarto.on('slide_before_load', (data) => {
+          const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+          const href = trigger.getAttribute('href');
+          if (href !== null) {
+            const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+            if (imgEl !== null) {
+              const srcAttr = imgEl.getAttribute("src");
+              if (srcAttr && srcAttr.startsWith("data:")) {
+                slideConfig.href = srcAttr;
+              }
+            }
+          } 
+        });
+      
+        lightboxQuarto.on('slide_after_load', (data) => {
+          const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(slideNode);
+          }
+        });
+      
+      };
+      
+    })();
+              </script>
     
 
 </body></html>

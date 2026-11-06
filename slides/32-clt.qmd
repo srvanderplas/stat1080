@@ -1,0 +1,17 @@
+---
+title: "1.32 The Central Limit Theorem"
+format: revealjs
+code-annotations: hover
+lightbox:  true
+bibliography: refs.bib
+csl: chicago-syllabus.csl
+---
+
+```{r}
+#| include: false
+#| label: setup
+library(ggplot2)
+library(tidyverse)
+theme_set(theme_bw())
+library(viridis)
+```

@@ -1,0 +1,187 @@
+```{r}
+#| include: false
+#| label: setup
+library(ggplot2)
+library(tidyverse)
+theme_set(theme_bw())
+library(viridis)
+```
+
+## Review
+
+
+- **population** - The entire collection of observational units we are interested in    
+[population $\rightarrow$ **parameter**]{.large .emph .fragment .blue-dk}
+
+- **sample** - The subset of the population on which we record data    
+[sample $\rightarrow$ **statistic**]{.large .emph .fragment .blue-dk}
+
+
+## Confidence Intervals
+
+A **Confidence Interval** provides a range of values that are plausible for the parameter, based on the sample statistic.
+
+- Confidence Level - the proportion of the time the interval is expected to contain the parameter (usually 95%)
+
+- When the CLT applies, you can compute a 95% CI as:
+
+$$\overline X \pm 1.96 \cdot \text{SE}[\overline X]$$
+
+using $\text{SE}[\overline X] = \sqrt{\frac{\overline X (1-\overline X)}{N}}$ if $X$ is discrete and $\text{SE}[\overline X] = \frac{\text{SD}[X]}{\sqrt{N}}$ if $X$ is continuous.
+
+[This is what the margin of error in a poll is actually used for]{.fragment .emph .green-dk}
+
+
+## Comparing to the Population
+
+Often, we want to know if our sample is different from the population.
+
+That is, could our sample value have arisen by chance, if the population value is $p$?
+
+
+For instance - 
+
+- Does the lightbulb we manufacture last longer than competitors?
+
+- Does the medication we created work better than existing drugs?
+
+
+```{r}
+#| fig-width: 8
+#| fig-height: 3
+#| fig-alt: A standard normal density is shown in blue with an orange vertical line near 2.25. The legend says the blue line is the population distribution and the orange line shows the sample mean. The title reads "Did this happen by chance?". 
+library(ggplot2)
+library(xkcd)
+library(tidyverse)
+
+set.seed(3424776)
+sample <- rnorm(30, 3, sqrt(30))
+sample_mean <- mean(sample)
+sample_se <- sd(sample)/sqrt(30)
+
+tibble(x = seq(-3, 5, .05), 
+       y = dnorm(x), 
+       name = "Population") |>
+  bind_rows(tibble(x = sample_mean, name = "Sample Mean")) |>
+  ggplot(aes(x = x, color = name)) + 
+  geom_line(aes(y = y)) + 
+  theme_xkcd() + 
+  geom_vline(aes(xintercept = sample_mean, color = "Sample Mean")) + 
+  ggtitle("Did this happen by chance?") + 
+  scale_color_manual("", values = c("#288dc2", "#f58220")) + 
+  scale_fill_manual("", values = c("#288dc2", "#f58220")) + 
+  theme(legend.position = "inside", legend.position.inside = c(.9, .8))
+
+```
+
+
+## Comparing to the Population
+
+Often, we want to know if our sample is different from the population.
+
+That is, could our sample value have arisen by chance, if the population value is $p$?
+
+
+For instance - 
+
+- Does the lightbulb we manufacture last longer than competitors?
+
+- Does the medication we created work better than existing drugs?
+
+
+```{r}
+#| fig-width: 8
+#| fig-height: 3
+#| fig-alt: A standard normal density is shown in blue with an orange vertical line near 2.25. The legend says the blue line is the population distribution and the orange line shows the sample mean. The title reads "Did this happen by chance?". 
+
+tmp <- tibble(x = seq(-3, 5, .01), 
+       y = dnorm(x), 
+       name = "Population") |>
+  bind_rows(tibble(x = sample_mean, name = "Sample Mean"))
+
+area <- filter(tmp, x >= sample_mean)
+
+  ggplot() + 
+  geom_line(data = tmp, aes(x = x, y = y, color = name)) + 
+  geom_ribbon(data = area, aes(x = x, ymin = 0, ymax = y, fill = name)) + 
+  theme_xkcd() + 
+  geom_vline(aes(xintercept = sample_mean, color = "Sample Mean")) + 
+  ggtitle("Did this happen by chance?") + 
+  scale_color_manual("", values = c("#288dc2", "#f58220")) + 
+  scale_fill_manual("", values = c("#288dc2", "#f58220")) + 
+    annotate(geom = "text", x = 2.25, y = 0.1, label = sprintf("P(X>Observed) = %0.3f\nIt's not likely!", pnorm(sample_mean, lower.tail = F)), family = "xkcd", hjust = -0.1) + 
+  theme(legend.position = "inside", legend.position.inside = c(.9, .8))
+
+```
+
+
+[This is called **Hypothesis Testing**]{.fragment .emph .large .blue-dk}
+
+## Example: Testing to Failure
+
+Foldable smartphones are tested to survive around 200,000 folds. 
+
+Quality Assurance for SamSing phones takes a sample of 30 Andromeda phones from the production line and tests the foldable screen to failure. 
+
+The average number of times the phones could be opened and closed before they failed was 179,423.3, and the standard deviation of the number of times a phone could be opened and closed was 11,427. 
+
+What is the: 
+
+- statistic? [$\overline X = 179423.3$]{.emph .cerulean-dk .fragment .large}
+- parameter? [$\mu = 200000$]{.emph .cerulean-dk .fragment .large}
+
+What type of variable is $X$? [continuous]{.emph .cerulean-dk .fragment .large}
+
+Does the CLT hold for this example? [yes. $N = 30$ and the variable is continuous. ]{.emph .cerulean-dk .fragment .large}
+
+## Example: Testing to Failure
+
+Foldable smartphones are tested to survive around 200,000 folds. 
+
+Quality Assurance for SamSing phones takes a sample of 30 Andromeda phones from the production line and tests the foldable screen to failure. 
+
+
+The average number of times the phones could be opened and closed before they failed was 179,423.3, and the standard deviation of the number of times a phone could be opened and closed was 11,427. 
+
+
+## Example: Testing to Failure
+
+$$\begin{align}\phantom{=}&179423.3 \pm 1.96 \cdot 11427/\sqrt{30} \\=&179423.3 \pm 1.96 \cdot 2086.275 \\=& 179423.3 \pm 4089.099 \\=& (175334.2, 183512.4)\end{align}$$
+
+## Example: Testing to Failure
+
+Foldable smartphones are tested to survive around 200,000 folds. 
+
+Quality Assurance for SamSing phones takes a sample of 30 Andromeda phones from the production line and tests the foldable screen to failure. 
+
+The average number of times the phones could be opened and closed before they failed was 179,423.3, and the standard deviation of the number of times a phone could be opened and closed was 11,427.  
+
+
+#### Interpretation
+
+[We are 95% confident that]{.emph .blue-dk} the [SamSing Andromeda phones can be opened]{.emph .orange-dk} [between 175334 and 183512 times]{.emph .blue-dk} [before failure.]{.emph .orange-dk}
+As the industry standard of 200000 open/close operations is outside of the 95% confidence interval, we can conclude that Andromeda phones are significantly less durable than the industry standard.
+
+
+## Example: Smoking Cessation
+
+Only about 20% of people who try to quit smoking succeed. 
+
+A motivational audiobook claims that listening to the book can help people quit. After surveying people who have attempted quitting using the audiobook, 62 out of 250 people were successful at quitting. 
+
+What is the: 
+
+- statistic? [$\overline X = 62/250 = 0.248$]{.emph .cerulean-dk .fragment .large}
+- parameter? [$p = 0.20$]{.emph .cerulean-dk .fragment .large}
+
+
+What type of variable is $X$? [discrete]{.emph .cerulean-dk .fragment .large}
+
+Does the CLT hold for this example? [yes. $N*\overline X = 62 > 5$, $N*(1-\overline X) = 188 > 5$ and the variable is discrete. ]{.emph .cerulean-dk .fragment .large}
+
+
+## Example: Smoking Cessation
+
+Only about 20% of people who try to quit smoking succeed. 
+
+A motivational audiobook claims that listening to the book can help people quit. After surveying people who have attempted quitting using the audiobook, 62 out of 250 people were successful at quitting. 

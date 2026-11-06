@@ -5444,5 +5444,138 @@
     "title": "1.26 Connecting Data and Probability",
     "section": "Sources of Variability",
     "text": "Sources of Variability\n\n\n\nMeasurement error\nNatural variation\nSampling – which items were in the sample?\n\nProbability is a useful way to handle all of these different types of variability\nBut, that doesn’t mean they’re the same!"
+  },
+  {
+    "objectID": "slides/31-param-est.html#review",
+    "href": "slides/31-param-est.html#review",
+    "title": "1.31 Parameter Estimation",
+    "section": "Review",
+    "text": "Review\n\npopulation - The entire collection of observational units we are interested in\npopulation \\(\\rightarrow\\) parameter\nsample - The subset of the population on which we record data\nsample \\(\\rightarrow\\) statistic"
+  },
+  {
+    "objectID": "slides/31-param-est.html#example-continuous-variables",
+    "href": "slides/31-param-est.html#example-continuous-variables",
+    "title": "1.31 Parameter Estimation",
+    "section": "Example: Continuous Variables",
+    "text": "Example: Continuous Variables\nFoldable smartphones are tested to survive around 200,000 folds.\nQuality Assurance for SamSing phones takes a sample of 30 Andromeda phones from the production line and tests the foldable screen to failure.\nThe average number of times the phones could be opened and closed before they failed was 179,423.3, and the standard deviation of the number of times a phone could be opened and closed was 11,427.\nWhat is the:\n\nstatistic? \\(\\overline X = 179423.3\\)\nparameter? \\(\\mu = 200000\\)\n\nWhat type of variable is \\(X\\)? continuous\nDoes the CLT hold for this example? yes. \\(N = 30\\) and the variable is continuous."
+  },
+  {
+    "objectID": "slides/31-param-est.html#example-discrete-variables",
+    "href": "slides/31-param-est.html#example-discrete-variables",
+    "title": "1.31 Parameter Estimation",
+    "section": "Example: Discrete Variables",
+    "text": "Example: Discrete Variables\nOnly about 20% of people who try to quit smoking succeed.\nA motivational audiobook claims that listening to the book can help people quit. After surveying people who have attempted quitting using the audiobook, 62 out of 250 people were successful at quitting.\nWhat is the:\n\nstatistic? \\(\\overline X = 62/250 = 0.248\\)\nparameter? \\(p = 0.20\\)"
+  },
+  {
+    "objectID": "slides/31-param-est.html#confidence-intervals",
+    "href": "slides/31-param-est.html#confidence-intervals",
+    "title": "1.31 Parameter Estimation",
+    "section": "Confidence Intervals",
+    "text": "Confidence Intervals\nWhen \\(N\\) is large enough, we can describe the precision of our estimate \\(\\overline X\\) with an interval\nThere is a 95% probability that the true value \\(p\\) (or \\(\\mu\\)) falls within \\(1.96\\cdot \\hat{\\text{SE}}[\\overline X]\\) of \\(\\overline X\\).\n\\[P\\left(\\overline X - 1.96\\cdot \\hat{\\text{SE}}[\\overline X] \\leq p \\leq \\overline X + 1.96\\cdot \\hat{\\text{SE}}[\\overline X]\\right) = 0.95\\]\nWe interpret the interval \\(\\left[a = \\overline X - 1.96\\cdot \\hat{\\text{SE}}[\\overline X], b = \\overline X + 1.96\\cdot \\hat{\\text{SE}}[\\overline X]\\right]\\) as:\nWe are 95% confident that the true value (\\(p\\)/\\(\\mu\\)) lies between \\(a\\) and \\(b\\), [add specific contextual information about what a and b mean here]."
+  },
+  {
+    "objectID": "slides/31-param-est.html#example-continuous-variables-1",
+    "href": "slides/31-param-est.html#example-continuous-variables-1",
+    "title": "1.31 Parameter Estimation",
+    "section": "Example: Continuous Variables",
+    "text": "Example: Continuous Variables\nFoldable smartphones are tested to survive around 200,000 folds.\nQuality Assurance for SamSing phones takes a sample of 30 Andromeda phones from the production line and tests the foldable screen to failure.\nThe average number of times the phones could be opened and closed before they failed was 179,423.3, and the standard deviation of the number of times a phone could be opened and closed was 11,427.\nConfidence Interval\n\\[\\begin{align}\\phantom{=}&179423.3 \\pm 1.96 \\cdot 11427/\\sqrt{30} \\\\=&179423.3 \\pm 1.96 \\cdot 2086.275 \\\\=& 179423.3 \\pm 4089.099 \\\\=& (175334.2, 183512.4)\\end{align}\\]"
+  },
+  {
+    "objectID": "slides/31-param-est.html#example-continuous-variables-2",
+    "href": "slides/31-param-est.html#example-continuous-variables-2",
+    "title": "1.31 Parameter Estimation",
+    "section": "Example: Continuous Variables",
+    "text": "Example: Continuous Variables\nFoldable smartphones are tested to survive around 200,000 folds.\nQuality Assurance for SamSing phones takes a sample of 30 Andromeda phones from the production line and tests the foldable screen to failure.\nThe average number of times the phones could be opened and closed before they failed was 179,423.3, and the standard deviation of the number of times a phone could be opened and closed was 11,427.\nInterpretation\nWe are 95% confident that the SamSing Andromeda phones can be opened between 175334 and 183512 times before failure. As the industry standard of 200000 open/close operations is outside of the 95% confidence interval, we can conclude that Andromeda phones are significantly less durable than the industry standard."
+  },
+  {
+    "objectID": "slides/31-param-est.html#comparing-to-the-population",
+    "href": "slides/31-param-est.html#comparing-to-the-population",
+    "title": "1.31 Parameter Estimation",
+    "section": "Comparing to the Population",
+    "text": "Comparing to the Population\nOften, we want to know if our sample is different from the population.\nThat is, could our sample value have arisen by chance, if the population value is \\(p\\)?\nFor instance -\n\nDoes the lightbulb we manufacture last longer than competitors?\nDoes the medication we created work better than existing drugs?"
+  },
+  {
+    "objectID": "slides/31-param-est.html#example-testing-to-failure",
+    "href": "slides/31-param-est.html#example-testing-to-failure",
+    "title": "1.31 Parameter Estimation",
+    "section": "Example: Testing to Failure",
+    "text": "Example: Testing to Failure\nFoldable smartphones are tested to survive around 200,000 folds.\nQuality Assurance for SamSing phones takes a sample of 30 Andromeda phones from the production line and tests the foldable screen to failure.\nThe average number of times the phones could be opened and closed before they failed was 179,423.3, and the standard deviation of the number of times a phone could be opened and closed was 11,427.\nWhat is the:\n\nstatistic? \\(\\overline X = 179423.3\\)\nparameter? \\(\\mu = 200000\\)\n\nWhat type of variable is \\(X\\)? continuous\nDoes the CLT hold for this example? yes. \\(N = 30\\) and the variable is continuous."
+  },
+  {
+    "objectID": "slides/31-param-est.html#example-testing-to-failure-1",
+    "href": "slides/31-param-est.html#example-testing-to-failure-1",
+    "title": "1.31 Parameter Estimation",
+    "section": "Example: Testing to Failure",
+    "text": "Example: Testing to Failure\nFoldable smartphones are tested to survive around 200,000 folds.\nQuality Assurance for SamSing phones takes a sample of 30 Andromeda phones from the production line and tests the foldable screen to failure.\nThe average number of times the phones could be opened and closed before they failed was 179,423.3, and the standard deviation of the number of times a phone could be opened and closed was 11,427."
+  },
+  {
+    "objectID": "slides/31-param-est.html#example-testing-to-failure-2",
+    "href": "slides/31-param-est.html#example-testing-to-failure-2",
+    "title": "1.31 Parameter Estimation",
+    "section": "Example: Testing to Failure",
+    "text": "Example: Testing to Failure\n\\[\\begin{align}\\phantom{=}&179423.3 \\pm 1.96 \\cdot 11427/\\sqrt{30} \\\\=&179423.3 \\pm 1.96 \\cdot 2086.275 \\\\=& 179423.3 \\pm 4089.099 \\\\=& (175334.2, 183512.4)\\end{align}\\]"
+  },
+  {
+    "objectID": "slides/31-param-est.html#example-testing-to-failure-3",
+    "href": "slides/31-param-est.html#example-testing-to-failure-3",
+    "title": "1.31 Parameter Estimation",
+    "section": "Example: Testing to Failure",
+    "text": "Example: Testing to Failure\nFoldable smartphones are tested to survive around 200,000 folds.\nQuality Assurance for SamSing phones takes a sample of 30 Andromeda phones from the production line and tests the foldable screen to failure.\nThe average number of times the phones could be opened and closed before they failed was 179,423.3, and the standard deviation of the number of times a phone could be opened and closed was 11,427.\nInterpretation\nWe are 95% confident that the SamSing Andromeda phones can be opened between 175334 and 183512 times before failure. As the industry standard of 200000 open/close operations is outside of the 95% confidence interval, we can conclude that Andromeda phones are significantly less durable than the industry standard."
+  },
+  {
+    "objectID": "slides/31-param-est.html#example-smoking-cessation",
+    "href": "slides/31-param-est.html#example-smoking-cessation",
+    "title": "1.31 Parameter Estimation",
+    "section": "Example: Smoking Cessation",
+    "text": "Example: Smoking Cessation\nOnly about 20% of people who try to quit smoking succeed.\nA motivational audiobook claims that listening to the book can help people quit. After surveying people who have attempted quitting using the audiobook, 62 out of 250 people were successful at quitting.\nWhat is the:\n\nstatistic? \\(\\overline X = 62/250 = 0.248\\)\nparameter? \\(p = 0.20\\)\n\nWhat type of variable is \\(X\\)? discrete\nDoes the CLT hold for this example? yes. \\(N*\\overline X = 62 &gt; 5\\), \\(N*(1-\\overline X) = 188 &gt; 5\\) and the variable is discrete."
+  },
+  {
+    "objectID": "slides/31-param-est.html#example-smoking-cessation-1",
+    "href": "slides/31-param-est.html#example-smoking-cessation-1",
+    "title": "1.31 Parameter Estimation",
+    "section": "Example: Smoking Cessation",
+    "text": "Example: Smoking Cessation\nOnly about 20% of people who try to quit smoking succeed.\nA motivational audiobook claims that listening to the book can help people quit. After surveying people who have attempted quitting using the audiobook, 62 out of 250 people were successful at quitting."
+  },
+  {
+    "objectID": "slides/31-param-est.html#comparing-to-the-population-1",
+    "href": "slides/31-param-est.html#comparing-to-the-population-1",
+    "title": "1.31 Parameter Estimation",
+    "section": "Comparing to the Population",
+    "text": "Comparing to the Population\nOften, we want to know if our sample is different from the population.\nThat is, could our sample value have arisen by chance, if the population value is \\(p\\)?\nFor instance -\n\nDoes the lightbulb we manufacture last longer than competitors?\nDoes the medication we created work better than existing drugs?\n\n\n\n\n\n\n\n\n\n\nThis is called Hypothesis Testing, and we’ll get there next time"
+  },
+  {
+    "objectID": "slides/31-param-est.html#polling-and-sampling",
+    "href": "slides/31-param-est.html#polling-and-sampling",
+    "title": "1.31 Parameter Estimation",
+    "section": "Polling and Sampling",
+    "text": "Polling and Sampling\n\n\n\n\nWe want to predict:\n\n\\(p\\) - proportion of blue beads\n\\(1-p\\) - proportion of red beads\n\\(p - (1-p) = 2p - 1\\) - the spread, or difference between blue and red proportions\n\nWe sample \\(N\\) balls randomly."
+  },
+  {
+    "objectID": "slides/31-param-est.html#polling-and-sampling-1",
+    "href": "slides/31-param-est.html#polling-and-sampling-1",
+    "title": "1.31 Parameter Estimation",
+    "section": "Polling and Sampling",
+    "text": "Polling and Sampling\nLet \\(N=25\\). We sample 8 red and 17 blue balls.\n\n\\[\n\\begin{align}\n\\hat p\\text{ (or }\\overline X\\text{)} & = 17/25 & = 0.68\\\\\n1-\\hat p & = 8/25 &= 0.32\\\\\n2\\hat p - 1& = 34/25 - 1 &= 0.36\\\\\n\\text{SE}[\\hat p] = \\sqrt{\\frac{\\hat p (1-\\hat p)}{N}} & = \\sqrt{\\frac{\\frac{17}{25}\\cdot\\frac{8}{25}}{25}} &= 0.0933\n\\end{align}\\]"
+  },
+  {
+    "objectID": "slides/31-param-est.html#sample-size-and-standard-error",
+    "href": "slides/31-param-est.html#sample-size-and-standard-error",
+    "title": "1.31 Parameter Estimation",
+    "section": "Sample Size and Standard Error",
+    "text": "Sample Size and Standard Error\nLet \\(N=50\\). We sample 25 red and 25 blue balls.\n\n\\[\n\\begin{align}\n\\hat p\\text{ (or }\\overline X\\text{)} & = 25/50 & = 0.5\\\\\n1-\\hat p & = 25/50 &= 0.5\\\\\n2\\hat p - 1& = 50/50 - 1 &= 0\\\\\n\\text{SE}[\\hat p] = \\sqrt{\\frac{\\hat p (1-\\hat p)}{N}} & = \\sqrt{\\frac{\\frac{25}{50}\\cdot\\frac{25}{50}}{50}} &= 0.0707\n\\end{align}\\]"
+  },
+  {
+    "objectID": "slides/31-param-est.html#estimating-standard-error",
+    "href": "slides/31-param-est.html#estimating-standard-error",
+    "title": "1.31 Parameter Estimation",
+    "section": "Estimating Standard Error",
+    "text": "Estimating Standard Error\n\n\n\n\n\n\n\n\n\n\n\nUsing \\(\\text{SE}[\\overline X]\\) instead of \\(\\text{SE}[p]\\) adds in a little bit of error but is usually fairly close.\nThe other option?\nUse \\(p=0.5\\), which is the worst-case scenario for the SE, as \\(p(1-p)\\) is maximized at \\(p=0.5\\)"
+  },
+  {
+    "objectID": "slides/31-param-est.html#central-limit-theorem",
+    "href": "slides/31-param-est.html#central-limit-theorem",
+    "title": "1.31 Parameter Estimation",
+    "section": "Central Limit Theorem",
+    "text": "Central Limit Theorem\n\nWhen \\(N\\) is large enough, \\(\\overline X\\) is approximately normally distributed\nMean:\n\n\\(\\text{E}[\\overline X] = p\\) (for proportions)\n\\(\\text{E}[\\overline X] = \\mu\\) (for continuous variables)\n\nStandard Deviation:\n\n\\(\\text{SE}[\\overline X] = \\sqrt{\\frac{p(1-p)}{N}} \\approx \\sqrt{\\frac{\\overline X(1-\\overline X)}{N}}\\) (proportions)\n\\(\\text{SE}[\\overline X] = \\text{SD}[X]/\\sqrt{N}\\) (continuous variables)"
   }
 ]
