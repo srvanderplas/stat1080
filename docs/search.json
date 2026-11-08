@@ -5577,5 +5577,75 @@
     "title": "1.31 Parameter Estimation",
     "section": "Central Limit Theorem",
     "text": "Central Limit Theorem\n\nWhen \\(N\\) is large enough, \\(\\overline X\\) is approximately normally distributed\nMean:\n\n\\(\\text{E}[\\overline X] = p\\) (for proportions)\n\\(\\text{E}[\\overline X] = \\mu\\) (for continuous variables)\n\nStandard Deviation:\n\n\\(\\text{SE}[\\overline X] = \\sqrt{\\frac{p(1-p)}{N}} \\approx \\sqrt{\\frac{\\overline X(1-\\overline X)}{N}}\\) (proportions)\n\\(\\text{SE}[\\overline X] = \\text{SD}[X]/\\sqrt{N}\\) (continuous variables)"
+  },
+  {
+    "objectID": "slides/32-clt.html#central-limit-theorem",
+    "href": "slides/32-clt.html#central-limit-theorem",
+    "title": "1.32 The Central Limit Theorem",
+    "section": "Central Limit Theorem",
+    "text": "Central Limit Theorem\n\\(X\\) is a random variable.\nIf the number of samples \\(N\\) is large enough, then \\[\\overline X \\sim \\text{Normal}\\left(E[X], \\frac{SD[X]}{\\sqrt{N}}\\right)\\]"
+  },
+  {
+    "objectID": "slides/32-clt.html#how-large-is-large-enough",
+    "href": "slides/32-clt.html#how-large-is-large-enough",
+    "title": "1.32 The Central Limit Theorem",
+    "section": "How Large is Large Enough?",
+    "text": "How Large is Large Enough?\nDiscrete RVs\n\\[X = \\begin{cases}0 & 1-p\\\\1 & p\\end{cases}\\ \\ \\ \\ \\ \\ \\text{compute}\\ \\overline X_n,\\ \\ \\  n=\\{2, 3, ..., 500\\}\\]"
+  },
+  {
+    "objectID": "slides/32-clt.html#how-large-is-large-enough-1",
+    "href": "slides/32-clt.html#how-large-is-large-enough-1",
+    "title": "1.32 The Central Limit Theorem",
+    "section": "How Large is Large Enough?",
+    "text": "How Large is Large Enough?\nContinuous RVs\n\\[X \\sim \\text{Exponential}(\\lambda), \\ \\ \\lambda = 0.25, 1, 4\\\\\nE[X] = \\frac{1}{\\lambda}\\ \\ \\ SD[X] = \\frac{1}{\\lambda}\\]\nExponential distributions are very skewed (not symmetric)"
+  },
+  {
+    "objectID": "slides/32-clt.html#consequences-of-the-central-limit-theorem",
+    "href": "slides/32-clt.html#consequences-of-the-central-limit-theorem",
+    "title": "1.32 The Central Limit Theorem",
+    "section": "Consequences of the Central Limit Theorem",
+    "text": "Consequences of the Central Limit Theorem\nThe CLT allows us to\n\nuse the normal distribution to approximate almost any sample average\ncalculate confidence regions and probabilities easily\ntest whether our assumptions about the world are true (hypothesis testing)"
+  },
+  {
+    "objectID": "slides/32-clt.html#example-number-of-squirrels",
+    "href": "slides/32-clt.html#example-number-of-squirrels",
+    "title": "1.32 The Central Limit Theorem",
+    "section": "Example: Number of Squirrels",
+    "text": "Example: Number of Squirrels\nNew York City conducts a squirrel census periodically1.\nWe’ll use the 2020 Squirrel Census conducted March 1, 2020 across several parks in Manhattan. A total of 433 squirrels were recorded.\nDefine \\(X = \\begin{cases} 1 & \\text{grey primary fur color}\\\\0 &\\text{otherwise}\\end{cases}\\)\n\n\n\n\n\n\n\n\n\n\\[\\overline X = \\frac{390}{433} = 0.9006928\\] \\[SE[\\overline X] = \\sqrt{\\frac{\\frac{390}{433}\\cdot\\frac{43}{433}}{433}} = 0.0143726\\]\nThere are even playlists to go along with it?"
+  },
+  {
+    "objectID": "slides/32-clt.html#example-number-of-squirrels-1",
+    "href": "slides/32-clt.html#example-number-of-squirrels-1",
+    "title": "1.32 The Central Limit Theorem",
+    "section": "Example: Number of Squirrels",
+    "text": "Example: Number of Squirrels\nAssuming that the parks sampled during the 2020 squirrel census are a random sample of squirrels in NYC, what is the probability that the true proportion of gray squirrels in NYC is between .875 and .925?\n\n\\[\\begin{align}P\\left(.875 &lt; p &lt; .925\\right) &= P\\left(\\overline X - .875 &lt; \\overline X - p &lt; \\overline X - .925\\right) \\\\&= P\\left(\\frac{\\overline X - .875}{SE[p]} &lt; \\frac{\\overline X - p}{SE[p]} &lt; \\frac{\\overline X - .925}{SE[p]}\\right) \\\\&\\approx P\\left(\\frac{0.901 - .875}{0.0144} &lt; Z &lt; \\frac{0.901 - .925}{0.0144}\\right) \\\\&=P\\left(-1.667 &lt; Z &lt; 1.806\\right)\\end{align}\\]\n\n\n\npnorm(1.806)-pnorm(-1.667)\n\n[1] 0.9167836"
+  },
+  {
+    "objectID": "slides/32-clt.html#example-2-acorns",
+    "href": "slides/32-clt.html#example-2-acorns",
+    "title": "1.32 The Central Limit Theorem",
+    "section": "Example 2: Acorns",
+    "text": "Example 2: Acorns\nSteve and Jimmy are two squirrels who live in McCarren Park in Brooklyn.\n\n\n\n\n\n\nSteve\n\n\n\n\n\n\n\nJimmy"
+  },
+  {
+    "objectID": "slides/32-clt.html#example-2-acorns-1",
+    "href": "slides/32-clt.html#example-2-acorns-1",
+    "title": "1.32 The Central Limit Theorem",
+    "section": "Example 2: Acorns",
+    "text": "Example 2: Acorns\nSteve and Jimmy are two squirrels who live in McCarren Park in Brooklyn.\n\n\n\n\n\n\nSteve\n\n\n\n\n\n\n\nJimmy"
+  },
+  {
+    "objectID": "slides/32-clt.html#example-2-surviving-winter",
+    "href": "slides/32-clt.html#example-2-surviving-winter",
+    "title": "1.32 The Central Limit Theorem",
+    "section": "Example 2: Surviving Winter",
+    "text": "Example 2: Surviving Winter\nSteve and Jimmy are two squirrels who live in McCarren Park in Brooklyn.\n\n\n\n\n\n\nSteve\n\n\n\n\n\n\n\nJimmy\n\n\n\n\n\nJimmy, a grey squirrel, prefers to hoard acorns from local oak trees, while Steve, a red squirrel, collects conifer seeds and mushrooms. Over a 30 day period, each squirrel keeps track of the “take” (in calories) from their respective foraging activities.\nCalculate the 95th percentile for each squirrel’s average take, measured in calories.\n\n\n\nSteve\nJimmy\n\n\n\n\n\\(\\overline X = 250\\)\n\\(\\overline X = 320\\)\n\n\n\\(SE[\\overline X] = 30.25\\)\n\\(SE[\\overline X] = 45.15\\)"
+  },
+  {
+    "objectID": "slides/32-clt.html#example-2-surviving-winter-1",
+    "href": "slides/32-clt.html#example-2-surviving-winter-1",
+    "title": "1.32 The Central Limit Theorem",
+    "section": "Example 2: Surviving Winter",
+    "text": "Example 2: Surviving Winter\n\n\n\n\n\nSteve\n\n\n\\(\\overline X \\sim \\text{Normal}(250, 30.25)\\)\n\nqnorm(.95, 250, 30.25)\n\n[1] 299.7568\n\n\n\n\n\n\nJimmy\n\n\n\\(\\overline X \\sim \\text{Normal}(320, 45.15)\\)\n\nqnorm(.95, 320, 45.15)\n\n[1] 394.2651"
   }
 ]
