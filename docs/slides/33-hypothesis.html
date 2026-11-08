@@ -9,7 +9,7 @@
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.10.19">
 
-  <title>STAT 1080 - Fall 2026 – rv</title>
+  <title>STAT 1080 - Fall 2026 – hypothesis</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -143,8 +143,96 @@
     <div class="slides">
 
 
-<section class="slide level2">
+<section id="review" class="slide level2">
+<h2>Review</h2>
+<ul>
+<li><p><strong>population</strong> - The entire collection of observational units we are interested in<br>
+<span class="large emph fragment blue-dk">population <span class="math inline">\(\rightarrow\)</span> <strong>parameter</strong></span></p></li>
+<li><p><strong>sample</strong> - The subset of the population on which we record data<br>
+<span class="large emph fragment blue-dk">sample <span class="math inline">\(\rightarrow\)</span> <strong>statistic</strong></span></p></li>
+</ul>
+</section>
+<section id="confidence-intervals" class="slide level2">
+<h2>Confidence Intervals</h2>
+<p>A <strong>Confidence Interval</strong> provides a range of values that are plausible for the parameter, based on the sample statistic.</p>
+<ul>
+<li><p>Confidence Level - the proportion of the time the interval is expected to contain the parameter (usually 95%)</p></li>
+<li><p>When the CLT applies, you can compute a 95% CI as:</p></li>
+</ul>
+<p><span class="math display">\[\overline X \pm 1.96 \cdot \text{SE}[\overline X]\]</span></p>
+<p>using <span class="math inline">\(\text{SE}[\overline X] = \sqrt{\frac{\overline X (1-\overline X)}{N}}\)</span> if <span class="math inline">\(X\)</span> is discrete and <span class="math inline">\(\text{SE}[\overline X] = \frac{\text{SD}[X]}{\sqrt{N}}\)</span> if <span class="math inline">\(X\)</span> is continuous.</p>
+<p><span class="fragment emph green-dk">This is what the margin of error in a poll is actually used for</span></p>
+</section>
+<section id="comparing-to-the-population" class="slide level2">
+<h2>Comparing to the Population</h2>
+<p>Often, we want to know if our sample is different from the population.</p>
+<p>That is, could our sample value have arisen by chance, if the population value is <span class="math inline">\(p\)</span>?</p>
+<p>For instance -</p>
+<ul>
+<li><p>Does the lightbulb we manufacture last longer than competitors?</p></li>
+<li><p>Does the medication we created work better than existing drugs?</p></li>
+</ul>
 
+<img data-src="33-hypothesis_files/figure-revealjs/unnamed-chunk-1-1.png" alt="A standard normal density is shown in blue with an orange vertical line near 2.25. The legend says the blue line is the population distribution and the orange line shows the sample mean. The title reads &quot;Did this happen by chance?&quot;." width="768" class="r-stretch"></section>
+<section id="comparing-to-the-population-1" class="slide level2">
+<h2>Comparing to the Population</h2>
+<p>Often, we want to know if our sample is different from the population.</p>
+<p>That is, could our sample value have arisen by chance, if the population value is <span class="math inline">\(p\)</span>?</p>
+<p>For instance -</p>
+<ul>
+<li><p>Does the lightbulb we manufacture last longer than competitors?</p></li>
+<li><p>Does the medication we created work better than existing drugs?</p></li>
+</ul>
+
+<img data-src="33-hypothesis_files/figure-revealjs/unnamed-chunk-2-1.png" alt="A standard normal density is shown in blue with an orange vertical line near 2.25. The legend says the blue line is the population distribution and the orange line shows the sample mean. The title reads &quot;Did this happen by chance?&quot;." width="768" class="r-stretch"><p><span class="fragment emph large blue-dk">This is called <strong>Hypothesis Testing</strong></span></p>
+</section>
+<section id="example-testing-to-failure" class="slide level2">
+<h2>Example: Testing to Failure</h2>
+<p>Foldable smartphones are tested to survive around 200,000 folds.</p>
+<p>Quality Assurance for SamSing phones takes a sample of 30 Andromeda phones from the production line and tests the foldable screen to failure.</p>
+<p>The average number of times the phones could be opened and closed before they failed was 179,423.3, and the standard deviation of the number of times a phone could be opened and closed was 11,427.</p>
+<p>What is the:</p>
+<ul>
+<li>statistic? <span class="emph cerulean-dk fragment large"><span class="math inline">\(\overline X = 179423.3\)</span></span></li>
+<li>parameter? <span class="emph cerulean-dk fragment large"><span class="math inline">\(\mu = 200000\)</span></span></li>
+</ul>
+<p>What type of variable is <span class="math inline">\(X\)</span>? <span class="emph cerulean-dk fragment large">continuous</span></p>
+<p>Does the CLT hold for this example? <span class="emph cerulean-dk fragment large">yes. <span class="math inline">\(N = 30\)</span> and the variable is continuous.</span></p>
+</section>
+<section id="example-testing-to-failure-1" class="slide level2">
+<h2>Example: Testing to Failure</h2>
+<p>Foldable smartphones are tested to survive around 200,000 folds.</p>
+<p>Quality Assurance for SamSing phones takes a sample of 30 Andromeda phones from the production line and tests the foldable screen to failure.</p>
+<p>The average number of times the phones could be opened and closed before they failed was 179,423.3, and the standard deviation of the number of times a phone could be opened and closed was 11,427.</p>
+</section>
+<section id="example-testing-to-failure-2" class="slide level2">
+<h2>Example: Testing to Failure</h2>
+<p><span class="math display">\[\begin{align}\phantom{=}&amp;179423.3 \pm 1.96 \cdot 11427/\sqrt{30} \\=&amp;179423.3 \pm 1.96 \cdot 2086.275 \\=&amp; 179423.3 \pm 4089.099 \\=&amp; (175334.2, 183512.4)\end{align}\]</span></p>
+</section>
+<section id="example-testing-to-failure-3" class="slide level2">
+<h2>Example: Testing to Failure</h2>
+<p>Foldable smartphones are tested to survive around 200,000 folds.</p>
+<p>Quality Assurance for SamSing phones takes a sample of 30 Andromeda phones from the production line and tests the foldable screen to failure.</p>
+<p>The average number of times the phones could be opened and closed before they failed was 179,423.3, and the standard deviation of the number of times a phone could be opened and closed was 11,427.</p>
+<h4 id="interpretation">Interpretation</h4>
+<p><span class="emph blue-dk">We are 95% confident that</span> the <span class="emph orange-dk">SamSing Andromeda phones can be opened</span> <span class="emph blue-dk">between 175334 and 183512 times</span> <span class="emph orange-dk">before failure.</span> As the industry standard of 200000 open/close operations is outside of the 95% confidence interval, we can conclude that Andromeda phones are significantly less durable than the industry standard.</p>
+</section>
+<section id="example-smoking-cessation" class="slide level2">
+<h2>Example: Smoking Cessation</h2>
+<p>Only about 20% of people who try to quit smoking succeed.</p>
+<p>A motivational audiobook claims that listening to the book can help people quit. After surveying people who have attempted quitting using the audiobook, 62 out of 250 people were successful at quitting.</p>
+<p>What is the:</p>
+<ul>
+<li>statistic? <span class="emph cerulean-dk fragment large"><span class="math inline">\(\overline X = 62/250 = 0.248\)</span></span></li>
+<li>parameter? <span class="emph cerulean-dk fragment large"><span class="math inline">\(p = 0.20\)</span></span></li>
+</ul>
+<p>What type of variable is <span class="math inline">\(X\)</span>? <span class="emph cerulean-dk fragment large">discrete</span></p>
+<p>Does the CLT hold for this example? <span class="emph cerulean-dk fragment large">yes. <span class="math inline">\(N*\overline X = 62 &gt; 5\)</span>, <span class="math inline">\(N*(1-\overline X) = 188 &gt; 5\)</span> and the variable is discrete.</span></p>
+</section>
+<section id="example-smoking-cessation-1" class="slide level2">
+<h2>Example: Smoking Cessation</h2>
+<p>Only about 20% of people who try to quit smoking succeed.</p>
+<p>A motivational audiobook claims that listening to the book can help people quit. After surveying people who have attempted quitting using the audiobook, 62 out of 250 people were successful at quitting.</p>
 
 
 </section>
@@ -366,6 +454,44 @@
         ]
       });
     </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
     <script id="quarto-html-after-body" type="application/javascript">
       window.document.addEventListener("DOMContentLoaded", function (event) {
         const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")

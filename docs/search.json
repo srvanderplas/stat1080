@@ -1,5 +1,61 @@
 [
   {
+    "objectID": "slides/32-clt.html#central-limit-theorem",
+    "href": "slides/32-clt.html#central-limit-theorem",
+    "title": "1.32 The Central Limit Theorem",
+    "section": "Central Limit Theorem",
+    "text": "Central Limit Theorem\n\\(X\\) is a random variable.\nIf the number of samples \\(N\\) is large enough, then \\[\\overline X \\sim \\text{Normal}\\left(E[X], \\frac{SD[X]}{\\sqrt{N}}\\right)\\]"
+  },
+  {
+    "objectID": "slides/32-clt.html#how-large-is-large-enough",
+    "href": "slides/32-clt.html#how-large-is-large-enough",
+    "title": "1.32 The Central Limit Theorem",
+    "section": "How Large is Large Enough?",
+    "text": "How Large is Large Enough?\nDiscrete RVs\n\\[X = \\begin{cases}0 & 1-p\\\\1 & p\\end{cases}\\ \\ \\ \\ \\ \\ \\text{compute}\\ \\overline X_n,\\ \\ \\  n=\\{2, 3, ..., 500\\}\\]"
+  },
+  {
+    "objectID": "slides/32-clt.html#how-large-is-large-enough-1",
+    "href": "slides/32-clt.html#how-large-is-large-enough-1",
+    "title": "1.32 The Central Limit Theorem",
+    "section": "How Large is Large Enough?",
+    "text": "How Large is Large Enough?\nContinuous RVs\n\\[X \\sim \\text{Exponential}(\\lambda), \\ \\ \\lambda = 0.25, 1, 4\\\\\nE[X] = \\frac{1}{\\lambda}\\ \\ \\ SD[X] = \\frac{1}{\\lambda}\\]\nExponential distributions are very skewed (not symmetric)"
+  },
+  {
+    "objectID": "slides/32-clt.html#consequences-of-the-central-limit-theorem",
+    "href": "slides/32-clt.html#consequences-of-the-central-limit-theorem",
+    "title": "1.32 The Central Limit Theorem",
+    "section": "Consequences of the Central Limit Theorem",
+    "text": "Consequences of the Central Limit Theorem\nThe CLT allows us to\n\nuse the normal distribution to approximate almost any sample average\ncalculate confidence regions and probabilities easily\ntest whether our assumptions about the world are true (hypothesis testing)"
+  },
+  {
+    "objectID": "slides/32-clt.html#example-number-of-squirrels",
+    "href": "slides/32-clt.html#example-number-of-squirrels",
+    "title": "1.32 The Central Limit Theorem",
+    "section": "Example: Number of Squirrels",
+    "text": "Example: Number of Squirrels\nNew York City conducts a squirrel census periodically1.\nWe’ll use the 2020 Squirrel Census conducted March 1, 2020 across several parks in Manhattan. A total of 433 squirrels were recorded.\nDefine \\(X = \\begin{cases} 1 & \\text{grey primary fur color}\\\\0 &\\text{otherwise}\\end{cases}\\)\n\n\n\n\n\n\n\n\n\n\\[\\overline X = \\frac{390}{433} = 0.9006928\\] \\[SE[\\overline X] = \\sqrt{\\frac{\\frac{390}{433}\\cdot\\frac{43}{433}}{433}} = 0.0143726\\]\nThere are even playlists to go along with it?"
+  },
+  {
+    "objectID": "slides/32-clt.html#example-number-of-squirrels-1",
+    "href": "slides/32-clt.html#example-number-of-squirrels-1",
+    "title": "1.32 The Central Limit Theorem",
+    "section": "Example: Number of Squirrels",
+    "text": "Example: Number of Squirrels\nAssuming that the parks sampled during the 2020 squirrel census are a random sample of squirrels in NYC, what is the probability that the true proportion of gray squirrels in NYC is between .875 and .925?\n\n\\[\\begin{align}P\\left(.875 &lt; p &lt; .925\\right) &= P\\left(\\overline X - .875 &lt; \\overline X - p &lt; \\overline X - .925\\right) \\\\&= P\\left(\\frac{\\overline X - .875}{SE[p]} &lt; \\frac{\\overline X - p}{SE[p]} &lt; \\frac{\\overline X - .925}{SE[p]}\\right) \\\\&\\approx P\\left(\\frac{0.901 - .875}{0.0144} &lt; Z &lt; \\frac{0.901 - .925}{0.0144}\\right) \\\\&=P\\left(-1.667 &lt; Z &lt; 1.806\\right)\\end{align}\\]\n\n\n\npnorm(1.806)-pnorm(-1.667)\n\n[1] 0.9167836"
+  },
+  {
+    "objectID": "slides/32-clt.html#example-2-surviving-winter",
+    "href": "slides/32-clt.html#example-2-surviving-winter",
+    "title": "1.32 The Central Limit Theorem",
+    "section": "Example 2: Surviving Winter",
+    "text": "Example 2: Surviving Winter\nSteve and Jimmy are two squirrels who live in McCarren Park in Brooklyn.\n\n\n\n\n\n\nSteve\n\n\n\n\n\n\n\nJimmy\n\n\n\n\n\nJimmy, a grey squirrel, prefers to hoard acorns from local oak trees, while Steve, a red squirrel, collects conifer seeds and mushrooms. Over a 30 day period, each squirrel keeps track of the “take” (in calories) from their respective foraging activities.\nCalculate the 95th percentile for each squirrel’s average take, measured in calories.\n\n\n\nSteve\nJimmy\n\n\n\n\n\\(\\overline X = 250\\)\n\\(\\overline X = 320\\)\n\n\n\\(SE[\\overline X] = 30.25\\)\n\\(SE[\\overline X] = 45.15\\)"
+  },
+  {
+    "objectID": "slides/32-clt.html#example-2-surviving-winter-1",
+    "href": "slides/32-clt.html#example-2-surviving-winter-1",
+    "title": "1.32 The Central Limit Theorem",
+    "section": "Example 2: Surviving Winter",
+    "text": "Example 2: Surviving Winter\n\n\n\n\n\nSteve\n\n\n\\(\\overline X \\sim \\text{Normal}(250, 30.25)\\)\n\nqnorm(.95, 250, 30.25)\n\n[1] 299.7568\n\n\n\n\n\n\nJimmy\n\n\n\\(\\overline X \\sim \\text{Normal}(320, 45.15)\\)\n\nqnorm(.95, 320, 45.15)\n\n[1] 394.2651"
+  },
+  {
     "objectID": "slides/28-rv.html#variables",
     "href": "slides/28-rv.html#variables",
     "title": "1.28 Random Variables",
@@ -2230,14 +2286,14 @@
     "href": "weeks/week-110.html",
     "title": "Week 11: Parameters and Estimates",
     "section": "",
-    "text": "November 09-15, 2026\n\n\n\n(for Mon) IDS 2 Ch 9.1 - 9.3 - Estimates\n(for Wed) IDS 2 Ch 8 - Sampling Models and the Central Limit Theorem\n\n\n\n\n\n(for Mon) Reading Check 11.1 - Parameters and Estimates\n(for Wed) Reading Check 11.2\n\nStart Looking At Homework 3, qmd template, html, visual solutions\n\n\n\n\n\nAttendance Quiz 11/09\nParameters and Estimates\n11.1.i Activity - Parameters and Estimates quarto template, html\n\n\n\n\n\nAttendance Quiz 11/11\nCentral Limit Theorem\n\n\n\n\n\nAttendance Quiz 11/13\nLab: CLT\n\n\n\n\n\nStart Looking at Homework 3, qmd template, html, visual solutions\nPopulation and Estimated Parameters, Clearly Explained - Josh Starmer\nParameter Estimation and Fitting Distributions - Steve Brunton"
+    "text": "November 09-15, 2026\n\n\n\n(for Mon) IDS 2 Ch 9.1 - 9.3 - Estimates\n(for Wed) IDS 2 Ch 8 - Sampling Models and the Central Limit Theorem\n(for Fri) IDS 2 Ch 13 - Hypothesis Testing\n\n\n\n\n\n(for Mon) Reading Check 11.1 - Parameters and Estimates\n(for Wed) Reading Check 11.2\n\nStart Looking At Homework 3, qmd template, html, visual solutions\n\n\n\n\n\nAttendance Quiz 11/09\nParameters and Estimates\n11.1.i Activity - Parameters and Estimates quarto template, html\n\n\n\n\n\nAttendance Quiz 11/11\nCentral Limit Theorem\n\n\n\n\n\nAttendance Quiz 11/13\nHypothesis Testing\n\n\n\n\n\nStart Looking at Homework 3, qmd template, html, visual solutions\nPopulation and Estimated Parameters, Clearly Explained - Josh Starmer\nParameter Estimation and Fitting Distributions - Steve Brunton"
   },
   {
     "objectID": "weeks/week-110.html#reading",
     "href": "weeks/week-110.html#reading",
     "title": "Week 11: Parameters and Estimates",
     "section": "",
-    "text": "(for Mon) IDS 2 Ch 9.1 - 9.3 - Estimates\n(for Wed) IDS 2 Ch 8 - Sampling Models and the Central Limit Theorem"
+    "text": "(for Mon) IDS 2 Ch 9.1 - 9.3 - Estimates\n(for Wed) IDS 2 Ch 8 - Sampling Models and the Central Limit Theorem\n(for Fri) IDS 2 Ch 13 - Hypothesis Testing"
   },
   {
     "objectID": "weeks/week-110.html#prepare-for-class",
@@ -2265,7 +2321,7 @@
     "href": "weeks/week-110.html#friday",
     "title": "Week 11: Parameters and Estimates",
     "section": "",
-    "text": "Attendance Quiz 11/13\nLab: CLT"
+    "text": "Attendance Quiz 11/13\nHypothesis Testing"
   },
   {
     "objectID": "weeks/week-110.html#extra-resourcesreading",
@@ -5453,97 +5509,6 @@
     "text": "Review\n\npopulation - The entire collection of observational units we are interested in\npopulation \\(\\rightarrow\\) parameter\nsample - The subset of the population on which we record data\nsample \\(\\rightarrow\\) statistic"
   },
   {
-    "objectID": "slides/31-param-est.html#example-continuous-variables",
-    "href": "slides/31-param-est.html#example-continuous-variables",
-    "title": "1.31 Parameter Estimation",
-    "section": "Example: Continuous Variables",
-    "text": "Example: Continuous Variables\nFoldable smartphones are tested to survive around 200,000 folds.\nQuality Assurance for SamSing phones takes a sample of 30 Andromeda phones from the production line and tests the foldable screen to failure.\nThe average number of times the phones could be opened and closed before they failed was 179,423.3, and the standard deviation of the number of times a phone could be opened and closed was 11,427.\nWhat is the:\n\nstatistic? \\(\\overline X = 179423.3\\)\nparameter? \\(\\mu = 200000\\)\n\nWhat type of variable is \\(X\\)? continuous\nDoes the CLT hold for this example? yes. \\(N = 30\\) and the variable is continuous."
-  },
-  {
-    "objectID": "slides/31-param-est.html#example-discrete-variables",
-    "href": "slides/31-param-est.html#example-discrete-variables",
-    "title": "1.31 Parameter Estimation",
-    "section": "Example: Discrete Variables",
-    "text": "Example: Discrete Variables\nOnly about 20% of people who try to quit smoking succeed.\nA motivational audiobook claims that listening to the book can help people quit. After surveying people who have attempted quitting using the audiobook, 62 out of 250 people were successful at quitting.\nWhat is the:\n\nstatistic? \\(\\overline X = 62/250 = 0.248\\)\nparameter? \\(p = 0.20\\)"
-  },
-  {
-    "objectID": "slides/31-param-est.html#confidence-intervals",
-    "href": "slides/31-param-est.html#confidence-intervals",
-    "title": "1.31 Parameter Estimation",
-    "section": "Confidence Intervals",
-    "text": "Confidence Intervals\nWhen \\(N\\) is large enough, we can describe the precision of our estimate \\(\\overline X\\) with an interval\nThere is a 95% probability that the true value \\(p\\) (or \\(\\mu\\)) falls within \\(1.96\\cdot \\hat{\\text{SE}}[\\overline X]\\) of \\(\\overline X\\).\n\\[P\\left(\\overline X - 1.96\\cdot \\hat{\\text{SE}}[\\overline X] \\leq p \\leq \\overline X + 1.96\\cdot \\hat{\\text{SE}}[\\overline X]\\right) = 0.95\\]\nWe interpret the interval \\(\\left[a = \\overline X - 1.96\\cdot \\hat{\\text{SE}}[\\overline X], b = \\overline X + 1.96\\cdot \\hat{\\text{SE}}[\\overline X]\\right]\\) as:\nWe are 95% confident that the true value (\\(p\\)/\\(\\mu\\)) lies between \\(a\\) and \\(b\\), [add specific contextual information about what a and b mean here]."
-  },
-  {
-    "objectID": "slides/31-param-est.html#example-continuous-variables-1",
-    "href": "slides/31-param-est.html#example-continuous-variables-1",
-    "title": "1.31 Parameter Estimation",
-    "section": "Example: Continuous Variables",
-    "text": "Example: Continuous Variables\nFoldable smartphones are tested to survive around 200,000 folds.\nQuality Assurance for SamSing phones takes a sample of 30 Andromeda phones from the production line and tests the foldable screen to failure.\nThe average number of times the phones could be opened and closed before they failed was 179,423.3, and the standard deviation of the number of times a phone could be opened and closed was 11,427.\nConfidence Interval\n\\[\\begin{align}\\phantom{=}&179423.3 \\pm 1.96 \\cdot 11427/\\sqrt{30} \\\\=&179423.3 \\pm 1.96 \\cdot 2086.275 \\\\=& 179423.3 \\pm 4089.099 \\\\=& (175334.2, 183512.4)\\end{align}\\]"
-  },
-  {
-    "objectID": "slides/31-param-est.html#example-continuous-variables-2",
-    "href": "slides/31-param-est.html#example-continuous-variables-2",
-    "title": "1.31 Parameter Estimation",
-    "section": "Example: Continuous Variables",
-    "text": "Example: Continuous Variables\nFoldable smartphones are tested to survive around 200,000 folds.\nQuality Assurance for SamSing phones takes a sample of 30 Andromeda phones from the production line and tests the foldable screen to failure.\nThe average number of times the phones could be opened and closed before they failed was 179,423.3, and the standard deviation of the number of times a phone could be opened and closed was 11,427.\nInterpretation\nWe are 95% confident that the SamSing Andromeda phones can be opened between 175334 and 183512 times before failure. As the industry standard of 200000 open/close operations is outside of the 95% confidence interval, we can conclude that Andromeda phones are significantly less durable than the industry standard."
-  },
-  {
-    "objectID": "slides/31-param-est.html#comparing-to-the-population",
-    "href": "slides/31-param-est.html#comparing-to-the-population",
-    "title": "1.31 Parameter Estimation",
-    "section": "Comparing to the Population",
-    "text": "Comparing to the Population\nOften, we want to know if our sample is different from the population.\nThat is, could our sample value have arisen by chance, if the population value is \\(p\\)?\nFor instance -\n\nDoes the lightbulb we manufacture last longer than competitors?\nDoes the medication we created work better than existing drugs?"
-  },
-  {
-    "objectID": "slides/31-param-est.html#example-testing-to-failure",
-    "href": "slides/31-param-est.html#example-testing-to-failure",
-    "title": "1.31 Parameter Estimation",
-    "section": "Example: Testing to Failure",
-    "text": "Example: Testing to Failure\nFoldable smartphones are tested to survive around 200,000 folds.\nQuality Assurance for SamSing phones takes a sample of 30 Andromeda phones from the production line and tests the foldable screen to failure.\nThe average number of times the phones could be opened and closed before they failed was 179,423.3, and the standard deviation of the number of times a phone could be opened and closed was 11,427.\nWhat is the:\n\nstatistic? \\(\\overline X = 179423.3\\)\nparameter? \\(\\mu = 200000\\)\n\nWhat type of variable is \\(X\\)? continuous\nDoes the CLT hold for this example? yes. \\(N = 30\\) and the variable is continuous."
-  },
-  {
-    "objectID": "slides/31-param-est.html#example-testing-to-failure-1",
-    "href": "slides/31-param-est.html#example-testing-to-failure-1",
-    "title": "1.31 Parameter Estimation",
-    "section": "Example: Testing to Failure",
-    "text": "Example: Testing to Failure\nFoldable smartphones are tested to survive around 200,000 folds.\nQuality Assurance for SamSing phones takes a sample of 30 Andromeda phones from the production line and tests the foldable screen to failure.\nThe average number of times the phones could be opened and closed before they failed was 179,423.3, and the standard deviation of the number of times a phone could be opened and closed was 11,427."
-  },
-  {
-    "objectID": "slides/31-param-est.html#example-testing-to-failure-2",
-    "href": "slides/31-param-est.html#example-testing-to-failure-2",
-    "title": "1.31 Parameter Estimation",
-    "section": "Example: Testing to Failure",
-    "text": "Example: Testing to Failure\n\\[\\begin{align}\\phantom{=}&179423.3 \\pm 1.96 \\cdot 11427/\\sqrt{30} \\\\=&179423.3 \\pm 1.96 \\cdot 2086.275 \\\\=& 179423.3 \\pm 4089.099 \\\\=& (175334.2, 183512.4)\\end{align}\\]"
-  },
-  {
-    "objectID": "slides/31-param-est.html#example-testing-to-failure-3",
-    "href": "slides/31-param-est.html#example-testing-to-failure-3",
-    "title": "1.31 Parameter Estimation",
-    "section": "Example: Testing to Failure",
-    "text": "Example: Testing to Failure\nFoldable smartphones are tested to survive around 200,000 folds.\nQuality Assurance for SamSing phones takes a sample of 30 Andromeda phones from the production line and tests the foldable screen to failure.\nThe average number of times the phones could be opened and closed before they failed was 179,423.3, and the standard deviation of the number of times a phone could be opened and closed was 11,427.\nInterpretation\nWe are 95% confident that the SamSing Andromeda phones can be opened between 175334 and 183512 times before failure. As the industry standard of 200000 open/close operations is outside of the 95% confidence interval, we can conclude that Andromeda phones are significantly less durable than the industry standard."
-  },
-  {
-    "objectID": "slides/31-param-est.html#example-smoking-cessation",
-    "href": "slides/31-param-est.html#example-smoking-cessation",
-    "title": "1.31 Parameter Estimation",
-    "section": "Example: Smoking Cessation",
-    "text": "Example: Smoking Cessation\nOnly about 20% of people who try to quit smoking succeed.\nA motivational audiobook claims that listening to the book can help people quit. After surveying people who have attempted quitting using the audiobook, 62 out of 250 people were successful at quitting.\nWhat is the:\n\nstatistic? \\(\\overline X = 62/250 = 0.248\\)\nparameter? \\(p = 0.20\\)\n\nWhat type of variable is \\(X\\)? discrete\nDoes the CLT hold for this example? yes. \\(N*\\overline X = 62 &gt; 5\\), \\(N*(1-\\overline X) = 188 &gt; 5\\) and the variable is discrete."
-  },
-  {
-    "objectID": "slides/31-param-est.html#example-smoking-cessation-1",
-    "href": "slides/31-param-est.html#example-smoking-cessation-1",
-    "title": "1.31 Parameter Estimation",
-    "section": "Example: Smoking Cessation",
-    "text": "Example: Smoking Cessation\nOnly about 20% of people who try to quit smoking succeed.\nA motivational audiobook claims that listening to the book can help people quit. After surveying people who have attempted quitting using the audiobook, 62 out of 250 people were successful at quitting."
-  },
-  {
-    "objectID": "slides/31-param-est.html#comparing-to-the-population-1",
-    "href": "slides/31-param-est.html#comparing-to-the-population-1",
-    "title": "1.31 Parameter Estimation",
-    "section": "Comparing to the Population",
-    "text": "Comparing to the Population\nOften, we want to know if our sample is different from the population.\nThat is, could our sample value have arisen by chance, if the population value is \\(p\\)?\nFor instance -\n\nDoes the lightbulb we manufacture last longer than competitors?\nDoes the medication we created work better than existing drugs?\n\n\n\n\n\n\n\n\n\n\nThis is called Hypothesis Testing, and we’ll get there next time"
-  },
-  {
     "objectID": "slides/31-param-est.html#polling-and-sampling",
     "href": "slides/31-param-est.html#polling-and-sampling",
     "title": "1.31 Parameter Estimation",
@@ -5579,73 +5544,80 @@
     "text": "Central Limit Theorem\n\nWhen \\(N\\) is large enough, \\(\\overline X\\) is approximately normally distributed\nMean:\n\n\\(\\text{E}[\\overline X] = p\\) (for proportions)\n\\(\\text{E}[\\overline X] = \\mu\\) (for continuous variables)\n\nStandard Deviation:\n\n\\(\\text{SE}[\\overline X] = \\sqrt{\\frac{p(1-p)}{N}} \\approx \\sqrt{\\frac{\\overline X(1-\\overline X)}{N}}\\) (proportions)\n\\(\\text{SE}[\\overline X] = \\text{SD}[X]/\\sqrt{N}\\) (continuous variables)"
   },
   {
-    "objectID": "slides/32-clt.html#central-limit-theorem",
-    "href": "slides/32-clt.html#central-limit-theorem",
-    "title": "1.32 The Central Limit Theorem",
-    "section": "Central Limit Theorem",
-    "text": "Central Limit Theorem\n\\(X\\) is a random variable.\nIf the number of samples \\(N\\) is large enough, then \\[\\overline X \\sim \\text{Normal}\\left(E[X], \\frac{SD[X]}{\\sqrt{N}}\\right)\\]"
+    "objectID": "slides/31-param-est.html#confidence-intervals",
+    "href": "slides/31-param-est.html#confidence-intervals",
+    "title": "1.31 Parameter Estimation",
+    "section": "Confidence Intervals",
+    "text": "Confidence Intervals\nWhen \\(N\\) is large enough, we can describe the precision of our estimate \\(\\overline X\\) with an interval\nThere is a 95% probability that the true value \\(p\\) (or \\(\\mu\\)) falls within \\(1.96\\cdot \\hat{\\text{SE}}[\\overline X]\\) of \\(\\overline X\\).\n\\[P\\left(\\overline X - 1.96\\cdot \\hat{\\text{SE}}[\\overline X] \\leq p \\leq \\overline X + 1.96\\cdot \\hat{\\text{SE}}[\\overline X]\\right) = 0.95\\]\nWe interpret the interval \\(\\left[a = \\overline X - 1.96\\cdot \\hat{\\text{SE}}[\\overline X], b = \\overline X + 1.96\\cdot \\hat{\\text{SE}}[\\overline X]\\right]\\) as:\nWe are 95% confident that the true value (\\(p\\)/\\(\\mu\\)) lies between \\(a\\) and \\(b\\), [add specific contextual information about what a and b mean here]."
   },
   {
-    "objectID": "slides/32-clt.html#how-large-is-large-enough",
-    "href": "slides/32-clt.html#how-large-is-large-enough",
-    "title": "1.32 The Central Limit Theorem",
-    "section": "How Large is Large Enough?",
-    "text": "How Large is Large Enough?\nDiscrete RVs\n\\[X = \\begin{cases}0 & 1-p\\\\1 & p\\end{cases}\\ \\ \\ \\ \\ \\ \\text{compute}\\ \\overline X_n,\\ \\ \\  n=\\{2, 3, ..., 500\\}\\]"
+    "objectID": "slides/33-hypothesis.html#review",
+    "href": "slides/33-hypothesis.html#review",
+    "title": "STAT 1080 - Fall 2026",
+    "section": "Review",
+    "text": "Review\n\npopulation - The entire collection of observational units we are interested in\npopulation \\(\\rightarrow\\) parameter\nsample - The subset of the population on which we record data\nsample \\(\\rightarrow\\) statistic"
   },
   {
-    "objectID": "slides/32-clt.html#how-large-is-large-enough-1",
-    "href": "slides/32-clt.html#how-large-is-large-enough-1",
-    "title": "1.32 The Central Limit Theorem",
-    "section": "How Large is Large Enough?",
-    "text": "How Large is Large Enough?\nContinuous RVs\n\\[X \\sim \\text{Exponential}(\\lambda), \\ \\ \\lambda = 0.25, 1, 4\\\\\nE[X] = \\frac{1}{\\lambda}\\ \\ \\ SD[X] = \\frac{1}{\\lambda}\\]\nExponential distributions are very skewed (not symmetric)"
+    "objectID": "slides/33-hypothesis.html#confidence-intervals",
+    "href": "slides/33-hypothesis.html#confidence-intervals",
+    "title": "STAT 1080 - Fall 2026",
+    "section": "Confidence Intervals",
+    "text": "Confidence Intervals\nA Confidence Interval provides a range of values that are plausible for the parameter, based on the sample statistic.\n\nConfidence Level - the proportion of the time the interval is expected to contain the parameter (usually 95%)\nWhen the CLT applies, you can compute a 95% CI as:\n\n\\[\\overline X \\pm 1.96 \\cdot \\text{SE}[\\overline X]\\]\nusing \\(\\text{SE}[\\overline X] = \\sqrt{\\frac{\\overline X (1-\\overline X)}{N}}\\) if \\(X\\) is discrete and \\(\\text{SE}[\\overline X] = \\frac{\\text{SD}[X]}{\\sqrt{N}}\\) if \\(X\\) is continuous.\nThis is what the margin of error in a poll is actually used for"
   },
   {
-    "objectID": "slides/32-clt.html#consequences-of-the-central-limit-theorem",
-    "href": "slides/32-clt.html#consequences-of-the-central-limit-theorem",
-    "title": "1.32 The Central Limit Theorem",
-    "section": "Consequences of the Central Limit Theorem",
-    "text": "Consequences of the Central Limit Theorem\nThe CLT allows us to\n\nuse the normal distribution to approximate almost any sample average\ncalculate confidence regions and probabilities easily\ntest whether our assumptions about the world are true (hypothesis testing)"
+    "objectID": "slides/33-hypothesis.html#comparing-to-the-population",
+    "href": "slides/33-hypothesis.html#comparing-to-the-population",
+    "title": "STAT 1080 - Fall 2026",
+    "section": "Comparing to the Population",
+    "text": "Comparing to the Population\nOften, we want to know if our sample is different from the population.\nThat is, could our sample value have arisen by chance, if the population value is \\(p\\)?\nFor instance -\n\nDoes the lightbulb we manufacture last longer than competitors?\nDoes the medication we created work better than existing drugs?"
   },
   {
-    "objectID": "slides/32-clt.html#example-number-of-squirrels",
-    "href": "slides/32-clt.html#example-number-of-squirrels",
-    "title": "1.32 The Central Limit Theorem",
-    "section": "Example: Number of Squirrels",
-    "text": "Example: Number of Squirrels\nNew York City conducts a squirrel census periodically1.\nWe’ll use the 2020 Squirrel Census conducted March 1, 2020 across several parks in Manhattan. A total of 433 squirrels were recorded.\nDefine \\(X = \\begin{cases} 1 & \\text{grey primary fur color}\\\\0 &\\text{otherwise}\\end{cases}\\)\n\n\n\n\n\n\n\n\n\n\\[\\overline X = \\frac{390}{433} = 0.9006928\\] \\[SE[\\overline X] = \\sqrt{\\frac{\\frac{390}{433}\\cdot\\frac{43}{433}}{433}} = 0.0143726\\]\nThere are even playlists to go along with it?"
+    "objectID": "slides/33-hypothesis.html#comparing-to-the-population-1",
+    "href": "slides/33-hypothesis.html#comparing-to-the-population-1",
+    "title": "STAT 1080 - Fall 2026",
+    "section": "Comparing to the Population",
+    "text": "Comparing to the Population\nOften, we want to know if our sample is different from the population.\nThat is, could our sample value have arisen by chance, if the population value is \\(p\\)?\nFor instance -\n\nDoes the lightbulb we manufacture last longer than competitors?\nDoes the medication we created work better than existing drugs?\n\n\nThis is called Hypothesis Testing"
   },
   {
-    "objectID": "slides/32-clt.html#example-number-of-squirrels-1",
-    "href": "slides/32-clt.html#example-number-of-squirrels-1",
-    "title": "1.32 The Central Limit Theorem",
-    "section": "Example: Number of Squirrels",
-    "text": "Example: Number of Squirrels\nAssuming that the parks sampled during the 2020 squirrel census are a random sample of squirrels in NYC, what is the probability that the true proportion of gray squirrels in NYC is between .875 and .925?\n\n\\[\\begin{align}P\\left(.875 &lt; p &lt; .925\\right) &= P\\left(\\overline X - .875 &lt; \\overline X - p &lt; \\overline X - .925\\right) \\\\&= P\\left(\\frac{\\overline X - .875}{SE[p]} &lt; \\frac{\\overline X - p}{SE[p]} &lt; \\frac{\\overline X - .925}{SE[p]}\\right) \\\\&\\approx P\\left(\\frac{0.901 - .875}{0.0144} &lt; Z &lt; \\frac{0.901 - .925}{0.0144}\\right) \\\\&=P\\left(-1.667 &lt; Z &lt; 1.806\\right)\\end{align}\\]\n\n\n\npnorm(1.806)-pnorm(-1.667)\n\n[1] 0.9167836"
+    "objectID": "slides/33-hypothesis.html#example-testing-to-failure",
+    "href": "slides/33-hypothesis.html#example-testing-to-failure",
+    "title": "STAT 1080 - Fall 2026",
+    "section": "Example: Testing to Failure",
+    "text": "Example: Testing to Failure\nFoldable smartphones are tested to survive around 200,000 folds.\nQuality Assurance for SamSing phones takes a sample of 30 Andromeda phones from the production line and tests the foldable screen to failure.\nThe average number of times the phones could be opened and closed before they failed was 179,423.3, and the standard deviation of the number of times a phone could be opened and closed was 11,427.\nWhat is the:\n\nstatistic? \\(\\overline X = 179423.3\\)\nparameter? \\(\\mu = 200000\\)\n\nWhat type of variable is \\(X\\)? continuous\nDoes the CLT hold for this example? yes. \\(N = 30\\) and the variable is continuous."
   },
   {
-    "objectID": "slides/32-clt.html#example-2-acorns",
-    "href": "slides/32-clt.html#example-2-acorns",
-    "title": "1.32 The Central Limit Theorem",
-    "section": "Example 2: Acorns",
-    "text": "Example 2: Acorns\nSteve and Jimmy are two squirrels who live in McCarren Park in Brooklyn.\n\n\n\n\n\n\nSteve\n\n\n\n\n\n\n\nJimmy"
+    "objectID": "slides/33-hypothesis.html#example-testing-to-failure-1",
+    "href": "slides/33-hypothesis.html#example-testing-to-failure-1",
+    "title": "STAT 1080 - Fall 2026",
+    "section": "Example: Testing to Failure",
+    "text": "Example: Testing to Failure\nFoldable smartphones are tested to survive around 200,000 folds.\nQuality Assurance for SamSing phones takes a sample of 30 Andromeda phones from the production line and tests the foldable screen to failure.\nThe average number of times the phones could be opened and closed before they failed was 179,423.3, and the standard deviation of the number of times a phone could be opened and closed was 11,427."
   },
   {
-    "objectID": "slides/32-clt.html#example-2-acorns-1",
-    "href": "slides/32-clt.html#example-2-acorns-1",
-    "title": "1.32 The Central Limit Theorem",
-    "section": "Example 2: Acorns",
-    "text": "Example 2: Acorns\nSteve and Jimmy are two squirrels who live in McCarren Park in Brooklyn.\n\n\n\n\n\n\nSteve\n\n\n\n\n\n\n\nJimmy"
+    "objectID": "slides/33-hypothesis.html#example-testing-to-failure-2",
+    "href": "slides/33-hypothesis.html#example-testing-to-failure-2",
+    "title": "STAT 1080 - Fall 2026",
+    "section": "Example: Testing to Failure",
+    "text": "Example: Testing to Failure\n\\[\\begin{align}\\phantom{=}&179423.3 \\pm 1.96 \\cdot 11427/\\sqrt{30} \\\\=&179423.3 \\pm 1.96 \\cdot 2086.275 \\\\=& 179423.3 \\pm 4089.099 \\\\=& (175334.2, 183512.4)\\end{align}\\]"
   },
   {
-    "objectID": "slides/32-clt.html#example-2-surviving-winter",
-    "href": "slides/32-clt.html#example-2-surviving-winter",
-    "title": "1.32 The Central Limit Theorem",
-    "section": "Example 2: Surviving Winter",
-    "text": "Example 2: Surviving Winter\nSteve and Jimmy are two squirrels who live in McCarren Park in Brooklyn.\n\n\n\n\n\n\nSteve\n\n\n\n\n\n\n\nJimmy\n\n\n\n\n\nJimmy, a grey squirrel, prefers to hoard acorns from local oak trees, while Steve, a red squirrel, collects conifer seeds and mushrooms. Over a 30 day period, each squirrel keeps track of the “take” (in calories) from their respective foraging activities.\nCalculate the 95th percentile for each squirrel’s average take, measured in calories.\n\n\n\nSteve\nJimmy\n\n\n\n\n\\(\\overline X = 250\\)\n\\(\\overline X = 320\\)\n\n\n\\(SE[\\overline X] = 30.25\\)\n\\(SE[\\overline X] = 45.15\\)"
+    "objectID": "slides/33-hypothesis.html#example-testing-to-failure-3",
+    "href": "slides/33-hypothesis.html#example-testing-to-failure-3",
+    "title": "STAT 1080 - Fall 2026",
+    "section": "Example: Testing to Failure",
+    "text": "Example: Testing to Failure\nFoldable smartphones are tested to survive around 200,000 folds.\nQuality Assurance for SamSing phones takes a sample of 30 Andromeda phones from the production line and tests the foldable screen to failure.\nThe average number of times the phones could be opened and closed before they failed was 179,423.3, and the standard deviation of the number of times a phone could be opened and closed was 11,427.\nInterpretation\nWe are 95% confident that the SamSing Andromeda phones can be opened between 175334 and 183512 times before failure. As the industry standard of 200000 open/close operations is outside of the 95% confidence interval, we can conclude that Andromeda phones are significantly less durable than the industry standard."
   },
   {
-    "objectID": "slides/32-clt.html#example-2-surviving-winter-1",
-    "href": "slides/32-clt.html#example-2-surviving-winter-1",
-    "title": "1.32 The Central Limit Theorem",
-    "section": "Example 2: Surviving Winter",
-    "text": "Example 2: Surviving Winter\n\n\n\n\n\nSteve\n\n\n\\(\\overline X \\sim \\text{Normal}(250, 30.25)\\)\n\nqnorm(.95, 250, 30.25)\n\n[1] 299.7568\n\n\n\n\n\n\nJimmy\n\n\n\\(\\overline X \\sim \\text{Normal}(320, 45.15)\\)\n\nqnorm(.95, 320, 45.15)\n\n[1] 394.2651"
+    "objectID": "slides/33-hypothesis.html#example-smoking-cessation",
+    "href": "slides/33-hypothesis.html#example-smoking-cessation",
+    "title": "STAT 1080 - Fall 2026",
+    "section": "Example: Smoking Cessation",
+    "text": "Example: Smoking Cessation\nOnly about 20% of people who try to quit smoking succeed.\nA motivational audiobook claims that listening to the book can help people quit. After surveying people who have attempted quitting using the audiobook, 62 out of 250 people were successful at quitting.\nWhat is the:\n\nstatistic? \\(\\overline X = 62/250 = 0.248\\)\nparameter? \\(p = 0.20\\)\n\nWhat type of variable is \\(X\\)? discrete\nDoes the CLT hold for this example? yes. \\(N*\\overline X = 62 &gt; 5\\), \\(N*(1-\\overline X) = 188 &gt; 5\\) and the variable is discrete."
+  },
+  {
+    "objectID": "slides/33-hypothesis.html#example-smoking-cessation-1",
+    "href": "slides/33-hypothesis.html#example-smoking-cessation-1",
+    "title": "STAT 1080 - Fall 2026",
+    "section": "Example: Smoking Cessation",
+    "text": "Example: Smoking Cessation\nOnly about 20% of people who try to quit smoking succeed.\nA motivational audiobook claims that listening to the book can help people quit. After surveying people who have attempted quitting using the audiobook, 62 out of 250 people were successful at quitting."
   }
 ]
