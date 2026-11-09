@@ -122,6 +122,7 @@ ggplot(data = se_data, aes(x = n, y = se- sample_se)) +
 - The other option?    
 Use $p=0.5$, which is the worst-case scenario for the SE, as $p(1-p)$ is maximized at $p=0.5$
 
+
 ## Central Limit Theorem
 
 - When $N$ is large enough, $\overline X$ is approximately normally distributed
@@ -133,17 +134,4 @@ Use $p=0.5$, which is the worst-case scenario for the SE, as $p(1-p)$ is maximiz
 - Standard Deviation: 
   - $\text{SE}[\overline X] = \sqrt{\frac{p(1-p)}{N}} \approx \sqrt{\frac{\overline X(1-\overline X)}{N}}$ (proportions)
   - $\text{SE}[\overline X] = \text{SD}[X]/\sqrt{N}$ (continuous variables)
-  
-## Confidence Intervals
-
-When $N$ is large enough, we can describe the precision of our estimate $\overline X$ with an interval
-
-There is a 95% probability that the true value $p$ (or $\mu$) falls within $1.96\cdot \hat{\text{SE}}[\overline X]$ of $\overline X$.
-
-$$P\left(\overline X - 1.96\cdot \hat{\text{SE}}[\overline X] \leq p \leq \overline X + 1.96\cdot \hat{\text{SE}}[\overline X]\right) = 0.95$$
-
-We interpret the interval $\left[a = \overline X - 1.96\cdot \hat{\text{SE}}[\overline X], b = \overline X + 1.96\cdot \hat{\text{SE}}[\overline X]\right]$ as:
-
-We are 95% confident that the true value ($p$/$\mu$) lies between $a$ and $b$, [add specific contextual information about what a and b mean here]. 
-
 

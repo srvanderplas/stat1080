@@ -251,3 +251,53 @@ qnorm(.95, 320, 45.15)
 :::
 :::
 
+## Estimates and Intervals
+
+We can use a normal distribution to quantify the variability around sample statistics.
+
+```{r}
+x <- seq(-3, 3, .01)
+df <- tibble(x = x, y = dnorm(x))
+df_shaded <- filter(df, abs(x)<= 1.96)
+df_unshaded <- anti_join(df, df_shaded)
+
+ggplot(df, aes(x = x, y = y)) + 
+  geom_ribbon(data = df_shaded, aes(ymax = y, ymin = 0), fill = "#f16278", alpha = 0.5) + 
+  geom_line() + 
+  geom_segment(aes(x = 0, xend = 0, y = 0, yend = 0.45), linetype = "dashed", linewidth = 0.25, inherit.aes = F) + 
+  annotate("label", x = 0, y = 0.45, label = "Standardized  Estimate") +
+  annotate("segment", x = -1.5,  y = 0.1, xend = 1.5, yend = 0.1, arrow = grid::arrow(ends = "both", type = "open", length = unit(0.1, "inches"))) + 
+  annotate("label", x = 0, y = 0.1, label = "95% probability") + 
+  geom_vline(xintercept = c(-1, 1) * 1.96) + 
+  annotate("text", x = -1.96, y = 0.2, label = "z = -1.96", hjust = 1.1) + 
+  annotate("text", x =  1.96, y = 0.2, label = "z =  1.96", hjust = -0.1) + 
+  ylab("Density") + xlab("Z") + ggtitle("Normal Distribution") + 
+  scale_x_continuous(breaks = -3:3)
+
+```
+
+Estimate $\pm 1.96 \cdot SE$ gives us an interval that covers 95% of the distribution of our estimate!
+
+  
+## Confidence Intervals
+
+When $N$ is large enough, we can describe the precision of our estimate $\overline X$ with an interval
+
+There is a 95% probability that the true value $p$ (or $\mu, \pi, \rho$^[You can use any symbol for the true value, but $p$ is often a bit over-used, with p-values, proportions, etc. Just be **consistent** within a single problem.]) falls within $1.96\cdot \hat{\text{SE}}[\overline X]$ of $\overline X$.
+
+$$P\left(\underset{\text{lower bound}}{\underbrace{\overline X - 1.96\cdot \hat{\text{SE}}[\overline X]}} \leq p \leq \underset{\text{upper bound}}{\underbrace{\overline X + 1.96\cdot \hat{\text{SE}}[\overline X]}}\right) = 0.95$$
+
+## Confidence Interval Interpretation
+
+We interpret the $(a,b)$ interval $\left[\overline X - 1.96\cdot \hat{\text{SE}}[\overline X], \overline X + 1.96\cdot \hat{\text{SE}}[\overline X]\right]$ as:
+
+::: {.large .center}
+<br/>
+We are [95%]{.emph .cerulean-dk} confident that    
+[the **long-run average**]{.emph .cerulean-dk} \{... context ...\} $p$^[You can use any symbol for the true value, but $p$ is often a bit over-used, with p-values, proportions, etc. Just be **consistent** within a single problem.]    
+[**lies between**]{.emph .cerulean-dk} $a$ and $b$,     
+\{add specific problem context about what a and b mean here\}.  
+
+:::
+
+If there is a specific value that is important, add another sentence evaluating whether that value falls within the interval, and what that might tell you about the plausibility of the value.

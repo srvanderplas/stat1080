@@ -354,9 +354,40 @@ E[X] = \frac{1}{\lambda}\ \ \ SD[X] = \frac{1}{\lambda}\]</span></p>
 </div>
 </div>
 </div></div>
-
-
 </section>
+<section id="estimates-and-intervals" class="slide level2">
+<h2>Estimates and Intervals</h2>
+<p>We can use a normal distribution to quantify the variability around sample statistics.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><a href="32-clt_files/figure-revealjs/unnamed-chunk-7-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-9"><img data-src="32-clt_files/figure-revealjs/unnamed-chunk-7-1.png" width="960"></a></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Estimate <span class="math inline">\(\pm 1.96 \cdot SE\)</span> gives us an interval that covers 95% of the distribution of our estimate!</p>
+</section>
+<section id="confidence-intervals" class="slide level2">
+<h2>Confidence Intervals</h2>
+<p>When <span class="math inline">\(N\)</span> is large enough, we can describe the precision of our estimate <span class="math inline">\(\overline X\)</span> with an interval</p>
+<p>There is a 95% probability that the true value <span class="math inline">\(p\)</span> (or <span class="math inline">\(\mu, \pi, \rho\)</span><sup>1</sup>) falls within <span class="math inline">\(1.96\cdot \hat{\text{SE}}[\overline X]\)</span> of <span class="math inline">\(\overline X\)</span>.</p>
+<p><span class="math display">\[P\left(\underset{\text{lower bound}}{\underbrace{\overline X - 1.96\cdot \hat{\text{SE}}[\overline X]}} \leq p \leq \underset{\text{upper bound}}{\underbrace{\overline X + 1.96\cdot \hat{\text{SE}}[\overline X]}}\right) = 0.95\]</span></p>
+<aside><ol class="aside-footnotes"><li id="fn2"><p>You can use any symbol for the true value, but <span class="math inline">\(p\)</span> is often a bit over-used, with p-values, proportions, etc. Just be <strong>consistent</strong> within a single problem.</p></li></ol></aside></section>
+<section id="confidence-interval-interpretation" class="slide level2">
+<h2>Confidence Interval Interpretation</h2>
+<p>We interpret the <span class="math inline">\((a,b)\)</span> interval <span class="math inline">\(\left[\overline X - 1.96\cdot \hat{\text{SE}}[\overline X], \overline X + 1.96\cdot \hat{\text{SE}}[\overline X]\right]\)</span> as:</p>
+<div class="large center">
+<p><br> We are <span class="emph cerulean-dk">95%</span> confident that<br>
+<span class="emph cerulean-dk">the <strong>long-run average</strong></span> {… context …} <span class="math inline">\(p\)</span><sup>1</sup><br>
+<span class="emph cerulean-dk"><strong>lies between</strong></span> <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span>,<br>
+{add specific problem context about what a and b mean here}.</p>
+</div>
+<p>If there is a specific value that is important, add another sentence evaluating whether that value falls within the interval, and what that might tell you about the plausibility of the value.</p>
+
+
+<aside><ol class="aside-footnotes"><li id="fn3"><p>You can use any symbol for the true value, but <span class="math inline">\(p\)</span> is often a bit over-used, with p-values, proportions, etc. Just be <strong>consistent</strong> within a single problem.</p></li></ol></aside></section>
 
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">

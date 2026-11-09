@@ -5787,5 +5787,26 @@
     "title": "STAT 1080 - Fall 2026",
     "section": "Example: Smoking Cessation",
     "text": "Example: Smoking Cessation\nOnly about 20% of people who try to quit smoking succeed.\nA motivational audiobook claims that listening to the book can help people quit. After surveying people who have attempted quitting using the audiobook, 62 out of 250 people were successful at quitting."
+  },
+  {
+    "objectID": "slides/32-clt.html#estimates-and-intervals",
+    "href": "slides/32-clt.html#estimates-and-intervals",
+    "title": "1.32 The Central Limit Theorem",
+    "section": "Estimates and Intervals",
+    "text": "Estimates and Intervals\nWe can use a normal distribution to quantify the variability around sample statistics.\n\n\n\n\n\n\n\n\n\nEstimate \\(\\pm 1.96 \\cdot SE\\) gives us an interval that covers 95% of the distribution of our estimate!"
+  },
+  {
+    "objectID": "slides/32-clt.html#confidence-intervals",
+    "href": "slides/32-clt.html#confidence-intervals",
+    "title": "1.32 The Central Limit Theorem",
+    "section": "Confidence Intervals",
+    "text": "Confidence Intervals\nWhen \\(N\\) is large enough, we can describe the precision of our estimate \\(\\overline X\\) with an interval\nThere is a 95% probability that the true value \\(p\\) (or \\(\\mu, \\pi, \\rho\\)1) falls within \\(1.96\\cdot \\hat{\\text{SE}}[\\overline X]\\) of \\(\\overline X\\).\n\\[P\\left(\\underset{\\text{lower bound}}{\\underbrace{\\overline X - 1.96\\cdot \\hat{\\text{SE}}[\\overline X]}} \\leq p \\leq \\underset{\\text{upper bound}}{\\underbrace{\\overline X + 1.96\\cdot \\hat{\\text{SE}}[\\overline X]}}\\right) = 0.95\\]\nYou can use any symbol for the true value, but \\(p\\) is often a bit over-used, with p-values, proportions, etc. Just be consistent within a single problem."
+  },
+  {
+    "objectID": "slides/32-clt.html#confidence-interval-interpretation",
+    "href": "slides/32-clt.html#confidence-interval-interpretation",
+    "title": "1.32 The Central Limit Theorem",
+    "section": "Confidence Interval Interpretation",
+    "text": "Confidence Interval Interpretation\nWe interpret the \\((a,b)\\) interval \\(\\left[\\overline X - 1.96\\cdot \\hat{\\text{SE}}[\\overline X], \\overline X + 1.96\\cdot \\hat{\\text{SE}}[\\overline X]\\right]\\) as:\n\n We are 95% confident that\nthe long-run average {… context …} \\(p\\)1\nlies between \\(a\\) and \\(b\\),\n{add specific problem context about what a and b mean here}.\n\nIf there is a specific value that is important, add another sentence evaluating whether that value falls within the interval, and what that might tell you about the plausibility of the value.\n\n\nYou can use any symbol for the true value, but \\(p\\) is often a bit over-used, with p-values, proportions, etc. Just be consistent within a single problem."
   }
 ]
