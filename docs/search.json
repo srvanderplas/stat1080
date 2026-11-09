@@ -3,22 +3,22 @@
     "objectID": "slides/32-clt.html#central-limit-theorem",
     "href": "slides/32-clt.html#central-limit-theorem",
     "title": "1.32 The Central Limit Theorem",
-    "section": "Central Limit Theorem",
-    "text": "Central Limit Theorem\n\\(X\\) is a random variable.\nIf the number of samples \\(N\\) is large enough, then \\[\\overline X \\sim \\text{Normal}\\left(E[X], \\frac{SD[X]}{\\sqrt{N}}\\right)\\]"
+    "section": "",
+    "text": "\\(X\\) is a random variable.\nIf the number of samples \\(N\\) is large enough, then \\[\\overline X \\sim \\text{Normal}\\left(E[X], \\frac{SD[X]}{\\sqrt{N}}\\right)\\]"
   },
   {
     "objectID": "slides/32-clt.html#how-large-is-large-enough",
     "href": "slides/32-clt.html#how-large-is-large-enough",
     "title": "1.32 The Central Limit Theorem",
     "section": "How Large is Large Enough?",
-    "text": "How Large is Large Enough?\nDiscrete RVs\n\\[X = \\begin{cases}0 & 1-p\\\\1 & p\\end{cases}\\ \\ \\ \\ \\ \\ \\text{compute}\\ \\overline X_n,\\ \\ \\  n=\\{2, 3, ..., 500\\}\\]"
+    "text": "How Large is Large Enough?\n\nDiscrete RVs\n\\[X = \\begin{cases}0 & 1-p\\\\1 & p\\end{cases}\\ \\ \\ \\ \\ \\ \\text{compute}\\ \\overline X_n,\\ \\ \\  n=\\{2, 3, ..., 500\\}\\]"
   },
   {
     "objectID": "slides/32-clt.html#how-large-is-large-enough-1",
     "href": "slides/32-clt.html#how-large-is-large-enough-1",
     "title": "1.32 The Central Limit Theorem",
     "section": "How Large is Large Enough?",
-    "text": "How Large is Large Enough?\nContinuous RVs\n\\[X \\sim \\text{Exponential}(\\lambda), \\ \\ \\lambda = 0.25, 1, 4\\\\\nE[X] = \\frac{1}{\\lambda}\\ \\ \\ SD[X] = \\frac{1}{\\lambda}\\]\nExponential distributions are very skewed (not symmetric)"
+    "text": "How Large is Large Enough?\n\nContinuous RVs\n\\[X \\sim \\text{Exponential}(\\lambda), \\ \\ \\lambda = 0.25, 1, 4\\\\\nE[X] = \\frac{1}{\\lambda}\\ \\ \\ SD[X] = \\frac{1}{\\lambda}\\]\nExponential distributions are very skewed (not symmetric)"
   },
   {
     "objectID": "slides/32-clt.html#consequences-of-the-central-limit-theorem",
@@ -32,7 +32,7 @@
     "href": "slides/32-clt.html#example-number-of-squirrels",
     "title": "1.32 The Central Limit Theorem",
     "section": "Example: Number of Squirrels",
-    "text": "Example: Number of Squirrels\nNew York City conducts a squirrel census periodically1.\nWe’ll use the 2020 Squirrel Census conducted March 1, 2020 across several parks in Manhattan. A total of 433 squirrels were recorded.\nDefine \\(X = \\begin{cases} 1 & \\text{grey primary fur color}\\\\0 &\\text{otherwise}\\end{cases}\\)\n\n\n\n\n\n\n\n\n\n\\[\\overline X = \\frac{390}{433} = 0.9006928\\] \\[SE[\\overline X] = \\sqrt{\\frac{\\frac{390}{433}\\cdot\\frac{43}{433}}{433}} = 0.0143726\\]\nThere are even playlists to go along with it?"
+    "text": "Example: Number of Squirrels\nNew York City conducts a squirrel census periodically1.\nWe’ll use the 2020 Squirrel Census conducted March 1, 2020 across several parks in Manhattan. A total of 433 squirrels were recorded.\nDefine \\(X = \\begin{cases} 1 & \\text{grey primary fur color}\\\\0 &\\text{otherwise}\\end{cases}\\)\n\n\n\n\n\n\n\n\n\n\\[\\overline X = \\frac{390}{433} = 0.9006928\\] \\[SE[\\overline X] = \\sqrt{\\frac{\\frac{390}{433}\\cdot\\frac{43}{433}}{433}} = 0.0143726\\]"
   },
   {
     "objectID": "slides/32-clt.html#example-number-of-squirrels-1",
@@ -5688,21 +5688,21 @@
     "href": "slides/31-param-est.html#polling-and-sampling-1",
     "title": "1.31 Parameter Estimation",
     "section": "Polling and Sampling",
-    "text": "Polling and Sampling\nLet \\(N=25\\). We sample 8 red and 17 blue balls.\n\n\\[\n\\begin{align}\n\\hat p\\text{ (or }\\overline X\\text{)} & = 17/25 & = 0.68\\\\\n1-\\hat p & = 8/25 &= 0.32\\\\\n2\\hat p - 1& = 34/25 - 1 &= 0.36\\\\\n\\text{SE}[\\hat p] = \\sqrt{\\frac{\\hat p (1-\\hat p)}{N}} & = \\sqrt{\\frac{\\frac{17}{25}\\cdot\\frac{8}{25}}{25}} &= 0.0933\n\\end{align}\\]"
+    "text": "Polling and Sampling\n\nset.seed(2043798)\ns25 &lt;- sample(rep(c(\"red\", \"blue\"), c(201,214)), 25, replace = F) |&gt; table()\noptions(digits = 4)\n\nLet \\(N=25\\). We sample 8 red and 17 blue balls.\n\n\\[\n\\begin{align}\n\\hat p\\text{ (or }\\overline X\\text{)} & = 17/25 & = 0.68\\\\\n1-\\hat p & = 8/25 &= 0.32\\\\\n2\\hat p - 1& = 34/25 - 1 &= 0.36\\\\\n\\text{SE}[\\hat p] = \\sqrt{\\frac{\\hat p (1-\\hat p)}{N}} & = \\sqrt{\\frac{\\frac{17}{25}\\cdot\\frac{8}{25}}{25}} &= 0.0933\n\\end{align}\\]"
   },
   {
     "objectID": "slides/31-param-est.html#sample-size-and-standard-error",
     "href": "slides/31-param-est.html#sample-size-and-standard-error",
     "title": "1.31 Parameter Estimation",
     "section": "Sample Size and Standard Error",
-    "text": "Sample Size and Standard Error\nLet \\(N=50\\). We sample 25 red and 25 blue balls.\n\n\\[\n\\begin{align}\n\\hat p\\text{ (or }\\overline X\\text{)} & = 25/50 & = 0.5\\\\\n1-\\hat p & = 25/50 &= 0.5\\\\\n2\\hat p - 1& = 50/50 - 1 &= 0\\\\\n\\text{SE}[\\hat p] = \\sqrt{\\frac{\\hat p (1-\\hat p)}{N}} & = \\sqrt{\\frac{\\frac{25}{50}\\cdot\\frac{25}{50}}{50}} &= 0.0707\n\\end{align}\\]"
+    "text": "Sample Size and Standard Error\n\nset.seed(230947)\ns50 &lt;- sample(rep(c(\"red\", \"blue\"), c(201,214)), 50, replace = F) |&gt; table()\n\nLet \\(N=50\\). We sample 25 red and 25 blue balls.\n\n\\[\n\\begin{align}\n\\hat p\\text{ (or }\\overline X\\text{)} & = 25/50 & = 0.5\\\\\n1-\\hat p & = 25/50 &= 0.5\\\\\n2\\hat p - 1& = 50/50 - 1 &= 0\\\\\n\\text{SE}[\\hat p] = \\sqrt{\\frac{\\hat p (1-\\hat p)}{N}} & = \\sqrt{\\frac{\\frac{25}{50}\\cdot\\frac{25}{50}}{50}} &= 0.0707\n\\end{align}\\]"
   },
   {
     "objectID": "slides/31-param-est.html#estimating-standard-error",
     "href": "slides/31-param-est.html#estimating-standard-error",
     "title": "1.31 Parameter Estimation",
     "section": "Estimating Standard Error",
-    "text": "Estimating Standard Error\n\n\n\n\n\n\n\n\n\n\n\nUsing \\(\\text{SE}[\\overline X]\\) instead of \\(\\text{SE}[p]\\) adds in a little bit of error but is usually fairly close.\nThe other option?\nUse \\(p=0.5\\), which is the worst-case scenario for the SE, as \\(p(1-p)\\) is maximized at \\(p=0.5\\)"
+    "text": "Estimating Standard Error\ntrue_p &lt;- 214/415\n\nse &lt;- tibble(n = seq(10, 415, 1), \n             se = sqrt(true_p*(1-true_p)/n))\n\nse_data &lt;- se |&gt;\n  crossing(tibble(rep = 1:100)) |&gt;\n  mutate(sample = map_int(n, ~sum(sample(rep(c(\"red\", \"blue\"), c(201,214)), ., replace = F) == \"blue\")))\n\nse_data &lt;- se_data |&gt;\n  mutate(sample_p = sample/n, sample_se = sqrt(sample_p * (1-sample_p)/n))\n\nggplot(data = se, aes(x = n)) +\n  geom_point(data = se_data, aes(y = sample_se, color = \"Estimated SE\"), alpha = .05) + \n  geom_line(data = se, aes(y = se, color = \"True SE\")) + \n  scale_color_manual(\"\", values = c(\"black\", \"red\")) + \n  guides(color = guide_legend(override.aes = list(alpha = 1))) + \n  ylab(\"Standard Error\") +  xlab(\"Sample Size\") + \n  theme(legend.position = \"inside\", legend.position.inside = c(.8, .8), legend.title = element_blank())\nggplot(data = se_data, aes(x = n, y = se- sample_se)) + \n  geom_point(alpha = 0.5) + \n  ylab(\"Error in SE estimate\") + \n  geom_smooth(se = F)\n\n`geom_smooth()` using method = 'gam' and formula = 'y ~ s(x, bs = \"cs\")'\n\n\n\n\n\n\n\n\n\n\n\n\nUsing \\(\\text{SE}[\\overline X]\\) instead of \\(\\text{SE}[p]\\) adds in a little bit of error but is usually fairly close.\nThe other option?\nUse \\(p=0.5\\), which is the worst-case scenario for the SE, as \\(p(1-p)\\) is maximized at \\(p=0.5\\)"
   },
   {
     "objectID": "slides/31-param-est.html#central-limit-theorem",
@@ -5728,65 +5728,65 @@
   {
     "objectID": "slides/33-hypothesis.html#confidence-intervals",
     "href": "slides/33-hypothesis.html#confidence-intervals",
-    "title": "STAT 1080 - Fall 2026",
+    "title": "33. Hypothesis Testing",
     "section": "Confidence Intervals",
-    "text": "Confidence Intervals\nA Confidence Interval provides a range of values that are plausible for the parameter, based on the sample statistic.\n\nConfidence Level - the proportion of the time the interval is expected to contain the parameter (usually 95%)\nWhen the CLT applies, you can compute a 95% CI as:\n\n\\[\\overline X \\pm 1.96 \\cdot \\text{SE}[\\overline X]\\]\nusing \\(\\text{SE}[\\overline X] = \\sqrt{\\frac{\\overline X (1-\\overline X)}{N}}\\) if \\(X\\) is discrete and \\(\\text{SE}[\\overline X] = \\frac{\\text{SD}[X]}{\\sqrt{N}}\\) if \\(X\\) is continuous.\nThis is what the margin of error in a poll is actually used for"
+    "text": "Confidence Intervals\nA Confidence Interval provides a range of values that are plausible for the parameter, based on the sample statistic.\n\nConfidence Level - the proportion of the time the interval is expected to contain the parameter (usually 95%)\nWhen the CLT applies, you can compute a 95% CI as:\n\n\\[\\overline X \\pm \\underset{\\text{margin of error}}{\\underbrace{1.96 \\cdot \\text{SE}[\\overline X]}}\\]\nusing \\(\\text{SE}[\\overline X] = \\sqrt{\\frac{\\overline X (1-\\overline X)}{N}}\\) if \\(X\\) is discrete and \\(\\text{SE}[\\overline X] = \\frac{\\text{SD}[X]}{\\sqrt{N}}\\) if \\(X\\) is continuous.\n\n(This is what the margin of error in a poll is actually used for)"
   },
   {
     "objectID": "slides/33-hypothesis.html#comparing-to-the-population",
     "href": "slides/33-hypothesis.html#comparing-to-the-population",
-    "title": "STAT 1080 - Fall 2026",
+    "title": "33. Hypothesis Testing",
     "section": "Comparing to the Population",
-    "text": "Comparing to the Population\nOften, we want to know if our sample is different from the population.\nThat is, could our sample value have arisen by chance, if the population value is \\(p\\)?\nFor instance -\n\nDoes the lightbulb we manufacture last longer than competitors?\nDoes the medication we created work better than existing drugs?"
+    "text": "Comparing to the Population\nOften, we want to know if our sample is different from the population.\nThat is, could our sample value have arisen by chance, if the population value is \\(p\\)?\nFor instance -\n\nDoes the lightbulb we manufacture last longer than competitors?\nDoes the medication we created work better than existing drugs?\n\n\nWe can establish the rarity of the observed sample mean under \\(H_0\\)"
   },
   {
     "objectID": "slides/33-hypothesis.html#comparing-to-the-population-1",
     "href": "slides/33-hypothesis.html#comparing-to-the-population-1",
-    "title": "STAT 1080 - Fall 2026",
+    "title": "33. Hypothesis Testing",
     "section": "Comparing to the Population",
-    "text": "Comparing to the Population\nOften, we want to know if our sample is different from the population.\nThat is, could our sample value have arisen by chance, if the population value is \\(p\\)?\nFor instance -\n\nDoes the lightbulb we manufacture last longer than competitors?\nDoes the medication we created work better than existing drugs?\n\n\nThis is called Hypothesis Testing"
+    "text": "Comparing to the Population\nOften, we want to know if our sample is different from what we believe about the population.\nThat is, could our sample value have arisen by chance, if the population value is \\(p\\)?\nFor instance -\n\nDoes the lightbulb we manufacture last longer than competitors?\nDoes the medication we created work better than existing drugs?\n\n\nThis is called Hypothesis Testing"
   },
   {
     "objectID": "slides/33-hypothesis.html#example-testing-to-failure",
     "href": "slides/33-hypothesis.html#example-testing-to-failure",
-    "title": "STAT 1080 - Fall 2026",
+    "title": "33. Hypothesis Testing",
     "section": "Example: Testing to Failure",
     "text": "Example: Testing to Failure\nFoldable smartphones are tested to survive around 200,000 folds.\nQuality Assurance for SamSing phones takes a sample of 30 Andromeda phones from the production line and tests the foldable screen to failure.\nThe average number of times the phones could be opened and closed before they failed was 179,423.3, and the standard deviation of the number of times a phone could be opened and closed was 11,427.\nWhat is the:\n\nstatistic? \\(\\overline X = 179423.3\\)\nparameter? \\(\\mu = 200000\\)\n\nWhat type of variable is \\(X\\)? continuous\nDoes the CLT hold for this example? yes. \\(N = 30\\) and the variable is continuous."
   },
   {
     "objectID": "slides/33-hypothesis.html#example-testing-to-failure-1",
     "href": "slides/33-hypothesis.html#example-testing-to-failure-1",
-    "title": "STAT 1080 - Fall 2026",
+    "title": "33. Hypothesis Testing",
     "section": "Example: Testing to Failure",
-    "text": "Example: Testing to Failure\nFoldable smartphones are tested to survive around 200,000 folds.\nQuality Assurance for SamSing phones takes a sample of 30 Andromeda phones from the production line and tests the foldable screen to failure.\nThe average number of times the phones could be opened and closed before they failed was 179,423.3, and the standard deviation of the number of times a phone could be opened and closed was 11,427."
+    "text": "Example: Testing to Failure\nFoldable smartphones are tested to survive around 200,000 folds.\nQuality Assurance for SamSing phones takes a sample of 30 Andromeda phones from the production line and tests the foldable screen to failure.\nThe average number of times the phones could be opened and closed before they failed was 179,423.3, and the standard deviation of the number of times a phone could be opened and closed was 11,427.\n\n\n\n\n\n\nConfidence Interval\n\n\n\\[\\begin{align}\\phantom{=}&\\overline X \\pm \\text{Multiplier}\\cdot \\text{SE}[\\overline X]\\\\=&179423.3 \\pm 1.96 \\cdot 11427/\\sqrt{30} \\\\=&179423.3 \\pm 1.96 \\cdot 2086.275 \\\\=& 179423.3 \\pm 4089.099 \\\\=& (175334.2, 183512.4)\\end{align}\\]\n\n\n\n200,000 is not in the 95% confidence interval\n\\(\\Rightarrow\\) 200,000 is not a plausible value, according to our data\n\\(\\Rightarrow\\) It’s not plausible that our data originate from a population with \\(\\mu=200,000\\)"
   },
   {
     "objectID": "slides/33-hypothesis.html#example-testing-to-failure-2",
     "href": "slides/33-hypothesis.html#example-testing-to-failure-2",
-    "title": "STAT 1080 - Fall 2026",
+    "title": "33. Hypothesis Testing",
     "section": "Example: Testing to Failure",
-    "text": "Example: Testing to Failure\n\\[\\begin{align}\\phantom{=}&179423.3 \\pm 1.96 \\cdot 11427/\\sqrt{30} \\\\=&179423.3 \\pm 1.96 \\cdot 2086.275 \\\\=& 179423.3 \\pm 4089.099 \\\\=& (175334.2, 183512.4)\\end{align}\\]"
+    "text": "Example: Testing to Failure\nFoldable smartphones are tested to survive around 200,000 folds.\nQuality Assurance for SamSing phones takes a sample of 30 Andromeda phones from the production line and tests the foldable screen to failure.\nThe average number of times the phones could be opened and closed before they failed was 179,423.3, and the standard deviation of the number of times a phone could be opened and closed was 11,427.\n\n\n\n\n\n\nConfidence Interval Interpretation\n\n\n\n\nStatistics terminology and contextual information are both important here!\n\nWe are 95% confident that SamSing Andromeda phones can be opened between 175334 and 183512 times, on average, before failure.\nAs the industry standard of 200,000 open/close operations is outside of the 95% confidence interval, we can conclude that Andromeda phones are significantly less durable than the industry standard."
   },
   {
     "objectID": "slides/33-hypothesis.html#example-testing-to-failure-3",
     "href": "slides/33-hypothesis.html#example-testing-to-failure-3",
-    "title": "STAT 1080 - Fall 2026",
+    "title": "33. Hypothesis Testing",
     "section": "Example: Testing to Failure",
-    "text": "Example: Testing to Failure\nFoldable smartphones are tested to survive around 200,000 folds.\nQuality Assurance for SamSing phones takes a sample of 30 Andromeda phones from the production line and tests the foldable screen to failure.\nThe average number of times the phones could be opened and closed before they failed was 179,423.3, and the standard deviation of the number of times a phone could be opened and closed was 11,427.\nInterpretation\nWe are 95% confident that the SamSing Andromeda phones can be opened between 175334 and 183512 times before failure. As the industry standard of 200000 open/close operations is outside of the 95% confidence interval, we can conclude that Andromeda phones are significantly less durable than the industry standard."
+    "text": "Example: Testing to Failure\nFoldable smartphones are tested to survive around 200,000 folds.\nQuality Assurance for SamSing phones takes a sample of 30 Andromeda phones from the production line and tests the foldable screen to failure.\nThe average number of times the phones could be opened and closed before they failed was 179,423.3, and the standard deviation of the number of times a phone could be opened and closed was 11,427.\n\n\n\n\n\n\nHypothesis Test\n\n\n\\(H_0:\\) \\(\\mu = 200,000\\) and \\(H_A:\\) \\(\\mu \\neq 200,000\\)\n\\(Z^\\ast = \\frac{179423.3 - 200000}{11427/\\sqrt{30}} = -9.8628886\\)\n\\(Z^\\ast\\) is negative, so we want the lower tail, and then we multiply by 2 to add the upper tail in.\n\n1pnorm((179423.3 - 200000)/(11427/sqrt(30)))\n2pnorm((179423.3 - 200000)/(11427/sqrt(30))) * 2\n\n\n1\n\n\\(P(\\overline X \\leq Z^\\ast)\\)\n\n2\n\n\\(P(\\overline X \\leq Z^\\ast) + P(\\overline X \\geq -Z^\\ast)\\)\n\n\n\n\n[1] 3.014476e-23\n[1] 6.028952e-23"
   },
   {
     "objectID": "slides/33-hypothesis.html#example-smoking-cessation",
     "href": "slides/33-hypothesis.html#example-smoking-cessation",
-    "title": "STAT 1080 - Fall 2026",
+    "title": "33. Hypothesis Testing",
     "section": "Example: Smoking Cessation",
-    "text": "Example: Smoking Cessation\nOnly about 20% of people who try to quit smoking succeed.\nA motivational audiobook claims that listening to the book can help people quit. After surveying people who have attempted quitting using the audiobook, 62 out of 250 people were successful at quitting.\nWhat is the:\n\nstatistic? \\(\\overline X = 62/250 = 0.248\\)\nparameter? \\(p = 0.20\\)\n\nWhat type of variable is \\(X\\)? discrete\nDoes the CLT hold for this example? yes. \\(N*\\overline X = 62 &gt; 5\\), \\(N*(1-\\overline X) = 188 &gt; 5\\) and the variable is discrete."
+    "text": "Example: Smoking Cessation\nOnly about 20% of people who try to quit smoking succeed.\nA motivational audiobook claims that listening to the book can help people quit. After surveying people who have attempted quitting using the audiobook, 62 out of 250 people were successful at quitting.\nWhat is the:\n\nstatistic? \\(\\overline X = 62/250 = 0.248\\)\nparameter? \\(p = 0.20\\)\nstandard error? [\\(\\sqrt{\\frac{0.248 (1-0.248)}{250}} = 0.0273127\\)]\n\nWhat type of variable is \\(X\\)? discrete\nDoes the CLT hold for this example? yes. \\(N*\\overline X = 62 &gt; 5\\), \\(N*(1-\\overline X) = 188 &gt; 5\\) and the variable is discrete."
   },
   {
     "objectID": "slides/33-hypothesis.html#example-smoking-cessation-1",
     "href": "slides/33-hypothesis.html#example-smoking-cessation-1",
-    "title": "STAT 1080 - Fall 2026",
+    "title": "33. Hypothesis Testing",
     "section": "Example: Smoking Cessation",
-    "text": "Example: Smoking Cessation\nOnly about 20% of people who try to quit smoking succeed.\nA motivational audiobook claims that listening to the book can help people quit. After surveying people who have attempted quitting using the audiobook, 62 out of 250 people were successful at quitting."
+    "text": "Example: Smoking Cessation\nOnly about 20% of people who try to quit smoking succeed.\nA motivational audiobook claims that listening to the book can help people quit. After surveying people who have attempted quitting using the audiobook, 62 out of 250 people were successful at quitting.\n\n\n\n\n\n\nHypothesis Test\n\n\n\\(H_0:\\) \\(\\pi = 0.20\\) and \\(H_A:\\) \\(\\pi &gt; 0.20\\)\n\\(Z^\\ast =\\)\n\\(Z^\\ast\\) is negative, so we want the lower tail, and then we multiply by 2 to add the upper tail in.\n\n1pnorm((179423.3 - 200000)/(11427/sqrt(30)))\n2pnorm((179423.3 - 200000)/(11427/sqrt(30))) * 2\n\n\n1\n\n\\(P(\\overline X \\leq Z^\\ast)\\)\n\n2\n\n\\(P(\\overline X \\leq Z^\\ast) + P(\\overline X \\geq -Z^\\ast)\\)\n\n\n\n\n[1] 3.014476e-23\n[1] 6.028952e-23"
   },
   {
     "objectID": "slides/32-clt.html#estimates-and-intervals",
@@ -5800,13 +5800,48 @@
     "href": "slides/32-clt.html#confidence-intervals",
     "title": "1.32 The Central Limit Theorem",
     "section": "Confidence Intervals",
-    "text": "Confidence Intervals\nWhen \\(N\\) is large enough, we can describe the precision of our estimate \\(\\overline X\\) with an interval\nThere is a 95% probability that the true value \\(p\\) (or \\(\\mu, \\pi, \\rho\\)1) falls within \\(1.96\\cdot \\hat{\\text{SE}}[\\overline X]\\) of \\(\\overline X\\).\n\\[P\\left(\\underset{\\text{lower bound}}{\\underbrace{\\overline X - 1.96\\cdot \\hat{\\text{SE}}[\\overline X]}} \\leq p \\leq \\underset{\\text{upper bound}}{\\underbrace{\\overline X + 1.96\\cdot \\hat{\\text{SE}}[\\overline X]}}\\right) = 0.95\\]\nYou can use any symbol for the true value, but \\(p\\) is often a bit over-used, with p-values, proportions, etc. Just be consistent within a single problem."
+    "text": "Confidence Intervals\nWhen \\(N\\) is large enough, we can describe the precision of our estimate \\(\\overline X\\) with an interval\nThere is a 95% probability that the true value \\(p\\) (or \\(\\mu, \\pi, \\rho\\)2) falls within \\(1.96\\cdot \\hat{\\text{SE}}[\\overline X]\\) of \\(\\overline X\\).\n\\[P\\left(\\underset{\\text{lower bound}}{\\underbrace{\\overline X - 1.96\\cdot \\hat{\\text{SE}}[\\overline X]}} \\leq p \\leq \\underset{\\text{upper bound}}{\\underbrace{\\overline X + 1.96\\cdot \\hat{\\text{SE}}[\\overline X]}}\\right) = 0.95\\]"
   },
   {
     "objectID": "slides/32-clt.html#confidence-interval-interpretation",
     "href": "slides/32-clt.html#confidence-interval-interpretation",
     "title": "1.32 The Central Limit Theorem",
     "section": "Confidence Interval Interpretation",
-    "text": "Confidence Interval Interpretation\nWe interpret the \\((a,b)\\) interval \\(\\left[\\overline X - 1.96\\cdot \\hat{\\text{SE}}[\\overline X], \\overline X + 1.96\\cdot \\hat{\\text{SE}}[\\overline X]\\right]\\) as:\n\n We are 95% confident that\nthe long-run average {… context …} \\(p\\)1\nlies between \\(a\\) and \\(b\\),\n{add specific problem context about what a and b mean here}.\n\nIf there is a specific value that is important, add another sentence evaluating whether that value falls within the interval, and what that might tell you about the plausibility of the value.\n\n\nYou can use any symbol for the true value, but \\(p\\) is often a bit over-used, with p-values, proportions, etc. Just be consistent within a single problem."
+    "text": "Confidence Interval Interpretation\nWe interpret the \\((a,b)\\) interval \\(\\left[\\overline X - 1.96\\cdot \\hat{\\text{SE}}[\\overline X], \\overline X + 1.96\\cdot \\hat{\\text{SE}}[\\overline X]\\right]\\) as:\n\n We are 95% confident that\nthe long-run average {… context …} \\(p\\)3\nlies between \\(a\\) and \\(b\\),\n{add specific problem context about what a and b mean here}.\n\nIf there is a specific value that is important, add another sentence evaluating whether that value falls within the interval, and what that might tell you about the plausibility of the value."
+  },
+  {
+    "objectID": "slides/33-hypothesis.html",
+    "href": "slides/33-hypothesis.html",
+    "title": "STAT 1080 - Fall 2026",
+    "section": "",
+    "text": "A Confidence Interval provides a range of values that are plausible for the parameter, based on the sample statistic.\n\nConfidence Level - the proportion of the time the interval is expected to contain the parameter (usually 95%)\nWhen the CLT applies, you can compute a 95% CI as:\n\n\\[\\overline X \\pm \\underset{\\text{margin of error}}{\\underbrace{1.96 \\cdot \\text{SE}[\\overline X]}}\\]\nusing \\(\\text{SE}[\\overline X] = \\sqrt{\\frac{\\overline X (1-\\overline X)}{N}}\\) if \\(X\\) is discrete and \\(\\text{SE}[\\overline X] = \\frac{\\text{SD}[X]}{\\sqrt{N}}\\) if \\(X\\) is continuous.\n\n(This is what the margin of error in a poll is actually used for)"
+  },
+  {
+    "objectID": "slides/32-clt.html",
+    "href": "slides/32-clt.html",
+    "title": "1.32 The Central Limit Theorem",
+    "section": "",
+    "text": "\\(X\\) is a random variable.\nIf the number of samples \\(N\\) is large enough, then \\[\\overline X \\sim \\text{Normal}\\left(E[X], \\frac{SD[X]}{\\sqrt{N}}\\right)\\]"
+  },
+  {
+    "objectID": "slides/32-clt.html#footnotes",
+    "href": "slides/32-clt.html#footnotes",
+    "title": "1.32 The Central Limit Theorem",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nThere are even playlists to go along with it?↩︎\nYou can use any symbol for the true value, but \\(p\\) is often a bit over-used, with p-values, proportions, etc. Just be consistent within a single problem.↩︎\nYou can use any symbol for the true value, but \\(p\\) is often a bit over-used, with p-values, proportions, etc. Just be consistent within a single problem.↩︎"
+  },
+  {
+    "objectID": "slides/31-param-est.html",
+    "href": "slides/31-param-est.html",
+    "title": "1.31 Parameter Estimation",
+    "section": "",
+    "text": "library(tidyverse)\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.2.1          ✔ readr     2.2.0     \n✔ forcats   1.0.1          ✔ stringr   1.6.0     \n✔ ggplot2   4.0.3.9000     ✔ tibble    3.3.1     \n✔ lubridate 1.9.5          ✔ tidyr     1.3.2     \n✔ purrr     1.2.2          \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\nlibrary(dslabs)\nlibrary(patchwork)\nlibrary(kableExtra)\n\n\nAttaching package: 'kableExtra'\n\nThe following object is masked from 'package:dplyr':\n\n    group_rows\n\ntheme_set(theme_bw())"
+  },
+  {
+    "objectID": "slides/33-hypothesis.html#example-testing-to-failure-4",
+    "href": "slides/33-hypothesis.html#example-testing-to-failure-4",
+    "title": "33. Hypothesis Testing",
+    "section": "Example: Testing to Failure",
+    "text": "Example: Testing to Failure\nFoldable smartphones are tested to survive around 200,000 folds.\nQuality Assurance for SamSing phones takes a sample of 30 Andromeda phones from the production line and tests the foldable screen to failure.\nThe average number of times the phones could be opened and closed before they failed was 179,423.3, and the standard deviation of the number of times a phone could be opened and closed was 11,427.\n\n\n\n\n\n\nHypothesis Test Interpretation\n\n\n\n\nStatistics terminology and contextual information are both important here!\n\nWe reject \\(H_0:\\) $ ,000\\(]{.emph .orange-dk} [(\\)p&lt;0.0001\\() and conclude that it is more likely that]{.emph .blue-dk} [\\),000$ than it is that we would observe a result as or more extreme than an average of 179,423.3 open/close cycles before screen failure when \\(\\mu=200,000\\) SamSing Andromeda phones can be opened]{.emph .orange-dk}\nAs the industry standard of 200,000 open/close operations is not plausible based on the data we observed, we can conclude that Andromeda phones are significantly less durable than the industry standard."
   }
 ]

@@ -16,7 +16,7 @@ September 14-20, 2026
 - [ ] (for Mon) [3.1.p Reading Check: Association is Not Causation (IDS Ch 19)](https://usu.instructure.com/courses/819584/quizzes/1462848){target="_blank"}
 - [ ] (for Wed) [3.2.p Bias and Ethics](https://usu.instructure.com/courses/819584/assignments/5290530){target="_blank"}
 - [ ] (for Fri) [3.3.p "Reading" Check: How Ice Cream Kills and Calling BS: Spurious Correlations](https://usu.instructure.com/courses/819584/quizzes/1498138){target="_blank"}
-- [ ] (for Fri) 3.3.p Presidency Associations [Canvas](https://usu.instructure.com/courses/819584/assignments/5290617){target="_blank"} [Example (html)](../demos/presidency_template.qmd){target="_blank"} [Template (qmd)](../demos/_presidency_template.qmd){target="_blank"}
+- [ ] (for Fri) 3.3.p Presidency Associations [Canvas](https://usu.instructure.com/courses/819584/assignments/5290617){target="_blank"} [Example (html)](../activity/presidency_template.qmd){target="_blank"} [Template (qmd)](../activity/_presidency_template.qmd){target="_blank"}
 
 
 ## 🥱 Monday 🌛
