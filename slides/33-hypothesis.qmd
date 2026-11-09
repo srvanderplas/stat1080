@@ -236,13 +236,16 @@ The average number of times the phones could be opened and closed before they fa
 > [Statistics terminology]{.emph .blue-dk} and [contextual information]{.orange-dk .emph} are both important here!
 
 
-[We reject $H_0:$]{.emph .blue-dk} [$ \mu=200,000$]{.emph .orange-dk} [($p<0.0001$) and conclude that it is more likely that]{.emph .blue-dk} [$\mu \neq 200,000$]{.emph .orange-dk} [than it is that we would observe a result as or more extreme]{.emph .blue-dk} [than an average of 179,423.3 open/close cycles before screen failure when $\mu=200,000$]{.emph .orange-dk} SamSing Andromeda phones can be opened]{.emph .orange-dk}
+[We reject]{.emph .blue-dk} [$H_0:$]{.blue-dk} [$\mu=200,000$]{.orange-dk} [($p<0.0001$)]{.blue-dk} [and conclude that it is more likely that]{.emph .blue-dk} [$\mu \neq 200,000$]{.orange-dk} [than it is that we would observe a result as or more extreme]{.emph .blue-dk} [than an average of 179,423.3 open/close cycles before screen failure when]{.emph .orange-dk} [$\mu=200,000$]{.orange-dk} [SamSing Andromeda phones can be opened]{.emph .orange-dk}
 
-[As the industry standard of 200,000 open/close operations]{.emph .orange-dk} is [not plausible based on the data we observed]{.emph .blue-dk}, we can conclude that [Andromeda phones]{.emph .orange-dk} are [significantly less]{.emph .blue-dk} [durable than the industry standard]{.emph .orange-dk}.
+[As the industry standard of 200,000 open/close operations]{.emph .orange-dk} is [not plausible based on the data we observed, we can conclude that]{.emph .blue-dk} [Andromeda phones are]{.emph .orange-dk} [significantly less]{.emph .blue-dk} [durable than the industry standard]{.emph .orange-dk}.
 
 :::
 :::
 
+```{r}
+smoking_se <- sqrt(0.248*(1-0.248)/250)
+```
 
 ## Example: Smoking Cessation
 
@@ -252,15 +255,15 @@ A motivational audiobook claims that listening to the book can help people quit.
 
 What is the: 
 
-- statistic? [$\overline X = 62/250 = 0.248$]{.emph .cerulean-dk .fragment .large}
-- parameter? [$p = 0.20$]{.emph .cerulean-dk .fragment .large}
+- statistic? [$\overline X = 62/250 = 0.248$]{.cerulean-dk .fragment}
+- parameter? [$p = 0.20$]{.cerulean-dk .fragment}
 
-- standard error? [$\sqrt{\frac{0.248 (1-0.248)}{250}} = `{r} sqrt(0.248*(1-0.248)/250)`$]
+- standard error? [$\sqrt{\frac{0.248 (1-0.248)}{250}} = `{r} smoking_se`$]{.fragment .cerulean-dk}
 
 
 What type of variable is $X$? [discrete]{.emph .cerulean-dk .fragment .large}
 
-Does the CLT hold for this example? [yes. $N*\overline X = 62 > 5$, $N*(1-\overline X) = 188 > 5$ and the variable is discrete. ]{.emph .cerulean-dk .fragment .large}
+Does the CLT hold for this example? [[yes.]{.emph} $N*\overline X = 62 > 5$, $N*(1-\overline X) = 188 > 5$ [and the variable is discrete.]{.emph}]{.cerulean-dk .fragment}
 
 
 ## Example: Smoking Cessation
@@ -269,24 +272,53 @@ Only about 20% of people who try to quit smoking succeed.
 
 A motivational audiobook claims that listening to the book can help people quit. After surveying people who have attempted quitting using the audiobook, 62 out of 250 people were successful at quitting. 
 
-
 ::: callout-note
 #### Hypothesis Test
 
-$H_0:$ [$\pi = 0.20$]{.emph .blue-dk .fragment .large} and $H_A:$ [$\pi > 0.20$]{.emph .blue-dk .fragment .large}
+$H_0:$ [$\pi = 0.20$]{.blue-dk .fragment .large} and $H_A:$ [$\pi > 0.20$]{.blue-dk .fragment .large}
 
-$Z^\ast =$
-
-$Z^\ast$ is negative, so we want the lower tail, and then we multiply by 2 to add the upper tail in.
+$Z^\ast =$ [$\displaystyle \frac{.248 - .2}{\sqrt{\frac{.2\cdot .8}{250}}} = `{r} (.248-.2)/sqrt((.2*.8/250))`$]{.blue-dk .fragment}
 
 ```{r}
-#| echo: true
-pnorm((179423.3 - 200000)/(11427/sqrt(30))) # <1>
-pnorm((179423.3 - 200000)/(11427/sqrt(30))) * 2 # <2>
-```
-1. $P(\overline X \leq Z^\ast)$
-2. $P(\overline X \leq Z^\ast) + P(\overline X \geq -Z^\ast)$
+#| fig-width: 4
+#| fig-height: 2
+#| fig-alt: A quick sketch of the normal distribution with $Z^\ast$
+#| out-extra: ".fragment style='position: absolute;right:20px;top:220px;'"
 
+ggplot(data = tibble(x = seq(-3, 3, .01), y = dnorm(x)), aes(x = x, y =y)) + geom_line() + geom_vline(xintercept =  (.248-.2)/sqrt((.2*.8/250)), color = "red") + theme_xkcd()
+```
+
+[$Z^\ast$ is positive, so we want the upper tail, and then we multiply by 2 to add the upper tail in.]{.fragment .blue-dk}
+
+::: fragment
+```{r}
+#| echo: true
+pnorm((.248-.2)/sqrt((.2*.8/250)), lower.tail = F) # <1>
+pnorm((.248-.2)/sqrt((.2*.8/250)), lower.tail = F) * 2 # <2>
+```
+1. $P(\overline X \geq Z^\ast)$
+2. $P(\overline X \geq Z^\ast) + P(\overline X \leq -Z^\ast)$
 
 :::
 
+:::
+
+
+## Example: Smoking Cessation
+
+Only about 20% of people who try to quit smoking succeed. 
+
+A motivational audiobook claims that listening to the book can help people quit. After surveying people who have attempted quitting using the audiobook, 62 out of 250 people were successful at quitting. 
+
+::: callout-note
+#### Hypothesis Test Interpretation
+::: large
+
+> [Statistics terminology]{.emph .blue-dk} and [contextual information]{.orange-dk .emph} are both important here!
+
+
+[We fail to reject]{.emph .blue-dk} [$H_0:$]{.blue-dk} [$\pi=0.2$]{.orange-dk} [($p=0.0578$)]{.blue-dk}. [It is plausible that we could observe the sample statistic under ]{.emph .blue-dk} [$H_0$.]{.blue-dk} [There is no evidence that there is a significant difference between the success rate of people who try the motivational audiobook and people who try to quit smoking more generally.]{.orange-dk .emph}
+
+
+:::
+:::

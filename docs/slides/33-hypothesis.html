@@ -372,8 +372,8 @@
 <blockquote>
 <p><span class="emph blue-dk">Statistics terminology</span> and <span class="orange-dk emph">contextual information</span> are both important here!</p>
 </blockquote>
-<p><span class="emph blue-dk">We reject <span class="math inline">\(H_0:\)</span></span> <span class="emph orange-dk">$ ,000<span class="math inline">\(]{.emph .orange-dk} [(\)</span>p&lt;0.0001<span class="math inline">\() and conclude that it is more likely that]{.emph .blue-dk} [\)</span>,000$</span> <span class="emph blue-dk">than it is that we would observe a result as or more extreme</span> <span class="emph orange-dk">than an average of 179,423.3 open/close cycles before screen failure when <span class="math inline">\(\mu=200,000\)</span></span> SamSing Andromeda phones can be opened]{.emph .orange-dk}</p>
-<p><span class="emph orange-dk">As the industry standard of 200,000 open/close operations</span> is <span class="emph blue-dk">not plausible based on the data we observed</span>, we can conclude that <span class="emph orange-dk">Andromeda phones</span> are <span class="emph blue-dk">significantly less</span> <span class="emph orange-dk">durable than the industry standard</span>.</p>
+<p><span class="emph blue-dk">We reject</span> <span class="blue-dk"><span class="math inline">\(H_0:\)</span></span> <span class="orange-dk"><span class="math inline">\(\mu=200,000\)</span></span> <span class="blue-dk">(<span class="math inline">\(p&lt;0.0001\)</span>)</span> <span class="emph blue-dk">and conclude that it is more likely that</span> <span class="orange-dk"><span class="math inline">\(\mu \neq 200,000\)</span></span> <span class="emph blue-dk">than it is that we would observe a result as or more extreme</span> <span class="emph orange-dk">than an average of 179,423.3 open/close cycles before screen failure when</span> <span class="orange-dk"><span class="math inline">\(\mu=200,000\)</span></span> <span class="emph orange-dk">SamSing Andromeda phones can be opened</span></p>
+<p><span class="emph orange-dk">As the industry standard of 200,000 open/close operations</span> is <span class="emph blue-dk">not plausible based on the data we observed, we can conclude that</span> <span class="emph orange-dk">Andromeda phones are</span> <span class="emph blue-dk">significantly less</span> <span class="emph orange-dk">durable than the industry standard</span>.</p>
 </div>
 </div>
 </div>
@@ -385,12 +385,12 @@
 <p>A motivational audiobook claims that listening to the book can help people quit. After surveying people who have attempted quitting using the audiobook, 62 out of 250 people were successful at quitting.</p>
 <p>What is the:</p>
 <ul>
-<li><p>statistic? <span class="emph cerulean-dk fragment large"><span class="math inline">\(\overline X = 62/250 = 0.248\)</span></span></p></li>
-<li><p>parameter? <span class="emph cerulean-dk fragment large"><span class="math inline">\(p = 0.20\)</span></span></p></li>
-<li><p>standard error? [<span class="math inline">\(\sqrt{\frac{0.248 (1-0.248)}{250}} = 0.0273127\)</span>]</p></li>
+<li><p>statistic? <span class="cerulean-dk fragment"><span class="math inline">\(\overline X = 62/250 = 0.248\)</span></span></p></li>
+<li><p>parameter? <span class="cerulean-dk fragment"><span class="math inline">\(p = 0.20\)</span></span></p></li>
+<li><p>standard error? <span class="fragment cerulean-dk"><span class="math inline">\(\sqrt{\frac{0.248 (1-0.248)}{250}} = 0.0273127\)</span></span></p></li>
 </ul>
 <p>What type of variable is <span class="math inline">\(X\)</span>? <span class="emph cerulean-dk fragment large">discrete</span></p>
-<p>Does the CLT hold for this example? <span class="emph cerulean-dk fragment large">yes. <span class="math inline">\(N*\overline X = 62 &gt; 5\)</span>, <span class="math inline">\(N*(1-\overline X) = 188 &gt; 5\)</span> and the variable is discrete.</span></p>
+<p>Does the CLT hold for this example? <span class="cerulean-dk fragment"><span class="emph">yes.</span> <span class="math inline">\(N*\overline X = 62 &gt; 5\)</span>, <span class="math inline">\(N*(1-\overline X) = 188 &gt; 5\)</span> <span class="emph">and the variable is discrete.</span></span></p>
 </section>
 <section id="example-smoking-cessation-1" class="slide level2">
 <h2>Example: Smoking Cessation</h2>
@@ -405,28 +405,62 @@
 <p><strong>Hypothesis Test</strong></p>
 </div>
 <div class="callout-content">
-<p><span class="math inline">\(H_0:\)</span> <span class="emph blue-dk fragment large"><span class="math inline">\(\pi = 0.20\)</span></span> and <span class="math inline">\(H_A:\)</span> <span class="emph blue-dk fragment large"><span class="math inline">\(\pi &gt; 0.20\)</span></span></p>
-<p><span class="math inline">\(Z^\ast =\)</span></p>
-<p><span class="math inline">\(Z^\ast\)</span> is negative, so we want the lower tail, and then we multiply by 2 to add the upper tail in.</p>
+<p><span class="math inline">\(H_0:\)</span> <span class="blue-dk fragment large"><span class="math inline">\(\pi = 0.20\)</span></span> and <span class="math inline">\(H_A:\)</span> <span class="blue-dk fragment large"><span class="math inline">\(\pi &gt; 0.20\)</span></span></p>
+<p><span class="math inline">\(Z^\ast =\)</span> <span class="blue-dk fragment"><span class="math inline">\(\displaystyle \frac{.248 - .2}{\sqrt{\frac{.2\cdot .8}{250}}} = 1.8973666\)</span></span></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-3"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="1">1</button><span id="annotated-cell-3-1" class="code-annotation-target"><a href="#annotated-cell-3-1" aria-label="1"></a><span class="fu">pnorm</span>((<span class="fl">179423.3</span> <span class="sc">-</span> <span class="dv">200000</span>)<span class="sc">/</span>(<span class="dv">11427</span><span class="sc">/</span><span class="fu">sqrt</span>(<span class="dv">30</span>)))</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="2">2</button><span id="annotated-cell-3-2" class="code-annotation-target"><a href="#annotated-cell-3-2" aria-label="2"></a><span class="fu">pnorm</span>((<span class="fl">179423.3</span> <span class="sc">-</span> <span class="dv">200000</span>)<span class="sc">/</span>(<span class="dv">11427</span><span class="sc">/</span><span class="fu">sqrt</span>(<span class="dv">30</span>))) <span class="sc">*</span> <span class="dv">2</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="33-hypothesis_files/figure-revealjs/unnamed-chunk-6-1.png" class="fragment" style="position: absolute;right:20px;top:220px;" alt="A quick sketch of the normal distribution with $Z^\ast$" width="384"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><span class="fragment blue-dk"><span class="math inline">\(Z^\ast\)</span> is positive, so we want the upper tail, and then we multiply by 2 to add the upper tail in.</span></p>
+<div class="fragment">
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-3"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="1">1</button><span id="annotated-cell-3-1" class="code-annotation-target"><a href="#annotated-cell-3-1" aria-label="1"></a><span class="fu">pnorm</span>((.<span class="dv">248</span><span class="fl">-.2</span>)<span class="sc">/</span><span class="fu">sqrt</span>((.<span class="dv">2</span><span class="sc">*</span>.<span class="dv">8</span><span class="sc">/</span><span class="dv">250</span>)), <span class="at">lower.tail =</span> F)</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="2">2</button><span id="annotated-cell-3-2" class="code-annotation-target"><a href="#annotated-cell-3-2" aria-label="2"></a><span class="fu">pnorm</span>((.<span class="dv">248</span><span class="fl">-.2</span>)<span class="sc">/</span><span class="fu">sqrt</span>((.<span class="dv">2</span><span class="sc">*</span>.<span class="dv">8</span><span class="sc">/</span><span class="dv">250</span>)), <span class="at">lower.tail =</span> F) <span class="sc">*</span> <span class="dv">2</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-annotation">
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-3" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-3" data-code-lines="1" data-code-annotation="1"><span class="math inline">\(P(\overline X \leq Z^\ast)\)</span></span>
+<span data-code-cell="annotated-cell-3" data-code-lines="1" data-code-annotation="1"><span class="math inline">\(P(\overline X \geq Z^\ast)\)</span></span>
 </dd>
 <dt data-target-cell="annotated-cell-3" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-3" data-code-lines="2" data-code-annotation="2"><span class="math inline">\(P(\overline X \leq Z^\ast) + P(\overline X \geq -Z^\ast)\)</span></span>
+<span data-code-cell="annotated-cell-3" data-code-lines="2" data-code-annotation="2"><span class="math inline">\(P(\overline X \geq Z^\ast) + P(\overline X \leq -Z^\ast)\)</span></span>
 </dd>
 </dl>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 3.014476e-23
-[1] 6.028952e-23</code></pre>
+<pre><code>[1] 0.02888979
+[1] 0.05777957</code></pre>
 </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="example-smoking-cessation-2" class="slide level2">
+<h2>Example: Smoking Cessation</h2>
+<p>Only about 20% of people who try to quit smoking succeed.</p>
+<p>A motivational audiobook claims that listening to the book can help people quit. After surveying people who have attempted quitting using the audiobook, 62 out of 250 people were successful at quitting.</p>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Hypothesis Test Interpretation</strong></p>
+</div>
+<div class="callout-content">
+<div class="large">
+<blockquote>
+<p><span class="emph blue-dk">Statistics terminology</span> and <span class="orange-dk emph">contextual information</span> are both important here!</p>
+</blockquote>
+<p><span class="emph blue-dk">We fail to reject</span> <span class="blue-dk"><span class="math inline">\(H_0:\)</span></span> <span class="orange-dk"><span class="math inline">\(\pi=0.2\)</span></span> <span class="blue-dk">(<span class="math inline">\(p=0.0578\)</span>)</span>. <span class="emph blue-dk">It is plausible that we could observe the sample statistic under</span> <span class="blue-dk"><span class="math inline">\(H_0\)</span>.</span> <span class="orange-dk emph">There is no evidence that there is a significant difference between the success rate of people who try the motivational audiobook and people who try to quit smoking more generally.</span></p>
 </div>
 </div>
 </div>
