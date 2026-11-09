@@ -2230,14 +2230,14 @@
     "href": "weeks/week-120.html",
     "title": "Week 12: Statistical Inference",
     "section": "",
-    "text": "November 16-22, 2026\n\n\n\n(for Mon) IDS 2 Ch 13 - Hypothesis Testing\n(for Wed) IDS 2 Ch 9.4 - Confidence Intervals\n\n\n\n\n\n(for Mon) Reading Check 12.1\n(for Wed) Reading Check 12.2\n\n\n\n\n\nAttendance Quiz 11/16\nHypothesis Testing\n\n\n\n\n\nAttendance Quiz 11/18\nConfidence Intervals\n\n\n\n\n\nAttendance Quiz 11/20\nLab: Inference\n\n\n\n\n\nHomework 3, qmd template, html, visual solutions"
+    "text": "November 16-22, 2026\n\n\n\n(for Mon) IDS 2 Ch 13 - Hypothesis Testing\n(for Wed)\n\n\n\n\n\n(for Mon) Reading Check 12.1\n(for Wed) Reading Check 12.2\n\n\n\n\n\nAttendance Quiz 11/16\nHypothesis Testing\n\n\n\n\n\nAttendance Quiz 11/18\nConfidence Intervals\n\n\n\n\n\nAttendance Quiz 11/20\nLab: Inference\n\n\n\n\n\nHomework 3, qmd template, html, visual solutions"
   },
   {
     "objectID": "weeks/week-120.html#reading",
     "href": "weeks/week-120.html#reading",
     "title": "Week 12: Statistical Inference",
     "section": "",
-    "text": "(for Mon) IDS 2 Ch 13 - Hypothesis Testing\n(for Wed) IDS 2 Ch 9.4 - Confidence Intervals"
+    "text": "(for Mon) IDS 2 Ch 13 - Hypothesis Testing\n(for Wed)"
   },
   {
     "objectID": "weeks/week-120.html#prepare-for-class",
@@ -2560,6 +2560,69 @@
     "title": "Week 1: Introduction",
     "section": "",
     "text": "R cheat sheets - handout from class, but you can reprint them if you lose yours, or keep a digital copy on a tablet if you prefer.\nHadley Wickham: Spreadsheets, bikes, and the accidental empire of R packages (YouTube, The Test Set) - Hadley Wickham developed many of the R packages we’ll use in this course. Hear the back-story as to how he got started!\nThe Jevons Paradox (YouTube, Hank Green) - Why AI (and statistics) do not generate new information."
+  },
+  {
+    "objectID": "activity/33-hypothesis-testing.html",
+    "href": "activity/33-hypothesis-testing.html",
+    "title": "11.3.i Activity - Confidence Intervals and Hypothesis Testing",
+    "section": "",
+    "text": "Someone on the internet is claiming that asparagus shoots grow 10” in a 24 hour period. In order to test this theory, you go to your asparagus patch and measure each new shoot from each plant. You measure its length (in inches) at 8AM on the day it appeared and then again at 8AM the next day, subtracting to document the amount of growth.\nAs each plant produces multiple shoots, you end up with a sample of 85 measurements. The sample mean is 9.53 inches, with a sample standard deviation of 2.4 inches.\n\n\n\nWhat is the research question? That is, what do you hope to determine by collecting data?\n\n\nYour answer here\n\n\nWhat is the observational unit?\n\n\nYour answer here\n\n\nWhat type of variable is this? Categorical or Quantitative?\n\n\nYour answer here\n\n\nIf you were conducting a hypothesis test, what would \\(H_0\\) and \\(H_A\\) be?\n\n\n\\(H_0\\): \\(H_A\\):\n\n\nIf you were using a confidence interval to conduct a test, what value would need to be outside the interval to reject the null hypothesis?\n\n\nYour answer here\n\n\n\n\n\nWhat is your sample statistic?\n\n\nYour answer here\n\n\nWhat is the standard error?\n\n\nasparagus_se &lt;- ## ... ##\n\nError in parse(text = input): &lt;text&gt;:2:0: unexpected end of input\n1: asparagus_se &lt;- ## ... ##\n   ^\n\n\n\nDoes the central limit theorem apply to this data? Why or why not?\n\n\nYour answer here\n\n\n\n\n\nWhat formula should you use for a 95% confidence interval? Provide the value of any constants you will use (e.g. multipliers).\n\n\nYour answer here\n\n\nCalculate a 95% confidence interval for the amount asparagus grows in a 24h period.\n\n\nasparagus_ci &lt;- ## ... ##\n\nError in parse(text = input): &lt;text&gt;:2:0: unexpected end of input\n1: asparagus_ci &lt;- ## ... ##\n   ^\n\n\n\nWhat is your confidence level? What level of \\(\\alpha\\) corresponds to this confidence level?\n\n\nYour answer here\n\n\nInterpret your confidence interval in the context of the problem.\n\n\nYour answer here\n\n\n\n\n\nCalculate \\(Z^\\ast\\), the critical value for your hypothesis test.\n\n\nasparagus_z &lt;- ##...##\n\nError in parse(text = input): &lt;text&gt;:2:0: unexpected end of input\n1: asparagus_z &lt;- ##...##\n   ^\n\n\n\nCalculate your p-value using pnorm\n\n\nasparagus_p &lt;- pnorm(##...##)\n\nError in parse(text = input): &lt;text&gt;:2:0: unexpected end of input\n1: asparagus_p &lt;- pnorm(##...##)\n   ^\n\n\n\nWhat is your conclusion, based on your p-value?\n\n\nYour answer here\n\n\nDoes your conclusion match the conclusion you would draw by interpreting your confidence interval? Why or why not?\n\n\nYour answer here"
+  },
+  {
+    "objectID": "activity/33-hypothesis-testing.html#experimental-design",
+    "href": "activity/33-hypothesis-testing.html#experimental-design",
+    "title": "11.3.i Activity - Confidence Intervals and Hypothesis Testing",
+    "section": "",
+    "text": "What is the research question? That is, what do you hope to determine by collecting data?\n\n\nYour answer here\n\n\nWhat is the observational unit?\n\n\nYour answer here\n\n\nWhat type of variable is this? Categorical or Quantitative?\n\n\nYour answer here\n\n\nIf you were conducting a hypothesis test, what would \\(H_0\\) and \\(H_A\\) be?\n\n\n\\(H_0\\): \\(H_A\\):\n\n\nIf you were using a confidence interval to conduct a test, what value would need to be outside the interval to reject the null hypothesis?\n\n\nYour answer here"
+  },
+  {
+    "objectID": "activity/33-hypothesis-testing.html#calculations",
+    "href": "activity/33-hypothesis-testing.html#calculations",
+    "title": "11.3.i Activity - Confidence Intervals and Hypothesis Testing",
+    "section": "",
+    "text": "What is your sample statistic?\n\n\nYour answer here\n\n\nWhat is the standard error?\n\n\nasparagus_se &lt;- ## ... ##\n\nError in parse(text = input): &lt;text&gt;:2:0: unexpected end of input\n1: asparagus_se &lt;- ## ... ##\n   ^\n\n\n\nDoes the central limit theorem apply to this data? Why or why not?\n\n\nYour answer here"
+  },
+  {
+    "objectID": "activity/33-hypothesis-testing.html#confidence-intervals",
+    "href": "activity/33-hypothesis-testing.html#confidence-intervals",
+    "title": "11.3.i Activity - Confidence Intervals and Hypothesis Testing",
+    "section": "",
+    "text": "What formula should you use for a 95% confidence interval? Provide the value of any constants you will use (e.g. multipliers).\n\n\nYour answer here\n\n\nCalculate a 95% confidence interval for the amount asparagus grows in a 24h period.\n\n\nasparagus_ci &lt;- ## ... ##\n\nError in parse(text = input): &lt;text&gt;:2:0: unexpected end of input\n1: asparagus_ci &lt;- ## ... ##\n   ^\n\n\n\nWhat is your confidence level? What level of \\(\\alpha\\) corresponds to this confidence level?\n\n\nYour answer here\n\n\nInterpret your confidence interval in the context of the problem.\n\n\nYour answer here"
+  },
+  {
+    "objectID": "activity/33-hypothesis-testing.html#hypothesis-test",
+    "href": "activity/33-hypothesis-testing.html#hypothesis-test",
+    "title": "11.3.i Activity - Confidence Intervals and Hypothesis Testing",
+    "section": "",
+    "text": "Calculate \\(Z^\\ast\\), the critical value for your hypothesis test.\n\n\nasparagus_z &lt;- ##...##\n\nError in parse(text = input): &lt;text&gt;:2:0: unexpected end of input\n1: asparagus_z &lt;- ##...##\n   ^\n\n\n\nCalculate your p-value using pnorm\n\n\nasparagus_p &lt;- pnorm(##...##)\n\nError in parse(text = input): &lt;text&gt;:2:0: unexpected end of input\n1: asparagus_p &lt;- pnorm(##...##)\n   ^\n\n\n\nWhat is your conclusion, based on your p-value?\n\n\nYour answer here\n\n\nDoes your conclusion match the conclusion you would draw by interpreting your confidence interval? Why or why not?\n\n\nYour answer here"
+  },
+  {
+    "objectID": "activity/33-hypothesis-testing.html#experimental-design-1",
+    "href": "activity/33-hypothesis-testing.html#experimental-design-1",
+    "title": "11.3.i Activity - Confidence Intervals and Hypothesis Testing",
+    "section": "2.1 Experimental Design",
+    "text": "2.1 Experimental Design\n\nWhat is the research question? That is, what do the doctors want to determine?\n\n\nYour answer here\n\n\nWhat is the observational unit?\n\n\nYour answer here\n\n\nWhat type of variable is this? Categorical or Quantitative?\n\n\nYour answer here\n\n\nIf you were conducting a hypothesis test, what would \\(H_0\\) and \\(H_A\\) be using appropriate mathematical notation?\n\n\n\\(H_0\\): \\(H_A\\):\n\n\nIf you were using a confidence interval to conduct a test, what value would need to be outside the interval to reject the null hypothesis?\n\n\nYour answer here"
+  },
+  {
+    "objectID": "activity/33-hypothesis-testing.html#calculations-1",
+    "href": "activity/33-hypothesis-testing.html#calculations-1",
+    "title": "11.3.i Activity - Confidence Intervals and Hypothesis Testing",
+    "section": "2.2 Calculations",
+    "text": "2.2 Calculations\n\nWhat is your sample statistic?\n\n\nYour answer here\n\n\nWhat is the standard error?\n\n\ncpr_se &lt;- ## ... ##\n\nError in parse(text = input): &lt;text&gt;:2:0: unexpected end of input\n1: cpr_se &lt;- ## ... ##\n   ^\n\n\n\nDoes the central limit theorem apply to this data? Why or why not?\n\n\nYour answer here"
+  },
+  {
+    "objectID": "activity/33-hypothesis-testing.html#confidence-interval",
+    "href": "activity/33-hypothesis-testing.html#confidence-interval",
+    "title": "11.3.i Activity - Confidence Intervals and Hypothesis Testing",
+    "section": "2.3 Confidence Interval",
+    "text": "2.3 Confidence Interval\n\nWhat formula should you use for a 95% confidence interval? Provide the value of any constants you will use (e.g. multipliers).\n\n\nYour answer here\n\n\nCalculate a 95% confidence interval for the amount asparagus grows in a 24h period.\n\n\ncpr_ci &lt;- ## ... ##\n\nError in parse(text = input): &lt;text&gt;:2:0: unexpected end of input\n1: cpr_ci &lt;- ## ... ##\n   ^\n\n\n\nWhat is your confidence level? What level of \\(\\alpha\\) corresponds to this confidence level?\n\n\nYour answer here\n\n\nInterpret your confidence interval in the context of the problem.\n\n\nYour answer here"
+  },
+  {
+    "objectID": "activity/33-hypothesis-testing.html#hypothesis-test-1",
+    "href": "activity/33-hypothesis-testing.html#hypothesis-test-1",
+    "title": "11.3.i Activity - Confidence Intervals and Hypothesis Testing",
+    "section": "2.4 Hypothesis Test",
+    "text": "2.4 Hypothesis Test\n\nCalculate \\(Z^\\ast\\), the critical value for your hypothesis test.\n\n\ncpr_z &lt;- ##...##\n\nError in parse(text = input): &lt;text&gt;:2:0: unexpected end of input\n1: cpr_z &lt;- ##...##\n   ^\n\n\n\nCalculate your p-value using pnorm\n\n\ncpr_p &lt;- pnorm(##...##)\n\nError in parse(text = input): &lt;text&gt;:2:0: unexpected end of input\n1: cpr_p &lt;- pnorm(##...##)\n   ^\n\n\n\nWhat is your conclusion, based on your p-value?\n\n\nYour answer here\n\n\nDoes your conclusion match the conclusion you would draw by interpreting your confidence interval? Why or why not?\n\n\nYour answer here"
   },
   {
     "objectID": "activity/32-clt.html",
@@ -3213,6 +3276,69 @@
     "text": "Be sure to run the following code chunk before continuing with the assignment.\n\nlibrary(tidyverse)\nlibrary(stat1080r)\n\nWe are going to use the colleges dataset from the stat1080r package for this assignment. Run the following code to make that dataset available in your environment.\n\ncolleges &lt;- stat1080r::colleges\n\nThis dataset contains 831 American colleges that:\n\nOffer four-year degree programs\nHave more than 2,000 students\nHave endowments larger than $10 million\n\nWe are going to call this group the population of “large four-year schools”. Note that this population does NOT represent ALL schools of higher education in the United States, but rather the “population of interest”. We wish to explore the average endowment size of schools within this population.\n\n1 Calculating the Population Parameter\nRarely do we have access to all the observations in our population. Normally, we must take a much smaller sample of observations to get insight into our population. However, in this case, we are able to calculate the population parameter of interest (which we will call \\(\\mu\\)), which is the average size of a university endowment. Please use a tidyverse summarize() statement to calculate the population average endowment size. Use the endowment size at the end of the fiscal year for this calculation.\n\npop_mu &lt;- colleges |&gt;\n  summarize(mean_endow = mean(endowment_end)) |&gt;\n  pull(mean_endow)\n\npop_mu\n\n[1] 0.8752226\n\n\nNote that the result is less than one, but it is NOT a proportion — it represents billions of dollars. Thus, a value of 0.5 in this context does not mean a 50% chance of “yes”, but rather means an endowment size of $500 million.\n\n\n2 Calculating the Standard Error\nRemember that the expected value of a sample average is equal to the population average. This means that the expected value of a sample size of n schools will be equal to pop_mu, regardless of the value of n.\nUnlike with proportions, where the standard error relies on the calculation \\(\\sqrt{p*(1-p)/n}\\), the standard error of a sample average (when the population standard deviation (\\(\\sigma\\)) is known) is \\(\\frac{\\sigma}{\\sqrt{n}}\\). In other words, the standard error for our samples can be written in R as:\n\npop_sd &lt;- colleges |&gt;\n  summarize(sd_endow = sd(endowment_end)) |&gt;\n  pull(sd_endow)\n\nn &lt;- 10 # replace with your sample size.\n\ns_x &lt;- pop_sd / sqrt(n)\ns_x\n\n[1] 1.098603\n\n\nThis in mind, please calculate the standard error of the average endowment size when the sample size is 100. How large is the standard error of a sample size of 100 relative to a sample size of 10? Calculate this as a percentage. Note that sample code is provided for this calculation, assuming you assign the standard error for a sample size of 100 to the variable s_x_100.\n\npop_sd &lt;- colleges |&gt;\n  summarize(sd_endow = sd(endowment_end)) |&gt;\n  pull(sd_endow)\n\nn_100 &lt;- 100 # replace with your sample size.\n\ns_x_100 &lt;- pop_sd / sqrt(n_100)\ns_x_100\n\n[1] 0.3474087\n\n# Code to calculate the relative difference between the two standard errors.\n(s_x_100 / s_x) * 100\n\n[1] 31.62278\n\n\nThe standard error of a sample size of 100 is only 31.6% of the standard error of a sample size of 10.\n\n\n3 Sampling Distribution of the Sample Average Endowment\nThe provided function takes a sample of 50 colleges without replacement from the colleges dataset and calculates a sample average endowment. Using that function, please use the replicate() function to simulate 1,000 sample averages for sample sizes of 10, 100, and 200 respectively. The provided code will then let you compare histograms for the original observation and each of the sample averages.\n\n# The argument n determines the number of colleges to sample.\nget_public_college &lt;- function(n) {\n  colleges |&gt;\n    slice_sample(n = n) |&gt;\n    summarize(mean_endow = mean(endowment_end)) |&gt;\n    pull(mean_endow)\n}\n\nset.seed(123)\nreps &lt;- 1000\nsample_avg_10 &lt;- replicate(reps, get_public_college(10))\nsample_avg_100 &lt;- replicate(reps, get_public_college(100))\nsample_avg_200 &lt;- replicate(reps, get_public_college(200))\n\n# Uncomment this code once you have completed lines 94-96.\ndata.frame(\n  value = c(\n    colleges |&gt; pull(endowment_end),\n    sample_avg_10,\n    sample_avg_100,\n    sample_avg_200\n  ),\n  name = c(\n    rep(\"original\", nrow(colleges)),\n    rep(\"n = 10\", length(sample_avg_10)),\n    rep(\"n = 100\", length(sample_avg_100)),\n    rep(\"n = 200\", length(sample_avg_200))\n  )\n) |&gt;\n  mutate(name = factor(name, levels = c(\n    \"original\", \"n = 10\",\n    \"n = 100\", \"n = 200\"\n  ))) |&gt;\n  ggplot(aes(x = value)) +\n  geom_histogram(breaks = seq(0, 100, 0.1), color = \"black\") +\n  coord_cartesian(xlim = c(0, 10)) +\n  facet_wrap(~name, ncol = 1, scales = \"free_y\")\n\n\n\n\n\n\n\n\nNote that the x-axis scale has been restricted to omit some of the largest original values. For example, there are 15 colleges with endowments larger than 10 billion dollars that are not reflected in these histograms, with the largest endowment being $50.75 billion.\nWhat do you notice about the shape of the histograms as the sample size increases? Please discuss this with a partner and/or write your answer below.\nI notice that the histograms start to look more than more like a normal distribution as the sample size increases. I also notice that the variability in the histograms gets smaller and smaller as the sample size increases.\n\n\n4 Problem\n\n\n5 Endowment Sample Percentiles\nThe following code calculates the 90th percentile endowment size for schools.\n\npop_q90 &lt;- colleges |&gt;\n  summarize(q90_endow = quantile(endowment_end, 0.9)) |&gt;\n  pull(q90_endow) |&gt;\n  unname()\n\npop_q90\n\n[1] 1.45\n\n\nCalculate the proportion of sample averages from a sample size of 100 that exceed this 90th percentile (HINT: You should be using the variable sample_avg_100 and the mean() function to answer this question).\n\nmean(sample_avg_100 &gt; pop_q90)\n\n[1] 0.053\n\n\n\n\n6 Normal Approximations\nNow repeat the probability calculation using the normal approximation. You should be using the expected value and standard error of a sample size of 100, along with pnorm() to answer this question.\n\n1 - pnorm(pop_q90, mean = pop_mu, sd = s_x_100)\n\n[1] 0.04901602\n\n\nNote that your answer highlights one of the issues with averages: when data are highly right-skewed, meaning that when you have a few observations with substantially higher values than the typical observation, the average value is not representative of the “typical” value. In this case, there is a fairly good chance that our sample average will be larger than 90% of the observed values in our dataset! Averages work best for data that are not so skewed."
   },
   {
+    "objectID": "activity/33-hypothesis-testing-sol.html",
+    "href": "activity/33-hypothesis-testing-sol.html",
+    "title": "11.3.i Activity - Confidence Intervals and Hypothesis Testing",
+    "section": "",
+    "text": "Someone on the internet is claiming that asparagus shoots grow 10” in a 24 hour period. In order to test this theory, you go to your asparagus patch and measure each new shoot from each plant. You measure its length (in inches) at 8AM on the day it appeared and then again at 8AM the next day, subtracting to document the amount of growth.\nAs each plant produces multiple shoots, you end up with a sample of 85 measurements. The sample mean is 9.53 inches, with a sample standard deviation of 2.4 inches.\n\n\n\nWhat is the research question? That is, what do you hope to determine by collecting data?\n\n\nDoes asparagus grow 10” in a 24 hour period?\n\n\nWhat is the observational unit?\n\n\nA shoot of asparagus\n\n\nWhat type of variable is this? Categorical or Quantitative?\n\n\nQuantitative\n\n\nIf you were conducting a hypothesis test, what would \\(H_0\\) and \\(H_A\\) be?\n\n\n\\(H_0\\): \\(\\mu = 10\\) \\(H_A\\): \\(\\mu \\neq 10\\)\n\n\nIf you were using a confidence interval to conduct a test, what value would need to be outside the interval to reject the null hypothesis?\n\n\n10”\n\n\n\n\n\nWhat is your sample statistic?\n\n\n\\(\\overline X = 9.53\\)\n\n\nWhat is the standard error?\n\n\n(asparagus_se &lt;- 2.4 / sqrt(85))\n\n[1] 0.2603165\n\n\n\nDoes the central limit theorem apply to this data? Why or why not?\n\n\nYes, the central limit theorem applies, because we have more than 20 observations of continuous data.\n\n\n\n\n\nWhat formula should you use for a 95% confidence interval? Provide the value of any constants you will use (e.g. multipliers).\n\n\nEstimate +/- Multiplier * SE(Estimate) Multiplier = 1.959964\n\n\nCalculate a 95% confidence interval for the amount asparagus grows in a 24h period.\n\n\nasparagus_ci &lt;- 9.53 + c(-1,1)*qnorm(.975)*asparagus_se\nasparagus_ci\n\n[1]  9.019789 10.040211\n\n\n\nWhat is your confidence level? What level of \\(\\alpha\\) corresponds to this confidence level?\n\n\n95% confidence, so \\(\\alpha = 0.05\\)\n\n\nInterpret your confidence interval in the context of the problem.\n\n\nWe are 95% confident that on average, a shoot of asparagus can grow between 9.0197889 and 10.0402111 inches in a 24 hour period.\n\n\n\n\n\nCalculate \\(Z^\\ast\\), the critical value for your hypothesis test.\n\n\n(asparagus_z &lt;- (9.53 - 10)/asparagus_se)\n\n[1] -1.805494\n\n\n\nCalculate your p-value using pnorm\n\n\n(asparagus_p &lt;- pnorm(asparagus_z)*2)\n\n[1] 0.07099739\n\n\n\nWhat is your conclusion, based on your p-value?\n\n\nWith a p-value of 0.071, we do not have sufficient evidence to reject \\(H_0: \\mu = 10\\); it is plausible that we could have observed our data when, on average, asparagus grows \\(\\mu = 10\\) inches in a 24 hour period.\n\n\nDoes your conclusion match the conclusion you would draw by interpreting your confidence interval? Why or why not?\n\n\nYes. Our confidence interval contains 10, which suggests that it is plausible for \\(\\mu = 10\\). We should not reject \\(H_0\\)."
+  },
+  {
+    "objectID": "activity/33-hypothesis-testing-sol.html#experimental-design",
+    "href": "activity/33-hypothesis-testing-sol.html#experimental-design",
+    "title": "11.3.i Activity - Confidence Intervals and Hypothesis Testing",
+    "section": "",
+    "text": "What is the research question? That is, what do you hope to determine by collecting data?\n\n\nDoes asparagus grow 10” in a 24 hour period?\n\n\nWhat is the observational unit?\n\n\nA shoot of asparagus\n\n\nWhat type of variable is this? Categorical or Quantitative?\n\n\nQuantitative\n\n\nIf you were conducting a hypothesis test, what would \\(H_0\\) and \\(H_A\\) be?\n\n\n\\(H_0\\): \\(\\mu = 10\\) \\(H_A\\): \\(\\mu \\neq 10\\)\n\n\nIf you were using a confidence interval to conduct a test, what value would need to be outside the interval to reject the null hypothesis?\n\n\n10”"
+  },
+  {
+    "objectID": "activity/33-hypothesis-testing-sol.html#calculations",
+    "href": "activity/33-hypothesis-testing-sol.html#calculations",
+    "title": "11.3.i Activity - Confidence Intervals and Hypothesis Testing",
+    "section": "",
+    "text": "What is your sample statistic?\n\n\n\\(\\overline X = 9.53\\)\n\n\nWhat is the standard error?\n\n\n(asparagus_se &lt;- 2.4 / sqrt(85))\n\n[1] 0.2603165\n\n\n\nDoes the central limit theorem apply to this data? Why or why not?\n\n\nYes, the central limit theorem applies, because we have more than 20 observations of continuous data."
+  },
+  {
+    "objectID": "activity/33-hypothesis-testing-sol.html#confidence-intervals",
+    "href": "activity/33-hypothesis-testing-sol.html#confidence-intervals",
+    "title": "11.3.i Activity - Confidence Intervals and Hypothesis Testing",
+    "section": "",
+    "text": "What formula should you use for a 95% confidence interval? Provide the value of any constants you will use (e.g. multipliers).\n\n\nEstimate +/- Multiplier * SE(Estimate) Multiplier = 1.959964\n\n\nCalculate a 95% confidence interval for the amount asparagus grows in a 24h period.\n\n\nasparagus_ci &lt;- 9.53 + c(-1,1)*qnorm(.975)*asparagus_se\nasparagus_ci\n\n[1]  9.019789 10.040211\n\n\n\nWhat is your confidence level? What level of \\(\\alpha\\) corresponds to this confidence level?\n\n\n95% confidence, so \\(\\alpha = 0.05\\)\n\n\nInterpret your confidence interval in the context of the problem.\n\n\nWe are 95% confident that on average, a shoot of asparagus can grow between 9.0197889 and 10.0402111 inches in a 24 hour period."
+  },
+  {
+    "objectID": "activity/33-hypothesis-testing-sol.html#hypothesis-test",
+    "href": "activity/33-hypothesis-testing-sol.html#hypothesis-test",
+    "title": "11.3.i Activity - Confidence Intervals and Hypothesis Testing",
+    "section": "",
+    "text": "Calculate \\(Z^\\ast\\), the critical value for your hypothesis test.\n\n\n(asparagus_z &lt;- (9.53 - 10)/asparagus_se)\n\n[1] -1.805494\n\n\n\nCalculate your p-value using pnorm\n\n\n(asparagus_p &lt;- pnorm(asparagus_z)*2)\n\n[1] 0.07099739\n\n\n\nWhat is your conclusion, based on your p-value?\n\n\nWith a p-value of 0.071, we do not have sufficient evidence to reject \\(H_0: \\mu = 10\\); it is plausible that we could have observed our data when, on average, asparagus grows \\(\\mu = 10\\) inches in a 24 hour period.\n\n\nDoes your conclusion match the conclusion you would draw by interpreting your confidence interval? Why or why not?\n\n\nYes. Our confidence interval contains 10, which suggests that it is plausible for \\(\\mu = 10\\). We should not reject \\(H_0\\)."
+  },
+  {
+    "objectID": "activity/33-hypothesis-testing-sol.html#experimental-design-1",
+    "href": "activity/33-hypothesis-testing-sol.html#experimental-design-1",
+    "title": "11.3.i Activity - Confidence Intervals and Hypothesis Testing",
+    "section": "2.1 Experimental Design",
+    "text": "2.1 Experimental Design\n\nWhat is the research question? That is, what do the doctors want to determine?\n\n\nDo medical dramas demonstrate a higher rate of temporary resuscitation when CPR is used than occurs in real life?\n\n\nWhat is the observational unit?\n\n\nPatients on whom CPR is attempted in a medical drama\n\n\nWhat type of variable is this? Categorical or Quantitative?\n\n\nCategorical – whether they are temporarily resuscitated (1) or not (0)\n\n\nIf you were conducting a hypothesis test, what would \\(H_0\\) and \\(H_A\\) be using appropriate mathematical notation?\n\n\n\\(H_0\\): \\(\\pi = 0.45\\) \\(H_A\\): \\(\\pi \\neq 0.45\\) or \\(\\pi &gt; 0.45\\) – both are reasonable here, though the latter requires a one-sided interval and test.\n\n\nIf you were using a confidence interval to conduct a test, what value would need to be outside the interval to reject the null hypothesis?\n\n\n0.45"
+  },
+  {
+    "objectID": "activity/33-hypothesis-testing-sol.html#calculations-1",
+    "href": "activity/33-hypothesis-testing-sol.html#calculations-1",
+    "title": "11.3.i Activity - Confidence Intervals and Hypothesis Testing",
+    "section": "2.2 Calculations",
+    "text": "2.2 Calculations\n\nWhat is your sample statistic?\n\n\n\\(\\overline X = 0.4571429\\)\n\n\nWhat is the standard error?\n\n\ncpr_stat &lt;- 32/70\n(cpr_se &lt;- sqrt(cpr_stat*(1-cpr_stat)/70))\n\n[1] 0.05954149\n\n\n\nDoes the central limit theorem apply to this data? Why or why not?\n\n\nYes, we have more than 5 successes and more than 5 failures, with categorical data, so the central limit theorem applies."
+  },
+  {
+    "objectID": "activity/33-hypothesis-testing-sol.html#confidence-interval",
+    "href": "activity/33-hypothesis-testing-sol.html#confidence-interval",
+    "title": "11.3.i Activity - Confidence Intervals and Hypothesis Testing",
+    "section": "2.3 Confidence Interval",
+    "text": "2.3 Confidence Interval\n\nWhat formula should you use for a 95% confidence interval? Provide the value of any constants you will use (e.g. multipliers).\n\n\nEstimate +/- Multiplier * SE(Estimate) Multiplier = 1.959964\n\n\nCalculate a 95% confidence interval for the amount asparagus grows in a 24h period.\n\n\ncpr_ci &lt;- cpr_stat + c(-1, 1) * qnorm(.975)*cpr_se\ncpr_ci\n\n[1] 0.3404437 0.5738420\n\n\n\nWhat is your confidence level? What level of \\(\\alpha\\) corresponds to this confidence level?\n\n\n95%, which corresponds to \\(\\alpha = 0.05\\).\n\n\nInterpret your confidence interval in the context of the problem.\n\n\nWe are 95% confident that the population average temporary resuscitation rate when CPR is performed in a medical drama is between 34% and 57%. As the temporary resuscitation rate in real life is estimated to be 45%, it is plausible that medical dramas represent the temporary resuscitation rate accurately."
+  },
+  {
+    "objectID": "activity/33-hypothesis-testing-sol.html#hypothesis-test-1",
+    "href": "activity/33-hypothesis-testing-sol.html#hypothesis-test-1",
+    "title": "11.3.i Activity - Confidence Intervals and Hypothesis Testing",
+    "section": "2.4 Hypothesis Test",
+    "text": "2.4 Hypothesis Test\n\nCalculate \\(Z^\\ast\\), the critical value for your hypothesis test.\n\n\n(cpr_z &lt;- (cpr_stat-0.45)/cpr_se)\n\n[1] 0.1199644\n\n\n\nCalculate your p-value using pnorm\n\n\n(cpr_p &lt;- pnorm(cpr_z, lower.tail = F)*2)\n\n[1] 0.9045114\n\n\n\nWhat is your conclusion, based on your p-value?\n\n\nWith a p-value of .905, we fail to reject the null hypothesis that \\(\\pi = 0.45\\). It is completely plausible that we would observe data as or more extreme than what our sample showed with a population CPR temporary resuscitation rate of 45%.\n\n\nDoes your conclusion match the conclusion you would draw by interpreting your confidence interval? Why or why not?\n\n\nYes, the conclusion matches. 45% is almost exactly at the center of the 95% confidence interval."
+  },
+  {
     "objectID": "activity/presidency_template.html",
     "href": "activity/presidency_template.html",
     "title": "Presidential Influence on the Country",
@@ -3462,14 +3588,14 @@
     "href": "weeks/week-110.html",
     "title": "Week 11: Parameters and Estimates",
     "section": "",
-    "text": "November 09-15, 2026\n\n\n\n(for Mon) IDS 2 Ch 9.1 - 9.3 - Estimates\n(for Wed) IDS 2 Ch 8 - Sampling Models and the Central Limit Theorem\n(for Fri) IDS 2 Ch 13 - Hypothesis Testing\n\n\n\n\n\n(for Mon) Reading Check 11.1 - Parameters and Estimates\n(for Wed) Reading Check 11.2 - Central Limit Theorem\n(for Fri) Reading Check 11.3 - Hypothesis Testing\nStart Looking At Homework 3, qmd template, html, visual solutions\n\n\n\n\n\nAttendance Quiz 11/09\nParameters and Estimates\n11.1.i Activity - Parameters and Estimates quarto template, html\n\n\n\n\n\nAttendance Quiz 11/11\nCentral Limit Theorem\n11.2.i Activity - Central Limit Theorem quarto template, html\n\n\n\n\n\nAttendance Quiz 11/13\nHypothesis Testing\n\n\n\n\n\nStart Looking at Homework 3, qmd template, html, visual solutions\nPopulation and Estimated Parameters, Clearly Explained - Josh Starmer\nParameter Estimation and Fitting Distributions - Steve Brunton"
+    "text": "November 09-15, 2026\n\n\n\n(for Mon) IDS 2 Ch 9.1 - 9.3 - Estimates\n(for Wed) IDS 2 Ch 8 - Sampling Models and the Central Limit Theorem\n(for Fri) IDS 2 Ch 13 - Hypothesis Testing and review IDS 2 Ch 9.4 - Confidence Intervals\n\n\n\n\n\n(for Mon) Reading Check 11.1 - Parameters and Estimates\n(for Wed) Reading Check 11.2 - Central Limit Theorem\n(for Fri) Reading Check 11.3 - Hypothesis Testing\nStart Looking At Homework 3, qmd template, html, visual solutions\n\n\n\n\n\nAttendance Quiz 11/09\nParameters and Estimates\n11.1.i Activity - Parameters and Estimates quarto template, html\n\n\n\n\n\nAttendance Quiz 11/11\nCentral Limit Theorem\n11.2.i Activity - Central Limit Theorem quarto template, html\n\n\n\n\n\nAttendance Quiz 11/13\nHypothesis Testing\n11.3.i Activity - Confidence Intervals and Hypothesis Testing quarto template, html\n\n\n\n\n\nStart Looking at Homework 3, qmd template, html, visual solutions\nPopulation and Estimated Parameters, Clearly Explained - Josh Starmer\nParameter Estimation and Fitting Distributions - Steve Brunton\nConfidence Interval and Hypothesis Testing - Simplilearn Statistics Tutorial for Beginners"
   },
   {
     "objectID": "weeks/week-110.html#reading",
     "href": "weeks/week-110.html#reading",
     "title": "Week 11: Parameters and Estimates",
     "section": "",
-    "text": "(for Mon) IDS 2 Ch 9.1 - 9.3 - Estimates\n(for Wed) IDS 2 Ch 8 - Sampling Models and the Central Limit Theorem\n(for Fri) IDS 2 Ch 13 - Hypothesis Testing"
+    "text": "(for Mon) IDS 2 Ch 9.1 - 9.3 - Estimates\n(for Wed) IDS 2 Ch 8 - Sampling Models and the Central Limit Theorem\n(for Fri) IDS 2 Ch 13 - Hypothesis Testing and review IDS 2 Ch 9.4 - Confidence Intervals"
   },
   {
     "objectID": "weeks/week-110.html#prepare-for-class",
@@ -3497,14 +3623,14 @@
     "href": "weeks/week-110.html#friday",
     "title": "Week 11: Parameters and Estimates",
     "section": "",
-    "text": "Attendance Quiz 11/13\nHypothesis Testing"
+    "text": "Attendance Quiz 11/13\nHypothesis Testing\n11.3.i Activity - Confidence Intervals and Hypothesis Testing quarto template, html"
   },
   {
     "objectID": "weeks/week-110.html#extra-resourcesreading",
     "href": "weeks/week-110.html#extra-resourcesreading",
     "title": "Week 11: Parameters and Estimates",
     "section": "",
-    "text": "Start Looking at Homework 3, qmd template, html, visual solutions\nPopulation and Estimated Parameters, Clearly Explained - Josh Starmer\nParameter Estimation and Fitting Distributions - Steve Brunton"
+    "text": "Start Looking at Homework 3, qmd template, html, visual solutions\nPopulation and Estimated Parameters, Clearly Explained - Josh Starmer\nParameter Estimation and Fitting Distributions - Steve Brunton\nConfidence Interval and Hypothesis Testing - Simplilearn Statistics Tutorial for Beginners"
   },
   {
     "objectID": "weeks/week-130.html",

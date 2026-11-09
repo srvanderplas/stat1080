@@ -1,0 +1,219 @@
+---
+title: "11.3.i Activity - Confidence Intervals and Hypothesis Testing"
+format: html
+embed-resources: true
+number-sections: true
+execute:
+  echo: true   # show code by default
+  warning: false
+  message: false
+---
+
+
+# Asparagus Growth
+
+[Someone on the internet is claiming that asparagus shoots grow 10" in a 24 hour period](
+https://www.reddit.com/r/AskReddit/comments/9v1ynv/whats_your_favorite_fun_fact/e98pqb1/). 
+In order to test this theory, you go to your asparagus patch and measure each new shoot from each plant. 
+You measure its length (in inches) at 8AM on the day it appeared and then again at 8AM the next day, subtracting to document the amount of growth. 
+
+As each plant produces multiple shoots, you end up with a sample of 85 measurements. The sample mean is 9.53 inches, with a sample standard deviation of 2.4 inches.
+
+## Experimental Design
+
+- What is the research question? That is, what do you hope to determine by collecting data?
+
+> Your answer here
+
+- What is the observational unit?
+
+> Your answer here
+
+- What type of variable is this? Categorical or Quantitative?
+
+> Your answer here
+
+- If you were conducting a hypothesis test, what would $H_0$ and $H_A$ be?
+
+> $H_0$: 
+> $H_A$:
+
+- If you were using a confidence interval to conduct a test, what value would need to be outside the interval to reject the null hypothesis?
+
+> Your answer here
+
+## Calculations
+
+- What is your sample statistic?
+
+> Your answer here
+
+- What is the standard error? 
+
+```{r}
+#| error: true
+asparagus_se <- ## ... ##
+```
+
+- Does the central limit theorem apply to this data? Why or why not?
+
+> Your answer here
+
+## Confidence Intervals
+
+- What formula should you use for a 95% confidence interval?  Provide the value of any constants you will use (e.g. multipliers).
+
+
+> Your answer here
+
+
+- Calculate a 95% confidence interval for the amount asparagus grows in a 24h period.
+
+```{r}
+#| error: true
+
+asparagus_ci <- ## ... ##
+```
+
+
+- What is your confidence level? What level of $\alpha$ corresponds to this confidence level?
+
+> Your answer here
+
+
+- Interpret your confidence interval in the context of the problem.
+
+
+> Your answer here
+
+
+## Hypothesis Test
+
+- Calculate $Z^\ast$, the critical value for your hypothesis test.
+
+```{r}
+#| error: true
+asparagus_z <- ##...##
+```
+
+- Calculate your p-value using `pnorm`
+
+```{r}
+#| error: true
+asparagus_p <- pnorm(##...##)
+```
+
+- What is your conclusion, based on your p-value?
+
+
+> Your answer here
+
+- Does your conclusion match the conclusion you would draw by interpreting your confidence interval? Why or why not?
+
+
+> Your answer here
+
+
+
+# Cardiopulmonary Resuscitation (CPR)
+
+On TV, CPR is seemingly more successful than it is in real life, where about 45% of people who receive CPR are at least temporarily resuscitated, and only 10% survive to discharge from the hospital. 
+A group of doctors collected data on CPR survival rates in medical dramas, examining 88 episodes which aired between July 2008 and April 2009. 
+They documented 70 CPR attempts; 32 succeeded in temporarily resuscitating the patient. 
+Attempts to determine the percent successfully discharged from the hospital failed, as this is not a part of the plot line in most TV dramas.
+
+## Experimental Design
+
+- What is the research question? That is, what do the doctors want to determine?
+
+> Your answer here
+
+- What is the observational unit?
+
+> Your answer here
+
+- What type of variable is this? Categorical or Quantitative?
+
+> Your answer here
+
+- If you were conducting a hypothesis test, what would $H_0$ and $H_A$ be using appropriate mathematical notation?
+
+> $H_0$: 
+> $H_A$:
+
+- If you were using a confidence interval to conduct a test, what value would need to be outside the interval to reject the null hypothesis?
+
+> Your answer here
+
+## Calculations
+
+- What is your sample statistic?
+
+> Your answer here
+
+- What is the standard error? 
+
+```{r}
+#| error: true
+cpr_se <- ## ... ##
+```
+
+- Does the central limit theorem apply to this data? Why or why not?
+
+> Your answer here
+
+## Confidence Interval
+
+- What formula should you use for a 95% confidence interval?  Provide the value of any constants you will use (e.g. multipliers).
+
+
+> Your answer here
+
+
+- Calculate a 95% confidence interval for the amount asparagus grows in a 24h period.
+
+```{r}
+#| error: true
+
+cpr_ci <- ## ... ##
+```
+
+
+- What is your confidence level? What level of $\alpha$ corresponds to this confidence level?
+
+> Your answer here
+
+
+- Interpret your confidence interval in the context of the problem.
+
+
+> Your answer here
+
+
+## Hypothesis Test
+
+- Calculate $Z^\ast$, the critical value for your hypothesis test.
+
+```{r}
+#| error: true
+cpr_z <- ##...##
+```
+
+- Calculate your p-value using `pnorm`
+
+```{r}
+#| error: true
+cpr_p <- pnorm(##...##)
+```
+
+- What is your conclusion, based on your p-value?
+
+
+> Your answer here
+
+- Does your conclusion match the conclusion you would draw by interpreting your confidence interval? Why or why not?
+
+
+> Your answer here
+
+

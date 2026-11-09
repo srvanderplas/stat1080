@@ -312,7 +312,7 @@ schedule:
     reading: |
         - [ ] (for Mon) [IDS 2 Ch 9.1 - 9.3 - Estimates](https://rafalab.dfci.harvard.edu/dsbook-part-2/inference/estimates-confidence-intervals.html){target="_blank"}
         - [ ] (for Wed) [IDS 2 Ch 8 - Sampling Models and the Central Limit Theorem](https://rafalab.dfci.harvard.edu/dsbook-part-2/prob/sampling-models-and-clt.html){target="_blank"}
-        - [ ] (for Fri) [IDS 2 Ch 13 - Hypothesis Testing](https://rafalab.dfci.harvard.edu/dsbook-part-2/inference/hypothesis-testing.html){target="_blank"}
+        - [ ] (for Fri) [IDS 2 Ch 13 - Hypothesis Testing](https://rafalab.dfci.harvard.edu/dsbook-part-2/inference/hypothesis-testing.html){target="_blank"} and review [IDS 2 Ch 9.4 - Confidence Intervals](https://rafalab.dfci.harvard.edu/dsbook-part-2/inference/estimates-confidence-intervals.html#confidence-intervals){target="_blank"}
     prepare: |
         - [ ] (for Mon) [Reading Check 11.1 - Parameters and Estimates](https://usu.instructure.com/courses/819584/quizzes/1506119){target="_blank"}
         - [ ] (for Wed) [Reading Check 11.2 - Central Limit Theorem](https://usu.instructure.com/courses/819584/modules/items/7666842){target="_blank"}
@@ -329,10 +329,12 @@ schedule:
     class3: |
         - [Attendance Quiz 11/13](https://usu.instructure.com/courses/819584/assignments/5293128/){target="_blank"}
         - [Hypothesis Testing](../slides/33-hypothesis.qmd)
+        - [11.3.i Activity - Confidence Intervals and Hypothesis Testing](https://usu.instructure.com/courses/819584/quizzes/1507480){target="_blank"} [quarto template](../activity/_33-hypothesis-testing.qmd){target="_blank"}, [html](../activity/33-hypothesis-testing.qmd){target="_blank"}
     extra: |
         - Start Looking at [Homework 3](https://usu.instructure.com/courses/819584/assignments/5290613){target="_blank"}, [qmd template](../homework/_homework03.qmd), [html](../homework/homework03.qmd), [visual solutions](../homework/homework03-visual-sol.qmd)
         - [Population and Estimated Parameters, Clearly Explained](https://www.youtube.com/watch?v=vikkiwjQqfU){target="_blank"} - Josh Starmer
         - [Parameter Estimation and Fitting Distributions](https://www.youtube.com/watch?v=7XVA2JRzYoE){target="_blank"} - Steve Brunton
+        - [Confidence Interval and Hypothesis Testing](https://youtu.be/QD6CZBFEog0){target="_blank"} - Simplilearn Statistics Tutorial for Beginners
         
   - week: 12
     name: Statistical Inference
@@ -340,7 +342,7 @@ schedule:
     end: 2026-11-22
     reading: |
         - [ ] (for Mon) [IDS 2 Ch 13 - Hypothesis Testing](https://rafalab.dfci.harvard.edu/dsbook-part-2/inference/hypothesis-testing.html){target="_blank"}
-        - [ ] (for Wed) [IDS 2 Ch 9.4 - Confidence Intervals](https://rafalab.dfci.harvard.edu/dsbook-part-2/inference/estimates-confidence-intervals.html#confidence-intervals){target="_blank"}
+        - [ ] (for Wed) 
     prepare: |
         - [ ] (for Mon) Reading Check 12.1
         - [ ] (for Wed) Reading Check 12.2
