@@ -5619,5 +5619,61 @@
     "title": "STAT 1080 - Fall 2026",
     "section": "Example: Smoking Cessation",
     "text": "Example: Smoking Cessation\nOnly about 20% of people who try to quit smoking succeed.\nA motivational audiobook claims that listening to the book can help people quit. After surveying people who have attempted quitting using the audiobook, 62 out of 250 people were successful at quitting."
+  },
+  {
+    "objectID": "video-materials/33-hypothesis-testing.html#margin-of-error",
+    "href": "video-materials/33-hypothesis-testing.html#margin-of-error",
+    "title": "Hypothesis Testing",
+    "section": "Margin of Error",
+    "text": "Margin of Error\nA good confidence interval balances precision with uncertainty\n\n\nThe temperature tomorrow will be between -100 \\(^\\circ F\\) and 150 \\(^\\circ F\\)\nUncertainty, no precision\nJake will win over Amy with a spread of between 3.40928 and 3.40948\nPrecision, no uncertainty/unreasonable certainty\nI expect I’ll get between 6.5 and 8 hours of sleep tonight\nReasonable precision and uncertainty"
+  },
+  {
+    "objectID": "video-materials/33-hypothesis-testing.html#confidence-interval",
+    "href": "video-materials/33-hypothesis-testing.html#confidence-interval",
+    "title": "Hypothesis Testing",
+    "section": "Confidence Interval",
+    "text": "Confidence Interval\nA confidence interval is constructed using the form:\nEstimate \\(\\pm\\) Multiplier \\(\\times\\) Standard Error\nEach confidence interval has a level determined by the multiplier\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nA 95% confidence interval will use a multiplier of 1.96\n\n\nqnorm(.975)\n\n[1] 1.96"
+  },
+  {
+    "objectID": "video-materials/33-hypothesis-testing.html#confidence-interval-1",
+    "href": "video-materials/33-hypothesis-testing.html#confidence-interval-1",
+    "title": "Hypothesis Testing",
+    "section": "Confidence Interval",
+    "text": "Confidence Interval\nA confidence interval is constructed using the form:\nEstimate \\(\\pm\\) Multiplier \\(\\times\\) Standard Error\nEach confidence interval has a level determined by the multiplier\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nA 99% confidence interval will use a multiplier of 2.576\n\n\nqnorm(.995)\n\n[1] 2.58"
+  },
+  {
+    "objectID": "video-materials/33-hypothesis-testing.html#confidence-intervals",
+    "href": "video-materials/33-hypothesis-testing.html#confidence-intervals",
+    "title": "Hypothesis Testing",
+    "section": "Confidence Intervals",
+    "text": "Confidence Intervals\nA confidence interval is constructed using the form:\nEstimate \\(\\pm\\) Multiplier \\(\\times\\) Standard Error\nEach confidence interval has a level determined by the multiplier\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nA 95% confidence interval will use a multiplier of 1.96\n\n\nqnorm(.975)\n\n[1] 1.96"
+  },
+  {
+    "objectID": "video-materials/33-hypothesis-testing.html#confidence-intervals-1",
+    "href": "video-materials/33-hypothesis-testing.html#confidence-intervals-1",
+    "title": "Hypothesis Testing",
+    "section": "Confidence Intervals",
+    "text": "Confidence Intervals\nA confidence interval is constructed using the form:\nEstimate \\(\\pm\\) Multiplier \\(\\times\\) Standard Error\nEach confidence interval has a level determined by the multiplier\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nA 99% confidence interval will use a multiplier of 2.576\n\n\nqnorm(.995)\n\n[1] 2.58"
+  },
+  {
+    "objectID": "video-materials/33-hypothesis-testing.html#what-does-95-confident-mean",
+    "href": "video-materials/33-hypothesis-testing.html#what-does-95-confident-mean",
+    "title": "Hypothesis Testing",
+    "section": "What does “95% confident” mean?",
+    "text": "What does “95% confident” mean?\n\n\n\n\n\n\n\n\n\n\n\n\n\nIf we took 100 different samples of the same size,\n95 of the intervals should contain the true mean\n\n\n“95% confident” does NOT mean:\n\n\n95% probability that the interval contains the true value\n95% is the long run behavior of the method\n(Use Bayesian methods for this interpretation – take a Bayesian course for more info)\n\n95% of the sample observations lie within the interval\nCIs are for population values estimated by a statistic\n\n95% of future sample means will fall within this interval\nA prediction interval (diff. calc.) is used for future values"
+  },
+  {
+    "objectID": "video-materials/33-hypothesis-testing.html#testing-a-hypothesis",
+    "href": "video-materials/33-hypothesis-testing.html#testing-a-hypothesis",
+    "title": "Hypothesis Testing",
+    "section": "Testing a Hypothesis",
+    "text": "Testing a Hypothesis\n\n\nSomeone proposed that 50% of people on the internet are actually dogs.\n\nYou construct a CAT-Cha test to identify internet users who are dogs, and discover that of 100 internet users tested, 35 are dogs.\n\n\n\\[\\begin{align}\\overline X &= \\frac{35}{100} = 0.35\\\\\\\\\n\\text{SE}[X] &= \\sqrt{\\frac{.35(.65)}{100}} = 0.0477\\end{align}\\]\n\n\n\\[\\begin{align}\\overline X \\pm 1.96\\cdot \\text{SE}[\\overline X] &= .35 \\pm 1.96 \\cdot 0.0477 \\\\&= (0.257, 0.443)\\end{align}\\]\n\n\n\n0.5 is not in (0.257, 0.443) \\(\\Rightarrow\\)\n\n\n\\(p\\) = 0.5 is not a plausible value for the proportion of dogs on the internet"
+  },
+  {
+    "objectID": "video-materials/33-hypothesis-testing.html#testing-a-hypothesis-1",
+    "href": "video-materials/33-hypothesis-testing.html#testing-a-hypothesis-1",
+    "title": "Hypothesis Testing",
+    "section": "Testing a Hypothesis",
+    "text": "Testing a Hypothesis\n\n\nSomeone proposed that 50% of people on the internet are actually dogs.\n\nYou construct a CAT-Cha test to identify internet users who are dogs, and discover that of 100 internet users tested, 35 are dogs.\n\n\n\\[\\begin{align}H_0&: \\mu = 0.50\\\\\nH_A&: \\mu \\neq 0.50\\end{align}\\]\n\n\n\\[\\begin{align}\\overline X &= \\frac{35}{100} = 0.35\\\\\\\\\n\\text{SE}[X] &= \\sqrt{\\frac{.35(.65)}{100}} = 0.0477\\end{align}\\]\n\n\n\\[\\begin{align}Z^\\ast &= \\frac{\\overline X - \\mu}{\\sigma/\\sqrt{N}} \\approx \\frac{\\overline X - \\mu}{\\text{SE}[\\overline X]}\\\\& = \\frac{0.35 - 0.5}{0.0477} = -3.145\n\\end{align}\\]\n\n\n\n\n\n\n\n\n\n\n\n\n\nWe reject \\(H_0\\) that \\(p=0.50\\) with probability \\(p = 0.0016\\) and conclude that it is more likely that the proportion of dogs on the internet is not 50%, given the data that we have observed."
   }
 ]
