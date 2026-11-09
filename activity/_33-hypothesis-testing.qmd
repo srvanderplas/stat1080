@@ -1,0 +1,11 @@
+---
+title: "11.3.i Activity - Hypothesis Testing"
+format: html
+embed-resources: true
+number-sections: true
+execute:
+  echo: true   # show code by default
+  warning: false
+  message: false
+---
+

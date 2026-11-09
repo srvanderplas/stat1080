@@ -2,6 +2,7 @@
 title: "11.2.i Activity - Central Limit Theorem"
 format: html
 number-sections: true
+embed-resources: true
 execute:
   echo: true   # show code by default
   warning: false
@@ -117,9 +118,11 @@ set.seed(123) # set seed for reproducibility
 ##   facet_wrap(~name, ncol = 1, scales = "free_y") 
 ```
 
-Note that the x-axis scale has been restricted to omit some of the largest original values. For example, there are 15 colleges with endowments larger than 10 billion dollars that are not reflected in these histograms, with the largest endowment being \$50.75 billion. 
+Note that the x-axis scale has been restricted to omit some of the largest original values. 
+For example, there are 15 colleges with endowments larger than 10 billion dollars that are not reflected in these histograms, with the largest endowment being \$50.75 billion. 
 
-What do you notice about the shape of the histograms as the sample size increases? Please discuss this with a partner and/or write your answer below. 
+What do you notice about the shape of the histograms as the sample size increases? 
+Please discuss this with a partner and/or write your answer below. 
 
 *Replace this text with your answer. Optional if discussing in groups and required if working on your own.* 
 
