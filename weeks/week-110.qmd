@@ -37,7 +37,7 @@ November 09-15, 2026
 
 - [Attendance Quiz 11/13](https://usu.instructure.com/courses/819584/assignments/5293128/){target="_blank"}
 - [Hypothesis Testing](../slides/33-hypothesis.qmd)
-- [11.3.i Activity - Confidence Intervals and Hypothesis Testing](https://usu.instructure.com/courses/819584/quizzes/1507480){target="_blank"} [quarto template](../activity/_33-hypothesis-testing.qmd){target="_blank"}, [html](../activity/33-hypothesis-testing.qmd){target="_blank"}
+- [11.3.i Activity - Confidence Intervals](https://usu.instructure.com/courses/819584/quizzes/1462839){target="_blank"} [quarto template](../activity/_33-confidence-intervals.qmd){target="_blank"}, [html](../activity/33-confidence-intervals.qmd){target="_blank"}
 
 
 ## Extra Resources/Reading

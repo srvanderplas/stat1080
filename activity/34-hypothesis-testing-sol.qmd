@@ -1,5 +1,5 @@
 ---
-title: "11.3.i Activity - Confidence Intervals and Hypothesis Testing"
+title: "12.1.i Activity - Confidence Intervals and Hypothesis Testing"
 format: html
 embed-resources: true
 number-sections: true
@@ -23,48 +23,49 @@ As each plant produces multiple shoots, you end up with a sample of 85 measureme
 
 - What is the research question? That is, what do you hope to determine by collecting data?
 
-> Your answer here
+> Does asparagus grow 10" in a 24 hour period?
 
 - What is the observational unit?
 
-> Your answer here
+> A shoot of asparagus
 
 - What type of variable is this? Categorical or Quantitative?
 
-> Your answer here
+> Quantitative
 
 - If you were conducting a hypothesis test, what would $H_0$ and $H_A$ be?
 
-> $H_0$: 
-> $H_A$:
+> $H_0$: $\mu = 10$
+> $H_A$: $\mu \neq 10$
 
 - If you were using a confidence interval to conduct a test, what value would need to be outside the interval to reject the null hypothesis?
 
-> Your answer here
+> 10"
 
 ## Calculations
 
 - What is your sample statistic?
 
-> Your answer here
+> $\overline X = 9.53$
 
 - What is the standard error? 
 
 ```{r}
 #| error: true
-asparagus_se <- ## ... ##
+(asparagus_se <- 2.4 / sqrt(85))
 ```
 
 - Does the central limit theorem apply to this data? Why or why not?
 
-> Your answer here
+> Yes, the central limit theorem applies, because we have more than 20 observations of continuous data.
 
 ## Confidence Intervals
 
 - What formula should you use for a 95% confidence interval?  Provide the value of any constants you will use (e.g. multipliers).
 
 
-> Your answer here
+> Estimate +/- Multiplier * SE(Estimate)
+> Multiplier = `{r} qnorm(.975)`
 
 
 - Calculate a 95% confidence interval for the amount asparagus grows in a 24h period.
@@ -72,19 +73,20 @@ asparagus_se <- ## ... ##
 ```{r}
 #| error: true
 
-asparagus_ci <- ## ... ##
+asparagus_ci <- 9.53 + c(-1,1)*qnorm(.975)*asparagus_se
+asparagus_ci
 ```
 
 
 - What is your confidence level? What level of $\alpha$ corresponds to this confidence level?
 
-> Your answer here
+> 95% confidence, so $\alpha = 0.05$ 
 
 
 - Interpret your confidence interval in the context of the problem.
 
 
-> Your answer here
+> We are 95% confident that on average, a shoot of asparagus can grow between `{r} asparagus_ci[1]` and `{r} asparagus_ci[2]` inches in a 24 hour period. 
 
 
 ## Hypothesis Test
@@ -93,25 +95,25 @@ asparagus_ci <- ## ... ##
 
 ```{r}
 #| error: true
-asparagus_z <- ##...##
+(asparagus_z <- (9.53 - 10)/asparagus_se)
 ```
 
 - Calculate your p-value using `pnorm`
 
 ```{r}
 #| error: true
-asparagus_p <- pnorm(##...##)
+(asparagus_p <- pnorm(asparagus_z)*2)
 ```
 
 - What is your conclusion, based on your p-value?
 
 
-> Your answer here
+> With a p-value of 0.071, we do not have sufficient evidence to reject $H_0: \mu = 10$; it is plausible that we could have observed our data when, on average, asparagus grows $\mu = 10$ inches in a 24 hour period. 
 
 - Does your conclusion match the conclusion you would draw by interpreting your confidence interval? Why or why not?
 
 
-> Your answer here
+> Yes. Our confidence interval contains 10, which suggests that it is plausible for $\mu = 10$. We should not reject $H_0$. 
 
 
 
@@ -126,48 +128,50 @@ Attempts to determine the percent successfully discharged from the hospital fail
 
 - What is the research question? That is, what do the doctors want to determine?
 
-> Your answer here
+> Do medical dramas demonstrate a higher rate of temporary resuscitation when CPR is used than occurs in real life?
 
 - What is the observational unit?
 
-> Your answer here
+> Patients on whom CPR is attempted in a medical drama
 
 - What type of variable is this? Categorical or Quantitative?
 
-> Your answer here
+> Categorical -- whether they are temporarily resuscitated (1) or not (0)
 
 - If you were conducting a hypothesis test, what would $H_0$ and $H_A$ be using appropriate mathematical notation?
 
-> $H_0$: 
-> $H_A$:
+> $H_0$: $\pi = 0.45$
+> $H_A$: $\pi \neq 0.45$ or $\pi > 0.45$ -- both are reasonable here, though the latter requires a one-sided interval and test. 
 
 - If you were using a confidence interval to conduct a test, what value would need to be outside the interval to reject the null hypothesis?
 
-> Your answer here
+> 0.45
 
 ## Calculations
 
 - What is your sample statistic?
 
-> Your answer here
+> $\overline X = `{r} 32/70`$
 
 - What is the standard error? 
 
 ```{r}
 #| error: true
-cpr_se <- ## ... ##
+
+cpr_stat <- 32/70
+(cpr_se <- sqrt(cpr_stat*(1-cpr_stat)/70))
 ```
 
 - Does the central limit theorem apply to this data? Why or why not?
 
-> Your answer here
+> Yes, we have more than 5 successes and more than 5 failures, with categorical data, so the central limit theorem applies. 
 
 ## Confidence Interval
 
 - What formula should you use for a 95% confidence interval?  Provide the value of any constants you will use (e.g. multipliers).
 
-
-> Your answer here
+> Estimate +/- Multiplier * SE(Estimate)
+> Multiplier = `{r} qnorm(.975)`
 
 
 - Calculate a 95% confidence interval for the amount asparagus grows in a 24h period.
@@ -175,19 +179,20 @@ cpr_se <- ## ... ##
 ```{r}
 #| error: true
 
-cpr_ci <- ## ... ##
+cpr_ci <- cpr_stat + c(-1, 1) * qnorm(.975)*cpr_se
+cpr_ci
 ```
 
 
 - What is your confidence level? What level of $\alpha$ corresponds to this confidence level?
 
-> Your answer here
+> 95%, which corresponds to $\alpha = 0.05$. 
 
 
 - Interpret your confidence interval in the context of the problem.
 
 
-> Your answer here
+> We are 95% confident that the population average temporary resuscitation rate when CPR is performed in a medical drama is between 34% and 57%. As the temporary resuscitation rate in real life is estimated to be 45%, it is plausible that medical dramas represent the temporary resuscitation rate accurately. 
 
 
 ## Hypothesis Test
@@ -196,24 +201,24 @@ cpr_ci <- ## ... ##
 
 ```{r}
 #| error: true
-cpr_z <- ##...##
+(cpr_z <- (cpr_stat-0.45)/cpr_se)
 ```
 
 - Calculate your p-value using `pnorm`
 
 ```{r}
 #| error: true
-cpr_p <- pnorm(##...##)
+(cpr_p <- pnorm(cpr_z, lower.tail = F)*2)
 ```
 
 - What is your conclusion, based on your p-value?
 
 
-> Your answer here
+> With a p-value of .905, we fail to reject the null hypothesis that $\pi = 0.45$. It is completely plausible that we would observe data as or more extreme than what our sample showed with a population CPR temporary resuscitation rate of 45%. 
 
 - Does your conclusion match the conclusion you would draw by interpreting your confidence interval? Why or why not?
 
 
-> Your answer here
+> Yes, the conclusion matches. 45% is almost exactly at the center of the 95% confidence interval. 
 
 

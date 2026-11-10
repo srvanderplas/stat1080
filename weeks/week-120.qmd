@@ -20,6 +20,7 @@ November 16-22, 2026
 
 - [Attendance Quiz 11/16](https://usu.instructure.com/courses/819584/assignments/5293129/){target="_blank"}
 - [Hypothesis Testing](../slides/34-hypothesis.qmd){target="_blank"}
+- [12.1.i Activity - Confidence Intervals and Hypothesis Testing](https://usu.instructure.com/courses/819584/quizzes/1507480){target="_blank"} [quarto template](../activity/_33-hypothesis-testing.qmd){target="_blank"}, [html](../activity/33-hypothesis-testing.qmd){target="_blank"}
 
 
 ## 🐪️ Wednesday 🐦‍⬛ 

@@ -1,5 +1,5 @@
 ---
-title: "11.3.i Activity - Confidence Intervals and Hypothesis Testing"
+title: "12.1.i Activity - Confidence Intervals and Hypothesis Testing"
 format: html
 embed-resources: true
 number-sections: true

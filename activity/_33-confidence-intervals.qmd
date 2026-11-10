@@ -1,0 +1,123 @@
+---
+title: "11.3.i Activity - Confidence Intervals"
+format: html
+number-sections: true
+execute:
+  echo: true   # show code by default
+  warning: false
+  message: false
+---
+
+This assignment includes many interpretations of statistical tests. Please carefully read the provided statements in the solution after it posts so that you can better understand the language that statisticians use to talk about hypothesis testing. 
+
+Be sure to run the following code chunk before continuing with the assignment.  
+
+```{r}
+library(tidyverse)
+library(stat1080r)
+```
+
+We are going to use the `colleges` dataset from the `stat1080r` package for this assignment. Run the following code to make that dataset available in your environment. 
+
+```{r}
+colleges <- stat1080r::colleges
+```
+
+This dataset contains 831 American colleges that: 
+
+- Offer four-year degree programs
+- Have more than 2,000 students
+- Have endowments larger than \$10 million
+
+We are going to call this group the population of "large four-year schools". Note that this population does NOT represent ALL schools of higher education in the United States, but rather the "population of interest". We wish to explore the proportion of "public" schools within this population.  
+
+# Problem 
+
+Rarely do we have access to all the observations in our population. Normally, we must take a much smaller sample of observations to get insight into our population. However, in this case, we are able to calculate the population parameter of interest (which we will call $p$) by calculating the proportion of public schools in the dataset: 
+
+```{r}
+pop_p <- colleges |>
+  summarize(mean_public = mean(public)) |>
+  pull(mean_public) |>
+  round(2)
+
+pop_p
+```
+
+Now suppose that we didn't have access to the entire population of schools, which means that we do not know that `pop_p = 0.62`. Suppose instead that we only had access to one random sample of 50 schools. 
+
+```{r}
+set.seed(70211) # set seed for reproducibility
+college_samp <- colleges |>
+  slice_sample(n = 50)
+```
+
+Using this sample of schools, calculate a 95% confidence interval for the true proportion of public schools in our sample. Remember that you will need the following elements: 
+
+- Your sample proportion estimate (remember that we do not know $p$)
+- Your sample standard error (remember to use $\bar{X}$ instead of $p$ since we assume that $p$ is not known). 
+- Your z-score, which should be equal to `qnorm(0.975)` for a 95% confidence interval. Remember that multiplying your z-score by the standard error calculates the margin of error. 
+
+```{r}
+## x_bar <- #...#
+## se_bar <- #...#
+## z <- qnorm(0.975)
+## me <- #...#
+
+# Make a vector of size two with the lower and upper endpoint of the 
+# confidence interval.
+## c(#...#, #...#)
+```
+
+# Problem
+
+Now replace the 95% confidence interval with a 90% confidence interval. (HINT: This will require a change in the calculation of z.) How does the length of your 90% confidence interval compare with the length of the 95% confidence interval? 
+
+```{r}
+## z <- #...#
+## me <- #...#
+##
+## c(#...#, #...#)
+```
+
+*Replace this text with your answer. Optional if discussing in groups and required if working on your own.*
+
+# Problem
+
+Using the 95% confidence interval perform a hypothesis test that investigates the claim that there are equal proportions of public and private large, four-year schools in the United States. 
+
+Remember that we KNOW that there are more public than private schools in our population, but we are pretending that the only thing we know is the sample proportion in our sample of 50 schools. 
+
+Please write a null and alternative hypothesis that would investigate this claim. 
+
+- **Null Hypothesis:** *Replace text with your answer.*
+
+- **Alternative Hypothesis:** *Replace text with your answer.*
+
+# Problem 
+
+Based on your 95% confidence interval (not the 90% confidence interval), what would you conclude from your hypothesis test and why? 
+
+*Replace this text with your answer. Optional if discussing in groups and required if working on your own.*
+
+# Problem 
+
+The following code calculates the p-value for same hypothesis test we just explored, except for now the sample size contains 200 schools instead of 50. The p-value is provided at the bottom of the code chunk. 
+
+```{r}
+set.seed(12345) 
+college_samp_2 <- colleges |>
+  slice_sample(n = 200)
+x_bar_2 <- college_samp_2 |>
+  summarize(mean_public = mean(public)) |>
+  pull(mean_public)
+se_bar_2 <- sqrt(x_bar_2 * (1 - x_bar_2) / 200)
+
+z_score <- (x_bar_2 - 0.5) / se_bar_2
+
+2 * (1 - pnorm(abs(z_score)))
+```
+
+Based on the p-value, what would you conclude about the hypothesis with the new sample size? 
+
+*Replace text with your answer. Optional if discussing in groups and required if working on your own*

@@ -329,7 +329,8 @@ schedule:
     class3: |
         - [Attendance Quiz 11/13](https://usu.instructure.com/courses/819584/assignments/5293128/){target="_blank"}
         - [Hypothesis Testing](../slides/33-hypothesis.qmd)
-        - [11.3.i Activity - Confidence Intervals and Hypothesis Testing](https://usu.instructure.com/courses/819584/quizzes/1507480){target="_blank"} [quarto template](../activity/_33-hypothesis-testing.qmd){target="_blank"}, [html](../activity/33-hypothesis-testing.qmd){target="_blank"}
+        - [11.3.i Activity - Confidence Intervals](https://usu.instructure.com/courses/819584/quizzes/1462839){target="_blank"} [quarto template](../activity/_33-confidence-intervals.qmd){target="_blank"}, [html](../activity/33-confidence-intervals.qmd){target="_blank"}
+
     extra: |
         - Start Looking at [Homework 3](https://usu.instructure.com/courses/819584/assignments/5290613){target="_blank"}, [qmd template](../homework/_homework03.qmd), [html](../homework/homework03.qmd), [visual solutions](../homework/homework03-visual-sol.qmd)
         - [Population and Estimated Parameters, Clearly Explained](https://www.youtube.com/watch?v=vikkiwjQqfU){target="_blank"} - Josh Starmer
@@ -349,6 +350,8 @@ schedule:
     class1: |
         - [Attendance Quiz 11/16](https://usu.instructure.com/courses/819584/assignments/5293129/){target="_blank"}
         - [Hypothesis Testing](../slides/34-hypothesis.qmd){target="_blank"}
+        - [12.1.i Activity - Confidence Intervals and Hypothesis Testing](https://usu.instructure.com/courses/819584/quizzes/1507480){target="_blank"} [quarto template](../activity/_33-hypothesis-testing.qmd){target="_blank"}, [html](../activity/33-hypothesis-testing.qmd){target="_blank"}
+
     class2: |
         - [Attendance Quiz 11/18](https://usu.instructure.com/courses/819584/assignments/5293132/){target="_blank"}
         - [Confidence Intervals](../slides/35-ci.qmd){target="_blank"}
