@@ -343,9 +343,8 @@ schedule:
     end: 2026-11-22
     class1: |
         - [Attendance Quiz 11/16](https://usu.instructure.com/courses/819584/assignments/5293129/){target="_blank"}
-        - [Hypothesis Testing](../slides/34-hypothesis.qmd){target="_blank"}
+        - [Hypothesis Testing](../slides/34-hypothesis.qmd){target="_blank"} (review slides) [Last week's slides](../slides/33-hypothesis.qmd){target="_blank"}
         - [12.1.i Activity - Confidence Intervals and Hypothesis Testing](https://usu.instructure.com/courses/819584/quizzes/1507480){target="_blank"} [quarto template](../activity/_33-hypothesis-testing.qmd){target="_blank"}, [html](../activity/33-hypothesis-testing.qmd){target="_blank"}
-
     class2: |
         - [Attendance Quiz 11/18](https://usu.instructure.com/courses/819584/assignments/5293132/){target="_blank"}
         - [12.2.L Lab: Statistical Inference](https://usu.instructure.com/courses/819584/assignments/5465506){target="_blank"} [quarto template](../lab/_35-inference.qmd){target="_blank"}, [html preview](../lab/35-inference.qmd){target="_blank"}
