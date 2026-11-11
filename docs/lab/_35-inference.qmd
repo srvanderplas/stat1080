@@ -1,0 +1,161 @@
+---
+title: "12.2.L Lab: The Great Emu War"
+author: Your name
+embed-resources: true
+format: html
+---
+
+[The Great Emu War](http://www.todayifoundout.com/index.php/2014/01/great-emu-war-1932/) occurred between November 2 and December 10, 1932 in the Campion district of western Australia.
+In the wake of WWI, veterans were given land to farm in the region with the goal of increasing the economic output of the region. 
+Previously, this land was part of an Emu seasonal migration zone between the drier interior region and the coast. 
+In 1932, the great depression had caused wheat prices to fall precipitously, so farmers were simultaneously trying to harvest wheat and bargain with the government over the price. 
+Complicating the situation, some 20,000 emus arrived. 
+Rather than appeal to the Minister of Agriculture, the farmer-soldiers appealed to the Minister of Defence, who promptly deployed machine guns, several army personnel, and 10,000 bullets to the ``front". 
+A cinematographer was also deployed to document the contingent's easy victory over the Emus.
+
+There were several large-scale battles over the course of the war, but after the first few, the Emus appeared to work out the range of the guns^[After a couple of days of skirmishes, the press reported that the Emus were organizing: ``Each mob has its leader, always an enormous, black plumed bird standing fully 6-feet-high, who keeps watch while his fellows busy themselves with the wheat. At the first suspicious sign, he gives the signal, and dozens of heads stretch up out of the crop... starting a headlong stampede for the scrub". (https://doi.org/10.1080/14443050609388083)], and stayed just out of reach. 
+During one of these battles, about 1000 emus gathered and the soldiers attempted an ambush; there were approximately 12 casualties, as the machine gun jammed after the initial burst.
+
+At the end of the Emu War, there were no reported human casualties, and only 986 of the 20,000 emus had been killed. 
+9860 bullets were used for the operation^[An emu who died later of other causes was found to have 5 bullets in him, suggesting that some of the bullets used actually found their targets, but that Emus are rather bullet-resistant.].
+The Australian parliament debated whether to issue medals for this war, and one MP suggested that medals should be given to the Emus, who had won every round. 
+
+# Casualty Rate Comparisons
+Suppose you want to establish the Emu casualty rate and compare it to the casualty rate of other Australian army operations. You decide to use the casualty rate from the entire war as your sample.
+
+
+## Experimental Design
+
+- What is the observational unit?
+
+> Your answer here
+  
+- What type of variable is this - Categorical or Quantitative?
+
+> Your answer here
+
+- What is the statistic of interest (proportion, mean, other quantity)?
+
+> Your answer here
+
+- What is your sample statistic?
+
+> Your answer here
+
+
+## Calculations
+
+- What is your standard error? Show your work, including the formula you used to get your answer.
+
+```{r}
+#| error: true
+cas_rate_se <- ## ... ##
+cas_rate_se
+```
+
+- Calculate a 95% confidence interval for your data
+
+```{r}
+#| error: true
+cas_rate_ci <- ## ... ## + c(-1, 1)* ##...## * ## ... ##
+cas_rate_ci <- c(-Inf, Inf) # This line should be deleted as soon as your calculation is filled in. It's required so that quarto doesn't complain about the in-line values below. 
+cas_rate_ci
+```
+
+
+- Interpret your confidence interval in the context of the problem. 
+
+> Your answer here. You can reference values from R using `{r} cas_rate_ci[1]` and `{r} cas_rate_ci[2]`, if you want to embed your R answers into the text. 
+
+- What parts of the confidence interval equation would you expect to change if you had used the statistics from one of the first battles, where there were 12 casualties of around 1000 estimated birds?
+
+> Your answer here
+
+## Comparisons
+
+We might estimate a comparable casualty rate for Australian soldiers by using the rate from the most recent world war. 
+In World War I, approximately 349,000 Australian men enlisted, with 61,966 casualties. 
+How does the casualty rate for the Emus during their ``Great War" compare to the casualty rate for the Australian soldiers during WWI? 
+Conduct a hypothesis test or equivalent procedure to determine if the casualty rate for Emus is **significantly lower** than the casualty rate for Australian soldiers during WWI.
+
+- List the null and alternative hypotheses:     
+(Hint: $\mu$, $\pi$, $\neq$, or just state your null and alternative in words. Your alternative hypothesis should be one-sided.)
+
+> $H_0: $
+> $H_A: $
+
+- Calculate your sufficient statistic:
+
+```{r}
+#| error: true
+casualty_rate_z <- ## ... ##
+casualty_rate_z
+```
+
+- Calculate the p-value that corresponds to your sufficient statistic, given the hypotheses you listed. When a one-sided alternate hypothesis is used, you only calculate the probability on one side of the distribution -- that is, you should only calculate the probability based on the lower half of the distribution in this question. 
+
+```{r}
+#| error: true
+casualty_rate_p <- ##...##
+```
+
+
+## Machine Gun Range
+
+The Emus were reported to understand the range of the machine guns. 
+While learning in most animals takes place from repeated exposure, we might imagine instead that the Emus designed an observational study and have the ability to precisely measure the range of the machine guns.^[Emus are said to be related to very intelligent dinosaurs such as Velociraptors. Jurassic Park demonstrated the intelligence of the species; we should not underestimate their descendants.].
+Over 53 bursts of machine gun fire, the mean range of the machine gun was measured to be 1553 yd (SD = 204.74). 
+
+## Experimental design
+
+- What is the observational unit?
+
+- What is the population? (Hint: What are you hoping to compare your sample statistic to?)
+
+- What type of variable is this - Categorical or Quantitative?
+  
+- What is the statistic of interest (proportion, mean, other quantity)?
+
+## Calculations
+
+- What is your sample statistic? 
+
+```{r}
+#| error: true
+machine_gun_stat <- ## ... ##
+```
+
+
+- What is your standard error? 
+
+```{r}
+#| error: true
+machine_gun_se <- ##...##
+machine_gun_se
+```
+
+
+
+## Confidence Interval
+
+- The Emus would like to have 95% confidence in the actual range of the machine guns used by the Australian military, so that the flock leaders can keep a safe distance (while maximizing the amount of wheat they can eat). Provide an interval containing the true range of the machine gun.
+
+```{r}
+#| error: true
+machine_gun_ci <- ##...## + c(-1, 1) * ##...## * ##...##
+machine_gun_ci <- c(-Inf, Inf) # This line should be deleted as soon as your calculation is filled in. It's required so that quarto doesn't complain about the in-line values below. 
+```
+
+
+- Interpret your confidence interval in the context of the problem.
+
+> Your answer here. You can reference the lower  bound of the CI as `{r} machine_gun_ci[1]` and the upper bound as `{r} machine_gun_ci[2]`
+
+## Additional Data Collection 
+
+Over the next several days, the Emus continue collecting data. 
+Cumulatively, they have 92 measurements from bursts of machine gun fire, and the new mean range of the machine gun is 1550 yd (SD = 200). 
+How do you expect your interval to change, now that you have more data? 
+(The values are similar enough that you should not have to re-do the calculation.)
+
+> Your answer here

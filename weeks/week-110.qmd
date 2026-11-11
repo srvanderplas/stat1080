@@ -42,7 +42,7 @@ November 09-15, 2026
 
 ## Extra Resources/Reading
 
-- Start Looking at [Homework 3](https://usu.instructure.com/courses/819584/assignments/5290613){target="_blank"}, [qmd template](../homework/_homework03.qmd), [html](../homework/homework03.qmd), [visual solutions](../homework/homework03-visual-sol.qmd)
+- Start Looking at [Homework 3](https://usu.instructure.com/courses/819584/assignments/5290613){target="_blank"}, [qmd template](../homework/_homework03.qmd){target="_blank"}, [html](../homework/homework03.qmd){target="_blank"}, [visual solutions](../homework/homework03-visual-sol.qmd){target="_blank"}
 - [Population and Estimated Parameters, Clearly Explained](https://www.youtube.com/watch?v=vikkiwjQqfU){target="_blank"} - Josh Starmer
 - [Parameter Estimation and Fitting Distributions](https://www.youtube.com/watch?v=7XVA2JRzYoE){target="_blank"} - Steve Brunton
 - [Confidence Interval and Hypothesis Testing](https://youtu.be/QD6CZBFEog0){target="_blank"} - Simplilearn Statistics Tutorial for Beginners

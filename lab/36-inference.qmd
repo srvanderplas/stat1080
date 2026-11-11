@@ -1,1 +1,0 @@
-{{< include _36-inference.qmd >}}
