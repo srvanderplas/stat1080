@@ -38,12 +38,12 @@ Suppose you want to establish the Emu casualty rate and compare it to the casual
 
 > Your answer here
 
+
+## Calculations
+
 - What is your sample statistic?
 
 > Your answer here
-
-
-## Calculations
 
 - What is your standard error? Show your work, including the formula you used to get your answer.
 
@@ -84,7 +84,7 @@ Conduct a hypothesis test or equivalent procedure to determine if the casualty r
 > $H_0: $
 > $H_A: $
 
-- Calculate your sufficient statistic:
+- Calculate your critical $Z$ value:
 
 ```{r}
 #| error: true
@@ -98,6 +98,15 @@ casualty_rate_z
 #| error: true
 casualty_rate_p <- ##...##
 ```
+
+
+- Do you reject or fail to reject $H_0$?
+
+> Your answer here
+
+- Interpret your decision in the context of the problem.
+
+> Your answer here
 
 
 ## Machine Gun Range
@@ -133,7 +142,6 @@ machine_gun_stat <- ## ... ##
 machine_gun_se <- ##...##
 machine_gun_se
 ```
-
 
 
 ## Confidence Interval

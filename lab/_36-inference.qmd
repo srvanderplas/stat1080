@@ -1,5 +1,0 @@
----
-title: "12.3.L Lab: Inference & The Great Emu War"
-format: html
----
-
