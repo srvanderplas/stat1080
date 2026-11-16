@@ -89,7 +89,7 @@ asparagus_ci <- ## ... ##
 
 ## Hypothesis Test
 
-- Calculate $Z^\ast$, the critical value for your hypothesis test.
+- Calculate $Z^\ast$ (the standardized statistic) for your hypothesis test.
 
 ```{r}
 #| error: true
@@ -170,7 +170,7 @@ cpr_se <- ## ... ##
 > Your answer here
 
 
-- Calculate a 95% confidence interval for the amount asparagus grows in a 24h period.
+- Calculate a 95% confidence interval for true proportion of people resuscitated by CPR on TV.
 
 ```{r}
 #| error: true
@@ -192,7 +192,7 @@ cpr_ci <- ## ... ##
 
 ## Hypothesis Test
 
-- Calculate $Z^\ast$, the critical value for your hypothesis test.
+- Calculate $Z^\ast$ (the standardized statistic) for your hypothesis test.
 
 ```{r}
 #| error: true
