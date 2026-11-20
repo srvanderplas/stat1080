@@ -350,7 +350,7 @@ schedule:
         - [12.2.L Lab: Statistical Inference](https://usu.instructure.com/courses/819584/assignments/5465506){target="_blank"} [quarto template](../lab/_35-inference.qmd){target="_blank"}, [html preview](../lab/35-inference.qmd){target="_blank"}
     class3: |
         - [Attendance Quiz 11/20](https://usu.instructure.com/courses/819584/assignments/5293131/){target="_blank"}
-        - Project Work Day: Inference and Statistical Tests
+        - Project Work Day: Inference and Statistical Tests [sample data CSV](../homework/sample-project-data.csv), [sample analysis code](../homework/project-code-demo.R)
     extra: |
         - [Homework 3](https://usu.instructure.com/courses/819584/assignments/5290613){target="_blank"}, [qmd template](../homework/_homework03.qmd){target="_blank"}, [html](../homework/homework03.qmd){target="_blank"}, [visual solutions](../homework/homework03-visual-sol.qmd){target="_blank"}
         

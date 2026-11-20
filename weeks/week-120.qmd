@@ -24,7 +24,7 @@ November 16-22, 2026
 ## 🎉 Friday 🥳
 
 - [Attendance Quiz 11/20](https://usu.instructure.com/courses/819584/assignments/5293131/){target="_blank"}
-- Project Work Day: Inference and Statistical Tests
+- Project Work Day: Inference and Statistical Tests [sample data CSV](../homework/sample-project-data.csv), [sample analysis code](../homework/project-code-demo.R)
 
 
 ## Extra Resources/Reading
