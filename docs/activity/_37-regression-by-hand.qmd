@@ -1,0 +1,170 @@
+---
+title: "13.1.i Activity: Regression By Hand"
+format: html
+embed-resources: true
+---
+
+This activity will work with an interactive application written in R using a package called `Shiny`, which creates a webpage. 
+You will need to have the latest R version for this code to run (at least R 4.6.1). 
+
+You can access the code for the Shiny application [here](../code/regression/app.R). 
+Download the R script and open it in RStudio. 
+
+You should see a button at the top of the editor window that says "Run app". 
+Click that button. It may take some time for the packages to install on the first run.
+
+You should be working with this qmd file in Visual mode, because that will allow you to provide screenshots and have them automatically embed themselves in the compiled HTML file. 
+
+# A Simple Dataset
+
+## Generate some data
+
+To get started, you should generate some data. 
+Pick the number of points you want to use for your dataset. 
+For now, do not select any nonlinear trend, outliers, or other options.
+Click the generate data button and check out your data. 
+
+Take a screenshot of your data and paste it below:
+
+> screenshot here
+
+
+## You Draw It! Regression by hand
+
+Click on the "You Draw It" tab at the top of the applet. 
+Here, you will draw your own regression line. 
+The yellow background on the plot shows you the area that does not have complete points; 
+you will see the yellow area disappear once you start drawing. 
+Go slowly, and try to keep your line as straight as possible. 
+You may find it helpful to get a crude line drawn first and then (without releasing the mouse) refine the line by going back over your previously drawn points. 
+
+Can you beat the mean standard error of the linear regression line? Get as close as you can, then take a screenshot of the application window and paste it below.
+
+> screenshot here
+
+
+What did you find the most difficult about this task?
+
+> Your answer here
+
+
+## Straight-line regression
+
+Click on the next tab at the top of the applet.
+In this tab, you have controls for the slope and intercept of the regression line. 
+
+Manipulate the slope and intercept, trying to get your mean standard error close to the mean standard error of the regression line. 
+
+Take a screenshot of the application and paste it below.
+
+
+> screenshot here
+
+Describe your strategy for this task. Did you optimize one parameter first and then the other? Or did you try to tweak both parameters simultaneously?
+
+> 1-2 sentences describing your approach.
+
+
+# Nonlinear regression
+
+Go back to the data generation tab, and check the box "non-linear trend". 
+If you want, you can change the number of points as well.
+Generate a new dataset by clicking the button.
+
+
+
+## You Draw It! Regression by hand
+
+Click on the "You Draw It" tab at the top of the applet. 
+
+Can you beat the mean standard error of the linear regression line? 
+This time, you can draw a line which is not straight, so long as it fits the data well. 
+
+Once you have drawn the best nonlinear regression line you can, take a screenshot of the application window and paste it below.
+
+> screenshot here
+
+
+Was it easier to beat the regression mean standard error this time? Why or why not?
+
+> Your answer here
+
+How did the residual plots differ in this task compared to the previous (linear) task using the same tool?
+
+> Your answer here
+
+## Straight-line regression
+
+Click on the next tab at the top of the applet.
+
+Manipulate the slope and intercept, trying to get your mean standard error close to the mean standard error of the regression line. 
+
+Take a screenshot of the application and paste it below.
+
+> screenshot here
+
+How did optimization with a non-linear trend to the data change your approach? If you did not change your approach, make at least one observation about how the results differed from the linear regression data in the first task. 
+
+> 1-2 sentences
+
+How did the residual plots differ in this task compared to the previous (linear) task using the same tool?
+
+> Your answer here
+
+# Non-normal residuals
+
+Go back to the data generation tab, and check the box "Lack of Normality"; uncheck the box "Non-linear trend". 
+If you want, you can change the number of points or include some outliers, you may adjust those inputs as well.
+
+Generate a new dataset by clicking the button.
+
+
+
+## You Draw It! Regression by hand
+
+Click on the "You Draw It" tab at the top of the applet. 
+
+Can you beat the mean standard error of the linear regression line? 
+
+Draw a line that is as straight as possible. 
+
+Once you have drawn the best regression line you can, take a screenshot of the application window and paste it below.
+
+> screenshot here
+
+
+How did you change your approach this time in order to minimize the mean standard error?
+
+> Your answer here
+
+How did the residual plots differ in this task compared to the previous tasks using the same tool?
+
+> Your answer here
+
+## Straight-line regression
+
+Click on the next tab at the top of the applet.
+
+Manipulate the slope and intercept, trying to get your mean standard error close to the mean standard error of the regression line. 
+
+Take a screenshot of the application and paste it below.
+
+> screenshot here
+
+How did you change your approach this time in order to minimize the mean standard error?
+
+> 1-2 sentences
+
+How did the residual plots differ in this task compared to the previous tasks using the same tool?
+
+> Your answer here
+
+
+
+# Submission
+
+Compile this file to HTML. Upload your HTML file to Canvas. 
+
+Note: Check the appearance of your HTML file in Canvas before you move on to other tasks, as this is the file that TAs will grade. 
+
+If your screenshots do not show up, you probably need to ensure you have the right HTML file, or ask for help.

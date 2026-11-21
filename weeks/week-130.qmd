@@ -7,11 +7,12 @@ November 23-29, 2026
 ## 📖 Reading
 
 - [ ] (for Mon) [IDS 2 Ch 15 - Regression](https://rafalab.dfci.harvard.edu/dsbook-part-2/linear-models/regression.html){target="_blank"}  
+- [ ] (for Mon) [Tidyverse code for IDS 2 Ch 15](../video-materials/37-regression.qmd){target="_blank"}
 
 
 ## 📐 Prepare for class
 
-- [ ] (for Mon) Reading Check 13.1
+- [ ] (for Mon) [Check 13.1.p - Make sure you have R 4.6.x](https://usu.instructure.com/courses/819584/quizzes/1511895){target="_blank"}
 - [ ] [Spreadsheet: Data Collection Project](https://usu.instructure.com/courses/819584/assignments/5290630){target="_blank"}
 - [ ] [Homework 3](https://usu.instructure.com/courses/819584/assignments/5290613){target="_blank"}, [qmd template](../homework/_homework03.qmd), [html](../homework/homework03.qmd), [visual solutions](../homework/homework03-visual-sol.qmd)
 
@@ -19,8 +20,7 @@ November 23-29, 2026
 ## 🥱 Monday 🌛
 
 - [Attendance Quiz 11/23](https://usu.instructure.com/courses/819584/assignments/5293133/){target="_blank"}
-- [Introduction to Regression](../slides/37-regression-intro.qmd){target="_blank"}
-- [Activity: Regression By Hand](../lab/37-regression-by-hand.qmd){target="_blank"}
+- [13.1.p Activity - Regression By Hand](https://usu.instructure.com/courses/819584/assignments/5484701){target="_blank"} [qmd template](../activity/_37-regression-by-hand.qmd){target="_blank"}, [html](../activity/37-regression-by-hand.qmd){target="_blank"}
 
 
 ## 🐪️ Wednesday 🐦‍⬛ 

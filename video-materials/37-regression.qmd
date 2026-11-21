@@ -1,0 +1,203 @@
+---
+title: "Tidyverse Code for Linear Regression"
+echo: true
+---
+
+# Case study: is height hereditary?
+
+```{r}
+library(dslabs)
+library(dplyr)
+library(tidyr)
+library(ggplot2)
+library(HistData)
+data("GaltonFamilies")
+```
+
+```{r}
+set.seed(1983)
+galton <- as.data.frame(GaltonFamilies)
+
+galton_sample <- GaltonFamilies |>
+  filter(gender == "male") |>
+  group_by(family) |>
+  # Get a single, randomly selected male child
+  slice_sample(n = 1) |> 
+  ungroup() |>
+  select(
+    father,
+    # rename to son
+    son = childHeight 
+  )
+```
+
+We can compute summary stats for this dataset:
+```{r}
+galton_sample |>
+  summarise(
+    mean_father = mean(father),
+    sd_father   = sd(father),
+    mean_son    = mean(son),
+    sd_son      = sd(son)
+  )
+```
+
+(I'm going to be more picky about this and force the x and y axis coordinates to be the same)
+```{r}
+galton_sample |> ggplot(aes(father, son)) + 
+  geom_point(alpha = 0.5) + 
+  coord_cartesian(xlim = c(60, 80), ylim = c(60, 80), ratio = 1) + 
+  theme_bw()
+```
+
+# The correlation coefficient
+
+```{r}
+with(galton_sample, cor(father, son))
+```
+
+## Sample correlation is a random variable
+
+```{r}
+r <- galton_sample |>
+  slice_sample(n = 25, replace = TRUE) |>
+  summarise(r = cor(father, son)) |>
+  pull(r)
+
+r
+```
+
+```{r}
+library(infer)
+r <- galton_sample |>
+  rep_slice_sample(reps = 1000, n = 25, replace = TRUE) |>
+  summarise(r = cor(father, son))
+```
+
+```{r}
+ggplot(r, aes(x = r)) + geom_histogram(color = "black", fill = "grey") + theme_bw()
+```
+
+```{r}
+mean(r$r)
+sd(r$r)
+```
+
+
+```{r}
+library(qqplotr) # Makes nicer qq plots (imo)
+ggplot(data = r, aes(sample = r)) + 
+  stat_qq_point() + 
+  stat_qq_line() + 
+  coord_fixed() +
+  theme_bw() + ylab("Sample Quantile") + xlab("Theoretical Quantile")
+```
+
+```{r}
+ggplot(data = r, aes(sample = r)) + 
+  stat_qq_band() + 
+  stat_qq_line() +
+  stat_qq_point(bandtype = "ts", conf = .95) + 
+  theme_bw() + ylab("Sample Quantile") + xlab("Theoretical Quantile")
+```
+
+
+```{r}
+r40 <- galton_sample |>
+  rep_slice_sample(reps = 1000, n = 40, replace = TRUE) |>
+  summarise(r = cor(father, son))
+
+ggplot(data = r40, aes(sample = r)) + 
+  stat_qq_band() + 
+  stat_qq_line() +
+  stat_qq_point() + 
+  theme_bw() + ylab("Sample Quantile") + xlab("Theoretical Quantile")
+
+r50 <- galton_sample |>
+  rep_slice_sample(reps = 1000, n = 50, replace = TRUE) |>
+  summarise(r = cor(father, son))
+
+ggplot(data = r50, aes(sample = r)) + 
+  stat_qq_band() + 
+  stat_qq_line() +
+  stat_qq_point() + 
+  theme_bw() + ylab("Sample Quantile") + xlab("Theoretical Quantile")
+
+```
+
+# The regression line
+
+```{r}
+fit <- lm(son ~ father, data = galton_sample)
+summary(fit)
+
+print(coef(fit))
+
+params <- coef(fit) # get slope and intercept from lm directly
+```
+
+
+```{r}
+ggplot(galton_sample, aes(x = father, y = son)) +
+  geom_point(alpha = 0.5) +
+  # blue line
+  geom_smooth(method = "lm", se = FALSE) +
+  # black line
+  geom_abline(slope = params[2], intercept =  params[1]) +
+  labs(title = "Regression Line") + 
+  coord_cartesian(xlim = c(60, 80), ylim = c(60, 80), ratio = 1) + 
+  theme_bw()
+```
+
+```{r}
+ggplot(galton_sample, aes(x = scale(father), y = scale(son))) +
+  geom_point(alpha = 0.5) +
+  geom_smooth(method = "lm", se = FALSE) +
+  labs(title = "Regression Line, Standardized Units") +  
+  coord_fixed() + 
+  theme_bw()
+```
+
+```{r}
+# Variance explained (R-squared)
+print(summary(fit)$r.squared)
+
+```
+
+## Linear regression improves precision
+
+```{r}
+B <- 1000
+N <- 50
+
+
+results <- galton_sample |>
+  rep_slice_sample(reps = B, n = N, replace = TRUE) |>
+  summarise(
+    # Conditional average with stratification
+    ca = mean(son[round(father)==72]), 
+    # Linear regression prediction
+    lm = predict(lm(son ~ father), newdata = data.frame(father = 72)))
+
+sd(results$ca, na.rm = T)
+sd(results$lm, na.rm = T)
+```
+
+
+## Bivariate normal distribution justification
+
+```{r}
+galton_sample |>
+  mutate(father_z = (father-mean(father))/sd(father), 
+         father_z_round = round(father_z), 
+         son_z = (son - mean(son))/sd(son)) |>
+  # Remove outliers
+  filter(father_z_round <=2, father_z_round >= -2) |> 
+  ggplot() + stat_qq(aes(sample = son_z)) + 
+  facet_wrap(~father_z_round, ncol = 5) +
+  geom_abline(slope = 1) + 
+  coord_fixed() + 
+  theme_bw()
+
+```
+

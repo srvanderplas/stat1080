@@ -4,6 +4,9 @@ if (!"shiny" %in% installed.packages()) {
 if (!"bslib" %in% installed.packages()) {
   install.packages("bslib")
 }
+if (!"qqplotr" %in% installed.packages()) {
+  install.packages("qqplotr")
+}
 if (!"pak" %in% installed.packages()) {
   install.packages("pak")
 }
@@ -11,12 +14,15 @@ if (!"youdrawitR" %in% installed.packages()) {
   pak::pak("Alisa-Krasilnikov/youdrawitR")
 }
 
-library(youdrawitR)
 library(shiny)
 library(bslib)
-library(ggplot2)
 library(tibble)
 library(dplyr)
+library(qqplotr)
+library(ggplot2)
+library(youdrawitR)
+
+theme_set(theme_bw())
 
 datapanel <- nav_panel(
   title = "Generate a Dataset",
@@ -85,7 +91,10 @@ youdrawitpanel <- nav_panel(
       uiOutput("youdrawit", width = "100%", height = "800px"),
       uiOutput("youdrawit_text"),
       br(),
-      actionButton("youdrawit_tryagain", "Reset Plot and try again")
+      actionButton("youdrawit_tryagain", "Reset Plot and try again"),
+      br(),
+      h4("Residual and Diagnostic Plots"),
+      uiOutput("youdrawit_diag")
     )
   )
 )
@@ -123,7 +132,10 @@ straightlinepanel <- nav_panel(
     column(
       width = 9,
       plotOutput("straightline_plot", width = "100%", height = "600px"),
-      uiOutput("straightline_text")
+      uiOutput("straightline_text"),
+      br(),
+      h4("Residual and Diagnostic Plots"),
+      uiOutput("straightline_diag")
     )
   )
 )
@@ -155,8 +167,8 @@ ui <- page_navbar(
       ),
       datapanel,
       youdrawitpanel, 
-      straightlinepanel,
-      explanationpanel
+      straightlinepanel#,
+      # explanationpanel
 )
 
 server <- function(input, output) {
@@ -258,6 +270,17 @@ server <- function(input, output) {
          shiny_message_loc = shiny_message_loc)
   })
   
+  draw_res_data <- reactive({
+    data.frame(
+      x = data()$x,
+      y = data()$y,
+      draw_pred = approx(x = draw_res()$points()$x, 
+                         y = draw_res()$points()$y, 
+                         xout = data()$x)$y
+    ) |>
+      mutate(draw_resid = y - draw_pred)
+  })
+  
   output$youdrawit <- renderUI({
     input$youdrawit_tryagain
     
@@ -266,13 +289,47 @@ server <- function(input, output) {
   
   mse_lm <- reactive(mean(data()$resid^2))
   
-  mse_draw <- reactive(mean((data()$y - draw_res()$points()$y)^2))
+  mse_draw <- reactive(mean((draw_res_data()$draw_resid)^2, na.rm = T))
   
   output$youdrawit_text <- renderUI({
     list(
       helpText(sprintf("Your line has a mean squared error of %0.2f.", mse_draw())),
       br(),
       helpText(sprintf("The linear regression fitted to this data has a mean squared error of %0.2f.", mse_lm()))
+    )
+  })
+  
+  
+  output$youdrawit_resid <- renderPlot({
+    p <- ggplot(data = draw_res_data(), aes(x = x, y = draw_resid)) + 
+      geom_point() + 
+      geom_smooth(method = "lm", se = F)
+    
+    p
+  })  
+  
+  output$youdrawit_qq <- renderPlot({
+    p <- ggplot(data = draw_res_data(), aes(sample = draw_resid)) + 
+      stat_qq_band() + 
+      stat_qq_line() + 
+      stat_qq_point() + 
+      coord_fixed()
+    
+    p
+  })
+  
+  output$youdrawit_diag <- renderUI({
+    fluidRow(
+      column(
+        width = 6,
+        h5("Residuals"),
+        plotOutput("youdrawit_resid")
+      ),
+      column(
+        width = 6,
+        h5("Q-Q Plot"),
+        plotOutput("youdrawit_qq")
+      )
     )
   })
   
@@ -303,6 +360,42 @@ server <- function(input, output) {
       geom_abline(slope = input$slope, intercept = input$intercept)
 
     p
+  })
+  
+  output$straightline_resid <- renderPlot({
+    
+    p <- ggplot(data = data(), aes(x = x, y = y - (x*input$slope + input$intercept))) + 
+      coord_cartesian(xlim = c(-11, 11), 
+                      ylim = range(c(data()$resid))) + 
+      geom_point() + 
+      geom_smooth(se = F)
+    
+    p
+  })  
+  
+  output$straightline_qq <- renderPlot({
+    p <- ggplot(data = data(), aes(sample = y - (x*input$slope + input$intercept))) + 
+      stat_qq_band() + 
+      stat_qq_line() + 
+      stat_qq_point() + 
+      coord_fixed()
+    
+    p
+  })
+  
+  output$straightline_diag <- renderUI({
+    fluidRow(
+      column(
+        width = 6,
+        h5("Residuals"),
+        plotOutput("straightline_resid")
+      ),
+      column(
+        width = 6,
+        h5("Q-Q Plot"),
+        plotOutput("straightline_qq")
+      )
+    )
   })
   
 }

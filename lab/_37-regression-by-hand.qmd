@@ -1,5 +1,0 @@
----
-title: "13.1.i Activity: Regression By Hand"
-format: html
----
-
