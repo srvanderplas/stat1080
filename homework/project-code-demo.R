@@ -4,8 +4,14 @@ library(readr)
 library(dplyr)
 library(tidyr)
 library(ggplot2)
+library(lubridate)
 
-data <- read_csv("homework/sample-project-data.csv")
+data <- read_csv("sample-project-data.csv") |>
+  mutate(Date = ymd(Date)) |>
+  mutate(Mood_fac = factor(Mood, levels = 1:5, 
+                           labels = c("bad", "meh", "ok", 
+                                      "good", "awesome"), 
+                           ordered = T))
 
 head(data)
 
@@ -15,8 +21,12 @@ head(data)
 # Easy but not as well designed
 data |>
   select(-Date) |>
-  pivot_longer(everything(), names_to = "var", values_to = "value") |>
-ggplot(aes(x = value)) + geom_histogram() + facet_wrap(~var, scales = "free")
+  pivot_longer(everything(), 
+               names_to = "var", 
+               values_to = "value") |>
+ggplot(aes(x = value)) + 
+  geom_histogram() + 
+  facet_wrap(~var, scales = "free")
 
 
 # Better to create specific distribution graphics
@@ -39,6 +49,14 @@ data |>
 
 
 data |>
+  ggplot(aes(x = Mood_fac)) + 
+  geom_bar(color = "black", fill = "grey") + 
+  theme_bw() + 
+  labs(y = "# Observations", 
+       x = "Mood", 
+       title = "Distribution of Mood") 
+
+data |>
   ggplot(aes(x = Minutes_Exercise)) + 
   geom_histogram(binwidth = 5, color = "black", fill = "grey") + 
   theme_bw() + 
@@ -49,18 +67,22 @@ data |>
 
 data |>
   ggplot(aes(x = Minutes_Studying)) + 
-  geom_histogram(binwidth = 10, color = "black", fill = "grey") + 
+  geom_histogram(binwidth = 5, color = "black", fill = "grey") + 
   theme_bw() + 
   labs(y = "# Observations", 
        x = "Minutes Spent Studying", 
        title = "Distribution of Study Time") 
 
+data |>
+  ggplot(aes(x = Date, y = Chocolate_Consumption_g)) + geom_line()
+
 
 # Relationships between variables
 
 data |> 
-  ggplot(aes(x = Mood, y = Minutes_Exercise)) + geom_jitter() + 
-  geom_smooth(method = "lm") + 
+  ggplot(aes(x = Mood, y = Minutes_Exercise)) + 
+  geom_point(aes(x = jitter(M))) + 
+  geom_smooth(aes(x = Mood), method = "lm") + 
   theme_bw() + 
   labs(y = "Minutes of Exercise", 
        x = "Mood", 
@@ -129,13 +151,14 @@ t.test(Chocolate_Consumption_g ~ good_mood, data = data)
 
 # Compare levels of mood
 data |> 
-  ggplot(aes(x = factor(Mood), 
+  ggplot(aes(x = Mood_fac, 
              y = Chocolate_Consumption_g)) +
   geom_jitter() + 
   geom_boxplot(fill = "transparent")
 
 ## Treating Mood as a numeric variable
-reg_mood_numeric <- lm(Chocolate_Consumption_g ~ Mood, data = data)
+reg_mood_numeric <- lm(Chocolate_Consumption_g ~ 
+                         Mood, data = data)
 summary(reg_mood_numeric)
 
 ## Treating Mood as a categorical variable
