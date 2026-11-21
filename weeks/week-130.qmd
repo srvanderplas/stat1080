@@ -20,7 +20,7 @@ November 23-29, 2026
 ## 🥱 Monday 🌛
 
 - [Attendance Quiz 11/23](https://usu.instructure.com/courses/819584/assignments/5293133/){target="_blank"}
-- [13.1.p Activity - Regression By Hand](https://usu.instructure.com/courses/819584/assignments/5484701){target="_blank"} [qmd template](../activity/_37-regression-by-hand.qmd){target="_blank"}, [html](../activity/37-regression-by-hand.qmd){target="_blank"}
+- [13.1.p Activity - Regression By Hand](https://usu.instructure.com/courses/819584/assignments/5484701){target="_blank"} [qmd template](../activity/_37-regression-by-hand.qmd){target="_blank"}, [html](../activity/37-regression-by-hand.qmd){target="_blank"}, [Shiny code](../code/regression/app.R)
 
 
 ## 🐪️ Wednesday 🐦‍⬛ 
