@@ -6,26 +6,31 @@ November 30-06, 2026
 
 ## 📖 Reading
 
+- [ ] (for Mon) [IDS 2 Ch 15 - Regression](https://rafalab.dfci.harvard.edu/dsbook-part-2/linear-models/regression.html){target="_blank"}  
+- [ ] (for Mon) [Tidyverse code for IDS 2 Ch 15](../video-materials/37-regression.qmd){target="_blank"}
 - [ ] (for Mon) [IDS 2 Ch 16 - The Linear Model Framework](https://rafalab.dfci.harvard.edu/dsbook-part-2/linear-models/linear-model-framework.html){target="_blank"}
 - [ ] (for Wed) [IDS 2 Ch 20 - Multivariable Regression](https://rafalab.dfci.harvard.edu/dsbook-part-2/linear-models/multivariable-regression.html){target="_blank"}
 
 
 ## 📐 Prepare for class
 
-- [ ] (for Mon) Reading Check 14.1
-- [ ] (for Wed) Reading Check 14.2
+- [ ] (for Mon) [14.1.p Reading Check - Intro to Regression](https://usu.instructure.com/courses/819584/quizzes/1462854){}
+- [ ] (for Wed) [14.2.p Reading Check - Linear Models & Multivariable Regression](){target="_blank"}
+- Start working on [Homework 4](https://usu.instructure.com/courses/819584/assignments/5290614){target="_blank"}, [qmd template](../homework/_homework04.qmd), [html](../homework/homework04.qmd), [visual solutions](../homework/homework04-visual-sol.qmd)
 
 
 ## 🥱 Monday 🌛
 
 - [Attendance Quiz 11/30](https://usu.instructure.com/courses/819584/assignments/5293135/){target="_blank"}
 - [Linear Models](../slides/40-linear-models.qmd){target="_blank"}
+- [14.1.i Activity - Intro to Regression](https://usu.instructure.com/courses/819584/quizzes/1462872){target="_blank"} [quarto template](../activity/_40-intro-regression.qmd){target="_blank"}, [html](../activity/40-intro-regression.qmd){target="_blank"}
 
 
 ## 🐪️ Wednesday 🐦‍⬛ 
 
 - [Attendance Quiz 12/02](https://usu.instructure.com/courses/819584/assignments/5293134/){target="_blank"}
 - [Multivariate Regression](../slides/41-multivariate.qmd){target="_blank"}
+- [14.2.i Activity - Regression II](https://usu.instructure.com/courses/819584/quizzes/1462838){target="_blank"} [quarto template](../activity/_41-regression2.qmd){target="_blank"}, [html](../activity/41-regression2.qmd){target="_blank"}
 
 
 ## 🎉 Friday 🥳
@@ -34,7 +39,4 @@ November 30-06, 2026
 - [Lab: Regression](../lab/42-regression.qmd){target="_blank"}
 
 
-## Extra Resources/Reading
-
-- [Homework 4](https://usu.instructure.com/courses/819584/assignments/5290614){target="_blank"}, [qmd template](../homework/_homework04.qmd), [html](../homework/homework04.qmd), [visual solutions](../homework/homework04-visual-sol.qmd)
 

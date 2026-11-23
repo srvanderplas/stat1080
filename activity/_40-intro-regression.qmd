@@ -1,0 +1,85 @@
+---
+title: "3.9.a - Class Activity"
+format: html
+number-sections: true
+execute:
+  echo: true   # show code by default
+  warning: false
+  message: false
+---
+
+Be sure to run the following code chunk before continuing with the assignment.  
+
+```{r}
+library(tidyverse)
+library(stat1080r)
+```
+
+We are going to use the `toluca` dataset from the `stat1080r` package for this assignment. Run the following code to make that dataset available in your global environment. Moving the dataset to your global environment is not required; it just makes it easier to view.  
+
+```{r}
+toluca <- stat1080r::toluca
+```
+
+The dataset explores the average time (`hours`) required to manufacture a certain piece of refrigeration equipment at 25 different production plants. Each production plant has a different lot size (`size`), and the point of this assignment is to determine if there is a relationship between the size of the lot, and the time it takes to make the equipment. 
+
+# Problem
+
+Before attempting linear regression, we want to first confirm that the data appear to share a linear relationship. Create a scatterplot using `ggplot2` that plots lot size on the x-axis and hours on the y-axis. 
+
+```{r}
+# Place scatterplot code in this chunk. 
+#...#
+```
+
+# Problem 
+
+Comment briefly: Does linear regression appear to be appropriate in this case? Explain why or why not. 
+
+*Replace this text with your answer or discuss with a partner.*
+
+# Problem 
+
+Assuming that linear regression is appropriate in this case, use the `lm()` function to create a model that uses lot size to predict hours. Use the summary function to see the model coefficients. 
+
+```{r}
+## tlm <- #...#
+
+## summary(tlm)
+```
+
+# Problem 
+
+Based on the linear model summary, does it appear that the observed relationship between work hours and lot size is statistically significant? On what basis did you make your decision? 
+
+*Replace this text with your answer or discuss with a partner.*
+
+# Problem 
+
+What is the predicted number of hours for a lot size of 30? How about the predicted number of hours for a lot size of 100? Get both answers at the same time by creating a dataframe with the lot sizes of interest, and then feeding that dataframe and your linear model into the predict function. 
+
+```{r}
+## tdf <- data.frame(#...#)
+
+## predict(#...#)
+```
+
+# Problem 
+
+What is the predicted number of hours for a lot size of 2? Why is this prediction not meaningful? 
+
+```{r}
+# Copy code from previous chunk and adapt as needed.
+#...#
+```
+
+*Replace this text with your answer or discuss with a partner.*
+
+# Problem 
+
+Using the code for the previously created scatterplot, add a linear regression overlay on your plot using the model coefficients you calculated previously. You will do this using `geom_abline()` which will take two arguments (`intercept` and `slope`), which are the linear model coefficients from the regression model you calculated previously. For convenience, please feel free to round your coefficients to two decimal places when using the `geom_abline()` function. 
+
+```{r}
+# Put ggplot code in this chunk.
+#...#
+```

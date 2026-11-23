@@ -1,0 +1,114 @@
+---
+title: "3.10.a - Class Activity"
+format: html
+number-sections: true
+execute:
+  echo: true   # show code by default
+  warning: false
+  message: false
+---
+
+Be sure to run the following code chunk before continuing with the assignment. Note that we are also loading the `broom` package, which you may need to install using `install.packages("broom")` before you try to run the code chunk below.   
+
+```{r}
+library(tidyverse)
+library(stat1080r)
+library(broom) # to give access to the tidy() function
+```
+
+We are going to use the `finch_hawkes` dataset from the `stat1080r` package for this assignment. Run the following code to make that dataset available in your global environment. Moving the dataset to your global environment is not required; it just makes it easier to view.  
+
+```{r}
+finch_hawkes <- stat1080r::finch_hawkes
+```
+
+The above dataset looks at several body measurements for finches. We seek to create a linear model that uses finch beak length and finch sex to predict finch weight. Note that finch sex is not always known, so we will consider three categories of sex in our models, male, female, and unknown. The following code shows you how to quickly determine the number of finches in each group. 
+
+```{r}
+finch_hawkes |>
+  group_by(sex) |>
+  count()
+```
+
+# Problem 
+
+Create a scatterplot that looks at the relationship between beak length (x-axis) and weight (y-axis), colored by sex. Then, add the command `geom_smooth(method = "lm", se = FALSE)` to your plot in order to get three different lines of regression, one for each sex. Does there appear to be much difference between the three lines? 
+
+```{r}
+ggplot(finch_hawkes, aes(x = beak_length, y = weight, color = sex)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE)
+```
+
+*It does appear like the line for "unknown" is different than the line for male and female, but there are also not very many observations in our dataset so it is hard to say anything for certain.*
+
+# Problem 
+
+We want to fit a simple linear model where we use beak_length to predict weight, but we want to make a separate linear model for each of the three sex classifications. Further, we want the model coefficients to be organized in a dataframe. To do this, we will need to make use of the functions `group_by()`, `reframe()` and `tidy()`, as is used in the 3\_10\_c notes. 
+
+```{r}
+model_df <- finch_hawkes |>
+  group_by(sex) |> # group by sex
+  reframe(tidy(lm(weight ~ beak_length), conf.int = TRUE))
+```
+
+# Problem 
+
+The following code shows you how to plot the confidence intervals for the slope coefficients for each sex. 
+
+```{r}
+model_df |>
+  filter(term != "(Intercept)") |>
+  ggplot(aes(
+    x = conf.low, xend = conf.high,
+    y = sex, yend = sex
+  )) +
+  geom_segment()
+```
+Based on the plot, do the confidence intervals appear to have much overlap? Given the overlap (or lack thereof) do you think it is reasonable to assume that the true slope coefficient relating beak length to weight is the same for each sex?
+
+*The confidence intervals have a lot of overlap. I think the overlap is great enough that it is possible the slope coefficients are the same for each sex, but I would want to do a formal statistical test to make sure (though such a test would be beyond what you have learned in this class).* 
+
+# Problem 
+
+Regardless of your previous answer, assume that the slope coefficients are the same for each sex, but that the intercept (i.e., where the line "starts") of each line changes based on the reported sex. Create a linear model that uses two variables (`beak_length` and `sex`) in prediction. This is an example of a regression model with multiple predictor variables. However, sex is a categorical variable rather than a numeric variable. Look closely at the estimated coefficients for sex to try to determine how the linear model handled a categorical variable.
+
+```{r}
+finch_lm <- lm(weight ~ beak_length + sex, data = finch_hawkes)
+
+summary(finch_lm)
+```
+
+You will notice that there are now **two** coefficients for sex, `sexmale` and `sexunknown`. These are called "dummy" variables where the variable is equal to 1 if the sex matches and zero otherwise. Thus, the model for male finches would be 
+
+$$1.64 + 0.31 + 1.36*l = 1.95 + 1.36*l = w$$
+while the model for "unknown" finches would be 
+
+$$1.64 - 0.38 + 1.36*l = 1.26 + 1.36*l = w$$
+
+and the model for female finches would be 
+
+$$1.64 + 1.36*l = w$$
+
+In other words, male finches get a 0.31 increase in weight compared to female finches, while unknown finches get a 0.38 reduction in weight compared to female finches, after "controlling" for beak length. However, it is not clear if these additions and reductions are statistically significant, or just due to random chance. To explore that, please use the `confint()` function on the linear model you just created to see the 95% confidence interval for the two sex variables. If BOTH confidence intervals include 0, then it means that sex is likely not a useful variable in prediction. If EITHER (i.e., one or two) of the sex variable confidence intervals fail to include zero, that would be evidence that the sex variable is useful in prediction. 
+
+```{r}
+# Obtain the confidence intervals.
+confint(finch_lm)
+```
+
+Based on the results, what do you conclude about the role of sex in predicting finch weight, after accounting for the influence of beak length? 
+
+*Both my confidence intervals include zero, so I would say there is not sufficient evidence to suggest that sex is useful in predicting finch weight.*
+
+# Bonus
+
+The following code shows you how to make predictions with a linear model that contains two variables. This code shows how to make two different predictions for male and female finches with two different beak lengths. 
+
+```{r}
+new_df <- data.frame(beak_length = c(9, 9, 12, 12),
+                     sex = c("male", "female", "male", "female"))
+preds <- predict(finch_lm, newdata = new_df)
+preds
+```
+

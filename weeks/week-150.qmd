@@ -1,4 +1,4 @@
-# Week 15: Project Meetings
+# Week 15: Wrapping Up
 
 
 
@@ -11,7 +11,8 @@ December 07-13, 2026
 ## 🥱 Monday 🌛
 
 - [Attendance Quiz 12/07](https://usu.instructure.com/courses/819584/assignments/5293137/){target="_blank"}
-- Project Meetings 
+- [Machine Learning](){target="_blank"}
+- [Project Presentation Expectations](../slides/43-project-expectations.qmd)
 
 
 ## 🐪️ Wednesday 🐦‍⬛ 
@@ -23,7 +24,7 @@ December 07-13, 2026
 ## 🎉 Friday 🥳
 
 - [Attendance Quiz 12/11](https://usu.instructure.com/courses/819584/assignments/5293139/){target="_blank"}
-- Project Meetings and Honors presentations
+- Project Meetings
 
 
 ## Extra Resources/Reading
