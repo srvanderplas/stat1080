@@ -397,7 +397,7 @@ schedule:
         - [14.2.i Activity - Regression II](https://usu.instructure.com/courses/819584/quizzes/1462838){target="_blank"} [quarto template](../activity/_41-regression2.qmd){target="_blank"}, [html](../activity/41-regression2.qmd){target="_blank"}
     class3: |
         - [Attendance Quiz 12/04](https://usu.instructure.com/courses/819584/assignments/5293136/){target="_blank"}
-        - [Lab: Regression](../lab/42-regression.qmd){target="_blank"}
+        - [Lab: Regression]() [quarto template](../lab/42-regression.qmd){target="_blank"} [regression data](../lab/regression_ahab.csv)
 
   - week: 15
     name: Wrapping Up

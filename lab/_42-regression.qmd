@@ -1,5 +1,70 @@
 ---
 title: "14.3.L Lab: Regression"
 format: html
+error: true
 ---
+
+
+
+Captain Ahab has become convinced that the elusive whale Moby Dick is harboring a stowaway named Ishmael, who somehow keeps escaping every encounter. The Pequod's crew records daily observations in hopes of predicting how far Moby Dick travels while searching for Ishmael.
+
+As the ship's statistician, your task is to develop regression models that explain whale movement.
+
+The file provided for this assignment contains 60 days of observations with the following variables:
+
+Variable |	Description
+--- | ---
+distance	| Distance traveled by Moby Dick that day (nautical miles)
+sightings	| Number of reported Ishmael sightings
+fog	| Average fog density index (0-10)
+day	| Day of voyage
+
+```{r}
+observations <- read.csv("https://")
+```
+
+# Simple Linear Regression
+
+## Plot the Data
+
+Create a scatterplot of distance vs. sightings. 
+
+```{r}
+ggplot() + ##...##
+```
+
+Based on the plot, is a linear regression appropriate for this data?
+
+> Your answer here
+
+
+## Fit the Model
+
+Fit the model $$\text{distance}_i = \beta_0 + \beta_1 \cdot \text{sightings}_i + \epsilon_i$$
+
+```{r}
+dist_sight_lm <- ## ... ##
+
+summary(dist_sight_lm)
+```
+
+
+## Write Out The Regression Equation
+
+Fill in the values for $\beta_0$ and $\beta_1$ in the equation below. 
+
+$$\hat{\text{distance}}_i = \beta_0 + \beta_1 \cdot \text{sightings}_i$$
+ 
+ 
+Interpret each value in the context of the problem
+ 
+- $\beta_0 = ##...##$:
+ 
+- $\beta_1 = ##...##$:
+
+## Diagnostics
+
+```{r}
+
+```
 
