@@ -1,0 +1,161 @@
+---
+title: "14.3.L Lab: Regression"
+format: html
+error: true
+---
+
+
+
+Captain Ahab has become convinced that the elusive whale Moby Dick is harboring a stowaway named Ishmael, who somehow keeps escaping every encounter. The Pequod's crew records daily observations in hopes of predicting how far Moby Dick travels while searching for Ishmael.
+
+As the ship's statistician, your task is to develop regression models that explain whale movement.
+
+The file provided for this assignment contains 276 days of observations with the following variables:
+
+Variable |	Description
+--- | ---
+distance	| Distance traveled by Moby Dick that day (nautical miles)
+sightings	| Number of reported Ishmael sightings
+fog	| Average fog density index (0-10)
+day	| Day of voyage
+
+```{r}
+observations <- read.csv("https://srvanderplas.github.io/stat1080/lab/regression_ahab.csv")
+```
+
+# Simple Linear Regression
+
+## Plot the Data
+
+Create a scatterplot of distance vs. sightings. 
+
+```{r}
+ggplot() + ##...##
+```
+
+Based on the plot, is a linear regression appropriate for this data? Explain your answer in 1-2 sentences.
+
+> Your answer here
+
+
+## Fit the Model
+
+Fit the model $$\text{distance}_i = \beta_0 + \beta_1 \cdot \text{sightings}_i + \epsilon_i$$
+
+```{r}
+dist_sight_lm <- ## ... ##
+
+summary(dist_sight_lm)
+```
+
+
+## Write Out The Regression Equation
+
+Fill in the values for $\beta_0$ and $\beta_1$ in the equation below. 
+
+$$\hat{\text{distance}}_i = \beta_0 + \beta_1 \cdot \text{sightings}_i$$
+ 
+ 
+Interpret each value in the context of the problem. 
+ 
+- $\beta_0 = ##...##$:
+ 
+- $\beta_1 = ##...##$:
+
+
+Is there a significant relationship between sightings and distance? Why, or why not?
+
+> Your answer here
+
+## Diagnostics
+
+Plot the residuals of your regression against sightings (sightings should be on the x axis). 
+
+```{r}
+voyage$resid1 <- resid(dist_sight_lm)
+
+ggplot(voyage) + ##...##
+```
+
+Interpret your residual plot. Do you notice any features which suggest that a linear model is not appropriate?
+
+
+
+
+# Multiple Linear Regression
+
+## Plot the Data
+While in the first part of this lab, we plotted distance against sightings, now we're going to examine whether it is potentially useful to add another variable. 
+
+Create a scatterplot of fog vs. the residuals of the model of distance vs. sightings. 
+
+```{r}
+ggplot() + ##...##
+```
+
+Based on the plot, is there a relationship between fog and the residuals? What does this suggest? Answer both parts of the question in 2-3 sentences. 
+
+> Your answer here
+
+
+## Fit the Model
+
+Fit the model $$\text{distance}_i = \beta_0 + \beta_1 \cdot \text{sightings}_i + \beta_2 \cdot \text{fog}_i + \epsilon_i$$
+
+```{r}
+dist_sight_fog_lm <- ## ... ##
+
+summary(dist_sight_fog_lm)
+```
+
+
+## Write Out The Regression Equation
+
+Fill in the values for $\beta_0$, $\beta_1$, and $\beta_2$ in the equation below. 
+
+$$\hat{\text{distance}}_i = \beta_0 + \beta_1 \cdot \text{sightings}_i + \beta_2 \cdot \text{fog}_i$$
+ 
+ 
+Interpret each value in the context of the problem. 
+ 
+- $\beta_0 = ##...##$:
+ 
+- $\beta_1 = ##...##$:
+
+- $\beta_2 = ##...##$:
+
+Is there a significant relationship between sightings, fog, and distance? Why, or why not?
+
+> Your answer here
+
+## Diagnostics
+
+### Multicollinearity
+When we have multivariate regression, we need to check that there is not a strong linear relationship between our predictor variables (if there is, this is called **multicollinearity**)
+
+Plot fog vs. sightings and determine whether such a relationship exists. 
+If the relationship does exist, is it strong enough to worry about? Why or why not?
+
+```{r}
+ggplot(voyage) + ##...##
+```
+
+> Your answer here. 
+
+
+### Residuals
+
+Plot the residuals of your regression against sightings (sightings should be on the x axis). 
+
+```{r}
+voyage$resid2 <- resid(dist_sight_fog_lm)
+
+ggplot(voyage) + ##...##
+```
+
+Interpret your residual plot.
+
+> Your answer here
+
+
+
